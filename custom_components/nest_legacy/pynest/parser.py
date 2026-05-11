@@ -1229,6 +1229,7 @@ class NestParser:
         self, traits: dict[str, Any], temp_scale: TemperatureScale | None
     ) -> tuple[
         bool,
+        bool,
         int,
         float | None,
         float | None,
@@ -1247,6 +1248,7 @@ class NestParser:
         )
 
         hot_water_active = False
+        hot_water_control_active = False
         hot_water_boost_time_to_end = 0
         hot_water_temperature = None
         current_water_temperature = None
@@ -1255,6 +1257,7 @@ class NestParser:
 
         if hw_trait:
             hot_water_active = hw_trait.boilerActive
+            hot_water_control_active = hw_trait.controlActive
             if hw_trait.HasField("temperature"):
                 current_water_temperature = _round_temp(
                     hw_trait.temperature.value, temp_scale
@@ -1295,6 +1298,7 @@ class NestParser:
 
         return (
             hot_water_active,
+            hot_water_control_active,
             hot_water_boost_time_to_end,
             hot_water_temperature,
             current_water_temperature,
@@ -1553,6 +1557,7 @@ class NestParser:
         # Hot Water / Heat Link Parsing
         (
             hot_water_active,
+            hot_water_control_active,
             hot_water_boost_time_to_end,
             hot_water_temperature,
             current_water_temperature,
@@ -1629,6 +1634,7 @@ class NestParser:
             if has_hot_water_control
             else None,
             hot_water_active=hot_water_active,
+            hot_water_control_active=hot_water_control_active,
             hot_water_boost_time_to_end=hot_water_boost_time_to_end,
             hot_water_temperature=hot_water_temperature,
             current_water_temperature=current_water_temperature,
@@ -2418,6 +2424,7 @@ class NestParser:
             associated_thermostat_object_key=thermostat.object_key,
             has_hot_water_control=thermostat.has_hot_water_control,
             hot_water_active=thermostat.hot_water_active,
+            hot_water_control_active=thermostat.hot_water_control_active,
             has_hot_water_temperature=thermostat.has_hot_water_temperature,
             hot_water_boost_time_to_end=thermostat.hot_water_boost_time_to_end,
             hot_water_mode=thermostat.hot_water_mode,
