@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 from collections import deque
+from dataclasses import replace
 import logging
 import random
 import time
@@ -106,6 +107,61 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         """Return raw data, useful for diagnostics."""
         return self._raw_data
 
+    @staticmethod
+    def _get_temp_sensor_device_id(device: NestTempSensor) -> str | None:
+        """Return the physical temperature sensor ID across legacy/protobuf APIs."""
+        if device.object_key.startswith("DEVICE_"):
+            return device.object_key.removeprefix("DEVICE_")
+        if device.object_key.startswith("kryptonite."):
+            return device.object_key.split(".", 1)[1]
+        return None
+
+    def _build_device_map(self, devices: list[NestDevice]) -> dict[str, NestDevice]:
+        """Build the coordinator device map and deduplicate temp sensors.
+
+        Nest Temperature Sensors can appear twice: once from the legacy REST API
+        as ``kryptonite.<id>`` and once from the protobuf API as ``DEVICE_<id>``.
+        Prefer the protobuf device because it contains the thermostat association,
+        active-sensor switch support, battery voltage, and command path. When a
+        matching legacy device exists, keep its displayed temperature value so the
+        protobuf device does not lose the less-rounded legacy reading.
+        """
+        legacy_temp_sensors: dict[str, NestTempSensor] = {}
+        protobuf_temp_sensor_ids: set[str] = set()
+
+        for device in devices:
+            if not isinstance(device, NestTempSensor):
+                continue
+            device_id = self._get_temp_sensor_device_id(device)
+            if not device_id:
+                continue
+            if device.is_protobuf:
+                protobuf_temp_sensor_ids.add(device_id)
+            else:
+                legacy_temp_sensors[device_id] = device
+
+        device_map: dict[str, NestDevice] = {}
+        for device in devices:
+            if isinstance(device, NestTempSensor):
+                device_id = self._get_temp_sensor_device_id(device)
+                if device_id:
+                    if device.is_protobuf:
+                        legacy_device = legacy_temp_sensors.get(device_id)
+                        if (
+                            legacy_device is not None
+                            and legacy_device.current_temperature is not None
+                        ):
+                            device = replace(
+                                device,
+                                current_temperature=legacy_device.current_temperature,
+                            )
+                    elif device_id in protobuf_temp_sensor_ids:
+                        continue
+
+            device_map[device.serial_number] = device
+
+        return device_map
+
     async def async_reauthenticate(self, force: bool = False) -> None:
         """(Re-)authenticate with the Nest API."""
         async with self._auth_lock:
@@ -132,9 +188,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             await self.async_reauthenticate()
             self._raw_data = await self.client.async_get_first_data()
             parsed_data = self.parser.parse_all(self._raw_data)
-            self.data = {
-                **{device.serial_number: device for device in parsed_data.devices},
-            }
+            self.data = self._build_device_map(parsed_data.devices)
 
             # Fetch detailed properties for any cameras found in the initial data
             camera_property_tasks = [
@@ -146,9 +200,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 await asyncio.gather(*camera_property_tasks)
                 # Re-parse data after fetching additional properties
                 parsed_data = self.parser.parse_all(self._raw_data)
-                self.data = {
-                    **{device.serial_number: device for device in parsed_data.devices},
-                }
+                self.data = self._build_device_map(parsed_data.devices)
 
         except BadCredentialsException as err:
             raise ConfigEntryAuthFailed from err
@@ -278,7 +330,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         for k in sorted(new_keys - old_keys):
             _LOGGER.debug("  + %s: %s", k, new_val[k])
         for k in sorted(old_keys - new_keys):
-            _LOGGER.debug("  - %s: %s", k, old_val[k])
+            _LOGGER.debug("  - %s", k)
         for k in sorted(old_keys & new_keys):
             if old_val[k] != new_val[k]:
                 _LOGGER.debug("  ~ %s: %s -> %s", k, old_val[k], new_val[k])
@@ -334,9 +386,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                     await asyncio.gather(*camera_property_tasks)
 
                 parsed_data = self.parser.parse_all(self._raw_data)
-                new_devices = {
-                    device.serial_number: device for device in parsed_data.devices
-                }
+                new_devices = self._build_device_map(parsed_data.devices)
 
                 # Clean up stale devices
                 device_registry = dr.async_get(self.hass)
@@ -451,9 +501,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                             self._raw_data[resource_id][trait_label] = trait_data
 
                     parsed_data = self.parser.parse_all(self._raw_data)
-                    new_devices = {
-                        device.serial_number: device for device in parsed_data.devices
-                    }
+                    new_devices = self._build_device_map(parsed_data.devices)
 
                     # Clean up stale devices
                     device_registry = dr.async_get(self.hass)
