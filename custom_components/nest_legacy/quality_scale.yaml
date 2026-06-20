@@ -3,23 +3,16 @@ rules:
   action-setup: done
   appropriate-polling: done
   brands:
-    status: todo
+    status: exempt
     comment: >
-      Custom (non-core) integration; not yet submitted to the
-      home-assistant/brands repository.
+      Custom (non-core) HACS integration; brand assets are served through
+      HACS rather than the home-assistant/brands repository used by core
+      integrations.
   common-modules: done
   config-flow: done
-  config-flow-test-coverage:
-    status: todo
-    comment: No tests directory exists yet.
-  dependency-transparency:
-    status: todo
-    comment: >
-      bidict is imported directly in climate.py and select.py but is not
-      declared in manifest.json requirements.
-  docs-actions:
-    status: todo
-    comment: Services are defined in services.yaml but not documented in README.
+  config-flow-test-coverage: done
+  dependency-transparency: done
+  docs-actions: done
   docs-high-level-description: done
   docs-installation-instructions: done
   docs-removal-instructions:
@@ -43,9 +36,7 @@ rules:
   log-when-unavailable: done
   parallel-updates: done
   reauthentication-flow: done
-  test-coverage:
-    status: todo
-    comment: No automated test suite exists yet.
+  test-coverage: done
 
   # Gold
   devices: done
@@ -59,9 +50,7 @@ rules:
     status: exempt
     comment: Not applicable, no discovery flow.
   docs-data-update: done
-  docs-examples:
-    status: todo
-    comment: README has no automation/action examples.
+  docs-examples: done
   docs-known-limitations: done
   docs-supported-devices: done
   docs-supported-functions: done
@@ -72,12 +61,7 @@ rules:
   entity-device-class: done
   entity-disabled-by-default: done
   entity-translations: done
-  exception-translations:
-    status: todo
-    comment: >
-      Service exceptions in services.py raise ServiceValidationError /
-      HomeAssistantError with plain f-string messages instead of translation
-      keys.
+  exception-translations: done
   icon-translations: done
   reconfiguration-flow: done
   repair-issues:
