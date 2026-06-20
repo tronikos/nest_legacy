@@ -20,6 +20,7 @@
   "integration_type": "hub",
   "iot_class": "cloud_push",
   "issue_tracker": "https://github.com/tronikos/nest_legacy/issues",
+  "quality_scale": "gold",
   "requirements": [
     "bidict>=0.23.1",
     "googleapis-common-protos>=1.70.0",
