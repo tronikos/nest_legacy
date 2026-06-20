@@ -16,6 +16,7 @@ from homeassistant.config_entries import (
 from homeassistant.const import CONF_ACCESS_TOKEN
 from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
+from homeassistant.helpers.service_info.dhcp import DhcpServiceInfo
 
 from .const import (
     CONF_ACCOUNT_TYPE,
@@ -150,6 +151,14 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         return await self._show_form_and_handle_errors(
             "nest_account", schema, user_input
         )
+
+    async def async_step_dhcp(
+        self, discovery_info: DhcpServiceInfo
+    ) -> ConfigFlowResult:
+        """Handle discovery of a Nest device via DHCP."""
+        if self._async_current_entries():
+            return self.async_abort(reason="already_configured")
+        return await self.async_step_user()
 
     async def async_step_reauth(
         self, entry_data: Mapping[str, Any]

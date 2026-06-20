@@ -41,14 +41,13 @@ rules:
   # Gold
   devices: done
   diagnostics: done
-  discovery:
-    status: exempt
-    comment: >
-      This is a cloud account based integration (Google/Nest login); there is
-      no local device to discover.
+  discovery: done
   discovery-update-info:
     status: exempt
-    comment: Not applicable, no discovery flow.
+    comment: >
+      DHCP discovery only triggers the existing account-based setup flow; it
+      carries no per-device info (other than presence) to merge into an
+      already-configured entry.
   docs-data-update: done
   docs-examples: done
   docs-known-limitations: done
