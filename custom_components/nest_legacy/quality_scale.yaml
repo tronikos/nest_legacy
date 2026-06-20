@@ -1,0 +1,98 @@
+rules:
+  # Bronze
+  action-setup: done
+  appropriate-polling: done
+  brands:
+    status: todo
+    comment: >
+      Custom (non-core) integration; not yet submitted to the
+      home-assistant/brands repository.
+  common-modules: done
+  config-flow: done
+  config-flow-test-coverage:
+    status: todo
+    comment: No tests directory exists yet.
+  dependency-transparency:
+    status: todo
+    comment: >
+      bidict is imported directly in climate.py and select.py but is not
+      declared in manifest.json requirements.
+  docs-actions:
+    status: todo
+    comment: Services are defined in services.yaml but not documented in README.
+  docs-high-level-description: done
+  docs-installation-instructions: done
+  docs-removal-instructions:
+    status: exempt
+    comment: Standard HA config entry removal via the UI; nothing custom to document.
+  entity-event-setup: done
+  entity-unique-id: done
+  has-entity-name: done
+  runtime-data: done
+  test-before-configure: done
+  test-before-setup: done
+  unique-config-entry: done
+
+  # Silver
+  action-exceptions: done
+  config-entry-unloading: done
+  docs-configuration-parameters: done
+  docs-installation-parameters: done
+  entity-unavailable: done
+  integration-owner: done
+  log-when-unavailable: done
+  parallel-updates: done
+  reauthentication-flow: done
+  test-coverage:
+    status: todo
+    comment: No automated test suite exists yet.
+
+  # Gold
+  devices: done
+  diagnostics: done
+  discovery:
+    status: exempt
+    comment: >
+      This is a cloud account based integration (Google/Nest login); there is
+      no local device to discover.
+  discovery-update-info:
+    status: exempt
+    comment: Not applicable, no discovery flow.
+  docs-data-update: done
+  docs-examples:
+    status: todo
+    comment: README has no automation/action examples.
+  docs-known-limitations: done
+  docs-supported-devices: done
+  docs-supported-functions: done
+  docs-troubleshooting: done
+  docs-use-cases: done
+  dynamic-devices: done
+  entity-category: done
+  entity-device-class: done
+  entity-disabled-by-default: done
+  entity-translations: done
+  exception-translations:
+    status: todo
+    comment: >
+      Service exceptions in services.py raise ServiceValidationError /
+      HomeAssistantError with plain f-string messages instead of translation
+      keys.
+  icon-translations: done
+  reconfiguration-flow: done
+  repair-issues:
+    status: exempt
+    comment: No actionable repair scenarios currently identified for this integration.
+  stale-devices: done
+
+  # Platinum
+  async-dependency:
+    status: todo
+    comment: >
+      protobuf and bidict, used by the bundled pynest client, are
+      synchronous; the client itself wraps aiohttp but pulls in sync
+      dependencies for parsing.
+  inject-websession: done
+  strict-typing:
+    status: todo
+    comment: No mypy strict configuration or py.typed marker present.
