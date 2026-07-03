@@ -28,8 +28,8 @@ from .pynest.models import NestThermostat
 
 PARALLEL_UPDATES = 0
 
-_THERMOSTAT_MIN_TEMPERATURE = 9
-_THERMOSTAT_MAX_TEMPERATURE = 32
+_THERMOSTAT_MIN_TEMPERATURE_C = 9
+_THERMOSTAT_MAX_TEMPERATURE_C = 32
 
 _HVAC_MODE_BIDICT: bidict[ThermostatHvacMode, HVACMode] = bidict(
     {
@@ -75,9 +75,19 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
     ) -> None:
         """Initialize the climate entity."""
         super().__init__(coordinator, device)
-        self._attr_temperature_unit = UnitOfTemperature.CELSIUS
-        self._attr_min_temp = _THERMOSTAT_MIN_TEMPERATURE
-        self._attr_max_temp = _THERMOSTAT_MAX_TEMPERATURE
+
+        is_fahrenheit = device.temperature_scale == TemperatureScale.FAHRENHEIT
+        self._attr_temperature_unit = (
+            UnitOfTemperature.FAHRENHEIT if is_fahrenheit else UnitOfTemperature.CELSIUS
+        )
+
+        if is_fahrenheit:
+            # Report native bounds in whole °F, matching the device's native precision.
+            self._attr_min_temp = round(_THERMOSTAT_MIN_TEMPERATURE_C * 9 / 5 + 32)
+            self._attr_max_temp = round(_THERMOSTAT_MAX_TEMPERATURE_C * 9 / 5 + 32)
+        else:
+            self._attr_min_temp = _THERMOSTAT_MIN_TEMPERATURE_C
+            self._attr_max_temp = _THERMOSTAT_MAX_TEMPERATURE_C
 
         features = (
             ClimateEntityFeature.TARGET_TEMPERATURE
@@ -94,16 +104,39 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         self._attr_supported_features = features
         self._attr_preset_modes = [PRESET_NONE, PRESET_ECO]
 
+    def _c_to_native(self, value: float | None) -> float | None:
+        """Convert a Celsius value from the device into the entity's native unit.
+
+        Fahrenheit thermostats only support whole-degree precision, so this
+        rounds to the nearest integer °F. This also absorbs float32 noise
+        from the Nest API (e.g. 26.1111107 instead of exactly 26.111111...),
+        ensuring the frontend always receives a clean integer. Celsius values
+        pass through unchanged, since the API already reports those at
+        usable precision.
+        """
+        if value is None:
+            return None
+        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+            return round(value * 9 / 5 + 32)
+        return value
+
+    def _native_to_c(self, value: float) -> float:
+        """Convert a value in the entity's native unit back to Celsius for the API.
+
+        Guards against callers sending unrounded numbers (automations, voice
+        assistants) by enforcing native stepping constraints. Rounding is
+        baked directly into this conversion so it can't be skipped by a
+        future caller.
+        """
+        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+            return (round(value) - 32) * 5 / 9
+        return round(value * 2.0) / 2.0
+
     @property
     def target_temperature_step(self) -> float:
-        """Return the supported step of target temperature.
-
-        The Nest API only accepts whole-number integers in Fahrenheit. Since
-        the entity always reports in Celsius, 5/9 °C is the exact Celsius
-        equivalent of 1 °F — keeping UI steps aligned with what the API accepts.
-        """
-        if self.device.temperature_scale == TemperatureScale.FAHRENHEIT:
-            return 5 / 9
+        """Return the supported step of target temperature."""
+        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+            return 1.0
         return PRECISION_HALVES
 
     @property
@@ -133,19 +166,19 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
     @property
     def current_temperature(self) -> float | None:
         """Return the current temperature."""
-        return self.device.current_temperature
+        return self._c_to_native(self.device.current_temperature)
 
     @property
     def target_temperature(self) -> float | None:
         """Return the temperature we try to reach."""
         if self.hvac_mode == HVACMode.HEAT_COOL:
             return None
-        return self.device.target_temperature
+        return self._c_to_native(self.device.target_temperature)
 
     @property
     def target_temperature_high(self) -> float | None:
         """Return the highbound temperature."""
-        return (
+        return self._c_to_native(
             self.device.target_temperature_high
             if self.hvac_mode == HVACMode.HEAT_COOL
             else None
@@ -154,7 +187,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
     @property
     def target_temperature_low(self) -> float | None:
         """Return the lowbound temperature."""
-        return (
+        return self._c_to_native(
             self.device.target_temperature_low
             if self.hvac_mode == HVACMode.HEAT_COOL
             else None
@@ -209,24 +242,12 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             # Signal client layer to exit eco before applying setpoint
             payload["exit_eco"] = True
 
-        def _round_temp(temp: float) -> float:
-            """Round temp to the nearest value the Nest API will accept.
-
-            Fahrenheit thermostats only accept integer °F values. Since HA
-            always passes °C internally, we convert to °F, round to the
-            nearest integer, then convert back. This guards against callers
-            (automations, voice assistants) that bypass the step constraint.
-            """
-            if self.device.temperature_scale == TemperatureScale.FAHRENHEIT:
-                return (round(temp * 1.8 + 32.0) - 32.0) / 1.8
-            return round(temp * 2.0) / 2.0
-
         if ATTR_TEMPERATURE in kwargs:
-            payload["target_temperature"] = _round_temp(kwargs[ATTR_TEMPERATURE])
+            payload["target_temperature"] = self._native_to_c(kwargs[ATTR_TEMPERATURE])
         if "target_temp_low" in kwargs:
-            payload["target_temperature_low"] = _round_temp(kwargs["target_temp_low"])
+            payload["target_temperature_low"] = self._native_to_c(kwargs["target_temp_low"])
         if "target_temp_high" in kwargs:
-            payload["target_temperature_high"] = _round_temp(kwargs["target_temp_high"])
+            payload["target_temperature_high"] = self._native_to_c(kwargs["target_temp_high"])
 
         if payload:
             await self._set_device_data(payload)
