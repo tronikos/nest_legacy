@@ -23,7 +23,7 @@ from homeassistant.util import dt as dt_util
 
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
-from .pynest.enums import ThermostatHvacMode, ThermostatHvacState
+from .pynest.enums import TemperatureScale, ThermostatHvacMode, ThermostatHvacState
 from .pynest.models import NestThermostat
 
 PARALLEL_UPDATES = 0
@@ -78,7 +78,6 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_min_temp = _THERMOSTAT_MIN_TEMPERATURE
         self._attr_max_temp = _THERMOSTAT_MAX_TEMPERATURE
-        self._attr_target_temperature_step = PRECISION_HALVES
 
         features = (
             ClimateEntityFeature.TARGET_TEMPERATURE
@@ -94,6 +93,18 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
 
         self._attr_supported_features = features
         self._attr_preset_modes = [PRESET_NONE, PRESET_ECO]
+
+    @property
+    def target_temperature_step(self) -> float:
+        """Return the supported step of target temperature.
+
+        The Nest API only accepts whole-number integers in Fahrenheit. Since
+        the entity always reports in Celsius, 5/9 °C is the exact Celsius
+        equivalent of 1 °F — keeping UI steps aligned with what the API accepts.
+        """
+        if self.device.temperature_scale == TemperatureScale.FAHRENHEIT:
+            return 5 / 9
+        return PRECISION_HALVES
 
     @property
     def hvac_mode(self) -> HVACMode | None:
@@ -198,12 +209,24 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             # Signal client layer to exit eco before applying setpoint
             payload["exit_eco"] = True
 
+        def _round_temp(temp: float) -> float:
+            """Round temp to the nearest value the Nest API will accept.
+
+            Fahrenheit thermostats only accept integer °F values. Since HA
+            always passes °C internally, we convert to °F, round to the
+            nearest integer, then convert back. This guards against callers
+            (automations, voice assistants) that bypass the step constraint.
+            """
+            if self.device.temperature_scale == TemperatureScale.FAHRENHEIT:
+                return (round(temp * 1.8 + 32.0) - 32.0) / 1.8
+            return round(temp * 2.0) / 2.0
+
         if ATTR_TEMPERATURE in kwargs:
-            payload["target_temperature"] = kwargs[ATTR_TEMPERATURE]
+            payload["target_temperature"] = _round_temp(kwargs[ATTR_TEMPERATURE])
         if "target_temp_low" in kwargs:
-            payload["target_temperature_low"] = kwargs["target_temp_low"]
+            payload["target_temperature_low"] = _round_temp(kwargs["target_temp_low"])
         if "target_temp_high" in kwargs:
-            payload["target_temperature_high"] = kwargs["target_temp_high"]
+            payload["target_temperature_high"] = _round_temp(kwargs["target_temp_high"])
 
         if payload:
             await self._set_device_data(payload)
