@@ -101,7 +101,7 @@
                     "event_type": {
                         "name": "Event type",
                         "state": {
-                            "doorbell_chime": "Chime"
+                            "ring": "Ring"
                         }
                     }
                 }

@@ -101,7 +101,7 @@
           "event_type": {
             "name": "Event type",
             "state": {
-              "doorbell_chime": "Chime"
+              "ring": "[%key:component::event::entity_component::doorbell::state_attributes::event_type::state::ring%]"
             }
           }
         }
