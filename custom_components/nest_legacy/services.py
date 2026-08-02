@@ -7,6 +7,10 @@ from typing import Any
 from google.protobuf.json_format import MessageToDict
 import voluptuous as vol
 
+from homeassistant.components.climate import (
+    DOMAIN as CLIMATE_DOMAIN,
+    ClimateEntityFeature,
+)
 from homeassistant.core import (
     HomeAssistant,
     ServiceCall,
@@ -14,7 +18,11 @@ from homeassistant.core import (
     SupportsResponse,
 )
 from homeassistant.exceptions import ServiceValidationError
-from homeassistant.helpers import config_validation as cv, device_registry as dr
+from homeassistant.helpers import (
+    config_validation as cv,
+    device_registry as dr,
+    service,
+)
 
 from .const import DOMAIN
 from .coordinator import NestCoordinator
@@ -234,4 +242,16 @@ def async_setup_services(hass: HomeAssistant) -> None:
                 vol.Required("user_id"): cv.string,
             }
         ),
+    )
+
+    service.async_register_platform_entity_service(
+        hass,
+        DOMAIN,
+        "set_fan_timer",
+        entity_domain=CLIMATE_DOMAIN,
+        schema={
+            vol.Required("duration"): cv.time_period,
+        },
+        func="async_set_fan_timer",
+        required_features=[ClimateEntityFeature.FAN_MODE],
     )

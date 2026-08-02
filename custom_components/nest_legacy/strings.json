@@ -333,6 +333,16 @@
       },
       "name": "List guests"
     },
+    "set_fan_timer": {
+      "description": "Sets the fan to run for a specific duration.",
+      "fields": {
+        "duration": {
+          "description": "The duration the fan should run for.",
+          "name": "Duration"
+        }
+      },
+      "name": "Set fan timer"
+    },
     "set_user_schedule": {
       "description": "Sets the access schedule for a user on a device.",
       "fields": {

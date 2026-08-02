@@ -77,3 +77,15 @@ delete_user_schedule:
       example: GUEST_1234
       selector:
         text: null
+set_fan_timer:
+  target:
+    entity:
+      domain: climate
+      integration: nest_legacy
+      supported_features:
+        - climate.ClimateEntityFeature.FAN_MODE
+  fields:
+    duration:
+      required: true
+      selector:
+        duration:

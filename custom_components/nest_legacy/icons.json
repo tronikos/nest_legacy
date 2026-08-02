@@ -9,6 +9,9 @@
     "list_guests": {
       "service": "mdi:account-group"
     },
+    "set_fan_timer": {
+      "service": "mdi:fan-clock"
+    },
     "set_user_schedule": {
       "service": "mdi:calendar-edit"
     }

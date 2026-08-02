@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import timedelta
 from typing import Any
 
 from bidict import bidict
@@ -18,6 +19,7 @@ from homeassistant.components.climate import (
 )
 from homeassistant.const import ATTR_TEMPERATURE, PRECISION_HALVES, UnitOfTemperature
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
 
@@ -279,5 +281,20 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             if fan_on
             else 0
         )
+        payload: dict[str, Any] = {"fan_timer_timeout": timeout}
+        await self._set_device_data(payload)
+
+    async def async_set_fan_timer(self, duration: timedelta) -> None:
+        """Set a short term fan timer."""
+        if not self.device.has_fan:
+            raise HomeAssistantError(f"Entity {self.entity_id} does not support fan")
+
+        seconds = int(duration.total_seconds())
+        if seconds <= 0:
+            raise ValueError(
+                f"Duration {seconds} for {self.entity_id} must be greater than 0 seconds"
+            )
+
+        timeout = int(dt_util.utcnow().timestamp()) + seconds
         payload: dict[str, Any] = {"fan_timer_timeout": timeout}
         await self._set_device_data(payload)
