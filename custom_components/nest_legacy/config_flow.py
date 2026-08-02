@@ -1,9 +1,7 @@
 """Adds config flow for Nest."""
 
-from __future__ import annotations
-
 from collections.abc import Mapping
-from typing import Any
+from typing import Any, override
 
 from aiohttp import ClientError
 import voluptuous as vol
@@ -72,6 +70,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         await self.async_set_unique_id(nest_session.user)
         return {"title": f"Nest{' FT' if field_test else ''} ({nest_session.email})"}
 
+    @override
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
@@ -107,7 +106,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         if user_input:
             try:
                 info = await self._validate_input(user_input)
-            except (TimeoutError, ClientError):
+            except TimeoutError, ClientError:
                 errors["base"] = "cannot_connect"
             except BadCredentialsException:
                 errors["base"] = "invalid_auth"
@@ -170,6 +169,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
 
     @staticmethod
     @callback
+    @override
     def async_get_options_flow(config_entry: NestConfigEntry) -> OptionsFlowWithReload:
         """Create the options flow."""
         return NestOptionsFlowHandler()

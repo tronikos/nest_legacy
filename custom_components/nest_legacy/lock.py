@@ -1,8 +1,6 @@
 """Lock platform for Nest."""
 
-from __future__ import annotations
-
-from typing import Any
+from typing import Any, override
 
 from homeassistant.components.lock import LockEntity
 from homeassistant.core import HomeAssistant
@@ -36,30 +34,36 @@ class NestLockEntity(NestEntity[NestLock], LockEntity):
 
     _attr_name = None  # The lock is the main feature of the device
 
+    @override
     @property
     def is_locked(self) -> bool:
         """Return true if lock is locked."""
         return self.device.bolt_state == LockBoltState.LOCKED
 
+    @override
     @property
     def is_locking(self) -> bool:
         """Return true if lock is locking."""
         return self.device.bolt_state == LockBoltState.LOCKING
 
+    @override
     @property
     def is_unlocking(self) -> bool:
         """Return true if lock is unlocking."""
         return self.device.bolt_state == LockBoltState.UNLOCKING
 
+    @override
     @property
     def is_jammed(self) -> bool:
         """Return true if lock is jammed."""
         return self.device.bolt_state == LockBoltState.JAMMED
 
+    @override
     async def async_lock(self, **kwargs: Any) -> None:
         """Lock the lock."""
         await self._set_device_data({"bolt_locked": True})
 
+    @override
     async def async_unlock(self, **kwargs: Any) -> None:
         """Unlock the lock."""
         await self._set_device_data({"bolt_locked": False})

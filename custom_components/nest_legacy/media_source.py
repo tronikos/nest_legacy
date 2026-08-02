@@ -1,11 +1,9 @@
 """Media source for Nest Legacy camera events."""
 
-from __future__ import annotations
-
 from collections import defaultdict
 import datetime
 import logging
-from typing import cast
+from typing import cast, override
 
 from aiohttp import web
 
@@ -167,6 +165,7 @@ class NestMediaSource(MediaSource):
             raise Unresolvable(f"Config entry not found: {config_entry_id}")
         return cast(NestConfigEntry, entry)
 
+    @override
     async def async_resolve_media(self, item: MediaSourceItem) -> PlayMedia:
         """Resolve media to a URL."""
         parts = item.identifier.split("/")
@@ -183,6 +182,7 @@ class NestMediaSource(MediaSource):
         )
         return PlayMedia(url, "video/mp4")
 
+    @override
     async def async_browse_media(
         self,
         item: MediaSourceItem,

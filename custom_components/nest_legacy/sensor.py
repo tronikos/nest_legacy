@@ -1,11 +1,9 @@
 """Sensor platform for Nest."""
 
-from __future__ import annotations
-
 from collections.abc import Callable
 from dataclasses import dataclass
 import datetime
-from typing import Any
+from typing import Any, override
 
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -255,6 +253,7 @@ class NestSensor(NestEntity[NestDevice], SensorEntity):
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
 
+    @override
     @property
     def native_value(self) -> StateType | datetime.datetime:
         """Return the state of the sensor."""

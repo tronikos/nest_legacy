@@ -1,8 +1,6 @@
 """Fan platform for Nest thermostats."""
 
-from __future__ import annotations
-
-from typing import Any
+from typing import Any, override
 
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from homeassistant.core import HomeAssistant
@@ -49,14 +47,17 @@ class NestThermostatFan(NestEntity[NestThermostat], FanEntity):
     def __init__(self, coordinator: NestCoordinator, device: NestThermostat) -> None:
         """Initialize the fan."""
         super().__init__(coordinator, device)
+        # pylint: disable-next=home-assistant-entity-unique-id-redundant-platform
         self._attr_unique_id = f"{device.serial_number}-fan"
         self._speed_range = (1, device.fan_max_speed)
 
+    @override
     @property
     def is_on(self) -> bool:
         """Return true if the fan is on."""
         return self.device.fan_state
 
+    @override
     @property
     def percentage(self) -> int | None:
         """Return the current speed percentage."""
@@ -66,11 +67,13 @@ class NestThermostatFan(NestEntity[NestThermostat], FanEntity):
             self._speed_range, self.device.fan_timer_speed
         )
 
+    @override
     @property
     def speed_count(self) -> int:
         """Return the number of speeds the fan supports."""
         return int_states_in_range(self._speed_range)
 
+    @override
     async def async_turn_on(
         self,
         percentage: int | None = None,
@@ -87,10 +90,12 @@ class NestThermostatFan(NestEntity[NestThermostat], FanEntity):
                 speed = 1  # Cannot set speed to 0 when turning on
             await self._set_fan_state(True, speed)
 
+    @override
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn off the fan."""
         await self._set_fan_state(False)
 
+    @override
     async def async_set_percentage(self, percentage: int) -> None:
         """Set the speed of the fan."""
         if percentage == 0:

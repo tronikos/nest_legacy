@@ -1,9 +1,7 @@
 """Climate platform for Nest thermostats and heat links."""
 
-from __future__ import annotations
-
 from datetime import timedelta
-from typing import Any
+from typing import Any, override
 
 from bidict import bidict
 
@@ -134,6 +132,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return (round(value) - 32) * 5 / 9
         return round(value * 2.0) / 2.0
 
+    @override
     @property
     def target_temperature_step(self) -> float:
         """Return the supported step of target temperature."""
@@ -141,11 +140,13 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return 1.0
         return PRECISION_HALVES
 
+    @override
     @property
     def hvac_mode(self) -> HVACMode | None:
         """Return hvac operation."""
         return _HVAC_MODE_BIDICT.get(self.device.hvac_mode)
 
+    @override
     @property
     def hvac_modes(self) -> list[HVACMode]:
         """Return the list of available hvac operation modes."""
@@ -158,6 +159,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             modes.append(HVACMode.HEAT_COOL)
         return modes
 
+    @override
     @property
     def hvac_action(self) -> HVACAction | None:
         """Return the current running hvac operation."""
@@ -165,11 +167,13 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return HVACAction.OFF
         return _HVAC_ACTION_MAP.get(self.device.hvac_state)
 
+    @override
     @property
     def current_temperature(self) -> float | None:
         """Return the current temperature."""
         return self._c_to_native(self.device.current_temperature)
 
+    @override
     @property
     def target_temperature(self) -> float | None:
         """Return the temperature we try to reach."""
@@ -177,6 +181,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return None
         return self._c_to_native(self.device.target_temperature)
 
+    @override
     @property
     def target_temperature_high(self) -> float | None:
         """Return the highbound temperature."""
@@ -186,6 +191,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             else None
         )
 
+    @override
     @property
     def target_temperature_low(self) -> float | None:
         """Return the lowbound temperature."""
@@ -195,31 +201,37 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             else None
         )
 
+    @override
     @property
     def current_humidity(self) -> int | None:
         """Return the current humidity."""
         return self.device.current_humidity
 
+    @override
     @property
     def target_humidity(self) -> float | None:
         """Return the target humidity."""
         return self.device.target_humidity
 
+    @override
     @property
     def min_humidity(self) -> float:
         """Return the minimum humidity."""
         return 15
 
+    @override
     @property
     def max_humidity(self) -> float:
         """Return the maximum humidity."""
         return 90
 
+    @override
     @property
     def preset_mode(self) -> str | None:
         """Return the current preset mode, e.g., home, away, temp."""
         return PRESET_ECO if self.device.is_eco_mode else PRESET_NONE
 
+    @override
     @property
     def fan_mode(self) -> str | None:
         """Return the current fan mode."""
@@ -229,6 +241,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return FAN_ON
         return FAN_AUTO
 
+    @override
     @property
     def fan_modes(self) -> list[str] | None:
         """Return the list of available fan modes."""
@@ -236,6 +249,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             return [FAN_AUTO, FAN_ON]
         return None
 
+    @override
     async def async_set_temperature(self, **kwargs: Any) -> None:
         """Set new target temperature."""
         payload: dict[str, Any] = {}
@@ -247,13 +261,18 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         if ATTR_TEMPERATURE in kwargs:
             payload["target_temperature"] = self._native_to_c(kwargs[ATTR_TEMPERATURE])
         if "target_temp_low" in kwargs:
-            payload["target_temperature_low"] = self._native_to_c(kwargs["target_temp_low"])
+            payload["target_temperature_low"] = self._native_to_c(
+                kwargs["target_temp_low"]
+            )
         if "target_temp_high" in kwargs:
-            payload["target_temperature_high"] = self._native_to_c(kwargs["target_temp_high"])
+            payload["target_temperature_high"] = self._native_to_c(
+                kwargs["target_temp_high"]
+            )
 
         if payload:
             await self._set_device_data(payload)
 
+    @override
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         """Set new target hvac mode."""
         nest_mode = _HVAC_MODE_BIDICT.inverse.get(hvac_mode)
@@ -261,16 +280,19 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
             payload = {"hvac_mode": nest_mode.value}
             await self._set_device_data(payload)
 
+    @override
     async def async_set_preset_mode(self, preset_mode: str) -> None:
         """Set new preset mode."""
         nest_eco_mode = "manual-eco" if preset_mode == PRESET_ECO else "schedule"
         payload = {"eco": {"mode": nest_eco_mode}}
         await self._set_device_data(payload)
 
+    @override
     async def async_set_humidity(self, humidity: int) -> None:
         """Set new target humidity."""
         await self._set_device_data({"target_humidity": humidity})
 
+    @override
     async def async_set_fan_mode(self, fan_mode: str) -> None:
         """Set new target fan mode."""
         if not self.device.has_fan:

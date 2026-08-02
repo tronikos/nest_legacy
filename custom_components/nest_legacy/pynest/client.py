@@ -1,7 +1,5 @@
 """PyNest API Client."""
 
-from __future__ import annotations
-
 import asyncio
 import contextlib
 import logging
@@ -2412,7 +2410,7 @@ class NestClient:
             data = await response.json()
             try:
                 return data["items"][0].get("properties", {})
-            except (KeyError, IndexError):
+            except KeyError, IndexError:
                 return {}
 
     def _parse_observe_buffer(self, buffer: bytearray):

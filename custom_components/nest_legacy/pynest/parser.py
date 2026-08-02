@@ -1,7 +1,5 @@
 """Data parsing for the Nest API."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 import datetime
 import logging
@@ -70,11 +68,11 @@ def _safe_to_seconds(
     """
     try:
         return int(ts.ToSeconds())
-    except (ValueError, OverflowError, AttributeError):
+    except ValueError, OverflowError, AttributeError:
         # Fall back to the raw seconds field, ignoring corrupt nanos
         try:
             return int(ts.seconds)
-        except (AttributeError, TypeError):
+        except AttributeError, TypeError:
             return default
 
 
@@ -84,7 +82,7 @@ def _round_target_temp(temp: Any, scale: TemperatureScale | None) -> float | Non
         return None
     try:
         temp_float = float(temp)
-    except (ValueError, TypeError):
+    except ValueError, TypeError:
         return None
     if scale == TemperatureScale.FAHRENHEIT:
         temp_f = round(temp_float * 1.8 + 32.0)
@@ -98,7 +96,7 @@ def _round_current_temp(temp: Any) -> float | None:
         return None
     try:
         return float(temp)
-    except (ValueError, TypeError):
+    except ValueError, TypeError:
         return None
 
 
@@ -532,7 +530,7 @@ class NestParser:
                 if temp_scale_value
                 else TemperatureScale.CELSIUS
             )
-        except (ValueError, TypeError):
+        except ValueError, TypeError:
             _LOGGER.warning(
                 "Unsupported value for TemperatureScale: '%s'. Defaulting to Celsius",
                 temp_scale_value,
@@ -770,7 +768,7 @@ class NestParser:
             try:
                 battery_voltage = float(props["rq_battery_battery_volt"])
                 battery_level = _scale_value(battery_voltage, 0.0, 5.4, 0.0, 100.0)
-            except (ValueError, TypeError):
+            except ValueError, TypeError:
                 pass
 
         if "doorbell" in model.lower():

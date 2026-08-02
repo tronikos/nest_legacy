@@ -1,8 +1,7 @@
 """Event platform for Nest Legacy."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
+from typing import override
 
 from homeassistant.components.event import (
     DoorbellEventType,
@@ -192,6 +191,7 @@ class NestEventEntity(NestEntity[NestDevice], EventEntity):
         self._trigger_event(event_type, attributes)
         self.async_write_ha_state()
 
+    @override
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""
         await super().async_added_to_hass()

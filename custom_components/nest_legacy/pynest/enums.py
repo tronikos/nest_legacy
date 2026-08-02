@@ -46,7 +46,7 @@ class BucketType(StrEnum):
     UNKNOWN = "unknown"
 
     @classmethod
-    def _missing_(cls: type["BucketType"], value: Any) -> "BucketType":
+    def _missing_(cls: type[BucketType], value: Any) -> BucketType:
         _LOGGER.warning("Unsupported value %s has been returned for %s", value, cls)
         return cls.UNKNOWN
 

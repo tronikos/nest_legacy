@@ -1,13 +1,12 @@
 """Camera platform for Nest."""
 
-from __future__ import annotations
-
-import logging
+from typing import override
 
 from aiohttp import ClientError
 
 from homeassistant.components.camera import Camera, CameraEntityFeature
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .coordinator import NestConfigEntry, NestCoordinator
@@ -16,8 +15,6 @@ from .pynest.exceptions import PynestException
 from .pynest.models import NestCamera as NestCameraModel
 
 PARALLEL_UPDATES = 0
-
-_LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(
@@ -46,24 +43,29 @@ class NestCameraEntity(NestEntity[NestCameraModel], Camera):
         super().__init__(coordinator, device)
         Camera.__init__(self)
 
+    @override
     @property
     def is_streaming(self) -> bool:
         """Return true if the camera is streaming."""
         return self.device.is_streaming
 
+    @override
     @property
     def is_on(self) -> bool:
         """Return true if on."""
         return self.device.streaming_enabled
 
+    @override
     async def async_turn_on(self) -> None:
         """Turn on camera."""
         await self._set_device_data({"streaming_enabled": True})
 
+    @override
     async def async_turn_off(self) -> None:
         """Turn off camera."""
         await self._set_device_data({"streaming_enabled": False})
 
+    @override
     async def async_camera_image(
         self, width: int | None = None, height: int | None = None
     ) -> bytes | None:
@@ -73,10 +75,7 @@ class NestCameraEntity(NestEntity[NestCameraModel], Camera):
         try:
             return await self.coordinator.client.async_get_camera_snapshot(self.device)
         except (ClientError, TimeoutError, PynestException) as err:
-            _LOGGER.error(
-                "Error fetching snapshot for camera %s %s: %s",
-                self.device.location,
-                self.device.name,
-                err,
-            )
-            return None
+            raise HomeAssistantError(
+                f"Error fetching snapshot for camera {self.device.location} "
+                f"{self.device.name}: {err}"
+            ) from err

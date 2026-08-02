@@ -1,10 +1,8 @@
 """Binary sensor platform for Nest devices."""
 
-from __future__ import annotations
-
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, override
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
@@ -249,6 +247,7 @@ class NestBinarySensor(NestEntity[NestDevice], BinarySensorEntity):
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
 
+    @override
     @property
     def is_on(self) -> bool | None:
         """Return the state of the sensor."""

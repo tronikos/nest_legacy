@@ -1,6 +1,6 @@
 """Number platform for Nest."""
 
-from __future__ import annotations
+from typing import override
 
 from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.const import EntityCategory, UnitOfTime
@@ -46,11 +46,13 @@ class NestLockAutoRelockDuration(NestEntity[NestLock], NumberEntity):
         self._attr_native_min_value = 0
         self._attr_native_max_value = device.max_auto_relock_duration
 
+    @override
     @property
     def native_value(self) -> float | None:
         """Return the entity state."""
         return self.device.auto_relock_duration
 
+    @override
     async def async_set_native_value(self, value: float) -> None:
         """Update the current value."""
         await self._set_device_data({"auto_relock_duration": int(value)})

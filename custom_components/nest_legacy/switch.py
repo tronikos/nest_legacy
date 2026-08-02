@@ -1,9 +1,7 @@
 """Switch platform for Nest devices."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, override
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
 from homeassistant.const import EntityCategory
@@ -115,7 +113,7 @@ _DESCRIPTIONS: tuple[NestSwitchEntityDescription, ...] = (
         key="video_flipped",
         translation_key="image_rotation",
         entity_category=EntityCategory.CONFIG,
-        icon="mdi:rotate-180",
+        icon="mdi:rotate-right",
         device_types=(NestCamera,),
         entity_registry_enabled_default=False,
         unavailable_on_protobuf=True,
@@ -228,15 +226,18 @@ class NestSwitch(NestEntity[NestDevice], SwitchEntity):
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
 
+    @override
     @property
     def is_on(self) -> bool | None:
         """Return True if entity is on."""
         return getattr(self.device, self.entity_description.key, False)
 
+    @override
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the entity on."""
         await self._set_state(True)
 
+    @override
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn the entity off."""
         await self._set_state(False)

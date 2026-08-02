@@ -1,8 +1,6 @@
 # ruff: noqa: N815
 """Models used by PyNest."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass, fields
 import datetime
 from typing import Any
@@ -301,7 +299,7 @@ class NestSession:
                 expires_in_str, "%a, %d-%b-%Y %H:%M:%S"
             ).replace(tzinfo=datetime.UTC)
             return expiry_date <= datetime.datetime.now(datetime.UTC)
-        except (ValueError, AttributeError):
+        except ValueError, AttributeError:
             return False
 
 

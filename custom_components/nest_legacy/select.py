@@ -1,8 +1,7 @@
 """Select platform for Nest."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
+from typing import override
 
 from bidict import bidict
 
@@ -90,12 +89,14 @@ class NestProtectSelect(NestEntity[NestProtect], SelectEntity):
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
 
+    @override
     @property
     def current_option(self) -> str | None:
         """Return the selected entity option."""
         state = getattr(self.device, self.entity_description.key)
         return _BRIGHTNESS_BIDICT.get(state)
 
+    @override
     async def async_select_option(self, option: str) -> None:
         """Change the selected option."""
         brightness_level = _BRIGHTNESS_BIDICT.inverse.get(option)
@@ -119,11 +120,13 @@ class NestStructureSelect(NestEntity[NestStructure], SelectEntity):
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
 
+    @override
     @property
     def current_option(self) -> str | None:
         """Return the selected entity option."""
         return self.device.mode.value
 
+    @override
     async def async_select_option(self, option: str) -> None:
         """Change the selected option."""
         await self._set_device_data({self.entity_description.key: option})
