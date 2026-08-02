@@ -48,7 +48,7 @@ This integration creates a rich set of entities for your Nest devices based on t
 ### Nest Thermostat
 
 - **Climate:** Full control over temperature, HVAC modes (Heat, Cool, Heat/Cool, Off), and Presets (None, Eco). Supports Target Humidity if a humidifier/dehumidifier is present.
-- **Fan:** Independent control of the fan (On/Off, Speed/Percentage).
+- **Fan:** Independent control of the fan (On/Off, Speed/Percentage). You can also run the fan for a specific duration using the `nest_legacy.set_fan_timer` action.
 - **Sensors:** Current Temperature, Target Temperature, Humidity, Target Humidity, Backplate Temperature, Filter Runtime.
 - **Binary Sensors:** Occupancy, Leaf status (Eco indicator), Filter Replacement Needed.
 - **Switches:** Temperature Lock, Dehumidifier State.
@@ -109,7 +109,7 @@ This integration creates a rich set of entities for your Nest devices based on t
 
 ## Custom Actions
 
-This integration provides several custom actions for advanced functionality, especially for managing guest access on Nest x Yale Locks.
+This integration provides several custom actions for advanced functionality.
 
 ### `nest_legacy.list_guests`
 
@@ -146,6 +146,14 @@ Deletes the access schedule for a user on a device.
 - **Data:**
   - `device_id` (Required): The lock device to target.
   - `user_id` (Required): The user or guest resource ID (e.g., `GUEST_1234`).
+
+### `nest_legacy.set_fan_timer`
+
+Sets the thermostat fan to run for a specific duration.
+
+- **Target:** The `climate` entity of your Nest Thermostat.
+- **Data:**
+  - `duration` (Required): The length of time the fan should run (e.g., `00:15:00` for 15 minutes).
 
 ## Installation
 
