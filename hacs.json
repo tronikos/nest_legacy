@@ -1,6 +1,6 @@
 {
   "name": "Nest Legacy",
-  "homeassistant": "2025.10.0",
+  "homeassistant": "2026.3.0",
   "render_readme": true,
   "zip_release": true,
   "filename": "nest_legacy.zip"
