@@ -20,7 +20,13 @@ from google.protobuf.duration_pb2 import Duration  # pylint: disable=no-name-in-
 from google.protobuf.message import Message
 from google.protobuf.timestamp_pb2 import Timestamp  # pylint: disable=no-name-in-module
 
-from .enums import BucketType, Environment, StructureMode, ThermostatHvacMode
+from .enums import (
+    BucketType,
+    DualFuelBreakpointOverride,
+    Environment,
+    StructureMode,
+    ThermostatHvacMode,
+)
 from .exceptions import (
     BadCredentialsException,
     BadGatewayException,
@@ -255,6 +261,21 @@ _LABEL_SPECIFIC_TRAITS: frozenset[str] = frozenset(
         "battery_voltage_bank1",
     }
 )
+
+_DUAL_FUEL_OVERRIDE_MAP: dict[
+    DualFuelBreakpointOverride,
+    nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.ValueType,
+] = {
+    DualFuelBreakpointOverride.NONE: (
+        nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_NONE
+    ),
+    DualFuelBreakpointOverride.ALWAYS_ALTERNATE_HEAT: (
+        nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_ALWAYS_ALT
+    ),
+    DualFuelBreakpointOverride.NEVER_ALTERNATE_HEAT: (
+        nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY
+    ),
+}
 
 _USER_AGENT = "Nest/5.82.2 (iOScom.nestlabs.jasper.release) os=18.5"
 
@@ -1976,6 +1997,38 @@ class NestClient:
                 traitRequest=v1_pb2.TraitRequest(
                     resourceId=device.object_key,
                     traitLabel="temperature_lock_settings",
+                    requestId=str(uuid.uuid4()),
+                ),
+                state=any_proto,
+            )
+            await self._async_update_trait_state(req)
+
+        # Handle Dual Fuel
+        if "dual_fuel_breakpoint" in data or "dual_fuel_breakpoint_override" in data:
+            # The whole equipment configuration lives in this trait, so start from
+            # a copy of the current state to avoid clearing unrelated settings.
+            equipment_settings_trait = _get_trait_copy(
+                current_traits, nest_hvac_pb2.EquipmentSettingsTrait
+            )
+            if "dual_fuel_breakpoint" in data:
+                equipment_settings_trait.dualFuelBreakpoint.value = float(
+                    data["dual_fuel_breakpoint"]
+                )
+            if override := data.get("dual_fuel_breakpoint_override"):
+                equipment_settings_trait.dualFuelBreakpointOverride = (
+                    _DUAL_FUEL_OVERRIDE_MAP[DualFuelBreakpointOverride(override)]
+                )
+
+            any_proto = google.protobuf.any_pb2.Any()
+            any_proto.Pack(
+                equipment_settings_trait,
+                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
+            )
+
+            req = v1_pb2.TraitUpdateStateRequest(
+                traitRequest=v1_pb2.TraitRequest(
+                    resourceId=device.object_key,
+                    traitLabel="equipment_settings",
                     requestId=str(uuid.uuid4()),
                 ),
                 state=any_proto,

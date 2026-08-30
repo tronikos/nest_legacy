@@ -88,6 +88,15 @@ class ThermostatHvacMode(StrEnum):
 
 
 @unique
+class DualFuelBreakpointOverride(StrEnum):
+    """Nest Thermostat dual fuel breakpoint overrides."""
+
+    NONE = "none"
+    ALWAYS_ALTERNATE_HEAT = "always_alternate_heat"
+    NEVER_ALTERNATE_HEAT = "never_alternate_heat"
+
+
+@unique
 class HotWaterMode(StrEnum):
     """Nest Heat Link hot water modes."""
 

@@ -12,8 +12,8 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
-from .pynest.enums import StructureMode
-from .pynest.models import NestProtect, NestStructure
+from .pynest.enums import DualFuelBreakpointOverride, StructureMode
+from .pynest.models import NestProtect, NestStructure, NestThermostat
 
 PARALLEL_UPDATES = 0
 
@@ -28,6 +28,11 @@ class NestProtectSelectEntityDescription(SelectEntityDescription):
 @dataclass(frozen=True, kw_only=True)
 class NestStructureSelectEntityDescription(SelectEntityDescription):
     """Class to describe a Nest Structure select entity."""
+
+
+@dataclass(frozen=True, kw_only=True)
+class NestThermostatSelectEntityDescription(SelectEntityDescription):
+    """Class to describe a Nest Thermostat select entity."""
 
 
 _PROTECT_DESCRIPTIONS: tuple[NestProtectSelectEntityDescription, ...] = (
@@ -46,6 +51,16 @@ _STRUCTURE_DESCRIPTIONS: tuple[NestStructureSelectEntityDescription, ...] = (
         translation_key="home_away_mode",
         icon="mdi:home-account",
         options=[e.value for e in StructureMode],
+    ),
+)
+
+_THERMOSTAT_DESCRIPTIONS: tuple[NestThermostatSelectEntityDescription, ...] = (
+    NestThermostatSelectEntityDescription(
+        key="dual_fuel_breakpoint_override",
+        translation_key="dual_fuel_breakpoint_override",
+        icon="mdi:fire",
+        options=[e.value for e in DualFuelBreakpointOverride],
+        entity_category=EntityCategory.CONFIG,
     ),
 )
 
@@ -69,6 +84,12 @@ async def async_setup_entry(
         for device in coordinator.data.values()
         if isinstance(device, NestStructure)
         for description in _STRUCTURE_DESCRIPTIONS
+    )
+    entities.extend(
+        NestThermostatSelect(coordinator, device, description)
+        for device in coordinator.data.values()
+        if isinstance(device, NestThermostat) and device.has_dual_fuel
+        for description in _THERMOSTAT_DESCRIPTIONS
     )
     async_add_devices(entities)
 
@@ -125,6 +146,34 @@ class NestStructureSelect(NestEntity[NestStructure], SelectEntity):
     def current_option(self) -> str | None:
         """Return the selected entity option."""
         return self.device.mode.value
+
+    @override
+    async def async_select_option(self, option: str) -> None:
+        """Change the selected option."""
+        await self._set_device_data({self.entity_description.key: option})
+
+
+class NestThermostatSelect(NestEntity[NestThermostat], SelectEntity):
+    """Representation of a Nest Thermostat Select."""
+
+    entity_description: NestThermostatSelectEntityDescription
+
+    def __init__(
+        self,
+        coordinator: NestCoordinator,
+        device: NestThermostat,
+        description: NestThermostatSelectEntityDescription,
+    ) -> None:
+        """Initialize the select entity."""
+        super().__init__(coordinator, device)
+        self.entity_description = description
+        self._attr_unique_id = f"{device.serial_number}-{description.key}"
+
+    @override
+    @property
+    def current_option(self) -> str | None:
+        """Return the selected entity option."""
+        return getattr(self.device, self.entity_description.key)
 
     @override
     async def async_select_option(self, option: str) -> None:

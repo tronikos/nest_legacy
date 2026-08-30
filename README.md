@@ -52,6 +52,8 @@ This integration creates a rich set of entities for your Nest devices based on t
 - **Sensors:** Current Temperature, Target Temperature, Humidity, Target Humidity, Backplate Temperature, Filter Runtime.
 - **Binary Sensors:** Occupancy, Leaf status (Eco indicator), Filter Replacement Needed.
 - **Switches:** Temperature Lock, Dehumidifier State.
+- **Number:** Dual Fuel Breakpoint, the outdoor temperature below which the alternate heat source is used instead of the heat pump. Only on dual fuel systems.
+- **Select:** Dual Fuel Breakpoint Override (None, Always alternate heat, Never alternate heat). Only on dual fuel systems.
 
 ### Nest Temperature Sensor
 

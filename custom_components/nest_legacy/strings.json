@@ -134,9 +134,20 @@
     "number": {
       "auto_relock_duration": {
         "name": "Auto-relock duration"
+      },
+      "dual_fuel_breakpoint": {
+        "name": "Dual fuel breakpoint"
       }
     },
     "select": {
+      "dual_fuel_breakpoint_override": {
+        "name": "Dual fuel breakpoint override",
+        "state": {
+          "always_alternate_heat": "Always alternate heat",
+          "never_alternate_heat": "Never alternate heat",
+          "none": "None"
+        }
+      },
       "home_away_mode": {
         "name": "Mode",
         "state": {

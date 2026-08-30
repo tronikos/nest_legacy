@@ -6,6 +6,7 @@ import datetime
 from typing import Any
 
 from .enums import (
+    DualFuelBreakpointOverride,
     HotWaterMode,
     LockBoltActor,
     LockBoltState,
@@ -143,6 +144,10 @@ class NestThermostat(NestDevice):
     has_air_filter: bool = False
     filter_replacement_needed: bool | None = None
     filter_runtime: int | None = None
+    # Dual fuel (heat pump with an alternate heat source)
+    has_dual_fuel: bool = False
+    dual_fuel_breakpoint: float | None = None
+    dual_fuel_breakpoint_override: DualFuelBreakpointOverride | None = None
 
 
 @dataclass(frozen=True)

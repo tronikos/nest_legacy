@@ -9,6 +9,7 @@ from typing import Any
 from google.protobuf import duration_pb2, timestamp_pb2
 
 from .enums import (
+    DualFuelBreakpointOverride,
     HotWaterMode,
     LockBoltActor,
     LockBoltState,
@@ -231,6 +232,21 @@ class ParsedData:
 
 
 _LOGGER = logging.getLogger(__name__)
+
+_DUAL_FUEL_OVERRIDE_MAP: dict[
+    nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.ValueType,
+    DualFuelBreakpointOverride,
+] = {
+    nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_NONE: (
+        DualFuelBreakpointOverride.NONE
+    ),
+    nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_ALWAYS_ALT: (
+        DualFuelBreakpointOverride.ALWAYS_ALTERNATE_HEAT
+    ),
+    nest_hvac_pb2.EquipmentSettingsTrait.DualFuelOverride.DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY: (
+        DualFuelBreakpointOverride.NEVER_ALTERNATE_HEAT
+    ),
+}
 
 
 class NestParser:
@@ -1219,6 +1235,33 @@ class NestParser:
             has_air_filter,
         )
 
+    def _parse_proto_dual_fuel(
+        self, traits: dict[str, Any]
+    ) -> tuple[bool, float | None, DualFuelBreakpointOverride | None]:
+        """Extract the dual fuel settings from traits."""
+        equipment_trait: nest_hvac_pb2.EquipmentSettingsTrait | None = traits.get(
+            nest_hvac_pb2.EquipmentSettingsTrait.DESCRIPTOR.full_name
+        )
+        if (
+            not equipment_trait
+            or equipment_trait.dualFuelSelected
+            != nest_hvac_pb2.EquipmentSettingsTrait.DualFuelSelection.DUAL_FUEL_SELECTION_DUAL_FUEL
+        ):
+            return False, None, None
+
+        override = _DUAL_FUEL_OVERRIDE_MAP.get(
+            equipment_trait.dualFuelBreakpointOverride
+        )
+        # The thermostat reports a placeholder breakpoint while an override is
+        # active, so only expose the breakpoint when there is no override.
+        breakpoint_celsius = None
+        if override is DualFuelBreakpointOverride.NONE and equipment_trait.HasField(
+            "dualFuelBreakpoint"
+        ):
+            breakpoint_celsius = equipment_trait.dualFuelBreakpoint.value
+
+        return True, breakpoint_celsius, override
+
     def _parse_proto_hot_water(
         self, traits: dict[str, Any], temp_scale: TemperatureScale | None
     ) -> tuple[
@@ -1534,6 +1577,13 @@ class NestParser:
         )
         leaf = leaf_trait.active if leaf_trait else False
 
+        # Dual Fuel (heat pump with an alternate heat source)
+        (
+            has_dual_fuel,
+            dual_fuel_breakpoint,
+            dual_fuel_breakpoint_override,
+        ) = self._parse_proto_dual_fuel(traits)
+
         # Filter Reminder
         filter_trait: nest_hvac_pb2.FilterReminderTrait | None = traits.get(
             nest_hvac_pb2.FilterReminderTrait.DESCRIPTOR.full_name
@@ -1641,6 +1691,9 @@ class NestParser:
             has_air_filter=has_air_filter,
             filter_replacement_needed=filter_replacement_needed,
             filter_runtime=filter_runtime,
+            has_dual_fuel=has_dual_fuel,
+            dual_fuel_breakpoint=dual_fuel_breakpoint,
+            dual_fuel_breakpoint_override=dual_fuel_breakpoint_override,
             battery_level=battery_level,
             battery_voltage=battery_voltage,
             occupancy=occupancy,
