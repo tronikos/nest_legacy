@@ -34,7 +34,7 @@ from .const import (
 )
 from .coordinator import NestConfigEntry
 from .pynest.client import NestClient
-from .pynest.exceptions import BadCredentialsException
+from .pynest.exceptions import BadCredentialsException, NestServiceException
 
 
 class NestConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -106,7 +106,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         if user_input:
             try:
                 info = await self._validate_input(user_input)
-            except TimeoutError, ClientError:
+            except TimeoutError, ClientError, NestServiceException:
                 errors["base"] = "cannot_connect"
             except BadCredentialsException:
                 errors["base"] = "invalid_auth"
