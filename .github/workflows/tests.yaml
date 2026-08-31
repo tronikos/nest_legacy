@@ -1,0 +1,51 @@
+name: Lint and test
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DEFAULT_PYTHON: "3.14"
+
+jobs:
+  lint:
+    name: Run pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+      - name: Set up Python ${{ env.DEFAULT_PYTHON }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+      - name: Install requirements
+        run: |
+          python -m venv .venv-test
+          .venv-test/bin/pip install --upgrade pip
+          .venv-test/bin/pip install -r requirements_test.txt
+      - name: Run pre-commit
+        run: .venv-test/bin/prek run --all-files --show-diff-on-failure
+
+  test:
+    name: Run pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v6
+      - name: Set up Python ${{ env.DEFAULT_PYTHON }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements_test.txt
+      - name: Run pytest
+        run: |
+          python -m pytest tests \
+            --cov=custom_components.nest_legacy \
+            --cov-report=term-missing

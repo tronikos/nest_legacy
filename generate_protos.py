@@ -134,8 +134,7 @@ def fix_imports(output_dir: Path) -> None:
             if file.endswith((".py", ".pyi")):
                 file_path = root_path / file
 
-                with open(file_path, encoding="utf-8") as f:
-                    content = f.read()
+                content = file_path.read_text(encoding="utf-8")
 
                 from_func = partial(
                     _get_from_replacement, dots=dots, output_dir=output_dir
@@ -149,8 +148,7 @@ def fix_imports(output_dir: Path) -> None:
                 # Write back if alterations were made, forcing UNIX newlines
                 if new_content != content:
                     new_content = new_content.replace("\r\n", "\n")
-                    with open(file_path, "w", encoding="utf-8", newline="\n") as f:
-                        f.write(new_content)
+                    file_path.write_text(new_content, encoding="utf-8", newline="\n")
 
 
 def fix_runtime_version(output_dir: Path) -> None:

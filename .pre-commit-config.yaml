@@ -1,0 +1,65 @@
+# Mirrors Home Assistant core's pre-commit configuration, minus the hooks that
+# only make sense inside the core repository (hassfest, gen_requirements_all,
+# zizmor, python-typing-update). Keep the revisions in sync with
+# https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml
+exclude: ^custom_components/nest_legacy/pynest/protobuf_gen
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.4
+    hooks:
+      - id: ruff-check
+        args:
+          - --fix
+      - id: ruff-format
+        files: ^((custom_components|tests)/.+)?[^/]+\.(py|pyi)$
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        args:
+          - --ignore-words-list=aiport,astroid,checkin,currenty,hass,iif,incomfort,lookin,nam,NotIn
+          - --skip="./.*,*.csv,*.json,*.ambr"
+          - --quiet-level=2
+        exclude_types: [csv, json, html]
+        exclude: ^tests/fixtures/|tests/snapshots/
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-executables-have-shebangs
+        stages: [manual]
+      - id: check-json
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.6.2
+    hooks:
+      - id: prettier
+        additional_dependencies:
+          - prettier@3.6.2
+          - prettier-plugin-sort-json@4.2.0
+  - repo: local
+    hooks:
+      # Run mypy through our wrapper script in order to get the possible
+      # pyenv and/or virtualenv activated; it may not have been e.g. if
+      # committing from a GUI tool that was not launched from an activated
+      # shell.
+      # Passed the whole package rather than individual files: the generated
+      # protobuf stubs have to be part of the build for the hand-written code to
+      # type check, even though they are excluded from every other hook.
+      - id: mypy
+        name: mypy
+        entry: script/run-in-env.sh mypy custom_components tests
+        pass_filenames: false
+        language: script
+        require_serial: true
+        types_or: [python, pyi]
+        files: ^(custom_components|tests)/.+\.(py|pyi)$
+      - id: pylint
+        name: pylint
+        entry: script/run-in-env.sh pylint --ignore-missing-annotations=y
+        language: script
+        require_serial: true
+        types_or: [python, pyi]
+        files: ^(custom_components|tests)/.+\.(py|pyi)$

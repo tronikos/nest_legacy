@@ -5,6 +5,7 @@ __pycache__/
 
 # Environments
 .venv/
+.venv-test/
 venv/
 ENV/
 env/
@@ -31,3 +32,10 @@ coverage.xml
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Tooling caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
