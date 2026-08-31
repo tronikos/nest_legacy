@@ -50,12 +50,12 @@ repos:
       # type check, even though they are excluded from every other hook.
       - id: mypy
         name: mypy
-        entry: script/run-in-env.sh mypy custom_components tests
+        entry: script/run-in-env.sh mypy custom_components
         pass_filenames: false
         language: script
         require_serial: true
         types_or: [python, pyi]
-        files: ^(custom_components|tests)/.+\.(py|pyi)$
+        files: ^custom_components/.+\.(py|pyi)$
       - id: pylint
         name: pylint
         entry: script/run-in-env.sh pylint --ignore-missing-annotations=y

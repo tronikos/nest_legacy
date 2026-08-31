@@ -1,0 +1,118 @@
+{
+  "where.00000000-0000-0000-0000-000000000001": {
+    "wheres": [
+      { "where_id": "where-living-room", "name": "Living Room" },
+      { "where_id": "where-hallway", "name": "Hallway" },
+      { "where_id": "where-bedroom", "name": "Bedroom" },
+      { "where_id": "where-front-door", "name": "Front Door" }
+    ]
+  },
+  "structure.00000000-0000-0000-0000-000000000001": {
+    "name": "Test Home",
+    "away": false,
+    "vacation_mode": false
+  },
+  "device.09AA00AA00AA0AAA": {
+    "serial_number": "09AA00AA00AA0AAA",
+    "description": "Thermostat",
+    "where_id": "where-hallway",
+    "model": "Learning Thermostat, 3rd Gen",
+    "software_version": "6.2-24",
+    "mac_address": "18b430000001",
+    "temperature_scale": "F",
+    "backplate_temperature": 21.05,
+    "current_humidity": 43,
+    "target_humidity": 35,
+    "has_dehumidifier": false,
+    "has_humidifier": true,
+    "humidifier_state": false,
+    "battery_level": 3.86,
+    "fan_duration": 900,
+    "fan_timer_timeout": 0,
+    "fan_timer_speed": "stage1",
+    "fan_capabilities": "stage1"
+  },
+  "shared.09AA00AA00AA0AAA": {
+    "current_temperature": 21.11,
+    "target_temperature": 22.222222,
+    "target_temperature_low": 20.0,
+    "target_temperature_high": 24.444444,
+    "target_temperature_type": "heat",
+    "can_heat": true,
+    "can_cool": true,
+    "hvac_heater_state": true,
+    "hvac_ac_state": false,
+    "compressor_lockout_enabled": false
+  },
+  "track.09AA00AA00AA0AAA": { "online": true },
+  "link.09AA00AA00AA0AAA": {
+    "structure": "structure.00000000-0000-0000-0000-000000000001"
+  },
+  "rcs_settings.09AA00AA00AA0AAA": {
+    "associated_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+    "active_rcs_sensors": []
+  },
+  "kryptonite.18B430CCCCCC0001": {
+    "serial_number": "18B430CCCCCC0001",
+    "description": "Bedroom Sensor",
+    "where_id": "where-bedroom",
+    "model": "Temperature Sensor",
+    "current_temperature": 19.5,
+    "battery_level": 92.0,
+    "last_updated_at": 4102444800
+  },
+  "topaz.09AA00AA00AA0AA1": {
+    "serial_number": "09AA00AA00AA0AA1",
+    "description": "Hallway Protect",
+    "where_id": "where-hallway",
+    "model": "Topaz-2.7",
+    "software_version": "3.4.2",
+    "wifi_mac_address": "18b430000002",
+    "wired_or_battery": 1,
+    "smoke_status": 0,
+    "co_status": 0,
+    "heat_status": 0,
+    "battery_level": 5800,
+    "battery_health_state": 0,
+    "replace_by_date_utc_secs": 1893456000,
+    "night_light_enable": true,
+    "night_light_brightness": 2,
+    "steam_detection_enable": true,
+    "component_speaker_test_passed": true,
+    "component_smoke_test_passed": true,
+    "component_co_test_passed": true,
+    "component_wifi_test_passed": true,
+    "component_led_test_passed": true,
+    "component_pir_test_passed": true,
+    "component_buzzer_test_passed": true,
+    "component_hum_test_passed": true,
+    "removed_from_base": false,
+    "latest_manual_test_end_utc_secs": 1767225600,
+    "last_audio_self_test_end_utc_secs": 1767225600,
+    "ntp_green_led_enable": true,
+    "heads_up_enable": true
+  },
+  "widget_track.09AA00AA00AA0AA1": { "online": true },
+  "quartz.18B430CCCCCC0002": {
+    "serial_number": "18B430CCCCCC0002",
+    "description": "Front Door",
+    "where_id": "where-front-door",
+    "model": "Nest Hello Doorbell",
+    "software_version": "1.2.3",
+    "mac_address": "18b430000003",
+    "streaming_state": "streaming-enabled",
+    "audio_input_enabled": true,
+    "capabilities": ["indoor_chime"],
+    "web_url": "https://home.nest.com/cameras/18B430CCCCCC0002",
+    "nexus_api_http_server_url": "https://nexusapi-test.dropcam.com",
+    "structure_id": "00000000-0000-0000-0000-000000000001",
+    "properties": {
+      "doorbell.indoor_chime.enabled": true,
+      "doorbell.chime_assist.enabled": false,
+      "irled.state": "auto_on",
+      "statusled.brightness": 2,
+      "video.flipped": false,
+      "rq_battery_battery_volt": "4.1"
+    }
+  }
+}

@@ -10,6 +10,9 @@ bidict>=0.23.1
 googleapis-common-protos>=1.70.0
 protobuf>=6.31.1
 
+# Requirements of the Home Assistant integrations this one depends on
+PyTurboJPEG==1.8.0
+
 # Linting, matching .pre-commit-config.yaml
 mypy==2.3.1
 prek==0.2.28
