@@ -9,6 +9,6 @@
   "integration_type": "hub",
   "iot_class": "cloud_push",
   "issue_tracker": "https://github.com/tronikos/nest_legacy/issues",
-  "requirements": ["protobuf>=6.31.1"],
+  "requirements": ["bidict>=0.23.1", "protobuf>=6.31.1"],
   "version": "0.0.0"
 }
