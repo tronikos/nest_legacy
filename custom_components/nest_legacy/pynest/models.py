@@ -305,6 +305,9 @@ class NestSession:
             expiry_date = datetime.datetime.strptime(
                 expires_in_str, "%a, %d-%b-%Y %H:%M:%S"
             ).replace(tzinfo=datetime.UTC)
+            # pynest is kept free of homeassistant imports, so dt_util.utcnow()
+            # is not available here.
+            # pylint: disable-next=home-assistant-enforce-utcnow
             return expiry_date <= datetime.datetime.now(datetime.UTC)
         except ValueError, AttributeError:
             return False
