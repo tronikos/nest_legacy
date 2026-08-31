@@ -3,7 +3,7 @@
 
 from dataclasses import dataclass, fields
 import datetime
-from typing import Any
+from typing import Any, override
 
 from .enums import (
     DualFuelBreakpointOverride,
@@ -81,6 +81,7 @@ class NestWiredProtect(NestProtect):
     occupancy: bool = False
     line_power_present: bool = False
 
+    @override
     @property
     def hardware_version(self) -> str | None:
         """Return hardware version."""
@@ -91,6 +92,7 @@ class NestWiredProtect(NestProtect):
 class NestBatteryProtect(NestProtect):
     """Represents a battery-powered Nest Protect."""
 
+    @override
     @property
     def hardware_version(self) -> str | None:
         """Return hardware version."""

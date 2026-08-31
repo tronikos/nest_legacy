@@ -2,7 +2,7 @@
 
 from enum import StrEnum, unique
 import logging
-from typing import Any
+from typing import Any, override
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -45,6 +45,7 @@ class BucketType(StrEnum):
 
     UNKNOWN = "unknown"
 
+    @override
     @classmethod
     def _missing_(cls: type[BucketType], value: Any) -> BucketType:
         _LOGGER.warning("Unsupported value %s has been returned for %s", value, cls)
