@@ -32,6 +32,7 @@ from .exceptions import (
     BadGatewayException,
     EmptyResponseException,
     GatewayTimeoutException,
+    NestServiceException,
     NonRetryablePynestException,
     NotAuthenticatedException,
     PynestException,
@@ -380,6 +381,20 @@ def _get_trait_copy(traits: dict[str, Any] | None, trait_class: type[_T]) -> _T:
     return trait_class()
 
 
+def _is_transient_status(status: int) -> bool:
+    """Return True if an HTTP status is a transport failure, not an auth failure."""
+    return status >= 500 or status in (408, 429)
+
+
+def _transient_exception(status: int, message: str) -> NestServiceException:
+    """Return the service exception matching a transient HTTP status."""
+    if status == 504:
+        return GatewayTimeoutException(message)
+    if status == 502:
+        return BadGatewayException(message)
+    return NestServiceException(message)
+
+
 class NestClient:
     """Interface class for the Nest API."""
 
@@ -527,10 +542,22 @@ class NestClient:
                 data=f"access_token={access_token}",
             ) as response:
                 if not response.ok:
+                    body = await response.text()
+                    if _is_transient_status(response.status):
+                        _LOGGER.info(
+                            "Transient error getting camera session token, will "
+                            "retry. Status: %s, Body: %s",
+                            response.status,
+                            body,
+                        )
+                        raise _transient_exception(
+                            response.status,
+                            f"Failed to get camera session token: {response.status}",
+                        )
                     _LOGGER.error(
                         "Failed to get camera session token. Status: %s, Body: %s",
                         response.status,
-                        await response.text(),
+                        body,
                     )
                     raise BadCredentialsException("Failed to get camera session token")
 
@@ -560,14 +587,27 @@ class NestClient:
             headers={"Authorization": f"Basic {token}", "User-Agent": _USER_AGENT},
         ) as response:
             if not response.ok:
+                body = await response.text()
+                message = f"Failed to get session: {response.status}"
+                # A 5xx/408/429 is a server-side failure, not a bad credential.
+                # Raising BadCredentialsException here makes the coordinator
+                # start a reauth flow and stop the subscriber for what is often
+                # a transient blip, even though the stored credentials are
+                # still valid.
+                if _is_transient_status(response.status):
+                    _LOGGER.info(
+                        "Transient error getting session, will retry. "
+                        "Status: %s, Body: %s",
+                        response.status,
+                        body,
+                    )
+                    raise _transient_exception(response.status, message)
                 _LOGGER.error(
                     "Failed to get session. Status: %s, Body: %s",
                     response.status,
-                    await response.text(),
+                    body,
                 )
-                raise BadCredentialsException(
-                    f"Failed to get session: {response.status}"
-                )
+                raise BadCredentialsException(message)
             nest_session_dict = await response.json()
             self._nest_session = NestSession.from_dict(nest_session_dict)
             _LOGGER.debug(
