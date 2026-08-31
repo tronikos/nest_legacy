@@ -463,7 +463,16 @@ class NestClient:
     ) -> NestSession:
         """Authenticate using a legacy Nest access token."""
         try:
-            await self._async_get_camera_session_token(access_token)
+            try:
+                await self._async_get_camera_session_token(access_token)
+            except BadCredentialsException as err:
+                # The camera endpoint rejects accounts that have no cameras even
+                # when the access token is perfectly valid, so this only costs
+                # camera support. The /session call below is the real check.
+                _LOGGER.info(
+                    "No camera session token, continuing without camera support: %s",
+                    err,
+                )
             return await self._async_get_session(access_token)
         except (ClientError, TimeoutError, PynestException) as err:
             _LOGGER.debug(
@@ -563,13 +572,26 @@ class NestClient:
 
                 login_data = await response.json()
                 if not login_data.get("items"):
+                    # This endpoint answers 200 and reports the real outcome in
+                    # the body, e.g. {"status": 403, "items": [],
+                    # "status_description": "unauthorized"}, so the body status
+                    # gets the same treatment as an HTTP status.
+                    message = login_data.get("status_description", "Unknown")
+                    status = login_data.get("status")
+                    if isinstance(status, int) and _is_transient_status(status):
+                        _LOGGER.info(
+                            "Transient error getting camera session token, will "
+                            "retry. Body: %s",
+                            login_data,
+                        )
+                        raise _transient_exception(
+                            status, f"Failed to get camera session token: {message}"
+                        )
                     _LOGGER.error(
                         "Failed to get camera session token, response indicates error: %s",
                         login_data,
                     )
-                    raise BadCredentialsException(
-                        login_data.get("status_description", "Unknown")
-                    )
+                    raise BadCredentialsException(message)
                 self._camera_session_token = login_data["items"][0]["session_token"]
                 _LOGGER.debug("Successfully obtained legacy camera session token")
         except (KeyError, IndexError, TypeError, ContentTypeError) as err:
