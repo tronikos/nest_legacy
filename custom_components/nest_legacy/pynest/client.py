@@ -2158,23 +2158,23 @@ class NestClient:
         rcs_trait = _get_trait_copy(
             current_traits, nest_hvac_pb2.RemoteComfortSensingSettingsTrait
         )
-        RcsSourceType = nest_hvac_pb2.RemoteComfortSensingSettingsTrait.RcsSourceType
+        rcs_source_type = nest_hvac_pb2.RemoteComfortSensingSettingsTrait.RcsSourceType
 
         if active:
             # Switch to Single Sensor mode using this sensor ID
             rcs_trait.activeRcsSelection.rcsSourceType = (
-                RcsSourceType.RCS_SOURCE_TYPE_SINGLE_SENSOR
+                rcs_source_type.RCS_SOURCE_TYPE_SINGLE_SENSOR
             )
             rcs_trait.activeRcsSelection.activeRcsSensor.resourceId = device.object_key
         elif (
             rcs_trait.activeRcsSelection.rcsSourceType
-            == RcsSourceType.RCS_SOURCE_TYPE_SINGLE_SENSOR
+            == rcs_source_type.RCS_SOURCE_TYPE_SINGLE_SENSOR
             and rcs_trait.activeRcsSelection.activeRcsSensor.resourceId
             == device.object_key
         ):
             # Only switch back to backplate if THIS sensor is currently the active one
             rcs_trait.activeRcsSelection.rcsSourceType = (
-                RcsSourceType.RCS_SOURCE_TYPE_BACKPLATE
+                rcs_source_type.RCS_SOURCE_TYPE_BACKPLATE
             )
             rcs_trait.activeRcsSelection.ClearField("activeRcsSensor")
         else:
@@ -2309,13 +2309,13 @@ class NestClient:
                 yield None
 
     def _parse_protobuf_camera_event(
-        self, cam_event: Any, EventTypeEnum: Any, events: list[dict[str, Any]]
+        self, cam_event: Any, event_type_enum: Any, events: list[dict[str, Any]]
     ) -> None:
         """Parse a single protobuf camera event."""
         event_types = []
         for t in cam_event.eventType:
             try:
-                t_str = EventTypeEnum.Name(t)
+                t_str = event_type_enum.Name(t)
                 # Map Protobuf enums to legacy API string formats
                 if t_str == "EVENT_UNFAMILIAR_FACE":
                     event_types.append("unfamiliar-face")
@@ -2393,10 +2393,10 @@ class NestClient:
         events: list[dict[str, Any]] = []
 
         # Aliases for readability based on history_pb2 structure
-        HistoryTrait = nest_history_pb2.CameraObservationHistoryTrait
-        ResponseClass = HistoryTrait.CameraObservationHistoryResponse
+        history_trait = nest_history_pb2.CameraObservationHistoryTrait
+        response_class = history_trait.CameraObservationHistoryResponse
         # EventType is defined inside CameraEventTimeWindow
-        EventTypeEnum = ResponseClass.CameraEventTimeWindow.EventType
+        event_type_enum = response_class.CameraEventTimeWindow.EventType
 
         # Parse Response
         # Structure: SendCommandResponse -> TraitOperation -> Event (Any) -> CameraObservationHistoryResponse
@@ -2406,10 +2406,10 @@ class NestClient:
                     continue
 
                 # Unpack the inner event
-                if not op.event.event.Is(ResponseClass.DESCRIPTOR):
+                if not op.event.event.Is(response_class.DESCRIPTOR):
                     continue
 
-                history_response = ResponseClass()
+                history_response = response_class()
                 op.event.event.Unpack(history_response)
 
                 if not history_response.HasField("cameraEventWindow"):
@@ -2417,7 +2417,9 @@ class NestClient:
 
                 # Iterate through events in the time window
                 for cam_event in history_response.cameraEventWindow.cameraEvent:
-                    self._parse_protobuf_camera_event(cam_event, EventTypeEnum, events)
+                    self._parse_protobuf_camera_event(
+                        cam_event, event_type_enum, events
+                    )
 
         # Sort by start_time descending to match legacy API behavior
         events.sort(key=lambda x: x["start_time"], reverse=True)
