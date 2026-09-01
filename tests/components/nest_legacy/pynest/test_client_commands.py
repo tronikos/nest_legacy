@@ -11,6 +11,7 @@ from custom_components.nest_legacy.pynest.exceptions import (
     PynestException,
 )
 from custom_components.nest_legacy.pynest.models import (
+    NestCamera,
     NestLock,
     NestProtect,
     NestThermostat,
@@ -73,6 +74,17 @@ def _protobuf_lock() -> NestLock:
         object_key="DEVICE_0000000000000002",
         serial_number="18B430DDDDDD0001",
         name="Lock",
+        is_protobuf=True,
+    )
+
+
+def _protobuf_camera() -> NestCamera:
+    """Return a protobuf camera."""
+    return NestCamera(
+        object_key="DEVICE_0000000000000003",
+        serial_number="18B430DDDDDD0002",
+        name="Camera",
+        location="Living Room",
         is_protobuf=True,
     )
 
@@ -249,3 +261,39 @@ async def test_protobuf_command_reports_an_expired_session(
 
     with pytest.raises(NotAuthenticatedException):
         await client.async_set_device_data(_protobuf_lock(), {"bolt_locked": True})
+
+
+async def test_protobuf_camera_events_stop_after_permission_denied(
+    client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A PERMISSION_DENIED camera is warned about once and then left alone.
+
+    See issue #61: Google accounts that are not authorized for the
+    camera_observation_history trait used to warn on every poll.
+    """
+    # PERMISSION_DENIED, the failure behind issue #61.
+    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response(7, "nope"))
+    camera = _protobuf_camera()
+
+    assert await client.async_get_camera_events(camera) == []
+    assert await client.async_get_camera_events(camera) == []
+
+    # One session call plus the single command that was allowed through.
+    assert len(aioclient_mock.mock_calls) == 2
+    assert caplog.text.count("Protobuf camera events are not available") == 1
+
+
+async def test_protobuf_camera_events_keep_polling_after_a_transient_error(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """An UNAVAILABLE answer does not disable the camera."""
+    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response(14, "unavailable"))
+    camera = _protobuf_camera()
+
+    assert await client.async_get_camera_events(camera) == []
+    assert await client.async_get_camera_events(camera) == []
+
+    # One session call plus three attempts for each of the two polls.
+    assert len(aioclient_mock.mock_calls) == 7

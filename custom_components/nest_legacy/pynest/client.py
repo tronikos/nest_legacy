@@ -419,6 +419,7 @@ class NestClient:
         self._buckets_for_subscription: list[Bucket] = []
         self._resource_types: dict[str, str] = {}
         self._legacy_protobuf_events_warned: bool = False
+        self._protobuf_events_unauthorized: set[str] = set()
 
         self._enable_protobuf_lock = enable_protobuf_lock
         self._enable_protobuf_thermostat = enable_protobuf_thermostat
@@ -2408,6 +2409,19 @@ class NestClient:
 
         try:
             resp = await self._async_send_command(device, command)
+        except NonRetryablePynestException as err:
+            # Some accounts are not authorized for the camera_observation_history
+            # trait and answer with PERMISSION_DENIED on every poll (see issue #61).
+            # This never recovers, so warn once and stop polling this camera.
+            self._protobuf_events_unauthorized.add(device.object_key)
+            _LOGGER.warning(
+                "Protobuf camera events are not available for %s %s, "
+                "no longer polling it for events: %r",
+                device.location,
+                device.name,
+                err,
+            )
+            return []
         except PynestException as err:
             _LOGGER.warning("Failed to fetch protobuf camera events: %r", err)
             return []
@@ -2465,6 +2479,8 @@ class NestClient:
                         "Protobuf camera events are not supported for legacy Nest accounts"
                     )
                     self._legacy_protobuf_events_warned = True
+                return []
+            if device.object_key in self._protobuf_events_unauthorized:
                 return []
             return await self._async_get_protobuf_camera_events(
                 device, start_time, end_time
