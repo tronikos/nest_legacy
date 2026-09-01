@@ -27,10 +27,22 @@
     "has_humidifier": true,
     "humidifier_state": false,
     "battery_level": 3.86,
+    "has_fan": true,
     "fan_duration": 900,
     "fan_timer_timeout": 0,
     "fan_timer_speed": "stage1",
-    "fan_capabilities": "stage1"
+    "fan_capabilities": "stage1",
+    "has_hot_water_control": true,
+    "has_hot_water_temperature": true,
+    "hot_water_active": false,
+    "hot_water_mode": "schedule",
+    "hot_water_away_enabled": true,
+    "hot_water_boost_time_to_end": 0,
+    "hot_water_temperature": 55.0,
+    "current_water_temperature": 51.5,
+    "heat_link_model": "Amber-2.5",
+    "heat_link_serial_number": "09AA00AA00AA0AAB",
+    "heat_link_sw_version": "2.1.4"
   },
   "shared.09AA00AA00AA0AAA": {
     "current_temperature": 21.11,
@@ -95,7 +107,7 @@
   "widget_track.09AA00AA00AA0AA1": { "online": true },
   "quartz.18B430CCCCCC0002": {
     "serial_number": "18B430CCCCCC0002",
-    "description": "Front Door",
+    "description": "Doorbell",
     "where_id": "where-front-door",
     "model": "Nest Hello Doorbell",
     "software_version": "1.2.3",

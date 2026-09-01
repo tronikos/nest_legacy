@@ -1,0 +1,833 @@
+# serializer version: 1
+# name: test_entities[switch.bedroom_bedroom_sensor_control_thermostat-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.bedroom_bedroom_sensor_control_thermostat',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Control thermostat',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:thermometer-check',
+    'original_name': 'Control thermostat',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'active_sensor',
+    'unique_id': '18B430CCCCCC0001-is_active_sensor',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.bedroom_bedroom_sensor_control_thermostat-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Bedroom Sensor Control thermostat',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:thermometer-check',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.bedroom_bedroom_sensor_control_thermostat',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_auto_relock-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_auto_relock',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Auto-relock',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:lock-clock',
+    'original_name': 'Auto-relock',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'auto_relock',
+    'unique_id': '18B430DDDDDD0001-auto_relock_on',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_auto_relock-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Auto-relock',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:lock-clock',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_auto_relock',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_audio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_audio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Audio',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:microphone',
+    'original_name': 'Audio',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'audio',
+    'unique_id': '18B430CCCCCC0002-audio_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_audio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Audio',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:microphone',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_audio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_image_rotation-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_image_rotation',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Image rotation',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:rotate-right',
+    'original_name': 'Image rotation',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'image_rotation',
+    'unique_id': '18B430CCCCCC0002-video_flipped',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_image_rotation-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Image rotation',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:rotate-right',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_image_rotation',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_indoor_chime-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_indoor_chime',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Indoor chime',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:bell-ring',
+    'original_name': 'Indoor chime',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'indoor_chime',
+    'unique_id': '18B430CCCCCC0002-indoor_chime_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_indoor_chime-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Indoor chime',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:bell-ring',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_indoor_chime',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_night_vision-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_night_vision',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Night vision',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:weather-night',
+    'original_name': 'Night vision',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'night_vision',
+    'unique_id': '18B430CCCCCC0002-irled_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_night_vision-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Night vision',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:weather-night',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_night_vision',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_status_led-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_status_led',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Status LED',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:led-on',
+    'original_name': 'Status LED',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'status_led',
+    'unique_id': '18B430CCCCCC0002-status_led_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_status_led-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Status LED',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:led-on',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_status_led',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_streaming-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_streaming',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Streaming',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:camera',
+    'original_name': 'Streaming',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'camera_streaming',
+    'unique_id': '18B430CCCCCC0002-streaming_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_streaming-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Streaming',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:camera',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_streaming',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_visitor_announcements-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_doorbell_visitor_announcements',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Visitor announcements',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:account-voice',
+    'original_name': 'Visitor announcements',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'visitor_announcements',
+    'unique_id': '18B430CCCCCC0002-doorbell_chime_assist_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_doorbell_visitor_announcements-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Doorbell Visitor announcements',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:account-voice',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_doorbell_visitor_announcements',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_heads_up-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_protect_heads_up',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heads-up',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:exclamation-thick',
+    'original_name': 'Heads-up',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heads_up',
+    'unique_id': '09AA00AA00AA0AA1-heads_up_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_heads_up-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Protect Heads-up',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:exclamation-thick',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_protect_heads_up',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_nightly_promise-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_protect_nightly_promise',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Nightly promise',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:led-off',
+    'original_name': 'Nightly promise',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'nightly_promise',
+    'unique_id': '09AA00AA00AA0AA1-ntp_green_led_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_nightly_promise-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Protect Nightly promise',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:led-off',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_protect_nightly_promise',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_pathlight-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_protect_pathlight',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Pathlight',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:weather-night',
+    'original_name': 'Pathlight',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'pathlight',
+    'unique_id': '09AA00AA00AA0AA1-night_light_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_pathlight-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Protect Pathlight',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:weather-night',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_protect_pathlight',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_steam_check-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_protect_steam_check',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Steam check',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:pot-steam',
+    'original_name': 'Steam check',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'steam_check',
+    'unique_id': '09AA00AA00AA0AA1-steam_detection_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_protect_steam_check-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Protect Steam check',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:pot-steam',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_protect_steam_check',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_thermostat_humidifier-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_thermostat_humidifier',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Humidifier',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:water-plus',
+    'original_name': 'Humidifier',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'humidifier',
+    'unique_id': '09AA00AA00AA0AAA-humidifier_state',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_thermostat_humidifier-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Thermostat Humidifier',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:water-plus',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_thermostat_humidifier',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_thermostat_temperature_lock-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_thermostat_temperature_lock',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Temperature lock',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:lock',
+    'original_name': 'Temperature lock',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'temperature_lock',
+    'unique_id': '09AA00AA00AA0AAA-temperature_lock',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_thermostat_temperature_lock-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Thermostat Temperature lock',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:lock',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_thermostat_temperature_lock',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_upstairs_temperature_lock-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_upstairs_temperature_lock',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Temperature lock',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:lock',
+    'original_name': 'Temperature lock',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'temperature_lock',
+    'unique_id': '18B430DDDDDD0002-temperature_lock',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_upstairs_temperature_lock-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Upstairs Temperature lock',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:lock',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_upstairs_temperature_lock',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---

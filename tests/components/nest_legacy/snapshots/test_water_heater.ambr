@@ -1,0 +1,80 @@
+# serializer version: 1
+# name: test_entities[water_heater.hallway_hallway_heat_link-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <WaterHeaterCapabilityAttribute.MAX_TEMP: 'max_temp'>: 70.0,
+      <WaterHeaterCapabilityAttribute.MIN_TEMP: 'min_temp'>: 30.0,
+      <WaterHeaterCapabilityAttribute.OPERATION_LIST: 'operation_list'>: list([
+        'off',
+        'schedule',
+        'boost_30m',
+        'boost_1h',
+        'boost_2h',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'water_heater',
+    'entity_category': None,
+    'entity_id': 'water_heater.hallway_hallway_heat_link',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': None,
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <WaterHeaterEntityFeature: 15>,
+    'translation_key': 'heat_link',
+    'unique_id': '09AA00AA00AA0AAB',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[water_heater.hallway_hallway_heat_link-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <WaterHeaterStateAttribute.AWAY_MODE: 'away_mode'>: 'on',
+      'boiler_active': False,
+      <WaterHeaterStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 51.5,
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Heat Link',
+      'hot_water_schedule_active': False,
+      <WaterHeaterCapabilityAttribute.MAX_TEMP: 'max_temp'>: 70.0,
+      <WaterHeaterCapabilityAttribute.MIN_TEMP: 'min_temp'>: 30.0,
+      <WaterHeaterCapabilityAttribute.OPERATION_LIST: 'operation_list'>: list([
+        'off',
+        'schedule',
+        'boost_30m',
+        'boost_1h',
+        'boost_2h',
+      ]),
+      <WaterHeaterStateAttribute.OPERATION_MODE: 'operation_mode'>: 'schedule',
+      <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <WaterHeaterEntityFeature: 15>,
+      <WaterHeaterStateAttribute.TARGET_TEMP_HIGH: 'target_temp_high'>: None,
+      <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
+      <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 55.0,
+    }),
+    'context': <ANY>,
+    'entity_id': 'water_heater.hallway_hallway_heat_link',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'schedule',
+  })
+# ---

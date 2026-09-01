@@ -5,6 +5,7 @@ from collections.abc import AsyncGenerator, Generator
 from typing import Any
 from unittest.mock import AsyncMock, Mock, patch
 
+from custom_components.nest_legacy import _PLATFORMS
 from custom_components.nest_legacy.const import (
     CONF_ACCOUNT_TYPE,
     CONF_COOKIES,
@@ -17,14 +18,16 @@ from custom_components.nest_legacy.pynest.models import (
     NestUrls,
 )
 import pytest
+from syrupy.assertion import SnapshotAssertion
 
-from homeassistant.const import CONF_ACCESS_TOKEN
+from homeassistant.const import CONF_ACCESS_TOKEN, Platform
 from homeassistant.core import HomeAssistant
 
 from . import async_load_fixture_json, setup_integration
 from .const import protobuf_updates
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotExtension
 
 USER_ID = "1234567890"
 EMAIL = "test@example.com"
@@ -33,6 +36,12 @@ EMAIL = "test@example.com"
 @pytest.fixture(autouse=True)
 def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
     """Load the integration from custom_components rather than from core."""
+
+
+@pytest.fixture
+def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
+    """Return a snapshot assertion that understands Home Assistant objects."""
+    return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 
 @pytest.fixture
@@ -107,6 +116,19 @@ def mock_nest_client(
 
         client.async_subscribe_for_updates = AsyncMock(side_effect=_subscribe)
         yield client
+
+
+@pytest.fixture
+def platforms() -> list[Platform]:
+    """Return the platforms to set up. Override to snapshot a single platform."""
+    return list(_PLATFORMS)
+
+
+@pytest.fixture(autouse=True)
+def patch_platforms(platforms: list[Platform]) -> Generator[None]:
+    """Limit the platforms the integration sets up."""
+    with patch("custom_components.nest_legacy._PLATFORMS", platforms):
+        yield
 
 
 @pytest.fixture

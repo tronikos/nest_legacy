@@ -1,0 +1,192 @@
+# serializer version: 1
+# name: test_entities[select.hallway_hallway_protect_night_light_brightness-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'low',
+        'medium',
+        'high',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.hallway_hallway_protect_night_light_brightness',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Night light brightness',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:lightbulb-on',
+    'original_name': 'Night light brightness',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'night_light_brightness',
+    'unique_id': '09AA00AA00AA0AA1-night_light_brightness',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select.hallway_hallway_protect_night_light_brightness-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Protect Night light brightness',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:lightbulb-on',
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'low',
+        'medium',
+        'high',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.hallway_hallway_protect_night_light_brightness',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'medium',
+  })
+# ---
+# name: test_entities[select.hallway_hallway_upstairs_dual_fuel_breakpoint_override-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'none',
+        'always_alternate_heat',
+        'never_alternate_heat',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.hallway_hallway_upstairs_dual_fuel_breakpoint_override',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Dual fuel breakpoint override',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Dual fuel breakpoint override',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'dual_fuel_breakpoint_override',
+    'unique_id': '18B430DDDDDD0002-dual_fuel_breakpoint_override',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select.hallway_hallway_upstairs_dual_fuel_breakpoint_override-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Upstairs Dual fuel breakpoint override',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:fire',
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'none',
+        'always_alternate_heat',
+        'never_alternate_heat',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.hallway_hallway_upstairs_dual_fuel_breakpoint_override',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'none',
+  })
+# ---
+# name: test_entities[select.test_home-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'home',
+        'away',
+        'sleep',
+        'vacation',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.test_home',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:home-account',
+    'original_name': None,
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_away_mode',
+    'unique_id': '00000000-0000-0000-0000-000000000001-mode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select.test_home-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Test Home',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:home-account',
+      <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'home',
+        'away',
+        'sleep',
+        'vacation',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.test_home',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'home',
+  })
+# ---

@@ -48,6 +48,7 @@ async def test_devices_are_registered(
     assert {next(iter(device.identifiers))[1] for device in devices} == {
         "00000000-0000-0000-0000-000000000001",
         "09AA00AA00AA0AAA",
+        "09AA00AA00AA0AAB",
         "09AA00AA00AA0AA1",
         "18B430CCCCCC0001",
         "18B430CCCCCC0002",
