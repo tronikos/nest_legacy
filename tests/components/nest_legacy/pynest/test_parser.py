@@ -22,7 +22,13 @@ import pytest
 from homeassistant.core import HomeAssistant
 
 from .. import async_load_fixture_json
-from ..const import LOCK_SERIAL, protobuf_updates
+from ..const import (
+    CAMERA_SERIAL,
+    LOCK_SERIAL,
+    PROTECT_SERIAL,
+    TEMP_SENSOR_SERIAL,
+    protobuf_updates,
+)
 
 THERMOSTAT = "09AA00AA00AA0AAA"
 
@@ -63,6 +69,9 @@ async def test_every_device_type_is_parsed(
         "18B430CCCCCC0002",
         "18B430DDDDDD0001",
         "18B430DDDDDD0002",
+        "18B430DDDDDD0003",
+        "18B430DDDDDD0004",
+        "18B430DDDDDD0005",
     }
 
 
@@ -282,3 +291,34 @@ async def test_protobuf_thermostat_dual_fuel(
 async def test_empty_payload(parser: NestParser) -> None:
     """An empty account parses to no devices rather than raising."""
     assert parser.parse_all({}).devices == []
+
+
+async def test_protobuf_protect(parser: NestParser, raw_data: dict[str, Any]) -> None:
+    """A protobuf Protect is parsed with its alarms clear."""
+    protect = _by_serial(parser, raw_data)[PROTECT_SERIAL]
+
+    assert protect.is_protobuf
+    assert protect.name == "Landing"
+    assert not protect.smoke_status
+    assert not protect.co_status
+
+
+async def test_protobuf_camera(parser: NestParser, raw_data: dict[str, Any]) -> None:
+    """A protobuf camera reports whether it is recording."""
+    camera = _by_serial(parser, raw_data)[CAMERA_SERIAL]
+
+    assert camera.is_protobuf
+    assert camera.name == "Driveway"
+    assert camera.streaming_enabled
+
+
+async def test_protobuf_temperature_sensor(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A protobuf remote sensor reports its temperature and battery."""
+    sensor = _by_serial(parser, raw_data)[TEMP_SENSOR_SERIAL]
+
+    assert sensor.is_protobuf
+    assert sensor.current_temperature == 19.5
+    assert sensor.battery_level == pytest.approx(71, abs=0.1)
+    assert not sensor.is_active_sensor

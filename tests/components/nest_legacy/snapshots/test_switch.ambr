@@ -467,6 +467,318 @@
     'state': 'off',
   })
 # ---
+# name: test_entities[switch.front_door_front_door_driveway_audio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_driveway_audio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Audio',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:microphone',
+    'original_name': 'Audio',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'audio',
+    'unique_id': '18B430DDDDDD0004-audio_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_driveway_audio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Driveway Audio',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:microphone',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_driveway_audio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_driveway_streaming-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.front_door_front_door_driveway_streaming',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Streaming',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:camera',
+    'original_name': 'Streaming',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'camera_streaming',
+    'unique_id': '18B430DDDDDD0004-streaming_enabled',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.front_door_front_door_driveway_streaming-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Front Door Driveway Streaming',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:camera',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.front_door_front_door_driveway_streaming',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_heads_up-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_landing_heads_up',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heads-up',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:exclamation-thick',
+    'original_name': 'Heads-up',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heads_up',
+    'unique_id': '18B430DDDDDD0003-heads_up_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_heads_up-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Landing Heads-up',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:exclamation-thick',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_landing_heads_up',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_nightly_promise-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_landing_nightly_promise',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Nightly promise',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:led-off',
+    'original_name': 'Nightly promise',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'nightly_promise',
+    'unique_id': '18B430DDDDDD0003-ntp_green_led_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_nightly_promise-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Landing Nightly promise',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:led-off',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_landing_nightly_promise',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_pathlight-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_landing_pathlight',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Pathlight',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:weather-night',
+    'original_name': 'Pathlight',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'pathlight',
+    'unique_id': '18B430DDDDDD0003-night_light_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_pathlight-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Landing Pathlight',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:weather-night',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_landing_pathlight',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_steam_check-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.hallway_hallway_landing_steam_check',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Steam check',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:pot-steam',
+    'original_name': 'Steam check',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'steam_check',
+    'unique_id': '18B430DDDDDD0003-steam_detection_enable',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch.hallway_hallway_landing_steam_check-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Landing Steam check',
+      <EntityStateAttribute.ICON: 'icon'>: 'mdi:pot-steam',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.hallway_hallway_landing_steam_check',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
 # name: test_entities[switch.hallway_hallway_protect_heads_up-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([

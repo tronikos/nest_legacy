@@ -274,6 +274,78 @@
         'temperature_lock': False,
         'temperature_scale': 'F',
       }),
+      '18B430DDDDDD0003': dict({
+        'battery_health_state': 0,
+        'battery_level': 0.0,
+        'battery_voltage': None,
+        'co_status': False,
+        'component_buzzer_test_passed': True,
+        'component_co_test_passed': True,
+        'component_hum_test_passed': True,
+        'component_led_test_passed': True,
+        'component_pir_test_passed': True,
+        'component_smoke_test_passed': True,
+        'component_speaker_test_passed': True,
+        'component_wifi_test_passed': True,
+        'heads_up_enable': False,
+        'heat_status': False,
+        'is_protobuf': True,
+        'last_audio_self_test_end_utc_secs': 0,
+        'latest_manual_test_end_utc_secs': 0,
+        'location': '**REDACTED**',
+        'mac_address': None,
+        'model': 'Nest Protect (Battery)',
+        'name': '**REDACTED**',
+        'night_light_brightness': None,
+        'night_light_enable': False,
+        'ntp_green_led_enable': False,
+        'object_key': 'DEVICE_0000000000000004',
+        'online': True,
+        'removed_from_base': False,
+        'replace_by_date': None,
+        'serial_number': '18B430DDDDDD0003',
+        'smoke_status': False,
+        'software_version': '3.4.2',
+        'steam_detection_enable': False,
+      }),
+      '18B430DDDDDD0004': dict({
+        'audio_enabled': True,
+        'battery_level': None,
+        'battery_voltage': None,
+        'irled_enabled': False,
+        'is_protobuf': True,
+        'is_streaming': True,
+        'location': '**REDACTED**',
+        'mac_address': None,
+        'model': 'Camera (unknown)',
+        'name': '**REDACTED**',
+        'nexus_api_http_server_url': 'https://nexusapi.dropcam.com',
+        'object_key': 'DEVICE_0000000000000005',
+        'online': True,
+        'serial_number': '18B430DDDDDD0004',
+        'software_version': '1.2.3',
+        'status_led_enabled': False,
+        'streaming_enabled': True,
+        'structure_id': None,
+        'video_flipped': False,
+        'web_url': 'https://home.nest.com/camera/DEVICE_0000000000000005',
+      }),
+      '18B430DDDDDD0005': dict({
+        'associated_thermostat_object_key': None,
+        'battery_level': 70.99999785423279,
+        'battery_voltage': None,
+        'current_temperature': 19.5,
+        'is_active_sensor': False,
+        'is_protobuf': True,
+        'location': '**REDACTED**',
+        'mac_address': None,
+        'model': 'Temperature Sensor',
+        'name': '**REDACTED**',
+        'object_key': 'DEVICE_0000000000000006',
+        'online': True,
+        'serial_number': '18B430DDDDDD0005',
+        'software_version': None,
+      }),
     }),
     'raw_api_data': dict({
       'DEVICE_0000000000000002': dict({
@@ -343,6 +415,82 @@
         }),
         'weave.trait.heartbeat.LivenessTrait': dict({
           'status': 'LIVENESS_DEVICE_STATUS_ONLINE',
+        }),
+      }),
+      'DEVICE_0000000000000004': dict({
+        'nest.trait.located.DeviceLocatedSettingsTrait': dict({
+          'whereAnnotationRid': dict({
+            'resourceId': 'where-hallway',
+          }),
+        }),
+        'nest.trait.safety.SafetyAlarmCOTrait': dict({
+          'alarmState': 'ALARM_STATE_IDLE',
+        }),
+        'nest.trait.safety.SafetyAlarmSmokeTrait': dict({
+          'alarmState': 'ALARM_STATE_IDLE',
+        }),
+        'nest.trait.sensor.CarbonMonoxideTrait': dict({
+        }),
+        'nest.trait.sensor.SmokeTrait': dict({
+        }),
+        'weave.trait.description.DeviceIdentityTrait': dict({
+          'serialNumber': '18B430DDDDDD0003',
+          'softwareVersion': '3.4.2',
+        }),
+        'weave.trait.description.LabelSettingsTrait': dict({
+          'label': 'Landing',
+        }),
+        'weave.trait.heartbeat.LivenessTrait': dict({
+          'status': 'LIVENESS_DEVICE_STATUS_ONLINE',
+        }),
+      }),
+      'DEVICE_0000000000000005': dict({
+        'nest.trait.located.DeviceLocatedSettingsTrait': dict({
+          'whereAnnotationRid': dict({
+            'resourceId': 'where-front-door',
+          }),
+        }),
+        'nest.trait.product.camera.RecordingToggleTrait': dict({
+          'currentCameraState': 'CAMERA_ON',
+        }),
+        'nest.trait.product.camera.StreamingProtocolTrait': dict({
+        }),
+        'weave.trait.description.DeviceIdentityTrait': dict({
+          'serialNumber': '18B430DDDDDD0004',
+          'softwareVersion': '1.2.3',
+        }),
+        'weave.trait.description.LabelSettingsTrait': dict({
+          'label': 'Driveway',
+        }),
+        'weave.trait.heartbeat.LivenessTrait': dict({
+          'status': 'LIVENESS_DEVICE_STATUS_ONLINE',
+        }),
+      }),
+      'DEVICE_0000000000000006': dict({
+        'nest.trait.located.DeviceLocatedSettingsTrait': dict({
+          'whereAnnotationRid': dict({
+            'resourceId': 'where-hallway',
+          }),
+        }),
+        'nest.trait.sensor.TemperatureTrait': dict({
+          'temperatureValue': dict({
+            'temperature': 19.5,
+          }),
+        }),
+        'weave.trait.description.DeviceIdentityTrait': dict({
+          'serialNumber': '18B430DDDDDD0005',
+          'softwareVersion': '1.0.0',
+        }),
+        'weave.trait.description.LabelSettingsTrait': dict({
+          'label': 'Study Sensor',
+        }),
+        'weave.trait.heartbeat.LivenessTrait': dict({
+          'status': 'LIVENESS_DEVICE_STATUS_ONLINE',
+        }),
+        'weave.trait.power.BatteryPowerSourceTrait': dict({
+          'remaining': dict({
+            'remainingPercent': 0.71,
+          }),
         }),
       }),
       'STRUCTURE_0000000000000001': dict({

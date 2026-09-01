@@ -37,7 +37,10 @@ async def test_browse_lists_cameras(
     browse = await async_browse_media(hass, f"{URI_SCHEME}{DOMAIN}")
 
     assert browse.title == "Cameras"
-    assert [child.title for child in browse.children] == ["Front Door Doorbell"]
+    assert [child.title for child in browse.children] == [
+        "Front Door Doorbell",
+        "Front Door Driveway",
+    ]
     assert browse.children[0].identifier.endswith(CAMERA_SERIAL)
 
 

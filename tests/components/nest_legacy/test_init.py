@@ -53,6 +53,9 @@ async def test_devices_are_registered(
         "18B430CCCCCC0001",
         "18B430CCCCCC0002",
         "18B430DDDDDD0001",
+        "18B430DDDDDD0003",
+        "18B430DDDDDD0004",
+        "18B430DDDDDD0005",
         "18B430DDDDDD0002",
     }
 
