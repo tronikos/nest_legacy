@@ -85,10 +85,28 @@ def observe_data() -> dict[str, dict[str, Any]]:
 
 
 @pytest.fixture
+def subscribe_results() -> asyncio.Queue[Any]:
+    """Drive the REST long poll. Push a payload or an exception per iteration.
+
+    While the queue is empty the poll simply stays connected, which is what an
+    idle Nest account looks like.
+    """
+    return asyncio.Queue()
+
+
+@pytest.fixture
+def observe_results() -> asyncio.Queue[Any]:
+    """Drive the protobuf observe stream after its first payload."""
+    return asyncio.Queue()
+
+
+@pytest.fixture
 def mock_nest_client(
     nest_session: NestSession,
     app_launch_data: dict[str, Any],
     observe_data: dict[str, dict[str, Any]],
+    subscribe_results: asyncio.Queue[Any],
+    observe_results: asyncio.Queue[Any],
 ) -> Generator[AsyncMock]:
     """Mock the Nest client the coordinator talks to."""
     with patch(
@@ -103,16 +121,22 @@ def mock_nest_client(
         client.async_get_camera_properties.return_value = {}
 
         async def _observe() -> AsyncGenerator[dict[str, dict[str, Any]]]:
-            """Yield one batch of updates, then stay connected."""
+            """Yield one batch of updates, then whatever the test queues up."""
             yield observe_data
-            await asyncio.Event().wait()
+            while True:
+                result = await observe_results.get()
+                if isinstance(result, Exception):
+                    raise result
+                yield result
 
         client.async_observe_for_updates = Mock(side_effect=_observe)
 
         async def _subscribe() -> dict[str, dict[str, Any]]:
-            """Return no REST updates, then stay connected."""
-            await asyncio.Event().wait()
-            return {}
+            """Return whatever the test queued up for this iteration."""
+            result = await subscribe_results.get()
+            if isinstance(result, Exception):
+                raise result
+            return result
 
         client.async_subscribe_for_updates = AsyncMock(side_effect=_subscribe)
         yield client
@@ -136,6 +160,7 @@ def mock_config_entry() -> MockConfigEntry:
     """Return a config entry for a Google account."""
     return MockConfigEntry(
         domain=DOMAIN,
+        entry_id="01JN5YFBWEK4H1QHQ2XMR6PM4X",
         title=f"Nest ({EMAIL})",
         unique_id=USER_ID,
         data={
@@ -151,6 +176,7 @@ def mock_nest_account_config_entry() -> MockConfigEntry:
     """Return a config entry for a legacy Nest account."""
     return MockConfigEntry(
         domain=DOMAIN,
+        entry_id="01JN5YFBWEK4H1QHQ2XMR6PM4Y",
         title=f"Nest ({EMAIL})",
         unique_id=USER_ID,
         data={
