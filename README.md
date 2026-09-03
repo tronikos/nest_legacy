@@ -341,3 +341,58 @@ script:
 ## Disclaimer
 
 This is a personal hobby project and is not affiliated with Google or Nest. It uses an unofficial API that could be changed or discontinued by Google at any time, which may cause this integration to stop working. It is provided "as-is," with no warranty whatsoever. Use at your own risk.
+
+<!--
+  DEVELOPER NOTE: What needs to happen before submitting this as a HA core integration.
+
+  ## Prior attempt
+
+  tronikos already tried a full submission (home-assistant/core#165962) that
+  bundled every platform into one PR. HA core's review bot rejected it
+  immediately: "When adding new integrations, limit included platforms to a
+  single platform. Please reduce this PR to a single platform." It was
+  closed the same day without further review.
+
+  ## What to exclude from the initial PR
+
+  HA's submission guidelines for new integrations require a focused first PR:
+
+  - Limit to a single platform (see rollout order below)
+  - Remove all custom service actions: list_guests, get_user_schedule,
+    set_user_schedule, delete_user_schedule, set_fan_timer
+  - Remove diagnostics.py
+  - Remove reauthentication and reconfiguration flows
+  - Remove dynamic-devices and stale-devices logic
+
+  Once the initial PR is accepted, add features and additional platforms back
+  one PR at a time.
+
+  ## Bundled client blocker
+
+  custom_components/nest_legacy/pynest/ (including the vendored
+  protobuf_gen/ stubs) has to be extracted into a standalone PyPI package
+  with its own CI/CD before core submission — a core integration cannot
+  vendor its own protocol client in-tree.
+
+  ## Recommended platform rollout order
+
+  Add one platform per PR after the initial climate PR is accepted.
+
+  1.  climate       - the flagship feature; most mature and heavily used
+  2.  binary_sensor - Protect smoke/CO/heat status; immediate safety value
+  3.  lock          - Nest x Yale; security-adjacent, high demand
+  4.  sensor        - battery levels, temperature, humidity
+  5.  fan           - thermostat fan control
+  6.  switch        - Protect night light/pathlight, thermostat locks, etc.
+  7.  select        - Protect night light brightness, structure mode
+  8.  number        - lock auto-relock duration, dual fuel breakpoint
+  9.  water_heater  - Heat Link; niche (Europe-only) device type
+  10. event         - camera/doorbell motion, person, sound events
+  11. media_source  - camera event clip/thumbnail browsing
+  12. camera        - unlike alarmdotcom, no custom-card blocker (uses
+                      standard async_camera_image, no bundled Lovelace
+                      card), but streaming/snapshot behavior touches live
+                      video and should get the most review scrutiny
+
+  ## Also check quality_scale.yaml for other notes
+-->
