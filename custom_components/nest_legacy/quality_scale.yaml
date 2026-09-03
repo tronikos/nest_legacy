@@ -78,7 +78,6 @@ rules:
       reauthentication flow for the initial PR (see top-of-file note) —
       add it back in a follow-up PR.
   test-coverage: done
-
   # Gold
   devices: done
   diagnostics:
