@@ -3,6 +3,9 @@
 # zizmor, python-typing-update). Keep the revisions in sync with
 # https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml
 exclude: ^custom_components/nest_legacy/pynest/protobuf_gen
+ci:
+  # mypy/pylint need requirements_test.txt installed; pre-commit.ci doesn't do that.
+  skip: [mypy, pylint]
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.4
