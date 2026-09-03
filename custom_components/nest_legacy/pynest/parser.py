@@ -1445,6 +1445,12 @@ class NestParser:
         )
         serial_number = identity_trait.serialNumber if identity_trait else key
         software_version = identity_trait.softwareVersion if identity_trait else None
+        product_id_description = (
+            identity_trait.productIdDescription.literal
+            if identity_trait and identity_trait.HasField("productIdDescription")
+            else None
+        )
+        product_revision = identity_trait.productRevision if identity_trait else None
 
         model = self._parse_protobuf_thermostat_model(traits)
 
@@ -1645,6 +1651,8 @@ class NestParser:
             location=_get_protobuf_location(traits, wheres_map),
             model=model,
             software_version=software_version,
+            product_id_description=product_id_description,
+            product_revision=product_revision,
             online=online,
             current_temperature=current_temperature,
             backplate_temperature=backplate_temperature,
