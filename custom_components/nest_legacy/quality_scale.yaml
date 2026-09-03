@@ -1,4 +1,4 @@
-# NOTE: tronikos previously attempted a full core submission
+# NOTE: A full core submission was already attempted
 # (home-assistant/core#165962, closed the same day) that bundled every
 # platform into one PR. HA core's review bot immediately rejected it:
 # "When adding new integrations, limit included platforms to a single
@@ -6,6 +6,14 @@
 # submission needs to pick ONE platform (climate is the most mature and
 # heavily used) and defer camera/lock/fan/sensor/switch/select/number/
 # water_heater/event/media_source/binary_sensor to follow-up PRs.
+#
+# The rules below marked NOTE quote or paraphrase
+# https://developers.home-assistant.io/docs/core/integration/contributing_to_core/ :
+# "Limit to a single platform. Do not add features that are not essential
+# for the initial platform to work. This includes features like:
+# Diagnostics, Custom service actions, Reauthentication and reconfiguration
+# flows" and "Ideally keep more complex integration quality scale rules
+# (such as dynamic-devices and stale-devices) out."
 rules:
   # Bronze
   action-setup:
@@ -13,8 +21,9 @@ rules:
     comment: >
       NOTE: When submitting this as a core integration, remove all custom
       services (list_guests, get_user_schedule, set_user_schedule,
-      delete_user_schedule, set_fan_timer) for the initial PR — this rule
-      becomes irrelevant until services are added back in a follow-up PR.
+      delete_user_schedule, set_fan_timer) for the initial PR (see
+      top-of-file note) — this rule becomes irrelevant until services are
+      added back in a follow-up PR.
   appropriate-polling: done
   brands:
     status: exempt
@@ -34,9 +43,7 @@ rules:
       set_fan_timer) with field descriptions; strings.json provides
       translatable names/descriptions for each.
       NOTE: When submitting this as a core integration, remove all custom
-      services for the initial PR — HA submission guidelines explicitly list
-      "custom service actions" as features to exclude from a new
-      integration's first submission.
+      services for the initial PR (see top-of-file note).
   docs-high-level-description: done
   docs-installation-instructions: done
   docs-removal-instructions:
@@ -55,8 +62,8 @@ rules:
     status: done
     comment: >
       NOTE: When submitting this as a core integration, remove all custom
-      services for the initial PR — this rule becomes irrelevant until
-      services are added back in a follow-up PR.
+      services for the initial PR (see top-of-file note) — this rule
+      becomes irrelevant until services are added back in a follow-up PR.
   config-entry-unloading: done
   docs-configuration-parameters: done
   docs-installation-parameters: done
@@ -67,9 +74,9 @@ rules:
   reauthentication-flow:
     status: done
     comment: >
-      NOTE: When submitting this as a core integration, the reauthentication
-      flow may be too much for reviewers to want in an initial submission —
-      consider removing it and adding it back in a follow-up PR.
+      NOTE: When submitting this as a core integration, remove the
+      reauthentication flow for the initial PR (see top-of-file note) —
+      add it back in a follow-up PR.
   test-coverage: done
 
   # Gold
@@ -77,9 +84,9 @@ rules:
   diagnostics:
     status: done
     comment: >
-      NOTE: When submitting this as a core integration, diagnostics.py may
-      be too much for reviewers to want in an initial submission — consider
-      removing it and adding it back in a follow-up PR.
+      NOTE: When submitting this as a core integration, remove
+      diagnostics.py for the initial PR (see top-of-file note) — add it
+      back in a follow-up PR.
   discovery: done
   discovery-update-info:
     status: exempt
@@ -98,9 +105,7 @@ rules:
     status: done
     comment: >
       NOTE: When submitting this as a core integration, remove
-      dynamic-devices logic for the initial PR — HA submission guidelines
-      list this as a "complex quality scale rule" to exclude from a new
-      integration's first submission.
+      dynamic-devices logic for the initial PR (see top-of-file note).
   entity-category: done
   entity-device-class: done
   entity-disabled-by-default: done
@@ -110,17 +115,17 @@ rules:
   reconfiguration-flow:
     status: done
     comment: >
-      NOTE: When submitting this as a core integration, the reconfiguration
-      flow may be too much for reviewers to want in an initial submission —
-      consider removing it and adding it back in a follow-up PR.
+      NOTE: When submitting this as a core integration, remove the
+      reconfiguration flow for the initial PR (see top-of-file note) —
+      add it back in a follow-up PR.
   repair-issues:
     status: exempt
     comment: No actionable repair scenarios currently identified for this integration.
   stale-devices:
     status: done
     comment: >
-      NOTE: Same as dynamic-devices — remove for the initial core PR per
-      HA submission guidelines.
+      NOTE: Same as dynamic-devices — remove for the initial core PR
+      (see top-of-file note).
 
   # Platinum
   async-dependency:

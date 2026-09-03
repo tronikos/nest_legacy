@@ -347,7 +347,7 @@ This is a personal hobby project and is not affiliated with Google or Nest. It u
 
   ## Prior attempt
 
-  tronikos already tried a full submission (home-assistant/core#165962) that
+  A full submission was already attempted (home-assistant/core#165962) that
   bundled every platform into one PR. HA core's review bot rejected it
   immediately: "When adding new integrations, limit included platforms to a
   single platform. Please reduce this PR to a single platform." It was
@@ -355,9 +355,18 @@ This is a personal hobby project and is not affiliated with Google or Nest. It u
 
   ## What to exclude from the initial PR
 
-  HA's submission guidelines for new integrations require a focused first PR:
+  Per https://developers.home-assistant.io/docs/core/integration/contributing_to_core/ :
 
-  - Limit to a single platform (see rollout order below)
+  "Limit to a single platform. Do not add features that are not essential
+  for the initial platform to work. This includes features like:
+  Diagnostics, Custom service actions, Reauthentication and reconfiguration
+  flows" and "Ideally keep more complex integration quality scale rules
+  (such as dynamic-devices and stale-devices) out."
+
+  Concretely, for this project:
+
+  - Limit to a single platform (see rollout order below) — HA's review bot
+    enforced this directly on PR #165962 above
   - Remove all custom service actions: list_guests, get_user_schedule,
     set_user_schedule, delete_user_schedule, set_fan_timer
   - Remove diagnostics.py
@@ -389,10 +398,10 @@ This is a personal hobby project and is not affiliated with Google or Nest. It u
   9.  water_heater  - Heat Link; niche (Europe-only) device type
   10. event         - camera/doorbell motion, person, sound events
   11. media_source  - camera event clip/thumbnail browsing
-  12. camera        - unlike alarmdotcom, no custom-card blocker (uses
-                      standard async_camera_image, no bundled Lovelace
-                      card), but streaming/snapshot behavior touches live
-                      video and should get the most review scrutiny
+  12. camera        - no known custom-frontend blocker (uses standard
+                      async_camera_image, no bundled Lovelace card), but
+                      streaming/snapshot behavior touches live video and
+                      should get the most review scrutiny
 
   ## Also check quality_scale.yaml for other notes
 -->
