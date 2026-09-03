@@ -3,6 +3,15 @@
 # zizmor, python-typing-update). Keep the revisions in sync with
 # https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml
 exclude: ^custom_components/nest_legacy/pynest/protobuf_gen
+ci:
+  # mypy and pylint shell out to script/run-in-env.sh, which assumes
+  # requirements_test.txt is already installed in the active environment.
+  # pre-commit.ci's hosted runner doesn't provision that (unlike our own
+  # "Lint and test" GitHub Actions job, which installs requirements_test.txt
+  # before running prek), so both hooks fail there with "command not found"
+  # regardless of what a PR actually changes. Core itself isn't registered
+  # with pre-commit.ci, so it never hit this; skip both here instead.
+  skip: [mypy, pylint]
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.4
