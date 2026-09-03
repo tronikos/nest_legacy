@@ -1,6 +1,20 @@
+# NOTE: tronikos previously attempted a full core submission
+# (home-assistant/core#165962, closed the same day) that bundled every
+# platform into one PR. HA core's review bot immediately rejected it:
+# "When adding new integrations, limit included platforms to a single
+# platform. Please reduce this PR to a single platform." Any future
+# submission needs to pick ONE platform (climate is the most mature and
+# heavily used) and defer camera/lock/fan/sensor/switch/select/number/
+# water_heater/event/media_source/binary_sensor to follow-up PRs.
 rules:
   # Bronze
-  action-setup: done
+  action-setup:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, remove all custom
+      services (list_guests, get_user_schedule, set_user_schedule,
+      delete_user_schedule, set_fan_timer) for the initial PR — this rule
+      becomes irrelevant until services are added back in a follow-up PR.
   appropriate-polling: done
   brands:
     status: exempt
@@ -12,7 +26,17 @@ rules:
   config-flow: done
   config-flow-test-coverage: done
   dependency-transparency: done
-  docs-actions: done
+  docs-actions:
+    status: done
+    comment: >
+      services.yaml documents all five custom services (list_guests,
+      get_user_schedule, set_user_schedule, delete_user_schedule,
+      set_fan_timer) with field descriptions; strings.json provides
+      translatable names/descriptions for each.
+      NOTE: When submitting this as a core integration, remove all custom
+      services for the initial PR — HA submission guidelines explicitly list
+      "custom service actions" as features to exclude from a new
+      integration's first submission.
   docs-high-level-description: done
   docs-installation-instructions: done
   docs-removal-instructions:
@@ -27,7 +51,12 @@ rules:
   unique-config-entry: done
 
   # Silver
-  action-exceptions: done
+  action-exceptions:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, remove all custom
+      services for the initial PR — this rule becomes irrelevant until
+      services are added back in a follow-up PR.
   config-entry-unloading: done
   docs-configuration-parameters: done
   docs-installation-parameters: done
@@ -35,12 +64,22 @@ rules:
   integration-owner: done
   log-when-unavailable: done
   parallel-updates: done
-  reauthentication-flow: done
+  reauthentication-flow:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, the reauthentication
+      flow may be too much for reviewers to want in an initial submission —
+      consider removing it and adding it back in a follow-up PR.
   test-coverage: done
 
   # Gold
   devices: done
-  diagnostics: done
+  diagnostics:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, diagnostics.py may
+      be too much for reviewers to want in an initial submission — consider
+      removing it and adding it back in a follow-up PR.
   discovery: done
   discovery-update-info:
     status: exempt
@@ -55,18 +94,33 @@ rules:
   docs-supported-functions: done
   docs-troubleshooting: done
   docs-use-cases: done
-  dynamic-devices: done
+  dynamic-devices:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, remove
+      dynamic-devices logic for the initial PR — HA submission guidelines
+      list this as a "complex quality scale rule" to exclude from a new
+      integration's first submission.
   entity-category: done
   entity-device-class: done
   entity-disabled-by-default: done
   entity-translations: done
   exception-translations: done
   icon-translations: done
-  reconfiguration-flow: done
+  reconfiguration-flow:
+    status: done
+    comment: >
+      NOTE: When submitting this as a core integration, the reconfiguration
+      flow may be too much for reviewers to want in an initial submission —
+      consider removing it and adding it back in a follow-up PR.
   repair-issues:
     status: exempt
     comment: No actionable repair scenarios currently identified for this integration.
-  stale-devices: done
+  stale-devices:
+    status: done
+    comment: >
+      NOTE: Same as dynamic-devices — remove for the initial core PR per
+      HA submission guidelines.
 
   # Platinum
   async-dependency:
@@ -75,6 +129,11 @@ rules:
       protobuf and bidict, used by the bundled pynest client, are
       synchronous; the client itself wraps aiohttp but pulls in sync
       dependencies for parsing.
+      NOTE: When submitting this as a core integration, the bundled pynest
+      client has to be extracted into a standalone PyPI package with its
+      own CI/CD (mirroring pyalarmdotcomajax and pypowershades) — a core
+      integration cannot vendor its own protocol client in-tree, and that
+      includes the vendored protobuf_gen/ stubs.
   inject-websession: done
   strict-typing:
     status: todo
