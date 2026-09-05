@@ -155,7 +155,9 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 )
             else:
                 raise HomeAssistantError(
-                    f"Unsupported account type in config entry: {account_type}"
+                    translation_domain=DOMAIN,
+                    translation_key="unsupported_account_type",
+                    translation_placeholders={"account_type": str(account_type)},
                 )
 
     async def async_initialize(self) -> None:
@@ -220,7 +222,8 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 )
             except (ClientError, TimeoutError, PynestException) as err:
                 raise HomeAssistantError(
-                    "Retry failed after re-authentication"
+                    translation_domain=DOMAIN,
+                    translation_key="command_retry_failed",
                 ) from err
         except (ClientError, TimeoutError, PynestException) as err:
             _LOGGER.error(
@@ -231,7 +234,11 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 data,
                 err,
             )
-            raise HomeAssistantError from err
+            raise HomeAssistantError(
+                translation_domain=DOMAIN,
+                translation_key="set_data_failed",
+                translation_placeholders={"device_name": device.name},
+            ) from err
 
     async def async_send_client_command(
         self,
@@ -253,11 +260,16 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 return await method(*args, **kwargs)
             except (ClientError, TimeoutError, PynestException) as err:
                 raise HomeAssistantError(
-                    "Retry failed after re-authentication"
+                    translation_domain=DOMAIN,
+                    translation_key="command_retry_failed",
                 ) from err
         except (ClientError, TimeoutError, PynestException) as err:
             _LOGGER.error("Error calling %s: %r", method_name, err)
-            raise HomeAssistantError from err
+            raise HomeAssistantError(
+                translation_domain=DOMAIN,
+                translation_key="command_failed",
+                translation_placeholders={"method_name": method_name},
+            ) from err
 
     def get_guests(self) -> dict[str, list[dict[str, Any]]]:
         """Return guests from the raw protobuf data, keyed by structure ID."""
