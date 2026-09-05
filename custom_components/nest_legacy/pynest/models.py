@@ -150,6 +150,19 @@ class NestThermostat(NestDevice):
     has_dual_fuel: bool = False
     dual_fuel_breakpoint: float | None = None
     dual_fuel_breakpoint_override: DualFuelBreakpointOverride | None = None
+    # Raw hardware identity, as reported by the device itself (protobuf only)
+    product_id_description: str | None = None
+    product_revision: int | None = None
+
+    @override
+    @property
+    def hardware_version(self) -> str | None:
+        """Return the device's own hardware model and revision, if known."""
+        if not self.product_id_description:
+            return None
+        if self.product_revision is None:
+            return self.product_id_description
+        return f"{self.product_id_description} rev {self.product_revision}"
 
 
 @dataclass(frozen=True)

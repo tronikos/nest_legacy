@@ -76,6 +76,7 @@ class NestEntity(CoordinatorEntity[NestCoordinator], Generic[DeviceT]):  # noqa:
             name=device_name,
             manufacturer="Google",
             model=self._device.model,
+            serial_number=self._device.serial_number,
             sw_version=self._device.software_version,
             suggested_area=self._device.location,
         )
