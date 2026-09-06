@@ -44,6 +44,15 @@ class NestDevice:
         """Return hardware version if available."""
         return None
 
+    @property
+    def hardware_serial_number(self) -> str | None:
+        """Return the serial number the device reports, if it reports one.
+
+        __post_init__ falls back to the object key when the API omits a serial,
+        and that placeholder should not be shown as a serial number.
+        """
+        return None if self.serial_number == self.object_key else self.serial_number
+
 
 # --- Specific Device Models ---
 @dataclass(frozen=True)
@@ -208,6 +217,8 @@ class NestDoorbell(NestCamera):
 class NestHeatLink(NestDevice):
     """Represents a Nest Heat Link (for hot water control)."""
 
+    # False when the serial number is derived from the thermostat's own.
+    has_own_serial_number: bool = False
     associated_thermostat_object_key: str | None = None
     has_hot_water_control: bool = False
     hot_water_active: bool = False
@@ -219,6 +230,12 @@ class NestHeatLink(NestDevice):
     current_temperature: float | None = None
     target_temperature: float | None = None
     temperature_scale: TemperatureScale | None = None
+
+    @override
+    @property
+    def hardware_serial_number(self) -> str | None:
+        """Return a serial number only when the heat link reports one."""
+        return super().hardware_serial_number if self.has_own_serial_number else None
 
 
 @dataclass(frozen=True)

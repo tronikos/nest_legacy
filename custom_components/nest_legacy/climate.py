@@ -21,6 +21,7 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
 
+from .const import DOMAIN
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
 from .pynest.enums import TemperatureScale, ThermostatHvacMode, ThermostatHvacState
@@ -309,7 +310,11 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
     async def async_set_fan_timer(self, duration: timedelta) -> None:
         """Set a short term fan timer."""
         if not self.device.has_fan:
-            raise HomeAssistantError(f"Entity {self.entity_id} does not support fan")
+            raise HomeAssistantError(
+                translation_domain=DOMAIN,
+                translation_key="fan_not_supported",
+                translation_placeholders={"entity_id": self.entity_id},
+            )
 
         seconds = int(duration.total_seconds())
         if seconds <= 0:

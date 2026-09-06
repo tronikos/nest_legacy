@@ -295,6 +295,9 @@
         }
     },
     "exceptions": {
+        "camera_snapshot_failed": {
+            "message": "Error fetching a snapshot from {camera_name}."
+        },
         "command_failed": {
             "message": "Error calling {method_name}."
         },
@@ -309,6 +312,9 @@
         },
         "device_not_nest_legacy": {
             "message": "Device {device_id} is not a Nest Legacy device."
+        },
+        "fan_not_supported": {
+            "message": "Entity {entity_id} does not support fan."
         },
         "integration_not_ready": {
             "message": "Nest Legacy integration not ready."

@@ -325,13 +325,17 @@ async def test_set_fan_timer_without_fan(
     app_launch_data[f"device.{THERMOSTAT}"]["has_fan"] = False
     await setup_integration(hass, mock_config_entry)
 
-    with pytest.raises(HomeAssistantError):
+    with pytest.raises(HomeAssistantError) as err:
         await hass.services.async_call(
             DOMAIN,
             "set_fan_timer",
             {ATTR_ENTITY_ID: ENTITY_ID, "duration": {"minutes": 30}},
             blocking=True,
         )
+
+    # Home Assistant rejects the call on required_features before the entity's
+    # own fan_not_supported guard can run.
+    assert err.value.translation_key == "service_not_supported"
 
 
 async def test_command_failure_raises(
@@ -342,10 +346,12 @@ async def test_command_failure_raises(
     """A failed command surfaces as a Home Assistant error."""
     mock_nest_client.async_set_device_data.side_effect = TimeoutError
 
-    with pytest.raises(HomeAssistantError):
+    with pytest.raises(HomeAssistantError) as err:
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_HVAC_MODE,
             {ATTR_ENTITY_ID: ENTITY_ID, "hvac_mode": HVACMode.OFF},
             blocking=True,
         )
+
+    assert err.value.translation_key == "set_data_failed"

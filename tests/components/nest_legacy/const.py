@@ -153,7 +153,12 @@ def _thermostat_traits() -> dict[str, Any]:
         temperatureScale=nest_hvac_pb2.DisplaySettingsTrait.TemperatureScale.TEMPERATURE_SCALE_F
     )
     identity = weave_description_pb2.DeviceIdentityTrait(
-        serialNumber=THERMOSTAT_SERIAL, softwareVersion="6.2-24"
+        serialNumber=THERMOSTAT_SERIAL,
+        softwareVersion="6.2-24",
+        productIdDescription=weave_common_pb2.StringRef(
+            literal="Nest Thermostat E Display (1st Generation)"
+        ),
+        productRevision=8,
     )
     label = weave_description_pb2.LabelSettingsTrait(label="Upstairs")
     liveness = weave_heartbeat_pb2.LivenessTrait(

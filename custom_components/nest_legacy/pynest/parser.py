@@ -1484,7 +1484,10 @@ class NestParser:
             if identity_trait and identity_trait.HasField("productIdDescription")
             else None
         )
-        product_revision = identity_trait.productRevision if identity_trait else None
+        # productRevision has no field presence, so an unset one reads back as 0.
+        product_revision = (
+            (identity_trait.productRevision or None) if identity_trait else None
+        )
 
         model = self._parse_protobuf_thermostat_model(traits)
 
@@ -2483,6 +2486,7 @@ class NestParser:
         else:
             mapped_model = "Hot Water Control"
 
+        has_own_serial_number = bool(thermostat.heat_link_serial_number)
         serial_number = (
             thermostat.heat_link_serial_number
             or f"{thermostat.serial_number}-hot-water"
@@ -2491,6 +2495,7 @@ class NestParser:
         return NestHeatLink(
             object_key=f"heatlink.{serial_number}",
             serial_number=serial_number,
+            has_own_serial_number=has_own_serial_number,
             location=thermostat.location,
             name="Heat Link" if thermostat.heat_link_serial_number else "Hot Water",
             model=mapped_model,

@@ -21,6 +21,9 @@ from custom_components.nest_legacy.pynest.parser import NestParser
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     hvac_pb2 as nest_hvac_pb2,
 )
+from custom_components.nest_legacy.pynest.protobuf_gen.weave.trait import (
+    description_pb2 as weave_description_pb2,
+)
 import pytest
 
 from homeassistant.core import HomeAssistant
@@ -230,6 +233,25 @@ async def test_heat_link_model_names(
     assert heat_link.hot_water_mode is HotWaterMode.SCHEDULE
 
 
+async def test_heat_link_serial_number_provenance(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A heat link that reports no serial gets a derived one, not a hardware one."""
+    heat_link = _by_serial(parser, raw_data)["09AA00AA00AA0AAB"]
+
+    assert isinstance(heat_link, NestHeatLink)
+    assert heat_link.has_own_serial_number
+    assert heat_link.hardware_serial_number == "09AA00AA00AA0AAB"
+
+    del raw_data[f"device.{THERMOSTAT}"]["heat_link_serial_number"]
+
+    derived = _by_serial(parser, raw_data)[f"{THERMOSTAT}-hot-water"]
+
+    assert isinstance(derived, NestHeatLink)
+    assert not derived.has_own_serial_number
+    assert derived.hardware_serial_number is None
+
+
 async def test_no_heat_link_without_hot_water(
     parser: NestParser, raw_data: dict[str, Any]
 ) -> None:
@@ -304,6 +326,38 @@ async def test_protobuf_thermostat_dual_fuel(
     assert thermostat.has_dual_fuel
     assert thermostat.dual_fuel_breakpoint == pytest.approx(-2.187271, abs=1e-5)
     assert thermostat.temperature_scale is TemperatureScale.FAHRENHEIT
+
+
+async def test_protobuf_thermostat_hardware_version(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """The device's own hardware model and revision reach hardware_version; PR #63."""
+    thermostat = _by_serial(parser, raw_data)[THERMOSTAT_SERIAL]
+
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.product_id_description == (
+        "Nest Thermostat E Display (1st Generation)"
+    )
+    assert thermostat.product_revision == 8
+    assert thermostat.hardware_version == (
+        "Nest Thermostat E Display (1st Generation) rev 8"
+    )
+
+
+async def test_protobuf_thermostat_hardware_version_without_revision(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """ProductRevision has no field presence, so an unset one must not read as rev 0."""
+    identity: weave_description_pb2.DeviceIdentityTrait = raw_data[THERMOSTAT_KEY][
+        weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name
+    ]
+    identity.ClearField("productRevision")
+
+    thermostat = _by_serial(parser, raw_data)[THERMOSTAT_SERIAL]
+
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.product_revision is None
+    assert thermostat.hardware_version == "Nest Thermostat E Display (1st Generation)"
 
 
 async def test_protobuf_thermostat_reports_no_stage_while_idle(

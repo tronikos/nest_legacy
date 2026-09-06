@@ -189,11 +189,9 @@ async def test_duplicate_account_aborts(
 async def test_dhcp_discovery_starts_user_flow(hass: HomeAssistant) -> None:
     """DHCP discovery falls through to the normal account setup flow.
 
-    nest_legacy supports multiple config entries (multiple Nest accounts),
-    so there is no custom async_step_dhcp — the inherited default
-    (_async_step_discovery_without_unique_id) handles this correctly, and
-    duplicate-account detection happens later via the account's own
-    unique_id once credentials are entered.
+    There is no custom async_step_dhcp; the inherited default
+    (_async_step_discovery_without_unique_id) shows the user step, so a
+    discovered Nest device is only a shortcut into the usual setup.
     """
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
@@ -236,6 +234,31 @@ async def test_dhcp_discovery_aborts_if_already_in_progress(
 
     assert second["type"] is FlowResultType.ABORT
     assert second["reason"] == "already_in_progress"
+
+
+async def test_dhcp_discovery_aborts_once_an_account_is_configured(
+    hass: HomeAssistant, mock_config_entry: MockConfigEntry
+) -> None:
+    """Discovery stops offering setup once any account exists.
+
+    The inherited default aborts as soon as the handler has a config entry,
+    so a second Nest account has to be added manually rather than through a
+    discovered device.
+    """
+    mock_config_entry.add_to_hass(hass)
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": SOURCE_DHCP},
+        data=DhcpServiceInfo(
+            ip="192.168.1.5",
+            hostname="nest",
+            macaddress="18b430aabbcc",
+        ),
+    )
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "already_configured"
 
 
 async def test_reauth(

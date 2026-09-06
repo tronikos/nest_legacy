@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
+from .const import DOMAIN
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
 from .pynest.exceptions import PynestException
@@ -76,6 +77,7 @@ class NestCameraEntity(NestEntity[NestCameraModel], Camera):
             return await self.coordinator.client.async_get_camera_snapshot(self.device)
         except (ClientError, TimeoutError, PynestException) as err:
             raise HomeAssistantError(
-                f"Error fetching snapshot for camera {self.device.location} "
-                f"{self.device.name}: {err}"
+                translation_domain=DOMAIN,
+                translation_key="camera_snapshot_failed",
+                translation_placeholders={"camera_name": self.device.name},
             ) from err
