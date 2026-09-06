@@ -5,6 +5,17 @@
   "codeowners": ["@tronikos"],
   "config_flow": true,
   "dependencies": ["http"],
+  "dhcp": [
+    {
+      "macaddress": "18B430*"
+    },
+    {
+      "macaddress": "641666*"
+    },
+    {
+      "macaddress": "D8EB46*"
+    }
+  ],
   "documentation": "https://github.com/tronikos/nest_legacy",
   "integration_type": "hub",
   "iot_class": "cloud_push",
