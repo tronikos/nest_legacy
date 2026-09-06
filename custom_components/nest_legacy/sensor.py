@@ -24,6 +24,7 @@ from homeassistant.helpers.typing import StateType
 
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
+from .pynest.enums import ThermostatHvacStage
 from .pynest.models import (
     NestCamera,
     NestDevice,
@@ -133,6 +134,14 @@ _DESCRIPTIONS: tuple[NestSensorEntityDescription, ...] = (
         device_types=(NestTempSensor, NestThermostat, NestHeatLink),
     ),
     # Thermostat
+    NestSensorEntityDescription(
+        key="hvac_stage",
+        translation_key="hvac_stage",
+        value_fn=lambda device: device.hvac_stage,
+        device_class=SensorDeviceClass.ENUM,
+        options=[stage.value for stage in ThermostatHvacStage],
+        device_types=(NestThermostat,),
+    ),
     NestSensorEntityDescription(
         key="current_humidity",
         translation_key="humidity",

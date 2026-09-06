@@ -49,7 +49,7 @@ This integration creates a rich set of entities for your Nest devices based on t
 
 - **Climate:** Full control over temperature, HVAC modes (Heat, Cool, Heat/Cool, Off), and Presets (None, Eco). Supports Target Humidity if a humidifier/dehumidifier is present.
 - **Fan:** Independent control of the fan (On/Off, Speed/Percentage). You can also run the fan for a specific duration using the `nest_legacy.set_fan_timer` action.
-- **Sensors:** Current Temperature, Target Temperature, Humidity, Target Humidity, Backplate Temperature, Filter Runtime.
+- **Sensors:** Current Temperature, Target Temperature, Humidity, Target Humidity, Backplate Temperature, Filter Runtime, HVAC Stage (which heating or cooling stage is running).
 - **Binary Sensors:** Occupancy, Leaf status (Eco indicator), Filter Replacement Needed.
 - **Switches:** Temperature Lock, Dehumidifier State.
 - **Number:** Dual Fuel Breakpoint, the outdoor temperature below which the alternate heat source is used instead of the heat pump. Only on dual fuel systems.

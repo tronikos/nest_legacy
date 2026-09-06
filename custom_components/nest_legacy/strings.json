@@ -188,6 +188,22 @@
       "humidity": {
         "name": "Humidity"
       },
+      "hvac_stage": {
+        "name": "HVAC stage",
+        "state": {
+          "alternate_heat_stage_1": "Alternate heating stage 1",
+          "alternate_heat_stage_2": "Alternate heating stage 2",
+          "auxiliary_heat": "Auxiliary heat",
+          "cool_stage_1": "Cooling stage 1",
+          "cool_stage_2": "Cooling stage 2",
+          "cool_stage_3": "Cooling stage 3",
+          "emergency_heat": "Emergency heat",
+          "heat_stage_1": "Heating stage 1",
+          "heat_stage_2": "Heating stage 2",
+          "heat_stage_3": "Heating stage 3",
+          "off": "Off"
+        }
+      },
       "last_action": {
         "name": "Last action",
         "state": {

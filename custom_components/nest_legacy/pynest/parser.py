@@ -16,6 +16,7 @@ from .enums import (
     StructureMode,
     TemperatureScale,
     ThermostatHvacMode,
+    ThermostatHvacStage,
     ThermostatHvacState,
 )
 from .models import (
@@ -1107,6 +1108,39 @@ class NestParser:
             hvac_state = ThermostatHvacState.FAN
         return hvac_state
 
+    @staticmethod
+    def _parse_proto_hvac_stage(
+        hvac_trait: nest_hvac_pb2.HvacControlTrait,
+    ) -> ThermostatHvacStage:
+        """Return the stage the equipment is running, OFF when idle.
+
+        The HVAC state collapses every stage into HEATING/COOLING, so the stage
+        is kept separately (issue #66). Stages stack, so the most capable one
+        wins: supplemental heat first, then the highest stage number.
+        """
+        state = hvac_trait.hvacState
+        if state.emergencyHeatActive:
+            return ThermostatHvacStage.EMERGENCY_HEAT
+        if state.auxiliaryHeatActive:
+            return ThermostatHvacStage.AUXILIARY_HEAT
+        if state.alternateHeatStage2Active:
+            return ThermostatHvacStage.ALTERNATE_HEAT_STAGE_2
+        if state.alternateHeatStage1Active:
+            return ThermostatHvacStage.ALTERNATE_HEAT_STAGE_1
+        if state.heatStage3Active:
+            return ThermostatHvacStage.HEAT_STAGE_3
+        if state.heatStage2Active:
+            return ThermostatHvacStage.HEAT_STAGE_2
+        if state.heatStage1Active:
+            return ThermostatHvacStage.HEAT_STAGE_1
+        if state.coolStage3Active:
+            return ThermostatHvacStage.COOL_STAGE_3
+        if state.coolStage2Active:
+            return ThermostatHvacStage.COOL_STAGE_2
+        if state.coolStage1Active:
+            return ThermostatHvacStage.COOL_STAGE_1
+        return ThermostatHvacStage.OFF
+
     def _parse_proto_fan(
         self, traits: dict[str, Any]
     ) -> tuple[bool, bool, int, int, int, int]:
@@ -1570,6 +1604,7 @@ class NestParser:
 
         # HVAC State (using helper)
         hvac_state = self._parse_proto_hvac_state(hvac_trait, fan_state)
+        hvac_stage = self._parse_proto_hvac_stage(hvac_trait)
 
         # Temperature Lock Settings
         lock_trait: nest_hvac_pb2.TemperatureLockSettingsTrait | None = traits.get(
@@ -1663,6 +1698,7 @@ class NestParser:
             target_humidity=target_humidity,
             hvac_mode=hvac_mode,
             hvac_state=hvac_state,
+            hvac_stage=hvac_stage,
             is_eco_mode=is_eco_mode,
             leaf=leaf,
             fan_state=fan_state,

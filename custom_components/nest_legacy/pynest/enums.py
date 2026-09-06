@@ -79,6 +79,23 @@ class ThermostatHvacState(StrEnum):
 
 
 @unique
+class ThermostatHvacStage(StrEnum):
+    """Nest Thermostat HVAC stages."""
+
+    OFF = "off"
+    COOL_STAGE_1 = "cool_stage_1"
+    COOL_STAGE_2 = "cool_stage_2"
+    COOL_STAGE_3 = "cool_stage_3"
+    HEAT_STAGE_1 = "heat_stage_1"
+    HEAT_STAGE_2 = "heat_stage_2"
+    HEAT_STAGE_3 = "heat_stage_3"
+    ALTERNATE_HEAT_STAGE_1 = "alternate_heat_stage_1"
+    ALTERNATE_HEAT_STAGE_2 = "alternate_heat_stage_2"
+    AUXILIARY_HEAT = "auxiliary_heat"
+    EMERGENCY_HEAT = "emergency_heat"
+
+
+@unique
 class ThermostatHvacMode(StrEnum):
     """Nest Thermostat HVAC modes."""
 

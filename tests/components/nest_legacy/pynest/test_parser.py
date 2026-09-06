@@ -8,6 +8,7 @@ from custom_components.nest_legacy.pynest.enums import (
     StructureMode,
     TemperatureScale,
     ThermostatHvacMode,
+    ThermostatHvacStage,
     ThermostatHvacState,
 )
 from custom_components.nest_legacy.pynest.models import (
@@ -17,6 +18,9 @@ from custom_components.nest_legacy.pynest.models import (
     NestThermostat,
 )
 from custom_components.nest_legacy.pynest.parser import NestParser
+from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
+    hvac_pb2 as nest_hvac_pb2,
+)
 import pytest
 
 from homeassistant.core import HomeAssistant
@@ -27,6 +31,8 @@ from ..const import (
     LOCK_SERIAL,
     PROTECT_SERIAL,
     TEMP_SENSOR_SERIAL,
+    THERMOSTAT_KEY,
+    THERMOSTAT_SERIAL,
     protobuf_updates,
 )
 
@@ -52,6 +58,16 @@ def _by_serial(parser: NestParser, raw_data: dict[str, Any]) -> dict[str, Any]:
     return {
         device.serial_number: device for device in parser.parse_all(raw_data).devices
     }
+
+
+def _hvac_state(
+    raw_data: dict[str, Any],
+) -> nest_hvac_pb2.HvacControlTrait.HvacState:
+    """Return the mutable HVAC state of the protobuf thermostat."""
+    hvac_trait: nest_hvac_pb2.HvacControlTrait = raw_data[THERMOSTAT_KEY][
+        nest_hvac_pb2.HvacControlTrait.DESCRIPTOR.full_name
+    ]
+    return hvac_trait.hvacState
 
 
 async def test_every_device_type_is_parsed(
@@ -94,6 +110,8 @@ async def test_thermostat_values(parser: NestParser, raw_data: dict[str, Any]) -
     assert thermostat.temperature_scale is TemperatureScale.FAHRENHEIT
     assert thermostat.hvac_mode is ThermostatHvacMode.HEAT
     assert thermostat.hvac_state is ThermostatHvacState.HEATING
+    # Stages are protobuf only; the REST API reports heating without the stage.
+    assert thermostat.hvac_stage is None
     assert thermostat.can_heat
     assert thermostat.can_cool
     assert thermostat.online
@@ -286,6 +304,77 @@ async def test_protobuf_thermostat_dual_fuel(
     assert thermostat.has_dual_fuel
     assert thermostat.dual_fuel_breakpoint == pytest.approx(-2.187271, abs=1e-5)
     assert thermostat.temperature_scale is TemperatureScale.FAHRENHEIT
+
+
+async def test_protobuf_thermostat_reports_no_stage_while_idle(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """An idle protobuf thermostat runs no stage; see issue #66."""
+    thermostat = _by_serial(parser, raw_data)[THERMOSTAT_SERIAL]
+
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.hvac_state is ThermostatHvacState.OFF
+    assert thermostat.hvac_stage is ThermostatHvacStage.OFF
+
+
+@pytest.mark.parametrize(
+    ("flag", "expected"),
+    [
+        ("coolStage1Active", ThermostatHvacStage.COOL_STAGE_1),
+        ("coolStage2Active", ThermostatHvacStage.COOL_STAGE_2),
+        ("coolStage3Active", ThermostatHvacStage.COOL_STAGE_3),
+        ("heatStage1Active", ThermostatHvacStage.HEAT_STAGE_1),
+        ("heatStage2Active", ThermostatHvacStage.HEAT_STAGE_2),
+        ("heatStage3Active", ThermostatHvacStage.HEAT_STAGE_3),
+        ("alternateHeatStage1Active", ThermostatHvacStage.ALTERNATE_HEAT_STAGE_1),
+        ("alternateHeatStage2Active", ThermostatHvacStage.ALTERNATE_HEAT_STAGE_2),
+        ("auxiliaryHeatActive", ThermostatHvacStage.AUXILIARY_HEAT),
+        ("emergencyHeatActive", ThermostatHvacStage.EMERGENCY_HEAT),
+    ],
+)
+def test_protobuf_thermostat_stage(
+    parser: NestParser,
+    raw_data: dict[str, Any],
+    flag: str,
+    expected: ThermostatHvacStage,
+) -> None:
+    """Every stage flag the thermostat reports is parsed; see issue #66."""
+    setattr(_hvac_state(raw_data), flag, True)
+
+    thermostat = _by_serial(parser, raw_data)[THERMOSTAT_SERIAL]
+
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.hvac_stage is expected
+
+
+def test_protobuf_thermostat_stage_reports_the_most_capable_stage(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """Stages stack, so supplemental heat and higher stages win; see issue #66."""
+    hvac_state = _hvac_state(raw_data)
+    hvac_state.coolStage1Active = True
+    hvac_state.heatStage1Active = True
+    hvac_state.heatStage2Active = True
+
+    thermostat = _by_serial(parser, raw_data)[THERMOSTAT_SERIAL]
+
+    assert thermostat.hvac_stage is ThermostatHvacStage.HEAT_STAGE_2
+    # The state stays collapsed; only the stage says which equipment is running.
+    assert thermostat.hvac_state is ThermostatHvacState.HEATING
+
+    hvac_state.auxiliaryHeatActive = True
+
+    assert (
+        _by_serial(parser, raw_data)[THERMOSTAT_SERIAL].hvac_stage
+        is ThermostatHvacStage.AUXILIARY_HEAT
+    )
+
+    hvac_state.emergencyHeatActive = True
+
+    assert (
+        _by_serial(parser, raw_data)[THERMOSTAT_SERIAL].hvac_stage
+        is ThermostatHvacStage.EMERGENCY_HEAT
+    )
 
 
 async def test_empty_payload(parser: NestParser) -> None:

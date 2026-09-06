@@ -1507,3 +1507,82 @@
     'state': '0',
   })
 # ---
+# name: test_entities[sensor.hallway_hallway_upstairs_hvac_stage-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'off',
+        'cool_stage_1',
+        'cool_stage_2',
+        'cool_stage_3',
+        'heat_stage_1',
+        'heat_stage_2',
+        'heat_stage_3',
+        'alternate_heat_stage_1',
+        'alternate_heat_stage_2',
+        'auxiliary_heat',
+        'emergency_heat',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.hallway_hallway_upstairs_hvac_stage',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'HVAC stage',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'HVAC stage',
+    'platform': 'nest_legacy',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'hvac_stage',
+    'unique_id': '18B430DDDDDD0002-hvac_stage',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor.hallway_hallway_upstairs_hvac_stage-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.ATTRIBUTION: 'attribution'>: 'Data provided by Google/Nest',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hallway Upstairs HVAC stage',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'off',
+        'cool_stage_1',
+        'cool_stage_2',
+        'cool_stage_3',
+        'heat_stage_1',
+        'heat_stage_2',
+        'heat_stage_3',
+        'alternate_heat_stage_1',
+        'alternate_heat_stage_2',
+        'auxiliary_heat',
+        'emergency_heat',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.hallway_hallway_upstairs_hvac_stage',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---

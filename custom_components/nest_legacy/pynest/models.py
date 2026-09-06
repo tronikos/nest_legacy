@@ -13,6 +13,7 @@ from .enums import (
     StructureMode,
     TemperatureScale,
     ThermostatHvacMode,
+    ThermostatHvacStage,
     ThermostatHvacState,
 )
 
@@ -113,6 +114,9 @@ class NestThermostat(NestDevice):
     target_humidity: float | None = None
     hvac_state: ThermostatHvacState = ThermostatHvacState.OFF
     hvac_mode: ThermostatHvacMode = ThermostatHvacMode.OFF
+    # Which stage the equipment is running, OFF when idle. None on the legacy
+    # API, which reports heating/cooling without the stage.
+    hvac_stage: ThermostatHvacStage | None = None
     is_eco_mode: bool = False
     can_heat: bool = False
     can_cool: bool = False
