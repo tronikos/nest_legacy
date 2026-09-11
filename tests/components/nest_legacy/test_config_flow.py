@@ -8,6 +8,7 @@ from aiohttp import ClientError
 from custom_components.nest_legacy.const import (
     CONF_ACCOUNT_TYPE,
     CONF_COOKIES,
+    CONF_ENABLE_CAMERA_EVENTS,
     CONF_ENABLE_PROTOBUF_CAMERA,
     CONF_ENABLE_PROTOBUF_LOCK,
     CONF_ENABLE_PROTOBUF_PROTECT,
@@ -343,6 +344,7 @@ async def test_options_flow(
     assert result["step_id"] == "user"
 
     options = {
+        CONF_ENABLE_CAMERA_EVENTS: False,
         CONF_EVENT_POLL_INTERVAL: 30,
         CONF_ENABLE_PROTOBUF_LOCK: False,
         CONF_ENABLE_PROTOBUF_THERMOSTAT: False,

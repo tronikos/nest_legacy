@@ -21,6 +21,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from .const import (
     CONF_ACCOUNT_TYPE,
     CONF_COOKIES,
+    CONF_ENABLE_CAMERA_EVENTS,
     CONF_ENABLE_PROTOBUF_CAMERA,
     CONF_ENABLE_PROTOBUF_LOCK,
     CONF_ENABLE_PROTOBUF_PROTECT,
@@ -29,6 +30,7 @@ from .const import (
     CONF_EVENT_POLL_INTERVAL,
     CONF_FIELD_TEST,
     CONF_ISSUE_TOKEN,
+    DEFAULT_ENABLE_CAMERA_EVENTS,
     DEFAULT_EVENT_POLL_INTERVAL,
     DOMAIN,
 )
@@ -294,9 +296,22 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             self._observe_task = self.config_entry.async_create_background_task(
                 self.hass, self._async_observe_for_updates(), "nest-observe-protobuf"
             )
-            self._poll_task = self.config_entry.async_create_background_task(
-                self.hass, self._async_poll_camera_events(), "nest-poll-events"
-            )
+            # Camera event polling is opt-out. It runs forever for every online,
+            # streaming camera, and an install that only wants thermostats or
+            # temperature sensors gets nothing from it but API traffic and
+            # repeated warnings. None of the protobuf options above stop it -
+            # they only choose which channel a device type arrives on.
+            if self.config_entry.options.get(
+                CONF_ENABLE_CAMERA_EVENTS, DEFAULT_ENABLE_CAMERA_EVENTS
+            ):
+                self._poll_task = self.config_entry.async_create_background_task(
+                    self.hass, self._async_poll_camera_events(), "nest-poll-events"
+                )
+            else:
+                _LOGGER.debug(
+                    "Camera event polling disabled by the %s option; not starting it",
+                    CONF_ENABLE_CAMERA_EVENTS,
+                )
 
     def async_stop_subscriber(self) -> None:
         """Stop the background task."""

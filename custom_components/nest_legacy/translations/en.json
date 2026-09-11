@@ -339,12 +339,21 @@
         "step": {
             "user": {
                 "data": {
+                    "enable_camera_events": "Poll camera events",
                     "enable_protobuf_camera": "Enable Protobuf for cameras (recommended for Google accounts)",
                     "enable_protobuf_lock": "Enable Protobuf for locks (recommended)",
                     "enable_protobuf_protect": "Enable Protobuf for Protects (experimental)",
                     "enable_protobuf_structure": "Enable Protobuf for structure (experimental)",
                     "enable_protobuf_thermostat": "Enable Protobuf for thermostats (recommended)",
                     "event_poll_interval": "Camera event poll interval (seconds)"
+                },
+                "data_description": {
+                    "enable_camera_events": "Poll Nest's camera event API. Turn this off if you do not use camera events - it stops the repeated event polling and the warnings it produces, and does not affect any other device type.",
+                    "enable_protobuf_camera": "Chooses which API cameras arrive on, not whether cameras are used. Turning this off does not stop camera data or camera event polling - see \"Poll camera events\" for that.",
+                    "enable_protobuf_lock": "Chooses which API Nest x Yale locks arrive on, not whether locks are used.",
+                    "enable_protobuf_protect": "Chooses which API Nest Protects arrive on, not whether Protects are used. Protects are supported either way; leave this off unless you are troubleshooting.",
+                    "enable_protobuf_structure": "Chooses which API home/structure data arrives on, not whether it is used.",
+                    "enable_protobuf_thermostat": "Chooses which API thermostats arrive on, not whether thermostats are used."
                 }
             }
         }

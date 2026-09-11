@@ -20,6 +20,7 @@ from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from .const import (
     CONF_ACCOUNT_TYPE,
     CONF_COOKIES,
+    CONF_ENABLE_CAMERA_EVENTS,
     CONF_ENABLE_PROTOBUF_CAMERA,
     CONF_ENABLE_PROTOBUF_LOCK,
     CONF_ENABLE_PROTOBUF_PROTECT,
@@ -28,6 +29,7 @@ from .const import (
     CONF_EVENT_POLL_INTERVAL,
     CONF_FIELD_TEST,
     CONF_ISSUE_TOKEN,
+    DEFAULT_ENABLE_CAMERA_EVENTS,
     DEFAULT_EVENT_POLL_INTERVAL,
     DOMAIN,
     LOGGER,
@@ -192,6 +194,12 @@ class NestOptionsFlowHandler(OptionsFlowWithReload):
             return self.async_create_entry(title="", data=user_input)
 
         options = {
+            vol.Optional(
+                CONF_ENABLE_CAMERA_EVENTS,
+                default=self.config_entry.options.get(
+                    CONF_ENABLE_CAMERA_EVENTS, DEFAULT_ENABLE_CAMERA_EVENTS
+                ),
+            ): bool,
             vol.Optional(
                 CONF_EVENT_POLL_INTERVAL,
                 default=self.config_entry.options.get(
