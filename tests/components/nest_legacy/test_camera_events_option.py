@@ -126,7 +126,7 @@ async def test_turning_the_option_off_through_the_options_flow_stops_polling(
     """The actual user story, driven the way a person drives it.
 
     Goes through the options flow rather than writing the entry directly,
-    because that is the only path that proves what Blair will experience: submit
+    because that is the only path that proves what a user will experience: submit
     the form, the noise stops, without reloading anything by hand. The options
     flow subclasses ``OptionsFlowWithReload``, so Home Assistant reloads the
     entry itself — asserting on the stored option value would pass even if the
