@@ -1259,6 +1259,18 @@ class NestParser:
             has_humidifier = capabilities_trait.hasHumidifier
             has_air_filter = capabilities_trait.hasAirFilter
 
+        # Not every Heat Link sets the hot water flags on
+        # HvacEquipmentCapabilitiesTrait: a Thermostat E with a Heat Link can
+        # report heat stages only. The hot water traits themselves prove the
+        # thermostat drives a Heat Link, so fall back to them; without this the
+        # Heat Link device is never created and the water heater entity is
+        # missing altogether.
+        if (
+            nest_hvac_pb2.HotWaterTrait.DESCRIPTOR.full_name in traits
+            or nest_hvac_pb2.HotWaterSettingsTrait.DESCRIPTOR.full_name in traits
+        ):
+            has_hot_water_control = True
+
         return (
             can_heat,
             can_cool,
