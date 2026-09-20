@@ -211,3 +211,12 @@ async def test_observe_reports_a_failed_connection(
 
     with pytest.raises(PynestException):
         await _collect(client)
+
+
+async def test_observe_requests_the_heat_link_settings(client: NestClient) -> None:
+    """Only the traits asked for are delivered.
+
+    The Heat Link connection type lives on HeatLinkSettingsTrait, so a
+    thermostat's Heat Link cannot be recognised without subscribing to it.
+    """
+    assert nest_hvac_pb2.HeatLinkSettingsTrait in client._observe_traits
