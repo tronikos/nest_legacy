@@ -8,7 +8,7 @@ ci:
   skip: [mypy, pylint]
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.16.8
+    rev: v0.16.9
     hooks:
       - id: ruff-check
         args:
@@ -36,7 +36,7 @@ repos:
     hooks:
       - id: yamllint
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.9.8
+    rev: v3.9.9
     hooks:
       - id: prettier
         additional_dependencies:
