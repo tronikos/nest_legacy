@@ -12,6 +12,7 @@ from syrupy.assertion import SnapshotAssertion
 
 from homeassistant.components.water_heater import (
     ATTR_CURRENT_TEMPERATURE,
+    ATTR_OPERATION_LIST,
     ATTR_OPERATION_MODE,
     DOMAIN as WATER_HEATER_DOMAIN,
     SERVICE_SET_OPERATION_MODE,
@@ -218,3 +219,62 @@ async def test_no_entity_without_hot_water(
     await setup_integration(hass, mock_config_entry)
 
     assert hass.states.get(ENTITY_ID) is None
+
+
+async def test_heat_link_without_capability_flags(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    protobuf_heat_link: dict[str, Any],
+) -> None:
+    """The hot water traits alone prove control when the capabilities omit it.
+
+    Some Heat Links report heat stages on HvacEquipmentCapabilitiesTrait without
+    ever setting the hot water flags, while the thermostat does publish
+    HotWaterTrait and HotWaterSettingsTrait.
+    """
+    capabilities = protobuf_heat_link[
+        nest_hvac_pb2.HvacEquipmentCapabilitiesTrait.DESCRIPTOR.full_name
+    ]
+    capabilities.hasHotWaterControl = False
+    capabilities.hasHotWaterTemperature = False
+    await setup_integration(hass, mock_config_entry)
+
+    state = hass.states.get(ENTITY_ID)
+
+    assert state is not None
+    assert state.attributes[ATTR_OPERATION_MODE] == "schedule"
+    assert "boost_1h" in state.attributes[ATTR_OPERATION_LIST]
+
+
+async def test_heat_link_from_the_connection_type(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    protobuf_heat_link: dict[str, Any],
+) -> None:
+    """The Heat Link connection type creates the entity when traits carry no data.
+
+    A Thermostat E reports hotWaterConnectionType NOT_CONNECTED while hot water
+    runs over heatConnectionType.
+    """
+    capabilities = protobuf_heat_link[
+        nest_hvac_pb2.HvacEquipmentCapabilitiesTrait.DESCRIPTOR.full_name
+    ]
+    capabilities.hasHotWaterControl = False
+    capabilities.hasHotWaterTemperature = False
+    protobuf_heat_link[nest_hvac_pb2.HotWaterTrait.DESCRIPTOR.full_name] = (
+        nest_hvac_pb2.HotWaterTrait()
+    )
+    protobuf_heat_link[nest_hvac_pb2.HotWaterSettingsTrait.DESCRIPTOR.full_name] = (
+        nest_hvac_pb2.HotWaterSettingsTrait()
+    )
+    protobuf_heat_link[nest_hvac_pb2.HeatLinkSettingsTrait.DESCRIPTOR.full_name] = (
+        nest_hvac_pb2.HeatLinkSettingsTrait(
+            heatConnectionType=nest_hvac_pb2.HeatLinkSettingsTrait.HeatLinkConnectionType.HEAT_LINK_CONNECTION_TYPE_ON_OFF,
+            hotWaterConnectionType=nest_hvac_pb2.HeatLinkSettingsTrait.HeatLinkConnectionType.HEAT_LINK_CONNECTION_TYPE_NOT_CONNECTED,
+        )
+    )
+    await setup_integration(hass, mock_config_entry)
+
+    assert hass.states.get(ENTITY_ID) is not None

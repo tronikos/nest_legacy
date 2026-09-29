@@ -7,6 +7,7 @@ import time
 from typing import Any
 
 from google.protobuf import duration_pb2, timestamp_pb2
+from google.protobuf.message import Message
 
 from .enums import (
     DualFuelBreakpointOverride,
@@ -180,6 +181,49 @@ def _get_protobuf_location(
             return wheres_map[canonical]
 
     return None
+
+
+def _trait_has_data(trait: Any) -> bool:
+    """Return True when a trait is present and carries at least one field.
+
+    Some traits are delivered as an empty message, so testing for existence
+    alone would treat a device that reports no data as if it reported some.
+    """
+    return isinstance(trait, Message) and trait.ByteSize() > 0
+
+
+# Connection types that mean the Heat Link is actually driving the boiler. A
+# Heat Link that is paired but not wired to the boiler reports NOT_CONNECTED.
+_HEAT_LINK_CONNECTED_TYPES: frozenset[int] = frozenset(
+    {
+        nest_hvac_pb2.HeatLinkSettingsTrait.HeatLinkConnectionType.HEAT_LINK_CONNECTION_TYPE_ON_OFF,
+        nest_hvac_pb2.HeatLinkSettingsTrait.HeatLinkConnectionType.HEAT_LINK_CONNECTION_TYPE_OPENTHERM,
+    }
+)
+
+
+def _heat_link_is_connected(traits: dict[str, Any]) -> bool:
+    """Return True when HeatLinkSettingsTrait reports a usable connection.
+
+    hotWaterConnectionType is NOT_CONNECTED on devices whose hot water runs
+    through the heat connection, so either field counts.
+    """
+    settings = traits.get(nest_hvac_pb2.HeatLinkSettingsTrait.DESCRIPTOR.full_name)
+    if not isinstance(settings, nest_hvac_pb2.HeatLinkSettingsTrait):
+        return False
+    return (
+        settings.heatConnectionType in _HEAT_LINK_CONNECTED_TYPES
+        or settings.hotWaterConnectionType in _HEAT_LINK_CONNECTED_TYPES
+    )
+
+
+def _hot_water_traits_report_data(traits: dict[str, Any]) -> bool:
+    """Return True when the hot water traits carry actual hot water data."""
+    return _trait_has_data(
+        traits.get(nest_hvac_pb2.HotWaterTrait.DESCRIPTOR.full_name)
+    ) or _trait_has_data(
+        traits.get(nest_hvac_pb2.HotWaterSettingsTrait.DESCRIPTOR.full_name)
+    )
 
 
 def _milli_volt_to_percentage(state: int) -> float:
@@ -1258,6 +1302,16 @@ class NestParser:
             has_hot_water_temperature = capabilities_trait.hasHotWaterTemperature
             has_humidifier = capabilities_trait.hasHumidifier
             has_air_filter = capabilities_trait.hasAirFilter
+
+        # Not every Heat Link sets the hot water flags on
+        # HvacEquipmentCapabilitiesTrait: a Thermostat E with a Heat Link can
+        # report heat stages only. A usable connection type on
+        # HeatLinkSettingsTrait, or hot water traits that actually carry data,
+        # prove the thermostat drives a Heat Link; without one of those the
+        # Heat Link device is never created, so the water heater entity and its
+        # Home/Away Assist switch are missing altogether.
+        if _hot_water_traits_report_data(traits) or _heat_link_is_connected(traits):
+            has_hot_water_control = True
 
         return (
             can_heat,
