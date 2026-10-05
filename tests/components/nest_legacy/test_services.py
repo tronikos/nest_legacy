@@ -113,6 +113,28 @@ async def test_set_user_schedule(
     assert timebox is None
 
 
+async def test_device_lookup_does_not_read_deprecated_config_entries(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    device_registry: dr.DeviceRegistry,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A device_id lookup must not read DeviceEntry.config_entries."""
+    await hass.services.async_call(
+        DOMAIN,
+        "delete_user_schedule",
+        {
+            "device_id": _lock_device_id(device_registry, init_integration),
+            "user_id": "GUEST_1234",
+        },
+        blocking=True,
+    )
+
+    mock_nest_client.async_delete_user_schedule.assert_called_once()
+    assert "DeviceEntry.config_entries" not in caplog.text
+
+
 async def test_delete_user_schedule(
     hass: HomeAssistant,
     init_integration: MockConfigEntry,

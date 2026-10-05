@@ -34,10 +34,13 @@ def async_setup_services(hass: HomeAssistant) -> None:
         config_entry_id = call.data.get("config_entry_id")
         device_id = call.data.get("device_id")
         if not config_entry_id and device_id:
-            device_registry = dr.async_get(hass)
-            device_entry = device_registry.async_get(device_id)
-            if device_entry and device_entry.config_entries:
-                config_entry_id = next(iter(device_entry.config_entries), None)
+            _device_entry, config_entry = (
+                dr.async_get_device_and_config_entry_for_domain(
+                    hass, device_id, domain=DOMAIN
+                )
+            )
+            if config_entry is not None:
+                config_entry_id = config_entry.entry_id
 
         entry = None
         if not config_entry_id:
