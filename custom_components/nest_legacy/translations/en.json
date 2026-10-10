@@ -41,6 +41,9 @@
     },
     "entity": {
         "binary_sensor": {
+            "als_test": {
+                "name": "Ambient light sensor test"
+            },
             "battery_health": {
                 "name": "Battery health"
             },
@@ -64,6 +67,9 @@
             },
             "humidity_test": {
                 "name": "Humidity test"
+            },
+            "hushed": {
+                "name": "Alarm hushed"
             },
             "led_test": {
                 "name": "LED test"
@@ -91,6 +97,9 @@
             },
             "tamper": {
                 "name": "Tamper"
+            },
+            "temperature_test": {
+                "name": "Temperature sensor test"
             },
             "wifi_test": {
                 "name": "WiFi test"
@@ -182,6 +191,9 @@
             "battery_voltage": {
                 "name": "Battery voltage"
             },
+            "co_previous_peak": {
+                "name": "CO previous peak"
+            },
             "fan_duration_config": {
                 "name": "Fan duration configuration"
             },
@@ -229,6 +241,12 @@
             },
             "replace_by": {
                 "name": "Replace by"
+            },
+            "safety_critical_failures": {
+                "name": "Safety critical failures"
+            },
+            "safety_warnings": {
+                "name": "Safety warnings"
             },
             "target_humidity": {
                 "name": "Target humidity"

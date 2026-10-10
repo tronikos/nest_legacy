@@ -12,6 +12,7 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.const import (
+    CONCENTRATION_PARTS_PER_MILLION,
     PERCENTAGE,
     EntityCategory,
     UnitOfElectricPotential,
@@ -31,6 +32,7 @@ from .pynest.models import (
     NestHeatLink,
     NestLock,
     NestProtect,
+    NestStructure,
     NestTempSensor,
     NestThermostat,
 )
@@ -121,6 +123,35 @@ _DESCRIPTIONS: tuple[NestSensorEntityDescription, ...] = (
         entity_category=EntityCategory.DIAGNOSTIC,
         device_types=(NestProtect,),
         entity_registry_enabled_default=False,
+    ),
+    NestSensorEntityDescription(
+        key="co_previous_peak",
+        translation_key="co_previous_peak",
+        value_fn=lambda device: device.co_previous_peak,
+        device_class=SensorDeviceClass.CO,
+        native_unit_of_measurement=CONCENTRATION_PARTS_PER_MILLION,
+        state_class=SensorStateClass.MEASUREMENT,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        device_types=(NestProtect,),
+    ),
+    # Structure safety summary (all Protects in the home)
+    NestSensorEntityDescription(
+        key="safety_critical_failures",
+        translation_key="safety_critical_failures",
+        icon="mdi:shield-alert",
+        value_fn=lambda device: device.safety_critical_failures,
+        state_class=SensorStateClass.MEASUREMENT,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        device_types=(NestStructure,),
+    ),
+    NestSensorEntityDescription(
+        key="safety_warnings",
+        translation_key="safety_warnings",
+        icon="mdi:shield-half-full",
+        value_fn=lambda device: device.safety_warnings,
+        state_class=SensorStateClass.MEASUREMENT,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        device_types=(NestStructure,),
     ),
     # Temp Sensor
     NestSensorEntityDescription(

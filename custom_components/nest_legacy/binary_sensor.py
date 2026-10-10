@@ -16,9 +16,11 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from .coordinator import NestConfigEntry, NestCoordinator
 from .entity import NestEntity
 from .pynest.models import (
+    NestCamera,
     NestDevice,
     NestLock,
     NestProtect,
+    NestTempSensor,
     NestThermostat,
     NestWiredProtect,
 )
@@ -33,9 +35,26 @@ class NestBinarySensorEntityDescription(BinarySensorEntityDescription):
     value_fn: Callable[[Any], bool]
     device_types: tuple[type[NestDevice], ...]
     unavailable_on_protobuf: bool = False
+    # Keep the entity available while the device is offline (connectivity).
+    available_when_offline: bool = False
 
 
 _DESCRIPTIONS: tuple[NestBinarySensorEntityDescription, ...] = (
+    # Every physical device: whether Nest currently sees it as online
+    NestBinarySensorEntityDescription(
+        key="online",
+        device_class=BinarySensorDeviceClass.CONNECTIVITY,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        value_fn=lambda device: device.online,
+        device_types=(
+            NestProtect,
+            NestThermostat,
+            NestTempSensor,
+            NestCamera,
+            NestLock,
+        ),
+        available_when_offline=True,
+    ),
     # Protect sensors
     # Core Safety
     NestBinarySensorEntityDescription(
@@ -57,6 +76,15 @@ _DESCRIPTIONS: tuple[NestBinarySensorEntityDescription, ...] = (
         translation_key="heat_status",
         device_class=BinarySensorDeviceClass.HEAT,
         value_fn=lambda device: device.heat_status,
+        device_types=(NestProtect,),
+        unavailable_on_protobuf=True,  # No Protobuf trait available
+    ),
+    # On while an alarm or pre-alarm has been silenced from the app or device
+    NestBinarySensorEntityDescription(
+        key="hushed_state",
+        translation_key="hushed",
+        icon="mdi:bell-sleep",
+        value_fn=lambda device: device.hushed_state,
         device_types=(NestProtect,),
         unavailable_on_protobuf=True,  # No Protobuf trait available
     ),
@@ -148,6 +176,26 @@ _DESCRIPTIONS: tuple[NestBinarySensorEntityDescription, ...] = (
         entity_category=EntityCategory.DIAGNOSTIC,
         icon="mdi:water-percent",
         value_fn=lambda device: not device.component_hum_test_passed,
+        device_types=(NestProtect,),
+        entity_registry_enabled_default=False,
+    ),
+    NestBinarySensorEntityDescription(
+        key="component_als_test_passed",
+        translation_key="als_test",
+        device_class=BinarySensorDeviceClass.PROBLEM,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        icon="mdi:brightness-6",
+        value_fn=lambda device: not device.component_als_test_passed,
+        device_types=(NestProtect,),
+        entity_registry_enabled_default=False,
+    ),
+    NestBinarySensorEntityDescription(
+        key="component_temp_test_passed",
+        translation_key="temperature_test",
+        device_class=BinarySensorDeviceClass.PROBLEM,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        icon="mdi:thermometer",
+        value_fn=lambda device: not device.component_temp_test_passed,
         device_types=(NestProtect,),
         entity_registry_enabled_default=False,
     ),
@@ -246,6 +294,14 @@ class NestBinarySensor(NestEntity[NestDevice], BinarySensorEntity):
         super().__init__(coordinator, device)
         self.entity_description = description
         self._attr_unique_id = f"{device.serial_number}-{description.key}"
+
+    @override
+    @property
+    def available(self) -> bool:
+        """Return True if entity is available."""
+        if self.entity_description.available_when_offline:
+            return self._device_data_available()
+        return super().available
 
     @override
     @property

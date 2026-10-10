@@ -43,10 +43,12 @@ class NestEntity(CoordinatorEntity[NestCoordinator], Generic[DeviceT]):  # noqa:
             DeviceT, self.coordinator.data.get(self._device.serial_number, self._device)
         )
 
-    @override
-    @property
-    def available(self) -> bool:
-        """Return True if entity is available."""
+    def _device_data_available(self) -> bool:
+        """Return True if current data for this device is reaching HA.
+
+        This ignores whether the device itself is online, so an entity that
+        reports connectivity can keep reporting while the device is offline.
+        """
         # Check global coordinator offline state
         if not super().available:
             return False
@@ -58,9 +60,13 @@ class NestEntity(CoordinatorEntity[NestCoordinator], Generic[DeviceT]):  # noqa:
         elif not self.coordinator.subscriber_healthy:
             return False
 
-        return (
-            self._device.serial_number in self.coordinator.data and self.device.online
-        )
+        return self._device.serial_number in self.coordinator.data
+
+    @override
+    @property
+    def available(self) -> bool:
+        """Return True if entity is available."""
+        return self._device_data_available() and self.device.online
 
     def generate_device_info(self) -> DeviceInfo:
         """Generate the device info for the entity."""

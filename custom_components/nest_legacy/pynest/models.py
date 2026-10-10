@@ -82,6 +82,12 @@ class NestProtect(NestDevice):
     last_audio_self_test_end_utc_secs: int = 0
     ntp_green_led_enable: bool = False
     heads_up_enable: bool = False
+    # Only reported by the legacy REST API; None when the device is read over
+    # protobuf, so the matching entities are not created there.
+    hushed_state: bool | None = None
+    co_previous_peak: int | None = None
+    component_als_test_passed: bool | None = None
+    component_temp_test_passed: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -247,6 +253,10 @@ class NestStructure(NestDevice):
     """Represents a Nest Structure (i.e., a home)."""
 
     mode: StructureMode = StructureMode.HOME
+    # Safety summary across the structure's Protects (legacy REST API only).
+    # None when the structure has no Protect.
+    safety_critical_failures: int | None = None
+    safety_warnings: int | None = None
 
 
 @dataclass(frozen=True)
