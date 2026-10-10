@@ -29,6 +29,9 @@ LEGACY_HVAC_STAGE_ENTITY = "sensor.hallway_hallway_thermostat_hvac_stage"
 SENSOR_TEMPERATURE_ENTITY = "sensor.bedroom_bedroom_sensor_temperature"
 SENSOR_BATTERY_ENTITY = "sensor.bedroom_bedroom_sensor_battery_level"
 PROTECT_BATTERY_ENTITY = "sensor.hallway_hallway_protect_battery_level"
+CO_PEAK_ENTITY = "sensor.hallway_hallway_protect_co_previous_peak"
+SAFETY_CRITICAL_ENTITY = "sensor.test_home_safety_critical_failures"
+SAFETY_WARNINGS_ENTITY = "sensor.test_home_safety_warnings"
 
 
 @pytest.fixture
@@ -131,3 +134,37 @@ async def test_hvac_stage_is_off_while_idle(
     assert state.state == "off"
 
     assert hass.states.get(LEGACY_HVAC_STAGE_ENTITY) is None
+
+
+@pytest.mark.usefixtures("entity_registry_enabled_by_default")
+async def test_protect_co_previous_peak(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    app_launch_data: dict[str, Any],
+) -> None:
+    """The CO previous peak is reported in ppm."""
+    app_launch_data["topaz.09AA00AA00AA0AA1"]["co_previous_peak"] = 75
+    await setup_integration(hass, mock_config_entry)
+
+    state = hass.states.get(CO_PEAK_ENTITY)
+    assert state.state == "75"
+    assert state.attributes["unit_of_measurement"] == "ppm"
+
+
+@pytest.mark.usefixtures("entity_registry_enabled_by_default")
+async def test_structure_safety_summary(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    app_launch_data: dict[str, Any],
+) -> None:
+    """The home reports how many Protect problems Nest has flagged."""
+    app_launch_data["safety_summary.00000000-0000-0000-0000-000000000001"] = {
+        "total_critical_failures": 1,
+        "total_warnings": 3,
+    }
+    await setup_integration(hass, mock_config_entry)
+
+    assert hass.states.get(SAFETY_CRITICAL_ENTITY).state == "1"
+    assert hass.states.get(SAFETY_WARNINGS_ENTITY).state == "3"

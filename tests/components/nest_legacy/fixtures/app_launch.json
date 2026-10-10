@@ -102,9 +102,18 @@
     "latest_manual_test_end_utc_secs": 1767225600,
     "last_audio_self_test_end_utc_secs": 1767225600,
     "ntp_green_led_enable": true,
-    "heads_up_enable": true
+    "heads_up_enable": true,
+    "structure_id": "00000000-0000-0000-0000-000000000001",
+    "hushed_state": false,
+    "co_previous_peak": 0,
+    "component_als_test_passed": true,
+    "component_temp_test_passed": true
   },
   "widget_track.09AA00AA00AA0AA1": { "online": true },
+  "safety_summary.00000000-0000-0000-0000-000000000001": {
+    "total_critical_failures": 0,
+    "total_warnings": 0
+  },
   "quartz.18B430CCCCCC0002": {
     "serial_number": "18B430CCCCCC0002",
     "description": "Doorbell",

@@ -251,6 +251,21 @@ def _milli_volt_to_percentage(state: int) -> float:
     return 0.0
 
 
+def _optional_bool(value: Any) -> bool | None:
+    """Return a REST boolean field, or None when the device does not send it."""
+    return None if value is None else bool(value)
+
+
+def _optional_int(value: Any) -> int | None:
+    """Return a REST integer field, or None when it is missing or not a number."""
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        return int(value)
+    except TypeError, ValueError:
+        return None
+
+
 def _get_model_from_serial(serial_number: str | None) -> str:
     """Determine thermostat model from serial number as a fallback."""
     if not serial_number:
@@ -443,6 +458,18 @@ class NestParser:
         )
         batt_mv = value.get("battery_level", 0)
         battery_voltage = batt_mv / 1000.0 if batt_mv else None
+        # Fields only the legacy REST API reports. Left as None when absent so
+        # no entity is created for a field the device does not send.
+        rest_only: dict[str, Any] = {
+            "hushed_state": _optional_bool(value.get("hushed_state")),
+            "co_previous_peak": _optional_int(value.get("co_previous_peak")),
+            "component_als_test_passed": _optional_bool(
+                value.get("component_als_test_passed")
+            ),
+            "component_temp_test_passed": _optional_bool(
+                value.get("component_temp_test_passed")
+            ),
+        }
 
         if value.get("wired_or_battery") == 0:
             return NestWiredProtect(
@@ -491,6 +518,7 @@ class NestParser:
                 ),
                 ntp_green_led_enable=value.get("ntp_green_led_enable", False),
                 heads_up_enable=value.get("heads_up_enable", False),
+                **rest_only,
             )
         return NestBatteryProtect(
             object_key=key,
@@ -532,6 +560,7 @@ class NestParser:
             ),
             ntp_green_led_enable=value.get("ntp_green_led_enable", False),
             heads_up_enable=value.get("heads_up_enable", False),
+            **rest_only,
         )
 
     def _parse_thermostat(
@@ -893,11 +922,31 @@ class NestParser:
             mode = StructureMode.VACATION
         elif value.get("away"):
             mode = StructureMode.AWAY
+        structure_id = key.split(".")[1]
+        safety_critical_failures: int | None = None
+        safety_warnings: int | None = None
+        # The safety summary bucket exists for every structure, so only expose
+        # it where there is a Protect for it to summarise.
+        has_protect = any(
+            k.startswith("topaz.")
+            and isinstance(v, dict)
+            and v.get("structure_id") == structure_id
+            for k, v in raw_data.items()
+        )
+        if has_protect and isinstance(
+            summary := raw_data.get(f"safety_summary.{structure_id}"), dict
+        ):
+            safety_critical_failures = _optional_int(
+                summary.get("total_critical_failures")
+            )
+            safety_warnings = _optional_int(summary.get("total_warnings"))
         return NestStructure(
             object_key=structure_key,
-            serial_number=key.split(".")[1],
+            serial_number=structure_id,
             name=value.get("name", "Home"),
             mode=mode,
+            safety_critical_failures=safety_critical_failures,
+            safety_warnings=safety_warnings,
         )
 
     def _parse_protobuf_lock(

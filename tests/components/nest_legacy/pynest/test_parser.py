@@ -714,6 +714,87 @@ async def test_protobuf_protect(parser: NestParser, raw_data: dict[str, Any]) ->
     assert not protect.co_status
 
 
+REST_PROTECT = "09AA00AA00AA0AA1"
+_REST_PROTECT_KEY = f"topaz.{REST_PROTECT}"
+_REST_STRUCTURE_ID = "00000000-0000-0000-0000-000000000001"
+
+
+async def test_rest_protect_extras(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """The REST Protect reports hush, CO peak and the extra component tests."""
+    raw_data[_REST_PROTECT_KEY].update(
+        hushed_state=True,
+        co_previous_peak=120,
+        component_als_test_passed=False,
+        component_temp_test_passed=True,
+    )
+
+    protect = _by_serial(parser, raw_data)[REST_PROTECT]
+
+    assert protect.hushed_state is True
+    assert protect.co_previous_peak == 120
+    assert protect.component_als_test_passed is False
+    assert protect.component_temp_test_passed is True
+
+
+async def test_rest_protect_extras_missing(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """Fields the Protect does not send stay None, so no entity is made."""
+    for field in (
+        "hushed_state",
+        "component_als_test_passed",
+        "component_temp_test_passed",
+    ):
+        raw_data[_REST_PROTECT_KEY].pop(field)
+    raw_data[_REST_PROTECT_KEY]["co_previous_peak"] = "not a number"
+
+    protect = _by_serial(parser, raw_data)[REST_PROTECT]
+
+    assert protect.hushed_state is None
+    assert protect.co_previous_peak is None
+    assert protect.component_als_test_passed is None
+    assert protect.component_temp_test_passed is None
+
+
+async def test_protobuf_protect_has_no_rest_only_fields(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """The protobuf Protect has no source for the REST-only fields."""
+    protect = _by_serial(parser, raw_data)[PROTECT_SERIAL]
+
+    assert protect.hushed_state is None
+    assert protect.co_previous_peak is None
+
+
+async def test_structure_safety_summary(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A home with a Protect carries its safety summary counts."""
+    raw_data[f"safety_summary.{_REST_STRUCTURE_ID}"] = {
+        "total_critical_failures": 1,
+        "total_warnings": 2,
+    }
+
+    (structure,) = _structures(parser, raw_data)
+
+    assert structure.safety_critical_failures == 1
+    assert structure.safety_warnings == 2
+
+
+async def test_structure_safety_summary_needs_a_protect(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A home without a Protect does not expose the always-zero summary."""
+    del raw_data[_REST_PROTECT_KEY]["structure_id"]
+
+    (structure,) = _structures(parser, raw_data)
+
+    assert structure.safety_critical_failures is None
+    assert structure.safety_warnings is None
+
+
 async def test_unnamed_camera(parser: NestParser, raw_data: dict[str, Any]) -> None:
     """A camera named only by its room gets the same name as over protobuf."""
     raw_data["quartz.18B430CCCCCC0002"]["description"] = ""
