@@ -32,9 +32,16 @@ class LegacyStructureSelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SelfTestTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LegacyStructureSelfTestTrait._SelfTestType.ValueType], _builtins.type):
+    class _SelfTestTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LegacyStructureSelfTestTrait._SelfTestType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SELF_TEST_TYPE_UNSPECIFIED: LegacyStructureSelfTestTrait._SelfTestType.ValueType  # 0
+        SELF_TEST_TYPE_UNSPECIFIED: (
+            LegacyStructureSelfTestTrait._SelfTestType.ValueType
+        )  # 0
         SELF_TEST_TYPE_AST: LegacyStructureSelfTestTrait._SelfTestType.ValueType  # 1
         SELF_TEST_TYPE_MST: LegacyStructureSelfTestTrait._SelfTestType.ValueType  # 2
 
@@ -47,31 +54,69 @@ class LegacyStructureSelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StartSelfTestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType], _builtins.type):
+    class _StartSelfTestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        START_SELF_TEST_STATUS_UNSPECIFIED: LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType  # 0
-        START_SELF_TEST_STATUS_OK: LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType  # 1
-        START_SELF_TEST_STATUS_FAILED: LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType  # 2
+        START_SELF_TEST_STATUS_UNSPECIFIED: (
+            LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType
+        )  # 0
+        START_SELF_TEST_STATUS_OK: (
+            LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType
+        )  # 1
+        START_SELF_TEST_STATUS_FAILED: (
+            LegacyStructureSelfTestTrait._StartSelfTestStatus.ValueType
+        )  # 2
 
-    class StartSelfTestStatus(_StartSelfTestStatus, metaclass=_StartSelfTestStatusEnumTypeWrapper): ...
-    START_SELF_TEST_STATUS_UNSPECIFIED: LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType  # 0
-    START_SELF_TEST_STATUS_OK: LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType  # 1
-    START_SELF_TEST_STATUS_FAILED: LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType  # 2
+    class StartSelfTestStatus(
+        _StartSelfTestStatus, metaclass=_StartSelfTestStatusEnumTypeWrapper
+    ): ...
+    START_SELF_TEST_STATUS_UNSPECIFIED: (
+        LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType
+    )  # 0
+    START_SELF_TEST_STATUS_OK: (
+        LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType
+    )  # 1
+    START_SELF_TEST_STATUS_FAILED: (
+        LegacyStructureSelfTestTrait.StartSelfTestStatus.ValueType
+    )  # 2
 
     class _EndSelfTestStatus:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EndSelfTestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType], _builtins.type):
+    class _EndSelfTestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        END_SELF_TEST_STATUS_UNSPECIFIED: LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType  # 0
-        END_SELF_TEST_STATUS_OK: LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType  # 1
-        END_SELF_TEST_STATUS_FAILED: LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType  # 2
+        END_SELF_TEST_STATUS_UNSPECIFIED: (
+            LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType
+        )  # 0
+        END_SELF_TEST_STATUS_OK: (
+            LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType
+        )  # 1
+        END_SELF_TEST_STATUS_FAILED: (
+            LegacyStructureSelfTestTrait._EndSelfTestStatus.ValueType
+        )  # 2
 
-    class EndSelfTestStatus(_EndSelfTestStatus, metaclass=_EndSelfTestStatusEnumTypeWrapper): ...
-    END_SELF_TEST_STATUS_UNSPECIFIED: LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType  # 0
-    END_SELF_TEST_STATUS_OK: LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType  # 1
-    END_SELF_TEST_STATUS_FAILED: LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType  # 2
+    class EndSelfTestStatus(
+        _EndSelfTestStatus, metaclass=_EndSelfTestStatusEnumTypeWrapper
+    ): ...
+    END_SELF_TEST_STATUS_UNSPECIFIED: (
+        LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType
+    )  # 0
+    END_SELF_TEST_STATUS_OK: (
+        LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType
+    )  # 1
+    END_SELF_TEST_STATUS_FAILED: (
+        LegacyStructureSelfTestTrait.EndSelfTestStatus.ValueType
+    )  # 2
 
     @_typing.final
     class StartSelfTestRequest(_message.Message):
@@ -90,7 +135,9 @@ class LegacyStructureSelfTestTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "testId", b"testId", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -124,7 +171,9 @@ class LegacyStructureSelfTestTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "testId", b"testId", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -194,7 +243,9 @@ class LegacyStructureSelfTestTrait(_message.Message):
     @_builtins.property
     def astSkipUtcSecs(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
-    def astParticipants(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def astParticipants(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
     def __init__(
         self,
         *,
@@ -210,9 +261,47 @@ class LegacyStructureSelfTestTrait(_message.Message):
         astSkipUtcSecs: _timestamp_pb2.Timestamp | None = ...,
         astParticipants: _abc.Iterable[_builtins.int] | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["astRequestUtcSecs", b"astRequestUtcSecs", "astSkipUtcSecs", b"astSkipUtcSecs", "lastAstEndUtcSecs", b"lastAstEndUtcSecs", "lastAstStartUtcSecs", b"lastAstStartUtcSecs", "lastMstEndUtcSecs", b"lastMstEndUtcSecs", "lastMstStartUtcSecs", b"lastMstStartUtcSecs", "lastMstSuccessUtcSecs", b"lastMstSuccessUtcSecs"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "astRequestUtcSecs",
+        b"astRequestUtcSecs",
+        "astSkipUtcSecs",
+        b"astSkipUtcSecs",
+        "lastAstEndUtcSecs",
+        b"lastAstEndUtcSecs",
+        "lastAstStartUtcSecs",
+        b"lastAstStartUtcSecs",
+        "lastMstEndUtcSecs",
+        b"lastMstEndUtcSecs",
+        "lastMstStartUtcSecs",
+        b"lastMstStartUtcSecs",
+        "lastMstSuccessUtcSecs",
+        b"lastMstSuccessUtcSecs",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["astInProgress", b"astInProgress", "astParticipants", b"astParticipants", "astRequestUtcSecs", b"astRequestUtcSecs", "astSkipUtcSecs", b"astSkipUtcSecs", "lastAstEndUtcSecs", b"lastAstEndUtcSecs", "lastAstStartUtcSecs", b"lastAstStartUtcSecs", "lastMstCancelled", b"lastMstCancelled", "lastMstEndUtcSecs", b"lastMstEndUtcSecs", "lastMstStartUtcSecs", b"lastMstStartUtcSecs", "lastMstSuccessUtcSecs", b"lastMstSuccessUtcSecs", "mstInProgress", b"mstInProgress"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "astInProgress",
+        b"astInProgress",
+        "astParticipants",
+        b"astParticipants",
+        "astRequestUtcSecs",
+        b"astRequestUtcSecs",
+        "astSkipUtcSecs",
+        b"astSkipUtcSecs",
+        "lastAstEndUtcSecs",
+        b"lastAstEndUtcSecs",
+        "lastAstStartUtcSecs",
+        b"lastAstStartUtcSecs",
+        "lastMstCancelled",
+        b"lastMstCancelled",
+        "lastMstEndUtcSecs",
+        b"lastMstEndUtcSecs",
+        "lastMstStartUtcSecs",
+        b"lastMstStartUtcSecs",
+        "lastMstSuccessUtcSecs",
+        b"lastMstSuccessUtcSecs",
+        "mstInProgress",
+        b"mstInProgress",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LegacyStructureSelfTestTrait: _TypeAlias = LegacyStructureSelfTestTrait  # noqa: Y015
@@ -225,7 +314,10 @@ class SelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SelfTestTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._SelfTestType.ValueType], _builtins.type):
+    class _SelfTestTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._SelfTestType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         SELF_TEST_TYPE_UNSPECIFIED: SelfTestTrait._SelfTestType.ValueType  # 0
         SELF_TEST_TYPE_AST: SelfTestTrait._SelfTestType.ValueType  # 1
@@ -240,13 +332,22 @@ class SelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StartSelfTestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._StartSelfTestStatus.ValueType], _builtins.type):
+    class _StartSelfTestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SelfTestTrait._StartSelfTestStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        START_SELF_TEST_STATUS_UNSPECIFIED: SelfTestTrait._StartSelfTestStatus.ValueType  # 0
+        START_SELF_TEST_STATUS_UNSPECIFIED: (
+            SelfTestTrait._StartSelfTestStatus.ValueType
+        )  # 0
         START_SELF_TEST_STATUS_OK: SelfTestTrait._StartSelfTestStatus.ValueType  # 1
         START_SELF_TEST_STATUS_FAILED: SelfTestTrait._StartSelfTestStatus.ValueType  # 2
 
-    class StartSelfTestStatus(_StartSelfTestStatus, metaclass=_StartSelfTestStatusEnumTypeWrapper): ...
+    class StartSelfTestStatus(
+        _StartSelfTestStatus, metaclass=_StartSelfTestStatusEnumTypeWrapper
+    ): ...
     START_SELF_TEST_STATUS_UNSPECIFIED: SelfTestTrait.StartSelfTestStatus.ValueType  # 0
     START_SELF_TEST_STATUS_OK: SelfTestTrait.StartSelfTestStatus.ValueType  # 1
     START_SELF_TEST_STATUS_FAILED: SelfTestTrait.StartSelfTestStatus.ValueType  # 2
@@ -255,13 +356,20 @@ class SelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EndSelfTestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._EndSelfTestStatus.ValueType], _builtins.type):
+    class _EndSelfTestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._EndSelfTestStatus.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        END_SELF_TEST_STATUS_UNSPECIFIED: SelfTestTrait._EndSelfTestStatus.ValueType  # 0
+        END_SELF_TEST_STATUS_UNSPECIFIED: (
+            SelfTestTrait._EndSelfTestStatus.ValueType
+        )  # 0
         END_SELF_TEST_STATUS_OK: SelfTestTrait._EndSelfTestStatus.ValueType  # 1
         END_SELF_TEST_STATUS_FAILED: SelfTestTrait._EndSelfTestStatus.ValueType  # 2
 
-    class EndSelfTestStatus(_EndSelfTestStatus, metaclass=_EndSelfTestStatusEnumTypeWrapper): ...
+    class EndSelfTestStatus(
+        _EndSelfTestStatus, metaclass=_EndSelfTestStatusEnumTypeWrapper
+    ): ...
     END_SELF_TEST_STATUS_UNSPECIFIED: SelfTestTrait.EndSelfTestStatus.ValueType  # 0
     END_SELF_TEST_STATUS_OK: SelfTestTrait.EndSelfTestStatus.ValueType  # 1
     END_SELF_TEST_STATUS_FAILED: SelfTestTrait.EndSelfTestStatus.ValueType  # 2
@@ -270,7 +378,10 @@ class SelfTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _MstTriggerEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._MstTrigger.ValueType], _builtins.type):
+    class _MstTriggerEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SelfTestTrait._MstTrigger.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         MST_TRIGGER_UNSPECIFIED: SelfTestTrait._MstTrigger.ValueType  # 0
         MST_TRIGGER_BUTTON: SelfTestTrait._MstTrigger.ValueType  # 1
@@ -300,7 +411,9 @@ class SelfTestTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "testId", b"testId", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -334,7 +447,9 @@ class SelfTestTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "testId", b"testId", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -368,7 +483,9 @@ class SelfTestTrait(_message.Message):
             newState: _builtins.int = ...,
             oldState: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["newState", b"newState", "oldState", b"oldState", "trigger", b"trigger"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "newState", b"newState", "oldState", b"oldState", "trigger", b"trigger"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -388,7 +505,14 @@ class SelfTestTrait(_message.Message):
             newState: _builtins.int = ...,
             oldState: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["newState", b"newState", "oldState", b"oldState", "orchestrator", b"orchestrator"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "newState",
+            b"newState",
+            "oldState",
+            b"oldState",
+            "orchestrator",
+            b"orchestrator",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     LASTMSTSTART_FIELD_NUMBER: _builtins.int
@@ -414,9 +538,29 @@ class SelfTestTrait(_message.Message):
         lastAstStart: _timestamp_pb2.Timestamp | None = ...,
         lastAstEnd: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["lastAstEnd", b"lastAstEnd", "lastAstStart", b"lastAstStart", "lastMstEnd", b"lastMstEnd", "lastMstStart", b"lastMstStart"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "lastAstEnd",
+        b"lastAstEnd",
+        "lastAstStart",
+        b"lastAstStart",
+        "lastMstEnd",
+        b"lastMstEnd",
+        "lastMstStart",
+        b"lastMstStart",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["lastAstEnd", b"lastAstEnd", "lastAstStart", b"lastAstStart", "lastMstCancelled", b"lastMstCancelled", "lastMstEnd", b"lastMstEnd", "lastMstStart", b"lastMstStart"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "lastAstEnd",
+        b"lastAstEnd",
+        "lastAstStart",
+        b"lastAstStart",
+        "lastMstCancelled",
+        b"lastMstCancelled",
+        "lastMstEnd",
+        b"lastMstEnd",
+        "lastMstStart",
+        b"lastMstStart",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SelfTestTrait: _TypeAlias = SelfTestTrait  # noqa: Y015
@@ -429,13 +573,18 @@ class AudioTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AudioTestSourceEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AudioTestTrait._AudioTestSource.ValueType], _builtins.type):
+    class _AudioTestSourceEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[AudioTestTrait._AudioTestSource.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AUDIO_TEST_SOURCE_UNSPECIFIED: AudioTestTrait._AudioTestSource.ValueType  # 0
         AUDIO_TEST_SOURCE_AUTOMATIC: AudioTestTrait._AudioTestSource.ValueType  # 1
         AUDIO_TEST_SOURCE_MANUAL: AudioTestTrait._AudioTestSource.ValueType  # 2
 
-    class AudioTestSource(_AudioTestSource, metaclass=_AudioTestSourceEnumTypeWrapper): ...
+    class AudioTestSource(
+        _AudioTestSource, metaclass=_AudioTestSourceEnumTypeWrapper
+    ): ...
     AUDIO_TEST_SOURCE_UNSPECIFIED: AudioTestTrait.AudioTestSource.ValueType  # 0
     AUDIO_TEST_SOURCE_AUTOMATIC: AudioTestTrait.AudioTestSource.ValueType  # 1
     AUDIO_TEST_SOURCE_MANUAL: AudioTestTrait.AudioTestSource.ValueType  # 2
@@ -444,22 +593,43 @@ class AudioTestTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AudioFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AudioTestTrait._AudioFaultType.ValueType], _builtins.type):
+    class _AudioFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[AudioTestTrait._AudioFaultType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AUDIO_FAULT_TYPE_UNSPECIFIED: AudioTestTrait._AudioFaultType.ValueType  # 0
-        AUDIO_FAULT_TYPE_INCONCLUSIVE_OTHER: AudioTestTrait._AudioFaultType.ValueType  # 1
-        AUDIO_FAULT_TYPE_INCONCLUSIVE_AMBIENT_NOISE: AudioTestTrait._AudioFaultType.ValueType  # 2
-        AUDIO_FAULT_TYPE_INCONCLUSIVE_ASYNC_INTER: AudioTestTrait._AudioFaultType.ValueType  # 4
-        AUDIO_FAULT_TYPE_INCONCLUSIVE_DID_NOT_RUN: AudioTestTrait._AudioFaultType.ValueType  # 8
-        AUDIO_FAULT_TYPE_INCONCLUSIVE_DROPPED_BUFFER: AudioTestTrait._AudioFaultType.ValueType  # 16
+        AUDIO_FAULT_TYPE_INCONCLUSIVE_OTHER: (
+            AudioTestTrait._AudioFaultType.ValueType
+        )  # 1
+        AUDIO_FAULT_TYPE_INCONCLUSIVE_AMBIENT_NOISE: (
+            AudioTestTrait._AudioFaultType.ValueType
+        )  # 2
+        AUDIO_FAULT_TYPE_INCONCLUSIVE_ASYNC_INTER: (
+            AudioTestTrait._AudioFaultType.ValueType
+        )  # 4
+        AUDIO_FAULT_TYPE_INCONCLUSIVE_DID_NOT_RUN: (
+            AudioTestTrait._AudioFaultType.ValueType
+        )  # 8
+        AUDIO_FAULT_TYPE_INCONCLUSIVE_DROPPED_BUFFER: (
+            AudioTestTrait._AudioFaultType.ValueType
+        )  # 16
 
     class AudioFaultType(_AudioFaultType, metaclass=_AudioFaultTypeEnumTypeWrapper): ...
     AUDIO_FAULT_TYPE_UNSPECIFIED: AudioTestTrait.AudioFaultType.ValueType  # 0
     AUDIO_FAULT_TYPE_INCONCLUSIVE_OTHER: AudioTestTrait.AudioFaultType.ValueType  # 1
-    AUDIO_FAULT_TYPE_INCONCLUSIVE_AMBIENT_NOISE: AudioTestTrait.AudioFaultType.ValueType  # 2
-    AUDIO_FAULT_TYPE_INCONCLUSIVE_ASYNC_INTER: AudioTestTrait.AudioFaultType.ValueType  # 4
-    AUDIO_FAULT_TYPE_INCONCLUSIVE_DID_NOT_RUN: AudioTestTrait.AudioFaultType.ValueType  # 8
-    AUDIO_FAULT_TYPE_INCONCLUSIVE_DROPPED_BUFFER: AudioTestTrait.AudioFaultType.ValueType  # 16
+    AUDIO_FAULT_TYPE_INCONCLUSIVE_AMBIENT_NOISE: (
+        AudioTestTrait.AudioFaultType.ValueType
+    )  # 2
+    AUDIO_FAULT_TYPE_INCONCLUSIVE_ASYNC_INTER: (
+        AudioTestTrait.AudioFaultType.ValueType
+    )  # 4
+    AUDIO_FAULT_TYPE_INCONCLUSIVE_DID_NOT_RUN: (
+        AudioTestTrait.AudioFaultType.ValueType
+    )  # 8
+    AUDIO_FAULT_TYPE_INCONCLUSIVE_DROPPED_BUFFER: (
+        AudioTestTrait.AudioFaultType.ValueType
+    )  # 16
 
     @_typing.final
     class AudioTestResult(_message.Message):
@@ -471,15 +641,22 @@ class AudioTestTrait(_message.Message):
         source: Global___AudioTestTrait.AudioTestSource.ValueType
         testPassed: _builtins.bool
         @_builtins.property
-        def types(self) -> _containers.RepeatedScalarFieldContainer[Global___AudioTestTrait.AudioFaultType.ValueType]: ...
+        def types(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___AudioTestTrait.AudioFaultType.ValueType
+        ]: ...
         def __init__(
             self,
             *,
             source: Global___AudioTestTrait.AudioTestSource.ValueType = ...,
             testPassed: _builtins.bool = ...,
-            types: _abc.Iterable[Global___AudioTestTrait.AudioFaultType.ValueType] | None = ...,
+            types: _abc.Iterable[Global___AudioTestTrait.AudioFaultType.ValueType]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["source", b"source", "testPassed", b"testPassed", "types", b"types"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "source", b"source", "testPassed", b"testPassed", "types", b"types"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -512,9 +689,13 @@ class AudioTestTrait(_message.Message):
             speakerResult: Global___AudioTestTrait.AudioTestResult | None = ...,
             buzzerResult: Global___AudioTestTrait.AudioTestResult | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SPEAKERRESULT_FIELD_NUMBER: _builtins.int
@@ -529,9 +710,13 @@ class AudioTestTrait(_message.Message):
         speakerResult: Global___AudioTestTrait.AudioTestResult | None = ...,
         buzzerResult: Global___AudioTestTrait.AudioTestResult | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "buzzerResult", b"buzzerResult", "speakerResult", b"speakerResult"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AudioTestTrait: _TypeAlias = AudioTestTrait  # noqa: Y015
@@ -544,14 +729,23 @@ class ReadyActionTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ReadyActionStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ReadyActionTrait._ReadyActionState.ValueType], _builtins.type):
+    class _ReadyActionStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            ReadyActionTrait._ReadyActionState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        READY_ACTION_STATE_UNSPECIFIED: ReadyActionTrait._ReadyActionState.ValueType  # 0
+        READY_ACTION_STATE_UNSPECIFIED: (
+            ReadyActionTrait._ReadyActionState.ValueType
+        )  # 0
         READY_ACTION_STATE_IDLE: ReadyActionTrait._ReadyActionState.ValueType  # 1
         READY_ACTION_STATE_START_UX: ReadyActionTrait._ReadyActionState.ValueType  # 2
         READY_ACTION_STATE_PAIRING_UX: ReadyActionTrait._ReadyActionState.ValueType  # 3
 
-    class ReadyActionState(_ReadyActionState, metaclass=_ReadyActionStateEnumTypeWrapper): ...
+    class ReadyActionState(
+        _ReadyActionState, metaclass=_ReadyActionStateEnumTypeWrapper
+    ): ...
     READY_ACTION_STATE_UNSPECIFIED: ReadyActionTrait.ReadyActionState.ValueType  # 0
     READY_ACTION_STATE_IDLE: ReadyActionTrait.ReadyActionState.ValueType  # 1
     READY_ACTION_STATE_START_UX: ReadyActionTrait.ReadyActionState.ValueType  # 2
@@ -561,18 +755,41 @@ class ReadyActionTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ReadyStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ReadyActionTrait._ReadyStateChangeReason.ValueType], _builtins.type):
+    class _ReadyStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            ReadyActionTrait._ReadyStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        READY_STATE_CHANGE_REASON_UNSPECIFIED: ReadyActionTrait._ReadyStateChangeReason.ValueType  # 0
-        READY_STATE_CHANGE_REASON_TIMEOUT: ReadyActionTrait._ReadyStateChangeReason.ValueType  # 1
-        READY_STATE_CHANGE_REASON_BUTTON_PRESS: ReadyActionTrait._ReadyStateChangeReason.ValueType  # 2
-        READY_STATE_CHANGE_REASON_BLE_TRIGGER: ReadyActionTrait._ReadyStateChangeReason.ValueType  # 3
+        READY_STATE_CHANGE_REASON_UNSPECIFIED: (
+            ReadyActionTrait._ReadyStateChangeReason.ValueType
+        )  # 0
+        READY_STATE_CHANGE_REASON_TIMEOUT: (
+            ReadyActionTrait._ReadyStateChangeReason.ValueType
+        )  # 1
+        READY_STATE_CHANGE_REASON_BUTTON_PRESS: (
+            ReadyActionTrait._ReadyStateChangeReason.ValueType
+        )  # 2
+        READY_STATE_CHANGE_REASON_BLE_TRIGGER: (
+            ReadyActionTrait._ReadyStateChangeReason.ValueType
+        )  # 3
 
-    class ReadyStateChangeReason(_ReadyStateChangeReason, metaclass=_ReadyStateChangeReasonEnumTypeWrapper): ...
-    READY_STATE_CHANGE_REASON_UNSPECIFIED: ReadyActionTrait.ReadyStateChangeReason.ValueType  # 0
-    READY_STATE_CHANGE_REASON_TIMEOUT: ReadyActionTrait.ReadyStateChangeReason.ValueType  # 1
-    READY_STATE_CHANGE_REASON_BUTTON_PRESS: ReadyActionTrait.ReadyStateChangeReason.ValueType  # 2
-    READY_STATE_CHANGE_REASON_BLE_TRIGGER: ReadyActionTrait.ReadyStateChangeReason.ValueType  # 3
+    class ReadyStateChangeReason(
+        _ReadyStateChangeReason, metaclass=_ReadyStateChangeReasonEnumTypeWrapper
+    ): ...
+    READY_STATE_CHANGE_REASON_UNSPECIFIED: (
+        ReadyActionTrait.ReadyStateChangeReason.ValueType
+    )  # 0
+    READY_STATE_CHANGE_REASON_TIMEOUT: (
+        ReadyActionTrait.ReadyStateChangeReason.ValueType
+    )  # 1
+    READY_STATE_CHANGE_REASON_BUTTON_PRESS: (
+        ReadyActionTrait.ReadyStateChangeReason.ValueType
+    )  # 2
+    READY_STATE_CHANGE_REASON_BLE_TRIGGER: (
+        ReadyActionTrait.ReadyStateChangeReason.ValueType
+    )  # 3
 
     @_typing.final
     class ReadyActionStateChangeEvent(_message.Message):
@@ -591,7 +808,14 @@ class ReadyActionTrait(_message.Message):
             previousReadyActionState: Global___ReadyActionTrait.ReadyActionState.ValueType = ...,
             changeReason: Global___ReadyActionTrait.ReadyStateChangeReason.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["changeReason", b"changeReason", "newReadyActionState", b"newReadyActionState", "previousReadyActionState", b"previousReadyActionState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "changeReason",
+            b"changeReason",
+            "newReadyActionState",
+            b"newReadyActionState",
+            "previousReadyActionState",
+            b"previousReadyActionState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -608,7 +832,10 @@ class TrapActionTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TrapStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TrapActionTrait._TrapStatus.ValueType], _builtins.type):
+    class _TrapStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[TrapActionTrait._TrapStatus.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         TRAP_STATUS_UNSPECIFIED: TrapActionTrait._TrapStatus.ValueType  # 0
         TRAP_STATUS_NONE: TrapActionTrait._TrapStatus.ValueType  # 1
@@ -635,7 +862,12 @@ class TrapActionTrait(_message.Message):
             newTrapStatus: Global___TrapActionTrait.TrapStatus.ValueType = ...,
             previousTrapStatus: Global___TrapActionTrait.TrapStatus.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["newTrapStatus", b"newTrapStatus", "previousTrapStatus", b"previousTrapStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "newTrapStatus",
+            b"newTrapStatus",
+            "previousTrapStatus",
+            b"previousTrapStatus",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -666,14 +898,19 @@ class NightTimePromiseTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _NtpStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[NightTimePromiseTrait._NtpState.ValueType], _builtins.type):
+    class _NtpStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[NightTimePromiseTrait._NtpState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         NTP_STATE_UNSPECIFIED: NightTimePromiseTrait._NtpState.ValueType  # 0
         NTP_STATE_ALL_CLEAR_NTP_ENABLED: NightTimePromiseTrait._NtpState.ValueType  # 1
         NTP_STATE_ALL_CLEAR_NTP_DISABLED: NightTimePromiseTrait._NtpState.ValueType  # 2
         NTP_STATE_WARNINGS_DISPLAYED: NightTimePromiseTrait._NtpState.ValueType  # 3
         NTP_STATE_WARNINGS_SPOKEN: NightTimePromiseTrait._NtpState.ValueType  # 4
-        NTP_STATE_CRITICAL_WARNINGS_SPOKEN: NightTimePromiseTrait._NtpState.ValueType  # 5
+        NTP_STATE_CRITICAL_WARNINGS_SPOKEN: (
+            NightTimePromiseTrait._NtpState.ValueType
+        )  # 5
         NTP_STATE_DONE: NightTimePromiseTrait._NtpState.ValueType  # 6
 
     class NtpState(_NtpState, metaclass=_NtpStateEnumTypeWrapper): ...
@@ -705,7 +942,16 @@ class NightTimePromiseTrait(_message.Message):
             criticalWarnings: _builtins.bool = ...,
             warningCount: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["criticalWarnings", b"criticalWarnings", "state", b"state", "usingRemote", b"usingRemote", "warningCount", b"warningCount"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "criticalWarnings",
+            b"criticalWarnings",
+            "state",
+            b"state",
+            "usingRemote",
+            b"usingRemote",
+            "warningCount",
+            b"warningCount",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -722,7 +968,12 @@ class ProtectDeviceInfoTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CertRegionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ProtectDeviceInfoTrait._CertRegion.ValueType], _builtins.type):
+    class _CertRegionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            ProtectDeviceInfoTrait._CertRegion.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         CERT_REGION_UNSPECIFIED: ProtectDeviceInfoTrait._CertRegion.ValueType  # 0
         CERT_REGION_US: ProtectDeviceInfoTrait._CertRegion.ValueType  # 1
@@ -747,9 +998,13 @@ class ProtectDeviceInfoTrait(_message.Message):
             *,
             wdmDisconnectTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["wdmDisconnectTime", b"wdmDisconnectTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "wdmDisconnectTime", b"wdmDisconnectTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["wdmDisconnectTime", b"wdmDisconnectTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "wdmDisconnectTime", b"wdmDisconnectTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     DEVICEEXTERNALCOLOR_FIELD_NUMBER: _builtins.int
@@ -762,7 +1017,12 @@ class ProtectDeviceInfoTrait(_message.Message):
         deviceExternalColor: _builtins.str = ...,
         certificationBody: Global___ProtectDeviceInfoTrait.CertRegion.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["certificationBody", b"certificationBody", "deviceExternalColor", b"deviceExternalColor"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "certificationBody",
+        b"certificationBody",
+        "deviceExternalColor",
+        b"deviceExternalColor",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ProtectDeviceInfoTrait: _TypeAlias = ProtectDeviceInfoTrait  # noqa: Y015
@@ -775,7 +1035,10 @@ class SafetySummaryTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FailureTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SafetySummaryTrait._FailureType.ValueType], _builtins.type):
+    class _FailureTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SafetySummaryTrait._FailureType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         FAILURE_TYPE_UNSPECIFIED: SafetySummaryTrait._FailureType.ValueType  # 0
         FAILURE_TYPE_SMOKE: SafetySummaryTrait._FailureType.ValueType  # 1
@@ -833,22 +1096,52 @@ class SafetySummaryTrait(_message.Message):
         @_builtins.property
         def spokenWhereAnnotation(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def failures(self) -> _containers.RepeatedScalarFieldContainer[Global___SafetySummaryTrait.FailureType.ValueType]: ...
+        def failures(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SafetySummaryTrait.FailureType.ValueType
+        ]: ...
         @_builtins.property
-        def criticalMask(self) -> _containers.RepeatedScalarFieldContainer[Global___SafetySummaryTrait.FailureType.ValueType]: ...
+        def criticalMask(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SafetySummaryTrait.FailureType.ValueType
+        ]: ...
         def __init__(
             self,
             *,
             resourceId: _common_pb2.ResourceId | None = ...,
             spokenWhereAnnotation: _common_pb2.ResourceId | None = ...,
-            failures: _abc.Iterable[Global___SafetySummaryTrait.FailureType.ValueType] | None = ...,
-            criticalMask: _abc.Iterable[Global___SafetySummaryTrait.FailureType.ValueType] | None = ...,
+            failures: _abc.Iterable[Global___SafetySummaryTrait.FailureType.ValueType]
+            | None = ...,
+            criticalMask: _abc.Iterable[
+                Global___SafetySummaryTrait.FailureType.ValueType
+            ]
+            | None = ...,
             productId: _builtins.int = ...,
             vendorId: _builtins.int = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "spokenWhereAnnotation", b"spokenWhereAnnotation"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId",
+            b"resourceId",
+            "spokenWhereAnnotation",
+            b"spokenWhereAnnotation",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["criticalMask", b"criticalMask", "failures", b"failures", "productId", b"productId", "resourceId", b"resourceId", "spokenWhereAnnotation", b"spokenWhereAnnotation", "vendorId", b"vendorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "criticalMask",
+            b"criticalMask",
+            "failures",
+            b"failures",
+            "productId",
+            b"productId",
+            "resourceId",
+            b"resourceId",
+            "spokenWhereAnnotation",
+            b"spokenWhereAnnotation",
+            "vendorId",
+            b"vendorId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CRITICALDEVICES_FIELD_NUMBER: _builtins.int
@@ -859,23 +1152,44 @@ class SafetySummaryTrait(_message.Message):
     totalCriticalFailures: _builtins.int
     totalWarnings: _builtins.int
     @_builtins.property
-    def criticalDevices(self) -> _containers.RepeatedCompositeFieldContainer[Global___SafetySummaryTrait.DeviceStatus]: ...
+    def criticalDevices(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SafetySummaryTrait.DeviceStatus
+    ]: ...
     @_builtins.property
-    def warningDevices(self) -> _containers.RepeatedCompositeFieldContainer[Global___SafetySummaryTrait.DeviceStatus]: ...
+    def warningDevices(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SafetySummaryTrait.DeviceStatus
+    ]: ...
     @_builtins.property
     def testId(self) -> _selftest_pb2.SelfTestRunnerTrait.TestId: ...
     def __init__(
         self,
         *,
-        criticalDevices: _abc.Iterable[Global___SafetySummaryTrait.DeviceStatus] | None = ...,
-        warningDevices: _abc.Iterable[Global___SafetySummaryTrait.DeviceStatus] | None = ...,
+        criticalDevices: _abc.Iterable[Global___SafetySummaryTrait.DeviceStatus]
+        | None = ...,
+        warningDevices: _abc.Iterable[Global___SafetySummaryTrait.DeviceStatus]
+        | None = ...,
         totalCriticalFailures: _builtins.int = ...,
         totalWarnings: _builtins.int = ...,
         testId: _selftest_pb2.SelfTestRunnerTrait.TestId | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["criticalDevices", b"criticalDevices", "testId", b"testId", "totalCriticalFailures", b"totalCriticalFailures", "totalWarnings", b"totalWarnings", "warningDevices", b"warningDevices"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "criticalDevices",
+        b"criticalDevices",
+        "testId",
+        b"testId",
+        "totalCriticalFailures",
+        b"totalCriticalFailures",
+        "totalWarnings",
+        b"totalWarnings",
+        "warningDevices",
+        b"warningDevices",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetySummaryTrait: _TypeAlias = SafetySummaryTrait  # noqa: Y015
@@ -898,7 +1212,9 @@ class ActionSchedulerTrait(_message.Message):
             opId: _builtins.int = ...,
             actionId: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actionId", b"actionId", "opId", b"opId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actionId", b"actionId", "opId", b"opId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -923,7 +1239,9 @@ class AudioPlayTrait(_message.Message):
         @_builtins.property
         def sentenceString(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
-        def sentenceArgIds(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+        def sentenceArgIds(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
         def __init__(
             self,
             *,
@@ -931,9 +1249,18 @@ class AudioPlayTrait(_message.Message):
             sentenceString: _wrappers_pb2.StringValue | None = ...,
             sentenceArgIds: _abc.Iterable[_builtins.int] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sentenceId", b"sentenceId", "sentenceString", b"sentenceString"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sentenceId", b"sentenceId", "sentenceString", b"sentenceString"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sentenceArgIds", b"sentenceArgIds", "sentenceId", b"sentenceId", "sentenceString", b"sentenceString"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sentenceArgIds",
+            b"sentenceArgIds",
+            "sentenceId",
+            b"sentenceId",
+            "sentenceString",
+            b"sentenceString",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -966,22 +1293,36 @@ class LegacyAlarmHistoryTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["timestamp", b"timestamp"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["status", b"status", "synced", b"synced", "timestamp", b"timestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "status", b"status", "synced", b"synced", "timestamp", b"timestamp"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SMOKEHISTORY_FIELD_NUMBER: _builtins.int
     COHISTORY_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def smokeHistory(self) -> _containers.RepeatedCompositeFieldContainer[Global___LegacyAlarmHistoryTrait.AlarmStatus]: ...
+    def smokeHistory(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___LegacyAlarmHistoryTrait.AlarmStatus
+    ]: ...
     @_builtins.property
-    def coHistory(self) -> _containers.RepeatedCompositeFieldContainer[Global___LegacyAlarmHistoryTrait.AlarmStatus]: ...
+    def coHistory(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___LegacyAlarmHistoryTrait.AlarmStatus
+    ]: ...
     def __init__(
         self,
         *,
-        smokeHistory: _abc.Iterable[Global___LegacyAlarmHistoryTrait.AlarmStatus] | None = ...,
-        coHistory: _abc.Iterable[Global___LegacyAlarmHistoryTrait.AlarmStatus] | None = ...,
+        smokeHistory: _abc.Iterable[Global___LegacyAlarmHistoryTrait.AlarmStatus]
+        | None = ...,
+        coHistory: _abc.Iterable[Global___LegacyAlarmHistoryTrait.AlarmStatus]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["coHistory", b"coHistory", "smokeHistory", b"smokeHistory"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "coHistory", b"coHistory", "smokeHistory", b"smokeHistory"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LegacyAlarmHistoryTrait: _TypeAlias = LegacyAlarmHistoryTrait  # noqa: Y015
@@ -1006,9 +1347,19 @@ class LegacySelfTestSettingsTrait(_message.Message):
             astStartOffsetUtcSecs: _duration_pb2.Duration | None = ...,
             astEndOffsetUtcSecs: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["astEndOffsetUtcSecs", b"astEndOffsetUtcSecs", "astStartOffsetUtcSecs", b"astStartOffsetUtcSecs"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "astEndOffsetUtcSecs",
+            b"astEndOffsetUtcSecs",
+            "astStartOffsetUtcSecs",
+            b"astStartOffsetUtcSecs",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["astEndOffsetUtcSecs", b"astEndOffsetUtcSecs", "astStartOffsetUtcSecs", b"astStartOffsetUtcSecs"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "astEndOffsetUtcSecs",
+            b"astEndOffsetUtcSecs",
+            "astStartOffsetUtcSecs",
+            b"astStartOffsetUtcSecs",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ASTENABLED_FIELD_NUMBER: _builtins.int
@@ -1037,9 +1388,31 @@ class LegacySelfTestSettingsTrait(_message.Message):
         astStartOffsetUtcSecs: _duration_pb2.Duration | None = ...,
         astEndOffsetUtcSecs: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["astEndOffsetUtcSecs", b"astEndOffsetUtcSecs", "astForceSecs", b"astForceSecs", "astRepeatSecs", b"astRepeatSecs", "astStartOffsetUtcSecs", b"astStartOffsetUtcSecs"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "astEndOffsetUtcSecs",
+        b"astEndOffsetUtcSecs",
+        "astForceSecs",
+        b"astForceSecs",
+        "astRepeatSecs",
+        b"astRepeatSecs",
+        "astStartOffsetUtcSecs",
+        b"astStartOffsetUtcSecs",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["astEnabled", b"astEnabled", "astEndOffsetUtcSecs", b"astEndOffsetUtcSecs", "astForceSecs", b"astForceSecs", "astNotify", b"astNotify", "astRepeatSecs", b"astRepeatSecs", "astStartOffsetUtcSecs", b"astStartOffsetUtcSecs"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "astEnabled",
+        b"astEnabled",
+        "astEndOffsetUtcSecs",
+        b"astEndOffsetUtcSecs",
+        "astForceSecs",
+        b"astForceSecs",
+        "astNotify",
+        b"astNotify",
+        "astRepeatSecs",
+        b"astRepeatSecs",
+        "astStartOffsetUtcSecs",
+        b"astStartOffsetUtcSecs",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LegacySelfTestSettingsTrait: _TypeAlias = LegacySelfTestSettingsTrait  # noqa: Y015
@@ -1052,30 +1425,61 @@ class NightTimePromiseSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _NightTimePromiseBrightnessEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType], _builtins.type):
+    class _NightTimePromiseBrightnessEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        NIGHT_TIME_PROMISE_BRIGHTNESS_UNSPECIFIED: NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType  # 0
-        NIGHT_TIME_PROMISE_BRIGHTNESS_LOW: NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType  # 1
-        NIGHT_TIME_PROMISE_BRIGHTNESS_MEDIUM: NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType  # 2
-        NIGHT_TIME_PROMISE_BRIGHTNESS_HIGH: NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType  # 3
+        NIGHT_TIME_PROMISE_BRIGHTNESS_UNSPECIFIED: (
+            NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType
+        )  # 0
+        NIGHT_TIME_PROMISE_BRIGHTNESS_LOW: (
+            NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType
+        )  # 1
+        NIGHT_TIME_PROMISE_BRIGHTNESS_MEDIUM: (
+            NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType
+        )  # 2
+        NIGHT_TIME_PROMISE_BRIGHTNESS_HIGH: (
+            NightTimePromiseSettingsTrait._NightTimePromiseBrightness.ValueType
+        )  # 3
 
-    class NightTimePromiseBrightness(_NightTimePromiseBrightness, metaclass=_NightTimePromiseBrightnessEnumTypeWrapper): ...
-    NIGHT_TIME_PROMISE_BRIGHTNESS_UNSPECIFIED: NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType  # 0
-    NIGHT_TIME_PROMISE_BRIGHTNESS_LOW: NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType  # 1
-    NIGHT_TIME_PROMISE_BRIGHTNESS_MEDIUM: NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType  # 2
-    NIGHT_TIME_PROMISE_BRIGHTNESS_HIGH: NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType  # 3
+    class NightTimePromiseBrightness(
+        _NightTimePromiseBrightness,
+        metaclass=_NightTimePromiseBrightnessEnumTypeWrapper,
+    ): ...
+    NIGHT_TIME_PROMISE_BRIGHTNESS_UNSPECIFIED: (
+        NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    )  # 0
+    NIGHT_TIME_PROMISE_BRIGHTNESS_LOW: (
+        NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    )  # 1
+    NIGHT_TIME_PROMISE_BRIGHTNESS_MEDIUM: (
+        NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    )  # 2
+    NIGHT_TIME_PROMISE_BRIGHTNESS_HIGH: (
+        NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    )  # 3
 
     GREENLEDENABLED_FIELD_NUMBER: _builtins.int
     GREENLEDBRIGHTNESS_FIELD_NUMBER: _builtins.int
     greenLedEnabled: _builtins.bool
-    greenLedBrightness: Global___NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    greenLedBrightness: (
+        Global___NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType
+    )
     def __init__(
         self,
         *,
         greenLedEnabled: _builtins.bool = ...,
         greenLedBrightness: Global___NightTimePromiseSettingsTrait.NightTimePromiseBrightness.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["greenLedBrightness", b"greenLedBrightness", "greenLedEnabled", b"greenLedEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "greenLedBrightness",
+        b"greenLedBrightness",
+        "greenLedEnabled",
+        b"greenLedEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___NightTimePromiseSettingsTrait: _TypeAlias = NightTimePromiseSettingsTrait  # noqa: Y015
@@ -1107,7 +1511,18 @@ class OutOfBoxTrait(_message.Message):
             osmSwapPossible: _builtins.bool = ...,
             repeatCount: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentLanguage", b"currentLanguage", "defaultLanguageSelected", b"defaultLanguageSelected", "osmSwapPossible", b"osmSwapPossible", "repeatCount", b"repeatCount", "success", b"success"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentLanguage",
+            b"currentLanguage",
+            "defaultLanguageSelected",
+            b"defaultLanguageSelected",
+            "osmSwapPossible",
+            b"osmSwapPossible",
+            "repeatCount",
+            b"repeatCount",
+            "success",
+            b"success",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -1140,9 +1555,22 @@ class LegacyProtectDeviceInfoTrait(_message.Message):
         linePowerCapable: _builtins.bool = ...,
         spSoftwareVersion: _builtins.str = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["capabilityLevel", b"capabilityLevel"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "capabilityLevel", b"capabilityLevel"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["autoAway", b"autoAway", "capabilityIdx", b"capabilityIdx", "capabilityLevel", b"capabilityLevel", "linePowerCapable", b"linePowerCapable", "spSoftwareVersion", b"spSoftwareVersion"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "autoAway",
+        b"autoAway",
+        "capabilityIdx",
+        b"capabilityIdx",
+        "capabilityLevel",
+        b"capabilityLevel",
+        "linePowerCapable",
+        b"linePowerCapable",
+        "spSoftwareVersion",
+        b"spSoftwareVersion",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LegacyProtectDeviceInfoTrait: _TypeAlias = LegacyProtectDeviceInfoTrait  # noqa: Y015
@@ -1180,7 +1608,9 @@ class SafetyStructureSettingsTrait(_message.Message):
         structureHushKey: _builtins.str = ...,
         phoneHushEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["phoneHushEnabled", b"phoneHushEnabled", "structureHushKey", b"structureHushKey"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "phoneHushEnabled", b"phoneHushEnabled", "structureHushKey", b"structureHushKey"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyStructureSettingsTrait: _TypeAlias = SafetyStructureSettingsTrait  # noqa: Y015

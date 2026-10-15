@@ -4,6 +4,7 @@
 # source: weave/trait/schedule.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -19,45 +20,109 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from ...weave import common_pb2 as weave_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1aweave/trait/schedule.proto\x12\x14weave.trait.schedule\x1a\x1egoogle/protobuf/duration.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12weave/common.proto\"\x87\x12\n\x1f\x42\x61sicUserSchedulesSettingsTrait\x12i\n\x12\x62\x61sicUserSchedules\x18\x01 \x03(\x0b\x32M.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedulesEntry\x1a\x82\x01\n\x17\x42\x61sicUserSchedulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule:\x02\x38\x01\x1a\xa2\x01\n\x1a\x44\x61ilyRepeatingScheduleItem\x12+\n\ndaysOfWeek\x18\x01 \x03(\x0e\x32\x17.weave.common.DayOfWeek\x12*\n\tstartTime\x18\x02 \x01(\x0b\x32\x17.weave.common.TimeOfDay\x12+\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x1aq\n\x13TimeboxScheduleItem\x12-\n\tstartTime\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x07\x65ndTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x95\x02\n\x11\x42\x61sicUserSchedule\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12q\n\x17\x64\x61ilyRepeatingSchedules\x18\x02 \x03(\x0b\x32P.weave.trait.schedule.BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem\x12\x63\n\x10timeBoxSchedules\x18\x03 \x03(\x0b\x32I.weave.trait.schedule.BasicUserSchedulesSettingsTrait.TimeboxScheduleItem\x1aw\n\x16SetUserScheduleRequest\x12]\n\x0cuserSchedule\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1as\n\x17SetUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x1a\x42\n\x16GetUserScheduleRequest\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1a\xd2\x01\n\x17GetUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x12]\n\x0cuserSchedule\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1a\x45\n\x19\x44\x65leteUserScheduleRequest\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1av\n\x1a\x44\x65leteUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x1a\xe6\x03\n\x1fOfflineDeviceSyncSchedulesEvent\x12\x89\x01\n\x12\x62\x61sicUserSchedules\x18\x01 \x03(\x0b\x32m.weave.trait.schedule.BasicUserSchedulesSettingsTrait.OfflineDeviceSyncSchedulesEvent.BasicUserSchedulesEntry\x12-\n\tstateMask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x14\n\x0cstateVersion\x18\x03 \x01(\t\x12\x35\n\x11\x61\x63\x63\x65ptedTimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x12\x63onfirmedTimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x82\x01\n\x17\x42\x61sicUserSchedulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule:\x02\x38\x01\"\x94\x02\n\x12ScheduleErrorCodes\x12$\n SCHEDULE_ERROR_CODES_UNSPECIFIED\x10\x00\x12\'\n#SCHEDULE_ERROR_CODES_SUCCESS_STATUS\x10\x01\x12(\n$SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY\x10\x02\x12+\n\'SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE\x10\x03\x12-\n)SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY\x10\x04\x12)\n%SCHEDULE_ERROR_CODES_INVALID_SCHEDULE\x10\x05\"\x86\x01\n#BasicUserSchedulesCapabilitiesTrait\x12\x30\n(basicMaxTimeBoxSchedulesSupportedPerUser\x18\x01 \x01(\r\x12-\n%basicMaxDailyRepeatedSupportedPerUser\x18\x02 \x01(\rb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x1aweave/trait/schedule.proto\x12\x14weave.trait.schedule\x1a\x1egoogle/protobuf/duration.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12weave/common.proto"\x87\x12\n\x1f\x42\x61sicUserSchedulesSettingsTrait\x12i\n\x12\x62\x61sicUserSchedules\x18\x01 \x03(\x0b\x32M.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedulesEntry\x1a\x82\x01\n\x17\x42\x61sicUserSchedulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule:\x02\x38\x01\x1a\xa2\x01\n\x1a\x44\x61ilyRepeatingScheduleItem\x12+\n\ndaysOfWeek\x18\x01 \x03(\x0e\x32\x17.weave.common.DayOfWeek\x12*\n\tstartTime\x18\x02 \x01(\x0b\x32\x17.weave.common.TimeOfDay\x12+\n\x08\x64uration\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\x1aq\n\x13TimeboxScheduleItem\x12-\n\tstartTime\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12+\n\x07\x65ndTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x95\x02\n\x11\x42\x61sicUserSchedule\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12q\n\x17\x64\x61ilyRepeatingSchedules\x18\x02 \x03(\x0b\x32P.weave.trait.schedule.BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem\x12\x63\n\x10timeBoxSchedules\x18\x03 \x03(\x0b\x32I.weave.trait.schedule.BasicUserSchedulesSettingsTrait.TimeboxScheduleItem\x1aw\n\x16SetUserScheduleRequest\x12]\n\x0cuserSchedule\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1as\n\x17SetUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x1a\x42\n\x16GetUserScheduleRequest\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1a\xd2\x01\n\x17GetUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x12]\n\x0cuserSchedule\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1a\x45\n\x19\x44\x65leteUserScheduleRequest\x12(\n\x06userId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1av\n\x1a\x44\x65leteUserScheduleResponse\x12X\n\x06status\x18\x01 \x01(\x0e\x32H.weave.trait.schedule.BasicUserSchedulesSettingsTrait.ScheduleErrorCodes\x1a\xe6\x03\n\x1fOfflineDeviceSyncSchedulesEvent\x12\x89\x01\n\x12\x62\x61sicUserSchedules\x18\x01 \x03(\x0b\x32m.weave.trait.schedule.BasicUserSchedulesSettingsTrait.OfflineDeviceSyncSchedulesEvent.BasicUserSchedulesEntry\x12-\n\tstateMask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x14\n\x0cstateVersion\x18\x03 \x01(\t\x12\x35\n\x11\x61\x63\x63\x65ptedTimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x12\x63onfirmedTimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x82\x01\n\x17\x42\x61sicUserSchedulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule:\x02\x38\x01"\x94\x02\n\x12ScheduleErrorCodes\x12$\n SCHEDULE_ERROR_CODES_UNSPECIFIED\x10\x00\x12\'\n#SCHEDULE_ERROR_CODES_SUCCESS_STATUS\x10\x01\x12(\n$SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY\x10\x02\x12+\n\'SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE\x10\x03\x12-\n)SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY\x10\x04\x12)\n%SCHEDULE_ERROR_CODES_INVALID_SCHEDULE\x10\x05"\x86\x01\n#BasicUserSchedulesCapabilitiesTrait\x12\x30\n(basicMaxTimeBoxSchedulesSupportedPerUser\x18\x01 \x01(\r\x12-\n%basicMaxDailyRepeatedSupportedPerUser\x18\x02 \x01(\rb\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'weave.trait.schedule_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(
+    DESCRIPTOR, "weave.trait.schedule_pb2", _globals
+)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY']._loaded_options = None
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY']._serialized_options = b'8\001'
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY']._loaded_options = None
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY']._serialized_options = b'8\001'
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT']._serialized_start=172
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT']._serialized_end=2483
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY']._serialized_start=315
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY']._serialized_end=445
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DAILYREPEATINGSCHEDULEITEM']._serialized_start=448
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DAILYREPEATINGSCHEDULEITEM']._serialized_end=610
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_TIMEBOXSCHEDULEITEM']._serialized_start=612
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_TIMEBOXSCHEDULEITEM']._serialized_end=725
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULE']._serialized_start=728
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULE']._serialized_end=1005
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULEREQUEST']._serialized_start=1007
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULEREQUEST']._serialized_end=1126
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULERESPONSE']._serialized_start=1128
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULERESPONSE']._serialized_end=1243
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULEREQUEST']._serialized_start=1245
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULEREQUEST']._serialized_end=1311
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULERESPONSE']._serialized_start=1314
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULERESPONSE']._serialized_end=1524
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULEREQUEST']._serialized_start=1526
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULEREQUEST']._serialized_end=1595
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULERESPONSE']._serialized_start=1597
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULERESPONSE']._serialized_end=1715
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT']._serialized_start=1718
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT']._serialized_end=2204
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY']._serialized_start=315
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY']._serialized_end=445
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SCHEDULEERRORCODES']._serialized_start=2207
-  _globals['_BASICUSERSCHEDULESSETTINGSTRAIT_SCHEDULEERRORCODES']._serialized_end=2483
-  _globals['_BASICUSERSCHEDULESCAPABILITIESTRAIT']._serialized_start=2486
-  _globals['_BASICUSERSCHEDULESCAPABILITIESTRAIT']._serialized_end=2620
+    DESCRIPTOR._loaded_options = None
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY"
+    ]._loaded_options = None
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_options = b"8\001"
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY"
+    ]._loaded_options = None
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_options = b"8\001"
+    _globals["_BASICUSERSCHEDULESSETTINGSTRAIT"]._serialized_start = 172
+    _globals["_BASICUSERSCHEDULESSETTINGSTRAIT"]._serialized_end = 2483
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_start = 315
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_end = 445
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DAILYREPEATINGSCHEDULEITEM"
+    ]._serialized_start = 448
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DAILYREPEATINGSCHEDULEITEM"
+    ]._serialized_end = 610
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_TIMEBOXSCHEDULEITEM"
+    ]._serialized_start = 612
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_TIMEBOXSCHEDULEITEM"
+    ]._serialized_end = 725
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULE"
+    ]._serialized_start = 728
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_BASICUSERSCHEDULE"
+    ]._serialized_end = 1005
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULEREQUEST"
+    ]._serialized_start = 1007
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULEREQUEST"
+    ]._serialized_end = 1126
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULERESPONSE"
+    ]._serialized_start = 1128
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SETUSERSCHEDULERESPONSE"
+    ]._serialized_end = 1243
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULEREQUEST"
+    ]._serialized_start = 1245
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULEREQUEST"
+    ]._serialized_end = 1311
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULERESPONSE"
+    ]._serialized_start = 1314
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_GETUSERSCHEDULERESPONSE"
+    ]._serialized_end = 1524
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULEREQUEST"
+    ]._serialized_start = 1526
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULEREQUEST"
+    ]._serialized_end = 1595
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULERESPONSE"
+    ]._serialized_start = 1597
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_DELETEUSERSCHEDULERESPONSE"
+    ]._serialized_end = 1715
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT"
+    ]._serialized_start = 1718
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT"
+    ]._serialized_end = 2204
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_start = 315
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_OFFLINEDEVICESYNCSCHEDULESEVENT_BASICUSERSCHEDULESENTRY"
+    ]._serialized_end = 445
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SCHEDULEERRORCODES"
+    ]._serialized_start = 2207
+    _globals[
+        "_BASICUSERSCHEDULESSETTINGSTRAIT_SCHEDULEERRORCODES"
+    ]._serialized_end = 2483
+    _globals["_BASICUSERSCHEDULESCAPABILITIESTRAIT"]._serialized_start = 2486
+    _globals["_BASICUSERSCHEDULESCAPABILITIESTRAIT"]._serialized_end = 2620
 # @@protoc_insertion_point(module_scope)

@@ -27,29 +27,55 @@ class PowerSourceTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PowerSourceConditionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PowerSourceTrait._PowerSourceCondition.ValueType], _builtins.type):
+    class _PowerSourceConditionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PowerSourceTrait._PowerSourceCondition.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        POWER_SOURCE_CONDITION_UNSPECIFIED: PowerSourceTrait._PowerSourceCondition.ValueType  # 0
-        POWER_SOURCE_CONDITION_NOMINAL: PowerSourceTrait._PowerSourceCondition.ValueType  # 1
-        POWER_SOURCE_CONDITION_CRITICAL: PowerSourceTrait._PowerSourceCondition.ValueType  # 2
+        POWER_SOURCE_CONDITION_UNSPECIFIED: (
+            PowerSourceTrait._PowerSourceCondition.ValueType
+        )  # 0
+        POWER_SOURCE_CONDITION_NOMINAL: (
+            PowerSourceTrait._PowerSourceCondition.ValueType
+        )  # 1
+        POWER_SOURCE_CONDITION_CRITICAL: (
+            PowerSourceTrait._PowerSourceCondition.ValueType
+        )  # 2
 
-    class PowerSourceCondition(_PowerSourceCondition, metaclass=_PowerSourceConditionEnumTypeWrapper): ...
-    POWER_SOURCE_CONDITION_UNSPECIFIED: PowerSourceTrait.PowerSourceCondition.ValueType  # 0
+    class PowerSourceCondition(
+        _PowerSourceCondition, metaclass=_PowerSourceConditionEnumTypeWrapper
+    ): ...
+    POWER_SOURCE_CONDITION_UNSPECIFIED: (
+        PowerSourceTrait.PowerSourceCondition.ValueType
+    )  # 0
     POWER_SOURCE_CONDITION_NOMINAL: PowerSourceTrait.PowerSourceCondition.ValueType  # 1
-    POWER_SOURCE_CONDITION_CRITICAL: PowerSourceTrait.PowerSourceCondition.ValueType  # 2
+    POWER_SOURCE_CONDITION_CRITICAL: (
+        PowerSourceTrait.PowerSourceCondition.ValueType
+    )  # 2
 
     class _PowerSourceStatus:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PowerSourceStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PowerSourceTrait._PowerSourceStatus.ValueType], _builtins.type):
+    class _PowerSourceStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PowerSourceTrait._PowerSourceStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        POWER_SOURCE_STATUS_UNSPECIFIED: PowerSourceTrait._PowerSourceStatus.ValueType  # 0
+        POWER_SOURCE_STATUS_UNSPECIFIED: (
+            PowerSourceTrait._PowerSourceStatus.ValueType
+        )  # 0
         POWER_SOURCE_STATUS_ACTIVE: PowerSourceTrait._PowerSourceStatus.ValueType  # 1
         POWER_SOURCE_STATUS_STANDBY: PowerSourceTrait._PowerSourceStatus.ValueType  # 2
         POWER_SOURCE_STATUS_INACTIVE: PowerSourceTrait._PowerSourceStatus.ValueType  # 3
 
-    class PowerSourceStatus(_PowerSourceStatus, metaclass=_PowerSourceStatusEnumTypeWrapper): ...
+    class PowerSourceStatus(
+        _PowerSourceStatus, metaclass=_PowerSourceStatusEnumTypeWrapper
+    ): ...
     POWER_SOURCE_STATUS_UNSPECIFIED: PowerSourceTrait.PowerSourceStatus.ValueType  # 0
     POWER_SOURCE_STATUS_ACTIVE: PowerSourceTrait.PowerSourceStatus.ValueType  # 1
     POWER_SOURCE_STATUS_STANDBY: PowerSourceTrait.PowerSourceStatus.ValueType  # 2
@@ -69,7 +95,9 @@ class PowerSourceTrait(_message.Message):
             condition: Global___PowerSourceTrait.PowerSourceCondition.ValueType = ...,
             status: Global___PowerSourceTrait.PowerSourceStatus.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["condition", b"condition", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "condition", b"condition", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TYPE_FIELD_NUMBER: _builtins.int
@@ -100,9 +128,31 @@ class PowerSourceTrait(_message.Message):
         status: Global___PowerSourceTrait.PowerSourceStatus.ValueType = ...,
         present: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["assessedCurrent", b"assessedCurrent", "assessedFrequency", b"assessedFrequency", "assessedVoltage", b"assessedVoltage"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "assessedCurrent",
+        b"assessedCurrent",
+        "assessedFrequency",
+        b"assessedFrequency",
+        "assessedVoltage",
+        b"assessedVoltage",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["assessedCurrent", b"assessedCurrent", "assessedFrequency", b"assessedFrequency", "assessedVoltage", b"assessedVoltage", "condition", b"condition", "present", b"present", "status", b"status", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "assessedCurrent",
+        b"assessedCurrent",
+        "assessedFrequency",
+        b"assessedFrequency",
+        "assessedVoltage",
+        b"assessedVoltage",
+        "condition",
+        b"condition",
+        "present",
+        b"present",
+        "status",
+        b"status",
+        "type",
+        b"type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PowerSourceTrait: _TypeAlias = PowerSourceTrait  # noqa: Y015
@@ -115,31 +165,69 @@ class PowerSourceCapabilitiesTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PowerSourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PowerSourceCapabilitiesTrait._PowerSourceType.ValueType], _builtins.type):
+    class _PowerSourceTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PowerSourceCapabilitiesTrait._PowerSourceType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        POWER_SOURCE_TYPE_UNSPECIFIED: PowerSourceCapabilitiesTrait._PowerSourceType.ValueType  # 0
-        POWER_SOURCE_TYPE_BATTERY: PowerSourceCapabilitiesTrait._PowerSourceType.ValueType  # 1
-        POWER_SOURCE_TYPE_RECHARGEABLE_BATTERY: PowerSourceCapabilitiesTrait._PowerSourceType.ValueType  # 2
+        POWER_SOURCE_TYPE_UNSPECIFIED: (
+            PowerSourceCapabilitiesTrait._PowerSourceType.ValueType
+        )  # 0
+        POWER_SOURCE_TYPE_BATTERY: (
+            PowerSourceCapabilitiesTrait._PowerSourceType.ValueType
+        )  # 1
+        POWER_SOURCE_TYPE_RECHARGEABLE_BATTERY: (
+            PowerSourceCapabilitiesTrait._PowerSourceType.ValueType
+        )  # 2
 
-    class PowerSourceType(_PowerSourceType, metaclass=_PowerSourceTypeEnumTypeWrapper): ...
-    POWER_SOURCE_TYPE_UNSPECIFIED: PowerSourceCapabilitiesTrait.PowerSourceType.ValueType  # 0
-    POWER_SOURCE_TYPE_BATTERY: PowerSourceCapabilitiesTrait.PowerSourceType.ValueType  # 1
-    POWER_SOURCE_TYPE_RECHARGEABLE_BATTERY: PowerSourceCapabilitiesTrait.PowerSourceType.ValueType  # 2
+    class PowerSourceType(
+        _PowerSourceType, metaclass=_PowerSourceTypeEnumTypeWrapper
+    ): ...
+    POWER_SOURCE_TYPE_UNSPECIFIED: (
+        PowerSourceCapabilitiesTrait.PowerSourceType.ValueType
+    )  # 0
+    POWER_SOURCE_TYPE_BATTERY: (
+        PowerSourceCapabilitiesTrait.PowerSourceType.ValueType
+    )  # 1
+    POWER_SOURCE_TYPE_RECHARGEABLE_BATTERY: (
+        PowerSourceCapabilitiesTrait.PowerSourceType.ValueType
+    )  # 2
 
     class _PowerSourceCurrentType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PowerSourceCurrentTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType], _builtins.type):
+    class _PowerSourceCurrentTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        POWER_SOURCE_CURRENT_TYPE_UNSPECIFIED: PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType  # 0
-        POWER_SOURCE_CURRENT_TYPE_DC: PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType  # 1
-        POWER_SOURCE_CURRENT_TYPE_AC: PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType  # 2
+        POWER_SOURCE_CURRENT_TYPE_UNSPECIFIED: (
+            PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType
+        )  # 0
+        POWER_SOURCE_CURRENT_TYPE_DC: (
+            PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType
+        )  # 1
+        POWER_SOURCE_CURRENT_TYPE_AC: (
+            PowerSourceCapabilitiesTrait._PowerSourceCurrentType.ValueType
+        )  # 2
 
-    class PowerSourceCurrentType(_PowerSourceCurrentType, metaclass=_PowerSourceCurrentTypeEnumTypeWrapper): ...
-    POWER_SOURCE_CURRENT_TYPE_UNSPECIFIED: PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType  # 0
-    POWER_SOURCE_CURRENT_TYPE_DC: PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType  # 1
-    POWER_SOURCE_CURRENT_TYPE_AC: PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType  # 2
+    class PowerSourceCurrentType(
+        _PowerSourceCurrentType, metaclass=_PowerSourceCurrentTypeEnumTypeWrapper
+    ): ...
+    POWER_SOURCE_CURRENT_TYPE_UNSPECIFIED: (
+        PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType
+    )  # 0
+    POWER_SOURCE_CURRENT_TYPE_DC: (
+        PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType
+    )  # 1
+    POWER_SOURCE_CURRENT_TYPE_AC: (
+        PowerSourceCapabilitiesTrait.PowerSourceCurrentType.ValueType
+    )  # 2
 
     TYPE_FIELD_NUMBER: _builtins.int
     DESCRIPTION_FIELD_NUMBER: _builtins.int
@@ -168,9 +256,26 @@ class PowerSourceCapabilitiesTrait(_message.Message):
         order: _builtins.int = ...,
         removable: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["description", b"description", "maximumCurrent", b"maximumCurrent"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "description", b"description", "maximumCurrent", b"maximumCurrent"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentType", b"currentType", "description", b"description", "maximumCurrent", b"maximumCurrent", "nominalVoltage", b"nominalVoltage", "order", b"order", "removable", b"removable", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentType",
+        b"currentType",
+        "description",
+        b"description",
+        "maximumCurrent",
+        b"maximumCurrent",
+        "nominalVoltage",
+        b"nominalVoltage",
+        "order",
+        b"order",
+        "removable",
+        b"removable",
+        "type",
+        b"type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PowerSourceCapabilitiesTrait: _TypeAlias = PowerSourceCapabilitiesTrait  # noqa: Y015
@@ -183,18 +288,42 @@ class BatteryPowerSourceTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BatteryReplacementIndicatorEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType], _builtins.type):
+    class _BatteryReplacementIndicatorEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        BATTERY_REPLACEMENT_INDICATOR_UNSPECIFIED: BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType  # 0
-        BATTERY_REPLACEMENT_INDICATOR_NOT_AT_ALL: BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType  # 1
-        BATTERY_REPLACEMENT_INDICATOR_SOON: BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType  # 2
-        BATTERY_REPLACEMENT_INDICATOR_IMMEDIATELY: BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType  # 3
+        BATTERY_REPLACEMENT_INDICATOR_UNSPECIFIED: (
+            BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType
+        )  # 0
+        BATTERY_REPLACEMENT_INDICATOR_NOT_AT_ALL: (
+            BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType
+        )  # 1
+        BATTERY_REPLACEMENT_INDICATOR_SOON: (
+            BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType
+        )  # 2
+        BATTERY_REPLACEMENT_INDICATOR_IMMEDIATELY: (
+            BatteryPowerSourceTrait._BatteryReplacementIndicator.ValueType
+        )  # 3
 
-    class BatteryReplacementIndicator(_BatteryReplacementIndicator, metaclass=_BatteryReplacementIndicatorEnumTypeWrapper): ...
-    BATTERY_REPLACEMENT_INDICATOR_UNSPECIFIED: BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType  # 0
-    BATTERY_REPLACEMENT_INDICATOR_NOT_AT_ALL: BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType  # 1
-    BATTERY_REPLACEMENT_INDICATOR_SOON: BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType  # 2
-    BATTERY_REPLACEMENT_INDICATOR_IMMEDIATELY: BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType  # 3
+    class BatteryReplacementIndicator(
+        _BatteryReplacementIndicator,
+        metaclass=_BatteryReplacementIndicatorEnumTypeWrapper,
+    ): ...
+    BATTERY_REPLACEMENT_INDICATOR_UNSPECIFIED: (
+        BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    )  # 0
+    BATTERY_REPLACEMENT_INDICATOR_NOT_AT_ALL: (
+        BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    )  # 1
+    BATTERY_REPLACEMENT_INDICATOR_SOON: (
+        BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    )  # 2
+    BATTERY_REPLACEMENT_INDICATOR_IMMEDIATELY: (
+        BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    )  # 3
 
     @_typing.final
     class BatteryRemaining(_message.Message):
@@ -212,9 +341,13 @@ class BatteryPowerSourceTrait(_message.Message):
             remainingPercent: _wrappers_pb2.FloatValue | None = ...,
             remainingTime: _common_pb2.Timer | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["remainingPercent", b"remainingPercent", "remainingTime", b"remainingTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "remainingPercent", b"remainingPercent", "remainingTime", b"remainingTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["remainingPercent", b"remainingPercent", "remainingTime", b"remainingTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "remainingPercent", b"remainingPercent", "remainingTime", b"remainingTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -227,7 +360,9 @@ class BatteryPowerSourceTrait(_message.Message):
         REMAINING_FIELD_NUMBER: _builtins.int
         condition: Global___PowerSourceTrait.PowerSourceCondition.ValueType
         status: Global___PowerSourceTrait.PowerSourceStatus.ValueType
-        replacementIndicator: Global___BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+        replacementIndicator: (
+            Global___BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+        )
         @_builtins.property
         def remaining(self) -> Global___BatteryPowerSourceTrait.BatteryRemaining: ...
         def __init__(
@@ -240,7 +375,16 @@ class BatteryPowerSourceTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["remaining", b"remaining"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["condition", b"condition", "remaining", b"remaining", "replacementIndicator", b"replacementIndicator", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "condition",
+            b"condition",
+            "remaining",
+            b"remaining",
+            "replacementIndicator",
+            b"replacementIndicator",
+            "status",
+            b"status",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TYPE_FIELD_NUMBER: _builtins.int
@@ -256,7 +400,9 @@ class BatteryPowerSourceTrait(_message.Message):
     condition: Global___PowerSourceTrait.PowerSourceCondition.ValueType
     status: Global___PowerSourceTrait.PowerSourceStatus.ValueType
     present: _builtins.bool
-    replacementIndicator: Global___BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    replacementIndicator: (
+        Global___BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType
+    )
     @_builtins.property
     def assessedVoltage(self) -> _wrappers_pb2.FloatValue: ...
     @_builtins.property
@@ -278,9 +424,37 @@ class BatteryPowerSourceTrait(_message.Message):
         replacementIndicator: Global___BatteryPowerSourceTrait.BatteryReplacementIndicator.ValueType = ...,
         remaining: Global___BatteryPowerSourceTrait.BatteryRemaining | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["assessedCurrent", b"assessedCurrent", "assessedFrequency", b"assessedFrequency", "assessedVoltage", b"assessedVoltage", "remaining", b"remaining"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "assessedCurrent",
+        b"assessedCurrent",
+        "assessedFrequency",
+        b"assessedFrequency",
+        "assessedVoltage",
+        b"assessedVoltage",
+        "remaining",
+        b"remaining",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["assessedCurrent", b"assessedCurrent", "assessedFrequency", b"assessedFrequency", "assessedVoltage", b"assessedVoltage", "condition", b"condition", "present", b"present", "remaining", b"remaining", "replacementIndicator", b"replacementIndicator", "status", b"status", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "assessedCurrent",
+        b"assessedCurrent",
+        "assessedFrequency",
+        b"assessedFrequency",
+        "assessedVoltage",
+        b"assessedVoltage",
+        "condition",
+        b"condition",
+        "present",
+        b"present",
+        "remaining",
+        b"remaining",
+        "replacementIndicator",
+        b"replacementIndicator",
+        "status",
+        b"status",
+        "type",
+        b"type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BatteryPowerSourceTrait: _TypeAlias = BatteryPowerSourceTrait  # noqa: Y015

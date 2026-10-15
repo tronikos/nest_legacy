@@ -24,7 +24,9 @@ class _DayOfWeek:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _DayOfWeekEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_DayOfWeek.ValueType], _builtins.type):
+class _DayOfWeekEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_DayOfWeek.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     DAY_OF_WEEK_UNSPECIFIED: _DayOfWeek.ValueType  # 0
     DAY_OF_WEEK_SUNDAY: _DayOfWeek.ValueType  # 1
@@ -51,7 +53,9 @@ class _MonthOfYear:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _MonthOfYearEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_MonthOfYear.ValueType], _builtins.type):
+class _MonthOfYearEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_MonthOfYear.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     MONTH_OF_YEAR_UNSPECIFIED: _MonthOfYear.ValueType  # 0
     MONTH_OF_YEAR_JANUARY: _MonthOfYear.ValueType  # 1
@@ -88,7 +92,9 @@ class _ResourceType:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _ResourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_ResourceType.ValueType], _builtins.type):
+class _ResourceTypeEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_ResourceType.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     RESOURCE_TYPE_UNSPECIFIED: _ResourceType.ValueType  # 0
     RESOURCE_TYPE_DEVICE: _ResourceType.ValueType  # 1
@@ -121,7 +127,9 @@ class _QuantityType:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _QuantityTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_QuantityType.ValueType], _builtins.type):
+class _QuantityTypeEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_QuantityType.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     QUANTITY_TYPE_UNSPECIFIED: _QuantityType.ValueType  # 0
     LENGTH: _QuantityType.ValueType  # 1
@@ -241,7 +249,9 @@ class TraitTypeInstance(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["traitTypeId", b"traitTypeId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["instanceId", b"instanceId", "traitTypeId", b"traitTypeId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "instanceId", b"instanceId", "traitTypeId", b"traitTypeId"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitTypeInstance: _TypeAlias = TraitTypeInstance  # noqa: Y015
@@ -254,13 +264,20 @@ class TraitInstanceId(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TraitInstanceCaseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TraitInstanceId._TraitInstanceCase.ValueType], _builtins.type):
+    class _TraitInstanceCaseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            TraitInstanceId._TraitInstanceCase.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         TRAIT_INSTANCE_NOT_SET: TraitInstanceId._TraitInstanceCase.ValueType  # 0
         TRAIT_INSTANCE_LABEL: TraitInstanceId._TraitInstanceCase.ValueType  # 1
         TRAIT_INSTANCE_ID: TraitInstanceId._TraitInstanceCase.ValueType  # 2
 
-    class TraitInstanceCase(_TraitInstanceCase, metaclass=_TraitInstanceCaseEnumTypeWrapper): ...
+    class TraitInstanceCase(
+        _TraitInstanceCase, metaclass=_TraitInstanceCaseEnumTypeWrapper
+    ): ...
     TRAIT_INSTANCE_NOT_SET: TraitInstanceId.TraitInstanceCase.ValueType  # 0
     TRAIT_INSTANCE_LABEL: TraitInstanceId.TraitInstanceCase.ValueType  # 1
     TRAIT_INSTANCE_ID: TraitInstanceId.TraitInstanceCase.ValueType  # 2
@@ -276,9 +293,16 @@ class TraitInstanceId(_message.Message):
         traitInstanceLabel: _builtins.str = ...,
         traitInstanceId: Global___TraitTypeInstance | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["traitInstanceId", b"traitInstanceId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "traitInstanceId", b"traitInstanceId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["traitInstanceId", b"traitInstanceId", "traitInstanceLabel", b"traitInstanceLabel"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "traitInstanceId",
+        b"traitInstanceId",
+        "traitInstanceLabel",
+        b"traitInstanceLabel",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitInstanceId: _TypeAlias = TraitInstanceId  # noqa: Y015
@@ -299,9 +323,13 @@ class FullTraitInstanceId(_message.Message):
         resourceId: Global___ResourceId | None = ...,
         traitInstanceId: Global___TraitInstanceId | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "traitInstanceId", b"traitInstanceId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "resourceId", b"resourceId", "traitInstanceId", b"traitInstanceId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "traitInstanceId", b"traitInstanceId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "resourceId", b"resourceId", "traitInstanceId", b"traitInstanceId"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FullTraitInstanceId: _TypeAlias = FullTraitInstanceId  # noqa: Y015
@@ -342,7 +370,9 @@ class EventId(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["id", b"id", "importance", b"importance", "resourceId", b"resourceId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "id", b"id", "importance", b"importance", "resourceId", b"resourceId"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EventId: _TypeAlias = EventId  # noqa: Y015
@@ -361,7 +391,9 @@ class ProfileSpecificStatusCode(_message.Message):
         profileId: _builtins.int = ...,
         statusCode: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["profileId", b"profileId", "statusCode", b"statusCode"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "profileId", b"profileId", "statusCode", b"statusCode"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ProfileSpecificStatusCode: _TypeAlias = ProfileSpecificStatusCode  # noqa: Y015
@@ -374,7 +406,10 @@ class StringRef(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StringRefCaseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StringRef._StringRefCase.ValueType], _builtins.type):
+    class _StringRefCaseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StringRef._StringRefCase.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STRING_REF_NOT_SET: StringRef._StringRefCase.ValueType  # 0
         LITERAL: StringRef._StringRefCase.ValueType  # 1
@@ -395,7 +430,9 @@ class StringRef(_message.Message):
         literal: _builtins.str = ...,
         reference: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["literal", b"literal", "reference", b"reference"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "literal", b"literal", "reference", b"reference"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StringRef: _TypeAlias = StringRef  # noqa: Y015
@@ -416,9 +453,13 @@ class Timer(_message.Message):
         time: _duration_pb2.Duration | None = ...,
         timeBasis: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["time", b"time", "timeBasis", b"timeBasis"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "time", b"time", "timeBasis", b"timeBasis"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["time", b"time", "timeBasis", b"timeBasis"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "time", b"time", "timeBasis", b"timeBasis"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___Timer: _TypeAlias = Timer  # noqa: Y015
@@ -440,7 +481,9 @@ class TimeOfDay(_message.Message):
         minute: _builtins.int = ...,
         second: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hour", b"hour", "minute", b"minute", "second", b"second"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hour", b"hour", "minute", b"minute", "second", b"second"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TimeOfDay: _TypeAlias = TimeOfDay  # noqa: Y015

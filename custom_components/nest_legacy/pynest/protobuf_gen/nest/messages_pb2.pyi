@@ -30,7 +30,9 @@ class SchemaVersion(_message.Message):
         currentVersion: _builtins.int = ...,
         minCompatVersion: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentVersion", b"currentVersion", "minCompatVersion", b"minCompatVersion"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentVersion", b"currentVersion", "minCompatVersion", b"minCompatVersion"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SchemaVersion: _TypeAlias = SchemaVersion  # noqa: Y015

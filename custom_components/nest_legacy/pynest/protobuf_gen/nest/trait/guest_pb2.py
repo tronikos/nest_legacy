@@ -4,6 +4,7 @@
 # source: nest/trait/guest.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -18,41 +19,43 @@ from ...weave import common_pb2 as weave_dot_common__pb2
 from ...weave.trait import schedule_pb2 as weave_dot_trait_dot_schedule__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16nest/trait/guest.proto\x12\x10nest.trait.guest\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12weave/common.proto\x1a\x1aweave/trait/schedule.proto\"\x8f\x12\n\x0bGuestsTrait\x12\x33\n\x06guests\x18\x01 \x03(\x0b\x32#.nest.trait.guest.GuestsTrait.Guest\x12\x1d\n\x15maxGuestsPerStructure\x18\x02 \x01(\r\x1a\xff\x01\n\x05Guest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x02id\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).nest.trait.guest.GuestsTrait.GuestStatus\x12\x36\n\x12invitationSentTime\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12<\n\x18invitationAcceptanceTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tavatarUrl\x18\x06 \x01(\t\x1a\x8e\x01\n\x12\x43reateGuestRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07pincode\x18\x02 \x01(\x0c\x12Y\n\x08schedule\x18\x03 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1a~\n\x13\x43reateGuestResponse\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12<\n\x06status\x18\x02 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a?\n\x12RemoveGuestRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1aS\n\x13RemoveGuestResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a\x8e\x01\n\x12InviteGuestRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x15\n\rencryptionKey\x18\x03 \x01(\x0c\x12\x18\n\x10\x65ncryptedPayload\x18\x04 \x01(\x0c\x12\r\n\x05notes\x18\x05 \x01(\t\x1a\xfe\x01\n\x0fGuestInvitation\x12\x16\n\x0einvitationUuid\x18\x01 \x01(\t\x12\x18\n\x10\x65ncryptedPayload\x18\x02 \x01(\x0c\x12-\n\tcreatedAt\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12*\n\x06sentAt\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tclaimedAt\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0binvisibleAt\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1aS\n\x13InviteGuestResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1aX\n\x18SetGuestAvatarUrlRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x11\n\tavatarUrl\x18\x02 \x01(\t\x1aY\n\x19SetGuestAvatarUrlResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a\x99\x01\n\x10\x43reateGuestEvent\x12+\n\tinviterId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\x0bstructureId\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12)\n\x07guestId\x18\x03 \x01(\x0b\x32\x18.weave.common.ResourceId\x1a\x99\x02\n\x10InviteGuestEvent\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x12\n\nguestEmail\x18\x02 \x01(\t\x12\x16\n\x0einvitationLink\x18\x03 \x01(\t\x12+\n\tinviterId\x18\x04 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\x0bstructureId\x18\x05 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\r\n\x05notes\x18\x06 \x01(\t\x12\x31\n\rinvisibleDate\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08reinvite\x18\x08 \x01(\x08\"\xad\x02\n\x0eResponseStatus\x12\x1f\n\x1bRESPONSE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n\x17RESPONSE_STATUS_SUCCESS\x10\x01\x12$\n RESPONSE_STATUS_INTERNAL_FAILURE\x10\x02\x12*\n&RESPONSE_STATUS_COMMAND_MISSING_PARAMS\x10\x03\x12\"\n\x1eRESPONSE_STATUS_DUP_GUEST_NAME\x10\x04\x12!\n\x1dRESPONSE_STATUS_LIMIT_REACHED\x10\x05\x12\x1f\n\x1bRESPONSE_STATUS_DUP_PINCODE\x10\x06\x12#\n\x1fRESPONSE_STATUS_GUEST_NOT_FOUND\x10\x07\"\x7f\n\x0bGuestStatus\x12\x1c\n\x18GUEST_STATUS_UNSPECIFIED\x10\x00\x12\x17\n\x13GUEST_STATUS_ACTIVE\x10\x01\x12\x18\n\x14GUEST_STATUS_INVITED\x10\x02\x12\x1f\n\x1bGUEST_STATUS_ACCESS_EXPIRED\x10\x03\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x16nest/trait/guest.proto\x12\x10nest.trait.guest\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x12weave/common.proto\x1a\x1aweave/trait/schedule.proto"\x8f\x12\n\x0bGuestsTrait\x12\x33\n\x06guests\x18\x01 \x03(\x0b\x32#.nest.trait.guest.GuestsTrait.Guest\x12\x1d\n\x15maxGuestsPerStructure\x18\x02 \x01(\r\x1a\xff\x01\n\x05Guest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12$\n\x02id\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).nest.trait.guest.GuestsTrait.GuestStatus\x12\x36\n\x12invitationSentTime\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12<\n\x18invitationAcceptanceTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tavatarUrl\x18\x06 \x01(\t\x1a\x8e\x01\n\x12\x43reateGuestRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07pincode\x18\x02 \x01(\x0c\x12Y\n\x08schedule\x18\x03 \x01(\x0b\x32G.weave.trait.schedule.BasicUserSchedulesSettingsTrait.BasicUserSchedule\x1a~\n\x13\x43reateGuestResponse\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12<\n\x06status\x18\x02 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a?\n\x12RemoveGuestRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x1aS\n\x13RemoveGuestResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a\x8e\x01\n\x12InviteGuestRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x15\n\rencryptionKey\x18\x03 \x01(\x0c\x12\x18\n\x10\x65ncryptedPayload\x18\x04 \x01(\x0c\x12\r\n\x05notes\x18\x05 \x01(\t\x1a\xfe\x01\n\x0fGuestInvitation\x12\x16\n\x0einvitationUuid\x18\x01 \x01(\t\x12\x18\n\x10\x65ncryptedPayload\x18\x02 \x01(\x0c\x12-\n\tcreatedAt\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12*\n\x06sentAt\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tclaimedAt\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0binvisibleAt\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1aS\n\x13InviteGuestResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1aX\n\x18SetGuestAvatarUrlRequest\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x11\n\tavatarUrl\x18\x02 \x01(\t\x1aY\n\x19SetGuestAvatarUrlResponse\x12<\n\x06status\x18\x01 \x01(\x0e\x32,.nest.trait.guest.GuestsTrait.ResponseStatus\x1a\x99\x01\n\x10\x43reateGuestEvent\x12+\n\tinviterId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\x0bstructureId\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12)\n\x07guestId\x18\x03 \x01(\x0b\x32\x18.weave.common.ResourceId\x1a\x99\x02\n\x10InviteGuestEvent\x12)\n\x07guestId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x12\n\nguestEmail\x18\x02 \x01(\t\x12\x16\n\x0einvitationLink\x18\x03 \x01(\t\x12+\n\tinviterId\x18\x04 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\x0bstructureId\x18\x05 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\r\n\x05notes\x18\x06 \x01(\t\x12\x31\n\rinvisibleDate\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08reinvite\x18\x08 \x01(\x08"\xad\x02\n\x0eResponseStatus\x12\x1f\n\x1bRESPONSE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n\x17RESPONSE_STATUS_SUCCESS\x10\x01\x12$\n RESPONSE_STATUS_INTERNAL_FAILURE\x10\x02\x12*\n&RESPONSE_STATUS_COMMAND_MISSING_PARAMS\x10\x03\x12"\n\x1eRESPONSE_STATUS_DUP_GUEST_NAME\x10\x04\x12!\n\x1dRESPONSE_STATUS_LIMIT_REACHED\x10\x05\x12\x1f\n\x1bRESPONSE_STATUS_DUP_PINCODE\x10\x06\x12#\n\x1fRESPONSE_STATUS_GUEST_NOT_FOUND\x10\x07"\x7f\n\x0bGuestStatus\x12\x1c\n\x18GUEST_STATUS_UNSPECIFIED\x10\x00\x12\x17\n\x13GUEST_STATUS_ACTIVE\x10\x01\x12\x18\n\x14GUEST_STATUS_INVITED\x10\x02\x12\x1f\n\x1bGUEST_STATUS_ACCESS_EXPIRED\x10\x03\x62\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'nest.trait.guest_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "nest.trait.guest_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_GUESTSTRAIT']._serialized_start=126
-  _globals['_GUESTSTRAIT']._serialized_end=2445
-  _globals['_GUESTSTRAIT_GUEST']._serialized_start=226
-  _globals['_GUESTSTRAIT_GUEST']._serialized_end=481
-  _globals['_GUESTSTRAIT_CREATEGUESTREQUEST']._serialized_start=484
-  _globals['_GUESTSTRAIT_CREATEGUESTREQUEST']._serialized_end=626
-  _globals['_GUESTSTRAIT_CREATEGUESTRESPONSE']._serialized_start=628
-  _globals['_GUESTSTRAIT_CREATEGUESTRESPONSE']._serialized_end=754
-  _globals['_GUESTSTRAIT_REMOVEGUESTREQUEST']._serialized_start=756
-  _globals['_GUESTSTRAIT_REMOVEGUESTREQUEST']._serialized_end=819
-  _globals['_GUESTSTRAIT_REMOVEGUESTRESPONSE']._serialized_start=821
-  _globals['_GUESTSTRAIT_REMOVEGUESTRESPONSE']._serialized_end=904
-  _globals['_GUESTSTRAIT_INVITEGUESTREQUEST']._serialized_start=907
-  _globals['_GUESTSTRAIT_INVITEGUESTREQUEST']._serialized_end=1049
-  _globals['_GUESTSTRAIT_GUESTINVITATION']._serialized_start=1052
-  _globals['_GUESTSTRAIT_GUESTINVITATION']._serialized_end=1306
-  _globals['_GUESTSTRAIT_INVITEGUESTRESPONSE']._serialized_start=1308
-  _globals['_GUESTSTRAIT_INVITEGUESTRESPONSE']._serialized_end=1391
-  _globals['_GUESTSTRAIT_SETGUESTAVATARURLREQUEST']._serialized_start=1393
-  _globals['_GUESTSTRAIT_SETGUESTAVATARURLREQUEST']._serialized_end=1481
-  _globals['_GUESTSTRAIT_SETGUESTAVATARURLRESPONSE']._serialized_start=1483
-  _globals['_GUESTSTRAIT_SETGUESTAVATARURLRESPONSE']._serialized_end=1572
-  _globals['_GUESTSTRAIT_CREATEGUESTEVENT']._serialized_start=1575
-  _globals['_GUESTSTRAIT_CREATEGUESTEVENT']._serialized_end=1728
-  _globals['_GUESTSTRAIT_INVITEGUESTEVENT']._serialized_start=1731
-  _globals['_GUESTSTRAIT_INVITEGUESTEVENT']._serialized_end=2012
-  _globals['_GUESTSTRAIT_RESPONSESTATUS']._serialized_start=2015
-  _globals['_GUESTSTRAIT_RESPONSESTATUS']._serialized_end=2316
-  _globals['_GUESTSTRAIT_GUESTSTATUS']._serialized_start=2318
-  _globals['_GUESTSTRAIT_GUESTSTATUS']._serialized_end=2445
+    DESCRIPTOR._loaded_options = None
+    _globals["_GUESTSTRAIT"]._serialized_start = 126
+    _globals["_GUESTSTRAIT"]._serialized_end = 2445
+    _globals["_GUESTSTRAIT_GUEST"]._serialized_start = 226
+    _globals["_GUESTSTRAIT_GUEST"]._serialized_end = 481
+    _globals["_GUESTSTRAIT_CREATEGUESTREQUEST"]._serialized_start = 484
+    _globals["_GUESTSTRAIT_CREATEGUESTREQUEST"]._serialized_end = 626
+    _globals["_GUESTSTRAIT_CREATEGUESTRESPONSE"]._serialized_start = 628
+    _globals["_GUESTSTRAIT_CREATEGUESTRESPONSE"]._serialized_end = 754
+    _globals["_GUESTSTRAIT_REMOVEGUESTREQUEST"]._serialized_start = 756
+    _globals["_GUESTSTRAIT_REMOVEGUESTREQUEST"]._serialized_end = 819
+    _globals["_GUESTSTRAIT_REMOVEGUESTRESPONSE"]._serialized_start = 821
+    _globals["_GUESTSTRAIT_REMOVEGUESTRESPONSE"]._serialized_end = 904
+    _globals["_GUESTSTRAIT_INVITEGUESTREQUEST"]._serialized_start = 907
+    _globals["_GUESTSTRAIT_INVITEGUESTREQUEST"]._serialized_end = 1049
+    _globals["_GUESTSTRAIT_GUESTINVITATION"]._serialized_start = 1052
+    _globals["_GUESTSTRAIT_GUESTINVITATION"]._serialized_end = 1306
+    _globals["_GUESTSTRAIT_INVITEGUESTRESPONSE"]._serialized_start = 1308
+    _globals["_GUESTSTRAIT_INVITEGUESTRESPONSE"]._serialized_end = 1391
+    _globals["_GUESTSTRAIT_SETGUESTAVATARURLREQUEST"]._serialized_start = 1393
+    _globals["_GUESTSTRAIT_SETGUESTAVATARURLREQUEST"]._serialized_end = 1481
+    _globals["_GUESTSTRAIT_SETGUESTAVATARURLRESPONSE"]._serialized_start = 1483
+    _globals["_GUESTSTRAIT_SETGUESTAVATARURLRESPONSE"]._serialized_end = 1572
+    _globals["_GUESTSTRAIT_CREATEGUESTEVENT"]._serialized_start = 1575
+    _globals["_GUESTSTRAIT_CREATEGUESTEVENT"]._serialized_end = 1728
+    _globals["_GUESTSTRAIT_INVITEGUESTEVENT"]._serialized_start = 1731
+    _globals["_GUESTSTRAIT_INVITEGUESTEVENT"]._serialized_end = 2012
+    _globals["_GUESTSTRAIT_RESPONSESTATUS"]._serialized_start = 2015
+    _globals["_GUESTSTRAIT_RESPONSESTATUS"]._serialized_end = 2316
+    _globals["_GUESTSTRAIT_GUESTSTATUS"]._serialized_start = 2318
+    _globals["_GUESTSTRAIT_GUESTSTATUS"]._serialized_end = 2445
 # @@protoc_insertion_point(module_scope)

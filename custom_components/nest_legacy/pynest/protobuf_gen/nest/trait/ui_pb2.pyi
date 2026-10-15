@@ -45,21 +45,30 @@ class SoyMessage(_message.Message):
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         MESSAGENAMESPACE_FIELD_NUMBER: _builtins.int
         PARAMETERS_FIELD_NUMBER: _builtins.int
         messageNamespace: _builtins.str
         @_builtins.property
-        def parameters(self) -> _containers.MessageMap[_builtins.int, Global___SoyMessage.SoyParameter]: ...
+        def parameters(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___SoyMessage.SoyParameter
+        ]: ...
         def __init__(
             self,
             *,
             messageNamespace: _builtins.str = ...,
-            parameters: _abc.Mapping[_builtins.int, Global___SoyMessage.SoyParameter] | None = ...,
+            parameters: _abc.Mapping[_builtins.int, Global___SoyMessage.SoyParameter]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["messageNamespace", b"messageNamespace", "parameters", b"parameters"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "messageNamespace", b"messageNamespace", "parameters", b"parameters"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -76,7 +85,9 @@ class SoyMessage(_message.Message):
             typeUrl: _builtins.str = ...,
             value: _builtins.bytes = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["typeUrl", b"typeUrl", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "typeUrl", b"typeUrl", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -96,7 +107,9 @@ class SoyMessage(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -124,9 +137,22 @@ class SoyMessage(_message.Message):
             protoValue: Global___SoyMessage.Any | None = ...,
             stringListValue: Global___SoyMessage.StringList | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["protoValue", b"protoValue", "stringListValue", b"stringListValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "protoValue", b"protoValue", "stringListValue", b"stringListValue"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["boolValue", b"boolValue", "intValue", b"intValue", "protoValue", b"protoValue", "singleValue", b"singleValue", "stringListValue", b"stringListValue"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "boolValue",
+            b"boolValue",
+            "intValue",
+            b"intValue",
+            "protoValue",
+            b"protoValue",
+            "singleValue",
+            b"singleValue",
+            "stringListValue",
+            b"stringListValue",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -165,9 +191,20 @@ class SoyMessage(_message.Message):
             width: _builtins.int = ...,
             height: _builtins.int = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["accessibilityText", b"accessibilityText"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "accessibilityText", b"accessibilityText"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["accessibilityText", b"accessibilityText", "height", b"height", "url", b"url", "width", b"width"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "accessibilityText",
+            b"accessibilityText",
+            "height",
+            b"height",
+            "url",
+            b"url",
+            "width",
+            b"width",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -198,35 +235,82 @@ class EnhancedPathlightSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PathlightBrightnessDiscreteEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType], _builtins.type):
+    class _PathlightBrightnessDiscreteEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PATHLIGHT_BRIGHTNESS_DISCRETE_UNSPECIFIED: EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType  # 0
-        PATHLIGHT_BRIGHTNESS_DISCRETE_LOW: EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType  # 1
-        PATHLIGHT_BRIGHTNESS_DISCRETE_MEDIUM: EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType  # 2
-        PATHLIGHT_BRIGHTNESS_DISCRETE_HIGH: EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType  # 3
+        PATHLIGHT_BRIGHTNESS_DISCRETE_UNSPECIFIED: (
+            EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType
+        )  # 0
+        PATHLIGHT_BRIGHTNESS_DISCRETE_LOW: (
+            EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType
+        )  # 1
+        PATHLIGHT_BRIGHTNESS_DISCRETE_MEDIUM: (
+            EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType
+        )  # 2
+        PATHLIGHT_BRIGHTNESS_DISCRETE_HIGH: (
+            EnhancedPathlightSettingsTrait._PathlightBrightnessDiscrete.ValueType
+        )  # 3
 
-    class PathlightBrightnessDiscrete(_PathlightBrightnessDiscrete, metaclass=_PathlightBrightnessDiscreteEnumTypeWrapper): ...
-    PATHLIGHT_BRIGHTNESS_DISCRETE_UNSPECIFIED: EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType  # 0
-    PATHLIGHT_BRIGHTNESS_DISCRETE_LOW: EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType  # 1
-    PATHLIGHT_BRIGHTNESS_DISCRETE_MEDIUM: EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType  # 2
-    PATHLIGHT_BRIGHTNESS_DISCRETE_HIGH: EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType  # 3
+    class PathlightBrightnessDiscrete(
+        _PathlightBrightnessDiscrete,
+        metaclass=_PathlightBrightnessDiscreteEnumTypeWrapper,
+    ): ...
+    PATHLIGHT_BRIGHTNESS_DISCRETE_UNSPECIFIED: (
+        EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    )  # 0
+    PATHLIGHT_BRIGHTNESS_DISCRETE_LOW: (
+        EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    )  # 1
+    PATHLIGHT_BRIGHTNESS_DISCRETE_MEDIUM: (
+        EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    )  # 2
+    PATHLIGHT_BRIGHTNESS_DISCRETE_HIGH: (
+        EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    )  # 3
 
     class _PathlightCondition:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PathlightConditionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnhancedPathlightSettingsTrait._PathlightCondition.ValueType], _builtins.type):
+    class _PathlightConditionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnhancedPathlightSettingsTrait._PathlightCondition.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PATHLIGHT_CONDITION_UNSPECIFIED: EnhancedPathlightSettingsTrait._PathlightCondition.ValueType  # 0
-        PATHLIGHT_CONDITION_LINE_POWER: EnhancedPathlightSettingsTrait._PathlightCondition.ValueType  # 1
-        PATHLIGHT_CONDITION_DARKNESS: EnhancedPathlightSettingsTrait._PathlightCondition.ValueType  # 2
-        PATHLIGHT_CONDITION_MOTION: EnhancedPathlightSettingsTrait._PathlightCondition.ValueType  # 4
+        PATHLIGHT_CONDITION_UNSPECIFIED: (
+            EnhancedPathlightSettingsTrait._PathlightCondition.ValueType
+        )  # 0
+        PATHLIGHT_CONDITION_LINE_POWER: (
+            EnhancedPathlightSettingsTrait._PathlightCondition.ValueType
+        )  # 1
+        PATHLIGHT_CONDITION_DARKNESS: (
+            EnhancedPathlightSettingsTrait._PathlightCondition.ValueType
+        )  # 2
+        PATHLIGHT_CONDITION_MOTION: (
+            EnhancedPathlightSettingsTrait._PathlightCondition.ValueType
+        )  # 4
 
-    class PathlightCondition(_PathlightCondition, metaclass=_PathlightConditionEnumTypeWrapper): ...
-    PATHLIGHT_CONDITION_UNSPECIFIED: EnhancedPathlightSettingsTrait.PathlightCondition.ValueType  # 0
-    PATHLIGHT_CONDITION_LINE_POWER: EnhancedPathlightSettingsTrait.PathlightCondition.ValueType  # 1
-    PATHLIGHT_CONDITION_DARKNESS: EnhancedPathlightSettingsTrait.PathlightCondition.ValueType  # 2
-    PATHLIGHT_CONDITION_MOTION: EnhancedPathlightSettingsTrait.PathlightCondition.ValueType  # 4
+    class PathlightCondition(
+        _PathlightCondition, metaclass=_PathlightConditionEnumTypeWrapper
+    ): ...
+    PATHLIGHT_CONDITION_UNSPECIFIED: (
+        EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+    )  # 0
+    PATHLIGHT_CONDITION_LINE_POWER: (
+        EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+    )  # 1
+    PATHLIGHT_CONDITION_DARKNESS: (
+        EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+    )  # 2
+    PATHLIGHT_CONDITION_MOTION: (
+        EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+    )  # 4
 
     @_typing.final
     class TriggersEntry(_message.Message):
@@ -241,11 +325,14 @@ class EnhancedPathlightSettingsTrait(_message.Message):
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___EnhancedPathlightSettingsTrait.PathlightTrigger | None = ...,
+            value: Global___EnhancedPathlightSettingsTrait.PathlightTrigger
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -259,31 +346,56 @@ class EnhancedPathlightSettingsTrait(_message.Message):
         @_builtins.property
         def timeout(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def activationConditions(self) -> _containers.RepeatedScalarFieldContainer[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType]: ...
+        def activationConditions(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+        ]: ...
         def __init__(
             self,
             *,
             timeout: _duration_pb2.Duration | None = ...,
             brightnessDiscrete: Global___EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType = ...,
-            activationConditions: _abc.Iterable[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType] | None = ...,
+            activationConditions: _abc.Iterable[
+                Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+            ]
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["timeout", b"timeout"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activationConditions", b"activationConditions", "brightnessDiscrete", b"brightnessDiscrete", "timeout", b"timeout"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activationConditions",
+            b"activationConditions",
+            "brightnessDiscrete",
+            b"brightnessDiscrete",
+            "timeout",
+            b"timeout",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TRIGGERS_FIELD_NUMBER: _builtins.int
     BRIGHTNESSDISCRETE_FIELD_NUMBER: _builtins.int
-    brightnessDiscrete: Global___EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    brightnessDiscrete: (
+        Global___EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType
+    )
     @_builtins.property
-    def triggers(self) -> _containers.MessageMap[_builtins.int, Global___EnhancedPathlightSettingsTrait.PathlightTrigger]: ...
+    def triggers(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___EnhancedPathlightSettingsTrait.PathlightTrigger
+    ]: ...
     def __init__(
         self,
         *,
-        triggers: _abc.Mapping[_builtins.int, Global___EnhancedPathlightSettingsTrait.PathlightTrigger] | None = ...,
+        triggers: _abc.Mapping[
+            _builtins.int, Global___EnhancedPathlightSettingsTrait.PathlightTrigger
+        ]
+        | None = ...,
         brightnessDiscrete: Global___EnhancedPathlightSettingsTrait.PathlightBrightnessDiscrete.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["brightnessDiscrete", b"brightnessDiscrete", "triggers", b"triggers"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "brightnessDiscrete", b"brightnessDiscrete", "triggers", b"triggers"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EnhancedPathlightSettingsTrait: _TypeAlias = EnhancedPathlightSettingsTrait  # noqa: Y015
@@ -320,17 +432,36 @@ class EnhancedPathlightStateTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ActivationStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnhancedPathlightStateTrait._ActivationState.ValueType], _builtins.type):
+    class _ActivationStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnhancedPathlightStateTrait._ActivationState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ACTIVATION_STATE_UNSPECIFIED: EnhancedPathlightStateTrait._ActivationState.ValueType  # 0
-        ACTIVATION_STATE_OFF: EnhancedPathlightStateTrait._ActivationState.ValueType  # 1
-        ACTIVATION_STATE_TIMED_OUT: EnhancedPathlightStateTrait._ActivationState.ValueType  # 2
-        ACTIVATION_STATE_ACTIVE: EnhancedPathlightStateTrait._ActivationState.ValueType  # 3
+        ACTIVATION_STATE_UNSPECIFIED: (
+            EnhancedPathlightStateTrait._ActivationState.ValueType
+        )  # 0
+        ACTIVATION_STATE_OFF: (
+            EnhancedPathlightStateTrait._ActivationState.ValueType
+        )  # 1
+        ACTIVATION_STATE_TIMED_OUT: (
+            EnhancedPathlightStateTrait._ActivationState.ValueType
+        )  # 2
+        ACTIVATION_STATE_ACTIVE: (
+            EnhancedPathlightStateTrait._ActivationState.ValueType
+        )  # 3
 
-    class ActivationState(_ActivationState, metaclass=_ActivationStateEnumTypeWrapper): ...
-    ACTIVATION_STATE_UNSPECIFIED: EnhancedPathlightStateTrait.ActivationState.ValueType  # 0
+    class ActivationState(
+        _ActivationState, metaclass=_ActivationStateEnumTypeWrapper
+    ): ...
+    ACTIVATION_STATE_UNSPECIFIED: (
+        EnhancedPathlightStateTrait.ActivationState.ValueType
+    )  # 0
     ACTIVATION_STATE_OFF: EnhancedPathlightStateTrait.ActivationState.ValueType  # 1
-    ACTIVATION_STATE_TIMED_OUT: EnhancedPathlightStateTrait.ActivationState.ValueType  # 2
+    ACTIVATION_STATE_TIMED_OUT: (
+        EnhancedPathlightStateTrait.ActivationState.ValueType
+    )  # 2
     ACTIVATION_STATE_ACTIVE: EnhancedPathlightStateTrait.ActivationState.ValueType  # 3
 
     @_typing.final
@@ -345,23 +476,50 @@ class EnhancedPathlightStateTrait(_message.Message):
         state: Global___EnhancedPathlightStateTrait.ActivationState.ValueType
         previousState: Global___EnhancedPathlightStateTrait.ActivationState.ValueType
         @_builtins.property
-        def conditions(self) -> _containers.RepeatedScalarFieldContainer[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType]: ...
+        def conditions(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+        ]: ...
         @_builtins.property
-        def activatedConditions(self) -> _containers.RepeatedScalarFieldContainer[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType]: ...
+        def activatedConditions(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+        ]: ...
         @_builtins.property
         def activeDuration(self) -> _duration_pb2.Duration: ...
         def __init__(
             self,
             *,
             state: Global___EnhancedPathlightStateTrait.ActivationState.ValueType = ...,
-            conditions: _abc.Iterable[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType] | None = ...,
-            activatedConditions: _abc.Iterable[Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType] | None = ...,
+            conditions: _abc.Iterable[
+                Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+            ]
+            | None = ...,
+            activatedConditions: _abc.Iterable[
+                Global___EnhancedPathlightSettingsTrait.PathlightCondition.ValueType
+            ]
+            | None = ...,
             previousState: Global___EnhancedPathlightStateTrait.ActivationState.ValueType = ...,
             activeDuration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["activeDuration", b"activeDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "activeDuration", b"activeDuration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activatedConditions", b"activatedConditions", "activeDuration", b"activeDuration", "conditions", b"conditions", "previousState", b"previousState", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activatedConditions",
+            b"activatedConditions",
+            "activeDuration",
+            b"activeDuration",
+            "conditions",
+            b"conditions",
+            "previousState",
+            b"previousState",
+            "state",
+            b"state",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -378,19 +536,40 @@ class PathlightSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PathlightBrightnessEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PathlightSettingsTrait._PathlightBrightness.ValueType], _builtins.type):
+    class _PathlightBrightnessEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PATHLIGHT_BRIGHTNESS_UNSPECIFIED: PathlightSettingsTrait._PathlightBrightness.ValueType  # 0
-        PATHLIGHT_BRIGHTNESS_OFF: PathlightSettingsTrait._PathlightBrightness.ValueType  # 1
-        PATHLIGHT_BRIGHTNESS_LOW: PathlightSettingsTrait._PathlightBrightness.ValueType  # 2
-        PATHLIGHT_BRIGHTNESS_MEDIUM: PathlightSettingsTrait._PathlightBrightness.ValueType  # 3
-        PATHLIGHT_BRIGHTNESS_HIGH: PathlightSettingsTrait._PathlightBrightness.ValueType  # 4
+        PATHLIGHT_BRIGHTNESS_UNSPECIFIED: (
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        )  # 0
+        PATHLIGHT_BRIGHTNESS_OFF: (
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        )  # 1
+        PATHLIGHT_BRIGHTNESS_LOW: (
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        )  # 2
+        PATHLIGHT_BRIGHTNESS_MEDIUM: (
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        )  # 3
+        PATHLIGHT_BRIGHTNESS_HIGH: (
+            PathlightSettingsTrait._PathlightBrightness.ValueType
+        )  # 4
 
-    class PathlightBrightness(_PathlightBrightness, metaclass=_PathlightBrightnessEnumTypeWrapper): ...
-    PATHLIGHT_BRIGHTNESS_UNSPECIFIED: PathlightSettingsTrait.PathlightBrightness.ValueType  # 0
+    class PathlightBrightness(
+        _PathlightBrightness, metaclass=_PathlightBrightnessEnumTypeWrapper
+    ): ...
+    PATHLIGHT_BRIGHTNESS_UNSPECIFIED: (
+        PathlightSettingsTrait.PathlightBrightness.ValueType
+    )  # 0
     PATHLIGHT_BRIGHTNESS_OFF: PathlightSettingsTrait.PathlightBrightness.ValueType  # 1
     PATHLIGHT_BRIGHTNESS_LOW: PathlightSettingsTrait.PathlightBrightness.ValueType  # 2
-    PATHLIGHT_BRIGHTNESS_MEDIUM: PathlightSettingsTrait.PathlightBrightness.ValueType  # 3
+    PATHLIGHT_BRIGHTNESS_MEDIUM: (
+        PathlightSettingsTrait.PathlightBrightness.ValueType
+    )  # 3
     PATHLIGHT_BRIGHTNESS_HIGH: PathlightSettingsTrait.PathlightBrightness.ValueType  # 4
 
     PATHLIGHTBRIGHTNESS_FIELD_NUMBER: _builtins.int
@@ -400,7 +579,9 @@ class PathlightSettingsTrait(_message.Message):
         *,
         pathlightBrightness: Global___PathlightSettingsTrait.PathlightBrightness.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["pathlightBrightness", b"pathlightBrightness"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "pathlightBrightness", b"pathlightBrightness"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PathlightSettingsTrait: _TypeAlias = PathlightSettingsTrait  # noqa: Y015

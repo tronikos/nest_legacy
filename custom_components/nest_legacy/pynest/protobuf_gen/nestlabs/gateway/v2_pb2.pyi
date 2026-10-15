@@ -28,7 +28,9 @@ class _ResourceStatus:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _ResourceStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_ResourceStatus.ValueType], _builtins.type):
+class _ResourceStatusEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_ResourceStatus.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     NORMAL: _ResourceStatus.ValueType  # 0
     ADDED: _ResourceStatus.ValueType  # 1
@@ -45,7 +47,9 @@ class _StateType:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _StateTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_StateType.ValueType], _builtins.type):
+class _StateTypeEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_StateType.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     STATE_TYPE_UNSPECIFIED: _StateType.ValueType  # 0
     CONFIRMED: _StateType.ValueType  # 1
@@ -78,7 +82,9 @@ class TraitMeta(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["schemaVersion", b"schemaVersion"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["schemaVersion", b"schemaVersion", "traitLabel", b"traitLabel", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "schemaVersion", b"schemaVersion", "traitLabel", b"traitLabel", "type", b"type"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitMeta: _TypeAlias = TraitMeta  # noqa: Y015
@@ -101,7 +107,9 @@ class IfaceMeta(_message.Message):
             key: _builtins.str = ...,
             value: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     IFACELABEL_FIELD_NUMBER: _builtins.int
@@ -111,7 +119,9 @@ class IfaceMeta(_message.Message):
     ifaceLabel: _builtins.str
     type: _builtins.str
     @_builtins.property
-    def traitLabelMapping(self) -> _containers.ScalarMap[_builtins.str, _builtins.str]: ...
+    def traitLabelMapping(
+        self,
+    ) -> _containers.ScalarMap[_builtins.str, _builtins.str]: ...
     @_builtins.property
     def schemaVersion(self) -> _messages_pb2.SchemaVersion: ...
     def __init__(
@@ -124,7 +134,16 @@ class IfaceMeta(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["schemaVersion", b"schemaVersion"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ifaceLabel", b"ifaceLabel", "schemaVersion", b"schemaVersion", "traitLabelMapping", b"traitLabelMapping", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ifaceLabel",
+        b"ifaceLabel",
+        "schemaVersion",
+        b"schemaVersion",
+        "traitLabelMapping",
+        b"traitLabelMapping",
+        "type",
+        b"type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___IfaceMeta: _TypeAlias = IfaceMeta  # noqa: Y015
@@ -144,9 +163,13 @@ class ResourceMeta(_message.Message):
     status: Global___ResourceStatus.ValueType
     currentSchemaVersion: _builtins.int
     @_builtins.property
-    def traitMetas(self) -> _containers.RepeatedCompositeFieldContainer[Global___TraitMeta]: ...
+    def traitMetas(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[Global___TraitMeta]: ...
     @_builtins.property
-    def ifaceMetas(self) -> _containers.RepeatedCompositeFieldContainer[Global___IfaceMeta]: ...
+    def ifaceMetas(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[Global___IfaceMeta]: ...
     def __init__(
         self,
         *,
@@ -157,7 +180,20 @@ class ResourceMeta(_message.Message):
         currentSchemaVersion: _builtins.int = ...,
         ifaceMetas: _abc.Iterable[Global___IfaceMeta] | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentSchemaVersion", b"currentSchemaVersion", "ifaceMetas", b"ifaceMetas", "resourceId", b"resourceId", "status", b"status", "traitMetas", b"traitMetas", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentSchemaVersion",
+        b"currentSchemaVersion",
+        "ifaceMetas",
+        b"ifaceMetas",
+        "resourceId",
+        b"resourceId",
+        "status",
+        b"status",
+        "traitMetas",
+        b"traitMetas",
+        "type",
+        b"type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ResourceMeta: _TypeAlias = ResourceMeta  # noqa: Y015
@@ -176,7 +212,9 @@ class TraitId(_message.Message):
         resourceId: _builtins.str = ...,
         traitLabel: _builtins.str = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "traitLabel", b"traitLabel"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "resourceId", b"resourceId", "traitLabel", b"traitLabel"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitId: _TypeAlias = TraitId  # noqa: Y015
@@ -214,7 +252,9 @@ class TraitState(_message.Message):
     @_builtins.property
     def traitId(self) -> Global___TraitId: ...
     @_builtins.property
-    def stateTypes(self) -> _containers.RepeatedScalarFieldContainer[Global___StateType.ValueType]: ...
+    def stateTypes(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[Global___StateType.ValueType]: ...
     @_builtins.property
     def patch(self) -> Global___Patch: ...
     def __init__(
@@ -226,9 +266,22 @@ class TraitState(_message.Message):
         monotonicVersion: _builtins.int = ...,
         publisherVersion: _builtins.int = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["patch", b"patch", "traitId", b"traitId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "patch", b"patch", "traitId", b"traitId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["monotonicVersion", b"monotonicVersion", "patch", b"patch", "publisherVersion", b"publisherVersion", "stateTypes", b"stateTypes", "traitId", b"traitId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "monotonicVersion",
+        b"monotonicVersion",
+        "patch",
+        b"patch",
+        "publisherVersion",
+        b"publisherVersion",
+        "stateTypes",
+        b"stateTypes",
+        "traitId",
+        b"traitId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitState: _TypeAlias = TraitState  # noqa: Y015
@@ -253,7 +306,14 @@ class TraitTypeObserveParams(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["stateFieldMask", b"stateFieldMask"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["observerSchemaVersion", b"observerSchemaVersion", "stateFieldMask", b"stateFieldMask", "traitType", b"traitType"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "observerSchemaVersion",
+        b"observerSchemaVersion",
+        "stateFieldMask",
+        b"stateFieldMask",
+        "traitType",
+        b"traitType",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitTypeObserveParams: _TypeAlias = TraitTypeObserveParams  # noqa: Y015
@@ -267,7 +327,9 @@ class TraitInstanceObserveParams(_message.Message):
     @_builtins.property
     def traitId(self) -> Global___TraitId: ...
     @_builtins.property
-    def monotonicVersionFilters(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def monotonicVersionFilters(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
     def __init__(
         self,
         *,
@@ -276,7 +338,9 @@ class TraitInstanceObserveParams(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["traitId", b"traitId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["monotonicVersionFilters", b"monotonicVersionFilters", "traitId", b"traitId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "monotonicVersionFilters", b"monotonicVersionFilters", "traitId", b"traitId"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitInstanceObserveParams: _TypeAlias = TraitInstanceObserveParams  # noqa: Y015
@@ -292,23 +356,47 @@ class ObserveRequest(_message.Message):
     USERID_FIELD_NUMBER: _builtins.int
     userId: _builtins.str
     @_builtins.property
-    def stateTypes(self) -> _containers.RepeatedScalarFieldContainer[Global___StateType.ValueType]: ...
+    def stateTypes(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[Global___StateType.ValueType]: ...
     @_builtins.property
-    def resourceIds(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    def resourceIds(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
     @_builtins.property
-    def traitTypeParams(self) -> _containers.RepeatedCompositeFieldContainer[Global___TraitTypeObserveParams]: ...
+    def traitTypeParams(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___TraitTypeObserveParams
+    ]: ...
     @_builtins.property
-    def traitInstanceParams(self) -> _containers.RepeatedCompositeFieldContainer[Global___TraitInstanceObserveParams]: ...
+    def traitInstanceParams(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___TraitInstanceObserveParams
+    ]: ...
     def __init__(
         self,
         *,
         stateTypes: _abc.Iterable[Global___StateType.ValueType] | None = ...,
         resourceIds: _abc.Iterable[_builtins.str] | None = ...,
         traitTypeParams: _abc.Iterable[Global___TraitTypeObserveParams] | None = ...,
-        traitInstanceParams: _abc.Iterable[Global___TraitInstanceObserveParams] | None = ...,
+        traitInstanceParams: _abc.Iterable[Global___TraitInstanceObserveParams]
+        | None = ...,
         userId: _builtins.str = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceIds", b"resourceIds", "stateTypes", b"stateTypes", "traitInstanceParams", b"traitInstanceParams", "traitTypeParams", b"traitTypeParams", "userId", b"userId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "resourceIds",
+        b"resourceIds",
+        "stateTypes",
+        b"stateTypes",
+        "traitInstanceParams",
+        b"traitInstanceParams",
+        "traitTypeParams",
+        b"traitTypeParams",
+        "userId",
+        b"userId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ObserveRequest: _TypeAlias = ObserveRequest  # noqa: Y015
@@ -322,7 +410,9 @@ class TraitOperationList(_message.Message):
     @_builtins.property
     def traitId(self) -> Global___TraitId: ...
     @_builtins.property
-    def traitOperations(self) -> _containers.RepeatedCompositeFieldContainer[_v1_pb2.TraitOperation]: ...
+    def traitOperations(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_v1_pb2.TraitOperation]: ...
     def __init__(
         self,
         *,
@@ -331,7 +421,9 @@ class TraitOperationList(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["traitId", b"traitId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["traitId", b"traitId", "traitOperations", b"traitOperations"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "traitId", b"traitId", "traitOperations", b"traitOperations"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TraitOperationList: _TypeAlias = TraitOperationList  # noqa: Y015
@@ -351,11 +443,19 @@ class ObserveResponse(_message.Message):
         CURRENTTIME_FIELD_NUMBER: _builtins.int
         initialResourceMetasContinue: _builtins.bool
         @_builtins.property
-        def resourceMetas(self) -> _containers.RepeatedCompositeFieldContainer[Global___ResourceMeta]: ...
+        def resourceMetas(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[Global___ResourceMeta]: ...
         @_builtins.property
-        def traitStates(self) -> _containers.RepeatedCompositeFieldContainer[Global___TraitState]: ...
+        def traitStates(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[Global___TraitState]: ...
         @_builtins.property
-        def traitOperationLists(self) -> _containers.RepeatedCompositeFieldContainer[Global___TraitOperationList]: ...
+        def traitOperationLists(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___TraitOperationList
+        ]: ...
         @_builtins.property
         def currentTime(self) -> _timestamp_pb2.Timestamp: ...
         def __init__(
@@ -364,23 +464,42 @@ class ObserveResponse(_message.Message):
             resourceMetas: _abc.Iterable[Global___ResourceMeta] | None = ...,
             initialResourceMetasContinue: _builtins.bool = ...,
             traitStates: _abc.Iterable[Global___TraitState] | None = ...,
-            traitOperationLists: _abc.Iterable[Global___TraitOperationList] | None = ...,
+            traitOperationLists: _abc.Iterable[Global___TraitOperationList]
+            | None = ...,
             currentTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["currentTime", b"currentTime"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentTime", b"currentTime", "initialResourceMetasContinue", b"initialResourceMetasContinue", "resourceMetas", b"resourceMetas", "traitOperationLists", b"traitOperationLists", "traitStates", b"traitStates"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentTime",
+            b"currentTime",
+            "initialResourceMetasContinue",
+            b"initialResourceMetasContinue",
+            "resourceMetas",
+            b"resourceMetas",
+            "traitOperationLists",
+            b"traitOperationLists",
+            "traitStates",
+            b"traitStates",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     OBSERVERESPONSE_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def observeResponse(self) -> _containers.RepeatedCompositeFieldContainer[Global___ObserveResponse.ObserveResponse]: ...
+    def observeResponse(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___ObserveResponse.ObserveResponse
+    ]: ...
     def __init__(
         self,
         *,
-        observeResponse: _abc.Iterable[Global___ObserveResponse.ObserveResponse] | None = ...,
+        observeResponse: _abc.Iterable[Global___ObserveResponse.ObserveResponse]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["observeResponse", b"observeResponse"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "observeResponse", b"observeResponse"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ObserveResponse: _TypeAlias = ObserveResponse  # noqa: Y015

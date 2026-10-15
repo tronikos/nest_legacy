@@ -25,7 +25,9 @@ class _CameraState:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _CameraStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_CameraState.ValueType], _builtins.type):
+class _CameraStateEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_CameraState.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     CAMERA_UNSPECIFIED: _CameraState.ValueType  # 0
     CAMERA_ON: _CameraState.ValueType  # 1
@@ -42,7 +44,9 @@ class _VideoHistorySetting:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _VideoHistorySettingEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_VideoHistorySetting.ValueType], _builtins.type):
+class _VideoHistorySettingEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_VideoHistorySetting.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     VIDEO_HISTORY_UNSPECIFIED: _VideoHistorySetting.ValueType  # 0
     VIDEO_HISTORY_LEGACY_NONE: _VideoHistorySetting.ValueType  # 1
@@ -51,7 +55,9 @@ class _VideoHistorySettingEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_V
     VIDEO_HISTORY_LEGACY_EVENTS: _VideoHistorySetting.ValueType  # 4
     VIDEO_HISTORY_NONE: _VideoHistorySetting.ValueType  # 5
 
-class VideoHistorySetting(_VideoHistorySetting, metaclass=_VideoHistorySettingEnumTypeWrapper): ...
+class VideoHistorySetting(
+    _VideoHistorySetting, metaclass=_VideoHistorySettingEnumTypeWrapper
+): ...
 
 VIDEO_HISTORY_UNSPECIFIED: VideoHistorySetting.ValueType  # 0
 VIDEO_HISTORY_LEGACY_NONE: VideoHistorySetting.ValueType  # 1
@@ -79,9 +85,18 @@ class RecordingToggleSettingsTrait(_message.Message):
         changeModeReason: _builtins.int = ...,
         settingsUpdated: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["settingsUpdated", b"settingsUpdated"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "settingsUpdated", b"settingsUpdated"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["changeModeReason", b"changeModeReason", "settingsUpdated", b"settingsUpdated", "targetCameraState", b"targetCameraState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "changeModeReason",
+        b"changeModeReason",
+        "settingsUpdated",
+        b"settingsUpdated",
+        "targetCameraState",
+        b"targetCameraState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RecordingToggleSettingsTrait: _TypeAlias = RecordingToggleSettingsTrait  # noqa: Y015
@@ -106,7 +121,14 @@ class RecordingToggleTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["toggleUpdated", b"toggleUpdated"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["changeModeReason", b"changeModeReason", "currentCameraState", b"currentCameraState", "toggleUpdated", b"toggleUpdated"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "changeModeReason",
+        b"changeModeReason",
+        "currentCameraState",
+        b"currentCameraState",
+        "toggleUpdated",
+        b"toggleUpdated",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RecordingToggleTrait: _TypeAlias = RecordingToggleTrait  # noqa: Y015
@@ -119,20 +141,45 @@ class RecordingEncoderSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RecordingQualityEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RecordingEncoderSettingsTrait._RecordingQuality.ValueType], _builtins.type):
+    class _RecordingQualityEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RECORDING_QUALITY_UNSPECIFIED: RecordingEncoderSettingsTrait._RecordingQuality.ValueType  # 0
-        RECORDING_QUALITY_LOW: RecordingEncoderSettingsTrait._RecordingQuality.ValueType  # 1
-        RECORDING_QUALITY_MEDIUM: RecordingEncoderSettingsTrait._RecordingQuality.ValueType  # 2
-        RECORDING_QUALITY_MEDIUM_HIGH: RecordingEncoderSettingsTrait._RecordingQuality.ValueType  # 3
-        RECORDING_QUALITY_HIGH: RecordingEncoderSettingsTrait._RecordingQuality.ValueType  # 4
+        RECORDING_QUALITY_UNSPECIFIED: (
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        )  # 0
+        RECORDING_QUALITY_LOW: (
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        )  # 1
+        RECORDING_QUALITY_MEDIUM: (
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        )  # 2
+        RECORDING_QUALITY_MEDIUM_HIGH: (
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        )  # 3
+        RECORDING_QUALITY_HIGH: (
+            RecordingEncoderSettingsTrait._RecordingQuality.ValueType
+        )  # 4
 
-    class RecordingQuality(_RecordingQuality, metaclass=_RecordingQualityEnumTypeWrapper): ...
-    RECORDING_QUALITY_UNSPECIFIED: RecordingEncoderSettingsTrait.RecordingQuality.ValueType  # 0
+    class RecordingQuality(
+        _RecordingQuality, metaclass=_RecordingQualityEnumTypeWrapper
+    ): ...
+    RECORDING_QUALITY_UNSPECIFIED: (
+        RecordingEncoderSettingsTrait.RecordingQuality.ValueType
+    )  # 0
     RECORDING_QUALITY_LOW: RecordingEncoderSettingsTrait.RecordingQuality.ValueType  # 1
-    RECORDING_QUALITY_MEDIUM: RecordingEncoderSettingsTrait.RecordingQuality.ValueType  # 2
-    RECORDING_QUALITY_MEDIUM_HIGH: RecordingEncoderSettingsTrait.RecordingQuality.ValueType  # 3
-    RECORDING_QUALITY_HIGH: RecordingEncoderSettingsTrait.RecordingQuality.ValueType  # 4
+    RECORDING_QUALITY_MEDIUM: (
+        RecordingEncoderSettingsTrait.RecordingQuality.ValueType
+    )  # 2
+    RECORDING_QUALITY_MEDIUM_HIGH: (
+        RecordingEncoderSettingsTrait.RecordingQuality.ValueType
+    )  # 3
+    RECORDING_QUALITY_HIGH: (
+        RecordingEncoderSettingsTrait.RecordingQuality.ValueType
+    )  # 4
 
     RECORDINGQUALITY_FIELD_NUMBER: _builtins.int
     recordingQuality: Global___RecordingEncoderSettingsTrait.RecordingQuality.ValueType
@@ -141,7 +188,9 @@ class RecordingEncoderSettingsTrait(_message.Message):
         *,
         recordingQuality: Global___RecordingEncoderSettingsTrait.RecordingQuality.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["recordingQuality", b"recordingQuality"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "recordingQuality", b"recordingQuality"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RecordingEncoderSettingsTrait: _TypeAlias = RecordingEncoderSettingsTrait  # noqa: Y015
@@ -154,10 +203,19 @@ class MediaQualitySettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _MediaQualityEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[MediaQualitySettingsTrait._MediaQuality.ValueType], _builtins.type):
+    class _MediaQualityEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            MediaQualitySettingsTrait._MediaQuality.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        MEDIA_QUALITY_UNSPECIFIED: MediaQualitySettingsTrait._MediaQuality.ValueType  # 0
-        MEDIA_QUALITY_LOW_OR_MEDIUM: MediaQualitySettingsTrait._MediaQuality.ValueType  # 1
+        MEDIA_QUALITY_UNSPECIFIED: (
+            MediaQualitySettingsTrait._MediaQuality.ValueType
+        )  # 0
+        MEDIA_QUALITY_LOW_OR_MEDIUM: (
+            MediaQualitySettingsTrait._MediaQuality.ValueType
+        )  # 1
         MEDIA_QUALITY_HIGH: MediaQualitySettingsTrait._MediaQuality.ValueType  # 2
 
     class MediaQuality(_MediaQuality, metaclass=_MediaQualityEnumTypeWrapper): ...
@@ -214,32 +272,55 @@ class ActivityZoneSettingsTrait(_message.Message):
             internalIndex: _builtins.int
             zoneId: _builtins.int
             @_builtins.property
-            def vertices(self) -> _containers.RepeatedCompositeFieldContainer[Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties.Coordinate]: ...
+            def vertices(
+                self,
+            ) -> _containers.RepeatedCompositeFieldContainer[
+                Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties.Coordinate
+            ]: ...
             def __init__(
                 self,
                 *,
                 name: _builtins.str = ...,
                 internalIndex: _builtins.int = ...,
-                vertices: _abc.Iterable[Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties.Coordinate] | None = ...,
+                vertices: _abc.Iterable[
+                    Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties.Coordinate
+                ]
+                | None = ...,
                 zoneId: _builtins.int = ...,
             ) -> None: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["internalIndex", b"internalIndex", "name", b"name", "vertices", b"vertices", "zoneId", b"zoneId"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "internalIndex",
+                b"internalIndex",
+                "name",
+                b"name",
+                "vertices",
+                b"vertices",
+                "zoneId",
+                b"zoneId",
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         ZONEINDEX_FIELD_NUMBER: _builtins.int
         ZONEPROPERTIES_FIELD_NUMBER: _builtins.int
         zoneIndex: _builtins.int
         @_builtins.property
-        def zoneProperties(self) -> Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties: ...
+        def zoneProperties(
+            self,
+        ) -> Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties: ...
         def __init__(
             self,
             *,
             zoneIndex: _builtins.int = ...,
-            zoneProperties: Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties | None = ...,
+            zoneProperties: Global___ActivityZoneSettingsTrait.ActivityZone.ActivityZoneProperties
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["zoneProperties", b"zoneProperties"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "zoneProperties", b"zoneProperties"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["zoneIndex", b"zoneIndex", "zoneProperties", b"zoneProperties"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "zoneIndex", b"zoneIndex", "zoneProperties", b"zoneProperties"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ACTIVITYZONES_FIELD_NUMBER: _builtins.int
@@ -247,14 +328,21 @@ class ActivityZoneSettingsTrait(_message.Message):
     unknown: _builtins.int
     """0 = zones disabled, 1 = zones enabled?"""
     @_builtins.property
-    def activityZones(self) -> _containers.RepeatedCompositeFieldContainer[Global___ActivityZoneSettingsTrait.ActivityZone]: ...
+    def activityZones(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___ActivityZoneSettingsTrait.ActivityZone
+    ]: ...
     def __init__(
         self,
         *,
-        activityZones: _abc.Iterable[Global___ActivityZoneSettingsTrait.ActivityZone] | None = ...,
+        activityZones: _abc.Iterable[Global___ActivityZoneSettingsTrait.ActivityZone]
+        | None = ...,
         unknown: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["activityZones", b"activityZones", "unknown", b"unknown"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "activityZones", b"activityZones", "unknown", b"unknown"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ActivityZoneSettingsTrait: _TypeAlias = ActivityZoneSettingsTrait  # noqa: Y015
@@ -274,9 +362,13 @@ class FaceTrackingSettingsTrait(_message.Message):
         faceTrackingEnabled: _wrappers_pb2.BoolValue | None = ...,
         unknown: _builtins.int = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["faceTrackingEnabled", b"faceTrackingEnabled"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "faceTrackingEnabled", b"faceTrackingEnabled"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["faceTrackingEnabled", b"faceTrackingEnabled", "unknown", b"unknown"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "faceTrackingEnabled", b"faceTrackingEnabled", "unknown", b"unknown"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FaceTrackingSettingsTrait: _TypeAlias = FaceTrackingSettingsTrait  # noqa: Y015
@@ -289,7 +381,12 @@ class StreamingProtocolTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StreamingProtocolEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StreamingProtocolTrait._StreamingProtocol.ValueType], _builtins.type):
+    class _StreamingProtocolEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StreamingProtocolTrait._StreamingProtocol.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         PROTOCOL_UNSPECIFIED: StreamingProtocolTrait._StreamingProtocol.ValueType  # 0
         PROTOCOL_WEBRTC: StreamingProtocolTrait._StreamingProtocol.ValueType  # 1
@@ -298,7 +395,9 @@ class StreamingProtocolTrait(_message.Message):
         PROTOCOL_RTSP: StreamingProtocolTrait._StreamingProtocol.ValueType  # 4
         PROTOCOL_HLS: StreamingProtocolTrait._StreamingProtocol.ValueType  # 5
 
-    class StreamingProtocol(_StreamingProtocol, metaclass=_StreamingProtocolEnumTypeWrapper): ...
+    class StreamingProtocol(
+        _StreamingProtocol, metaclass=_StreamingProtocolEnumTypeWrapper
+    ): ...
     PROTOCOL_UNSPECIFIED: StreamingProtocolTrait.StreamingProtocol.ValueType  # 0
     PROTOCOL_WEBRTC: StreamingProtocolTrait.StreamingProtocol.ValueType  # 1
     PROTOCOL_NEXUSTALK: StreamingProtocolTrait.StreamingProtocol.ValueType  # 2
@@ -310,14 +409,27 @@ class StreamingProtocolTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AudioCommunicationTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StreamingProtocolTrait._AudioCommunicationType.ValueType], _builtins.type):
+    class _AudioCommunicationTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StreamingProtocolTrait._AudioCommunicationType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        AUDIO_TYPE_UNSPECIFIED: StreamingProtocolTrait._AudioCommunicationType.ValueType  # 0
+        AUDIO_TYPE_UNSPECIFIED: (
+            StreamingProtocolTrait._AudioCommunicationType.ValueType
+        )  # 0
         AUDIO_TYPE_NONE: StreamingProtocolTrait._AudioCommunicationType.ValueType  # 1
-        AUDIO_TYPE_HALF_DUPLEX: StreamingProtocolTrait._AudioCommunicationType.ValueType  # 2
-        AUDIO_TYPE_FULL_DUPLEX: StreamingProtocolTrait._AudioCommunicationType.ValueType  # 3
+        AUDIO_TYPE_HALF_DUPLEX: (
+            StreamingProtocolTrait._AudioCommunicationType.ValueType
+        )  # 2
+        AUDIO_TYPE_FULL_DUPLEX: (
+            StreamingProtocolTrait._AudioCommunicationType.ValueType
+        )  # 3
 
-    class AudioCommunicationType(_AudioCommunicationType, metaclass=_AudioCommunicationTypeEnumTypeWrapper): ...
+    class AudioCommunicationType(
+        _AudioCommunicationType, metaclass=_AudioCommunicationTypeEnumTypeWrapper
+    ): ...
     AUDIO_TYPE_UNSPECIFIED: StreamingProtocolTrait.AudioCommunicationType.ValueType  # 0
     AUDIO_TYPE_NONE: StreamingProtocolTrait.AudioCommunicationType.ValueType  # 1
     AUDIO_TYPE_HALF_DUPLEX: StreamingProtocolTrait.AudioCommunicationType.ValueType  # 2
@@ -328,9 +440,15 @@ class StreamingProtocolTrait(_message.Message):
     DIRECTHOST_FIELD_NUMBER: _builtins.int
     DASHURL_FIELD_NUMBER: _builtins.int
     HLSURL_FIELD_NUMBER: _builtins.int
-    audioCommunicationType: Global___StreamingProtocolTrait.AudioCommunicationType.ValueType
+    audioCommunicationType: (
+        Global___StreamingProtocolTrait.AudioCommunicationType.ValueType
+    )
     @_builtins.property
-    def supportedProtocols(self) -> _containers.RepeatedScalarFieldContainer[Global___StreamingProtocolTrait.StreamingProtocol.ValueType]: ...
+    def supportedProtocols(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___StreamingProtocolTrait.StreamingProtocol.ValueType
+    ]: ...
     @_builtins.property
     def directHost(self) -> _wrappers_pb2.StringValue: ...
     @_builtins.property
@@ -340,15 +458,31 @@ class StreamingProtocolTrait(_message.Message):
     def __init__(
         self,
         *,
-        supportedProtocols: _abc.Iterable[Global___StreamingProtocolTrait.StreamingProtocol.ValueType] | None = ...,
+        supportedProtocols: _abc.Iterable[
+            Global___StreamingProtocolTrait.StreamingProtocol.ValueType
+        ]
+        | None = ...,
         audioCommunicationType: Global___StreamingProtocolTrait.AudioCommunicationType.ValueType = ...,
         directHost: _wrappers_pb2.StringValue | None = ...,
         dashUrl: _wrappers_pb2.StringValue | None = ...,
         hlsUrl: _wrappers_pb2.StringValue | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["dashUrl", b"dashUrl", "directHost", b"directHost", "hlsUrl", b"hlsUrl"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "dashUrl", b"dashUrl", "directHost", b"directHost", "hlsUrl", b"hlsUrl"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["audioCommunicationType", b"audioCommunicationType", "dashUrl", b"dashUrl", "directHost", b"directHost", "hlsUrl", b"hlsUrl", "supportedProtocols", b"supportedProtocols"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "audioCommunicationType",
+        b"audioCommunicationType",
+        "dashUrl",
+        b"dashUrl",
+        "directHost",
+        b"directHost",
+        "hlsUrl",
+        b"hlsUrl",
+        "supportedProtocols",
+        b"supportedProtocols",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StreamingProtocolTrait: _TypeAlias = StreamingProtocolTrait  # noqa: Y015
@@ -368,9 +502,13 @@ class LoadingImageTrait(_message.Message):
         maximumAgeInSeconds: _wrappers_pb2.Int32Value | None = ...,
         liveUrl: _builtins.str = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["maximumAgeInSeconds", b"maximumAgeInSeconds"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "maximumAgeInSeconds", b"maximumAgeInSeconds"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["liveUrl", b"liveUrl", "maximumAgeInSeconds", b"maximumAgeInSeconds"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "liveUrl", b"liveUrl", "maximumAgeInSeconds", b"maximumAgeInSeconds"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LoadingImageTrait: _TypeAlias = LoadingImageTrait  # noqa: Y015
@@ -427,9 +565,51 @@ class ObservationTriggerCapabilitiesTrait(_message.Message):
             unknown9: _wrappers_pb2.BoolValue | None = ...,
             unknown10: _wrappers_pb2.BoolValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["animal", b"animal", "face", b"face", "motion", b"motion", "package", b"package", "person", b"person", "unknown10", b"unknown10", "unknown7", b"unknown7", "unknown8", b"unknown8", "unknown9", b"unknown9", "vehicle", b"vehicle"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "animal",
+            b"animal",
+            "face",
+            b"face",
+            "motion",
+            b"motion",
+            "package",
+            b"package",
+            "person",
+            b"person",
+            "unknown10",
+            b"unknown10",
+            "unknown7",
+            b"unknown7",
+            "unknown8",
+            b"unknown8",
+            "unknown9",
+            b"unknown9",
+            "vehicle",
+            b"vehicle",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["animal", b"animal", "face", b"face", "motion", b"motion", "package", b"package", "person", b"person", "unknown10", b"unknown10", "unknown7", b"unknown7", "unknown8", b"unknown8", "unknown9", b"unknown9", "vehicle", b"vehicle"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "animal",
+            b"animal",
+            "face",
+            b"face",
+            "motion",
+            b"motion",
+            "package",
+            b"package",
+            "person",
+            b"person",
+            "unknown10",
+            b"unknown10",
+            "unknown7",
+            b"unknown7",
+            "unknown8",
+            b"unknown8",
+            "unknown9",
+            b"unknown9",
+            "vehicle",
+            b"vehicle",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -480,29 +660,83 @@ class ObservationTriggerCapabilitiesTrait(_message.Message):
             unknown9: _wrappers_pb2.BoolValue | None = ...,
             unknown10: _wrappers_pb2.BoolValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["dogBarking", b"dogBarking", "otherSounds", b"otherSounds", "personTalking", b"personTalking", "smokeAndCoSounds", b"smokeAndCoSounds", "unknown10", b"unknown10", "unknown3", b"unknown3", "unknown4", b"unknown4", "unknown7", b"unknown7", "unknown8", b"unknown8", "unknown9", b"unknown9"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "dogBarking",
+            b"dogBarking",
+            "otherSounds",
+            b"otherSounds",
+            "personTalking",
+            b"personTalking",
+            "smokeAndCoSounds",
+            b"smokeAndCoSounds",
+            "unknown10",
+            b"unknown10",
+            "unknown3",
+            b"unknown3",
+            "unknown4",
+            b"unknown4",
+            "unknown7",
+            b"unknown7",
+            "unknown8",
+            b"unknown8",
+            "unknown9",
+            b"unknown9",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["dogBarking", b"dogBarking", "otherSounds", b"otherSounds", "personTalking", b"personTalking", "smokeAndCoSounds", b"smokeAndCoSounds", "unknown10", b"unknown10", "unknown3", b"unknown3", "unknown4", b"unknown4", "unknown7", b"unknown7", "unknown8", b"unknown8", "unknown9", b"unknown9"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "dogBarking",
+            b"dogBarking",
+            "otherSounds",
+            b"otherSounds",
+            "personTalking",
+            b"personTalking",
+            "smokeAndCoSounds",
+            b"smokeAndCoSounds",
+            "unknown10",
+            b"unknown10",
+            "unknown3",
+            b"unknown3",
+            "unknown4",
+            b"unknown4",
+            "unknown7",
+            b"unknown7",
+            "unknown8",
+            b"unknown8",
+            "unknown9",
+            b"unknown9",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     VIDEOEVENTTYPES_FIELD_NUMBER: _builtins.int
     AUDIOEVENTTYPES_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def videoEventTypes(self) -> Global___ObservationTriggerCapabilitiesTrait.VideoEventTypes: ...
+    def videoEventTypes(
+        self,
+    ) -> Global___ObservationTriggerCapabilitiesTrait.VideoEventTypes: ...
     @_builtins.property
-    def audioEventTypes(self) -> Global___ObservationTriggerCapabilitiesTrait.AudioEventTypes: ...
+    def audioEventTypes(
+        self,
+    ) -> Global___ObservationTriggerCapabilitiesTrait.AudioEventTypes: ...
     def __init__(
         self,
         *,
-        videoEventTypes: Global___ObservationTriggerCapabilitiesTrait.VideoEventTypes | None = ...,
-        audioEventTypes: Global___ObservationTriggerCapabilitiesTrait.AudioEventTypes | None = ...,
+        videoEventTypes: Global___ObservationTriggerCapabilitiesTrait.VideoEventTypes
+        | None = ...,
+        audioEventTypes: Global___ObservationTriggerCapabilitiesTrait.AudioEventTypes
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["audioEventTypes", b"audioEventTypes", "videoEventTypes", b"videoEventTypes"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "audioEventTypes", b"audioEventTypes", "videoEventTypes", b"videoEventTypes"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["audioEventTypes", b"audioEventTypes", "videoEventTypes", b"videoEventTypes"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "audioEventTypes", b"audioEventTypes", "videoEventTypes", b"videoEventTypes"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___ObservationTriggerCapabilitiesTrait: _TypeAlias = ObservationTriggerCapabilitiesTrait  # noqa: Y015
+Global___ObservationTriggerCapabilitiesTrait: _TypeAlias = (
+    ObservationTriggerCapabilitiesTrait  # noqa: Y015
+)
 
 @_typing.final
 class MediaRequestTrait(_message.Message):
@@ -540,16 +774,33 @@ class UploadLiveImageTrait(_message.Message):
             ValueType = _typing.NewType("ValueType", _builtins.int)
             V: _TypeAlias = ValueType  # noqa: Y015
 
-        class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType], _builtins.type):
+        class _StatusEnumTypeWrapper(
+            _enum_type_wrapper._EnumTypeWrapper[
+                UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType
+            ],
+            _builtins.type,
+        ):
             DESCRIPTOR: _descriptor.EnumDescriptor
-            STATUS_UNSPECIFIED: UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType  # 0
-            STATUS_SUCCESSFUL: UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType  # 1
-            STATUS_UNSUCCESSFUL: UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType  # 2
+            STATUS_UNSPECIFIED: (
+                UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType
+            )  # 0
+            STATUS_SUCCESSFUL: (
+                UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType
+            )  # 1
+            STATUS_UNSUCCESSFUL: (
+                UploadLiveImageTrait.UploadLiveImageResponse._Status.ValueType
+            )  # 2
 
         class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
-        STATUS_UNSPECIFIED: UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType  # 0
-        STATUS_SUCCESSFUL: UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType  # 1
-        STATUS_UNSUCCESSFUL: UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType  # 2
+        STATUS_UNSPECIFIED: (
+            UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType
+        )  # 0
+        STATUS_SUCCESSFUL: (
+            UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType
+        )  # 1
+        STATUS_UNSUCCESSFUL: (
+            UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType
+        )  # 2
 
         STATUS_FIELD_NUMBER: _builtins.int
         status: Global___UploadLiveImageTrait.UploadLiveImageResponse.Status.ValueType
@@ -574,7 +825,9 @@ class UploadLiveImageTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["timestamp", b"timestamp"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["liveImageUrl", b"liveImageUrl", "timestamp", b"timestamp"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "liveImageUrl", b"liveImageUrl", "timestamp", b"timestamp"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___UploadLiveImageTrait: _TypeAlias = UploadLiveImageTrait  # noqa: Y015
@@ -611,30 +864,70 @@ class ObservationTriggerSettingsTrait(_message.Message):
         SMOKEALARMSOUNDS_FIELD_NUMBER: _builtins.int
         CARBONMONOXIDEALARMSOUNDS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def personTalking(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+        def personTalking(
+            self,
+        ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         @_builtins.property
-        def dogBarking(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+        def dogBarking(
+            self,
+        ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         @_builtins.property
         def unknown3(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         @_builtins.property
         def unknown4(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         @_builtins.property
-        def smokeAlarmSounds(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+        def smokeAlarmSounds(
+            self,
+        ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         @_builtins.property
-        def carbonMonoxideAlarmSounds(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+        def carbonMonoxideAlarmSounds(
+            self,
+        ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
         def __init__(
             self,
             *,
-            personTalking: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-            dogBarking: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-            unknown3: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-            unknown4: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-            smokeAlarmSounds: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-            carbonMonoxideAlarmSounds: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
+            personTalking: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
+            dogBarking: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
+            unknown3: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
+            unknown4: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
+            smokeAlarmSounds: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
+            carbonMonoxideAlarmSounds: Global___ObservationTriggerSettingsTrait.EventTrigger
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["carbonMonoxideAlarmSounds", b"carbonMonoxideAlarmSounds", "dogBarking", b"dogBarking", "personTalking", b"personTalking", "smokeAlarmSounds", b"smokeAlarmSounds", "unknown3", b"unknown3", "unknown4", b"unknown4"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "carbonMonoxideAlarmSounds",
+            b"carbonMonoxideAlarmSounds",
+            "dogBarking",
+            b"dogBarking",
+            "personTalking",
+            b"personTalking",
+            "smokeAlarmSounds",
+            b"smokeAlarmSounds",
+            "unknown3",
+            b"unknown3",
+            "unknown4",
+            b"unknown4",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["carbonMonoxideAlarmSounds", b"carbonMonoxideAlarmSounds", "dogBarking", b"dogBarking", "personTalking", b"personTalking", "smokeAlarmSounds", b"smokeAlarmSounds", "unknown3", b"unknown3", "unknown4", b"unknown4"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "carbonMonoxideAlarmSounds",
+            b"carbonMonoxideAlarmSounds",
+            "dogBarking",
+            b"dogBarking",
+            "personTalking",
+            b"personTalking",
+            "smokeAlarmSounds",
+            b"smokeAlarmSounds",
+            "unknown3",
+            b"unknown3",
+            "unknown4",
+            b"unknown4",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -656,62 +949,120 @@ class ObservationTriggerSettingsTrait(_message.Message):
                 ANIMAL_FIELD_NUMBER: _builtins.int
                 PACKAGE_FIELD_NUMBER: _builtins.int
                 @_builtins.property
-                def motion(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def motion(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 @_builtins.property
-                def person(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def person(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 @_builtins.property
-                def face(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def face(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 @_builtins.property
-                def vehicle(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def vehicle(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 @_builtins.property
-                def animal(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def animal(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 @_builtins.property
-                def package(self) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
+                def package(
+                    self,
+                ) -> Global___ObservationTriggerSettingsTrait.EventTrigger: ...
                 def __init__(
                     self,
                     *,
-                    motion: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-                    person: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-                    face: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-                    vehicle: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-                    animal: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
-                    package: Global___ObservationTriggerSettingsTrait.EventTrigger | None = ...,
+                    motion: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
+                    person: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
+                    face: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
+                    vehicle: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
+                    animal: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
+                    package: Global___ObservationTriggerSettingsTrait.EventTrigger
+                    | None = ...,
                 ) -> None: ...
-                _HasFieldArgType: _TypeAlias = _typing.Literal["animal", b"animal", "face", b"face", "motion", b"motion", "package", b"package", "person", b"person", "vehicle", b"vehicle"]  # noqa: Y015
+                _HasFieldArgType: _TypeAlias = _typing.Literal[
+                    "animal",
+                    b"animal",
+                    "face",
+                    b"face",
+                    "motion",
+                    b"motion",
+                    "package",
+                    b"package",
+                    "person",
+                    b"person",
+                    "vehicle",
+                    b"vehicle",
+                ]  # noqa: Y015
                 def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-                _ClearFieldArgType: _TypeAlias = _typing.Literal["animal", b"animal", "face", b"face", "motion", b"motion", "package", b"package", "person", b"person", "vehicle", b"vehicle"]  # noqa: Y015
+                _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                    "animal",
+                    b"animal",
+                    "face",
+                    b"face",
+                    "motion",
+                    b"motion",
+                    "package",
+                    b"package",
+                    "person",
+                    b"person",
+                    "vehicle",
+                    b"vehicle",
+                ]  # noqa: Y015
                 def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
             ZONEID_FIELD_NUMBER: _builtins.int
             TRIGGERTYPES_FIELD_NUMBER: _builtins.int
             zoneId: _builtins.int
             @_builtins.property
-            def triggerTypes(self) -> Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings.TriggerTypes: ...
+            def triggerTypes(
+                self,
+            ) -> Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings.TriggerTypes: ...
             def __init__(
                 self,
                 *,
                 zoneId: _builtins.int = ...,
-                triggerTypes: Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings.TriggerTypes | None = ...,
+                triggerTypes: Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings.TriggerTypes
+                | None = ...,
             ) -> None: ...
-            _HasFieldArgType: _TypeAlias = _typing.Literal["triggerTypes", b"triggerTypes"]  # noqa: Y015
+            _HasFieldArgType: _TypeAlias = _typing.Literal[
+                "triggerTypes", b"triggerTypes"
+            ]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["triggerTypes", b"triggerTypes", "zoneId", b"zoneId"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "triggerTypes", b"triggerTypes", "zoneId", b"zoneId"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         ZONEINDEX_FIELD_NUMBER: _builtins.int
         ZONESETTINGS_FIELD_NUMBER: _builtins.int
         zoneIndex: _builtins.int
         @_builtins.property
-        def zoneSettings(self) -> Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings: ...
+        def zoneSettings(
+            self,
+        ) -> (
+            Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings
+        ): ...
         def __init__(
             self,
             *,
             zoneIndex: _builtins.int = ...,
-            zoneSettings: Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings | None = ...,
+            zoneSettings: Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings.ZoneSettings
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["zoneSettings", b"zoneSettings"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["zoneIndex", b"zoneIndex", "zoneSettings", b"zoneSettings"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "zoneIndex", b"zoneIndex", "zoneSettings", b"zoneSettings"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -729,41 +1080,75 @@ class ObservationTriggerSettingsTrait(_message.Message):
                 *,
                 garageDoor: _builtins.bool = ...,
             ) -> None: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["garageDoor", b"garageDoor"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "garageDoor", b"garageDoor"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         SEENSETTINGS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def seenSettings(self) -> Global___ObservationTriggerSettingsTrait.AITriggerSettings.AISeenSettings: ...
+        def seenSettings(
+            self,
+        ) -> (
+            Global___ObservationTriggerSettingsTrait.AITriggerSettings.AISeenSettings
+        ): ...
         def __init__(
             self,
             *,
-            seenSettings: Global___ObservationTriggerSettingsTrait.AITriggerSettings.AISeenSettings | None = ...,
+            seenSettings: Global___ObservationTriggerSettingsTrait.AITriggerSettings.AISeenSettings
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["seenSettings", b"seenSettings"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["seenSettings", b"seenSettings"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "seenSettings", b"seenSettings"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     GLOBALTRIGGERSETTINGS_FIELD_NUMBER: _builtins.int
     ZONETRIGGERSETTINGS_FIELD_NUMBER: _builtins.int
     GLOBALAITRIGGERSETTINGS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def globalTriggerSettings(self) -> Global___ObservationTriggerSettingsTrait.SoundTriggerSettings: ...
+    def globalTriggerSettings(
+        self,
+    ) -> Global___ObservationTriggerSettingsTrait.SoundTriggerSettings: ...
     @_builtins.property
-    def zoneTriggerSettings(self) -> _containers.RepeatedCompositeFieldContainer[Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings]: ...
+    def zoneTriggerSettings(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings
+    ]: ...
     @_builtins.property
-    def globalAITriggerSettings(self) -> Global___ObservationTriggerSettingsTrait.AITriggerSettings: ...
+    def globalAITriggerSettings(
+        self,
+    ) -> Global___ObservationTriggerSettingsTrait.AITriggerSettings: ...
     def __init__(
         self,
         *,
-        globalTriggerSettings: Global___ObservationTriggerSettingsTrait.SoundTriggerSettings | None = ...,
-        zoneTriggerSettings: _abc.Iterable[Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings] | None = ...,
-        globalAITriggerSettings: Global___ObservationTriggerSettingsTrait.AITriggerSettings | None = ...,
+        globalTriggerSettings: Global___ObservationTriggerSettingsTrait.SoundTriggerSettings
+        | None = ...,
+        zoneTriggerSettings: _abc.Iterable[
+            Global___ObservationTriggerSettingsTrait.ZoneTriggerSettings
+        ]
+        | None = ...,
+        globalAITriggerSettings: Global___ObservationTriggerSettingsTrait.AITriggerSettings
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["globalAITriggerSettings", b"globalAITriggerSettings", "globalTriggerSettings", b"globalTriggerSettings"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "globalAITriggerSettings",
+        b"globalAITriggerSettings",
+        "globalTriggerSettings",
+        b"globalTriggerSettings",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["globalAITriggerSettings", b"globalAITriggerSettings", "globalTriggerSettings", b"globalTriggerSettings", "zoneTriggerSettings", b"zoneTriggerSettings"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "globalAITriggerSettings",
+        b"globalAITriggerSettings",
+        "globalTriggerSettings",
+        b"globalTriggerSettings",
+        "zoneTriggerSettings",
+        b"zoneTriggerSettings",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ObservationTriggerSettingsTrait: _TypeAlias = ObservationTriggerSettingsTrait  # noqa: Y015
@@ -785,7 +1170,14 @@ class RecordingMediaSettingsTrait(_message.Message):
         audioHistoryEnabled: _builtins.bool = ...,
         unknown3: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["audioHistoryEnabled", b"audioHistoryEnabled", "unknown3", b"unknown3", "videoHistory", b"videoHistory"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "audioHistoryEnabled",
+        b"audioHistoryEnabled",
+        "unknown3",
+        b"unknown3",
+        "videoHistory",
+        b"videoHistory",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RecordingMediaSettingsTrait: _TypeAlias = RecordingMediaSettingsTrait  # noqa: Y015
@@ -804,7 +1196,9 @@ class AspectRatioTrait(_message.Message):
         widthRelative: _builtins.int = ...,
         heightRelative: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["heightRelative", b"heightRelative", "widthRelative", b"widthRelative"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "heightRelative", b"heightRelative", "widthRelative", b"widthRelative"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AspectRatioTrait: _TypeAlias = AspectRatioTrait  # noqa: Y015
@@ -850,13 +1244,20 @@ class RecordingMediaCapabilitiesTrait(_message.Message):
 
     SUPPORTEDCAPABILITIES_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def supportedCapabilities(self) -> _containers.RepeatedScalarFieldContainer[Global___VideoHistorySetting.ValueType]: ...
+    def supportedCapabilities(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___VideoHistorySetting.ValueType
+    ]: ...
     def __init__(
         self,
         *,
-        supportedCapabilities: _abc.Iterable[Global___VideoHistorySetting.ValueType] | None = ...,
+        supportedCapabilities: _abc.Iterable[Global___VideoHistorySetting.ValueType]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["supportedCapabilities", b"supportedCapabilities"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "supportedCapabilities", b"supportedCapabilities"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RecordingMediaCapabilitiesTrait: _TypeAlias = RecordingMediaCapabilitiesTrait  # noqa: Y015
@@ -873,9 +1274,13 @@ class EffectiveHistoryLengthTrait(_message.Message):
         *,
         historyDurationSeconds: _wrappers_pb2.UInt32Value | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["historyDurationSeconds", b"historyDurationSeconds"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "historyDurationSeconds", b"historyDurationSeconds"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["historyDurationSeconds", b"historyDurationSeconds"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "historyDurationSeconds", b"historyDurationSeconds"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EffectiveHistoryLengthTrait: _TypeAlias = EffectiveHistoryLengthTrait  # noqa: Y015
@@ -892,41 +1297,93 @@ class CameraMigrationStatusTrait(_message.Message):
             ValueType = _typing.NewType("ValueType", _builtins.int)
             V: _TypeAlias = ValueType  # noqa: Y015
 
-        class _WhereMigratedEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType], _builtins.type):
+        class _WhereMigratedEnumTypeWrapper(
+            _enum_type_wrapper._EnumTypeWrapper[
+                CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType
+            ],
+            _builtins.type,
+        ):
             DESCRIPTOR: _descriptor.EnumDescriptor
-            NOT_MIGRATED: CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType  # 0
-            MIGRATED_TO_GOOGLE_HOME: CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType  # 1
-            MIGRATED_TO_NEST: CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType  # 2
+            NOT_MIGRATED: (
+                CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType
+            )  # 0
+            MIGRATED_TO_GOOGLE_HOME: (
+                CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType
+            )  # 1
+            MIGRATED_TO_NEST: (
+                CameraMigrationStatusTrait.MigrationState._WhereMigrated.ValueType
+            )  # 2
 
-        class WhereMigrated(_WhereMigrated, metaclass=_WhereMigratedEnumTypeWrapper): ...
-        NOT_MIGRATED: CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType  # 0
-        MIGRATED_TO_GOOGLE_HOME: CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType  # 1
-        MIGRATED_TO_NEST: CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType  # 2
+        class WhereMigrated(
+            _WhereMigrated, metaclass=_WhereMigratedEnumTypeWrapper
+        ): ...
+        NOT_MIGRATED: (
+            CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType
+        )  # 0
+        MIGRATED_TO_GOOGLE_HOME: (
+            CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType
+        )  # 1
+        MIGRATED_TO_NEST: (
+            CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType
+        )  # 2
 
         class _MigrationProgress:
             ValueType = _typing.NewType("ValueType", _builtins.int)
             V: _TypeAlias = ValueType  # noqa: Y015
 
-        class _MigrationProgressEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType], _builtins.type):
+        class _MigrationProgressEnumTypeWrapper(
+            _enum_type_wrapper._EnumTypeWrapper[
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            ],
+            _builtins.type,
+        ):
             DESCRIPTOR: _descriptor.EnumDescriptor
-            PROGRESS_NONE: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 0
-            PROGRESS_STARTING: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 1
-            PROGRESS_INSTALLING: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 2
-            PROGRESS_COMPLETE: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 3
-            PROGRESS_MAYBE_ERROR: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 4
-            PROGRESS_FINALISING: CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType  # 5
+            PROGRESS_NONE: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 0
+            PROGRESS_STARTING: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 1
+            PROGRESS_INSTALLING: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 2
+            PROGRESS_COMPLETE: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 3
+            PROGRESS_MAYBE_ERROR: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 4
+            PROGRESS_FINALISING: (
+                CameraMigrationStatusTrait.MigrationState._MigrationProgress.ValueType
+            )  # 5
 
-        class MigrationProgress(_MigrationProgress, metaclass=_MigrationProgressEnumTypeWrapper): ...
-        PROGRESS_NONE: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 0
-        PROGRESS_STARTING: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 1
-        PROGRESS_INSTALLING: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 2
-        PROGRESS_COMPLETE: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 3
-        PROGRESS_MAYBE_ERROR: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 4
-        PROGRESS_FINALISING: CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType  # 5
+        class MigrationProgress(
+            _MigrationProgress, metaclass=_MigrationProgressEnumTypeWrapper
+        ): ...
+        PROGRESS_NONE: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 0
+        PROGRESS_STARTING: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 1
+        PROGRESS_INSTALLING: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 2
+        PROGRESS_COMPLETE: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 3
+        PROGRESS_MAYBE_ERROR: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 4
+        PROGRESS_FINALISING: (
+            CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
+        )  # 5
 
         WHERE_FIELD_NUMBER: _builtins.int
         PROGRESS_FIELD_NUMBER: _builtins.int
-        where: Global___CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType
+        where: (
+            Global___CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType
+        )
         progress: Global___CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType
         def __init__(
             self,
@@ -934,7 +1391,9 @@ class CameraMigrationStatusTrait(_message.Message):
             where: Global___CameraMigrationStatusTrait.MigrationState.WhereMigrated.ValueType = ...,
             progress: Global___CameraMigrationStatusTrait.MigrationState.MigrationProgress.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["progress", b"progress", "where", b"where"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "progress", b"progress", "where", b"where"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STATE_FIELD_NUMBER: _builtins.int
@@ -964,15 +1423,28 @@ class DoorStateTrait(_message.Message):
             ValueType = _typing.NewType("ValueType", _builtins.int)
             V: _TypeAlias = ValueType  # noqa: Y015
 
-        class _DoorOpenCloseStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DoorStateTrait.DoorState._DoorOpenCloseState.ValueType], _builtins.type):
+        class _DoorOpenCloseStateEnumTypeWrapper(
+            _enum_type_wrapper._EnumTypeWrapper[
+                DoorStateTrait.DoorState._DoorOpenCloseState.ValueType
+            ],
+            _builtins.type,
+        ):
             DESCRIPTOR: _descriptor.EnumDescriptor
-            STATE_UNSPECIFIED: DoorStateTrait.DoorState._DoorOpenCloseState.ValueType  # 0
-            STATE_MAYBE_CLOSING: DoorStateTrait.DoorState._DoorOpenCloseState.ValueType  # 1
+            STATE_UNSPECIFIED: (
+                DoorStateTrait.DoorState._DoorOpenCloseState.ValueType
+            )  # 0
+            STATE_MAYBE_CLOSING: (
+                DoorStateTrait.DoorState._DoorOpenCloseState.ValueType
+            )  # 1
             STATE_CLOSED: DoorStateTrait.DoorState._DoorOpenCloseState.ValueType  # 2
-            STATE_MAYBE_OPENING: DoorStateTrait.DoorState._DoorOpenCloseState.ValueType  # 3
+            STATE_MAYBE_OPENING: (
+                DoorStateTrait.DoorState._DoorOpenCloseState.ValueType
+            )  # 3
             STATE_OPEN: DoorStateTrait.DoorState._DoorOpenCloseState.ValueType  # 4
 
-        class DoorOpenCloseState(_DoorOpenCloseState, metaclass=_DoorOpenCloseStateEnumTypeWrapper): ...
+        class DoorOpenCloseState(
+            _DoorOpenCloseState, metaclass=_DoorOpenCloseStateEnumTypeWrapper
+        ): ...
         STATE_UNSPECIFIED: DoorStateTrait.DoorState.DoorOpenCloseState.ValueType  # 0
         STATE_MAYBE_CLOSING: DoorStateTrait.DoorState.DoorOpenCloseState.ValueType  # 1
         STATE_CLOSED: DoorStateTrait.DoorState.DoorOpenCloseState.ValueType  # 2

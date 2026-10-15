@@ -30,12 +30,17 @@ class GuestsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ResponseStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GuestsTrait._ResponseStatus.ValueType], _builtins.type):
+    class _ResponseStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[GuestsTrait._ResponseStatus.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         RESPONSE_STATUS_UNSPECIFIED: GuestsTrait._ResponseStatus.ValueType  # 0
         RESPONSE_STATUS_SUCCESS: GuestsTrait._ResponseStatus.ValueType  # 1
         RESPONSE_STATUS_INTERNAL_FAILURE: GuestsTrait._ResponseStatus.ValueType  # 2
-        RESPONSE_STATUS_COMMAND_MISSING_PARAMS: GuestsTrait._ResponseStatus.ValueType  # 3
+        RESPONSE_STATUS_COMMAND_MISSING_PARAMS: (
+            GuestsTrait._ResponseStatus.ValueType
+        )  # 3
         RESPONSE_STATUS_DUP_GUEST_NAME: GuestsTrait._ResponseStatus.ValueType  # 4
         RESPONSE_STATUS_LIMIT_REACHED: GuestsTrait._ResponseStatus.ValueType  # 5
         RESPONSE_STATUS_DUP_PINCODE: GuestsTrait._ResponseStatus.ValueType  # 6
@@ -55,7 +60,10 @@ class GuestsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _GuestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GuestsTrait._GuestStatus.ValueType], _builtins.type):
+    class _GuestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[GuestsTrait._GuestStatus.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         GUEST_STATUS_UNSPECIFIED: GuestsTrait._GuestStatus.ValueType  # 0
         GUEST_STATUS_ACTIVE: GuestsTrait._GuestStatus.ValueType  # 1
@@ -97,9 +105,29 @@ class GuestsTrait(_message.Message):
             invitationAcceptanceTime: _timestamp_pb2.Timestamp | None = ...,
             avatarUrl: _builtins.str = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["id", b"id", "invitationAcceptanceTime", b"invitationAcceptanceTime", "invitationSentTime", b"invitationSentTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "id",
+            b"id",
+            "invitationAcceptanceTime",
+            b"invitationAcceptanceTime",
+            "invitationSentTime",
+            b"invitationSentTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["avatarUrl", b"avatarUrl", "id", b"id", "invitationAcceptanceTime", b"invitationAcceptanceTime", "invitationSentTime", b"invitationSentTime", "name", b"name", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "avatarUrl",
+            b"avatarUrl",
+            "id",
+            b"id",
+            "invitationAcceptanceTime",
+            b"invitationAcceptanceTime",
+            "invitationSentTime",
+            b"invitationSentTime",
+            "name",
+            b"name",
+            "status",
+            b"status",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -112,17 +140,22 @@ class GuestsTrait(_message.Message):
         name: _builtins.str
         pincode: _builtins.bytes
         @_builtins.property
-        def schedule(self) -> _schedule_pb2.BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
+        def schedule(
+            self,
+        ) -> _schedule_pb2.BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
         def __init__(
             self,
             *,
             name: _builtins.str = ...,
             pincode: _builtins.bytes = ...,
-            schedule: _schedule_pb2.BasicUserSchedulesSettingsTrait.BasicUserSchedule | None = ...,
+            schedule: _schedule_pb2.BasicUserSchedulesSettingsTrait.BasicUserSchedule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["schedule", b"schedule"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["name", b"name", "pincode", b"pincode", "schedule", b"schedule"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "name", b"name", "pincode", b"pincode", "schedule", b"schedule"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -142,7 +175,9 @@ class GuestsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "guestId", b"guestId", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -202,7 +237,18 @@ class GuestsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["email", b"email", "encryptedPayload", b"encryptedPayload", "encryptionKey", b"encryptionKey", "guestId", b"guestId", "notes", b"notes"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "email",
+            b"email",
+            "encryptedPayload",
+            b"encryptedPayload",
+            "encryptionKey",
+            b"encryptionKey",
+            "guestId",
+            b"guestId",
+            "notes",
+            b"notes",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -235,9 +281,31 @@ class GuestsTrait(_message.Message):
             claimedAt: _timestamp_pb2.Timestamp | None = ...,
             invisibleAt: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["claimedAt", b"claimedAt", "createdAt", b"createdAt", "invisibleAt", b"invisibleAt", "sentAt", b"sentAt"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "claimedAt",
+            b"claimedAt",
+            "createdAt",
+            b"createdAt",
+            "invisibleAt",
+            b"invisibleAt",
+            "sentAt",
+            b"sentAt",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["claimedAt", b"claimedAt", "createdAt", b"createdAt", "encryptedPayload", b"encryptedPayload", "invisibleAt", b"invisibleAt", "invitationUuid", b"invitationUuid", "sentAt", b"sentAt"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "claimedAt",
+            b"claimedAt",
+            "createdAt",
+            b"createdAt",
+            "encryptedPayload",
+            b"encryptedPayload",
+            "invisibleAt",
+            b"invisibleAt",
+            "invitationUuid",
+            b"invitationUuid",
+            "sentAt",
+            b"sentAt",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -271,7 +339,9 @@ class GuestsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["avatarUrl", b"avatarUrl", "guestId", b"guestId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "avatarUrl", b"avatarUrl", "guestId", b"guestId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -308,9 +378,23 @@ class GuestsTrait(_message.Message):
             structureId: _common_pb2.ResourceId | None = ...,
             guestId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId", "inviterId", b"inviterId", "structureId", b"structureId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "guestId",
+            b"guestId",
+            "inviterId",
+            b"inviterId",
+            "structureId",
+            b"structureId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId", "inviterId", b"inviterId", "structureId", b"structureId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "guestId",
+            b"guestId",
+            "inviterId",
+            b"inviterId",
+            "structureId",
+            b"structureId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -349,23 +433,53 @@ class GuestsTrait(_message.Message):
             invisibleDate: _timestamp_pb2.Timestamp | None = ...,
             reinvite: _builtins.bool = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["guestId", b"guestId", "invisibleDate", b"invisibleDate", "inviterId", b"inviterId", "structureId", b"structureId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "guestId",
+            b"guestId",
+            "invisibleDate",
+            b"invisibleDate",
+            "inviterId",
+            b"inviterId",
+            "structureId",
+            b"structureId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["guestEmail", b"guestEmail", "guestId", b"guestId", "invisibleDate", b"invisibleDate", "invitationLink", b"invitationLink", "inviterId", b"inviterId", "notes", b"notes", "reinvite", b"reinvite", "structureId", b"structureId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "guestEmail",
+            b"guestEmail",
+            "guestId",
+            b"guestId",
+            "invisibleDate",
+            b"invisibleDate",
+            "invitationLink",
+            b"invitationLink",
+            "inviterId",
+            b"inviterId",
+            "notes",
+            b"notes",
+            "reinvite",
+            b"reinvite",
+            "structureId",
+            b"structureId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     GUESTS_FIELD_NUMBER: _builtins.int
     MAXGUESTSPERSTRUCTURE_FIELD_NUMBER: _builtins.int
     maxGuestsPerStructure: _builtins.int
     @_builtins.property
-    def guests(self) -> _containers.RepeatedCompositeFieldContainer[Global___GuestsTrait.Guest]: ...
+    def guests(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[Global___GuestsTrait.Guest]: ...
     def __init__(
         self,
         *,
         guests: _abc.Iterable[Global___GuestsTrait.Guest] | None = ...,
         maxGuestsPerStructure: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["guests", b"guests", "maxGuestsPerStructure", b"maxGuestsPerStructure"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "guests", b"guests", "maxGuestsPerStructure", b"maxGuestsPerStructure"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___GuestsTrait: _TypeAlias = GuestsTrait  # noqa: Y015

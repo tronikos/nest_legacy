@@ -4,6 +4,7 @@
 # source: nest/trait/detector.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -17,25 +18,27 @@ from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19nest/trait/detector.proto\x12\x13nest.trait.detector\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xad\x04\n\x0eOpenCloseTrait\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x33\n\x0f\x66irstObservedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11\x66irstObservedAtMs\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xad\x01\n\x0eOpenCloseEvent\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12O\n\x13priorOpenCloseState\x18\x02 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\"\xb2\x01\n\x0eOpenCloseState\x12 \n\x1cOPEN_CLOSE_STATE_UNSPECIFIED\x10\x00\x12\x1b\n\x17OPEN_CLOSE_STATE_CLOSED\x10\x01\x12\x19\n\x15OPEN_CLOSE_STATE_OPEN\x10\x02\x12\x1c\n\x18OPEN_CLOSE_STATE_UNKNOWN\x10\x03\x12(\n$OPEN_CLOSE_STATE_INVALID_CALIBRATION\x10\x04\"\x8a\x01\n\x12\x41mbientMotionTrait\x1at\n\x12\x41mbientMotionEvent\x12/\n\x0bstartMotion\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\nmaxHoldOff\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"5\n\x1a\x41mbientMotionSettingsTrait\x12\x17\n\x0f\x65nableDetection\x18\x01 \x01(\x08\"m\n AmbientMotionTimingSettingsTrait\x12-\n\nmaxHoldOff\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1a\n\x12overrideMaxHoldOff\x18\x02 \x01(\x08\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x19nest/trait/detector.proto\x12\x13nest.trait.detector\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto"\xad\x04\n\x0eOpenCloseTrait\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x33\n\x0f\x66irstObservedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11\x66irstObservedAtMs\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xad\x01\n\x0eOpenCloseEvent\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12O\n\x13priorOpenCloseState\x18\x02 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState"\xb2\x01\n\x0eOpenCloseState\x12 \n\x1cOPEN_CLOSE_STATE_UNSPECIFIED\x10\x00\x12\x1b\n\x17OPEN_CLOSE_STATE_CLOSED\x10\x01\x12\x19\n\x15OPEN_CLOSE_STATE_OPEN\x10\x02\x12\x1c\n\x18OPEN_CLOSE_STATE_UNKNOWN\x10\x03\x12(\n$OPEN_CLOSE_STATE_INVALID_CALIBRATION\x10\x04"\x8a\x01\n\x12\x41mbientMotionTrait\x1at\n\x12\x41mbientMotionEvent\x12/\n\x0bstartMotion\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\nmaxHoldOff\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration"5\n\x1a\x41mbientMotionSettingsTrait\x12\x17\n\x0f\x65nableDetection\x18\x01 \x01(\x08"m\n AmbientMotionTimingSettingsTrait\x12-\n\nmaxHoldOff\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1a\n\x12overrideMaxHoldOff\x18\x02 \x01(\x08\x62\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'nest.trait.detector_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "nest.trait.detector_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_OPENCLOSETRAIT']._serialized_start=116
-  _globals['_OPENCLOSETRAIT']._serialized_end=673
-  _globals['_OPENCLOSETRAIT_OPENCLOSEEVENT']._serialized_start=319
-  _globals['_OPENCLOSETRAIT_OPENCLOSEEVENT']._serialized_end=492
-  _globals['_OPENCLOSETRAIT_OPENCLOSESTATE']._serialized_start=495
-  _globals['_OPENCLOSETRAIT_OPENCLOSESTATE']._serialized_end=673
-  _globals['_AMBIENTMOTIONTRAIT']._serialized_start=676
-  _globals['_AMBIENTMOTIONTRAIT']._serialized_end=814
-  _globals['_AMBIENTMOTIONTRAIT_AMBIENTMOTIONEVENT']._serialized_start=698
-  _globals['_AMBIENTMOTIONTRAIT_AMBIENTMOTIONEVENT']._serialized_end=814
-  _globals['_AMBIENTMOTIONSETTINGSTRAIT']._serialized_start=816
-  _globals['_AMBIENTMOTIONSETTINGSTRAIT']._serialized_end=869
-  _globals['_AMBIENTMOTIONTIMINGSETTINGSTRAIT']._serialized_start=871
-  _globals['_AMBIENTMOTIONTIMINGSETTINGSTRAIT']._serialized_end=980
+    DESCRIPTOR._loaded_options = None
+    _globals["_OPENCLOSETRAIT"]._serialized_start = 116
+    _globals["_OPENCLOSETRAIT"]._serialized_end = 673
+    _globals["_OPENCLOSETRAIT_OPENCLOSEEVENT"]._serialized_start = 319
+    _globals["_OPENCLOSETRAIT_OPENCLOSEEVENT"]._serialized_end = 492
+    _globals["_OPENCLOSETRAIT_OPENCLOSESTATE"]._serialized_start = 495
+    _globals["_OPENCLOSETRAIT_OPENCLOSESTATE"]._serialized_end = 673
+    _globals["_AMBIENTMOTIONTRAIT"]._serialized_start = 676
+    _globals["_AMBIENTMOTIONTRAIT"]._serialized_end = 814
+    _globals["_AMBIENTMOTIONTRAIT_AMBIENTMOTIONEVENT"]._serialized_start = 698
+    _globals["_AMBIENTMOTIONTRAIT_AMBIENTMOTIONEVENT"]._serialized_end = 814
+    _globals["_AMBIENTMOTIONSETTINGSTRAIT"]._serialized_start = 816
+    _globals["_AMBIENTMOTIONSETTINGSTRAIT"]._serialized_end = 869
+    _globals["_AMBIENTMOTIONTIMINGSETTINGSTRAIT"]._serialized_start = 871
+    _globals["_AMBIENTMOTIONTIMINGSETTINGSTRAIT"]._serialized_end = 980
 # @@protoc_insertion_point(module_scope)

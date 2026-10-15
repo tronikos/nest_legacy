@@ -45,9 +45,13 @@ class CameraObservationHistoryTrait(_message.Message):
             queryStartTime: _timestamp_pb2.Timestamp | None = ...,
             queryEndTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -62,7 +66,12 @@ class CameraObservationHistoryTrait(_message.Message):
                 ValueType = _typing.NewType("ValueType", _builtins.int)
                 V: _TypeAlias = ValueType  # noqa: Y015
 
-            class _EventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow._EventType.ValueType], _builtins.type):
+            class _EventTypeEnumTypeWrapper(
+                _enum_type_wrapper._EnumTypeWrapper[
+                    CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow._EventType.ValueType
+                ],
+                _builtins.type,
+            ):
                 DESCRIPTOR: _descriptor.EnumDescriptor
                 EVENT_UNSPECIFIED: CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow._EventType.ValueType  # 0
                 EVENT_MOTION: CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow._EventType.ValueType  # 1
@@ -152,27 +161,71 @@ class CameraObservationHistoryTrait(_message.Message):
                 @_builtins.property
                 def endTime(self) -> _timestamp_pb2.Timestamp: ...
                 @_builtins.property
-                def eventType(self) -> _containers.RepeatedScalarFieldContainer[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventType.ValueType]: ...
+                def eventType(
+                    self,
+                ) -> _containers.RepeatedScalarFieldContainer[
+                    Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventType.ValueType
+                ]: ...
                 @_builtins.property
-                def familiarFace(self) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace: ...
+                def familiarFace(
+                    self,
+                ) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace: ...
                 @_builtins.property
-                def activityZone(self) -> _containers.RepeatedCompositeFieldContainer[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone]: ...
+                def activityZone(
+                    self,
+                ) -> _containers.RepeatedCompositeFieldContainer[
+                    Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone
+                ]: ...
                 @_builtins.property
-                def eventUrls(self) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls: ...
+                def eventUrls(
+                    self,
+                ) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls: ...
                 def __init__(
                     self,
                     *,
                     eventId: _builtins.str = ...,
                     startTime: _timestamp_pb2.Timestamp | None = ...,
                     endTime: _timestamp_pb2.Timestamp | None = ...,
-                    eventType: _abc.Iterable[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventType.ValueType] | None = ...,
-                    familiarFace: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace | None = ...,
-                    activityZone: _abc.Iterable[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone] | None = ...,
-                    eventUrls: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls | None = ...,
+                    eventType: _abc.Iterable[
+                        Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventType.ValueType
+                    ]
+                    | None = ...,
+                    familiarFace: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace
+                    | None = ...,
+                    activityZone: _abc.Iterable[
+                        Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone
+                    ]
+                    | None = ...,
+                    eventUrls: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls
+                    | None = ...,
                 ) -> None: ...
-                _HasFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "eventUrls", b"eventUrls", "familiarFace", b"familiarFace", "startTime", b"startTime"]  # noqa: Y015
+                _HasFieldArgType: _TypeAlias = _typing.Literal[
+                    "endTime",
+                    b"endTime",
+                    "eventUrls",
+                    b"eventUrls",
+                    "familiarFace",
+                    b"familiarFace",
+                    "startTime",
+                    b"startTime",
+                ]  # noqa: Y015
                 def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-                _ClearFieldArgType: _TypeAlias = _typing.Literal["activityZone", b"activityZone", "endTime", b"endTime", "eventId", b"eventId", "eventType", b"eventType", "eventUrls", b"eventUrls", "familiarFace", b"familiarFace", "startTime", b"startTime"]  # noqa: Y015
+                _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                    "activityZone",
+                    b"activityZone",
+                    "endTime",
+                    b"endTime",
+                    "eventId",
+                    b"eventId",
+                    "eventType",
+                    b"eventType",
+                    "eventUrls",
+                    b"eventUrls",
+                    "familiarFace",
+                    b"familiarFace",
+                    "startTime",
+                    b"startTime",
+                ]  # noqa: Y015
                 def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
             @_typing.final
@@ -192,7 +245,9 @@ class CameraObservationHistoryTrait(_message.Message):
                 ) -> None: ...
                 _HasFieldArgType: _TypeAlias = _typing.Literal["clipUrl", b"clipUrl"]  # noqa: Y015
                 def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-                _ClearFieldArgType: _TypeAlias = _typing.Literal["clipUrl", b"clipUrl", "snapshotUrl", b"snapshotUrl"]  # noqa: Y015
+                _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                    "clipUrl", b"clipUrl", "snapshotUrl", b"snapshotUrl"
+                ]  # noqa: Y015
                 def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
             @_typing.final
@@ -212,7 +267,14 @@ class CameraObservationHistoryTrait(_message.Message):
                     faceName: _builtins.str = ...,
                     facePictureUrl: _builtins.str = ...,
                 ) -> None: ...
-                _ClearFieldArgType: _TypeAlias = _typing.Literal["faceId", b"faceId", "faceName", b"faceName", "facePictureUrl", b"facePictureUrl"]  # noqa: Y015
+                _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                    "faceId",
+                    b"faceId",
+                    "faceName",
+                    b"faceName",
+                    "facePictureUrl",
+                    b"facePictureUrl",
+                ]  # noqa: Y015
                 def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
             @_typing.final
@@ -232,7 +294,14 @@ class CameraObservationHistoryTrait(_message.Message):
                     name: _builtins.str = ...,
                     internalIndex: _builtins.int = ...,
                 ) -> None: ...
-                _ClearFieldArgType: _TypeAlias = _typing.Literal["internalIndex", b"internalIndex", "name", b"name", "zoneIndex", b"zoneIndex"]  # noqa: Y015
+                _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                    "internalIndex",
+                    b"internalIndex",
+                    "name",
+                    b"name",
+                    "zoneIndex",
+                    b"zoneIndex",
+                ]  # noqa: Y015
                 def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
             UUID_FIELD_NUMBER: _builtins.int
@@ -250,41 +319,94 @@ class CameraObservationHistoryTrait(_message.Message):
             @_builtins.property
             def endTime(self) -> _timestamp_pb2.Timestamp: ...
             @_builtins.property
-            def cameraEvent(self) -> _containers.RepeatedCompositeFieldContainer[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.CameraEvent]: ...
+            def cameraEvent(
+                self,
+            ) -> _containers.RepeatedCompositeFieldContainer[
+                Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.CameraEvent
+            ]: ...
             @_builtins.property
-            def activityZone(self) -> _containers.RepeatedCompositeFieldContainer[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone]: ...
+            def activityZone(
+                self,
+            ) -> _containers.RepeatedCompositeFieldContainer[
+                Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone
+            ]: ...
             @_builtins.property
-            def familiarFace(self) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace: ...
+            def familiarFace(
+                self,
+            ) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace: ...
             @_builtins.property
-            def timeWindowUrls(self) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls: ...
+            def timeWindowUrls(
+                self,
+            ) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls: ...
             def __init__(
                 self,
                 *,
                 uuid: _builtins.str = ...,
                 startTime: _timestamp_pb2.Timestamp | None = ...,
                 endTime: _timestamp_pb2.Timestamp | None = ...,
-                cameraEvent: _abc.Iterable[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.CameraEvent] | None = ...,
-                activityZone: _abc.Iterable[Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone] | None = ...,
-                familiarFace: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace | None = ...,
-                timeWindowUrls: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls | None = ...,
+                cameraEvent: _abc.Iterable[
+                    Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.CameraEvent
+                ]
+                | None = ...,
+                activityZone: _abc.Iterable[
+                    Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.ActivityZone
+                ]
+                | None = ...,
+                familiarFace: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.FamiliarFace
+                | None = ...,
+                timeWindowUrls: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow.EventUrls
+                | None = ...,
                 unknown: _builtins.int = ...,
             ) -> None: ...
-            _HasFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "familiarFace", b"familiarFace", "startTime", b"startTime", "timeWindowUrls", b"timeWindowUrls"]  # noqa: Y015
+            _HasFieldArgType: _TypeAlias = _typing.Literal[
+                "endTime",
+                b"endTime",
+                "familiarFace",
+                b"familiarFace",
+                "startTime",
+                b"startTime",
+                "timeWindowUrls",
+                b"timeWindowUrls",
+            ]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["activityZone", b"activityZone", "cameraEvent", b"cameraEvent", "endTime", b"endTime", "familiarFace", b"familiarFace", "startTime", b"startTime", "timeWindowUrls", b"timeWindowUrls", "unknown", b"unknown", "uuid", b"uuid"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "activityZone",
+                b"activityZone",
+                "cameraEvent",
+                b"cameraEvent",
+                "endTime",
+                b"endTime",
+                "familiarFace",
+                b"familiarFace",
+                "startTime",
+                b"startTime",
+                "timeWindowUrls",
+                b"timeWindowUrls",
+                "unknown",
+                b"unknown",
+                "uuid",
+                b"uuid",
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         CAMERAEVENTWINDOW_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def cameraEventWindow(self) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow: ...
+        def cameraEventWindow(
+            self,
+        ) -> Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow: ...
         def __init__(
             self,
             *,
-            cameraEventWindow: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow | None = ...,
+            cameraEventWindow: Global___CameraObservationHistoryTrait.CameraObservationHistoryResponse.CameraEventTimeWindow
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["cameraEventWindow", b"cameraEventWindow"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "cameraEventWindow", b"cameraEventWindow"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["cameraEventWindow", b"cameraEventWindow"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "cameraEventWindow", b"cameraEventWindow"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -301,55 +423,112 @@ class EnergyHistoryTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyEnergyWinnerEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyHistoryTrait._LegacyEnergyWinner.ValueType], _builtins.type):
+    class _LegacyEnergyWinnerEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_ENERGY_WINNER_UNSPECIFIED: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 0
+        LEGACY_ENERGY_WINNER_UNSPECIFIED: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 0
         LEGACY_ENERGY_WINNER_USER: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 1
-        LEGACY_ENERGY_WINNER_WEATHER: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 2
+        LEGACY_ENERGY_WINNER_WEATHER: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 2
         LEGACY_ENERGY_WINNER_AWAY: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 3
-        LEGACY_ENERGY_WINNER_AUTO_AWAY: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 4
-        LEGACY_ENERGY_WINNER_TUNE_UP: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 5
-        LEGACY_ENERGY_WINNER_AUTO_DEHUM: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 6
-        LEGACY_ENERGY_WINNER_DEMAND_RESPONSE: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 7
-        LEGACY_ENERGY_WINNER_TIME_OF_USE: EnergyHistoryTrait._LegacyEnergyWinner.ValueType  # 8
+        LEGACY_ENERGY_WINNER_AUTO_AWAY: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 4
+        LEGACY_ENERGY_WINNER_TUNE_UP: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 5
+        LEGACY_ENERGY_WINNER_AUTO_DEHUM: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 6
+        LEGACY_ENERGY_WINNER_DEMAND_RESPONSE: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 7
+        LEGACY_ENERGY_WINNER_TIME_OF_USE: (
+            EnergyHistoryTrait._LegacyEnergyWinner.ValueType
+        )  # 8
 
-    class LegacyEnergyWinner(_LegacyEnergyWinner, metaclass=_LegacyEnergyWinnerEnumTypeWrapper): ...
-    LEGACY_ENERGY_WINNER_UNSPECIFIED: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 0
+    class LegacyEnergyWinner(
+        _LegacyEnergyWinner, metaclass=_LegacyEnergyWinnerEnumTypeWrapper
+    ): ...
+    LEGACY_ENERGY_WINNER_UNSPECIFIED: (
+        EnergyHistoryTrait.LegacyEnergyWinner.ValueType
+    )  # 0
     LEGACY_ENERGY_WINNER_USER: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 1
     LEGACY_ENERGY_WINNER_WEATHER: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 2
     LEGACY_ENERGY_WINNER_AWAY: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 3
     LEGACY_ENERGY_WINNER_AUTO_AWAY: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 4
     LEGACY_ENERGY_WINNER_TUNE_UP: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 5
-    LEGACY_ENERGY_WINNER_AUTO_DEHUM: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 6
-    LEGACY_ENERGY_WINNER_DEMAND_RESPONSE: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 7
-    LEGACY_ENERGY_WINNER_TIME_OF_USE: EnergyHistoryTrait.LegacyEnergyWinner.ValueType  # 8
+    LEGACY_ENERGY_WINNER_AUTO_DEHUM: (
+        EnergyHistoryTrait.LegacyEnergyWinner.ValueType
+    )  # 6
+    LEGACY_ENERGY_WINNER_DEMAND_RESPONSE: (
+        EnergyHistoryTrait.LegacyEnergyWinner.ValueType
+    )  # 7
+    LEGACY_ENERGY_WINNER_TIME_OF_USE: (
+        EnergyHistoryTrait.LegacyEnergyWinner.ValueType
+    )  # 8
 
     class _LegacySetPointType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacySetPointTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyHistoryTrait._LegacySetPointType.ValueType], _builtins.type):
+    class _LegacySetPointTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_SET_POINT_TYPE_UNSPECIFIED: EnergyHistoryTrait._LegacySetPointType.ValueType  # 0
-        LEGACY_SET_POINT_TYPE_HEAT: EnergyHistoryTrait._LegacySetPointType.ValueType  # 1
-        LEGACY_SET_POINT_TYPE_COOL: EnergyHistoryTrait._LegacySetPointType.ValueType  # 2
-        LEGACY_SET_POINT_TYPE_RANGE: EnergyHistoryTrait._LegacySetPointType.ValueType  # 3
-        LEGACY_SET_POINT_TYPE_EMERGENCY_HEAT: EnergyHistoryTrait._LegacySetPointType.ValueType  # 4
+        LEGACY_SET_POINT_TYPE_UNSPECIFIED: (
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        )  # 0
+        LEGACY_SET_POINT_TYPE_HEAT: (
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        )  # 1
+        LEGACY_SET_POINT_TYPE_COOL: (
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        )  # 2
+        LEGACY_SET_POINT_TYPE_RANGE: (
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        )  # 3
+        LEGACY_SET_POINT_TYPE_EMERGENCY_HEAT: (
+            EnergyHistoryTrait._LegacySetPointType.ValueType
+        )  # 4
 
-    class LegacySetPointType(_LegacySetPointType, metaclass=_LegacySetPointTypeEnumTypeWrapper): ...
-    LEGACY_SET_POINT_TYPE_UNSPECIFIED: EnergyHistoryTrait.LegacySetPointType.ValueType  # 0
+    class LegacySetPointType(
+        _LegacySetPointType, metaclass=_LegacySetPointTypeEnumTypeWrapper
+    ): ...
+    LEGACY_SET_POINT_TYPE_UNSPECIFIED: (
+        EnergyHistoryTrait.LegacySetPointType.ValueType
+    )  # 0
     LEGACY_SET_POINT_TYPE_HEAT: EnergyHistoryTrait.LegacySetPointType.ValueType  # 1
     LEGACY_SET_POINT_TYPE_COOL: EnergyHistoryTrait.LegacySetPointType.ValueType  # 2
     LEGACY_SET_POINT_TYPE_RANGE: EnergyHistoryTrait.LegacySetPointType.ValueType  # 3
-    LEGACY_SET_POINT_TYPE_EMERGENCY_HEAT: EnergyHistoryTrait.LegacySetPointType.ValueType  # 4
+    LEGACY_SET_POINT_TYPE_EMERGENCY_HEAT: (
+        EnergyHistoryTrait.LegacySetPointType.ValueType
+    )  # 4
 
     class _LegacyEventType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyEventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyHistoryTrait._LegacyEventType.ValueType], _builtins.type):
+    class _LegacyEventTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyHistoryTrait._LegacyEventType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_EVENT_TYPE_UNSPECIFIED: EnergyHistoryTrait._LegacyEventType.ValueType  # 0
+        LEGACY_EVENT_TYPE_UNSPECIFIED: (
+            EnergyHistoryTrait._LegacyEventType.ValueType
+        )  # 0
         LEGACY_EVENT_TYPE_HEAT: EnergyHistoryTrait._LegacyEventType.ValueType  # 1
         LEGACY_EVENT_TYPE_COOL: EnergyHistoryTrait._LegacyEventType.ValueType  # 2
         LEGACY_EVENT_TYPE_RANGE: EnergyHistoryTrait._LegacyEventType.ValueType  # 3
@@ -357,10 +536,16 @@ class EnergyHistoryTrait(_message.Message):
         LEGACY_EVENT_TYPE_AUTOAWAY: EnergyHistoryTrait._LegacyEventType.ValueType  # 5
         LEGACY_EVENT_TYPE_OFF: EnergyHistoryTrait._LegacyEventType.ValueType  # 6
         LEGACY_EVENT_TYPE_ON: EnergyHistoryTrait._LegacyEventType.ValueType  # 8
-        LEGACY_EVENT_TYPE_EMERGENCY_HEAT: EnergyHistoryTrait._LegacyEventType.ValueType  # 9
-        LEGACY_EVENT_TYPE_SUNLIGHT_CORRECTION: EnergyHistoryTrait._LegacyEventType.ValueType  # 10
+        LEGACY_EVENT_TYPE_EMERGENCY_HEAT: (
+            EnergyHistoryTrait._LegacyEventType.ValueType
+        )  # 9
+        LEGACY_EVENT_TYPE_SUNLIGHT_CORRECTION: (
+            EnergyHistoryTrait._LegacyEventType.ValueType
+        )  # 10
 
-    class LegacyEventType(_LegacyEventType, metaclass=_LegacyEventTypeEnumTypeWrapper): ...
+    class LegacyEventType(
+        _LegacyEventType, metaclass=_LegacyEventTypeEnumTypeWrapper
+    ): ...
     LEGACY_EVENT_TYPE_UNSPECIFIED: EnergyHistoryTrait.LegacyEventType.ValueType  # 0
     LEGACY_EVENT_TYPE_HEAT: EnergyHistoryTrait.LegacyEventType.ValueType  # 1
     LEGACY_EVENT_TYPE_COOL: EnergyHistoryTrait.LegacyEventType.ValueType  # 2
@@ -370,20 +555,37 @@ class EnergyHistoryTrait(_message.Message):
     LEGACY_EVENT_TYPE_OFF: EnergyHistoryTrait.LegacyEventType.ValueType  # 6
     LEGACY_EVENT_TYPE_ON: EnergyHistoryTrait.LegacyEventType.ValueType  # 8
     LEGACY_EVENT_TYPE_EMERGENCY_HEAT: EnergyHistoryTrait.LegacyEventType.ValueType  # 9
-    LEGACY_EVENT_TYPE_SUNLIGHT_CORRECTION: EnergyHistoryTrait.LegacyEventType.ValueType  # 10
+    LEGACY_EVENT_TYPE_SUNLIGHT_CORRECTION: (
+        EnergyHistoryTrait.LegacyEventType.ValueType
+    )  # 10
 
     class _LegacyTouchedWhere:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyTouchedWhereEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyHistoryTrait._LegacyTouchedWhere.ValueType], _builtins.type):
+    class _LegacyTouchedWhereEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyHistoryTrait._LegacyTouchedWhere.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_TOUCHED_WHERE_UNSPECIFIED: EnergyHistoryTrait._LegacyTouchedWhere.ValueType  # 0
-        LEGACY_TOUCHED_WHERE_SCHEDULE: EnergyHistoryTrait._LegacyTouchedWhere.ValueType  # 1
-        LEGACY_TOUCHED_WHERE_ADHOC: EnergyHistoryTrait._LegacyTouchedWhere.ValueType  # 2
+        LEGACY_TOUCHED_WHERE_UNSPECIFIED: (
+            EnergyHistoryTrait._LegacyTouchedWhere.ValueType
+        )  # 0
+        LEGACY_TOUCHED_WHERE_SCHEDULE: (
+            EnergyHistoryTrait._LegacyTouchedWhere.ValueType
+        )  # 1
+        LEGACY_TOUCHED_WHERE_ADHOC: (
+            EnergyHistoryTrait._LegacyTouchedWhere.ValueType
+        )  # 2
 
-    class LegacyTouchedWhere(_LegacyTouchedWhere, metaclass=_LegacyTouchedWhereEnumTypeWrapper): ...
-    LEGACY_TOUCHED_WHERE_UNSPECIFIED: EnergyHistoryTrait.LegacyTouchedWhere.ValueType  # 0
+    class LegacyTouchedWhere(
+        _LegacyTouchedWhere, metaclass=_LegacyTouchedWhereEnumTypeWrapper
+    ): ...
+    LEGACY_TOUCHED_WHERE_UNSPECIFIED: (
+        EnergyHistoryTrait.LegacyTouchedWhere.ValueType
+    )  # 0
     LEGACY_TOUCHED_WHERE_SCHEDULE: EnergyHistoryTrait.LegacyTouchedWhere.ValueType  # 1
     LEGACY_TOUCHED_WHERE_ADHOC: EnergyHistoryTrait.LegacyTouchedWhere.ValueType  # 2
 
@@ -403,9 +605,13 @@ class EnergyHistoryTrait(_message.Message):
             queryStartTime: _timestamp_pb2.Timestamp | None = ...,
             queryEndTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -415,18 +621,27 @@ class EnergyHistoryTrait(_message.Message):
         DAYS_FIELD_NUMBER: _builtins.int
         RECENTMAXUSEDSECONDS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def days(self) -> _containers.RepeatedCompositeFieldContainer[Global___EnergyHistoryTrait.LegacyDayUsage]: ...
+        def days(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___EnergyHistoryTrait.LegacyDayUsage
+        ]: ...
         @_builtins.property
         def recentMaxUsedSeconds(self) -> _duration_pb2.Duration: ...
         def __init__(
             self,
             *,
-            days: _abc.Iterable[Global___EnergyHistoryTrait.LegacyDayUsage] | None = ...,
+            days: _abc.Iterable[Global___EnergyHistoryTrait.LegacyDayUsage]
+            | None = ...,
             recentMaxUsedSeconds: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["recentMaxUsedSeconds", b"recentMaxUsedSeconds"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "recentMaxUsedSeconds", b"recentMaxUsedSeconds"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["days", b"days", "recentMaxUsedSeconds", b"recentMaxUsedSeconds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "days", b"days", "recentMaxUsedSeconds", b"recentMaxUsedSeconds"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -474,13 +689,27 @@ class EnergyHistoryTrait(_message.Message):
         @_builtins.property
         def secondsUsageOverAverage(self) -> _wrappers_pb2.Int32Value: ...
         @_builtins.property
-        def systemCapabilities(self) -> Global___EnergyHistoryTrait.LegacySystemCapabilities: ...
+        def systemCapabilities(
+            self,
+        ) -> Global___EnergyHistoryTrait.LegacySystemCapabilities: ...
         @_builtins.property
-        def cycles(self) -> _containers.RepeatedCompositeFieldContainer[Global___EnergyHistoryTrait.LegacyHVACCycle]: ...
+        def cycles(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___EnergyHistoryTrait.LegacyHVACCycle
+        ]: ...
         @_builtins.property
-        def usageEvents(self) -> _containers.RepeatedCompositeFieldContainer[Global___EnergyHistoryTrait.LegacyHVACUsage]: ...
+        def usageEvents(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___EnergyHistoryTrait.LegacyHVACUsage
+        ]: ...
         @_builtins.property
-        def rates(self) -> _containers.RepeatedCompositeFieldContainer[Global___EnergyHistoryTrait.LegacyRatePlanChange]: ...
+        def rates(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___EnergyHistoryTrait.LegacyRatePlanChange
+        ]: ...
         def __init__(
             self,
             *,
@@ -495,16 +724,78 @@ class EnergyHistoryTrait(_message.Message):
             energyLeaf: _wrappers_pb2.BoolValue | None = ...,
             recentAverageUsedSeconds: _wrappers_pb2.Int32Value | None = ...,
             secondsUsageOverAverage: _wrappers_pb2.Int32Value | None = ...,
-            systemCapabilities: Global___EnergyHistoryTrait.LegacySystemCapabilities | None = ...,
+            systemCapabilities: Global___EnergyHistoryTrait.LegacySystemCapabilities
+            | None = ...,
             cyclesIncomplete: _builtins.bool = ...,
-            cycles: _abc.Iterable[Global___EnergyHistoryTrait.LegacyHVACCycle] | None = ...,
+            cycles: _abc.Iterable[Global___EnergyHistoryTrait.LegacyHVACCycle]
+            | None = ...,
             eventsIncomplete: _builtins.bool = ...,
-            usageEvents: _abc.Iterable[Global___EnergyHistoryTrait.LegacyHVACUsage] | None = ...,
-            rates: _abc.Iterable[Global___EnergyHistoryTrait.LegacyRatePlanChange] | None = ...,
+            usageEvents: _abc.Iterable[Global___EnergyHistoryTrait.LegacyHVACUsage]
+            | None = ...,
+            rates: _abc.Iterable[Global___EnergyHistoryTrait.LegacyRatePlanChange]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["dayEnd", b"dayEnd", "dayStart", b"dayStart", "energyLeaf", b"energyLeaf", "recentAverageUsedSeconds", b"recentAverageUsedSeconds", "secondsUsageOverAverage", b"secondsUsageOverAverage", "systemCapabilities", b"systemCapabilities", "totalCoolingSeconds", b"totalCoolingSeconds", "totalDehumidifierSeconds", b"totalDehumidifierSeconds", "totalFanCoolingSeconds", b"totalFanCoolingSeconds", "totalHeatingSeconds", b"totalHeatingSeconds", "totalHumidifierSeconds", b"totalHumidifierSeconds"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "dayEnd",
+            b"dayEnd",
+            "dayStart",
+            b"dayStart",
+            "energyLeaf",
+            b"energyLeaf",
+            "recentAverageUsedSeconds",
+            b"recentAverageUsedSeconds",
+            "secondsUsageOverAverage",
+            b"secondsUsageOverAverage",
+            "systemCapabilities",
+            b"systemCapabilities",
+            "totalCoolingSeconds",
+            b"totalCoolingSeconds",
+            "totalDehumidifierSeconds",
+            b"totalDehumidifierSeconds",
+            "totalFanCoolingSeconds",
+            b"totalFanCoolingSeconds",
+            "totalHeatingSeconds",
+            b"totalHeatingSeconds",
+            "totalHumidifierSeconds",
+            b"totalHumidifierSeconds",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["cycles", b"cycles", "cyclesIncomplete", b"cyclesIncomplete", "dayEnd", b"dayEnd", "dayStart", b"dayStart", "energyLeaf", b"energyLeaf", "energyWinner", b"energyWinner", "eventsIncomplete", b"eventsIncomplete", "rates", b"rates", "recentAverageUsedSeconds", b"recentAverageUsedSeconds", "secondsUsageOverAverage", b"secondsUsageOverAverage", "systemCapabilities", b"systemCapabilities", "totalCoolingSeconds", b"totalCoolingSeconds", "totalDehumidifierSeconds", b"totalDehumidifierSeconds", "totalFanCoolingSeconds", b"totalFanCoolingSeconds", "totalHeatingSeconds", b"totalHeatingSeconds", "totalHumidifierSeconds", b"totalHumidifierSeconds", "usageEvents", b"usageEvents"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "cycles",
+            b"cycles",
+            "cyclesIncomplete",
+            b"cyclesIncomplete",
+            "dayEnd",
+            b"dayEnd",
+            "dayStart",
+            b"dayStart",
+            "energyLeaf",
+            b"energyLeaf",
+            "energyWinner",
+            b"energyWinner",
+            "eventsIncomplete",
+            b"eventsIncomplete",
+            "rates",
+            b"rates",
+            "recentAverageUsedSeconds",
+            b"recentAverageUsedSeconds",
+            "secondsUsageOverAverage",
+            b"secondsUsageOverAverage",
+            "systemCapabilities",
+            b"systemCapabilities",
+            "totalCoolingSeconds",
+            b"totalCoolingSeconds",
+            "totalDehumidifierSeconds",
+            b"totalDehumidifierSeconds",
+            "totalFanCoolingSeconds",
+            b"totalFanCoolingSeconds",
+            "totalHeatingSeconds",
+            b"totalHeatingSeconds",
+            "totalHumidifierSeconds",
+            b"totalHumidifierSeconds",
+            "usageEvents",
+            b"usageEvents",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -574,9 +865,50 @@ class EnergyHistoryTrait(_message.Message):
             autoDehumdifier: _builtins.bool = ...,
             waterHeater: _builtins.bool = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["cycleStart", b"cycleStart", "duration", b"duration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "cycleStart", b"cycleStart", "duration", b"duration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["altHeat", b"altHeat", "altHeat2", b"altHeat2", "autoDehumdifier", b"autoDehumdifier", "cool1", b"cool1", "cool2", b"cool2", "cool3", b"cool3", "cycleStart", b"cycleStart", "dehumidifier", b"dehumidifier", "duration", b"duration", "emergencyHeat", b"emergencyHeat", "fan", b"fan", "fanCooling", b"fanCooling", "heat1", b"heat1", "heat2", b"heat2", "heat3", b"heat3", "heatAux", b"heatAux", "humidifier", b"humidifier", "isComplete", b"isComplete", "waterHeater", b"waterHeater"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "altHeat",
+            b"altHeat",
+            "altHeat2",
+            b"altHeat2",
+            "autoDehumdifier",
+            b"autoDehumdifier",
+            "cool1",
+            b"cool1",
+            "cool2",
+            b"cool2",
+            "cool3",
+            b"cool3",
+            "cycleStart",
+            b"cycleStart",
+            "dehumidifier",
+            b"dehumidifier",
+            "duration",
+            b"duration",
+            "emergencyHeat",
+            b"emergencyHeat",
+            "fan",
+            b"fan",
+            "fanCooling",
+            b"fanCooling",
+            "heat1",
+            b"heat1",
+            "heat2",
+            b"heat2",
+            "heat3",
+            b"heat3",
+            "heatAux",
+            b"heatAux",
+            "humidifier",
+            b"humidifier",
+            "isComplete",
+            b"isComplete",
+            "waterHeater",
+            b"waterHeater",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -644,7 +976,46 @@ class EnergyHistoryTrait(_message.Message):
             hasHotWaterTemperature: _builtins.bool = ...,
             hasFan: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["hasAirFilter", b"hasAirFilter", "hasAuxHeat", b"hasAuxHeat", "hasDehumidifier", b"hasDehumidifier", "hasDualFuel", b"hasDualFuel", "hasEmergencyHeat", b"hasEmergencyHeat", "hasFan", b"hasFan", "hasFossilFuel", b"hasFossilFuel", "hasHeatPump", b"hasHeatPump", "hasHotWaterControl", b"hasHotWaterControl", "hasHotWaterTemperature", b"hasHotWaterTemperature", "hasHumidifier", b"hasHumidifier", "hasStage1AlternateHeat", b"hasStage1AlternateHeat", "hasStage1Cool", b"hasStage1Cool", "hasStage1Heat", b"hasStage1Heat", "hasStage2AlternateHeat", b"hasStage2AlternateHeat", "hasStage2Cool", b"hasStage2Cool", "hasStage2Heat", b"hasStage2Heat", "hasStage3Cool", b"hasStage3Cool", "hasStage3Heat", b"hasStage3Heat"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "hasAirFilter",
+            b"hasAirFilter",
+            "hasAuxHeat",
+            b"hasAuxHeat",
+            "hasDehumidifier",
+            b"hasDehumidifier",
+            "hasDualFuel",
+            b"hasDualFuel",
+            "hasEmergencyHeat",
+            b"hasEmergencyHeat",
+            "hasFan",
+            b"hasFan",
+            "hasFossilFuel",
+            b"hasFossilFuel",
+            "hasHeatPump",
+            b"hasHeatPump",
+            "hasHotWaterControl",
+            b"hasHotWaterControl",
+            "hasHotWaterTemperature",
+            b"hasHotWaterTemperature",
+            "hasHumidifier",
+            b"hasHumidifier",
+            "hasStage1AlternateHeat",
+            b"hasStage1AlternateHeat",
+            "hasStage1Cool",
+            b"hasStage1Cool",
+            "hasStage1Heat",
+            b"hasStage1Heat",
+            "hasStage2AlternateHeat",
+            b"hasStage2AlternateHeat",
+            "hasStage2Cool",
+            b"hasStage2Cool",
+            "hasStage2Heat",
+            b"hasStage2Heat",
+            "hasStage3Cool",
+            b"hasStage3Cool",
+            "hasStage3Heat",
+            b"hasStage3Heat",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -671,9 +1042,27 @@ class EnergyHistoryTrait(_message.Message):
             ratePlanEnd: _timestamp_pb2.Timestamp | None = ...,
             tierLevel: _wrappers_pb2.UInt32Value | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["ratePlanEnd", b"ratePlanEnd", "ratePlanStart", b"ratePlanStart", "tierLevel", b"tierLevel", "timestamp", b"timestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "ratePlanEnd",
+            b"ratePlanEnd",
+            "ratePlanStart",
+            b"ratePlanStart",
+            "tierLevel",
+            b"tierLevel",
+            "timestamp",
+            b"timestamp",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["ratePlanEnd", b"ratePlanEnd", "ratePlanStart", b"ratePlanStart", "tierLevel", b"tierLevel", "timestamp", b"timestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "ratePlanEnd",
+            b"ratePlanEnd",
+            "ratePlanStart",
+            b"ratePlanStart",
+            "tierLevel",
+            b"tierLevel",
+            "timestamp",
+            b"timestamp",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -705,9 +1094,13 @@ class EnergyHistoryTrait(_message.Message):
         @_builtins.property
         def ecoAway(self) -> Global___EnergyHistoryTrait.LegacyEventEcoAwayMode: ...
         @_builtins.property
-        def ecoAutoAway(self) -> Global___EnergyHistoryTrait.LegacyEventEcoAutoAwayMode: ...
+        def ecoAutoAway(
+            self,
+        ) -> Global___EnergyHistoryTrait.LegacyEventEcoAutoAwayMode: ...
         @_builtins.property
-        def sunlightCorrection(self) -> Global___EnergyHistoryTrait.LegacyEventSunlightCorrection: ...
+        def sunlightCorrection(
+            self,
+        ) -> Global___EnergyHistoryTrait.LegacyEventSunlightCorrection: ...
         @_builtins.property
         def setPoint(self) -> Global___EnergyHistoryTrait.LegacyEventSetPoint: ...
         def __init__(
@@ -721,13 +1114,55 @@ class EnergyHistoryTrait(_message.Message):
             on: Global___EnergyHistoryTrait.LegacyEventOnMode | None = ...,
             off: Global___EnergyHistoryTrait.LegacyEventOffMode | None = ...,
             ecoAway: Global___EnergyHistoryTrait.LegacyEventEcoAwayMode | None = ...,
-            ecoAutoAway: Global___EnergyHistoryTrait.LegacyEventEcoAutoAwayMode | None = ...,
-            sunlightCorrection: Global___EnergyHistoryTrait.LegacyEventSunlightCorrection | None = ...,
+            ecoAutoAway: Global___EnergyHistoryTrait.LegacyEventEcoAutoAwayMode
+            | None = ...,
+            sunlightCorrection: Global___EnergyHistoryTrait.LegacyEventSunlightCorrection
+            | None = ...,
             setPoint: Global___EnergyHistoryTrait.LegacyEventSetPoint | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "ecoAutoAway", b"ecoAutoAway", "ecoAway", b"ecoAway", "eventStart", b"eventStart", "off", b"off", "on", b"on", "setPoint", b"setPoint", "sunlightCorrection", b"sunlightCorrection"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration",
+            b"duration",
+            "ecoAutoAway",
+            b"ecoAutoAway",
+            "ecoAway",
+            b"ecoAway",
+            "eventStart",
+            b"eventStart",
+            "off",
+            b"off",
+            "on",
+            b"on",
+            "setPoint",
+            b"setPoint",
+            "sunlightCorrection",
+            b"sunlightCorrection",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["continuation", b"continuation", "duration", b"duration", "ecoAutoAway", b"ecoAutoAway", "ecoAway", b"ecoAway", "eventStart", b"eventStart", "eventType", b"eventType", "off", b"off", "on", b"on", "setPoint", b"setPoint", "sunlightCorrection", b"sunlightCorrection", "timezoneOffset", b"timezoneOffset"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "continuation",
+            b"continuation",
+            "duration",
+            b"duration",
+            "ecoAutoAway",
+            b"ecoAutoAway",
+            "ecoAway",
+            b"ecoAway",
+            "eventStart",
+            b"eventStart",
+            "eventType",
+            b"eventType",
+            "off",
+            b"off",
+            "on",
+            b"on",
+            "setPoint",
+            b"setPoint",
+            "sunlightCorrection",
+            b"sunlightCorrection",
+            "timezoneOffset",
+            b"timezoneOffset",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -784,9 +1219,23 @@ class EnergyHistoryTrait(_message.Message):
             coolingTarget: _hvac_pb2.HvacControl.TemperatureThreshold | None = ...,
             eventSource: Global___EnergyHistoryTrait.LegacyEventSource | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "eventSource", b"eventSource", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "eventSource",
+            b"eventSource",
+            "heatingTarget",
+            b"heatingTarget",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "eventSource", b"eventSource", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "eventSource",
+            b"eventSource",
+            "heatingTarget",
+            b"heatingTarget",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -809,9 +1258,23 @@ class EnergyHistoryTrait(_message.Message):
             coolingTarget: _hvac_pb2.HvacControl.TemperatureThreshold | None = ...,
             eventSource: Global___EnergyHistoryTrait.LegacyEventSource | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "eventSource", b"eventSource", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "eventSource",
+            b"eventSource",
+            "heatingTarget",
+            b"heatingTarget",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "eventSource", b"eventSource", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "eventSource",
+            b"eventSource",
+            "heatingTarget",
+            b"heatingTarget",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -849,7 +1312,9 @@ class EnergyHistoryTrait(_message.Message):
         PREVIOUSEVENTTYPE_FIELD_NUMBER: _builtins.int
         SOURCE_FIELD_NUMBER: _builtins.int
         setPointType: Global___EnergyHistoryTrait.LegacySetPointType.ValueType
-        scheduleType: _hvac_pb2.SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+        scheduleType: (
+            _hvac_pb2.SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+        )
         actor: _hvac_pb2.HvacActor.HvacActorMethod.ValueType
         touchedWhere: Global___EnergyHistoryTrait.LegacyTouchedWhere.ValueType
         previousEventType: Global___EnergyHistoryTrait.LegacyEventType.ValueType
@@ -886,9 +1351,53 @@ class EnergyHistoryTrait(_message.Message):
             previousEventType: Global___EnergyHistoryTrait.LegacyEventType.ValueType = ...,
             source: Global___EnergyHistoryTrait.LegacyEventSource | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget", "scheduledDay", b"scheduledDay", "scheduledStart", b"scheduledStart", "source", b"source", "touchedTimezoneOffset", b"touchedTimezoneOffset", "touchedUserId", b"touchedUserId", "touchedWhen", b"touchedWhen"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "heatingTarget",
+            b"heatingTarget",
+            "scheduledDay",
+            b"scheduledDay",
+            "scheduledStart",
+            b"scheduledStart",
+            "source",
+            b"source",
+            "touchedTimezoneOffset",
+            b"touchedTimezoneOffset",
+            "touchedUserId",
+            b"touchedUserId",
+            "touchedWhen",
+            b"touchedWhen",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor", "coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget", "previousEventType", b"previousEventType", "scheduleType", b"scheduleType", "scheduledDay", b"scheduledDay", "scheduledStart", b"scheduledStart", "setPointType", b"setPointType", "source", b"source", "touchedTimezoneOffset", b"touchedTimezoneOffset", "touchedUserId", b"touchedUserId", "touchedWhen", b"touchedWhen", "touchedWhere", b"touchedWhere"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actor",
+            b"actor",
+            "coolingTarget",
+            b"coolingTarget",
+            "heatingTarget",
+            b"heatingTarget",
+            "previousEventType",
+            b"previousEventType",
+            "scheduleType",
+            b"scheduleType",
+            "scheduledDay",
+            b"scheduledDay",
+            "scheduledStart",
+            b"scheduledStart",
+            "setPointType",
+            b"setPointType",
+            "source",
+            b"source",
+            "touchedTimezoneOffset",
+            b"touchedTimezoneOffset",
+            "touchedUserId",
+            b"touchedUserId",
+            "touchedWhen",
+            b"touchedWhen",
+            "touchedWhere",
+            b"touchedWhere",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -911,7 +1420,9 @@ class EnergyHistoryTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userName", b"userName"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor", "touchedWhere", b"touchedWhere", "userName", b"userName"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actor", b"actor", "touchedWhere", b"touchedWhere", "userName", b"userName"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -928,18 +1439,41 @@ class OccupancyHistoryTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ImplicitChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[OccupancyHistoryTrait._ImplicitChangeReason.ValueType], _builtins.type):
+    class _ImplicitChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            OccupancyHistoryTrait._ImplicitChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        IMPLICIT_CHANGE_REASON_UNSPECIFIED: OccupancyHistoryTrait._ImplicitChangeReason.ValueType  # 0
-        IMPLICIT_CHANGE_REASON_ARM: OccupancyHistoryTrait._ImplicitChangeReason.ValueType  # 1
-        IMPLICIT_CHANGE_REASON_DISARM: OccupancyHistoryTrait._ImplicitChangeReason.ValueType  # 2
-        IMPLICIT_CHANGE_REASON_UNLOCK: OccupancyHistoryTrait._ImplicitChangeReason.ValueType  # 3
+        IMPLICIT_CHANGE_REASON_UNSPECIFIED: (
+            OccupancyHistoryTrait._ImplicitChangeReason.ValueType
+        )  # 0
+        IMPLICIT_CHANGE_REASON_ARM: (
+            OccupancyHistoryTrait._ImplicitChangeReason.ValueType
+        )  # 1
+        IMPLICIT_CHANGE_REASON_DISARM: (
+            OccupancyHistoryTrait._ImplicitChangeReason.ValueType
+        )  # 2
+        IMPLICIT_CHANGE_REASON_UNLOCK: (
+            OccupancyHistoryTrait._ImplicitChangeReason.ValueType
+        )  # 3
 
-    class ImplicitChangeReason(_ImplicitChangeReason, metaclass=_ImplicitChangeReasonEnumTypeWrapper): ...
-    IMPLICIT_CHANGE_REASON_UNSPECIFIED: OccupancyHistoryTrait.ImplicitChangeReason.ValueType  # 0
-    IMPLICIT_CHANGE_REASON_ARM: OccupancyHistoryTrait.ImplicitChangeReason.ValueType  # 1
-    IMPLICIT_CHANGE_REASON_DISARM: OccupancyHistoryTrait.ImplicitChangeReason.ValueType  # 2
-    IMPLICIT_CHANGE_REASON_UNLOCK: OccupancyHistoryTrait.ImplicitChangeReason.ValueType  # 3
+    class ImplicitChangeReason(
+        _ImplicitChangeReason, metaclass=_ImplicitChangeReasonEnumTypeWrapper
+    ): ...
+    IMPLICIT_CHANGE_REASON_UNSPECIFIED: (
+        OccupancyHistoryTrait.ImplicitChangeReason.ValueType
+    )  # 0
+    IMPLICIT_CHANGE_REASON_ARM: (
+        OccupancyHistoryTrait.ImplicitChangeReason.ValueType
+    )  # 1
+    IMPLICIT_CHANGE_REASON_DISARM: (
+        OccupancyHistoryTrait.ImplicitChangeReason.ValueType
+    )  # 2
+    IMPLICIT_CHANGE_REASON_UNLOCK: (
+        OccupancyHistoryTrait.ImplicitChangeReason.ValueType
+    )  # 3
 
     @_typing.final
     class FindOccupancyEventListRequest(_message.Message):
@@ -961,9 +1495,23 @@ class OccupancyHistoryTrait(_message.Message):
             queryEndTime: _timestamp_pb2.Timestamp | None = ...,
             fenceId: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["fenceId", b"fenceId", "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "fenceId",
+            b"fenceId",
+            "queryEndTime",
+            b"queryEndTime",
+            "queryStartTime",
+            b"queryStartTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fenceId", b"fenceId", "queryEndTime", b"queryEndTime", "queryStartTime", b"queryStartTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fenceId",
+            b"fenceId",
+            "queryEndTime",
+            b"queryEndTime",
+            "queryStartTime",
+            b"queryStartTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -988,9 +1536,20 @@ class OccupancyHistoryTrait(_message.Message):
             wwnClientId: _wrappers_pb2.StringValue | None = ...,
             priorMode: _occupancy_pb2.StructureModeTrait.StructureMode.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["user", b"user", "wwnClientId", b"wwnClientId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "user", b"user", "wwnClientId", b"wwnClientId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["mode", b"mode", "priorMode", b"priorMode", "user", b"user", "wwnClientId", b"wwnClientId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "mode",
+            b"mode",
+            "priorMode",
+            b"priorMode",
+            "user",
+            b"user",
+            "wwnClientId",
+            b"wwnClientId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1016,7 +1575,16 @@ class OccupancyHistoryTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor", "mode", b"mode", "priorMode", b"priorMode", "reason", b"reason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actor",
+            b"actor",
+            "mode",
+            b"mode",
+            "priorMode",
+            b"priorMode",
+            "reason",
+            b"reason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1044,9 +1612,22 @@ class OccupancyHistoryTrait(_message.Message):
             rtsSerialNumber: _wrappers_pb2.StringValue | None = ...,
             priorMode: _occupancy_pb2.StructureModeTrait.StructureMode.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["rtsSerialNumber", b"rtsSerialNumber", "weaveDeviceId", b"weaveDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "rtsSerialNumber", b"rtsSerialNumber", "weaveDeviceId", b"weaveDeviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["mode", b"mode", "priorMode", b"priorMode", "reason", b"reason", "rtsSerialNumber", b"rtsSerialNumber", "weaveDeviceId", b"weaveDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "mode",
+            b"mode",
+            "priorMode",
+            b"priorMode",
+            "reason",
+            b"reason",
+            "rtsSerialNumber",
+            b"rtsSerialNumber",
+            "weaveDeviceId",
+            b"weaveDeviceId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1063,7 +1644,9 @@ class OccupancyHistoryTrait(_message.Message):
             presence: _occupancy_pb2.StructureModeTrait.Presence.ValueType = ...,
             priorPresence: _occupancy_pb2.StructureModeTrait.Presence.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["presence", b"presence", "priorPresence", b"priorPresence"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "presence", b"presence", "priorPresence", b"priorPresence"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1093,9 +1676,29 @@ class OccupancyHistoryTrait(_message.Message):
             weaveMobileDeviceId: _common_pb2.ResourceId | None = ...,
             assertionTimestamp: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["assertionTimestamp", b"assertionTimestamp", "rtsDeviceId", b"rtsDeviceId", "userId", b"userId", "weaveMobileDeviceId", b"weaveMobileDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "assertionTimestamp",
+            b"assertionTimestamp",
+            "rtsDeviceId",
+            b"rtsDeviceId",
+            "userId",
+            b"userId",
+            "weaveMobileDeviceId",
+            b"weaveMobileDeviceId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["assertionTimestamp", b"assertionTimestamp", "geofenceState", b"geofenceState", "rtsDeviceId", b"rtsDeviceId", "userId", b"userId", "weaveMobileDeviceId", b"weaveMobileDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "assertionTimestamp",
+            b"assertionTimestamp",
+            "geofenceState",
+            b"geofenceState",
+            "rtsDeviceId",
+            b"rtsDeviceId",
+            "userId",
+            b"userId",
+            "weaveMobileDeviceId",
+            b"weaveMobileDeviceId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1111,28 +1714,69 @@ class OccupancyHistoryTrait(_message.Message):
         @_builtins.property
         def eventTimestamp(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def explicitChangeEvent(self) -> Global___OccupancyHistoryTrait.ExplicitStructureModeChange: ...
+        def explicitChangeEvent(
+            self,
+        ) -> Global___OccupancyHistoryTrait.ExplicitStructureModeChange: ...
         @_builtins.property
-        def implicitChangeEvent(self) -> Global___OccupancyHistoryTrait.ImplicitStructureModeChange: ...
+        def implicitChangeEvent(
+            self,
+        ) -> Global___OccupancyHistoryTrait.ImplicitStructureModeChange: ...
         @_builtins.property
-        def estimatedOccupancyChangeEvent(self) -> Global___OccupancyHistoryTrait.EstimatedOccupancyStructureModeChange: ...
+        def estimatedOccupancyChangeEvent(
+            self,
+        ) -> Global___OccupancyHistoryTrait.EstimatedOccupancyStructureModeChange: ...
         @_builtins.property
-        def presenceEvent(self) -> Global___OccupancyHistoryTrait.CombinedPresenceChange: ...
+        def presenceEvent(
+            self,
+        ) -> Global___OccupancyHistoryTrait.CombinedPresenceChange: ...
         @_builtins.property
-        def geofenceEvent(self) -> Global___OccupancyHistoryTrait.GeofenceStateChange: ...
+        def geofenceEvent(
+            self,
+        ) -> Global___OccupancyHistoryTrait.GeofenceStateChange: ...
         def __init__(
             self,
             *,
             eventTimestamp: _timestamp_pb2.Timestamp | None = ...,
-            explicitChangeEvent: Global___OccupancyHistoryTrait.ExplicitStructureModeChange | None = ...,
-            implicitChangeEvent: Global___OccupancyHistoryTrait.ImplicitStructureModeChange | None = ...,
-            estimatedOccupancyChangeEvent: Global___OccupancyHistoryTrait.EstimatedOccupancyStructureModeChange | None = ...,
-            presenceEvent: Global___OccupancyHistoryTrait.CombinedPresenceChange | None = ...,
-            geofenceEvent: Global___OccupancyHistoryTrait.GeofenceStateChange | None = ...,
+            explicitChangeEvent: Global___OccupancyHistoryTrait.ExplicitStructureModeChange
+            | None = ...,
+            implicitChangeEvent: Global___OccupancyHistoryTrait.ImplicitStructureModeChange
+            | None = ...,
+            estimatedOccupancyChangeEvent: Global___OccupancyHistoryTrait.EstimatedOccupancyStructureModeChange
+            | None = ...,
+            presenceEvent: Global___OccupancyHistoryTrait.CombinedPresenceChange
+            | None = ...,
+            geofenceEvent: Global___OccupancyHistoryTrait.GeofenceStateChange
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["estimatedOccupancyChangeEvent", b"estimatedOccupancyChangeEvent", "eventTimestamp", b"eventTimestamp", "explicitChangeEvent", b"explicitChangeEvent", "geofenceEvent", b"geofenceEvent", "implicitChangeEvent", b"implicitChangeEvent", "presenceEvent", b"presenceEvent"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "estimatedOccupancyChangeEvent",
+            b"estimatedOccupancyChangeEvent",
+            "eventTimestamp",
+            b"eventTimestamp",
+            "explicitChangeEvent",
+            b"explicitChangeEvent",
+            "geofenceEvent",
+            b"geofenceEvent",
+            "implicitChangeEvent",
+            b"implicitChangeEvent",
+            "presenceEvent",
+            b"presenceEvent",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["estimatedOccupancyChangeEvent", b"estimatedOccupancyChangeEvent", "eventTimestamp", b"eventTimestamp", "explicitChangeEvent", b"explicitChangeEvent", "geofenceEvent", b"geofenceEvent", "implicitChangeEvent", b"implicitChangeEvent", "presenceEvent", b"presenceEvent"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "estimatedOccupancyChangeEvent",
+            b"estimatedOccupancyChangeEvent",
+            "eventTimestamp",
+            b"eventTimestamp",
+            "explicitChangeEvent",
+            b"explicitChangeEvent",
+            "geofenceEvent",
+            b"geofenceEvent",
+            "implicitChangeEvent",
+            b"implicitChangeEvent",
+            "presenceEvent",
+            b"presenceEvent",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1158,11 +1802,18 @@ class OccupancyHistoryTrait(_message.Message):
 
         RESPONSES_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def responses(self) -> _containers.RepeatedCompositeFieldContainer[Global___OccupancyHistoryTrait.FindOccupancyEventsResponse]: ...
+        def responses(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___OccupancyHistoryTrait.FindOccupancyEventsResponse
+        ]: ...
         def __init__(
             self,
             *,
-            responses: _abc.Iterable[Global___OccupancyHistoryTrait.FindOccupancyEventsResponse] | None = ...,
+            responses: _abc.Iterable[
+                Global___OccupancyHistoryTrait.FindOccupancyEventsResponse
+            ]
+            | None = ...,
         ) -> None: ...
         _ClearFieldArgType: _TypeAlias = _typing.Literal["responses", b"responses"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...

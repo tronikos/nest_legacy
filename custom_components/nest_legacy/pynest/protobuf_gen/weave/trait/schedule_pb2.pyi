@@ -31,22 +31,53 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ScheduleErrorCodesEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType], _builtins.type):
+    class _ScheduleErrorCodesEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SCHEDULE_ERROR_CODES_UNSPECIFIED: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 0
-        SCHEDULE_ERROR_CODES_SUCCESS_STATUS: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 1
-        SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 2
-        SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 3
-        SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 4
-        SCHEDULE_ERROR_CODES_INVALID_SCHEDULE: BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType  # 5
+        SCHEDULE_ERROR_CODES_UNSPECIFIED: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 0
+        SCHEDULE_ERROR_CODES_SUCCESS_STATUS: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 1
+        SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 2
+        SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 3
+        SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 4
+        SCHEDULE_ERROR_CODES_INVALID_SCHEDULE: (
+            BasicUserSchedulesSettingsTrait._ScheduleErrorCodes.ValueType
+        )  # 5
 
-    class ScheduleErrorCodes(_ScheduleErrorCodes, metaclass=_ScheduleErrorCodesEnumTypeWrapper): ...
-    SCHEDULE_ERROR_CODES_UNSPECIFIED: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 0
-    SCHEDULE_ERROR_CODES_SUCCESS_STATUS: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 1
-    SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 2
-    SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 3
-    SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 4
-    SCHEDULE_ERROR_CODES_INVALID_SCHEDULE: BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType  # 5
+    class ScheduleErrorCodes(
+        _ScheduleErrorCodes, metaclass=_ScheduleErrorCodesEnumTypeWrapper
+    ): ...
+    SCHEDULE_ERROR_CODES_UNSPECIFIED: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 0
+    SCHEDULE_ERROR_CODES_SUCCESS_STATUS: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 1
+    SCHEDULE_ERROR_CODES_DUPLICATE_ENTRY: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 2
+    SCHEDULE_ERROR_CODES_INDEX_OUT_OF_RANGE: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 3
+    SCHEDULE_ERROR_CODES_EMPTY_SCHEDULE_ENTRY: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 4
+    SCHEDULE_ERROR_CODES_INVALID_SCHEDULE: (
+        BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
+    )  # 5
 
     @_typing.final
     class BasicUserSchedulesEntry(_message.Message):
@@ -56,16 +87,21 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
+        def value(
+            self,
+        ) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule | None = ...,
+            value: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -76,7 +112,11 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         STARTTIME_FIELD_NUMBER: _builtins.int
         DURATION_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def daysOfWeek(self) -> _containers.RepeatedScalarFieldContainer[_common_pb2.DayOfWeek.ValueType]: ...
+        def daysOfWeek(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            _common_pb2.DayOfWeek.ValueType
+        ]: ...
         @_builtins.property
         def startTime(self) -> _common_pb2.TimeOfDay: ...
         @_builtins.property
@@ -88,9 +128,18 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
             startTime: _common_pb2.TimeOfDay | None = ...,
             duration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "startTime", b"startTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration", b"duration", "startTime", b"startTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["daysOfWeek", b"daysOfWeek", "duration", b"duration", "startTime", b"startTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "daysOfWeek",
+            b"daysOfWeek",
+            "duration",
+            b"duration",
+            "startTime",
+            b"startTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -109,9 +158,13 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
             startTime: _timestamp_pb2.Timestamp | None = ...,
             endTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "startTime", b"startTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "endTime", b"endTime", "startTime", b"startTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "startTime", b"startTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "endTime", b"endTime", "startTime", b"startTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -124,19 +177,40 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def dailyRepeatingSchedules(self) -> _containers.RepeatedCompositeFieldContainer[Global___BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem]: ...
+        def dailyRepeatingSchedules(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem
+        ]: ...
         @_builtins.property
-        def timeBoxSchedules(self) -> _containers.RepeatedCompositeFieldContainer[Global___BasicUserSchedulesSettingsTrait.TimeboxScheduleItem]: ...
+        def timeBoxSchedules(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___BasicUserSchedulesSettingsTrait.TimeboxScheduleItem
+        ]: ...
         def __init__(
             self,
             *,
             userId: _common_pb2.ResourceId | None = ...,
-            dailyRepeatingSchedules: _abc.Iterable[Global___BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem] | None = ...,
-            timeBoxSchedules: _abc.Iterable[Global___BasicUserSchedulesSettingsTrait.TimeboxScheduleItem] | None = ...,
+            dailyRepeatingSchedules: _abc.Iterable[
+                Global___BasicUserSchedulesSettingsTrait.DailyRepeatingScheduleItem
+            ]
+            | None = ...,
+            timeBoxSchedules: _abc.Iterable[
+                Global___BasicUserSchedulesSettingsTrait.TimeboxScheduleItem
+            ]
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["dailyRepeatingSchedules", b"dailyRepeatingSchedules", "timeBoxSchedules", b"timeBoxSchedules", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "dailyRepeatingSchedules",
+            b"dailyRepeatingSchedules",
+            "timeBoxSchedules",
+            b"timeBoxSchedules",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -145,15 +219,20 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
 
         USERSCHEDULE_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def userSchedule(self) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
+        def userSchedule(
+            self,
+        ) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
         def __init__(
             self,
             *,
-            userSchedule: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule | None = ...,
+            userSchedule: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userSchedule", b"userSchedule"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["userSchedule", b"userSchedule"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "userSchedule", b"userSchedule"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -195,16 +274,21 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         USERSCHEDULE_FIELD_NUMBER: _builtins.int
         status: Global___BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType
         @_builtins.property
-        def userSchedule(self) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
+        def userSchedule(
+            self,
+        ) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
         def __init__(
             self,
             *,
             status: Global___BasicUserSchedulesSettingsTrait.ScheduleErrorCodes.ValueType = ...,
-            userSchedule: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule | None = ...,
+            userSchedule: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userSchedule", b"userSchedule"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["status", b"status", "userSchedule", b"userSchedule"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "status", b"status", "userSchedule", b"userSchedule"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -250,16 +334,21 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
             VALUE_FIELD_NUMBER: _builtins.int
             key: _builtins.int
             @_builtins.property
-            def value(self) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
+            def value(
+                self,
+            ) -> Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule: ...
             def __init__(
                 self,
                 *,
                 key: _builtins.int = ...,
-                value: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule | None = ...,
+                value: Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+                | None = ...,
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         BASICUSERSCHEDULES_FIELD_NUMBER: _builtins.int
@@ -269,7 +358,11 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         CONFIRMEDTIMESTAMP_FIELD_NUMBER: _builtins.int
         stateVersion: _builtins.str
         @_builtins.property
-        def basicUserSchedules(self) -> _containers.MessageMap[_builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule]: ...
+        def basicUserSchedules(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+        ]: ...
         @_builtins.property
         def stateMask(self) -> _field_mask_pb2.FieldMask: ...
         @_builtins.property
@@ -279,26 +372,57 @@ class BasicUserSchedulesSettingsTrait(_message.Message):
         def __init__(
             self,
             *,
-            basicUserSchedules: _abc.Mapping[_builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule] | None = ...,
+            basicUserSchedules: _abc.Mapping[
+                _builtins.int,
+                Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule,
+            ]
+            | None = ...,
             stateMask: _field_mask_pb2.FieldMask | None = ...,
             stateVersion: _builtins.str = ...,
             acceptedTimestamp: _timestamp_pb2.Timestamp | None = ...,
             confirmedTimestamp: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["acceptedTimestamp", b"acceptedTimestamp", "confirmedTimestamp", b"confirmedTimestamp", "stateMask", b"stateMask"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "acceptedTimestamp",
+            b"acceptedTimestamp",
+            "confirmedTimestamp",
+            b"confirmedTimestamp",
+            "stateMask",
+            b"stateMask",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["acceptedTimestamp", b"acceptedTimestamp", "basicUserSchedules", b"basicUserSchedules", "confirmedTimestamp", b"confirmedTimestamp", "stateMask", b"stateMask", "stateVersion", b"stateVersion"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "acceptedTimestamp",
+            b"acceptedTimestamp",
+            "basicUserSchedules",
+            b"basicUserSchedules",
+            "confirmedTimestamp",
+            b"confirmedTimestamp",
+            "stateMask",
+            b"stateMask",
+            "stateVersion",
+            b"stateVersion",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     BASICUSERSCHEDULES_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def basicUserSchedules(self) -> _containers.MessageMap[_builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule]: ...
+    def basicUserSchedules(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+    ]: ...
     def __init__(
         self,
         *,
-        basicUserSchedules: _abc.Mapping[_builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule] | None = ...,
+        basicUserSchedules: _abc.Mapping[
+            _builtins.int, Global___BasicUserSchedulesSettingsTrait.BasicUserSchedule
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["basicUserSchedules", b"basicUserSchedules"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "basicUserSchedules", b"basicUserSchedules"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BasicUserSchedulesSettingsTrait: _TypeAlias = BasicUserSchedulesSettingsTrait  # noqa: Y015
@@ -317,7 +441,14 @@ class BasicUserSchedulesCapabilitiesTrait(_message.Message):
         basicMaxTimeBoxSchedulesSupportedPerUser: _builtins.int = ...,
         basicMaxDailyRepeatedSupportedPerUser: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["basicMaxDailyRepeatedSupportedPerUser", b"basicMaxDailyRepeatedSupportedPerUser", "basicMaxTimeBoxSchedulesSupportedPerUser", b"basicMaxTimeBoxSchedulesSupportedPerUser"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "basicMaxDailyRepeatedSupportedPerUser",
+        b"basicMaxDailyRepeatedSupportedPerUser",
+        "basicMaxTimeBoxSchedulesSupportedPerUser",
+        b"basicMaxTimeBoxSchedulesSupportedPerUser",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___BasicUserSchedulesCapabilitiesTrait: _TypeAlias = BasicUserSchedulesCapabilitiesTrait  # noqa: Y015
+Global___BasicUserSchedulesCapabilitiesTrait: _TypeAlias = (
+    BasicUserSchedulesCapabilitiesTrait  # noqa: Y015
+)

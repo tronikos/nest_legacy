@@ -30,7 +30,12 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StructureModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._StructureMode.ValueType], _builtins.type):
+    class _StructureModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._StructureMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STRUCTURE_MODE_UNSPECIFIED: StructureModeTrait._StructureMode.ValueType  # 0
         STRUCTURE_MODE_HOME: StructureModeTrait._StructureMode.ValueType  # 1
@@ -49,7 +54,10 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ActivityEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._Activity.ValueType], _builtins.type):
+    class _ActivityEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._Activity.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ACTIVITY_UNSPECIFIED: StructureModeTrait._Activity.ValueType  # 0
         ACTIVITY_ACTIVE: StructureModeTrait._Activity.ValueType  # 1
@@ -64,7 +72,10 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PresenceEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._Presence.ValueType], _builtins.type):
+    class _PresenceEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._Presence.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         PRESENCE_UNSPECIFIED: StructureModeTrait._Presence.ValueType  # 0
         PRESENCE_UNAVAILABLE: StructureModeTrait._Presence.ValueType  # 1
@@ -81,12 +92,19 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ModeStickinessEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._ModeStickiness.ValueType], _builtins.type):
+    class _ModeStickinessEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._ModeStickiness.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         MODE_STICKINESS_UNSPECIFIED: StructureModeTrait._ModeStickiness.ValueType  # 0
         MODE_STICKINESS_NONE: StructureModeTrait._ModeStickiness.ValueType  # 1
         MODE_STICKINESS_TIMED: StructureModeTrait._ModeStickiness.ValueType  # 2
-        MODE_STICKINESS_CONDITIONAL_TIMED: StructureModeTrait._ModeStickiness.ValueType  # 3
+        MODE_STICKINESS_CONDITIONAL_TIMED: (
+            StructureModeTrait._ModeStickiness.ValueType
+        )  # 3
 
     class ModeStickiness(_ModeStickiness, metaclass=_ModeStickinessEnumTypeWrapper): ...
     MODE_STICKINESS_UNSPECIFIED: StructureModeTrait.ModeStickiness.ValueType  # 0
@@ -98,49 +116,116 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StructureModeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._StructureModeReason.ValueType], _builtins.type):
+    class _StructureModeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._StructureModeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        STRUCTURE_MODE_REASON_UNSPECIFIED: StructureModeTrait._StructureModeReason.ValueType  # 0
-        STRUCTURE_MODE_REASON_EXPLICIT_INTENT: StructureModeTrait._StructureModeReason.ValueType  # 1
-        STRUCTURE_MODE_REASON_IMPLICIT_INTENT: StructureModeTrait._StructureModeReason.ValueType  # 2
-        STRUCTURE_MODE_REASON_ACTIVITY: StructureModeTrait._StructureModeReason.ValueType  # 3
-        STRUCTURE_MODE_REASON_EXTENDED_INACTIVITY: StructureModeTrait._StructureModeReason.ValueType  # 4
-        STRUCTURE_MODE_REASON_IDENTIFIED_PRESENCE: StructureModeTrait._StructureModeReason.ValueType  # 5
-        STRUCTURE_MODE_REASON_IDENTIFIED_ABSENCE: StructureModeTrait._StructureModeReason.ValueType  # 6
-        STRUCTURE_MODE_REASON_SCHEDULE: StructureModeTrait._StructureModeReason.ValueType  # 7
+        STRUCTURE_MODE_REASON_UNSPECIFIED: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 0
+        STRUCTURE_MODE_REASON_EXPLICIT_INTENT: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 1
+        STRUCTURE_MODE_REASON_IMPLICIT_INTENT: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 2
+        STRUCTURE_MODE_REASON_ACTIVITY: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 3
+        STRUCTURE_MODE_REASON_EXTENDED_INACTIVITY: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 4
+        STRUCTURE_MODE_REASON_IDENTIFIED_PRESENCE: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 5
+        STRUCTURE_MODE_REASON_IDENTIFIED_ABSENCE: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 6
+        STRUCTURE_MODE_REASON_SCHEDULE: (
+            StructureModeTrait._StructureModeReason.ValueType
+        )  # 7
 
-    class StructureModeReason(_StructureModeReason, metaclass=_StructureModeReasonEnumTypeWrapper): ...
-    STRUCTURE_MODE_REASON_UNSPECIFIED: StructureModeTrait.StructureModeReason.ValueType  # 0
-    STRUCTURE_MODE_REASON_EXPLICIT_INTENT: StructureModeTrait.StructureModeReason.ValueType  # 1
-    STRUCTURE_MODE_REASON_IMPLICIT_INTENT: StructureModeTrait.StructureModeReason.ValueType  # 2
-    STRUCTURE_MODE_REASON_ACTIVITY: StructureModeTrait.StructureModeReason.ValueType  # 3
-    STRUCTURE_MODE_REASON_EXTENDED_INACTIVITY: StructureModeTrait.StructureModeReason.ValueType  # 4
-    STRUCTURE_MODE_REASON_IDENTIFIED_PRESENCE: StructureModeTrait.StructureModeReason.ValueType  # 5
-    STRUCTURE_MODE_REASON_IDENTIFIED_ABSENCE: StructureModeTrait.StructureModeReason.ValueType  # 6
-    STRUCTURE_MODE_REASON_SCHEDULE: StructureModeTrait.StructureModeReason.ValueType  # 7
+    class StructureModeReason(
+        _StructureModeReason, metaclass=_StructureModeReasonEnumTypeWrapper
+    ): ...
+    STRUCTURE_MODE_REASON_UNSPECIFIED: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 0
+    STRUCTURE_MODE_REASON_EXPLICIT_INTENT: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 1
+    STRUCTURE_MODE_REASON_IMPLICIT_INTENT: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 2
+    STRUCTURE_MODE_REASON_ACTIVITY: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 3
+    STRUCTURE_MODE_REASON_EXTENDED_INACTIVITY: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 4
+    STRUCTURE_MODE_REASON_IDENTIFIED_PRESENCE: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 5
+    STRUCTURE_MODE_REASON_IDENTIFIED_ABSENCE: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 6
+    STRUCTURE_MODE_REASON_SCHEDULE: (
+        StructureModeTrait.StructureModeReason.ValueType
+    )  # 7
 
     class _StructureModeActorMethod:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StructureModeActorMethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._StructureModeActorMethod.ValueType], _builtins.type):
+    class _StructureModeActorMethodEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._StructureModeActorMethod.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        STRUCTURE_MODE_ACTOR_METHOD_UNSPECIFIED: StructureModeTrait._StructureModeActorMethod.ValueType  # 0
-        STRUCTURE_MODE_ACTOR_METHOD_LEGACY_NEST_APP: StructureModeTrait._StructureModeActorMethod.ValueType  # 1
-        STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_HOME_APP: StructureModeTrait._StructureModeActorMethod.ValueType  # 2
-        STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_ASSISTANT: StructureModeTrait._StructureModeActorMethod.ValueType  # 3
+        STRUCTURE_MODE_ACTOR_METHOD_UNSPECIFIED: (
+            StructureModeTrait._StructureModeActorMethod.ValueType
+        )  # 0
+        STRUCTURE_MODE_ACTOR_METHOD_LEGACY_NEST_APP: (
+            StructureModeTrait._StructureModeActorMethod.ValueType
+        )  # 1
+        STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_HOME_APP: (
+            StructureModeTrait._StructureModeActorMethod.ValueType
+        )  # 2
+        STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_ASSISTANT: (
+            StructureModeTrait._StructureModeActorMethod.ValueType
+        )  # 3
 
-    class StructureModeActorMethod(_StructureModeActorMethod, metaclass=_StructureModeActorMethodEnumTypeWrapper): ...
-    STRUCTURE_MODE_ACTOR_METHOD_UNSPECIFIED: StructureModeTrait.StructureModeActorMethod.ValueType  # 0
-    STRUCTURE_MODE_ACTOR_METHOD_LEGACY_NEST_APP: StructureModeTrait.StructureModeActorMethod.ValueType  # 1
-    STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_HOME_APP: StructureModeTrait.StructureModeActorMethod.ValueType  # 2
-    STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_ASSISTANT: StructureModeTrait.StructureModeActorMethod.ValueType  # 3
+    class StructureModeActorMethod(
+        _StructureModeActorMethod, metaclass=_StructureModeActorMethodEnumTypeWrapper
+    ): ...
+    STRUCTURE_MODE_ACTOR_METHOD_UNSPECIFIED: (
+        StructureModeTrait.StructureModeActorMethod.ValueType
+    )  # 0
+    STRUCTURE_MODE_ACTOR_METHOD_LEGACY_NEST_APP: (
+        StructureModeTrait.StructureModeActorMethod.ValueType
+    )  # 1
+    STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_HOME_APP: (
+        StructureModeTrait.StructureModeActorMethod.ValueType
+    )  # 2
+    STRUCTURE_MODE_ACTOR_METHOD_GOOGLE_ASSISTANT: (
+        StructureModeTrait.StructureModeActorMethod.ValueType
+    )  # 3
 
     class _UserBlameType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _UserBlameTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._UserBlameType.ValueType], _builtins.type):
+    class _UserBlameTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._UserBlameType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         USER_BLAME_TYPE_UNSPECIFIED: StructureModeTrait._UserBlameType.ValueType  # 0
         USER_BLAME_TYPE_PHONE_LOCATION: StructureModeTrait._UserBlameType.ValueType  # 1
@@ -155,81 +240,175 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DeviceBlameTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._DeviceBlameType.ValueType], _builtins.type):
+    class _DeviceBlameTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._DeviceBlameType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEVICE_BLAME_TYPE_UNSPECIFIED: StructureModeTrait._DeviceBlameType.ValueType  # 0
+        DEVICE_BLAME_TYPE_UNSPECIFIED: (
+            StructureModeTrait._DeviceBlameType.ValueType
+        )  # 0
         DEVICE_BLAME_TYPE_LOCK: StructureModeTrait._DeviceBlameType.ValueType  # 1
         DEVICE_BLAME_TYPE_UNLOCK: StructureModeTrait._DeviceBlameType.ValueType  # 2
-        DEVICE_BLAME_TYPE_MOTION_DETECTION: StructureModeTrait._DeviceBlameType.ValueType  # 3
-        DEVICE_BLAME_TYPE_TOUCH_INTERACTION: StructureModeTrait._DeviceBlameType.ValueType  # 4
-        DEVICE_BLAME_TYPE_VOICE_INTERACTION: StructureModeTrait._DeviceBlameType.ValueType  # 5
+        DEVICE_BLAME_TYPE_MOTION_DETECTION: (
+            StructureModeTrait._DeviceBlameType.ValueType
+        )  # 3
+        DEVICE_BLAME_TYPE_TOUCH_INTERACTION: (
+            StructureModeTrait._DeviceBlameType.ValueType
+        )  # 4
+        DEVICE_BLAME_TYPE_VOICE_INTERACTION: (
+            StructureModeTrait._DeviceBlameType.ValueType
+        )  # 5
 
-    class DeviceBlameType(_DeviceBlameType, metaclass=_DeviceBlameTypeEnumTypeWrapper): ...
+    class DeviceBlameType(
+        _DeviceBlameType, metaclass=_DeviceBlameTypeEnumTypeWrapper
+    ): ...
     DEVICE_BLAME_TYPE_UNSPECIFIED: StructureModeTrait.DeviceBlameType.ValueType  # 0
     DEVICE_BLAME_TYPE_LOCK: StructureModeTrait.DeviceBlameType.ValueType  # 1
     DEVICE_BLAME_TYPE_UNLOCK: StructureModeTrait.DeviceBlameType.ValueType  # 2
-    DEVICE_BLAME_TYPE_MOTION_DETECTION: StructureModeTrait.DeviceBlameType.ValueType  # 3
-    DEVICE_BLAME_TYPE_TOUCH_INTERACTION: StructureModeTrait.DeviceBlameType.ValueType  # 4
-    DEVICE_BLAME_TYPE_VOICE_INTERACTION: StructureModeTrait.DeviceBlameType.ValueType  # 5
+    DEVICE_BLAME_TYPE_MOTION_DETECTION: (
+        StructureModeTrait.DeviceBlameType.ValueType
+    )  # 3
+    DEVICE_BLAME_TYPE_TOUCH_INTERACTION: (
+        StructureModeTrait.DeviceBlameType.ValueType
+    )  # 4
+    DEVICE_BLAME_TYPE_VOICE_INTERACTION: (
+        StructureModeTrait.DeviceBlameType.ValueType
+    )  # 5
 
     class _NonPropagatingChangeSourceType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _NonPropagatingChangeSourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._NonPropagatingChangeSourceType.ValueType], _builtins.type):
+    class _NonPropagatingChangeSourceTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._NonPropagatingChangeSourceType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        NON_PROPAGATING_CHANGE_SOURCE_TYPE_UNSPECIFIED: StructureModeTrait._NonPropagatingChangeSourceType.ValueType  # 0
-        NON_PROPAGATING_CHANGE_SOURCE_TYPE_CZ: StructureModeTrait._NonPropagatingChangeSourceType.ValueType  # 1
+        NON_PROPAGATING_CHANGE_SOURCE_TYPE_UNSPECIFIED: (
+            StructureModeTrait._NonPropagatingChangeSourceType.ValueType
+        )  # 0
+        NON_PROPAGATING_CHANGE_SOURCE_TYPE_CZ: (
+            StructureModeTrait._NonPropagatingChangeSourceType.ValueType
+        )  # 1
 
-    class NonPropagatingChangeSourceType(_NonPropagatingChangeSourceType, metaclass=_NonPropagatingChangeSourceTypeEnumTypeWrapper): ...
-    NON_PROPAGATING_CHANGE_SOURCE_TYPE_UNSPECIFIED: StructureModeTrait.NonPropagatingChangeSourceType.ValueType  # 0
-    NON_PROPAGATING_CHANGE_SOURCE_TYPE_CZ: StructureModeTrait.NonPropagatingChangeSourceType.ValueType  # 1
+    class NonPropagatingChangeSourceType(
+        _NonPropagatingChangeSourceType,
+        metaclass=_NonPropagatingChangeSourceTypeEnumTypeWrapper,
+    ): ...
+    NON_PROPAGATING_CHANGE_SOURCE_TYPE_UNSPECIFIED: (
+        StructureModeTrait.NonPropagatingChangeSourceType.ValueType
+    )  # 0
+    NON_PROPAGATING_CHANGE_SOURCE_TYPE_CZ: (
+        StructureModeTrait.NonPropagatingChangeSourceType.ValueType
+    )  # 1
 
     class _StructureModeChangeResponseType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StructureModeChangeResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._StructureModeChangeResponseType.ValueType], _builtins.type):
+    class _StructureModeChangeResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._StructureModeChangeResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_UNSPECIFIED: StructureModeTrait._StructureModeChangeResponseType.ValueType  # 0
-        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_SUCCESS: StructureModeTrait._StructureModeChangeResponseType.ValueType  # 1
-        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeTrait._StructureModeChangeResponseType.ValueType  # 2
+        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_UNSPECIFIED: (
+            StructureModeTrait._StructureModeChangeResponseType.ValueType
+        )  # 0
+        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_SUCCESS: (
+            StructureModeTrait._StructureModeChangeResponseType.ValueType
+        )  # 1
+        STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_FAIL_ALREADY: (
+            StructureModeTrait._StructureModeChangeResponseType.ValueType
+        )  # 2
 
-    class StructureModeChangeResponseType(_StructureModeChangeResponseType, metaclass=_StructureModeChangeResponseTypeEnumTypeWrapper): ...
-    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_UNSPECIFIED: StructureModeTrait.StructureModeChangeResponseType.ValueType  # 0
-    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_SUCCESS: StructureModeTrait.StructureModeChangeResponseType.ValueType  # 1
-    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeTrait.StructureModeChangeResponseType.ValueType  # 2
+    class StructureModeChangeResponseType(
+        _StructureModeChangeResponseType,
+        metaclass=_StructureModeChangeResponseTypeEnumTypeWrapper,
+    ): ...
+    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_UNSPECIFIED: (
+        StructureModeTrait.StructureModeChangeResponseType.ValueType
+    )  # 0
+    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_SUCCESS: (
+        StructureModeTrait.StructureModeChangeResponseType.ValueType
+    )  # 1
+    STRUCTURE_MODE_CHANGE_RESPONSE_TYPE_FAIL_ALREADY: (
+        StructureModeTrait.StructureModeChangeResponseType.ValueType
+    )  # 2
 
     class _StructureModeCompleteUpdateResponseType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StructureModeCompleteUpdateResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType], _builtins.type):
+    class _StructureModeCompleteUpdateResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_UNSPECIFIED: StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType  # 0
-        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_SUCCESS: StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType  # 1
-        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType  # 2
-        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_VERSION: StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType  # 3
-        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_OTHER: StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType  # 4
+        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_UNSPECIFIED: (
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        )  # 0
+        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_SUCCESS: (
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        )  # 1
+        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_ALREADY: (
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        )  # 2
+        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_VERSION: (
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        )  # 3
+        STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_OTHER: (
+            StructureModeTrait._StructureModeCompleteUpdateResponseType.ValueType
+        )  # 4
 
-    class StructureModeCompleteUpdateResponseType(_StructureModeCompleteUpdateResponseType, metaclass=_StructureModeCompleteUpdateResponseTypeEnumTypeWrapper): ...
-    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_UNSPECIFIED: StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType  # 0
-    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_SUCCESS: StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType  # 1
-    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType  # 2
-    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_VERSION: StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType  # 3
-    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_OTHER: StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType  # 4
+    class StructureModeCompleteUpdateResponseType(
+        _StructureModeCompleteUpdateResponseType,
+        metaclass=_StructureModeCompleteUpdateResponseTypeEnumTypeWrapper,
+    ): ...
+    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_UNSPECIFIED: (
+        StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
+    )  # 0
+    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_SUCCESS: (
+        StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
+    )  # 1
+    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_ALREADY: (
+        StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
+    )  # 2
+    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_VERSION: (
+        StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
+    )  # 3
+    STRUCTURE_MODE_COMPLETE_UPDATE_RESPONSE_TYPE_FAIL_OTHER: (
+        StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
+    )  # 4
 
     class _LegacyAwayState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyAwayStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._LegacyAwayState.ValueType], _builtins.type):
+    class _LegacyAwayStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._LegacyAwayState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_AWAY_STATE_UNSPECIFIED: StructureModeTrait._LegacyAwayState.ValueType  # 0
+        LEGACY_AWAY_STATE_UNSPECIFIED: (
+            StructureModeTrait._LegacyAwayState.ValueType
+        )  # 0
         LEGACY_AWAY_STATE_TRUE: StructureModeTrait._LegacyAwayState.ValueType  # 1
         LEGACY_AWAY_STATE_FALSE: StructureModeTrait._LegacyAwayState.ValueType  # 2
 
-    class LegacyAwayState(_LegacyAwayState, metaclass=_LegacyAwayStateEnumTypeWrapper): ...
+    class LegacyAwayState(
+        _LegacyAwayState, metaclass=_LegacyAwayStateEnumTypeWrapper
+    ): ...
     LEGACY_AWAY_STATE_UNSPECIFIED: StructureModeTrait.LegacyAwayState.ValueType  # 0
     LEGACY_AWAY_STATE_TRUE: StructureModeTrait.LegacyAwayState.ValueType  # 1
     LEGACY_AWAY_STATE_FALSE: StructureModeTrait.LegacyAwayState.ValueType  # 2
@@ -238,14 +417,23 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyAwaySetterEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._LegacyAwaySetter.ValueType], _builtins.type):
+    class _LegacyAwaySetterEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._LegacyAwaySetter.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_AWAY_SETTER_UNSPECIFIED: StructureModeTrait._LegacyAwaySetter.ValueType  # 0
+        LEGACY_AWAY_SETTER_UNSPECIFIED: (
+            StructureModeTrait._LegacyAwaySetter.ValueType
+        )  # 0
         LEGACY_AWAY_SETTER_CLIENT: StructureModeTrait._LegacyAwaySetter.ValueType  # 1
         LEGACY_AWAY_SETTER_CONTROL: StructureModeTrait._LegacyAwaySetter.ValueType  # 2
         LEGACY_AWAY_SETTER_CLOUD: StructureModeTrait._LegacyAwaySetter.ValueType  # 3
 
-    class LegacyAwaySetter(_LegacyAwaySetter, metaclass=_LegacyAwaySetterEnumTypeWrapper): ...
+    class LegacyAwaySetter(
+        _LegacyAwaySetter, metaclass=_LegacyAwaySetterEnumTypeWrapper
+    ): ...
     LEGACY_AWAY_SETTER_UNSPECIFIED: StructureModeTrait.LegacyAwaySetter.ValueType  # 0
     LEGACY_AWAY_SETTER_CLIENT: StructureModeTrait.LegacyAwaySetter.ValueType  # 1
     LEGACY_AWAY_SETTER_CONTROL: StructureModeTrait.LegacyAwaySetter.ValueType  # 2
@@ -255,9 +443,16 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LegacyTouchedByEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._LegacyTouchedBy.ValueType], _builtins.type):
+    class _LegacyTouchedByEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._LegacyTouchedBy.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LEGACY_TOUCHED_BY_UNSPECIFIED: StructureModeTrait._LegacyTouchedBy.ValueType  # 0
+        LEGACY_TOUCHED_BY_UNSPECIFIED: (
+            StructureModeTrait._LegacyTouchedBy.ValueType
+        )  # 0
         LEGACY_TOUCHED_BY_NOBODY: StructureModeTrait._LegacyTouchedBy.ValueType  # 1
         LEGACY_TOUCHED_BY_LEARNING: StructureModeTrait._LegacyTouchedBy.ValueType  # 2
         LEGACY_TOUCHED_BY_LOCAL: StructureModeTrait._LegacyTouchedBy.ValueType  # 3
@@ -270,11 +465,19 @@ class StructureModeTrait(_message.Message):
         LEGACY_TOUCHED_BY_DR: StructureModeTrait._LegacyTouchedBy.ValueType  # 10
         LEGACY_TOUCHED_BY_TOU: StructureModeTrait._LegacyTouchedBy.ValueType  # 11
         LEGACY_TOUCHED_BY_TOPAZ_CO: StructureModeTrait._LegacyTouchedBy.ValueType  # 12
-        LEGACY_TOUCHED_BY_PROGRAMMER: StructureModeTrait._LegacyTouchedBy.ValueType  # 13
-        LEGACY_TOUCHED_BY_TOPAZ_SMOKE: StructureModeTrait._LegacyTouchedBy.ValueType  # 14
-        LEGACY_TOUCHED_BY_DEMAND_CHARGE: StructureModeTrait._LegacyTouchedBy.ValueType  # 15
+        LEGACY_TOUCHED_BY_PROGRAMMER: (
+            StructureModeTrait._LegacyTouchedBy.ValueType
+        )  # 13
+        LEGACY_TOUCHED_BY_TOPAZ_SMOKE: (
+            StructureModeTrait._LegacyTouchedBy.ValueType
+        )  # 14
+        LEGACY_TOUCHED_BY_DEMAND_CHARGE: (
+            StructureModeTrait._LegacyTouchedBy.ValueType
+        )  # 15
 
-    class LegacyTouchedBy(_LegacyTouchedBy, metaclass=_LegacyTouchedByEnumTypeWrapper): ...
+    class LegacyTouchedBy(
+        _LegacyTouchedBy, metaclass=_LegacyTouchedByEnumTypeWrapper
+    ): ...
     LEGACY_TOUCHED_BY_UNSPECIFIED: StructureModeTrait.LegacyTouchedBy.ValueType  # 0
     LEGACY_TOUCHED_BY_NOBODY: StructureModeTrait.LegacyTouchedBy.ValueType  # 1
     LEGACY_TOUCHED_BY_LEARNING: StructureModeTrait.LegacyTouchedBy.ValueType  # 2
@@ -296,7 +499,10 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AutoAskTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskType.ValueType], _builtins.type):
+    class _AutoAskTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AUTO_ASK_TYPE_UNSPECIFIED: StructureModeTrait._AutoAskType.ValueType  # 0
         AUTO_ASK_TYPE_AWAY_AND_ARM: StructureModeTrait._AutoAskType.ValueType  # 1
@@ -315,7 +521,10 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AutoAskArmEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskArm.ValueType], _builtins.type):
+    class _AutoAskArmEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskArm.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AUTO_ASK_ARM_UNSPECIFIED: StructureModeTrait._AutoAskArm.ValueType  # 0
         AUTO_ASK_ARM_TYPE_ARM: StructureModeTrait._AutoAskArm.ValueType  # 1
@@ -330,7 +539,10 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AutoAskLockEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskLock.ValueType], _builtins.type):
+    class _AutoAskLockEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskLock.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AUTO_ASK_LOCK_UNSPECIFIED: StructureModeTrait._AutoAskLock.ValueType  # 0
         AUTO_ASK_LOCK_TYPE_LOCK: StructureModeTrait._AutoAskLock.ValueType  # 1
@@ -345,16 +557,35 @@ class StructureModeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AutoAskStructureModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeTrait._AutoAskStructureMode.ValueType], _builtins.type):
+    class _AutoAskStructureModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeTrait._AutoAskStructureMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        AUTO_ASK_STRUCTURE_MODE_UNSPECIFIED: StructureModeTrait._AutoAskStructureMode.ValueType  # 0
-        AUTO_ASK_STRUCTURE_MODE_TYPE_HOME: StructureModeTrait._AutoAskStructureMode.ValueType  # 1
-        AUTO_ASK_STRUCTURE_MODE_TYPE_AWAY: StructureModeTrait._AutoAskStructureMode.ValueType  # 2
+        AUTO_ASK_STRUCTURE_MODE_UNSPECIFIED: (
+            StructureModeTrait._AutoAskStructureMode.ValueType
+        )  # 0
+        AUTO_ASK_STRUCTURE_MODE_TYPE_HOME: (
+            StructureModeTrait._AutoAskStructureMode.ValueType
+        )  # 1
+        AUTO_ASK_STRUCTURE_MODE_TYPE_AWAY: (
+            StructureModeTrait._AutoAskStructureMode.ValueType
+        )  # 2
 
-    class AutoAskStructureMode(_AutoAskStructureMode, metaclass=_AutoAskStructureModeEnumTypeWrapper): ...
-    AUTO_ASK_STRUCTURE_MODE_UNSPECIFIED: StructureModeTrait.AutoAskStructureMode.ValueType  # 0
-    AUTO_ASK_STRUCTURE_MODE_TYPE_HOME: StructureModeTrait.AutoAskStructureMode.ValueType  # 1
-    AUTO_ASK_STRUCTURE_MODE_TYPE_AWAY: StructureModeTrait.AutoAskStructureMode.ValueType  # 2
+    class AutoAskStructureMode(
+        _AutoAskStructureMode, metaclass=_AutoAskStructureModeEnumTypeWrapper
+    ): ...
+    AUTO_ASK_STRUCTURE_MODE_UNSPECIFIED: (
+        StructureModeTrait.AutoAskStructureMode.ValueType
+    )  # 0
+    AUTO_ASK_STRUCTURE_MODE_TYPE_HOME: (
+        StructureModeTrait.AutoAskStructureMode.ValueType
+    )  # 1
+    AUTO_ASK_STRUCTURE_MODE_TYPE_AWAY: (
+        StructureModeTrait.AutoAskStructureMode.ValueType
+    )  # 2
 
     @_typing.final
     class BlamesEntry(_message.Message):
@@ -373,7 +604,9 @@ class StructureModeTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -398,9 +631,23 @@ class StructureModeTrait(_message.Message):
             lastActivityTime: _timestamp_pb2.Timestamp | None = ...,
             activityHoldOff: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["activityHoldOff", b"activityHoldOff", "lastActivityTime", b"lastActivityTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "activityHoldOff",
+            b"activityHoldOff",
+            "lastActivityTime",
+            b"lastActivityTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activity", b"activity", "activityHoldOff", b"activityHoldOff", "lastActivityTime", b"lastActivityTime", "presence", b"presence"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activity",
+            b"activity",
+            "activityHoldOff",
+            b"activityHoldOff",
+            "lastActivityTime",
+            b"lastActivityTime",
+            "presence",
+            b"presence",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -418,9 +665,16 @@ class StructureModeTrait(_message.Message):
             modeStickiness: Global___StructureModeTrait.ModeStickiness.ValueType = ...,
             modeStickinessExpiration: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["modeStickinessExpiration", b"modeStickinessExpiration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "modeStickinessExpiration", b"modeStickinessExpiration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["modeStickiness", b"modeStickiness", "modeStickinessExpiration", b"modeStickinessExpiration"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "modeStickiness",
+            b"modeStickiness",
+            "modeStickinessExpiration",
+            b"modeStickinessExpiration",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -437,7 +691,9 @@ class StructureModeTrait(_message.Message):
             gaiaId: _builtins.int = ...,
             blameType: Global___StructureModeTrait.UserBlameType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["blameType", b"blameType", "gaiaId", b"gaiaId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "blameType", b"blameType", "gaiaId", b"gaiaId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -454,7 +710,9 @@ class StructureModeTrait(_message.Message):
             hgsDeviceId: _builtins.str = ...,
             blameType: Global___StructureModeTrait.DeviceBlameType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["blameType", b"blameType", "hgsDeviceId", b"hgsDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "blameType", b"blameType", "hgsDeviceId", b"hgsDeviceId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -486,9 +744,29 @@ class StructureModeTrait(_message.Message):
             userBlame: Global___StructureModeTrait.UserBlame | None = ...,
             deviceBlame: Global___StructureModeTrait.DeviceBlame | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["deviceBlame", b"deviceBlame", "observedTimestamp", b"observedTimestamp", "userBlame", b"userBlame"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceBlame",
+            b"deviceBlame",
+            "observedTimestamp",
+            b"observedTimestamp",
+            "userBlame",
+            b"userBlame",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceBlame", b"deviceBlame", "leafEventUrl", b"leafEventUrl", "observedTimestamp", b"observedTimestamp", "payload", b"payload", "payloadTypeUrl", b"payloadTypeUrl", "userBlame", b"userBlame"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceBlame",
+            b"deviceBlame",
+            "leafEventUrl",
+            b"leafEventUrl",
+            "observedTimestamp",
+            b"observedTimestamp",
+            "payload",
+            b"payload",
+            "payloadTypeUrl",
+            b"payloadTypeUrl",
+            "userBlame",
+            b"userBlame",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -502,7 +780,9 @@ class StructureModeTrait(_message.Message):
             *,
             isCzUpdateStateOk: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["isCzUpdateStateOk", b"isCzUpdateStateOk"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "isCzUpdateStateOk", b"isCzUpdateStateOk"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -521,9 +801,13 @@ class StructureModeTrait(_message.Message):
             rtsUserId: _wrappers_pb2.StringValue | None = ...,
             phoenixUserId: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["phoenixUserId", b"phoenixUserId", "rtsUserId", b"rtsUserId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "phoenixUserId", b"phoenixUserId", "rtsUserId", b"rtsUserId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["phoenixUserId", b"phoenixUserId", "rtsUserId", b"rtsUserId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "phoenixUserId", b"phoenixUserId", "rtsUserId", b"rtsUserId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -541,19 +825,38 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def nonPropagatingChangeDetails(self) -> Global___StructureModeTrait.NonPropagatingChangeDetails: ...
+        def nonPropagatingChangeDetails(
+            self,
+        ) -> Global___StructureModeTrait.NonPropagatingChangeDetails: ...
         def __init__(
             self,
             *,
             structureMode: Global___StructureModeTrait.StructureMode.ValueType = ...,
             reason: Global___StructureModeTrait.StructureModeReason.ValueType = ...,
             userId: _common_pb2.ResourceId | None = ...,
-            nonPropagatingChangeDetails: Global___StructureModeTrait.NonPropagatingChangeDetails | None = ...,
+            nonPropagatingChangeDetails: Global___StructureModeTrait.NonPropagatingChangeDetails
+            | None = ...,
             actorMethod: Global___StructureModeTrait.StructureModeActorMethod.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["nonPropagatingChangeDetails", b"nonPropagatingChangeDetails", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "nonPropagatingChangeDetails",
+            b"nonPropagatingChangeDetails",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actorMethod", b"actorMethod", "nonPropagatingChangeDetails", b"nonPropagatingChangeDetails", "reason", b"reason", "structureMode", b"structureMode", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actorMethod",
+            b"actorMethod",
+            "nonPropagatingChangeDetails",
+            b"nonPropagatingChangeDetails",
+            "reason",
+            b"reason",
+            "structureMode",
+            b"structureMode",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -573,7 +876,9 @@ class StructureModeTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["changeTime", b"changeTime"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["changeTime", b"changeTime", "sourceType", b"sourceType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "changeTime", b"changeTime", "sourceType", b"sourceType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -581,13 +886,17 @@ class StructureModeTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        responseType: (
+            Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -611,7 +920,9 @@ class StructureModeTrait(_message.Message):
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         STRUCTUREMODE_FIELD_NUMBER: _builtins.int
@@ -632,7 +943,9 @@ class StructureModeTrait(_message.Message):
         PRIMARYBLAME_FIELD_NUMBER: _builtins.int
         structureMode: Global___StructureModeTrait.StructureMode.ValueType
         structureModeReason: Global___StructureModeTrait.StructureModeReason.ValueType
-        activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType
+        activityAgnosticStructureMode: (
+            Global___StructureModeTrait.StructureMode.ValueType
+        )
         mlpSessionId: _builtins.str
         @_builtins.property
         def occupancy(self) -> Global___StructureModeTrait.Occupancy: ...
@@ -643,19 +956,35 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def structureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def activityAgnosticStructureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
+        def activityAgnosticStructureModeEffectiveTime(
+            self,
+        ) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
         def revisionId(self) -> _wrappers_pb2.UInt64Value: ...
         @_builtins.property
-        def identifiedPresenceChangeRtsUserId(self) -> Global___StructureModeTrait.UserInfo: ...
+        def identifiedPresenceChangeRtsUserId(
+            self,
+        ) -> Global___StructureModeTrait.UserInfo: ...
         @_builtins.property
         def identifiedPresenceChangeTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def recentUserArrivals(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeTrait.UserInfo]: ...
+        def recentUserArrivals(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeTrait.UserInfo
+        ]: ...
         @_builtins.property
-        def recentUserDepartures(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeTrait.UserInfo]: ...
+        def recentUserDepartures(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeTrait.UserInfo
+        ]: ...
         @_builtins.property
-        def blames(self) -> _containers.MessageMap[_builtins.int, Global___StructureModeTrait.StructureModeBlame]: ...
+        def blames(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___StructureModeTrait.StructureModeBlame
+        ]: ...
         @_builtins.property
         def primaryBlame(self) -> Global___StructureModeTrait.StructureModeBlame: ...
         def __init__(
@@ -668,19 +997,78 @@ class StructureModeTrait(_message.Message):
             structureModeSetter: _common_pb2.ResourceId | None = ...,
             structureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
             activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType = ...,
-            activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
+            activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp
+            | None = ...,
             revisionId: _wrappers_pb2.UInt64Value | None = ...,
-            identifiedPresenceChangeRtsUserId: Global___StructureModeTrait.UserInfo | None = ...,
+            identifiedPresenceChangeRtsUserId: Global___StructureModeTrait.UserInfo
+            | None = ...,
             identifiedPresenceChangeTime: _timestamp_pb2.Timestamp | None = ...,
-            recentUserArrivals: _abc.Iterable[Global___StructureModeTrait.UserInfo] | None = ...,
-            recentUserDepartures: _abc.Iterable[Global___StructureModeTrait.UserInfo] | None = ...,
+            recentUserArrivals: _abc.Iterable[Global___StructureModeTrait.UserInfo]
+            | None = ...,
+            recentUserDepartures: _abc.Iterable[Global___StructureModeTrait.UserInfo]
+            | None = ...,
             mlpSessionId: _builtins.str = ...,
-            blames: _abc.Mapping[_builtins.int, Global___StructureModeTrait.StructureModeBlame] | None = ...,
+            blames: _abc.Mapping[
+                _builtins.int, Global___StructureModeTrait.StructureModeBlame
+            ]
+            | None = ...,
             primaryBlame: Global___StructureModeTrait.StructureModeBlame | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "allowance", b"allowance", "identifiedPresenceChangeRtsUserId", b"identifiedPresenceChangeRtsUserId", "identifiedPresenceChangeTime", b"identifiedPresenceChangeTime", "occupancy", b"occupancy", "primaryBlame", b"primaryBlame", "revisionId", b"revisionId", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "activityAgnosticStructureModeEffectiveTime",
+            b"activityAgnosticStructureModeEffectiveTime",
+            "allowance",
+            b"allowance",
+            "identifiedPresenceChangeRtsUserId",
+            b"identifiedPresenceChangeRtsUserId",
+            "identifiedPresenceChangeTime",
+            b"identifiedPresenceChangeTime",
+            "occupancy",
+            b"occupancy",
+            "primaryBlame",
+            b"primaryBlame",
+            "revisionId",
+            b"revisionId",
+            "structureModeEffectiveTime",
+            b"structureModeEffectiveTime",
+            "structureModeSetter",
+            b"structureModeSetter",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureMode", b"activityAgnosticStructureMode", "activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "allowance", b"allowance", "blames", b"blames", "identifiedPresenceChangeRtsUserId", b"identifiedPresenceChangeRtsUserId", "identifiedPresenceChangeTime", b"identifiedPresenceChangeTime", "mlpSessionId", b"mlpSessionId", "occupancy", b"occupancy", "primaryBlame", b"primaryBlame", "recentUserArrivals", b"recentUserArrivals", "recentUserDepartures", b"recentUserDepartures", "revisionId", b"revisionId", "structureMode", b"structureMode", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeReason", b"structureModeReason", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activityAgnosticStructureMode",
+            b"activityAgnosticStructureMode",
+            "activityAgnosticStructureModeEffectiveTime",
+            b"activityAgnosticStructureModeEffectiveTime",
+            "allowance",
+            b"allowance",
+            "blames",
+            b"blames",
+            "identifiedPresenceChangeRtsUserId",
+            b"identifiedPresenceChangeRtsUserId",
+            "identifiedPresenceChangeTime",
+            b"identifiedPresenceChangeTime",
+            "mlpSessionId",
+            b"mlpSessionId",
+            "occupancy",
+            b"occupancy",
+            "primaryBlame",
+            b"primaryBlame",
+            "recentUserArrivals",
+            b"recentUserArrivals",
+            "recentUserDepartures",
+            b"recentUserDepartures",
+            "revisionId",
+            b"revisionId",
+            "structureMode",
+            b"structureMode",
+            "structureModeEffectiveTime",
+            b"structureModeEffectiveTime",
+            "structureModeReason",
+            b"structureModeReason",
+            "structureModeSetter",
+            b"structureModeSetter",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -689,7 +1077,9 @@ class StructureModeTrait(_message.Message):
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
         COMPLETERESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        responseType: (
+            Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        )
         completeResponseType: Global___StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType
         def __init__(
             self,
@@ -697,7 +1087,12 @@ class StructureModeTrait(_message.Message):
             responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType = ...,
             completeResponseType: Global___StructureModeTrait.StructureModeCompleteUpdateResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["completeResponseType", b"completeResponseType", "responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "completeResponseType",
+            b"completeResponseType",
+            "responseType",
+            b"responseType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -722,9 +1117,20 @@ class StructureModeTrait(_message.Message):
             userId: _common_pb2.ResourceId | None = ...,
             wwnId: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId", "wwnId", b"wwnId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "userId", b"userId", "wwnId", b"wwnId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason", "structureMode", b"structureMode", "userId", b"userId", "wwnId", b"wwnId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "reason",
+            b"reason",
+            "structureMode",
+            b"structureMode",
+            "userId",
+            b"userId",
+            "wwnId",
+            b"wwnId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -755,13 +1161,23 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def transitionEvaluationTimestamp(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def identifiedPresenceChangeUserId(self) -> Global___StructureModeTrait.UserInfo: ...
+        def identifiedPresenceChangeUserId(
+            self,
+        ) -> Global___StructureModeTrait.UserInfo: ...
         @_builtins.property
         def identifiedPresenceChangeTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def recentUserArrivals(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeTrait.UserInfo]: ...
+        def recentUserArrivals(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeTrait.UserInfo
+        ]: ...
         @_builtins.property
-        def recentUserDepartures(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeTrait.UserInfo]: ...
+        def recentUserDepartures(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeTrait.UserInfo
+        ]: ...
         def __init__(
             self,
             *,
@@ -773,14 +1189,53 @@ class StructureModeTrait(_message.Message):
             unknownProbability: _builtins.float = ...,
             evaluationTimestamp: _timestamp_pb2.Timestamp | None = ...,
             transitionEvaluationTimestamp: _timestamp_pb2.Timestamp | None = ...,
-            identifiedPresenceChangeUserId: Global___StructureModeTrait.UserInfo | None = ...,
+            identifiedPresenceChangeUserId: Global___StructureModeTrait.UserInfo
+            | None = ...,
             identifiedPresenceChangeTime: _timestamp_pb2.Timestamp | None = ...,
-            recentUserArrivals: _abc.Iterable[Global___StructureModeTrait.UserInfo] | None = ...,
-            recentUserDepartures: _abc.Iterable[Global___StructureModeTrait.UserInfo] | None = ...,
+            recentUserArrivals: _abc.Iterable[Global___StructureModeTrait.UserInfo]
+            | None = ...,
+            recentUserDepartures: _abc.Iterable[Global___StructureModeTrait.UserInfo]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["evaluationTimestamp", b"evaluationTimestamp", "identifiedPresenceChangeTime", b"identifiedPresenceChangeTime", "identifiedPresenceChangeUserId", b"identifiedPresenceChangeUserId", "lastMotionEventTimestamp", b"lastMotionEventTimestamp", "transitionEvaluationTimestamp", b"transitionEvaluationTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "evaluationTimestamp",
+            b"evaluationTimestamp",
+            "identifiedPresenceChangeTime",
+            b"identifiedPresenceChangeTime",
+            "identifiedPresenceChangeUserId",
+            b"identifiedPresenceChangeUserId",
+            "lastMotionEventTimestamp",
+            b"lastMotionEventTimestamp",
+            "transitionEvaluationTimestamp",
+            b"transitionEvaluationTimestamp",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activeProbability", b"activeProbability", "evaluationTimestamp", b"evaluationTimestamp", "identifiedPresenceChangeTime", b"identifiedPresenceChangeTime", "identifiedPresenceChangeUserId", b"identifiedPresenceChangeUserId", "identifiedPresenceProbability", b"identifiedPresenceProbability", "lastMotionEventTimestamp", b"lastMotionEventTimestamp", "recentUserArrivals", b"recentUserArrivals", "recentUserDepartures", b"recentUserDepartures", "sleepProbability", b"sleepProbability", "transitionEvaluationTimestamp", b"transitionEvaluationTimestamp", "unknownProbability", b"unknownProbability", "vacantProbability", b"vacantProbability"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activeProbability",
+            b"activeProbability",
+            "evaluationTimestamp",
+            b"evaluationTimestamp",
+            "identifiedPresenceChangeTime",
+            b"identifiedPresenceChangeTime",
+            "identifiedPresenceChangeUserId",
+            b"identifiedPresenceChangeUserId",
+            "identifiedPresenceProbability",
+            b"identifiedPresenceProbability",
+            "lastMotionEventTimestamp",
+            b"lastMotionEventTimestamp",
+            "recentUserArrivals",
+            b"recentUserArrivals",
+            "recentUserDepartures",
+            b"recentUserDepartures",
+            "sleepProbability",
+            b"sleepProbability",
+            "transitionEvaluationTimestamp",
+            b"transitionEvaluationTimestamp",
+            "unknownProbability",
+            b"unknownProbability",
+            "vacantProbability",
+            b"vacantProbability",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -788,13 +1243,17 @@ class StructureModeTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        responseType: (
+            Global___StructureModeTrait.StructureModeChangeResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___StructureModeTrait.StructureModeChangeResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -838,9 +1297,22 @@ class StructureModeTrait(_message.Message):
             touchedBy: Global___StructureModeTrait.LegacyTouchedBy.ValueType = ...,
             touchedId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["manualAwayTimestamp", b"manualAwayTimestamp", "touchedId", b"touchedId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "manualAwayTimestamp", b"manualAwayTimestamp", "touchedId", b"touchedId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["away", b"away", "awaySetter", b"awaySetter", "manualAwayTimestamp", b"manualAwayTimestamp", "touchedBy", b"touchedBy", "touchedId", b"touchedId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "away",
+            b"away",
+            "awaySetter",
+            b"awaySetter",
+            "manualAwayTimestamp",
+            b"manualAwayTimestamp",
+            "touchedBy",
+            b"touchedBy",
+            "touchedId",
+            b"touchedId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -864,7 +1336,9 @@ class StructureModeTrait(_message.Message):
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         STRUCTUREMODE_FIELD_NUMBER: _builtins.int
@@ -893,7 +1367,11 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def wwnId(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
-        def blames(self) -> _containers.MessageMap[_builtins.int, Global___StructureModeTrait.StructureModeBlame]: ...
+        def blames(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___StructureModeTrait.StructureModeBlame
+        ]: ...
         @_builtins.property
         def primaryBlame(self) -> Global___StructureModeTrait.StructureModeBlame: ...
         def __init__(
@@ -907,13 +1385,52 @@ class StructureModeTrait(_message.Message):
             rtsDeviceId: _wrappers_pb2.StringValue | None = ...,
             controlEventTypeUrl: _wrappers_pb2.StringValue | None = ...,
             wwnId: _wrappers_pb2.StringValue | None = ...,
-            blames: _abc.Mapping[_builtins.int, Global___StructureModeTrait.StructureModeBlame] | None = ...,
+            blames: _abc.Mapping[
+                _builtins.int, Global___StructureModeTrait.StructureModeBlame
+            ]
+            | None = ...,
             actorMethod: Global___StructureModeTrait.StructureModeActorMethod.ValueType = ...,
             primaryBlame: Global___StructureModeTrait.StructureModeBlame | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["controlEventTypeUrl", b"controlEventTypeUrl", "deviceId", b"deviceId", "primaryBlame", b"primaryBlame", "rtsDeviceId", b"rtsDeviceId", "userId", b"userId", "wwnId", b"wwnId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "controlEventTypeUrl",
+            b"controlEventTypeUrl",
+            "deviceId",
+            b"deviceId",
+            "primaryBlame",
+            b"primaryBlame",
+            "rtsDeviceId",
+            b"rtsDeviceId",
+            "userId",
+            b"userId",
+            "wwnId",
+            b"wwnId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actorMethod", b"actorMethod", "blames", b"blames", "controlEventTypeUrl", b"controlEventTypeUrl", "deviceId", b"deviceId", "primaryBlame", b"primaryBlame", "priorStructureMode", b"priorStructureMode", "reason", b"reason", "rtsDeviceId", b"rtsDeviceId", "structureMode", b"structureMode", "userId", b"userId", "wwnId", b"wwnId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actorMethod",
+            b"actorMethod",
+            "blames",
+            b"blames",
+            "controlEventTypeUrl",
+            b"controlEventTypeUrl",
+            "deviceId",
+            b"deviceId",
+            "primaryBlame",
+            b"primaryBlame",
+            "priorStructureMode",
+            b"priorStructureMode",
+            "reason",
+            b"reason",
+            "rtsDeviceId",
+            b"rtsDeviceId",
+            "structureMode",
+            b"structureMode",
+            "userId",
+            b"userId",
+            "wwnId",
+            b"wwnId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -932,9 +1449,13 @@ class StructureModeTrait(_message.Message):
             occupancy: Global___StructureModeTrait.Occupancy | None = ...,
             priorOccupancy: Global___StructureModeTrait.Occupancy | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["occupancy", b"occupancy", "priorOccupancy", b"priorOccupancy"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "occupancy", b"occupancy", "priorOccupancy", b"priorOccupancy"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["occupancy", b"occupancy", "priorOccupancy", b"priorOccupancy"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "occupancy", b"occupancy", "priorOccupancy", b"priorOccupancy"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -953,9 +1474,13 @@ class StructureModeTrait(_message.Message):
             allowance: Global___StructureModeTrait.Allowance | None = ...,
             priorAllowance: Global___StructureModeTrait.Allowance | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["allowance", b"allowance", "priorAllowance", b"priorAllowance"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "allowance", b"allowance", "priorAllowance", b"priorAllowance"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["allowance", b"allowance", "priorAllowance", b"priorAllowance"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "allowance", b"allowance", "priorAllowance", b"priorAllowance"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -975,7 +1500,14 @@ class StructureModeTrait(_message.Message):
             autoAskLock: Global___StructureModeTrait.AutoAskLock.ValueType = ...,
             autoAskStructureMode: Global___StructureModeTrait.AutoAskStructureMode.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["autoAskArm", b"autoAskArm", "autoAskLock", b"autoAskLock", "autoAskStructureMode", b"autoAskStructureMode"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "autoAskArm",
+            b"autoAskArm",
+            "autoAskLock",
+            b"autoAskLock",
+            "autoAskStructureMode",
+            b"autoAskStructureMode",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -990,7 +1522,9 @@ class StructureModeTrait(_message.Message):
         askType: Global___StructureModeTrait.AutoAskType.ValueType
         dryRun: _builtins.bool
         @_builtins.property
-        def userId(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def userId(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         @_builtins.property
         def deviceId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
@@ -1004,9 +1538,22 @@ class StructureModeTrait(_message.Message):
             dryRun: _builtins.bool = ...,
             autoAsk: Global___StructureModeTrait.AutoAsk | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["autoAsk", b"autoAsk", "deviceId", b"deviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "autoAsk", b"autoAsk", "deviceId", b"deviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["askType", b"askType", "autoAsk", b"autoAsk", "deviceId", b"deviceId", "dryRun", b"dryRun", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "askType",
+            b"askType",
+            "autoAsk",
+            b"autoAsk",
+            "deviceId",
+            b"deviceId",
+            "dryRun",
+            b"dryRun",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1016,8 +1563,12 @@ class StructureModeTrait(_message.Message):
         ACTIVITYAGNOSTICSTRUCTUREMODE_FIELD_NUMBER: _builtins.int
         PRIORACTIVITYAGNOSTICSTRUCTUREMODE_FIELD_NUMBER: _builtins.int
         REASON_FIELD_NUMBER: _builtins.int
-        activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType
-        priorActivityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType
+        activityAgnosticStructureMode: (
+            Global___StructureModeTrait.StructureMode.ValueType
+        )
+        priorActivityAgnosticStructureMode: (
+            Global___StructureModeTrait.StructureMode.ValueType
+        )
         reason: Global___StructureModeTrait.StructureModeReason.ValueType
         def __init__(
             self,
@@ -1026,7 +1577,14 @@ class StructureModeTrait(_message.Message):
             priorActivityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType = ...,
             reason: Global___StructureModeTrait.StructureModeReason.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureMode", b"activityAgnosticStructureMode", "priorActivityAgnosticStructureMode", b"priorActivityAgnosticStructureMode", "reason", b"reason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activityAgnosticStructureMode",
+            b"activityAgnosticStructureMode",
+            "priorActivityAgnosticStructureMode",
+            b"priorActivityAgnosticStructureMode",
+            "reason",
+            b"reason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1043,7 +1601,9 @@ class StructureModeTrait(_message.Message):
         ACTIVITYAGNOSTICSTRUCTUREMODEEFFECTIVETIME_FIELD_NUMBER: _builtins.int
         structureMode: Global___StructureModeTrait.StructureMode.ValueType
         structureModeReason: Global___StructureModeTrait.StructureModeReason.ValueType
-        activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType
+        activityAgnosticStructureMode: (
+            Global___StructureModeTrait.StructureMode.ValueType
+        )
         @_builtins.property
         def occupancy(self) -> Global___StructureModeTrait.Occupancy: ...
         @_builtins.property
@@ -1053,7 +1613,9 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def structureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def activityAgnosticStructureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
+        def activityAgnosticStructureModeEffectiveTime(
+            self,
+        ) -> _timestamp_pb2.Timestamp: ...
         def __init__(
             self,
             *,
@@ -1064,11 +1626,40 @@ class StructureModeTrait(_message.Message):
             structureModeSetter: _common_pb2.ResourceId | None = ...,
             structureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
             activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType = ...,
-            activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
+            activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "allowance", b"allowance", "occupancy", b"occupancy", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "activityAgnosticStructureModeEffectiveTime",
+            b"activityAgnosticStructureModeEffectiveTime",
+            "allowance",
+            b"allowance",
+            "occupancy",
+            b"occupancy",
+            "structureModeEffectiveTime",
+            b"structureModeEffectiveTime",
+            "structureModeSetter",
+            b"structureModeSetter",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureMode", b"activityAgnosticStructureMode", "activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "allowance", b"allowance", "occupancy", b"occupancy", "structureMode", b"structureMode", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeReason", b"structureModeReason", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activityAgnosticStructureMode",
+            b"activityAgnosticStructureMode",
+            "activityAgnosticStructureModeEffectiveTime",
+            b"activityAgnosticStructureModeEffectiveTime",
+            "allowance",
+            b"allowance",
+            "occupancy",
+            b"occupancy",
+            "structureMode",
+            b"structureMode",
+            "structureModeEffectiveTime",
+            b"structureModeEffectiveTime",
+            "structureModeReason",
+            b"structureModeReason",
+            "structureModeSetter",
+            b"structureModeSetter",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1107,7 +1698,9 @@ class StructureModeTrait(_message.Message):
                 key: _builtins.str = ...,
                 value: _builtins.str = ...,
             ) -> None: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         TIME_FIELD_NUMBER: _builtins.int
@@ -1124,7 +1717,9 @@ class StructureModeTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["time", b"time"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["labels", b"labels", "time", b"time"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "labels", b"labels", "time", b"time"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1151,11 +1746,19 @@ class StructureModeTrait(_message.Message):
         @_builtins.property
         def startTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def stateChange(self) -> Global___StructureModeTrait.StructureModeTraceEventStateChange: ...
+        def stateChange(
+            self,
+        ) -> Global___StructureModeTrait.StructureModeTraceEventStateChange: ...
         @_builtins.property
-        def steps(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeTrait.StructureModeTraceEventStep]: ...
+        def steps(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeTrait.StructureModeTraceEventStep
+        ]: ...
         @_builtins.property
-        def scenarioId(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+        def scenarioId(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
         def __init__(
             self,
             *,
@@ -1164,15 +1767,47 @@ class StructureModeTrait(_message.Message):
             triggerEventKey: _builtins.str = ...,
             triggerTime: _timestamp_pb2.Timestamp | None = ...,
             startTime: _timestamp_pb2.Timestamp | None = ...,
-            stateChange: Global___StructureModeTrait.StructureModeTraceEventStateChange | None = ...,
-            steps: _abc.Iterable[Global___StructureModeTrait.StructureModeTraceEventStep] | None = ...,
+            stateChange: Global___StructureModeTrait.StructureModeTraceEventStateChange
+            | None = ...,
+            steps: _abc.Iterable[
+                Global___StructureModeTrait.StructureModeTraceEventStep
+            ]
+            | None = ...,
             scenarioId: _abc.Iterable[_builtins.str] | None = ...,
             error: _builtins.str = ...,
             rtsStructureId: _builtins.str = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["startTime", b"startTime", "stateChange", b"stateChange", "triggerTime", b"triggerTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "startTime",
+            b"startTime",
+            "stateChange",
+            b"stateChange",
+            "triggerTime",
+            b"triggerTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["error", b"error", "rtsStructureId", b"rtsStructureId", "scenarioId", b"scenarioId", "startTime", b"startTime", "stateChange", b"stateChange", "steps", b"steps", "trigger", b"trigger", "triggerAgent", b"triggerAgent", "triggerEventKey", b"triggerEventKey", "triggerTime", b"triggerTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "error",
+            b"error",
+            "rtsStructureId",
+            b"rtsStructureId",
+            "scenarioId",
+            b"scenarioId",
+            "startTime",
+            b"startTime",
+            "stateChange",
+            b"stateChange",
+            "steps",
+            b"steps",
+            "trigger",
+            b"trigger",
+            "triggerAgent",
+            b"triggerAgent",
+            "triggerEventKey",
+            b"triggerEventKey",
+            "triggerTime",
+            b"triggerTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STRUCTUREMODE_FIELD_NUMBER: _builtins.int
@@ -1200,11 +1835,17 @@ class StructureModeTrait(_message.Message):
     @_builtins.property
     def structureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
-    def activityAgnosticStructureModeEffectiveTime(self) -> _timestamp_pb2.Timestamp: ...
+    def activityAgnosticStructureModeEffectiveTime(
+        self,
+    ) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
     def privateState(self) -> Global___StructureModeTrait.PrivateTraitHandlerState: ...
     @_builtins.property
-    def blames(self) -> _containers.MessageMap[_builtins.int, Global___StructureModeTrait.StructureModeBlame]: ...
+    def blames(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___StructureModeTrait.StructureModeBlame
+    ]: ...
     @_builtins.property
     def primaryBlame(self) -> Global___StructureModeTrait.StructureModeBlame: ...
     def __init__(
@@ -1217,15 +1858,59 @@ class StructureModeTrait(_message.Message):
         structureModeSetter: _common_pb2.ResourceId | None = ...,
         structureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
         activityAgnosticStructureMode: Global___StructureModeTrait.StructureMode.ValueType = ...,
-        activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
+        activityAgnosticStructureModeEffectiveTime: _timestamp_pb2.Timestamp
+        | None = ...,
         privateState: Global___StructureModeTrait.PrivateTraitHandlerState | None = ...,
-        blames: _abc.Mapping[_builtins.int, Global___StructureModeTrait.StructureModeBlame] | None = ...,
+        blames: _abc.Mapping[
+            _builtins.int, Global___StructureModeTrait.StructureModeBlame
+        ]
+        | None = ...,
         actorMethod: Global___StructureModeTrait.StructureModeActorMethod.ValueType = ...,
         primaryBlame: Global___StructureModeTrait.StructureModeBlame | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "allowance", b"allowance", "occupancy", b"occupancy", "primaryBlame", b"primaryBlame", "privateState", b"privateState", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "activityAgnosticStructureModeEffectiveTime",
+        b"activityAgnosticStructureModeEffectiveTime",
+        "allowance",
+        b"allowance",
+        "occupancy",
+        b"occupancy",
+        "primaryBlame",
+        b"primaryBlame",
+        "privateState",
+        b"privateState",
+        "structureModeEffectiveTime",
+        b"structureModeEffectiveTime",
+        "structureModeSetter",
+        b"structureModeSetter",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["activityAgnosticStructureMode", b"activityAgnosticStructureMode", "activityAgnosticStructureModeEffectiveTime", b"activityAgnosticStructureModeEffectiveTime", "actorMethod", b"actorMethod", "allowance", b"allowance", "blames", b"blames", "occupancy", b"occupancy", "primaryBlame", b"primaryBlame", "privateState", b"privateState", "structureMode", b"structureMode", "structureModeEffectiveTime", b"structureModeEffectiveTime", "structureModeReason", b"structureModeReason", "structureModeSetter", b"structureModeSetter"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "activityAgnosticStructureMode",
+        b"activityAgnosticStructureMode",
+        "activityAgnosticStructureModeEffectiveTime",
+        b"activityAgnosticStructureModeEffectiveTime",
+        "actorMethod",
+        b"actorMethod",
+        "allowance",
+        b"allowance",
+        "blames",
+        b"blames",
+        "occupancy",
+        b"occupancy",
+        "primaryBlame",
+        b"primaryBlame",
+        "privateState",
+        b"privateState",
+        "structureMode",
+        b"structureMode",
+        "structureModeEffectiveTime",
+        b"structureModeEffectiveTime",
+        "structureModeReason",
+        b"structureModeReason",
+        "structureModeSetter",
+        b"structureModeSetter",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureModeTrait: _TypeAlias = StructureModeTrait  # noqa: Y015
@@ -1238,63 +1923,146 @@ class StructureGeofencingTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _GeofenceEnhancedAutoAwayStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType], _builtins.type):
+    class _GeofenceEnhancedAutoAwayStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_UNSPECIFIED: StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType  # 0
-        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_NOT_SET: StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType  # 1
-        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_ENABLED: StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType  # 2
-        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_DISABLED: StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType  # 3
+        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_UNSPECIFIED: (
+            StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType
+        )  # 0
+        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_NOT_SET: (
+            StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType
+        )  # 1
+        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_ENABLED: (
+            StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType
+        )  # 2
+        GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_DISABLED: (
+            StructureGeofencingTrait._GeofenceEnhancedAutoAwayStatus.ValueType
+        )  # 3
 
-    class GeofenceEnhancedAutoAwayStatus(_GeofenceEnhancedAutoAwayStatus, metaclass=_GeofenceEnhancedAutoAwayStatusEnumTypeWrapper): ...
-    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_UNSPECIFIED: StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType  # 0
-    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_NOT_SET: StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType  # 1
-    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_ENABLED: StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType  # 2
-    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_DISABLED: StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType  # 3
+    class GeofenceEnhancedAutoAwayStatus(
+        _GeofenceEnhancedAutoAwayStatus,
+        metaclass=_GeofenceEnhancedAutoAwayStatusEnumTypeWrapper,
+    ): ...
+    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_UNSPECIFIED: (
+        StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    )  # 0
+    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_NOT_SET: (
+        StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    )  # 1
+    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_ENABLED: (
+        StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    )  # 2
+    GEOFENCE_ENHANCED_AUTO_AWAY_STATUS_DISABLED: (
+        StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    )  # 3
 
     class _GeofenceSourceType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _GeofenceSourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureGeofencingTrait._GeofenceSourceType.ValueType], _builtins.type):
+    class _GeofenceSourceTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureGeofencingTrait._GeofenceSourceType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        GEOFENCE_SOURCE_TYPE_UNSPECIFIED: StructureGeofencingTrait._GeofenceSourceType.ValueType  # 0
-        GEOFENCE_SOURCE_TYPE_LEGACY_NEST_APP: StructureGeofencingTrait._GeofenceSourceType.ValueType  # 1
-        GEOFENCE_SOURCE_TYPE_GOOGLE_HOME_APP: StructureGeofencingTrait._GeofenceSourceType.ValueType  # 2
+        GEOFENCE_SOURCE_TYPE_UNSPECIFIED: (
+            StructureGeofencingTrait._GeofenceSourceType.ValueType
+        )  # 0
+        GEOFENCE_SOURCE_TYPE_LEGACY_NEST_APP: (
+            StructureGeofencingTrait._GeofenceSourceType.ValueType
+        )  # 1
+        GEOFENCE_SOURCE_TYPE_GOOGLE_HOME_APP: (
+            StructureGeofencingTrait._GeofenceSourceType.ValueType
+        )  # 2
 
-    class GeofenceSourceType(_GeofenceSourceType, metaclass=_GeofenceSourceTypeEnumTypeWrapper): ...
-    GEOFENCE_SOURCE_TYPE_UNSPECIFIED: StructureGeofencingTrait.GeofenceSourceType.ValueType  # 0
-    GEOFENCE_SOURCE_TYPE_LEGACY_NEST_APP: StructureGeofencingTrait.GeofenceSourceType.ValueType  # 1
-    GEOFENCE_SOURCE_TYPE_GOOGLE_HOME_APP: StructureGeofencingTrait.GeofenceSourceType.ValueType  # 2
+    class GeofenceSourceType(
+        _GeofenceSourceType, metaclass=_GeofenceSourceTypeEnumTypeWrapper
+    ): ...
+    GEOFENCE_SOURCE_TYPE_UNSPECIFIED: (
+        StructureGeofencingTrait.GeofenceSourceType.ValueType
+    )  # 0
+    GEOFENCE_SOURCE_TYPE_LEGACY_NEST_APP: (
+        StructureGeofencingTrait.GeofenceSourceType.ValueType
+    )  # 1
+    GEOFENCE_SOURCE_TYPE_GOOGLE_HOME_APP: (
+        StructureGeofencingTrait.GeofenceSourceType.ValueType
+    )  # 2
 
     class _UserGeofenceEnrollmentCause:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _UserGeofenceEnrollmentCauseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType], _builtins.type):
+    class _UserGeofenceEnrollmentCauseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        USER_GEOFENCE_ENROLLMENT_CAUSE_UNSPECIFIED: StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType  # 0
-        USER_GEOFENCE_ENROLLMENT_CAUSE_USER_OPTED_IN: StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType  # 1
-        USER_GEOFENCE_ENROLLMENT_CAUSE_USER_ADDED_TO_STRUCTURE: StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType  # 2
+        USER_GEOFENCE_ENROLLMENT_CAUSE_UNSPECIFIED: (
+            StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType
+        )  # 0
+        USER_GEOFENCE_ENROLLMENT_CAUSE_USER_OPTED_IN: (
+            StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType
+        )  # 1
+        USER_GEOFENCE_ENROLLMENT_CAUSE_USER_ADDED_TO_STRUCTURE: (
+            StructureGeofencingTrait._UserGeofenceEnrollmentCause.ValueType
+        )  # 2
 
-    class UserGeofenceEnrollmentCause(_UserGeofenceEnrollmentCause, metaclass=_UserGeofenceEnrollmentCauseEnumTypeWrapper): ...
-    USER_GEOFENCE_ENROLLMENT_CAUSE_UNSPECIFIED: StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType  # 0
-    USER_GEOFENCE_ENROLLMENT_CAUSE_USER_OPTED_IN: StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType  # 1
-    USER_GEOFENCE_ENROLLMENT_CAUSE_USER_ADDED_TO_STRUCTURE: StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType  # 2
+    class UserGeofenceEnrollmentCause(
+        _UserGeofenceEnrollmentCause,
+        metaclass=_UserGeofenceEnrollmentCauseEnumTypeWrapper,
+    ): ...
+    USER_GEOFENCE_ENROLLMENT_CAUSE_UNSPECIFIED: (
+        StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType
+    )  # 0
+    USER_GEOFENCE_ENROLLMENT_CAUSE_USER_OPTED_IN: (
+        StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType
+    )  # 1
+    USER_GEOFENCE_ENROLLMENT_CAUSE_USER_ADDED_TO_STRUCTURE: (
+        StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType
+    )  # 2
 
     class _UserGeofenceDisenrollmentCause:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _UserGeofenceDisenrollmentCauseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType], _builtins.type):
+    class _UserGeofenceDisenrollmentCauseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        USER_GEOFENCE_DISENROLLMENT_CAUSE_UNSPECIFIED: StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType  # 0
-        USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_OPTED_OUT: StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType  # 1
-        USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_REMOVED_FROM_STRUCTURE: StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType  # 2
+        USER_GEOFENCE_DISENROLLMENT_CAUSE_UNSPECIFIED: (
+            StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType
+        )  # 0
+        USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_OPTED_OUT: (
+            StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType
+        )  # 1
+        USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_REMOVED_FROM_STRUCTURE: (
+            StructureGeofencingTrait._UserGeofenceDisenrollmentCause.ValueType
+        )  # 2
 
-    class UserGeofenceDisenrollmentCause(_UserGeofenceDisenrollmentCause, metaclass=_UserGeofenceDisenrollmentCauseEnumTypeWrapper): ...
-    USER_GEOFENCE_DISENROLLMENT_CAUSE_UNSPECIFIED: StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType  # 0
-    USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_OPTED_OUT: StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType  # 1
-    USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_REMOVED_FROM_STRUCTURE: StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType  # 2
+    class UserGeofenceDisenrollmentCause(
+        _UserGeofenceDisenrollmentCause,
+        metaclass=_UserGeofenceDisenrollmentCauseEnumTypeWrapper,
+    ): ...
+    USER_GEOFENCE_DISENROLLMENT_CAUSE_UNSPECIFIED: (
+        StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType
+    )  # 0
+    USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_OPTED_OUT: (
+        StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType
+    )  # 1
+    USER_GEOFENCE_DISENROLLMENT_CAUSE_USER_REMOVED_FROM_STRUCTURE: (
+        StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType
+    )  # 2
 
     @_typing.final
     class GeofenceEnrolledUsersEntry(_message.Message):
@@ -1313,7 +2081,9 @@ class StructureGeofencingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1323,7 +2093,9 @@ class StructureGeofencingTrait(_message.Message):
         USERID_FIELD_NUMBER: _builtins.int
         GEOFENCESOURCETYPE_FIELD_NUMBER: _builtins.int
         MOBILEDEVICEID_FIELD_NUMBER: _builtins.int
-        geofenceSourceType: Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        geofenceSourceType: (
+            Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        )
         mobileDeviceId: _builtins.str
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
@@ -1336,7 +2108,14 @@ class StructureGeofencingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["geofenceSourceType", b"geofenceSourceType", "mobileDeviceId", b"mobileDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "geofenceSourceType",
+            b"geofenceSourceType",
+            "mobileDeviceId",
+            b"mobileDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1362,9 +2141,25 @@ class StructureGeofencingTrait(_message.Message):
             rtsFenceId: _wrappers_pb2.StringValue | None = ...,
             rtsMobileDeviceId: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["rtsFenceId", b"rtsFenceId", "rtsMobileDeviceId", b"rtsMobileDeviceId", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "rtsFenceId",
+            b"rtsFenceId",
+            "rtsMobileDeviceId",
+            b"rtsMobileDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["rtsFenceId", b"rtsFenceId", "rtsMobileDeviceId", b"rtsMobileDeviceId", "state", b"state", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "rtsFenceId",
+            b"rtsFenceId",
+            "rtsMobileDeviceId",
+            b"rtsMobileDeviceId",
+            "state",
+            b"state",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1375,9 +2170,13 @@ class StructureGeofencingTrait(_message.Message):
         USERID_FIELD_NUMBER: _builtins.int
         MOBILEDEVICEID_FIELD_NUMBER: _builtins.int
         ENROLLMENTCAUSE_FIELD_NUMBER: _builtins.int
-        geofenceSourceType: Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        geofenceSourceType: (
+            Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        )
         mobileDeviceId: _builtins.str
-        enrollmentCause: Global___StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType
+        enrollmentCause: (
+            Global___StructureGeofencingTrait.UserGeofenceEnrollmentCause.ValueType
+        )
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -1390,7 +2189,16 @@ class StructureGeofencingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enrollmentCause", b"enrollmentCause", "geofenceSourceType", b"geofenceSourceType", "mobileDeviceId", b"mobileDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enrollmentCause",
+            b"enrollmentCause",
+            "geofenceSourceType",
+            b"geofenceSourceType",
+            "mobileDeviceId",
+            b"mobileDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1401,9 +2209,13 @@ class StructureGeofencingTrait(_message.Message):
         USERID_FIELD_NUMBER: _builtins.int
         MOBILEDEVICEID_FIELD_NUMBER: _builtins.int
         DISENROLLMENTCAUSE_FIELD_NUMBER: _builtins.int
-        geofenceSourceType: Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        geofenceSourceType: (
+            Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        )
         mobileDeviceId: _builtins.str
-        disenrollmentCause: Global___StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType
+        disenrollmentCause: (
+            Global___StructureGeofencingTrait.UserGeofenceDisenrollmentCause.ValueType
+        )
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -1416,7 +2228,16 @@ class StructureGeofencingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["disenrollmentCause", b"disenrollmentCause", "geofenceSourceType", b"geofenceSourceType", "mobileDeviceId", b"mobileDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "disenrollmentCause",
+            b"disenrollmentCause",
+            "geofenceSourceType",
+            b"geofenceSourceType",
+            "mobileDeviceId",
+            b"mobileDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1427,7 +2248,9 @@ class StructureGeofencingTrait(_message.Message):
         USERID_FIELD_NUMBER: _builtins.int
         PREVIOUSMOBILEDEVICEID_FIELD_NUMBER: _builtins.int
         CURRENTMOBILEDEVICEID_FIELD_NUMBER: _builtins.int
-        geofenceSourceType: Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        geofenceSourceType: (
+            Global___StructureGeofencingTrait.GeofenceSourceType.ValueType
+        )
         previousMobileDeviceId: _builtins.str
         currentMobileDeviceId: _builtins.str
         @_builtins.property
@@ -1442,7 +2265,16 @@ class StructureGeofencingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentMobileDeviceId", b"currentMobileDeviceId", "geofenceSourceType", b"geofenceSourceType", "previousMobileDeviceId", b"previousMobileDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentMobileDeviceId",
+            b"currentMobileDeviceId",
+            "geofenceSourceType",
+            b"geofenceSourceType",
+            "previousMobileDeviceId",
+            b"previousMobileDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1475,21 +2307,37 @@ class StructureGeofencingTrait(_message.Message):
             rtsStructureId: _builtins.str = ...,
             rtsUserId: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["rtsStructureId", b"rtsStructureId", "rtsUserId", b"rtsUserId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "rtsStructureId", b"rtsStructureId", "rtsUserId", b"rtsUserId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     GEOFENCEENHANCEDAUTOAWAYSTATUS_FIELD_NUMBER: _builtins.int
     GEOFENCEENROLLEDUSERS_FIELD_NUMBER: _builtins.int
-    geofenceEnhancedAutoawayStatus: Global___StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    geofenceEnhancedAutoawayStatus: (
+        Global___StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType
+    )
     @_builtins.property
-    def geofenceEnrolledUsers(self) -> _containers.MessageMap[_builtins.int, Global___StructureGeofencingTrait.GeofenceEnrolledUser]: ...
+    def geofenceEnrolledUsers(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___StructureGeofencingTrait.GeofenceEnrolledUser
+    ]: ...
     def __init__(
         self,
         *,
         geofenceEnhancedAutoawayStatus: Global___StructureGeofencingTrait.GeofenceEnhancedAutoAwayStatus.ValueType = ...,
-        geofenceEnrolledUsers: _abc.Mapping[_builtins.int, Global___StructureGeofencingTrait.GeofenceEnrolledUser] | None = ...,
+        geofenceEnrolledUsers: _abc.Mapping[
+            _builtins.int, Global___StructureGeofencingTrait.GeofenceEnrolledUser
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["geofenceEnhancedAutoawayStatus", b"geofenceEnhancedAutoawayStatus", "geofenceEnrolledUsers", b"geofenceEnrolledUsers"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "geofenceEnhancedAutoawayStatus",
+        b"geofenceEnhancedAutoawayStatus",
+        "geofenceEnrolledUsers",
+        b"geofenceEnrolledUsers",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureGeofencingTrait: _TypeAlias = StructureGeofencingTrait  # noqa: Y015
@@ -1502,16 +2350,30 @@ class StructureModeSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BuildUniformDailySleepScheduleResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureModeSettingsTrait._BuildUniformDailySleepScheduleResponseType.ValueType], _builtins.type):
+    class _BuildUniformDailySleepScheduleResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureModeSettingsTrait._BuildUniformDailySleepScheduleResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_UNSPECIFIED: StructureModeSettingsTrait._BuildUniformDailySleepScheduleResponseType.ValueType  # 0
         BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_SUCCESS: StructureModeSettingsTrait._BuildUniformDailySleepScheduleResponseType.ValueType  # 1
         BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeSettingsTrait._BuildUniformDailySleepScheduleResponseType.ValueType  # 2
 
-    class BuildUniformDailySleepScheduleResponseType(_BuildUniformDailySleepScheduleResponseType, metaclass=_BuildUniformDailySleepScheduleResponseTypeEnumTypeWrapper): ...
-    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_UNSPECIFIED: StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType  # 0
-    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_SUCCESS: StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType  # 1
-    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_FAIL_ALREADY: StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType  # 2
+    class BuildUniformDailySleepScheduleResponseType(
+        _BuildUniformDailySleepScheduleResponseType,
+        metaclass=_BuildUniformDailySleepScheduleResponseTypeEnumTypeWrapper,
+    ): ...
+    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_UNSPECIFIED: (
+        StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType
+    )  # 0
+    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_SUCCESS: (
+        StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType
+    )  # 1
+    BUILD_UNIFORM_DAILY_SLEEP_SCHEDULE_RESPONSE_TYPE_FAIL_ALREADY: (
+        StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType
+    )  # 2
 
     @_typing.final
     class TimeSpan(_message.Message):
@@ -1529,9 +2391,13 @@ class StructureModeSettingsTrait(_message.Message):
             startTime: _common_pb2.TimeOfDay | None = ...,
             endTime: _common_pb2.TimeOfDay | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "startTime", b"startTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "endTime", b"endTime", "startTime", b"startTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "startTime", b"startTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "endTime", b"endTime", "startTime", b"startTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1556,9 +2422,20 @@ class StructureModeSettingsTrait(_message.Message):
             endDay: _common_pb2.DayOfWeek.ValueType = ...,
             endTime: _common_pb2.TimeOfDay | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["endTime", b"endTime", "startTime", b"startTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "endTime", b"endTime", "startTime", b"startTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["endDay", b"endDay", "endTime", b"endTime", "startDay", b"startDay", "startTime", b"startTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "endDay",
+            b"endDay",
+            "endTime",
+            b"endTime",
+            "startDay",
+            b"startDay",
+            "startTime",
+            b"startTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1577,9 +2454,13 @@ class StructureModeSettingsTrait(_message.Message):
             timeSpan: Global___StructureModeSettingsTrait.TimeSpan | None = ...,
             userId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["timeSpan", b"timeSpan", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "timeSpan", b"timeSpan", "userId", b"userId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["timeSpan", b"timeSpan", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "timeSpan", b"timeSpan", "userId", b"userId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1593,7 +2474,9 @@ class StructureModeSettingsTrait(_message.Message):
             *,
             responseType: Global___StructureModeSettingsTrait.BuildUniformDailySleepScheduleResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1608,9 +2491,17 @@ class StructureModeSettingsTrait(_message.Message):
         enableAutoSleep: _builtins.bool
         priorEnableAutoSleep: _builtins.bool
         @_builtins.property
-        def sleepSchedule(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeSettingsTrait.DayTimeSpan]: ...
+        def sleepSchedule(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeSettingsTrait.DayTimeSpan
+        ]: ...
         @_builtins.property
-        def priorSleepSchedule(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeSettingsTrait.DayTimeSpan]: ...
+        def priorSleepSchedule(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___StructureModeSettingsTrait.DayTimeSpan
+        ]: ...
         @_builtins.property
         def userId(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -1618,13 +2509,30 @@ class StructureModeSettingsTrait(_message.Message):
             *,
             enableAutoSleep: _builtins.bool = ...,
             priorEnableAutoSleep: _builtins.bool = ...,
-            sleepSchedule: _abc.Iterable[Global___StructureModeSettingsTrait.DayTimeSpan] | None = ...,
-            priorSleepSchedule: _abc.Iterable[Global___StructureModeSettingsTrait.DayTimeSpan] | None = ...,
+            sleepSchedule: _abc.Iterable[
+                Global___StructureModeSettingsTrait.DayTimeSpan
+            ]
+            | None = ...,
+            priorSleepSchedule: _abc.Iterable[
+                Global___StructureModeSettingsTrait.DayTimeSpan
+            ]
+            | None = ...,
             userId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enableAutoSleep", b"enableAutoSleep", "priorEnableAutoSleep", b"priorEnableAutoSleep", "priorSleepSchedule", b"priorSleepSchedule", "sleepSchedule", b"sleepSchedule", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enableAutoSleep",
+            b"enableAutoSleep",
+            "priorEnableAutoSleep",
+            b"priorEnableAutoSleep",
+            "priorSleepSchedule",
+            b"priorSleepSchedule",
+            "sleepSchedule",
+            b"sleepSchedule",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ENABLEAUTOSLEEP_FIELD_NUMBER: _builtins.int
@@ -1633,22 +2541,44 @@ class StructureModeSettingsTrait(_message.Message):
     OCCUPANCYSENSORARMTIMESTAMP_FIELD_NUMBER: _builtins.int
     enableAutoSleep: _builtins.bool
     @_builtins.property
-    def sleepSchedule(self) -> _containers.RepeatedCompositeFieldContainer[Global___StructureModeSettingsTrait.DayTimeSpan]: ...
+    def sleepSchedule(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___StructureModeSettingsTrait.DayTimeSpan
+    ]: ...
     @_builtins.property
-    def derivedDailySleepSchedule(self) -> Global___StructureModeSettingsTrait.TimeSpan: ...
+    def derivedDailySleepSchedule(
+        self,
+    ) -> Global___StructureModeSettingsTrait.TimeSpan: ...
     @_builtins.property
     def occupancySensorArmTimestamp(self) -> _timestamp_pb2.Timestamp: ...
     def __init__(
         self,
         *,
         enableAutoSleep: _builtins.bool = ...,
-        sleepSchedule: _abc.Iterable[Global___StructureModeSettingsTrait.DayTimeSpan] | None = ...,
-        derivedDailySleepSchedule: Global___StructureModeSettingsTrait.TimeSpan | None = ...,
+        sleepSchedule: _abc.Iterable[Global___StructureModeSettingsTrait.DayTimeSpan]
+        | None = ...,
+        derivedDailySleepSchedule: Global___StructureModeSettingsTrait.TimeSpan
+        | None = ...,
         occupancySensorArmTimestamp: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["derivedDailySleepSchedule", b"derivedDailySleepSchedule", "occupancySensorArmTimestamp", b"occupancySensorArmTimestamp"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "derivedDailySleepSchedule",
+        b"derivedDailySleepSchedule",
+        "occupancySensorArmTimestamp",
+        b"occupancySensorArmTimestamp",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["derivedDailySleepSchedule", b"derivedDailySleepSchedule", "enableAutoSleep", b"enableAutoSleep", "occupancySensorArmTimestamp", b"occupancySensorArmTimestamp", "sleepSchedule", b"sleepSchedule"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "derivedDailySleepSchedule",
+        b"derivedDailySleepSchedule",
+        "enableAutoSleep",
+        b"enableAutoSleep",
+        "occupancySensorArmTimestamp",
+        b"occupancySensorArmTimestamp",
+        "sleepSchedule",
+        b"sleepSchedule",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureModeSettingsTrait: _TypeAlias = StructureModeSettingsTrait  # noqa: Y015
@@ -1661,7 +2591,10 @@ class Geofencing(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _GeofenceStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[Geofencing._GeofenceState.ValueType], _builtins.type):
+    class _GeofenceStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[Geofencing._GeofenceState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         GEOFENCE_STATE_UNSPECIFIED: Geofencing._GeofenceState.ValueType  # 0
         GEOFENCE_STATE_INSIDE: Geofencing._GeofenceState.ValueType  # 1
@@ -1725,7 +2658,9 @@ class OccupancyInputSettingsTrait(_message.Message):
         *,
         deviceActivityConsidered: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceActivityConsidered", b"deviceActivityConsidered"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "deviceActivityConsidered", b"deviceActivityConsidered"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___OccupancyInputSettingsTrait: _TypeAlias = OccupancyInputSettingsTrait  # noqa: Y015
@@ -1741,7 +2676,9 @@ class StructureModeCapabilitiesTrait(_message.Message):
         *,
         sleepStructureModeEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["sleepStructureModeEnabled", b"sleepStructureModeEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "sleepStructureModeEnabled", b"sleepStructureModeEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureModeCapabilitiesTrait: _TypeAlias = StructureModeCapabilitiesTrait  # noqa: Y015

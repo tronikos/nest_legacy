@@ -29,18 +29,41 @@ class PassiveInfraredTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PassiveInfraredFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PassiveInfraredTrait._PassiveInfraredFaultType.ValueType], _builtins.type):
+    class _PassiveInfraredFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PassiveInfraredTrait._PassiveInfraredFaultType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PASSIVE_INFRARED_FAULT_TYPE_UNSPECIFIED: PassiveInfraredTrait._PassiveInfraredFaultType.ValueType  # 0
-        PASSIVE_INFRARED_FAULT_TYPE_NONE: PassiveInfraredTrait._PassiveInfraredFaultType.ValueType  # 1
-        PASSIVE_INFRARED_FAULT_TYPE_UNRESPONSIVE: PassiveInfraredTrait._PassiveInfraredFaultType.ValueType  # 2
-        PASSIVE_INFRARED_FAULT_TYPE_STUCK: PassiveInfraredTrait._PassiveInfraredFaultType.ValueType  # 3
+        PASSIVE_INFRARED_FAULT_TYPE_UNSPECIFIED: (
+            PassiveInfraredTrait._PassiveInfraredFaultType.ValueType
+        )  # 0
+        PASSIVE_INFRARED_FAULT_TYPE_NONE: (
+            PassiveInfraredTrait._PassiveInfraredFaultType.ValueType
+        )  # 1
+        PASSIVE_INFRARED_FAULT_TYPE_UNRESPONSIVE: (
+            PassiveInfraredTrait._PassiveInfraredFaultType.ValueType
+        )  # 2
+        PASSIVE_INFRARED_FAULT_TYPE_STUCK: (
+            PassiveInfraredTrait._PassiveInfraredFaultType.ValueType
+        )  # 3
 
-    class PassiveInfraredFaultType(_PassiveInfraredFaultType, metaclass=_PassiveInfraredFaultTypeEnumTypeWrapper): ...
-    PASSIVE_INFRARED_FAULT_TYPE_UNSPECIFIED: PassiveInfraredTrait.PassiveInfraredFaultType.ValueType  # 0
-    PASSIVE_INFRARED_FAULT_TYPE_NONE: PassiveInfraredTrait.PassiveInfraredFaultType.ValueType  # 1
-    PASSIVE_INFRARED_FAULT_TYPE_UNRESPONSIVE: PassiveInfraredTrait.PassiveInfraredFaultType.ValueType  # 2
-    PASSIVE_INFRARED_FAULT_TYPE_STUCK: PassiveInfraredTrait.PassiveInfraredFaultType.ValueType  # 3
+    class PassiveInfraredFaultType(
+        _PassiveInfraredFaultType, metaclass=_PassiveInfraredFaultTypeEnumTypeWrapper
+    ): ...
+    PASSIVE_INFRARED_FAULT_TYPE_UNSPECIFIED: (
+        PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
+    )  # 0
+    PASSIVE_INFRARED_FAULT_TYPE_NONE: (
+        PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
+    )  # 1
+    PASSIVE_INFRARED_FAULT_TYPE_UNRESPONSIVE: (
+        PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
+    )  # 2
+    PASSIVE_INFRARED_FAULT_TYPE_STUCK: (
+        PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
+    )  # 3
 
     @_typing.final
     class PassiveInfraredSample(_message.Message):
@@ -70,20 +93,40 @@ class PassiveInfraredTrait(_message.Message):
         asserted: _builtins.bool
         type: Global___PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
         @_builtins.property
-        def signalLastValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+        def signalLastValue(
+            self,
+        ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
         @_builtins.property
-        def baselineLastValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+        def baselineLastValue(
+            self,
+        ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
         def __init__(
             self,
             *,
             asserted: _builtins.bool = ...,
             type: Global___PassiveInfraredTrait.PassiveInfraredFaultType.ValueType = ...,
-            signalLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
-            baselineLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
+            signalLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+            | None = ...,
+            baselineLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["baselineLastValue", b"baselineLastValue", "signalLastValue", b"signalLastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "baselineLastValue",
+            b"baselineLastValue",
+            "signalLastValue",
+            b"signalLastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "baselineLastValue", b"baselineLastValue", "signalLastValue", b"signalLastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "baselineLastValue",
+            b"baselineLastValue",
+            "signalLastValue",
+            b"signalLastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -95,16 +138,27 @@ class PassiveInfraredTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def signalSamples(self) -> _containers.RepeatedCompositeFieldContainer[Global___PassiveInfraredTrait.PassiveInfraredSample]: ...
+        def signalSamples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___PassiveInfraredTrait.PassiveInfraredSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            signalSamples: _abc.Iterable[Global___PassiveInfraredTrait.PassiveInfraredSample] | None = ...,
+            signalSamples: _abc.Iterable[
+                Global___PassiveInfraredTrait.PassiveInfraredSample
+            ]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "signalSamples", b"signalSamples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "signalSamples", b"signalSamples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -116,16 +170,27 @@ class PassiveInfraredTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def baselineSamples(self) -> _containers.RepeatedCompositeFieldContainer[Global___PassiveInfraredTrait.PassiveInfraredSample]: ...
+        def baselineSamples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___PassiveInfraredTrait.PassiveInfraredSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            baselineSamples: _abc.Iterable[Global___PassiveInfraredTrait.PassiveInfraredSample] | None = ...,
+            baselineSamples: _abc.Iterable[
+                Global___PassiveInfraredTrait.PassiveInfraredSample
+            ]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["baselineSamples", b"baselineSamples", "sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "baselineSamples", b"baselineSamples", "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -137,16 +202,27 @@ class PassiveInfraredTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def deltaSamples(self) -> _containers.RepeatedCompositeFieldContainer[Global___PassiveInfraredTrait.PassiveInfraredSample]: ...
+        def deltaSamples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___PassiveInfraredTrait.PassiveInfraredSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            deltaSamples: _abc.Iterable[Global___PassiveInfraredTrait.PassiveInfraredSample] | None = ...,
+            deltaSamples: _abc.Iterable[
+                Global___PassiveInfraredTrait.PassiveInfraredSample
+            ]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deltaSamples", b"deltaSamples", "sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deltaSamples", b"deltaSamples", "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -162,9 +238,13 @@ class PassiveInfraredTrait(_message.Message):
         asserted: _builtins.bool
         type: Global___PassiveInfraredTrait.PassiveInfraredFaultType.ValueType
         @_builtins.property
-        def signalLastValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+        def signalLastValue(
+            self,
+        ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
         @_builtins.property
-        def baselineLastValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+        def baselineLastValue(
+            self,
+        ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
         @_builtins.property
         def durationSinceLastSample(self) -> _duration_pb2.Duration: ...
         @_builtins.property
@@ -174,14 +254,38 @@ class PassiveInfraredTrait(_message.Message):
             *,
             asserted: _builtins.bool = ...,
             type: Global___PassiveInfraredTrait.PassiveInfraredFaultType.ValueType = ...,
-            signalLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
-            baselineLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
+            signalLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+            | None = ...,
+            baselineLastValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+            | None = ...,
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["baselineLastValue", b"baselineLastValue", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "signalLastValue", b"signalLastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "baselineLastValue",
+            b"baselineLastValue",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "signalLastValue",
+            b"signalLastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "baselineLastValue", b"baselineLastValue", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "signalLastValue", b"signalLastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "baselineLastValue",
+            b"baselineLastValue",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "signalLastValue",
+            b"signalLastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -193,9 +297,13 @@ class PassiveInfraredTrait(_message.Message):
         VACANCYEXPECTED_FIELD_NUMBER: _builtins.int
         vacancyExpected: _builtins.bool
         @_builtins.property
-        def histogramBoundaries(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+        def histogramBoundaries(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
         @_builtins.property
-        def histogramCounts(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+        def histogramCounts(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
         def __init__(
             self,
             *,
@@ -203,28 +311,58 @@ class PassiveInfraredTrait(_message.Message):
             histogramCounts: _abc.Iterable[_builtins.int] | None = ...,
             vacancyExpected: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["histogramBoundaries", b"histogramBoundaries", "histogramCounts", b"histogramCounts", "vacancyExpected", b"vacancyExpected"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "histogramBoundaries",
+            b"histogramBoundaries",
+            "histogramCounts",
+            b"histogramCounts",
+            "vacancyExpected",
+            b"vacancyExpected",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     PASSIVEINFRAREDSIGNALVALUE_FIELD_NUMBER: _builtins.int
     PASSIVEINFRAREDBASELINEVALUE_FIELD_NUMBER: _builtins.int
     FAULTINFORMATION_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def passiveInfraredSignalValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+    def passiveInfraredSignalValue(
+        self,
+    ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
     @_builtins.property
-    def passiveInfraredBaselineValue(self) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
+    def passiveInfraredBaselineValue(
+        self,
+    ) -> Global___PassiveInfraredTrait.PassiveInfraredSample: ...
     @_builtins.property
-    def faultInformation(self) -> Global___PassiveInfraredTrait.PassiveInfraredFaultInformation: ...
+    def faultInformation(
+        self,
+    ) -> Global___PassiveInfraredTrait.PassiveInfraredFaultInformation: ...
     def __init__(
         self,
         *,
-        passiveInfraredSignalValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
-        passiveInfraredBaselineValue: Global___PassiveInfraredTrait.PassiveInfraredSample | None = ...,
-        faultInformation: Global___PassiveInfraredTrait.PassiveInfraredFaultInformation | None = ...,
+        passiveInfraredSignalValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+        | None = ...,
+        passiveInfraredBaselineValue: Global___PassiveInfraredTrait.PassiveInfraredSample
+        | None = ...,
+        faultInformation: Global___PassiveInfraredTrait.PassiveInfraredFaultInformation
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "passiveInfraredBaselineValue", b"passiveInfraredBaselineValue", "passiveInfraredSignalValue", b"passiveInfraredSignalValue"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation",
+        b"faultInformation",
+        "passiveInfraredBaselineValue",
+        b"passiveInfraredBaselineValue",
+        "passiveInfraredSignalValue",
+        b"passiveInfraredSignalValue",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "passiveInfraredBaselineValue", b"passiveInfraredBaselineValue", "passiveInfraredSignalValue", b"passiveInfraredSignalValue"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation",
+        b"faultInformation",
+        "passiveInfraredBaselineValue",
+        b"passiveInfraredBaselineValue",
+        "passiveInfraredSignalValue",
+        b"passiveInfraredSignalValue",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PassiveInfraredTrait: _TypeAlias = PassiveInfraredTrait  # noqa: Y015
@@ -237,7 +375,10 @@ class SmokeTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SmokeFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SmokeTrait._SmokeFaultType.ValueType], _builtins.type):
+    class _SmokeFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SmokeTrait._SmokeFaultType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         SMOKE_FAULT_TYPE_UNSPECIFIED: SmokeTrait._SmokeFaultType.ValueType  # 0
         SMOKE_FAULT_TYPE_NONE: SmokeTrait._SmokeFaultType.ValueType  # 1
@@ -285,7 +426,9 @@ class SmokeTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -314,9 +457,27 @@ class SmokeTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -345,9 +506,27 @@ class SmokeTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -359,16 +538,24 @@ class SmokeTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___SmokeTrait.SmokeSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SmokeTrait.SmokeSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
             samples: _abc.Iterable[Global___SmokeTrait.SmokeSample] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -380,16 +567,24 @@ class SmokeTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___SmokeTrait.SmokeSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SmokeTrait.SmokeSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
             samples: _abc.Iterable[Global___SmokeTrait.SmokeSample] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -402,9 +597,17 @@ class SmokeTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def irLedSamples(self) -> _containers.RepeatedCompositeFieldContainer[Global___SmokeTrait.SmokeSample]: ...
+        def irLedSamples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SmokeTrait.SmokeSample
+        ]: ...
         @_builtins.property
-        def blueLedSamples(self) -> _containers.RepeatedCompositeFieldContainer[Global___SmokeTrait.SmokeSample]: ...
+        def blueLedSamples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SmokeTrait.SmokeSample
+        ]: ...
         def __init__(
             self,
             *,
@@ -412,9 +615,18 @@ class SmokeTrait(_message.Message):
             irLedSamples: _abc.Iterable[Global___SmokeTrait.SmokeSample] | None = ...,
             blueLedSamples: _abc.Iterable[Global___SmokeTrait.SmokeSample] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["blueLedSamples", b"blueLedSamples", "irLedSamples", b"irLedSamples", "sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "blueLedSamples",
+            b"blueLedSamples",
+            "irLedSamples",
+            b"irLedSamples",
+            "sampleInterval",
+            b"sampleInterval",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     INFRAREDLEDVALUE_FIELD_NUMBER: _builtins.int
@@ -437,9 +649,27 @@ class SmokeTrait(_message.Message):
         infraredLedFault: Global___SmokeTrait.SmokeFaultInformation | None = ...,
         blueLedFault: Global___SmokeTrait.SmokeFaultInformation | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["blueLedFault", b"blueLedFault", "blueLedValue", b"blueLedValue", "infraredLedFault", b"infraredLedFault", "infraredLedValue", b"infraredLedValue"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "blueLedFault",
+        b"blueLedFault",
+        "blueLedValue",
+        b"blueLedValue",
+        "infraredLedFault",
+        b"infraredLedFault",
+        "infraredLedValue",
+        b"infraredLedValue",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["blueLedFault", b"blueLedFault", "blueLedValue", b"blueLedValue", "infraredLedFault", b"infraredLedFault", "infraredLedValue", b"infraredLedValue"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "blueLedFault",
+        b"blueLedFault",
+        "blueLedValue",
+        b"blueLedValue",
+        "infraredLedFault",
+        b"infraredLedFault",
+        "infraredLedValue",
+        b"infraredLedValue",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SmokeTrait: _TypeAlias = SmokeTrait  # noqa: Y015
@@ -452,18 +682,39 @@ class TemperatureTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TemperatureFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TemperatureTrait._TemperatureFaultType.ValueType], _builtins.type):
+    class _TemperatureFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            TemperatureTrait._TemperatureFaultType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        TEMPERATURE_FAULT_TYPE_UNSPECIFIED: TemperatureTrait._TemperatureFaultType.ValueType  # 0
-        TEMPERATURE_FAULT_TYPE_NONE: TemperatureTrait._TemperatureFaultType.ValueType  # 1
-        TEMPERATURE_FAULT_TYPE_UNRESPONSIVE: TemperatureTrait._TemperatureFaultType.ValueType  # 2
-        TEMPERATURE_FAULT_TYPE_OUT_OF_NORMAL_RANGE: TemperatureTrait._TemperatureFaultType.ValueType  # 3
+        TEMPERATURE_FAULT_TYPE_UNSPECIFIED: (
+            TemperatureTrait._TemperatureFaultType.ValueType
+        )  # 0
+        TEMPERATURE_FAULT_TYPE_NONE: (
+            TemperatureTrait._TemperatureFaultType.ValueType
+        )  # 1
+        TEMPERATURE_FAULT_TYPE_UNRESPONSIVE: (
+            TemperatureTrait._TemperatureFaultType.ValueType
+        )  # 2
+        TEMPERATURE_FAULT_TYPE_OUT_OF_NORMAL_RANGE: (
+            TemperatureTrait._TemperatureFaultType.ValueType
+        )  # 3
 
-    class TemperatureFaultType(_TemperatureFaultType, metaclass=_TemperatureFaultTypeEnumTypeWrapper): ...
-    TEMPERATURE_FAULT_TYPE_UNSPECIFIED: TemperatureTrait.TemperatureFaultType.ValueType  # 0
+    class TemperatureFaultType(
+        _TemperatureFaultType, metaclass=_TemperatureFaultTypeEnumTypeWrapper
+    ): ...
+    TEMPERATURE_FAULT_TYPE_UNSPECIFIED: (
+        TemperatureTrait.TemperatureFaultType.ValueType
+    )  # 0
     TEMPERATURE_FAULT_TYPE_NONE: TemperatureTrait.TemperatureFaultType.ValueType  # 1
-    TEMPERATURE_FAULT_TYPE_UNRESPONSIVE: TemperatureTrait.TemperatureFaultType.ValueType  # 2
-    TEMPERATURE_FAULT_TYPE_OUT_OF_NORMAL_RANGE: TemperatureTrait.TemperatureFaultType.ValueType  # 3
+    TEMPERATURE_FAULT_TYPE_UNRESPONSIVE: (
+        TemperatureTrait.TemperatureFaultType.ValueType
+    )  # 2
+    TEMPERATURE_FAULT_TYPE_OUT_OF_NORMAL_RANGE: (
+        TemperatureTrait.TemperatureFaultType.ValueType
+    )  # 3
 
     @_typing.final
     class TemperatureSample(_message.Message):
@@ -502,7 +753,9 @@ class TemperatureTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -531,9 +784,27 @@ class TemperatureTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -545,16 +816,25 @@ class TemperatureTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___TemperatureTrait.TemperatureSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___TemperatureTrait.TemperatureSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            samples: _abc.Iterable[Global___TemperatureTrait.TemperatureSample] | None = ...,
+            samples: _abc.Iterable[Global___TemperatureTrait.TemperatureSample]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TEMPERATUREVALUE_FIELD_NUMBER: _builtins.int
@@ -562,16 +842,23 @@ class TemperatureTrait(_message.Message):
     @_builtins.property
     def temperatureValue(self) -> Global___TemperatureTrait.TemperatureSample: ...
     @_builtins.property
-    def faultInformation(self) -> Global___TemperatureTrait.TemperatureFaultInformation: ...
+    def faultInformation(
+        self,
+    ) -> Global___TemperatureTrait.TemperatureFaultInformation: ...
     def __init__(
         self,
         *,
         temperatureValue: Global___TemperatureTrait.TemperatureSample | None = ...,
-        faultInformation: Global___TemperatureTrait.TemperatureFaultInformation | None = ...,
+        faultInformation: Global___TemperatureTrait.TemperatureFaultInformation
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "temperatureValue", b"temperatureValue"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "temperatureValue", b"temperatureValue"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "temperatureValue", b"temperatureValue"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "temperatureValue", b"temperatureValue"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TemperatureTrait: _TypeAlias = TemperatureTrait  # noqa: Y015
@@ -584,7 +871,10 @@ class CarbonMonoxideTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CoFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CarbonMonoxideTrait._CoFaultType.ValueType], _builtins.type):
+    class _CoFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[CarbonMonoxideTrait._CoFaultType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         CO_FAULT_TYPE_UNSPECIFIED: CarbonMonoxideTrait._CoFaultType.ValueType  # 0
         CO_FAULT_TYPE_NONE: CarbonMonoxideTrait._CoFaultType.ValueType  # 1
@@ -631,7 +921,9 @@ class CarbonMonoxideTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -660,9 +952,27 @@ class CarbonMonoxideTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -674,16 +984,24 @@ class CarbonMonoxideTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___CarbonMonoxideTrait.CoSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___CarbonMonoxideTrait.CoSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
             samples: _abc.Iterable[Global___CarbonMonoxideTrait.CoSample] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     VALUE_FIELD_NUMBER: _builtins.int
@@ -698,9 +1016,13 @@ class CarbonMonoxideTrait(_message.Message):
         value: Global___CarbonMonoxideTrait.CoSample | None = ...,
         faultInformation: Global___CarbonMonoxideTrait.CoFaultInformation | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "value", b"value"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "value", b"value"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "value", b"value"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "value", b"value"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___CarbonMonoxideTrait: _TypeAlias = CarbonMonoxideTrait  # noqa: Y015
@@ -713,22 +1035,53 @@ class BatteryVoltageTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BatteryVoltageFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BatteryVoltageTrait._BatteryVoltageFaultType.ValueType], _builtins.type):
+    class _BatteryVoltageFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        BATTERY_VOLTAGE_FAULT_TYPE_UNSPECIFIED: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 0
-        BATTERY_VOLTAGE_FAULT_TYPE_NONE: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 1
-        BATTERY_VOLTAGE_FAULT_TYPE_OUT_OF_OPERATING_RANGE: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 2
-        BATTERY_VOLTAGE_FAULT_TYPE_UNRESPONSIVE: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 3
-        BATTERY_VOLTAGE_FAULT_TYPE_DISCONNECTED: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 4
-        BATTERY_VOLTAGE_FAULT_TYPE_END_OF_LIFE: BatteryVoltageTrait._BatteryVoltageFaultType.ValueType  # 5
+        BATTERY_VOLTAGE_FAULT_TYPE_UNSPECIFIED: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 0
+        BATTERY_VOLTAGE_FAULT_TYPE_NONE: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 1
+        BATTERY_VOLTAGE_FAULT_TYPE_OUT_OF_OPERATING_RANGE: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 2
+        BATTERY_VOLTAGE_FAULT_TYPE_UNRESPONSIVE: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 3
+        BATTERY_VOLTAGE_FAULT_TYPE_DISCONNECTED: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 4
+        BATTERY_VOLTAGE_FAULT_TYPE_END_OF_LIFE: (
+            BatteryVoltageTrait._BatteryVoltageFaultType.ValueType
+        )  # 5
 
-    class BatteryVoltageFaultType(_BatteryVoltageFaultType, metaclass=_BatteryVoltageFaultTypeEnumTypeWrapper): ...
-    BATTERY_VOLTAGE_FAULT_TYPE_UNSPECIFIED: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 0
-    BATTERY_VOLTAGE_FAULT_TYPE_NONE: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 1
-    BATTERY_VOLTAGE_FAULT_TYPE_OUT_OF_OPERATING_RANGE: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 2
-    BATTERY_VOLTAGE_FAULT_TYPE_UNRESPONSIVE: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 3
-    BATTERY_VOLTAGE_FAULT_TYPE_DISCONNECTED: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 4
-    BATTERY_VOLTAGE_FAULT_TYPE_END_OF_LIFE: BatteryVoltageTrait.BatteryVoltageFaultType.ValueType  # 5
+    class BatteryVoltageFaultType(
+        _BatteryVoltageFaultType, metaclass=_BatteryVoltageFaultTypeEnumTypeWrapper
+    ): ...
+    BATTERY_VOLTAGE_FAULT_TYPE_UNSPECIFIED: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 0
+    BATTERY_VOLTAGE_FAULT_TYPE_NONE: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 1
+    BATTERY_VOLTAGE_FAULT_TYPE_OUT_OF_OPERATING_RANGE: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 2
+    BATTERY_VOLTAGE_FAULT_TYPE_UNRESPONSIVE: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 3
+    BATTERY_VOLTAGE_FAULT_TYPE_DISCONNECTED: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 4
+    BATTERY_VOLTAGE_FAULT_TYPE_END_OF_LIFE: (
+        BatteryVoltageTrait.BatteryVoltageFaultType.ValueType
+    )  # 5
 
     @_typing.final
     class BatteryVoltageSample(_message.Message):
@@ -742,9 +1095,13 @@ class BatteryVoltageTrait(_message.Message):
             *,
             batteryVoltage: _wrappers_pb2.FloatValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["batteryVoltage", b"batteryVoltage"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "batteryVoltage", b"batteryVoltage"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["batteryVoltage", b"batteryVoltage"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "batteryVoltage", b"batteryVoltage"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -767,7 +1124,9 @@ class BatteryVoltageTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -792,9 +1151,23 @@ class BatteryVoltageTrait(_message.Message):
             lastValue: Global___BatteryVoltageTrait.BatteryVoltageSample | None = ...,
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -806,16 +1179,25 @@ class BatteryVoltageTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___BatteryVoltageTrait.BatteryVoltageSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___BatteryVoltageTrait.BatteryVoltageSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            samples: _abc.Iterable[Global___BatteryVoltageTrait.BatteryVoltageSample] | None = ...,
+            samples: _abc.Iterable[Global___BatteryVoltageTrait.BatteryVoltageSample]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -831,23 +1213,49 @@ class BatteryVoltageTrait(_message.Message):
         @_builtins.property
         def meanVoltage(self) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
         @_builtins.property
-        def minimumVoltage(self) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
+        def minimumVoltage(
+            self,
+        ) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
         @_builtins.property
-        def maximumVoltage(self) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
+        def maximumVoltage(
+            self,
+        ) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
         @_builtins.property
         def statsSampleInterval(self) -> _duration_pb2.Duration: ...
         def __init__(
             self,
             *,
             meanVoltage: Global___BatteryVoltageTrait.BatteryVoltageSample | None = ...,
-            minimumVoltage: Global___BatteryVoltageTrait.BatteryVoltageSample | None = ...,
-            maximumVoltage: Global___BatteryVoltageTrait.BatteryVoltageSample | None = ...,
+            minimumVoltage: Global___BatteryVoltageTrait.BatteryVoltageSample
+            | None = ...,
+            maximumVoltage: Global___BatteryVoltageTrait.BatteryVoltageSample
+            | None = ...,
             numSamples: _builtins.int = ...,
             statsSampleInterval: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["maximumVoltage", b"maximumVoltage", "meanVoltage", b"meanVoltage", "minimumVoltage", b"minimumVoltage", "statsSampleInterval", b"statsSampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "maximumVoltage",
+            b"maximumVoltage",
+            "meanVoltage",
+            b"meanVoltage",
+            "minimumVoltage",
+            b"minimumVoltage",
+            "statsSampleInterval",
+            b"statsSampleInterval",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["maximumVoltage", b"maximumVoltage", "meanVoltage", b"meanVoltage", "minimumVoltage", b"minimumVoltage", "numSamples", b"numSamples", "statsSampleInterval", b"statsSampleInterval"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "maximumVoltage",
+            b"maximumVoltage",
+            "meanVoltage",
+            b"meanVoltage",
+            "minimumVoltage",
+            b"minimumVoltage",
+            "numSamples",
+            b"numSamples",
+            "statsSampleInterval",
+            b"statsSampleInterval",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     BATTERYVALUE_FIELD_NUMBER: _builtins.int
@@ -855,16 +1263,23 @@ class BatteryVoltageTrait(_message.Message):
     @_builtins.property
     def batteryValue(self) -> Global___BatteryVoltageTrait.BatteryVoltageSample: ...
     @_builtins.property
-    def faultInformation(self) -> Global___BatteryVoltageTrait.BatteryVoltageFaultInformation: ...
+    def faultInformation(
+        self,
+    ) -> Global___BatteryVoltageTrait.BatteryVoltageFaultInformation: ...
     def __init__(
         self,
         *,
         batteryValue: Global___BatteryVoltageTrait.BatteryVoltageSample | None = ...,
-        faultInformation: Global___BatteryVoltageTrait.BatteryVoltageFaultInformation | None = ...,
+        faultInformation: Global___BatteryVoltageTrait.BatteryVoltageFaultInformation
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["batteryValue", b"batteryValue", "faultInformation", b"faultInformation"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "batteryValue", b"batteryValue", "faultInformation", b"faultInformation"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["batteryValue", b"batteryValue", "faultInformation", b"faultInformation"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "batteryValue", b"batteryValue", "faultInformation", b"faultInformation"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BatteryVoltageTrait: _TypeAlias = BatteryVoltageTrait  # noqa: Y015
@@ -877,16 +1292,35 @@ class AmbientLightTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AmbientLightFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AmbientLightTrait._AmbientLightFaultType.ValueType], _builtins.type):
+    class _AmbientLightFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            AmbientLightTrait._AmbientLightFaultType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        AMBIENT_LIGHT_FAULT_TYPE_UNSPECIFIED: AmbientLightTrait._AmbientLightFaultType.ValueType  # 0
-        AMBIENT_LIGHT_FAULT_TYPE_NONE: AmbientLightTrait._AmbientLightFaultType.ValueType  # 1
-        AMBIENT_LIGHT_FAULT_TYPE_UNRESPONSIVE: AmbientLightTrait._AmbientLightFaultType.ValueType  # 2
+        AMBIENT_LIGHT_FAULT_TYPE_UNSPECIFIED: (
+            AmbientLightTrait._AmbientLightFaultType.ValueType
+        )  # 0
+        AMBIENT_LIGHT_FAULT_TYPE_NONE: (
+            AmbientLightTrait._AmbientLightFaultType.ValueType
+        )  # 1
+        AMBIENT_LIGHT_FAULT_TYPE_UNRESPONSIVE: (
+            AmbientLightTrait._AmbientLightFaultType.ValueType
+        )  # 2
 
-    class AmbientLightFaultType(_AmbientLightFaultType, metaclass=_AmbientLightFaultTypeEnumTypeWrapper): ...
-    AMBIENT_LIGHT_FAULT_TYPE_UNSPECIFIED: AmbientLightTrait.AmbientLightFaultType.ValueType  # 0
-    AMBIENT_LIGHT_FAULT_TYPE_NONE: AmbientLightTrait.AmbientLightFaultType.ValueType  # 1
-    AMBIENT_LIGHT_FAULT_TYPE_UNRESPONSIVE: AmbientLightTrait.AmbientLightFaultType.ValueType  # 2
+    class AmbientLightFaultType(
+        _AmbientLightFaultType, metaclass=_AmbientLightFaultTypeEnumTypeWrapper
+    ): ...
+    AMBIENT_LIGHT_FAULT_TYPE_UNSPECIFIED: (
+        AmbientLightTrait.AmbientLightFaultType.ValueType
+    )  # 0
+    AMBIENT_LIGHT_FAULT_TYPE_NONE: (
+        AmbientLightTrait.AmbientLightFaultType.ValueType
+    )  # 1
+    AMBIENT_LIGHT_FAULT_TYPE_UNRESPONSIVE: (
+        AmbientLightTrait.AmbientLightFaultType.ValueType
+    )  # 2
 
     @_typing.final
     class AmbientLightSample(_message.Message):
@@ -902,7 +1336,9 @@ class AmbientLightTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["ambientLight", b"ambientLight"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["ambientLight", b"ambientLight"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "ambientLight", b"ambientLight"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -925,7 +1361,9 @@ class AmbientLightTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -954,9 +1392,27 @@ class AmbientLightTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -968,16 +1424,25 @@ class AmbientLightTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___AmbientLightTrait.AmbientLightSample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___AmbientLightTrait.AmbientLightSample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
-            samples: _abc.Iterable[Global___AmbientLightTrait.AmbientLightSample] | None = ...,
+            samples: _abc.Iterable[Global___AmbientLightTrait.AmbientLightSample]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     AMBIENTLIGHTVALUE_FIELD_NUMBER: _builtins.int
@@ -985,16 +1450,29 @@ class AmbientLightTrait(_message.Message):
     @_builtins.property
     def ambientLightValue(self) -> Global___AmbientLightTrait.AmbientLightSample: ...
     @_builtins.property
-    def faultInformation(self) -> Global___AmbientLightTrait.AmbientLightFaultInformation: ...
+    def faultInformation(
+        self,
+    ) -> Global___AmbientLightTrait.AmbientLightFaultInformation: ...
     def __init__(
         self,
         *,
         ambientLightValue: Global___AmbientLightTrait.AmbientLightSample | None = ...,
-        faultInformation: Global___AmbientLightTrait.AmbientLightFaultInformation | None = ...,
+        faultInformation: Global___AmbientLightTrait.AmbientLightFaultInformation
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["ambientLightValue", b"ambientLightValue", "faultInformation", b"faultInformation"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "ambientLightValue",
+        b"ambientLightValue",
+        "faultInformation",
+        b"faultInformation",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ambientLightValue", b"ambientLightValue", "faultInformation", b"faultInformation"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ambientLightValue",
+        b"ambientLightValue",
+        "faultInformation",
+        b"faultInformation",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AmbientLightTrait: _TypeAlias = AmbientLightTrait  # noqa: Y015
@@ -1007,13 +1485,20 @@ class HumidityTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HumidityFaultTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HumidityTrait._HumidityFaultType.ValueType], _builtins.type):
+    class _HumidityFaultTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[HumidityTrait._HumidityFaultType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HUMIDITY_FAULT_TYPE_UNSPECIFIED: HumidityTrait._HumidityFaultType.ValueType  # 0
         HUMIDITY_FAULT_TYPE_NONE: HumidityTrait._HumidityFaultType.ValueType  # 1
-        HUMIDITY_FAULT_TYPE_UNRESPONSIVE: HumidityTrait._HumidityFaultType.ValueType  # 2
+        HUMIDITY_FAULT_TYPE_UNRESPONSIVE: (
+            HumidityTrait._HumidityFaultType.ValueType
+        )  # 2
 
-    class HumidityFaultType(_HumidityFaultType, metaclass=_HumidityFaultTypeEnumTypeWrapper): ...
+    class HumidityFaultType(
+        _HumidityFaultType, metaclass=_HumidityFaultTypeEnumTypeWrapper
+    ): ...
     HUMIDITY_FAULT_TYPE_UNSPECIFIED: HumidityTrait.HumidityFaultType.ValueType  # 0
     HUMIDITY_FAULT_TYPE_NONE: HumidityTrait.HumidityFaultType.ValueType  # 1
     HUMIDITY_FAULT_TYPE_UNRESPONSIVE: HumidityTrait.HumidityFaultType.ValueType  # 2
@@ -1055,7 +1540,9 @@ class HumidityTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["lastValue", b"lastValue"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted", b"asserted", "lastValue", b"lastValue", "type", b"type"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1084,9 +1571,27 @@ class HumidityTrait(_message.Message):
             durationSinceLastSample: _duration_pb2.Duration | None = ...,
             lastSamplePeriod: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["asserted", b"asserted", "durationSinceLastSample", b"durationSinceLastSample", "lastSamplePeriod", b"lastSamplePeriod", "lastValue", b"lastValue", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "asserted",
+            b"asserted",
+            "durationSinceLastSample",
+            b"durationSinceLastSample",
+            "lastSamplePeriod",
+            b"lastSamplePeriod",
+            "lastValue",
+            b"lastValue",
+            "type",
+            b"type",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1098,16 +1603,24 @@ class HumidityTrait(_message.Message):
         @_builtins.property
         def sampleInterval(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def samples(self) -> _containers.RepeatedCompositeFieldContainer[Global___HumidityTrait.HumiditySample]: ...
+        def samples(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___HumidityTrait.HumiditySample
+        ]: ...
         def __init__(
             self,
             *,
             sampleInterval: _duration_pb2.Duration | None = ...,
             samples: _abc.Iterable[Global___HumidityTrait.HumiditySample] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sampleInterval", b"sampleInterval", "samples", b"samples"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sampleInterval", b"sampleInterval", "samples", b"samples"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     HUMIDITYVALUE_FIELD_NUMBER: _builtins.int
@@ -1122,9 +1635,13 @@ class HumidityTrait(_message.Message):
         humidityValue: Global___HumidityTrait.HumiditySample | None = ...,
         faultInformation: Global___HumidityTrait.HumidityFaultInformation | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "humidityValue", b"humidityValue"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "humidityValue", b"humidityValue"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["faultInformation", b"faultInformation", "humidityValue", b"humidityValue"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "faultInformation", b"faultInformation", "humidityValue", b"humidityValue"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HumidityTrait: _TypeAlias = HumidityTrait  # noqa: Y015

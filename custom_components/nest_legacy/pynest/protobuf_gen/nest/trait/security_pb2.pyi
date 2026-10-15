@@ -32,14 +32,23 @@ class SecurityArmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityArmStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._SecurityArmState.ValueType], _builtins.type):
+    class _SecurityArmStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityArmTrait._SecurityArmState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ARM_STATE_UNSPECIFIED: SecurityArmTrait._SecurityArmState.ValueType  # 0
+        SECURITY_ARM_STATE_UNSPECIFIED: (
+            SecurityArmTrait._SecurityArmState.ValueType
+        )  # 0
         SECURITY_ARM_STATE_DISARMED: SecurityArmTrait._SecurityArmState.ValueType  # 1
         SECURITY_ARM_STATE_SL1: SecurityArmTrait._SecurityArmState.ValueType  # 2
         SECURITY_ARM_STATE_SL2: SecurityArmTrait._SecurityArmState.ValueType  # 3
 
-    class SecurityArmState(_SecurityArmState, metaclass=_SecurityArmStateEnumTypeWrapper): ...
+    class SecurityArmState(
+        _SecurityArmState, metaclass=_SecurityArmStateEnumTypeWrapper
+    ): ...
     SECURITY_ARM_STATE_UNSPECIFIED: SecurityArmTrait.SecurityArmState.ValueType  # 0
     SECURITY_ARM_STATE_DISARMED: SecurityArmTrait.SecurityArmState.ValueType  # 1
     SECURITY_ARM_STATE_SL1: SecurityArmTrait.SecurityArmState.ValueType  # 2
@@ -49,29 +58,51 @@ class SecurityArmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityAllowanceStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._SecurityAllowanceState.ValueType], _builtins.type):
+    class _SecurityAllowanceStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityArmTrait._SecurityAllowanceState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ALLOWANCE_STATE_UNSPECIFIED: SecurityArmTrait._SecurityAllowanceState.ValueType  # 0
-        SECURITY_ALLOWANCE_STATE_OFF: SecurityArmTrait._SecurityAllowanceState.ValueType  # 1
-        SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE: SecurityArmTrait._SecurityAllowanceState.ValueType  # 2
+        SECURITY_ALLOWANCE_STATE_UNSPECIFIED: (
+            SecurityArmTrait._SecurityAllowanceState.ValueType
+        )  # 0
+        SECURITY_ALLOWANCE_STATE_OFF: (
+            SecurityArmTrait._SecurityAllowanceState.ValueType
+        )  # 1
+        SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE: (
+            SecurityArmTrait._SecurityAllowanceState.ValueType
+        )  # 2
 
-    class SecurityAllowanceState(_SecurityAllowanceState, metaclass=_SecurityAllowanceStateEnumTypeWrapper): ...
-    SECURITY_ALLOWANCE_STATE_UNSPECIFIED: SecurityArmTrait.SecurityAllowanceState.ValueType  # 0
+    class SecurityAllowanceState(
+        _SecurityAllowanceState, metaclass=_SecurityAllowanceStateEnumTypeWrapper
+    ): ...
+    SECURITY_ALLOWANCE_STATE_UNSPECIFIED: (
+        SecurityArmTrait.SecurityAllowanceState.ValueType
+    )  # 0
     SECURITY_ALLOWANCE_STATE_OFF: SecurityArmTrait.SecurityAllowanceState.ValueType  # 1
-    SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE: SecurityArmTrait.SecurityAllowanceState.ValueType  # 2
+    SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE: (
+        SecurityArmTrait.SecurityAllowanceState.ValueType
+    )  # 2
 
     class _StatusCode:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._StatusCode.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: SecurityArmTrait._StatusCode.ValueType  # 0
         STATUS_CODE_ALREADY: SecurityArmTrait._StatusCode.ValueType  # 1
         STATUS_CODE_UNACKNOWLEDGED_ISSUES: SecurityArmTrait._StatusCode.ValueType  # 2
         STATUS_CODE_BLOCKING_ISSUES: SecurityArmTrait._StatusCode.ValueType  # 3
         STATUS_CODE_OUT_OF_SCHEDULE: SecurityArmTrait._StatusCode.ValueType  # 4
-        STATUS_CODE_UNAUTHORIZED_STATE_CHANGE: SecurityArmTrait._StatusCode.ValueType  # 5
+        STATUS_CODE_UNAUTHORIZED_STATE_CHANGE: (
+            SecurityArmTrait._StatusCode.ValueType
+        )  # 5
         STATUS_CODE_LOCATION_OUT_OF_SCOPE: SecurityArmTrait._StatusCode.ValueType  # 6
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
@@ -87,62 +118,153 @@ class SecurityArmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityArmResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._SecurityArmResponseType.ValueType], _builtins.type):
+    class _SecurityArmResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED: SecurityArmTrait._SecurityArmResponseType.ValueType  # 0
-        SECURITY_ARM_RESPONSE_TYPE_SUCCESS: SecurityArmTrait._SecurityArmResponseType.ValueType  # 1
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY: SecurityArmTrait._SecurityArmResponseType.ValueType  # 2
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES: SecurityArmTrait._SecurityArmResponseType.ValueType  # 3
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES: SecurityArmTrait._SecurityArmResponseType.ValueType  # 4
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE: SecurityArmTrait._SecurityArmResponseType.ValueType  # 5
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: SecurityArmTrait._SecurityArmResponseType.ValueType  # 6
-        SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: SecurityArmTrait._SecurityArmResponseType.ValueType  # 7
+        SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 0
+        SECURITY_ARM_RESPONSE_TYPE_SUCCESS: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 1
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 2
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 3
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 4
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 5
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 6
+        SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: (
+            SecurityArmTrait._SecurityArmResponseType.ValueType
+        )  # 7
 
-    class SecurityArmResponseType(_SecurityArmResponseType, metaclass=_SecurityArmResponseTypeEnumTypeWrapper): ...
-    SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED: SecurityArmTrait.SecurityArmResponseType.ValueType  # 0
-    SECURITY_ARM_RESPONSE_TYPE_SUCCESS: SecurityArmTrait.SecurityArmResponseType.ValueType  # 1
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY: SecurityArmTrait.SecurityArmResponseType.ValueType  # 2
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES: SecurityArmTrait.SecurityArmResponseType.ValueType  # 3
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES: SecurityArmTrait.SecurityArmResponseType.ValueType  # 4
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE: SecurityArmTrait.SecurityArmResponseType.ValueType  # 5
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: SecurityArmTrait.SecurityArmResponseType.ValueType  # 6
-    SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: SecurityArmTrait.SecurityArmResponseType.ValueType  # 7
+    class SecurityArmResponseType(
+        _SecurityArmResponseType, metaclass=_SecurityArmResponseTypeEnumTypeWrapper
+    ): ...
+    SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 0
+    SECURITY_ARM_RESPONSE_TYPE_SUCCESS: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 1
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 2
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 3
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 4
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 5
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 6
+    SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: (
+        SecurityArmTrait.SecurityArmResponseType.ValueType
+    )  # 7
 
     class _SecurityArmCancelResponseType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityArmCancelResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._SecurityArmCancelResponseType.ValueType], _builtins.type):
+    class _SecurityArmCancelResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 0
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 1
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 2
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 3
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 4
-        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: SecurityArmTrait._SecurityArmCancelResponseType.ValueType  # 5
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 0
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 1
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 2
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 3
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 4
+        SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: (
+            SecurityArmTrait._SecurityArmCancelResponseType.ValueType
+        )  # 5
 
-    class SecurityArmCancelResponseType(_SecurityArmCancelResponseType, metaclass=_SecurityArmCancelResponseTypeEnumTypeWrapper): ...
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 0
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 1
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 2
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 3
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 4
-    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: SecurityArmTrait.SecurityArmCancelResponseType.ValueType  # 5
+    class SecurityArmCancelResponseType(
+        _SecurityArmCancelResponseType,
+        metaclass=_SecurityArmCancelResponseTypeEnumTypeWrapper,
+    ): ...
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 0
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 1
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 2
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 3
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 4
+    SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE: (
+        SecurityArmTrait.SecurityArmCancelResponseType.ValueType
+    )  # 5
 
     class _SecurityArmStateChangeReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityArmStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityArmTrait._SecurityArmStateChangeReason.ValueType], _builtins.type):
+    class _SecurityArmStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityArmTrait._SecurityArmStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED: SecurityArmTrait._SecurityArmStateChangeReason.ValueType  # 0
-        SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST: SecurityArmTrait._SecurityArmStateChangeReason.ValueType  # 1
-        SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED: SecurityArmTrait._SecurityArmStateChangeReason.ValueType  # 2
+        SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED: (
+            SecurityArmTrait._SecurityArmStateChangeReason.ValueType
+        )  # 0
+        SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST: (
+            SecurityArmTrait._SecurityArmStateChangeReason.ValueType
+        )  # 1
+        SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED: (
+            SecurityArmTrait._SecurityArmStateChangeReason.ValueType
+        )  # 2
 
-    class SecurityArmStateChangeReason(_SecurityArmStateChangeReason, metaclass=_SecurityArmStateChangeReasonEnumTypeWrapper): ...
-    SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED: SecurityArmTrait.SecurityArmStateChangeReason.ValueType  # 0
-    SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST: SecurityArmTrait.SecurityArmStateChangeReason.ValueType  # 1
-    SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED: SecurityArmTrait.SecurityArmStateChangeReason.ValueType  # 2
+    class SecurityArmStateChangeReason(
+        _SecurityArmStateChangeReason,
+        metaclass=_SecurityArmStateChangeReasonEnumTypeWrapper,
+    ): ...
+    SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED: (
+        SecurityArmTrait.SecurityArmStateChangeReason.ValueType
+    )  # 0
+    SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST: (
+        SecurityArmTrait.SecurityArmStateChangeReason.ValueType
+    )  # 1
+    SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED: (
+        SecurityArmTrait.SecurityArmStateChangeReason.ValueType
+    )  # 2
 
     @_typing.final
     class SecurityArmRequest(_message.Message):
@@ -156,7 +278,11 @@ class SecurityArmTrait(_message.Message):
         @_builtins.property
         def armActor(self) -> Global___SecurityActor.SecurityActorStruct: ...
         @_builtins.property
-        def acknowledgedIssuesSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def acknowledgedIssuesSet(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         @_builtins.property
         def locationScope(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -164,12 +290,26 @@ class SecurityArmTrait(_message.Message):
             *,
             armState: Global___SecurityArmTrait.SecurityArmState.ValueType = ...,
             armActor: Global___SecurityActor.SecurityActorStruct | None = ...,
-            acknowledgedIssuesSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            acknowledgedIssuesSet: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
             locationScope: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["armActor", b"armActor", "locationScope", b"locationScope"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "armActor", b"armActor", "locationScope", b"locationScope"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["acknowledgedIssuesSet", b"acknowledgedIssuesSet", "armActor", b"armActor", "armState", b"armState", "locationScope", b"locationScope"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "acknowledgedIssuesSet",
+            b"acknowledgedIssuesSet",
+            "armActor",
+            b"armActor",
+            "armState",
+            b"armState",
+            "locationScope",
+            b"locationScope",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -183,7 +323,9 @@ class SecurityArmTrait(_message.Message):
             *,
             responseType: Global___SecurityArmTrait.SecurityArmResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -202,9 +344,13 @@ class SecurityArmTrait(_message.Message):
             armActor: Global___SecurityActor.SecurityActorStruct | None = ...,
             locationScope: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["armActor", b"armActor", "locationScope", b"locationScope"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "armActor", b"armActor", "locationScope", b"locationScope"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["armActor", b"armActor", "locationScope", b"locationScope"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "armActor", b"armActor", "locationScope", b"locationScope"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -218,7 +364,9 @@ class SecurityArmTrait(_message.Message):
             *,
             responseType: Global___SecurityArmTrait.SecurityArmCancelResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -253,7 +401,22 @@ class SecurityArmTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["armActor", b"armActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["allowanceState", b"allowanceState", "armActor", b"armActor", "armState", b"armState", "changeReason", b"changeReason", "priorAllowanceState", b"priorAllowanceState", "priorArmState", b"priorArmState", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "allowanceState",
+            b"allowanceState",
+            "armActor",
+            b"armActor",
+            "armState",
+            b"armState",
+            "changeReason",
+            b"changeReason",
+            "priorAllowanceState",
+            b"priorAllowanceState",
+            "priorArmState",
+            b"priorArmState",
+            "securityArmSessionId",
+            b"securityArmSessionId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -279,7 +442,16 @@ class SecurityArmTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["allowanceState", b"allowanceState", "duration", b"duration", "priorAllowanceState", b"priorAllowanceState", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "allowanceState",
+            b"allowanceState",
+            "duration",
+            b"duration",
+            "priorAllowanceState",
+            b"priorAllowanceState",
+            "securityArmSessionId",
+            b"securityArmSessionId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ARMSTATE_FIELD_NUMBER: _builtins.int
@@ -311,9 +483,33 @@ class SecurityArmTrait(_message.Message):
         armActor: Global___SecurityActor.SecurityActorStruct | None = ...,
         armTime: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["allowanceExpirationTime", b"allowanceExpirationTime", "armActor", b"armActor", "armTime", b"armTime", "exitAllowanceDuration", b"exitAllowanceDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "allowanceExpirationTime",
+        b"allowanceExpirationTime",
+        "armActor",
+        b"armActor",
+        "armTime",
+        b"armTime",
+        "exitAllowanceDuration",
+        b"exitAllowanceDuration",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["allowanceExpirationTime", b"allowanceExpirationTime", "allowanceState", b"allowanceState", "armActor", b"armActor", "armState", b"armState", "armTime", b"armTime", "exitAllowanceDuration", b"exitAllowanceDuration", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "allowanceExpirationTime",
+        b"allowanceExpirationTime",
+        "allowanceState",
+        b"allowanceState",
+        "armActor",
+        b"armActor",
+        "armState",
+        b"armState",
+        "armTime",
+        b"armTime",
+        "exitAllowanceDuration",
+        b"exitAllowanceDuration",
+        "securityArmSessionId",
+        b"securityArmSessionId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityArmTrait: _TypeAlias = SecurityArmTrait  # noqa: Y015
@@ -326,56 +522,135 @@ class AlarmSupervisorTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmSupervisorStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AlarmSupervisorTrait._AlarmSupervisorState.ValueType], _builtins.type):
+    class _AlarmSupervisorStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ALARM_SUPERVISOR_STATE_UNSPECIFIED: AlarmSupervisorTrait._AlarmSupervisorState.ValueType  # 0
-        ALARM_SUPERVISOR_STATE_IDLE: AlarmSupervisorTrait._AlarmSupervisorState.ValueType  # 1
-        ALARM_SUPERVISOR_STATE_EVALUATING: AlarmSupervisorTrait._AlarmSupervisorState.ValueType  # 2
-        ALARM_SUPERVISOR_STATE_SILENCED: AlarmSupervisorTrait._AlarmSupervisorState.ValueType  # 3
-        ALARM_SUPERVISOR_STATE_ALARMING: AlarmSupervisorTrait._AlarmSupervisorState.ValueType  # 4
+        ALARM_SUPERVISOR_STATE_UNSPECIFIED: (
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        )  # 0
+        ALARM_SUPERVISOR_STATE_IDLE: (
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        )  # 1
+        ALARM_SUPERVISOR_STATE_EVALUATING: (
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        )  # 2
+        ALARM_SUPERVISOR_STATE_SILENCED: (
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        )  # 3
+        ALARM_SUPERVISOR_STATE_ALARMING: (
+            AlarmSupervisorTrait._AlarmSupervisorState.ValueType
+        )  # 4
 
-    class AlarmSupervisorState(_AlarmSupervisorState, metaclass=_AlarmSupervisorStateEnumTypeWrapper): ...
-    ALARM_SUPERVISOR_STATE_UNSPECIFIED: AlarmSupervisorTrait.AlarmSupervisorState.ValueType  # 0
-    ALARM_SUPERVISOR_STATE_IDLE: AlarmSupervisorTrait.AlarmSupervisorState.ValueType  # 1
-    ALARM_SUPERVISOR_STATE_EVALUATING: AlarmSupervisorTrait.AlarmSupervisorState.ValueType  # 2
-    ALARM_SUPERVISOR_STATE_SILENCED: AlarmSupervisorTrait.AlarmSupervisorState.ValueType  # 3
-    ALARM_SUPERVISOR_STATE_ALARMING: AlarmSupervisorTrait.AlarmSupervisorState.ValueType  # 4
+    class AlarmSupervisorState(
+        _AlarmSupervisorState, metaclass=_AlarmSupervisorStateEnumTypeWrapper
+    ): ...
+    ALARM_SUPERVISOR_STATE_UNSPECIFIED: (
+        AlarmSupervisorTrait.AlarmSupervisorState.ValueType
+    )  # 0
+    ALARM_SUPERVISOR_STATE_IDLE: (
+        AlarmSupervisorTrait.AlarmSupervisorState.ValueType
+    )  # 1
+    ALARM_SUPERVISOR_STATE_EVALUATING: (
+        AlarmSupervisorTrait.AlarmSupervisorState.ValueType
+    )  # 2
+    ALARM_SUPERVISOR_STATE_SILENCED: (
+        AlarmSupervisorTrait.AlarmSupervisorState.ValueType
+    )  # 3
+    ALARM_SUPERVISOR_STATE_ALARMING: (
+        AlarmSupervisorTrait.AlarmSupervisorState.ValueType
+    )  # 4
 
     class _AlarmSupervisorDecisionReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmSupervisorDecisionReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType], _builtins.type):
+    class _AlarmSupervisorDecisionReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED: AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType  # 0
-        ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB: AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType  # 1
-        ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING: AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType  # 2
-        ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE: AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType  # 3
+        ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED: (
+            AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType
+        )  # 0
+        ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB: (
+            AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType
+        )  # 1
+        ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING: (
+            AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType
+        )  # 2
+        ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE: (
+            AlarmSupervisorTrait._AlarmSupervisorDecisionReason.ValueType
+        )  # 3
 
-    class AlarmSupervisorDecisionReason(_AlarmSupervisorDecisionReason, metaclass=_AlarmSupervisorDecisionReasonEnumTypeWrapper): ...
-    ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED: AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType  # 0
-    ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB: AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType  # 1
-    ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING: AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType  # 2
-    ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE: AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType  # 3
+    class AlarmSupervisorDecisionReason(
+        _AlarmSupervisorDecisionReason,
+        metaclass=_AlarmSupervisorDecisionReasonEnumTypeWrapper,
+    ): ...
+    ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED: (
+        AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+    )  # 0
+    ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB: (
+        AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+    )  # 1
+    ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING: (
+        AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+    )  # 2
+    ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE: (
+        AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+    )  # 3
 
     class _AlarmSupervisorResponseType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmSupervisorResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType], _builtins.type):
+    class _AlarmSupervisorResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED: AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType  # 0
-        ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS: AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType  # 1
-        ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY: AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType  # 2
-        ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES: AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType  # 3
-        ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE: AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType  # 4
+        ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED: (
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        )  # 0
+        ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS: (
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        )  # 1
+        ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY: (
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        )  # 2
+        ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES: (
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        )  # 3
+        ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE: (
+            AlarmSupervisorTrait._AlarmSupervisorResponseType.ValueType
+        )  # 4
 
-    class AlarmSupervisorResponseType(_AlarmSupervisorResponseType, metaclass=_AlarmSupervisorResponseTypeEnumTypeWrapper): ...
-    ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED: AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType  # 0
-    ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS: AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType  # 1
-    ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY: AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType  # 2
-    ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES: AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType  # 3
-    ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE: AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType  # 4
+    class AlarmSupervisorResponseType(
+        _AlarmSupervisorResponseType,
+        metaclass=_AlarmSupervisorResponseTypeEnumTypeWrapper,
+    ): ...
+    ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED: (
+        AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+    )  # 0
+    ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS: (
+        AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+    )  # 1
+    ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY: (
+        AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+    )  # 2
+    ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES: (
+        AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+    )  # 3
+    ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE: (
+        AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+    )  # 4
 
     @_typing.final
     class AlarmSupervisorStateChangeEvent(_message.Message):
@@ -388,9 +663,15 @@ class AlarmSupervisorTrait(_message.Message):
         TRIGGERINGACTOR_FIELD_NUMBER: _builtins.int
         priorAlarmingState: Global___AlarmSupervisorTrait.AlarmSupervisorState.ValueType
         alarmingState: Global___AlarmSupervisorTrait.AlarmSupervisorState.ValueType
-        alarmSupervisorReason: Global___AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+        alarmSupervisorReason: (
+            Global___AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType
+        )
         @_builtins.property
-        def deviceAlarmReason(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def deviceAlarmReason(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         @_builtins.property
         def triggeringActor(self) -> Global___SecurityActor.SecurityActorStruct: ...
         def __init__(
@@ -398,13 +679,29 @@ class AlarmSupervisorTrait(_message.Message):
             *,
             priorAlarmingState: Global___AlarmSupervisorTrait.AlarmSupervisorState.ValueType = ...,
             alarmingState: Global___AlarmSupervisorTrait.AlarmSupervisorState.ValueType = ...,
-            deviceAlarmReason: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            deviceAlarmReason: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
             alarmSupervisorReason: Global___AlarmSupervisorTrait.AlarmSupervisorDecisionReason.ValueType = ...,
             triggeringActor: Global___SecurityActor.SecurityActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["triggeringActor", b"triggeringActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "triggeringActor", b"triggeringActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmSupervisorReason", b"alarmSupervisorReason", "alarmingState", b"alarmingState", "deviceAlarmReason", b"deviceAlarmReason", "priorAlarmingState", b"priorAlarmingState", "triggeringActor", b"triggeringActor"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmSupervisorReason",
+            b"alarmSupervisorReason",
+            "alarmingState",
+            b"alarmingState",
+            "deviceAlarmReason",
+            b"deviceAlarmReason",
+            "priorAlarmingState",
+            b"priorAlarmingState",
+            "triggeringActor",
+            b"triggeringActor",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -412,13 +709,17 @@ class AlarmSupervisorTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        responseType: (
+            Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -443,13 +744,17 @@ class AlarmSupervisorTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        responseType: (
+            Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -458,11 +763,14 @@ class AlarmSupervisorTrait(_message.Message):
 
         REASON_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def reason(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def reason(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         def __init__(
             self,
             *,
-            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -474,13 +782,17 @@ class AlarmSupervisorTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        responseType: (
+            Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -489,11 +801,14 @@ class AlarmSupervisorTrait(_message.Message):
 
         REASON_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def reason(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def reason(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         def __init__(
             self,
             *,
-            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -505,13 +820,17 @@ class AlarmSupervisorTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        responseType: (
+            Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___AlarmSupervisorTrait.AlarmSupervisorResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -520,11 +839,14 @@ class AlarmSupervisorTrait(_message.Message):
 
         REASON_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def reason(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def reason(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         def __init__(
             self,
             *,
-            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            reason: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -546,9 +868,21 @@ class AlarmSupervisorTrait(_message.Message):
         alarmingStateTime: _timestamp_pb2.Timestamp | None = ...,
         alarmAcknowledegeActor: Global___SecurityActor.SecurityActorStruct | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["alarmAcknowledegeActor", b"alarmAcknowledegeActor", "alarmingStateTime", b"alarmingStateTime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmAcknowledegeActor",
+        b"alarmAcknowledegeActor",
+        "alarmingStateTime",
+        b"alarmingStateTime",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmAcknowledegeActor", b"alarmAcknowledegeActor", "alarmSupervisorState", b"alarmSupervisorState", "alarmingStateTime", b"alarmingStateTime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmAcknowledegeActor",
+        b"alarmAcknowledegeActor",
+        "alarmSupervisorState",
+        b"alarmSupervisorState",
+        "alarmingStateTime",
+        b"alarmingStateTime",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AlarmSupervisorTrait: _TypeAlias = AlarmSupervisorTrait  # noqa: Y015
@@ -561,120 +895,347 @@ class SecurityDecisionFact(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityDecisionFactTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityDecisionFact._SecurityDecisionFactType.ValueType], _builtins.type):
+    class _SecurityDecisionFactTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_DECISION_FACT_TYPE_UNSPECIFIED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 0
-        SECURITY_DECISION_FACT_TYPE_OPEN_DOOR: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 1
-        SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 2
-        SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 3
-        SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 4
-        SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 5
-        SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 6
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 7
-        SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 8
-        SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 9
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 10
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 11
-        SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 12
-        SECURITY_DECISION_FACT_TYPE_HUB_ONLINE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 13
-        SECURITY_DECISION_FACT_TYPE_HUB_TAMPER: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 14
-        SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 15
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 16
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 17
-        SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 18
-        SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 19
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 20
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 21
-        SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 22
-        SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 23
-        SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 24
-        SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 25
-        SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 26
-        SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 27
-        SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 28
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 29
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 30
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 31
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 32
-        SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 33
-        SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 34
-        SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 35
-        SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 36
-        SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 37
-        SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 38
-        SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 39
-        SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 40
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 41
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 42
-        SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 43
-        SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 44
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 45
-        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 46
-        SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 47
-        SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 48
-        SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 49
-        SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 50
-        SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 51
-        SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 52
-        SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 53
-        SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED: SecurityDecisionFact._SecurityDecisionFactType.ValueType  # 54
+        SECURITY_DECISION_FACT_TYPE_UNSPECIFIED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 0
+        SECURITY_DECISION_FACT_TYPE_OPEN_DOOR: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 1
+        SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 2
+        SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 3
+        SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 4
+        SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 5
+        SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 6
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 7
+        SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 8
+        SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 9
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 10
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 11
+        SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 12
+        SECURITY_DECISION_FACT_TYPE_HUB_ONLINE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 13
+        SECURITY_DECISION_FACT_TYPE_HUB_TAMPER: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 14
+        SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 15
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 16
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 17
+        SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 18
+        SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 19
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 20
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 21
+        SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 22
+        SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 23
+        SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 24
+        SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 25
+        SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 26
+        SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 27
+        SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 28
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 29
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 30
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 31
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 32
+        SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 33
+        SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 34
+        SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 35
+        SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 36
+        SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 37
+        SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 38
+        SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 39
+        SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 40
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 41
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 42
+        SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 43
+        SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 44
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 45
+        SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 46
+        SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 47
+        SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 48
+        SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 49
+        SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 50
+        SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 51
+        SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 52
+        SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 53
+        SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED: (
+            SecurityDecisionFact._SecurityDecisionFactType.ValueType
+        )  # 54
 
-    class SecurityDecisionFactType(_SecurityDecisionFactType, metaclass=_SecurityDecisionFactTypeEnumTypeWrapper): ...
-    SECURITY_DECISION_FACT_TYPE_UNSPECIFIED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 0
-    SECURITY_DECISION_FACT_TYPE_OPEN_DOOR: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 1
-    SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 2
-    SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 3
-    SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 4
-    SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 5
-    SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 6
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 7
-    SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 8
-    SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 9
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 10
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 11
-    SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 12
-    SECURITY_DECISION_FACT_TYPE_HUB_ONLINE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 13
-    SECURITY_DECISION_FACT_TYPE_HUB_TAMPER: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 14
-    SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 15
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 16
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 17
-    SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 18
-    SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 19
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 20
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 21
-    SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 22
-    SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 23
-    SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 24
-    SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 25
-    SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 26
-    SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 27
-    SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 28
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 29
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 30
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 31
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 32
-    SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 33
-    SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 34
-    SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 35
-    SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 36
-    SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 37
-    SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 38
-    SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 39
-    SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 40
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 41
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 42
-    SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 43
-    SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 44
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 45
-    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 46
-    SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 47
-    SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 48
-    SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 49
-    SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 50
-    SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 51
-    SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 52
-    SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 53
-    SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED: SecurityDecisionFact.SecurityDecisionFactType.ValueType  # 54
+    class SecurityDecisionFactType(
+        _SecurityDecisionFactType, metaclass=_SecurityDecisionFactTypeEnumTypeWrapper
+    ): ...
+    SECURITY_DECISION_FACT_TYPE_UNSPECIFIED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 0
+    SECURITY_DECISION_FACT_TYPE_OPEN_DOOR: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 1
+    SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 2
+    SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 3
+    SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 4
+    SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 5
+    SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 6
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 7
+    SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 8
+    SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 9
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 10
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 11
+    SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 12
+    SECURITY_DECISION_FACT_TYPE_HUB_ONLINE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 13
+    SECURITY_DECISION_FACT_TYPE_HUB_TAMPER: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 14
+    SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 15
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 16
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 17
+    SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 18
+    SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 19
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 20
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 21
+    SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 22
+    SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 23
+    SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 24
+    SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 25
+    SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 26
+    SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 27
+    SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 28
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 29
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 30
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 31
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 32
+    SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 33
+    SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 34
+    SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 35
+    SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 36
+    SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 37
+    SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 38
+    SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 39
+    SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 40
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 41
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 42
+    SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 43
+    SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 44
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 45
+    SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 46
+    SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 47
+    SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 48
+    SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 49
+    SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 50
+    SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 51
+    SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 52
+    SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 53
+    SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED: (
+        SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    )  # 54
 
     @_typing.final
     class SecurityDecisionFactStruct(_message.Message):
@@ -695,9 +1256,18 @@ class SecurityDecisionFact(_message.Message):
             originResourceId: _common_pb2.ResourceId | None = ...,
             timestamp: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["originResourceId", b"originResourceId", "timestamp", b"timestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "originResourceId", b"originResourceId", "timestamp", b"timestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["factType", b"factType", "originResourceId", b"originResourceId", "timestamp", b"timestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "factType",
+            b"factType",
+            "originResourceId",
+            b"originResourceId",
+            "timestamp",
+            b"timestamp",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -714,56 +1284,135 @@ class SecurityAlarmingTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityAlarmingStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityAlarmingTrait._SecurityAlarmingState.ValueType], _builtins.type):
+    class _SecurityAlarmingStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityAlarmingTrait._SecurityAlarmingState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ALARMING_STATE_UNSPECIFIED: SecurityAlarmingTrait._SecurityAlarmingState.ValueType  # 0
-        SECURITY_ALARMING_STATE_IDLE: SecurityAlarmingTrait._SecurityAlarmingState.ValueType  # 1
-        SECURITY_ALARMING_STATE_PREALARMING: SecurityAlarmingTrait._SecurityAlarmingState.ValueType  # 2
-        SECURITY_ALARMING_STATE_ALARMING: SecurityAlarmingTrait._SecurityAlarmingState.ValueType  # 3
+        SECURITY_ALARMING_STATE_UNSPECIFIED: (
+            SecurityAlarmingTrait._SecurityAlarmingState.ValueType
+        )  # 0
+        SECURITY_ALARMING_STATE_IDLE: (
+            SecurityAlarmingTrait._SecurityAlarmingState.ValueType
+        )  # 1
+        SECURITY_ALARMING_STATE_PREALARMING: (
+            SecurityAlarmingTrait._SecurityAlarmingState.ValueType
+        )  # 2
+        SECURITY_ALARMING_STATE_ALARMING: (
+            SecurityAlarmingTrait._SecurityAlarmingState.ValueType
+        )  # 3
 
-    class SecurityAlarmingState(_SecurityAlarmingState, metaclass=_SecurityAlarmingStateEnumTypeWrapper): ...
-    SECURITY_ALARMING_STATE_UNSPECIFIED: SecurityAlarmingTrait.SecurityAlarmingState.ValueType  # 0
-    SECURITY_ALARMING_STATE_IDLE: SecurityAlarmingTrait.SecurityAlarmingState.ValueType  # 1
-    SECURITY_ALARMING_STATE_PREALARMING: SecurityAlarmingTrait.SecurityAlarmingState.ValueType  # 2
-    SECURITY_ALARMING_STATE_ALARMING: SecurityAlarmingTrait.SecurityAlarmingState.ValueType  # 3
+    class SecurityAlarmingState(
+        _SecurityAlarmingState, metaclass=_SecurityAlarmingStateEnumTypeWrapper
+    ): ...
+    SECURITY_ALARMING_STATE_UNSPECIFIED: (
+        SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+    )  # 0
+    SECURITY_ALARMING_STATE_IDLE: (
+        SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+    )  # 1
+    SECURITY_ALARMING_STATE_PREALARMING: (
+        SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+    )  # 2
+    SECURITY_ALARMING_STATE_ALARMING: (
+        SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+    )  # 3
 
     class _SecurityAlarmingStateChangeReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityAlarmingStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType], _builtins.type):
+    class _SecurityAlarmingStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED: SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType  # 0
-        SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED: SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType  # 1
-        SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER: SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType  # 2
-        SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION: SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType  # 3
-        SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED: SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType  # 4
+        SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED: (
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        )  # 0
+        SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED: (
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        )  # 1
+        SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER: (
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        )  # 2
+        SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION: (
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        )  # 3
+        SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED: (
+            SecurityAlarmingTrait._SecurityAlarmingStateChangeReason.ValueType
+        )  # 4
 
-    class SecurityAlarmingStateChangeReason(_SecurityAlarmingStateChangeReason, metaclass=_SecurityAlarmingStateChangeReasonEnumTypeWrapper): ...
-    SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED: SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType  # 0
-    SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED: SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType  # 1
-    SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER: SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType  # 2
-    SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION: SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType  # 3
-    SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED: SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType  # 4
+    class SecurityAlarmingStateChangeReason(
+        _SecurityAlarmingStateChangeReason,
+        metaclass=_SecurityAlarmingStateChangeReasonEnumTypeWrapper,
+    ): ...
+    SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED: (
+        SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+    )  # 0
+    SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED: (
+        SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+    )  # 1
+    SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER: (
+        SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+    )  # 2
+    SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION: (
+        SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+    )  # 3
+    SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED: (
+        SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+    )  # 4
 
     class _SecurityAlarmingDecisionResult:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityAlarmingDecisionResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType], _builtins.type):
+    class _SecurityAlarmingDecisionResultEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED: SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType  # 0
-        SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM: SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType  # 1
-        SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM: SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType  # 2
-        SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION: SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType  # 3
-        SECURITY_ALARMING_DECISION_RESULT_NO_ACTION: SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType  # 4
+        SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED: (
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        )  # 0
+        SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM: (
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        )  # 1
+        SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM: (
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        )  # 2
+        SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION: (
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        )  # 3
+        SECURITY_ALARMING_DECISION_RESULT_NO_ACTION: (
+            SecurityAlarmingTrait._SecurityAlarmingDecisionResult.ValueType
+        )  # 4
 
-    class SecurityAlarmingDecisionResult(_SecurityAlarmingDecisionResult, metaclass=_SecurityAlarmingDecisionResultEnumTypeWrapper): ...
-    SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED: SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType  # 0
-    SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM: SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType  # 1
-    SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM: SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType  # 2
-    SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION: SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType  # 3
-    SECURITY_ALARMING_DECISION_RESULT_NO_ACTION: SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType  # 4
+    class SecurityAlarmingDecisionResult(
+        _SecurityAlarmingDecisionResult,
+        metaclass=_SecurityAlarmingDecisionResultEnumTypeWrapper,
+    ): ...
+    SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED: (
+        SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType
+    )  # 0
+    SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM: (
+        SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType
+    )  # 1
+    SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM: (
+        SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType
+    )  # 2
+    SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION: (
+        SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType
+    )  # 3
+    SECURITY_ALARMING_DECISION_RESULT_NO_ACTION: (
+        SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType
+    )  # 4
 
     @_typing.final
     class SecurityAlarmingStateChangeEvent(_message.Message):
@@ -776,26 +1425,54 @@ class SecurityAlarmingTrait(_message.Message):
         CHANGEREASON_FIELD_NUMBER: _builtins.int
         LATESTALARMREASON_FIELD_NUMBER: _builtins.int
         alarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
-        priorAlarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+        priorAlarmingState: (
+            Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+        )
         securityArmSessionId: _builtins.int
-        changeReason: Global___SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+        changeReason: (
+            Global___SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType
+        )
         @_builtins.property
-        def initialAlarmReason(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def initialAlarmReason(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         @_builtins.property
-        def latestAlarmReason(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def latestAlarmReason(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         def __init__(
             self,
             *,
             alarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType = ...,
             priorAlarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType = ...,
-            initialAlarmReason: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            initialAlarmReason: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
             securityArmSessionId: _builtins.int = ...,
             changeReason: Global___SecurityAlarmingTrait.SecurityAlarmingStateChangeReason.ValueType = ...,
-            latestAlarmReason: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            latestAlarmReason: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["initialAlarmReason", b"initialAlarmReason", "latestAlarmReason", b"latestAlarmReason"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "initialAlarmReason",
+            b"initialAlarmReason",
+            "latestAlarmReason",
+            b"latestAlarmReason",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmingState", b"alarmingState", "changeReason", b"changeReason", "initialAlarmReason", b"initialAlarmReason", "latestAlarmReason", b"latestAlarmReason", "priorAlarmingState", b"priorAlarmingState", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmingState",
+            b"alarmingState",
+            "changeReason",
+            b"changeReason",
+            "initialAlarmReason",
+            b"initialAlarmReason",
+            "latestAlarmReason",
+            b"latestAlarmReason",
+            "priorAlarmingState",
+            b"priorAlarmingState",
+            "securityArmSessionId",
+            b"securityArmSessionId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -806,23 +1483,41 @@ class SecurityAlarmingTrait(_message.Message):
         PRIORALARMINGSTATE_FIELD_NUMBER: _builtins.int
         SECURITYARMSESSIONID_FIELD_NUMBER: _builtins.int
         ALARMREASONS_FIELD_NUMBER: _builtins.int
-        priorAlarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+        priorAlarmingState: (
+            Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
+        )
         securityArmSessionId: _builtins.int
         @_builtins.property
         def alarmActor(self) -> Global___SecurityActor.SecurityActorStruct: ...
         @_builtins.property
-        def alarmReasons(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def alarmReasons(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         def __init__(
             self,
             *,
             alarmActor: Global___SecurityActor.SecurityActorStruct | None = ...,
             priorAlarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType = ...,
             securityArmSessionId: _builtins.int = ...,
-            alarmReasons: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            alarmReasons: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["alarmActor", b"alarmActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmActor", b"alarmActor", "alarmReasons", b"alarmReasons", "priorAlarmingState", b"priorAlarmingState", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmActor",
+            b"alarmActor",
+            "alarmReasons",
+            b"alarmReasons",
+            "priorAlarmingState",
+            b"priorAlarmingState",
+            "securityArmSessionId",
+            b"securityArmSessionId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -837,18 +1532,30 @@ class SecurityAlarmingTrait(_message.Message):
         securityArmSessionId: _builtins.int
         resultingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
         @_builtins.property
-        def decisionFact(self) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
+        def decisionFact(
+            self,
+        ) -> Global___SecurityDecisionFact.SecurityDecisionFactStruct: ...
         def __init__(
             self,
             *,
-            decisionFact: Global___SecurityDecisionFact.SecurityDecisionFactStruct | None = ...,
+            decisionFact: Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            | None = ...,
             result: Global___SecurityAlarmingTrait.SecurityAlarmingDecisionResult.ValueType = ...,
             securityArmSessionId: _builtins.int = ...,
             resultingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["decisionFact", b"decisionFact"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["decisionFact", b"decisionFact", "result", b"result", "resultingState", b"resultingState", "securityArmSessionId", b"securityArmSessionId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "decisionFact",
+            b"decisionFact",
+            "result",
+            b"result",
+            "resultingState",
+            b"resultingState",
+            "securityArmSessionId",
+            b"securityArmSessionId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ALARMINGSTATE_FIELD_NUMBER: _builtins.int
@@ -858,7 +1565,11 @@ class SecurityAlarmingTrait(_message.Message):
     ALARMINGSTATETIME_FIELD_NUMBER: _builtins.int
     alarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType
     @_builtins.property
-    def alarmReason(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+    def alarmReason(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SecurityDecisionFact.SecurityDecisionFactStruct
+    ]: ...
     @_builtins.property
     def prealarmExpirationTime(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
@@ -869,14 +1580,35 @@ class SecurityAlarmingTrait(_message.Message):
         self,
         *,
         alarmingState: Global___SecurityAlarmingTrait.SecurityAlarmingState.ValueType = ...,
-        alarmReason: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+        alarmReason: _abc.Iterable[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]
+        | None = ...,
         prealarmExpirationTime: _timestamp_pb2.Timestamp | None = ...,
         prealarmingDuration: _duration_pb2.Duration | None = ...,
         alarmingStateTime: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["alarmingStateTime", b"alarmingStateTime", "prealarmExpirationTime", b"prealarmExpirationTime", "prealarmingDuration", b"prealarmingDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmingStateTime",
+        b"alarmingStateTime",
+        "prealarmExpirationTime",
+        b"prealarmExpirationTime",
+        "prealarmingDuration",
+        b"prealarmingDuration",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmReason", b"alarmReason", "alarmingState", b"alarmingState", "alarmingStateTime", b"alarmingStateTime", "prealarmExpirationTime", b"prealarmExpirationTime", "prealarmingDuration", b"prealarmingDuration"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmReason",
+        b"alarmReason",
+        "alarmingState",
+        b"alarmingState",
+        "alarmingStateTime",
+        b"alarmingStateTime",
+        "prealarmExpirationTime",
+        b"prealarmExpirationTime",
+        "prealarmingDuration",
+        b"prealarmingDuration",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityAlarmingTrait: _TypeAlias = SecurityAlarmingTrait  # noqa: Y015
@@ -889,35 +1621,81 @@ class SecuritySettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecuritySettingsModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecuritySettingsTrait._SecuritySettingsMode.ValueType], _builtins.type):
+    class _SecuritySettingsModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_SETTINGS_MODE_UNSPECIFIED: SecuritySettingsTrait._SecuritySettingsMode.ValueType  # 0
-        SECURITY_SETTINGS_MODE_NEST: SecuritySettingsTrait._SecuritySettingsMode.ValueType  # 1
-        SECURITY_SETTINGS_MODE_UL_CERT: SecuritySettingsTrait._SecuritySettingsMode.ValueType  # 2
-        SECURITY_SETTINGS_MODE_EU_CERT: SecuritySettingsTrait._SecuritySettingsMode.ValueType  # 3
-        SECURITY_SETTINGS_MODE_UK_CERT: SecuritySettingsTrait._SecuritySettingsMode.ValueType  # 4
+        SECURITY_SETTINGS_MODE_UNSPECIFIED: (
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        )  # 0
+        SECURITY_SETTINGS_MODE_NEST: (
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        )  # 1
+        SECURITY_SETTINGS_MODE_UL_CERT: (
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        )  # 2
+        SECURITY_SETTINGS_MODE_EU_CERT: (
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        )  # 3
+        SECURITY_SETTINGS_MODE_UK_CERT: (
+            SecuritySettingsTrait._SecuritySettingsMode.ValueType
+        )  # 4
 
-    class SecuritySettingsMode(_SecuritySettingsMode, metaclass=_SecuritySettingsModeEnumTypeWrapper): ...
-    SECURITY_SETTINGS_MODE_UNSPECIFIED: SecuritySettingsTrait.SecuritySettingsMode.ValueType  # 0
-    SECURITY_SETTINGS_MODE_NEST: SecuritySettingsTrait.SecuritySettingsMode.ValueType  # 1
-    SECURITY_SETTINGS_MODE_UL_CERT: SecuritySettingsTrait.SecuritySettingsMode.ValueType  # 2
-    SECURITY_SETTINGS_MODE_EU_CERT: SecuritySettingsTrait.SecuritySettingsMode.ValueType  # 3
-    SECURITY_SETTINGS_MODE_UK_CERT: SecuritySettingsTrait.SecuritySettingsMode.ValueType  # 4
+    class SecuritySettingsMode(
+        _SecuritySettingsMode, metaclass=_SecuritySettingsModeEnumTypeWrapper
+    ): ...
+    SECURITY_SETTINGS_MODE_UNSPECIFIED: (
+        SecuritySettingsTrait.SecuritySettingsMode.ValueType
+    )  # 0
+    SECURITY_SETTINGS_MODE_NEST: (
+        SecuritySettingsTrait.SecuritySettingsMode.ValueType
+    )  # 1
+    SECURITY_SETTINGS_MODE_UL_CERT: (
+        SecuritySettingsTrait.SecuritySettingsMode.ValueType
+    )  # 2
+    SECURITY_SETTINGS_MODE_EU_CERT: (
+        SecuritySettingsTrait.SecuritySettingsMode.ValueType
+    )  # 3
+    SECURITY_SETTINGS_MODE_UK_CERT: (
+        SecuritySettingsTrait.SecuritySettingsMode.ValueType
+    )  # 4
 
     class _LimitedSettingsAction:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LimitedSettingsActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecuritySettingsTrait._LimitedSettingsAction.ValueType], _builtins.type):
+    class _LimitedSettingsActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecuritySettingsTrait._LimitedSettingsAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LIMITED_SETTINGS_ACTION_UNSPECIFIED: SecuritySettingsTrait._LimitedSettingsAction.ValueType  # 0
-        LIMITED_SETTINGS_ACTION_ON: SecuritySettingsTrait._LimitedSettingsAction.ValueType  # 1
-        LIMITED_SETTINGS_ACTION_OFF: SecuritySettingsTrait._LimitedSettingsAction.ValueType  # 2
+        LIMITED_SETTINGS_ACTION_UNSPECIFIED: (
+            SecuritySettingsTrait._LimitedSettingsAction.ValueType
+        )  # 0
+        LIMITED_SETTINGS_ACTION_ON: (
+            SecuritySettingsTrait._LimitedSettingsAction.ValueType
+        )  # 1
+        LIMITED_SETTINGS_ACTION_OFF: (
+            SecuritySettingsTrait._LimitedSettingsAction.ValueType
+        )  # 2
 
-    class LimitedSettingsAction(_LimitedSettingsAction, metaclass=_LimitedSettingsActionEnumTypeWrapper): ...
-    LIMITED_SETTINGS_ACTION_UNSPECIFIED: SecuritySettingsTrait.LimitedSettingsAction.ValueType  # 0
-    LIMITED_SETTINGS_ACTION_ON: SecuritySettingsTrait.LimitedSettingsAction.ValueType  # 1
-    LIMITED_SETTINGS_ACTION_OFF: SecuritySettingsTrait.LimitedSettingsAction.ValueType  # 2
+    class LimitedSettingsAction(
+        _LimitedSettingsAction, metaclass=_LimitedSettingsActionEnumTypeWrapper
+    ): ...
+    LIMITED_SETTINGS_ACTION_UNSPECIFIED: (
+        SecuritySettingsTrait.LimitedSettingsAction.ValueType
+    )  # 0
+    LIMITED_SETTINGS_ACTION_ON: (
+        SecuritySettingsTrait.LimitedSettingsAction.ValueType
+    )  # 1
+    LIMITED_SETTINGS_ACTION_OFF: (
+        SecuritySettingsTrait.LimitedSettingsAction.ValueType
+    )  # 2
 
     @_typing.final
     class SecuritySettingsModeChangeEvent(_message.Message):
@@ -926,8 +1704,12 @@ class SecuritySettingsTrait(_message.Message):
         PREVIOUSSECURITYSETTINGSMODE_FIELD_NUMBER: _builtins.int
         NEWSECURITYSETTINGSMODE_FIELD_NUMBER: _builtins.int
         SETTODEFAULTS_FIELD_NUMBER: _builtins.int
-        previousSecuritySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
-        newSecuritySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
+        previousSecuritySettingsMode: (
+            Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
+        )
+        newSecuritySettingsMode: (
+            Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
+        )
         setToDefaults: _builtins.bool
         def __init__(
             self,
@@ -936,7 +1718,14 @@ class SecuritySettingsTrait(_message.Message):
             newSecuritySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType = ...,
             setToDefaults: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["newSecuritySettingsMode", b"newSecuritySettingsMode", "previousSecuritySettingsMode", b"previousSecuritySettingsMode", "setToDefaults", b"setToDefaults"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "newSecuritySettingsMode",
+            b"newSecuritySettingsMode",
+            "previousSecuritySettingsMode",
+            b"previousSecuritySettingsMode",
+            "setToDefaults",
+            b"setToDefaults",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -945,7 +1734,9 @@ class SecuritySettingsTrait(_message.Message):
 
         SECURITYSETTINGSMODE_FIELD_NUMBER: _builtins.int
         SETTODEFAULTS_FIELD_NUMBER: _builtins.int
-        securitySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
+        securitySettingsMode: (
+            Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType
+        )
         setToDefaults: _builtins.bool
         def __init__(
             self,
@@ -953,7 +1744,12 @@ class SecuritySettingsTrait(_message.Message):
             securitySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType = ...,
             setToDefaults: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["securitySettingsMode", b"securitySettingsMode", "setToDefaults", b"setToDefaults"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "securitySettingsMode",
+            b"securitySettingsMode",
+            "setToDefaults",
+            b"setToDefaults",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1003,7 +1799,18 @@ class SecuritySettingsTrait(_message.Message):
         securitySettingsMode: Global___SecuritySettingsTrait.SecuritySettingsMode.ValueType = ...,
         automaticallyArmOnScheduledNight: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["automaticallyArmOnScheduledNight", b"automaticallyArmOnScheduledNight", "bypassFeatureEnabled", b"bypassFeatureEnabled", "motionDetectionEnabled", b"motionDetectionEnabled", "petRejectionEnabled", b"petRejectionEnabled", "securitySettingsMode", b"securitySettingsMode"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "automaticallyArmOnScheduledNight",
+        b"automaticallyArmOnScheduledNight",
+        "bypassFeatureEnabled",
+        b"bypassFeatureEnabled",
+        "motionDetectionEnabled",
+        b"motionDetectionEnabled",
+        "petRejectionEnabled",
+        b"petRejectionEnabled",
+        "securitySettingsMode",
+        b"securitySettingsMode",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecuritySettingsTrait: _TypeAlias = SecuritySettingsTrait  # noqa: Y015
@@ -1016,40 +1823,91 @@ class SecurityActor(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityActorMethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityActor._SecurityActorMethod.ValueType], _builtins.type):
+    class _SecurityActorMethodEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityActor._SecurityActorMethod.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ACTOR_METHOD_UNSPECIFIED: SecurityActor._SecurityActorMethod.ValueType  # 0
+        SECURITY_ACTOR_METHOD_UNSPECIFIED: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 0
         SECURITY_ACTOR_METHOD_OTHER: SecurityActor._SecurityActorMethod.ValueType  # 1
         SECURITY_ACTOR_METHOD_KEYPAD: SecurityActor._SecurityActorMethod.ValueType  # 2
-        SECURITY_ACTOR_METHOD_KEYPAD_PIN: SecurityActor._SecurityActorMethod.ValueType  # 3
-        SECURITY_ACTOR_METHOD_AUTH_TOKEN: SecurityActor._SecurityActorMethod.ValueType  # 4
-        SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT: SecurityActor._SecurityActorMethod.ValueType  # 5
-        SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT: SecurityActor._SecurityActorMethod.ValueType  # 6
-        SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT: SecurityActor._SecurityActorMethod.ValueType  # 7
-        SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT: SecurityActor._SecurityActorMethod.ValueType  # 8
-        SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER: SecurityActor._SecurityActorMethod.ValueType  # 9
-        SECURITY_ACTOR_METHOD_REMOTE_DELEGATE: SecurityActor._SecurityActorMethod.ValueType  # 10
-        SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN: SecurityActor._SecurityActorMethod.ValueType  # 11
-        SECURITY_ACTOR_METHOD_VOICE_ASSISTANT: SecurityActor._SecurityActorMethod.ValueType  # 12
-        SECURITY_ACTOR_METHOD_PEER_LOCK: SecurityActor._SecurityActorMethod.ValueType  # 13
-        SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT: SecurityActor._SecurityActorMethod.ValueType  # 14
+        SECURITY_ACTOR_METHOD_KEYPAD_PIN: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 3
+        SECURITY_ACTOR_METHOD_AUTH_TOKEN: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 4
+        SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 5
+        SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 6
+        SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 7
+        SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 8
+        SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 9
+        SECURITY_ACTOR_METHOD_REMOTE_DELEGATE: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 10
+        SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 11
+        SECURITY_ACTOR_METHOD_VOICE_ASSISTANT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 12
+        SECURITY_ACTOR_METHOD_PEER_LOCK: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 13
+        SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT: (
+            SecurityActor._SecurityActorMethod.ValueType
+        )  # 14
 
-    class SecurityActorMethod(_SecurityActorMethod, metaclass=_SecurityActorMethodEnumTypeWrapper): ...
+    class SecurityActorMethod(
+        _SecurityActorMethod, metaclass=_SecurityActorMethodEnumTypeWrapper
+    ): ...
     SECURITY_ACTOR_METHOD_UNSPECIFIED: SecurityActor.SecurityActorMethod.ValueType  # 0
     SECURITY_ACTOR_METHOD_OTHER: SecurityActor.SecurityActorMethod.ValueType  # 1
     SECURITY_ACTOR_METHOD_KEYPAD: SecurityActor.SecurityActorMethod.ValueType  # 2
     SECURITY_ACTOR_METHOD_KEYPAD_PIN: SecurityActor.SecurityActorMethod.ValueType  # 3
     SECURITY_ACTOR_METHOD_AUTH_TOKEN: SecurityActor.SecurityActorMethod.ValueType  # 4
-    SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT: SecurityActor.SecurityActorMethod.ValueType  # 5
-    SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT: SecurityActor.SecurityActorMethod.ValueType  # 6
-    SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT: SecurityActor.SecurityActorMethod.ValueType  # 7
-    SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT: SecurityActor.SecurityActorMethod.ValueType  # 8
-    SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER: SecurityActor.SecurityActorMethod.ValueType  # 9
-    SECURITY_ACTOR_METHOD_REMOTE_DELEGATE: SecurityActor.SecurityActorMethod.ValueType  # 10
-    SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN: SecurityActor.SecurityActorMethod.ValueType  # 11
-    SECURITY_ACTOR_METHOD_VOICE_ASSISTANT: SecurityActor.SecurityActorMethod.ValueType  # 12
+    SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 5
+    SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 6
+    SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 7
+    SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 8
+    SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 9
+    SECURITY_ACTOR_METHOD_REMOTE_DELEGATE: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 10
+    SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 11
+    SECURITY_ACTOR_METHOD_VOICE_ASSISTANT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 12
     SECURITY_ACTOR_METHOD_PEER_LOCK: SecurityActor.SecurityActorMethod.ValueType  # 13
-    SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT: SecurityActor.SecurityActorMethod.ValueType  # 14
+    SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT: (
+        SecurityActor.SecurityActorMethod.ValueType
+    )  # 14
 
     @_typing.final
     class SecurityActorStruct(_message.Message):
@@ -1070,9 +1928,13 @@ class SecurityActor(_message.Message):
             originator: _common_pb2.ResourceId | None = ...,
             agent: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["agent", b"agent", "originator", b"originator"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "agent", b"agent", "originator", b"originator"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["agent", b"agent", "method", b"method", "originator", b"originator"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "agent", b"agent", "method", b"method", "originator", b"originator"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -1089,15 +1951,30 @@ class PanicAlarmingTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PanicAlarmingStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PanicAlarmingTrait._PanicAlarmingState.ValueType], _builtins.type):
+    class _PanicAlarmingStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PanicAlarmingTrait._PanicAlarmingState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PANIC_ALARMING_STATE_UNSPECIFIED: PanicAlarmingTrait._PanicAlarmingState.ValueType  # 0
+        PANIC_ALARMING_STATE_UNSPECIFIED: (
+            PanicAlarmingTrait._PanicAlarmingState.ValueType
+        )  # 0
         PANIC_ALARMING_STATE_IDLE: PanicAlarmingTrait._PanicAlarmingState.ValueType  # 1
-        PANIC_ALARMING_STATE_PREPANIC: PanicAlarmingTrait._PanicAlarmingState.ValueType  # 2
-        PANIC_ALARMING_STATE_PANIC: PanicAlarmingTrait._PanicAlarmingState.ValueType  # 3
+        PANIC_ALARMING_STATE_PREPANIC: (
+            PanicAlarmingTrait._PanicAlarmingState.ValueType
+        )  # 2
+        PANIC_ALARMING_STATE_PANIC: (
+            PanicAlarmingTrait._PanicAlarmingState.ValueType
+        )  # 3
 
-    class PanicAlarmingState(_PanicAlarmingState, metaclass=_PanicAlarmingStateEnumTypeWrapper): ...
-    PANIC_ALARMING_STATE_UNSPECIFIED: PanicAlarmingTrait.PanicAlarmingState.ValueType  # 0
+    class PanicAlarmingState(
+        _PanicAlarmingState, metaclass=_PanicAlarmingStateEnumTypeWrapper
+    ): ...
+    PANIC_ALARMING_STATE_UNSPECIFIED: (
+        PanicAlarmingTrait.PanicAlarmingState.ValueType
+    )  # 0
     PANIC_ALARMING_STATE_IDLE: PanicAlarmingTrait.PanicAlarmingState.ValueType  # 1
     PANIC_ALARMING_STATE_PREPANIC: PanicAlarmingTrait.PanicAlarmingState.ValueType  # 2
     PANIC_ALARMING_STATE_PANIC: PanicAlarmingTrait.PanicAlarmingState.ValueType  # 3
@@ -1106,18 +1983,42 @@ class PanicAlarmingTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PanicAlarmingStateResponseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType], _builtins.type):
+    class _PanicAlarmingStateResponseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED: PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType  # 0
-        PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS: PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType  # 1
-        PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY: PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType  # 2
-        PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST: PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType  # 3
+        PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED: (
+            PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType
+        )  # 0
+        PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS: (
+            PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType
+        )  # 1
+        PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY: (
+            PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType
+        )  # 2
+        PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST: (
+            PanicAlarmingTrait._PanicAlarmingStateResponseType.ValueType
+        )  # 3
 
-    class PanicAlarmingStateResponseType(_PanicAlarmingStateResponseType, metaclass=_PanicAlarmingStateResponseTypeEnumTypeWrapper): ...
-    PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED: PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType  # 0
-    PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS: PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType  # 1
-    PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY: PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType  # 2
-    PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST: PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType  # 3
+    class PanicAlarmingStateResponseType(
+        _PanicAlarmingStateResponseType,
+        metaclass=_PanicAlarmingStateResponseTypeEnumTypeWrapper,
+    ): ...
+    PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED: (
+        PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+    )  # 0
+    PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS: (
+        PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+    )  # 1
+    PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY: (
+        PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+    )  # 2
+    PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST: (
+        PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+    )  # 3
 
     @_typing.final
     class PanicAlarmingStateRequest(_message.Message):
@@ -1125,7 +2026,9 @@ class PanicAlarmingTrait(_message.Message):
 
         TARGETPANICALARMINGSTATE_FIELD_NUMBER: _builtins.int
         PANICALARMACTOR_FIELD_NUMBER: _builtins.int
-        targetPanicAlarmingState: Global___PanicAlarmingTrait.PanicAlarmingState.ValueType
+        targetPanicAlarmingState: (
+            Global___PanicAlarmingTrait.PanicAlarmingState.ValueType
+        )
         @_builtins.property
         def panicAlarmActor(self) -> Global___SecurityActor.SecurityActorStruct: ...
         def __init__(
@@ -1134,9 +2037,16 @@ class PanicAlarmingTrait(_message.Message):
             targetPanicAlarmingState: Global___PanicAlarmingTrait.PanicAlarmingState.ValueType = ...,
             panicAlarmActor: Global___SecurityActor.SecurityActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "panicAlarmActor", b"panicAlarmActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor", "targetPanicAlarmingState", b"targetPanicAlarmingState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "panicAlarmActor",
+            b"panicAlarmActor",
+            "targetPanicAlarmingState",
+            b"targetPanicAlarmingState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1144,13 +2054,17 @@ class PanicAlarmingTrait(_message.Message):
         DESCRIPTOR: _descriptor.Descriptor
 
         RESPONSETYPE_FIELD_NUMBER: _builtins.int
-        responseType: Global___PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+        responseType: (
+            Global___PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType
+        )
         def __init__(
             self,
             *,
             responseType: Global___PanicAlarmingTrait.PanicAlarmingStateResponseType.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["responseType", b"responseType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "responseType", b"responseType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1161,7 +2075,9 @@ class PanicAlarmingTrait(_message.Message):
         PRIORPANICALARMINGSTATE_FIELD_NUMBER: _builtins.int
         PANICALARMACTOR_FIELD_NUMBER: _builtins.int
         panicAlarmingState: Global___PanicAlarmingTrait.PanicAlarmingState.ValueType
-        priorPanicAlarmingState: Global___PanicAlarmingTrait.PanicAlarmingState.ValueType
+        priorPanicAlarmingState: (
+            Global___PanicAlarmingTrait.PanicAlarmingState.ValueType
+        )
         @_builtins.property
         def panicAlarmActor(self) -> Global___SecurityActor.SecurityActorStruct: ...
         def __init__(
@@ -1171,9 +2087,18 @@ class PanicAlarmingTrait(_message.Message):
             priorPanicAlarmingState: Global___PanicAlarmingTrait.PanicAlarmingState.ValueType = ...,
             panicAlarmActor: Global___SecurityActor.SecurityActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "panicAlarmActor", b"panicAlarmActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor", "panicAlarmingState", b"panicAlarmingState", "priorPanicAlarmingState", b"priorPanicAlarmingState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "panicAlarmActor",
+            b"panicAlarmActor",
+            "panicAlarmingState",
+            b"panicAlarmingState",
+            "priorPanicAlarmingState",
+            b"priorPanicAlarmingState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     PANICALARMINGSTATE_FIELD_NUMBER: _builtins.int
@@ -1191,9 +2116,18 @@ class PanicAlarmingTrait(_message.Message):
         panicAlarmActor: Global___SecurityActor.SecurityActorStruct | None = ...,
         panicTime: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor", "panicTime", b"panicTime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "panicAlarmActor", b"panicAlarmActor", "panicTime", b"panicTime"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["panicAlarmActor", b"panicAlarmActor", "panicAlarmingState", b"panicAlarmingState", "panicTime", b"panicTime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "panicAlarmActor",
+        b"panicAlarmActor",
+        "panicAlarmingState",
+        b"panicAlarmingState",
+        "panicTime",
+        b"panicTime",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PanicAlarmingTrait: _TypeAlias = PanicAlarmingTrait  # noqa: Y015
@@ -1208,13 +2142,22 @@ class SecurityIssuesAndExceptionsTrait(_message.Message):
 
         BLOCKINGISSUESET_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def blockingIssueSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def blockingIssueSet(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         def __init__(
             self,
             *,
-            blockingIssueSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            blockingIssueSet: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["blockingIssueSet", b"blockingIssueSet"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "blockingIssueSet", b"blockingIssueSet"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1223,13 +2166,22 @@ class SecurityIssuesAndExceptionsTrait(_message.Message):
 
         NONBLOCKINGISSUESET_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def nonblockingIssueSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def nonblockingIssueSet(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         def __init__(
             self,
             *,
-            nonblockingIssueSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            nonblockingIssueSet: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["nonblockingIssueSet", b"nonblockingIssueSet"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "nonblockingIssueSet", b"nonblockingIssueSet"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1238,13 +2190,22 @@ class SecurityIssuesAndExceptionsTrait(_message.Message):
 
         EXCEPTIONSET_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def exceptionSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def exceptionSet(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         def __init__(
             self,
             *,
-            exceptionSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            exceptionSet: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["exceptionSet", b"exceptionSet"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "exceptionSet", b"exceptionSet"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1253,11 +2214,18 @@ class SecurityIssuesAndExceptionsTrait(_message.Message):
 
         ISSUESET_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def issueSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+        def issueSet(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]: ...
         def __init__(
             self,
             *,
-            issueSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+            issueSet: _abc.Iterable[
+                Global___SecurityDecisionFact.SecurityDecisionFactStruct
+            ]
+            | None = ...,
         ) -> None: ...
         _ClearFieldArgType: _TypeAlias = _typing.Literal["issueSet", b"issueSet"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -1266,19 +2234,47 @@ class SecurityIssuesAndExceptionsTrait(_message.Message):
     NONBLOCKINGISSUESET_FIELD_NUMBER: _builtins.int
     EXCEPTIONSET_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def blockingIssueSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+    def blockingIssueSet(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SecurityDecisionFact.SecurityDecisionFactStruct
+    ]: ...
     @_builtins.property
-    def nonblockingIssueSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+    def nonblockingIssueSet(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SecurityDecisionFact.SecurityDecisionFactStruct
+    ]: ...
     @_builtins.property
-    def exceptionSet(self) -> _containers.RepeatedCompositeFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactStruct]: ...
+    def exceptionSet(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SecurityDecisionFact.SecurityDecisionFactStruct
+    ]: ...
     def __init__(
         self,
         *,
-        blockingIssueSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
-        nonblockingIssueSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
-        exceptionSet: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactStruct] | None = ...,
+        blockingIssueSet: _abc.Iterable[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]
+        | None = ...,
+        nonblockingIssueSet: _abc.Iterable[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]
+        | None = ...,
+        exceptionSet: _abc.Iterable[
+            Global___SecurityDecisionFact.SecurityDecisionFactStruct
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["blockingIssueSet", b"blockingIssueSet", "exceptionSet", b"exceptionSet", "nonblockingIssueSet", b"nonblockingIssueSet"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "blockingIssueSet",
+        b"blockingIssueSet",
+        "exceptionSet",
+        b"exceptionSet",
+        "nonblockingIssueSet",
+        b"nonblockingIssueSet",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityIssuesAndExceptionsTrait: _TypeAlias = SecurityIssuesAndExceptionsTrait  # noqa: Y015
@@ -1291,41 +2287,97 @@ class SecurityIntrusionSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _IntrusionActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityIntrusionSettingsTrait._IntrusionAction.ValueType], _builtins.type):
+    class _IntrusionActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityIntrusionSettingsTrait._IntrusionAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        INTRUSION_ACTION_UNSPECIFIED: SecurityIntrusionSettingsTrait._IntrusionAction.ValueType  # 0
-        INTRUSION_ACTION_NONE: SecurityIntrusionSettingsTrait._IntrusionAction.ValueType  # 1
-        INTRUSION_ACTION_PREALARM: SecurityIntrusionSettingsTrait._IntrusionAction.ValueType  # 2
-        INTRUSION_ACTION_INSTANTALARM: SecurityIntrusionSettingsTrait._IntrusionAction.ValueType  # 3
+        INTRUSION_ACTION_UNSPECIFIED: (
+            SecurityIntrusionSettingsTrait._IntrusionAction.ValueType
+        )  # 0
+        INTRUSION_ACTION_NONE: (
+            SecurityIntrusionSettingsTrait._IntrusionAction.ValueType
+        )  # 1
+        INTRUSION_ACTION_PREALARM: (
+            SecurityIntrusionSettingsTrait._IntrusionAction.ValueType
+        )  # 2
+        INTRUSION_ACTION_INSTANTALARM: (
+            SecurityIntrusionSettingsTrait._IntrusionAction.ValueType
+        )  # 3
 
-    class IntrusionAction(_IntrusionAction, metaclass=_IntrusionActionEnumTypeWrapper): ...
-    INTRUSION_ACTION_UNSPECIFIED: SecurityIntrusionSettingsTrait.IntrusionAction.ValueType  # 0
+    class IntrusionAction(
+        _IntrusionAction, metaclass=_IntrusionActionEnumTypeWrapper
+    ): ...
+    INTRUSION_ACTION_UNSPECIFIED: (
+        SecurityIntrusionSettingsTrait.IntrusionAction.ValueType
+    )  # 0
     INTRUSION_ACTION_NONE: SecurityIntrusionSettingsTrait.IntrusionAction.ValueType  # 1
-    INTRUSION_ACTION_PREALARM: SecurityIntrusionSettingsTrait.IntrusionAction.ValueType  # 2
-    INTRUSION_ACTION_INSTANTALARM: SecurityIntrusionSettingsTrait.IntrusionAction.ValueType  # 3
+    INTRUSION_ACTION_PREALARM: (
+        SecurityIntrusionSettingsTrait.IntrusionAction.ValueType
+    )  # 2
+    INTRUSION_ACTION_INSTANTALARM: (
+        SecurityIntrusionSettingsTrait.IntrusionAction.ValueType
+    )  # 3
 
     class _ExpandedSecurityState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ExpandedSecurityStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType], _builtins.type):
+    class _ExpandedSecurityStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        EXPANDED_SECURITY_STATE_UNSPECIFIED: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 0
-        EXPANDED_SECURITY_STATE_DISARMED: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 1
-        EXPANDED_SECURITY_STATE_ARMED_SL1: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 2
-        EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 3
-        EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 4
-        EXPANDED_SECURITY_STATE_ARMED_SL2: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 5
-        EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE: SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType  # 6
+        EXPANDED_SECURITY_STATE_UNSPECIFIED: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 0
+        EXPANDED_SECURITY_STATE_DISARMED: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 1
+        EXPANDED_SECURITY_STATE_ARMED_SL1: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 2
+        EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 3
+        EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 4
+        EXPANDED_SECURITY_STATE_ARMED_SL2: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 5
+        EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE: (
+            SecurityIntrusionSettingsTrait._ExpandedSecurityState.ValueType
+        )  # 6
 
-    class ExpandedSecurityState(_ExpandedSecurityState, metaclass=_ExpandedSecurityStateEnumTypeWrapper): ...
-    EXPANDED_SECURITY_STATE_UNSPECIFIED: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 0
-    EXPANDED_SECURITY_STATE_DISARMED: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 1
-    EXPANDED_SECURITY_STATE_ARMED_SL1: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 2
-    EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 3
-    EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 4
-    EXPANDED_SECURITY_STATE_ARMED_SL2: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 5
-    EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE: SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType  # 6
+    class ExpandedSecurityState(
+        _ExpandedSecurityState, metaclass=_ExpandedSecurityStateEnumTypeWrapper
+    ): ...
+    EXPANDED_SECURITY_STATE_UNSPECIFIED: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 0
+    EXPANDED_SECURITY_STATE_DISARMED: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 1
+    EXPANDED_SECURITY_STATE_ARMED_SL1: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 2
+    EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 3
+    EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 4
+    EXPANDED_SECURITY_STATE_ARMED_SL2: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 5
+    EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE: (
+        SecurityIntrusionSettingsTrait.ExpandedSecurityState.ValueType
+    )  # 6
 
     @_typing.final
     class CustomIntrusionRulesEntry(_message.Message):
@@ -1335,16 +2387,21 @@ class SecurityIntrusionSettingsTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule: ...
+        def value(
+            self,
+        ) -> Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule | None = ...,
+            value: Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1370,21 +2427,42 @@ class SecurityIntrusionSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["action", b"action", "deviceId", b"deviceId", "factType", b"factType", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "action",
+            b"action",
+            "deviceId",
+            b"deviceId",
+            "factType",
+            b"factType",
+            "state",
+            b"state",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     AMBIENTMOTIONFORINTRUSIONENABLED_FIELD_NUMBER: _builtins.int
     CUSTOMINTRUSIONRULES_FIELD_NUMBER: _builtins.int
     ambientMotionForIntrusionEnabled: _builtins.bool
     @_builtins.property
-    def customIntrusionRules(self) -> _containers.MessageMap[_builtins.int, Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule]: ...
+    def customIntrusionRules(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule
+    ]: ...
     def __init__(
         self,
         *,
         ambientMotionForIntrusionEnabled: _builtins.bool = ...,
-        customIntrusionRules: _abc.Mapping[_builtins.int, Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule] | None = ...,
+        customIntrusionRules: _abc.Mapping[
+            _builtins.int, Global___SecurityIntrusionSettingsTrait.CustomIntrusionRule
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ambientMotionForIntrusionEnabled", b"ambientMotionForIntrusionEnabled", "customIntrusionRules", b"customIntrusionRules"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ambientMotionForIntrusionEnabled",
+        b"ambientMotionForIntrusionEnabled",
+        "customIntrusionRules",
+        b"customIntrusionRules",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityIntrusionSettingsTrait: _TypeAlias = SecurityIntrusionSettingsTrait  # noqa: Y015
@@ -1397,14 +2475,27 @@ class SecurityActionOnUnlockSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SecurityActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType], _builtins.type):
+    class _SecurityActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SECURITY_ACTION_UNSPECIFIED: SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType  # 0
-        SECURITY_ACTION_DISARM_TO_SL0: SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType  # 1
+        SECURITY_ACTION_UNSPECIFIED: (
+            SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType
+        )  # 0
+        SECURITY_ACTION_DISARM_TO_SL0: (
+            SecurityActionOnUnlockSettingsTrait._SecurityAction.ValueType
+        )  # 1
 
     class SecurityAction(_SecurityAction, metaclass=_SecurityActionEnumTypeWrapper): ...
-    SECURITY_ACTION_UNSPECIFIED: SecurityActionOnUnlockSettingsTrait.SecurityAction.ValueType  # 0
-    SECURITY_ACTION_DISARM_TO_SL0: SecurityActionOnUnlockSettingsTrait.SecurityAction.ValueType  # 1
+    SECURITY_ACTION_UNSPECIFIED: (
+        SecurityActionOnUnlockSettingsTrait.SecurityAction.ValueType
+    )  # 0
+    SECURITY_ACTION_DISARM_TO_SL0: (
+        SecurityActionOnUnlockSettingsTrait.SecurityAction.ValueType
+    )  # 1
 
     ENABLED_FIELD_NUMBER: _builtins.int
     ACTION_FIELD_NUMBER: _builtins.int
@@ -1416,10 +2507,14 @@ class SecurityActionOnUnlockSettingsTrait(_message.Message):
         enabled: _builtins.bool = ...,
         action: Global___SecurityActionOnUnlockSettingsTrait.SecurityAction.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["action", b"action", "enabled", b"enabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "action", b"action", "enabled", b"enabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___SecurityActionOnUnlockSettingsTrait: _TypeAlias = SecurityActionOnUnlockSettingsTrait  # noqa: Y015
+Global___SecurityActionOnUnlockSettingsTrait: _TypeAlias = (
+    SecurityActionOnUnlockSettingsTrait  # noqa: Y015
+)
 
 @_typing.final
 class SecurityAlarmingSettingsTrait(_message.Message):
@@ -1433,16 +2528,21 @@ class SecurityAlarmingSettingsTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule: ...
+        def value(
+            self,
+        ) -> Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule | None = ...,
+            value: Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1467,9 +2567,20 @@ class SecurityAlarmingSettingsTrait(_message.Message):
             factType: Global___SecurityDecisionFact.SecurityDecisionFactType.ValueType = ...,
             prealarmDuration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "prealarmDuration", b"prealarmDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId", b"deviceId", "prealarmDuration", b"prealarmDuration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "factType", b"factType", "prealarmDuration", b"prealarmDuration", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId",
+            b"deviceId",
+            "factType",
+            b"factType",
+            "prealarmDuration",
+            b"prealarmDuration",
+            "state",
+            b"state",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     PREALARMINGDURATION_FIELD_NUMBER: _builtins.int
@@ -1481,20 +2592,48 @@ class SecurityAlarmingSettingsTrait(_message.Message):
     @_builtins.property
     def prealarmingDurationSl1(self) -> _duration_pb2.Duration: ...
     @_builtins.property
-    def customPrealarmDurationRules(self) -> _containers.MessageMap[_builtins.int, Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule]: ...
+    def customPrealarmDurationRules(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule
+    ]: ...
     @_builtins.property
-    def advancedModeExceptions(self) -> _containers.RepeatedScalarFieldContainer[Global___SecurityDecisionFact.SecurityDecisionFactType.ValueType]: ...
+    def advancedModeExceptions(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___SecurityDecisionFact.SecurityDecisionFactType.ValueType
+    ]: ...
     def __init__(
         self,
         *,
         prealarmingDuration: _duration_pb2.Duration | None = ...,
         prealarmingDurationSl1: _duration_pb2.Duration | None = ...,
-        customPrealarmDurationRules: _abc.Mapping[_builtins.int, Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule] | None = ...,
-        advancedModeExceptions: _abc.Iterable[Global___SecurityDecisionFact.SecurityDecisionFactType.ValueType] | None = ...,
+        customPrealarmDurationRules: _abc.Mapping[
+            _builtins.int, Global___SecurityAlarmingSettingsTrait.CustomPreAlarmRule
+        ]
+        | None = ...,
+        advancedModeExceptions: _abc.Iterable[
+            Global___SecurityDecisionFact.SecurityDecisionFactType.ValueType
+        ]
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["prealarmingDuration", b"prealarmingDuration", "prealarmingDurationSl1", b"prealarmingDurationSl1"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "prealarmingDuration",
+        b"prealarmingDuration",
+        "prealarmingDurationSl1",
+        b"prealarmingDurationSl1",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["advancedModeExceptions", b"advancedModeExceptions", "customPrealarmDurationRules", b"customPrealarmDurationRules", "prealarmingDuration", b"prealarmingDuration", "prealarmingDurationSl1", b"prealarmingDurationSl1"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "advancedModeExceptions",
+        b"advancedModeExceptions",
+        "customPrealarmDurationRules",
+        b"customPrealarmDurationRules",
+        "prealarmingDuration",
+        b"prealarmingDuration",
+        "prealarmingDurationSl1",
+        b"prealarmingDurationSl1",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityAlarmingSettingsTrait: _TypeAlias = SecurityAlarmingSettingsTrait  # noqa: Y015
@@ -1520,7 +2659,14 @@ class SecurityOpenCloseTrait(_message.Message):
             priorOpenCloseState: _detector_pb2.OpenCloseTrait.OpenCloseState.ValueType = ...,
             bypassRequested: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bypassRequested", b"bypassRequested", "openCloseState", b"openCloseState", "priorOpenCloseState", b"priorOpenCloseState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bypassRequested",
+            b"bypassRequested",
+            "openCloseState",
+            b"openCloseState",
+            "priorOpenCloseState",
+            b"priorOpenCloseState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     OPENCLOSESTATE_FIELD_NUMBER: _builtins.int
@@ -1541,9 +2687,20 @@ class SecurityOpenCloseTrait(_message.Message):
         firstObservedAtMs: _timestamp_pb2.Timestamp | None = ...,
         bypassRequested: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bypassRequested", b"bypassRequested", "firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs", "openCloseState", b"openCloseState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "bypassRequested",
+        b"bypassRequested",
+        "firstObservedAt",
+        b"firstObservedAt",
+        "firstObservedAtMs",
+        b"firstObservedAtMs",
+        "openCloseState",
+        b"openCloseState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityOpenCloseTrait: _TypeAlias = SecurityOpenCloseTrait  # noqa: Y015
@@ -1582,19 +2739,39 @@ class EnhancedBoltLockSettingsTrait(_message.Message):
     @_builtins.property
     def autoRelockDuration(self) -> _duration_pb2.Duration: ...
     @_builtins.property
-    def ignoreAutoRelockOnStructureMode(self) -> _containers.RepeatedScalarFieldContainer[_occupancy_pb2.StructureModeTrait.StructureMode.ValueType]: ...
+    def ignoreAutoRelockOnStructureMode(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        _occupancy_pb2.StructureModeTrait.StructureMode.ValueType
+    ]: ...
     def __init__(
         self,
         *,
         autoRelockOn: _builtins.bool = ...,
         autoRelockDuration: _duration_pb2.Duration | None = ...,
-        ignoreAutoRelockOnStructureMode: _abc.Iterable[_occupancy_pb2.StructureModeTrait.StructureMode.ValueType] | None = ...,
+        ignoreAutoRelockOnStructureMode: _abc.Iterable[
+            _occupancy_pb2.StructureModeTrait.StructureMode.ValueType
+        ]
+        | None = ...,
         oneTouchLock: _builtins.bool = ...,
         homeAwayAssistLockOn: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["autoRelockDuration", b"autoRelockDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "autoRelockDuration", b"autoRelockDuration"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["autoRelockDuration", b"autoRelockDuration", "autoRelockOn", b"autoRelockOn", "homeAwayAssistLockOn", b"homeAwayAssistLockOn", "ignoreAutoRelockOnStructureMode", b"ignoreAutoRelockOnStructureMode", "oneTouchLock", b"oneTouchLock"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "autoRelockDuration",
+        b"autoRelockDuration",
+        "autoRelockOn",
+        b"autoRelockOn",
+        "homeAwayAssistLockOn",
+        b"homeAwayAssistLockOn",
+        "ignoreAutoRelockOnStructureMode",
+        b"ignoreAutoRelockOnStructureMode",
+        "oneTouchLock",
+        b"oneTouchLock",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EnhancedBoltLockSettingsTrait: _TypeAlias = EnhancedBoltLockSettingsTrait  # noqa: Y015
@@ -1610,10 +2787,14 @@ class SecurityActionOnNFCTokenGlobalSettingsTrait(_message.Message):
         *,
         featureEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["featureEnabled", b"featureEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "featureEnabled", b"featureEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___SecurityActionOnNFCTokenGlobalSettingsTrait: _TypeAlias = SecurityActionOnNFCTokenGlobalSettingsTrait  # noqa: Y015
+Global___SecurityActionOnNFCTokenGlobalSettingsTrait: _TypeAlias = (
+    SecurityActionOnNFCTokenGlobalSettingsTrait  # noqa: Y015
+)
 
 @_typing.final
 class SecurityActionOnNFCTokenSettingsTrait(_message.Message):
@@ -1626,10 +2807,14 @@ class SecurityActionOnNFCTokenSettingsTrait(_message.Message):
         *,
         featureEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["featureEnabled", b"featureEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "featureEnabled", b"featureEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___SecurityActionOnNFCTokenSettingsTrait: _TypeAlias = SecurityActionOnNFCTokenSettingsTrait  # noqa: Y015
+Global___SecurityActionOnNFCTokenSettingsTrait: _TypeAlias = (
+    SecurityActionOnNFCTokenSettingsTrait  # noqa: Y015
+)
 
 @_typing.final
 class SecurityArmCommandSettingsTrait(_message.Message):
@@ -1674,9 +2859,22 @@ class SecurityArmSettingsTrait(_message.Message):
         structureModeLinkingEnabled: _builtins.bool = ...,
         disarmOnDoorUnlock: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["exitAllowanceDuration", b"exitAllowanceDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "exitAllowanceDuration", b"exitAllowanceDuration"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["armingRequiresAuth", b"armingRequiresAuth", "disarmOnDoorUnlock", b"disarmOnDoorUnlock", "exitAllowanceDuration", b"exitAllowanceDuration", "ignoringIssuesRequiresAuth", b"ignoringIssuesRequiresAuth", "structureModeLinkingEnabled", b"structureModeLinkingEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "armingRequiresAuth",
+        b"armingRequiresAuth",
+        "disarmOnDoorUnlock",
+        b"disarmOnDoorUnlock",
+        "exitAllowanceDuration",
+        b"exitAllowanceDuration",
+        "ignoringIssuesRequiresAuth",
+        b"ignoringIssuesRequiresAuth",
+        "structureModeLinkingEnabled",
+        b"structureModeLinkingEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SecurityArmSettingsTrait: _TypeAlias = SecurityArmSettingsTrait  # noqa: Y015

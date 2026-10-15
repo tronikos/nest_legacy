@@ -27,13 +27,18 @@ class OpenCloseTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _OpenCloseStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[OpenCloseTrait._OpenCloseState.ValueType], _builtins.type):
+    class _OpenCloseStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[OpenCloseTrait._OpenCloseState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         OPEN_CLOSE_STATE_UNSPECIFIED: OpenCloseTrait._OpenCloseState.ValueType  # 0
         OPEN_CLOSE_STATE_CLOSED: OpenCloseTrait._OpenCloseState.ValueType  # 1
         OPEN_CLOSE_STATE_OPEN: OpenCloseTrait._OpenCloseState.ValueType  # 2
         OPEN_CLOSE_STATE_UNKNOWN: OpenCloseTrait._OpenCloseState.ValueType  # 3
-        OPEN_CLOSE_STATE_INVALID_CALIBRATION: OpenCloseTrait._OpenCloseState.ValueType  # 4
+        OPEN_CLOSE_STATE_INVALID_CALIBRATION: (
+            OpenCloseTrait._OpenCloseState.ValueType
+        )  # 4
 
     class OpenCloseState(_OpenCloseState, metaclass=_OpenCloseStateEnumTypeWrapper): ...
     OPEN_CLOSE_STATE_UNSPECIFIED: OpenCloseTrait.OpenCloseState.ValueType  # 0
@@ -56,7 +61,12 @@ class OpenCloseTrait(_message.Message):
             openCloseState: Global___OpenCloseTrait.OpenCloseState.ValueType = ...,
             priorOpenCloseState: Global___OpenCloseTrait.OpenCloseState.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["openCloseState", b"openCloseState", "priorOpenCloseState", b"priorOpenCloseState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "openCloseState",
+            b"openCloseState",
+            "priorOpenCloseState",
+            b"priorOpenCloseState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     OPENCLOSESTATE_FIELD_NUMBER: _builtins.int
@@ -74,9 +84,18 @@ class OpenCloseTrait(_message.Message):
         firstObservedAt: _timestamp_pb2.Timestamp | None = ...,
         firstObservedAtMs: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs", "openCloseState", b"openCloseState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "firstObservedAt",
+        b"firstObservedAt",
+        "firstObservedAtMs",
+        b"firstObservedAtMs",
+        "openCloseState",
+        b"openCloseState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___OpenCloseTrait: _TypeAlias = OpenCloseTrait  # noqa: Y015
@@ -101,9 +120,13 @@ class AmbientMotionTrait(_message.Message):
             startMotion: _timestamp_pb2.Timestamp | None = ...,
             maxHoldOff: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["maxHoldOff", b"maxHoldOff", "startMotion", b"startMotion"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "maxHoldOff", b"maxHoldOff", "startMotion", b"startMotion"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["maxHoldOff", b"maxHoldOff", "startMotion", b"startMotion"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "maxHoldOff", b"maxHoldOff", "startMotion", b"startMotion"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -123,7 +146,9 @@ class AmbientMotionSettingsTrait(_message.Message):
         *,
         enableDetection: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enableDetection", b"enableDetection"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enableDetection", b"enableDetection"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AmbientMotionSettingsTrait: _TypeAlias = AmbientMotionSettingsTrait  # noqa: Y015
@@ -145,7 +170,9 @@ class AmbientMotionTimingSettingsTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["maxHoldOff", b"maxHoldOff"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["maxHoldOff", b"maxHoldOff", "overrideMaxHoldOff", b"overrideMaxHoldOff"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "maxHoldOff", b"maxHoldOff", "overrideMaxHoldOff", b"overrideMaxHoldOff"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AmbientMotionTimingSettingsTrait: _TypeAlias = AmbientMotionTimingSettingsTrait  # noqa: Y015

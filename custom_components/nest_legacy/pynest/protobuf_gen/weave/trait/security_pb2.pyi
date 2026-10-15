@@ -31,41 +31,99 @@ class UserPincodesSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PincodeErrorCodesEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UserPincodesSettingsTrait._PincodeErrorCodes.ValueType], _builtins.type):
+    class _PincodeErrorCodesEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PINCODE_ERROR_CODES_UNSPECIFIED: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 0
-        PINCODE_ERROR_CODES_DUPLICATE_PINCODE: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 1
-        PINCODE_ERROR_CODES_TOO_MANY_PINCODES: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 2
-        PINCODE_ERROR_CODES_INVALID_PINCODE: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 3
-        PINCODE_ERROR_CODES_SUCCESS_PINCODE_DELETED: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 4
-        PINCODE_ERROR_CODES_SUCCESS_PINCODE_STATUS: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 5
-        PINCODE_ERROR_CODES_DUPLICATE_NONCE: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 6
-        PINCODE_ERROR_CODES_EXCEEDED_RATE_LIMIT: UserPincodesSettingsTrait._PincodeErrorCodes.ValueType  # 7
+        PINCODE_ERROR_CODES_UNSPECIFIED: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 0
+        PINCODE_ERROR_CODES_DUPLICATE_PINCODE: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 1
+        PINCODE_ERROR_CODES_TOO_MANY_PINCODES: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 2
+        PINCODE_ERROR_CODES_INVALID_PINCODE: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 3
+        PINCODE_ERROR_CODES_SUCCESS_PINCODE_DELETED: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 4
+        PINCODE_ERROR_CODES_SUCCESS_PINCODE_STATUS: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 5
+        PINCODE_ERROR_CODES_DUPLICATE_NONCE: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 6
+        PINCODE_ERROR_CODES_EXCEEDED_RATE_LIMIT: (
+            UserPincodesSettingsTrait._PincodeErrorCodes.ValueType
+        )  # 7
 
-    class PincodeErrorCodes(_PincodeErrorCodes, metaclass=_PincodeErrorCodesEnumTypeWrapper): ...
-    PINCODE_ERROR_CODES_UNSPECIFIED: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 0
-    PINCODE_ERROR_CODES_DUPLICATE_PINCODE: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 1
-    PINCODE_ERROR_CODES_TOO_MANY_PINCODES: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 2
-    PINCODE_ERROR_CODES_INVALID_PINCODE: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 3
-    PINCODE_ERROR_CODES_SUCCESS_PINCODE_DELETED: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 4
-    PINCODE_ERROR_CODES_SUCCESS_PINCODE_STATUS: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 5
-    PINCODE_ERROR_CODES_DUPLICATE_NONCE: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 6
-    PINCODE_ERROR_CODES_EXCEEDED_RATE_LIMIT: UserPincodesSettingsTrait.PincodeErrorCodes.ValueType  # 7
+    class PincodeErrorCodes(
+        _PincodeErrorCodes, metaclass=_PincodeErrorCodesEnumTypeWrapper
+    ): ...
+    PINCODE_ERROR_CODES_UNSPECIFIED: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 0
+    PINCODE_ERROR_CODES_DUPLICATE_PINCODE: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 1
+    PINCODE_ERROR_CODES_TOO_MANY_PINCODES: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 2
+    PINCODE_ERROR_CODES_INVALID_PINCODE: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 3
+    PINCODE_ERROR_CODES_SUCCESS_PINCODE_DELETED: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 4
+    PINCODE_ERROR_CODES_SUCCESS_PINCODE_STATUS: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 5
+    PINCODE_ERROR_CODES_DUPLICATE_NONCE: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 6
+    PINCODE_ERROR_CODES_EXCEEDED_RATE_LIMIT: (
+        UserPincodesSettingsTrait.PincodeErrorCodes.ValueType
+    )  # 7
 
     class _PincodeChangeReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PincodeChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UserPincodesSettingsTrait._PincodeChangeReason.ValueType], _builtins.type):
+    class _PincodeChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            UserPincodesSettingsTrait._PincodeChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PINCODE_CHANGE_REASON_UNSPECIFIED: UserPincodesSettingsTrait._PincodeChangeReason.ValueType  # 0
-        PINCODE_CHANGE_REASON_UPDATE: UserPincodesSettingsTrait._PincodeChangeReason.ValueType  # 1
-        PINCODE_CHANGE_REASON_DELETION: UserPincodesSettingsTrait._PincodeChangeReason.ValueType  # 2
+        PINCODE_CHANGE_REASON_UNSPECIFIED: (
+            UserPincodesSettingsTrait._PincodeChangeReason.ValueType
+        )  # 0
+        PINCODE_CHANGE_REASON_UPDATE: (
+            UserPincodesSettingsTrait._PincodeChangeReason.ValueType
+        )  # 1
+        PINCODE_CHANGE_REASON_DELETION: (
+            UserPincodesSettingsTrait._PincodeChangeReason.ValueType
+        )  # 2
 
-    class PincodeChangeReason(_PincodeChangeReason, metaclass=_PincodeChangeReasonEnumTypeWrapper): ...
-    PINCODE_CHANGE_REASON_UNSPECIFIED: UserPincodesSettingsTrait.PincodeChangeReason.ValueType  # 0
-    PINCODE_CHANGE_REASON_UPDATE: UserPincodesSettingsTrait.PincodeChangeReason.ValueType  # 1
-    PINCODE_CHANGE_REASON_DELETION: UserPincodesSettingsTrait.PincodeChangeReason.ValueType  # 2
+    class PincodeChangeReason(
+        _PincodeChangeReason, metaclass=_PincodeChangeReasonEnumTypeWrapper
+    ): ...
+    PINCODE_CHANGE_REASON_UNSPECIFIED: (
+        UserPincodesSettingsTrait.PincodeChangeReason.ValueType
+    )  # 0
+    PINCODE_CHANGE_REASON_UPDATE: (
+        UserPincodesSettingsTrait.PincodeChangeReason.ValueType
+    )  # 1
+    PINCODE_CHANGE_REASON_DELETION: (
+        UserPincodesSettingsTrait.PincodeChangeReason.ValueType
+    )  # 2
 
     @_typing.final
     class UserPincodesEntry(_message.Message):
@@ -84,7 +142,9 @@ class UserPincodesSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -106,9 +166,18 @@ class UserPincodesSettingsTrait(_message.Message):
             pincode: _builtins.bytes = ...,
             pincodeCredentialEnabled: _wrappers_pb2.BoolValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["pincodeCredentialEnabled", b"pincodeCredentialEnabled", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "pincodeCredentialEnabled", b"pincodeCredentialEnabled", "userId", b"userId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["pincode", b"pincode", "pincodeCredentialEnabled", b"pincodeCredentialEnabled", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "pincode",
+            b"pincode",
+            "pincodeCredentialEnabled",
+            b"pincodeCredentialEnabled",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -224,16 +293,25 @@ class UserPincodesSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "reason", b"reason", "userId", b"userId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     USERPINCODES_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def userPincodes(self) -> _containers.MessageMap[_builtins.int, Global___UserPincodesSettingsTrait.UserPincode]: ...
+    def userPincodes(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___UserPincodesSettingsTrait.UserPincode
+    ]: ...
     def __init__(
         self,
         *,
-        userPincodes: _abc.Mapping[_builtins.int, Global___UserPincodesSettingsTrait.UserPincode] | None = ...,
+        userPincodes: _abc.Mapping[
+            _builtins.int, Global___UserPincodesSettingsTrait.UserPincode
+        ]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["userPincodes", b"userPincodes"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -248,7 +326,10 @@ class BoltLockTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoltStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltState.ValueType], _builtins.type):
+    class _BoltStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         BOLT_STATE_UNSPECIFIED: BoltLockTrait._BoltState.ValueType  # 0
         BOLT_STATE_RETRACTED: BoltLockTrait._BoltState.ValueType  # 1
@@ -263,49 +344,101 @@ class BoltLockTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoltLockActorMethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltLockActorMethod.ValueType], _builtins.type):
+    class _BoltLockActorMethodEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        BOLT_LOCK_ACTOR_METHOD_UNSPECIFIED: BoltLockTrait._BoltLockActorMethod.ValueType  # 0
+        BOLT_LOCK_ACTOR_METHOD_UNSPECIFIED: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 0
         BOLT_LOCK_ACTOR_METHOD_OTHER: BoltLockTrait._BoltLockActorMethod.ValueType  # 1
-        BOLT_LOCK_ACTOR_METHOD_PHYSICAL: BoltLockTrait._BoltLockActorMethod.ValueType  # 2
-        BOLT_LOCK_ACTOR_METHOD_KEYPAD_PIN: BoltLockTrait._BoltLockActorMethod.ValueType  # 3
-        BOLT_LOCK_ACTOR_METHOD_LOCAL_IMPLICIT: BoltLockTrait._BoltLockActorMethod.ValueType  # 4
-        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_EXPLICIT: BoltLockTrait._BoltLockActorMethod.ValueType  # 5
-        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_IMPLICIT: BoltLockTrait._BoltLockActorMethod.ValueType  # 6
-        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_OTHER: BoltLockTrait._BoltLockActorMethod.ValueType  # 7
-        BOLT_LOCK_ACTOR_METHOD_REMOTE_DELEGATE: BoltLockTrait._BoltLockActorMethod.ValueType  # 8
-        BOLT_LOCK_ACTOR_METHOD_LOW_POWER_SHUTDOWN: BoltLockTrait._BoltLockActorMethod.ValueType  # 9
-        BOLT_LOCK_ACTOR_METHOD_VOICE_ASSISTANT: BoltLockTrait._BoltLockActorMethod.ValueType  # 10
+        BOLT_LOCK_ACTOR_METHOD_PHYSICAL: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 2
+        BOLT_LOCK_ACTOR_METHOD_KEYPAD_PIN: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 3
+        BOLT_LOCK_ACTOR_METHOD_LOCAL_IMPLICIT: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 4
+        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_EXPLICIT: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 5
+        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_IMPLICIT: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 6
+        BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_OTHER: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 7
+        BOLT_LOCK_ACTOR_METHOD_REMOTE_DELEGATE: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 8
+        BOLT_LOCK_ACTOR_METHOD_LOW_POWER_SHUTDOWN: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 9
+        BOLT_LOCK_ACTOR_METHOD_VOICE_ASSISTANT: (
+            BoltLockTrait._BoltLockActorMethod.ValueType
+        )  # 10
 
-    class BoltLockActorMethod(_BoltLockActorMethod, metaclass=_BoltLockActorMethodEnumTypeWrapper): ...
+    class BoltLockActorMethod(
+        _BoltLockActorMethod, metaclass=_BoltLockActorMethodEnumTypeWrapper
+    ): ...
     BOLT_LOCK_ACTOR_METHOD_UNSPECIFIED: BoltLockTrait.BoltLockActorMethod.ValueType  # 0
     BOLT_LOCK_ACTOR_METHOD_OTHER: BoltLockTrait.BoltLockActorMethod.ValueType  # 1
     BOLT_LOCK_ACTOR_METHOD_PHYSICAL: BoltLockTrait.BoltLockActorMethod.ValueType  # 2
     BOLT_LOCK_ACTOR_METHOD_KEYPAD_PIN: BoltLockTrait.BoltLockActorMethod.ValueType  # 3
-    BOLT_LOCK_ACTOR_METHOD_LOCAL_IMPLICIT: BoltLockTrait.BoltLockActorMethod.ValueType  # 4
-    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_EXPLICIT: BoltLockTrait.BoltLockActorMethod.ValueType  # 5
-    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_IMPLICIT: BoltLockTrait.BoltLockActorMethod.ValueType  # 6
-    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_OTHER: BoltLockTrait.BoltLockActorMethod.ValueType  # 7
-    BOLT_LOCK_ACTOR_METHOD_REMOTE_DELEGATE: BoltLockTrait.BoltLockActorMethod.ValueType  # 8
-    BOLT_LOCK_ACTOR_METHOD_LOW_POWER_SHUTDOWN: BoltLockTrait.BoltLockActorMethod.ValueType  # 9
-    BOLT_LOCK_ACTOR_METHOD_VOICE_ASSISTANT: BoltLockTrait.BoltLockActorMethod.ValueType  # 10
+    BOLT_LOCK_ACTOR_METHOD_LOCAL_IMPLICIT: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 4
+    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_EXPLICIT: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 5
+    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_IMPLICIT: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 6
+    BOLT_LOCK_ACTOR_METHOD_REMOTE_USER_OTHER: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 7
+    BOLT_LOCK_ACTOR_METHOD_REMOTE_DELEGATE: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 8
+    BOLT_LOCK_ACTOR_METHOD_LOW_POWER_SHUTDOWN: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 9
+    BOLT_LOCK_ACTOR_METHOD_VOICE_ASSISTANT: (
+        BoltLockTrait.BoltLockActorMethod.ValueType
+    )  # 10
 
     class _BoltActuatorState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoltActuatorStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltActuatorState.ValueType], _builtins.type):
+    class _BoltActuatorStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltActuatorState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         BOLT_ACTUATOR_STATE_UNSPECIFIED: BoltLockTrait._BoltActuatorState.ValueType  # 0
         BOLT_ACTUATOR_STATE_OK: BoltLockTrait._BoltActuatorState.ValueType  # 1
         BOLT_ACTUATOR_STATE_LOCKING: BoltLockTrait._BoltActuatorState.ValueType  # 2
         BOLT_ACTUATOR_STATE_UNLOCKING: BoltLockTrait._BoltActuatorState.ValueType  # 3
         BOLT_ACTUATOR_STATE_MOVING: BoltLockTrait._BoltActuatorState.ValueType  # 4
-        BOLT_ACTUATOR_STATE_JAMMED_LOCKING: BoltLockTrait._BoltActuatorState.ValueType  # 5
-        BOLT_ACTUATOR_STATE_JAMMED_UNLOCKING: BoltLockTrait._BoltActuatorState.ValueType  # 6
-        BOLT_ACTUATOR_STATE_JAMMED_OTHER: BoltLockTrait._BoltActuatorState.ValueType  # 7
+        BOLT_ACTUATOR_STATE_JAMMED_LOCKING: (
+            BoltLockTrait._BoltActuatorState.ValueType
+        )  # 5
+        BOLT_ACTUATOR_STATE_JAMMED_UNLOCKING: (
+            BoltLockTrait._BoltActuatorState.ValueType
+        )  # 6
+        BOLT_ACTUATOR_STATE_JAMMED_OTHER: (
+            BoltLockTrait._BoltActuatorState.ValueType
+        )  # 7
 
-    class BoltActuatorState(_BoltActuatorState, metaclass=_BoltActuatorStateEnumTypeWrapper): ...
+    class BoltActuatorState(
+        _BoltActuatorState, metaclass=_BoltActuatorStateEnumTypeWrapper
+    ): ...
     BOLT_ACTUATOR_STATE_UNSPECIFIED: BoltLockTrait.BoltActuatorState.ValueType  # 0
     BOLT_ACTUATOR_STATE_OK: BoltLockTrait.BoltActuatorState.ValueType  # 1
     BOLT_ACTUATOR_STATE_LOCKING: BoltLockTrait.BoltActuatorState.ValueType  # 2
@@ -319,14 +452,19 @@ class BoltLockTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoltLockedStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltLockedState.ValueType], _builtins.type):
+    class _BoltLockedStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[BoltLockTrait._BoltLockedState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         BOLT_LOCKED_STATE_UNSPECIFIED: BoltLockTrait._BoltLockedState.ValueType  # 0
         BOLT_LOCKED_STATE_UNLOCKED: BoltLockTrait._BoltLockedState.ValueType  # 1
         BOLT_LOCKED_STATE_LOCKED: BoltLockTrait._BoltLockedState.ValueType  # 2
         BOLT_LOCKED_STATE_UNKNOWN: BoltLockTrait._BoltLockedState.ValueType  # 3
 
-    class BoltLockedState(_BoltLockedState, metaclass=_BoltLockedStateEnumTypeWrapper): ...
+    class BoltLockedState(
+        _BoltLockedState, metaclass=_BoltLockedStateEnumTypeWrapper
+    ): ...
     BOLT_LOCKED_STATE_UNSPECIFIED: BoltLockTrait.BoltLockedState.ValueType  # 0
     BOLT_LOCKED_STATE_UNLOCKED: BoltLockTrait.BoltLockedState.ValueType  # 1
     BOLT_LOCKED_STATE_LOCKED: BoltLockTrait.BoltLockedState.ValueType  # 2
@@ -351,9 +489,13 @@ class BoltLockTrait(_message.Message):
             originator: _common_pb2.ResourceId | None = ...,
             agent: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["agent", b"agent", "originator", b"originator"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "agent", b"agent", "originator", b"originator"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["agent", b"agent", "method", b"method", "originator", b"originator"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "agent", b"agent", "method", b"method", "originator", b"originator"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -371,9 +513,13 @@ class BoltLockTrait(_message.Message):
             state: Global___BoltLockTrait.BoltState.ValueType = ...,
             boltLockActor: Global___BoltLockTrait.BoltLockActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "boltLockActor", b"boltLockActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "boltLockActor", b"boltLockActor", "state", b"state"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -394,9 +540,13 @@ class BoltLockTrait(_message.Message):
             boltLockActor: Global___BoltLockTrait.BoltLockActorStruct | None = ...,
             token: _builtins.bytes = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "boltLockActor", b"boltLockActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor", "state", b"state", "token", b"token"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "boltLockActor", b"boltLockActor", "state", b"state", "token", b"token"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -420,9 +570,20 @@ class BoltLockTrait(_message.Message):
             lockedState: Global___BoltLockTrait.BoltLockedState.ValueType = ...,
             boltLockActor: Global___BoltLockTrait.BoltLockActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "boltLockActor", b"boltLockActor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actuatorState", b"actuatorState", "boltLockActor", b"boltLockActor", "lockedState", b"lockedState", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actuatorState",
+            b"actuatorState",
+            "boltLockActor",
+            b"boltLockActor",
+            "lockedState",
+            b"lockedState",
+            "state",
+            b"state",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STATE_FIELD_NUMBER: _builtins.int
@@ -446,9 +607,25 @@ class BoltLockTrait(_message.Message):
         boltLockActor: Global___BoltLockTrait.BoltLockActorStruct | None = ...,
         lockedStateLastChangedAt: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["boltLockActor", b"boltLockActor", "lockedStateLastChangedAt", b"lockedStateLastChangedAt"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "boltLockActor",
+        b"boltLockActor",
+        "lockedStateLastChangedAt",
+        b"lockedStateLastChangedAt",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["actuatorState", b"actuatorState", "boltLockActor", b"boltLockActor", "lockedState", b"lockedState", "lockedStateLastChangedAt", b"lockedStateLastChangedAt", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "actuatorState",
+        b"actuatorState",
+        "boltLockActor",
+        b"boltLockActor",
+        "lockedState",
+        b"lockedState",
+        "lockedStateLastChangedAt",
+        b"lockedStateLastChangedAt",
+        "state",
+        b"state",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BoltLockTrait: _TypeAlias = BoltLockTrait  # noqa: Y015
@@ -461,22 +638,37 @@ class SensorAssociationTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SensorAssociationTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SensorAssociationTrait._StatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: SensorAssociationTrait._StatusCode.ValueType  # 0
         STATUS_CODE_SUCCESS: SensorAssociationTrait._StatusCode.ValueType  # 1
         STATUS_CODE_FAILURE: SensorAssociationTrait._StatusCode.ValueType  # 2
-        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_OTHER: SensorAssociationTrait._StatusCode.ValueType  # 3
-        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_SELF: SensorAssociationTrait._StatusCode.ValueType  # 4
+        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_OTHER: (
+            SensorAssociationTrait._StatusCode.ValueType
+        )  # 3
+        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_SELF: (
+            SensorAssociationTrait._StatusCode.ValueType
+        )  # 4
         STATUS_CODE_SENSOR_INVALID: SensorAssociationTrait._StatusCode.ValueType  # 5
-        STATUS_CODE_USER_SETTING_INVALID: SensorAssociationTrait._StatusCode.ValueType  # 6
+        STATUS_CODE_USER_SETTING_INVALID: (
+            SensorAssociationTrait._StatusCode.ValueType
+        )  # 6
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
     STATUS_CODE_UNSPECIFIED: SensorAssociationTrait.StatusCode.ValueType  # 0
     STATUS_CODE_SUCCESS: SensorAssociationTrait.StatusCode.ValueType  # 1
     STATUS_CODE_FAILURE: SensorAssociationTrait.StatusCode.ValueType  # 2
-    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_OTHER: SensorAssociationTrait.StatusCode.ValueType  # 3
-    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_SELF: SensorAssociationTrait.StatusCode.ValueType  # 4
+    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_OTHER: (
+        SensorAssociationTrait.StatusCode.ValueType
+    )  # 3
+    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED_SELF: (
+        SensorAssociationTrait.StatusCode.ValueType
+    )  # 4
     STATUS_CODE_SENSOR_INVALID: SensorAssociationTrait.StatusCode.ValueType  # 5
     STATUS_CODE_USER_SETTING_INVALID: SensorAssociationTrait.StatusCode.ValueType  # 6
 
@@ -484,22 +676,53 @@ class SensorAssociationTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SensorAssociationStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SensorAssociationTrait._SensorAssociationStatus.ValueType], _builtins.type):
+    class _SensorAssociationStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SENSOR_ASSOCIATION_STATUS_UNSPECIFIED: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 0
-        SENSOR_ASSOCIATION_STATUS_ASSOCIATED_SELF: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 1
-        SENSOR_ASSOCIATION_STATUS_ASSOCIATED_OTHER: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 2
-        SENSOR_ASSOCIATION_STATUS_DEFAULT: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 3
-        SENSOR_ASSOCIATION_STATUS_ELIGIBLE: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 4
-        SENSOR_ASSOCIATION_STATUS_INELIGIBLE: SensorAssociationTrait._SensorAssociationStatus.ValueType  # 5
+        SENSOR_ASSOCIATION_STATUS_UNSPECIFIED: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 0
+        SENSOR_ASSOCIATION_STATUS_ASSOCIATED_SELF: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 1
+        SENSOR_ASSOCIATION_STATUS_ASSOCIATED_OTHER: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 2
+        SENSOR_ASSOCIATION_STATUS_DEFAULT: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 3
+        SENSOR_ASSOCIATION_STATUS_ELIGIBLE: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 4
+        SENSOR_ASSOCIATION_STATUS_INELIGIBLE: (
+            SensorAssociationTrait._SensorAssociationStatus.ValueType
+        )  # 5
 
-    class SensorAssociationStatus(_SensorAssociationStatus, metaclass=_SensorAssociationStatusEnumTypeWrapper): ...
-    SENSOR_ASSOCIATION_STATUS_UNSPECIFIED: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 0
-    SENSOR_ASSOCIATION_STATUS_ASSOCIATED_SELF: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 1
-    SENSOR_ASSOCIATION_STATUS_ASSOCIATED_OTHER: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 2
-    SENSOR_ASSOCIATION_STATUS_DEFAULT: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 3
-    SENSOR_ASSOCIATION_STATUS_ELIGIBLE: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 4
-    SENSOR_ASSOCIATION_STATUS_INELIGIBLE: SensorAssociationTrait.SensorAssociationStatus.ValueType  # 5
+    class SensorAssociationStatus(
+        _SensorAssociationStatus, metaclass=_SensorAssociationStatusEnumTypeWrapper
+    ): ...
+    SENSOR_ASSOCIATION_STATUS_UNSPECIFIED: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 0
+    SENSOR_ASSOCIATION_STATUS_ASSOCIATED_SELF: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 1
+    SENSOR_ASSOCIATION_STATUS_ASSOCIATED_OTHER: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 2
+    SENSOR_ASSOCIATION_STATUS_DEFAULT: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 3
+    SENSOR_ASSOCIATION_STATUS_ELIGIBLE: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 4
+    SENSOR_ASSOCIATION_STATUS_INELIGIBLE: (
+        SensorAssociationTrait.SensorAssociationStatus.ValueType
+    )  # 5
 
     @_typing.final
     class SetUserSensorAssociationRequest(_message.Message):
@@ -513,9 +736,13 @@ class SensorAssociationTrait(_message.Message):
             *,
             sensorDeviceId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["sensorDeviceId", b"sensorDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "sensorDeviceId", b"sensorDeviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["sensorDeviceId", b"sensorDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "sensorDeviceId", b"sensorDeviceId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -539,38 +766,63 @@ class SensorAssociationTrait(_message.Message):
         DEVICEID_FIELD_NUMBER: _builtins.int
         SENSORASSOCIATIONSTATUS_FIELD_NUMBER: _builtins.int
         SENSORASSOCIATIONSTATUSLIST_FIELD_NUMBER: _builtins.int
-        sensorAssociationStatus: Global___SensorAssociationTrait.SensorAssociationStatus.ValueType
+        sensorAssociationStatus: (
+            Global___SensorAssociationTrait.SensorAssociationStatus.ValueType
+        )
         @_builtins.property
         def deviceId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def sensorAssociationStatusList(self) -> _containers.RepeatedScalarFieldContainer[Global___SensorAssociationTrait.SensorAssociationStatus.ValueType]: ...
+        def sensorAssociationStatusList(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SensorAssociationTrait.SensorAssociationStatus.ValueType
+        ]: ...
         def __init__(
             self,
             *,
             deviceId: _common_pb2.ResourceId | None = ...,
             sensorAssociationStatus: Global___SensorAssociationTrait.SensorAssociationStatus.ValueType = ...,
-            sensorAssociationStatusList: _abc.Iterable[Global___SensorAssociationTrait.SensorAssociationStatus.ValueType] | None = ...,
+            sensorAssociationStatusList: _abc.Iterable[
+                Global___SensorAssociationTrait.SensorAssociationStatus.ValueType
+            ]
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "sensorAssociationStatus", b"sensorAssociationStatus", "sensorAssociationStatusList", b"sensorAssociationStatusList"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId",
+            b"deviceId",
+            "sensorAssociationStatus",
+            b"sensorAssociationStatus",
+            "sensorAssociationStatusList",
+            b"sensorAssociationStatusList",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SENSORS_FIELD_NUMBER: _builtins.int
     ASSOCIATEDSENSORDEVICEID_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def sensors(self) -> _containers.RepeatedCompositeFieldContainer[Global___SensorAssociationTrait.SensorDeviceStatus]: ...
+    def sensors(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SensorAssociationTrait.SensorDeviceStatus
+    ]: ...
     @_builtins.property
     def associatedSensorDeviceId(self) -> _common_pb2.ResourceId: ...
     def __init__(
         self,
         *,
-        sensors: _abc.Iterable[Global___SensorAssociationTrait.SensorDeviceStatus] | None = ...,
+        sensors: _abc.Iterable[Global___SensorAssociationTrait.SensorDeviceStatus]
+        | None = ...,
         associatedSensorDeviceId: _common_pb2.ResourceId | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["associatedSensorDeviceId", b"associatedSensorDeviceId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "associatedSensorDeviceId", b"associatedSensorDeviceId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["associatedSensorDeviceId", b"associatedSensorDeviceId", "sensors", b"sensors"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "associatedSensorDeviceId", b"associatedSensorDeviceId", "sensors", b"sensors"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SensorAssociationTrait: _TypeAlias = SensorAssociationTrait  # noqa: Y015
@@ -583,24 +835,53 @@ class UserNFCTokenManagementTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _NFCTokenEventEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UserNFCTokenManagementTrait._NFCTokenEvent.ValueType], _builtins.type):
+    class _NFCTokenEventEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        NFC_TOKEN_EVENT_UNSPECIFIED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 0
-        NFC_TOKEN_EVENT_PAIRED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 1
-        NFC_TOKEN_EVENT_UNPAIRED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 2
-        NFC_TOKEN_EVENT_STRUCTURE_AUTH: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 3
-        NFC_TOKEN_EVENT_STRUCTURE_UNAUTH: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 4
-        NFC_TOKEN_EVENT_TRANSFERRED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 5
-        NFC_TOKEN_EVENT_DISABLED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 6
-        NFC_TOKEN_EVENT_ENABLED: UserNFCTokenManagementTrait._NFCTokenEvent.ValueType  # 7
+        NFC_TOKEN_EVENT_UNSPECIFIED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 0
+        NFC_TOKEN_EVENT_PAIRED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 1
+        NFC_TOKEN_EVENT_UNPAIRED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 2
+        NFC_TOKEN_EVENT_STRUCTURE_AUTH: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 3
+        NFC_TOKEN_EVENT_STRUCTURE_UNAUTH: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 4
+        NFC_TOKEN_EVENT_TRANSFERRED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 5
+        NFC_TOKEN_EVENT_DISABLED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 6
+        NFC_TOKEN_EVENT_ENABLED: (
+            UserNFCTokenManagementTrait._NFCTokenEvent.ValueType
+        )  # 7
 
     class NFCTokenEvent(_NFCTokenEvent, metaclass=_NFCTokenEventEnumTypeWrapper): ...
-    NFC_TOKEN_EVENT_UNSPECIFIED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 0
+    NFC_TOKEN_EVENT_UNSPECIFIED: (
+        UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+    )  # 0
     NFC_TOKEN_EVENT_PAIRED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 1
     NFC_TOKEN_EVENT_UNPAIRED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 2
-    NFC_TOKEN_EVENT_STRUCTURE_AUTH: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 3
-    NFC_TOKEN_EVENT_STRUCTURE_UNAUTH: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 4
-    NFC_TOKEN_EVENT_TRANSFERRED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 5
+    NFC_TOKEN_EVENT_STRUCTURE_AUTH: (
+        UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+    )  # 3
+    NFC_TOKEN_EVENT_STRUCTURE_UNAUTH: (
+        UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+    )  # 4
+    NFC_TOKEN_EVENT_TRANSFERRED: (
+        UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+    )  # 5
     NFC_TOKEN_EVENT_DISABLED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 6
     NFC_TOKEN_EVENT_ENABLED: UserNFCTokenManagementTrait.NFCTokenEvent.ValueType  # 7
 
@@ -620,9 +901,13 @@ class UserNFCTokenManagementTrait(_message.Message):
             targetUserId: _common_pb2.ResourceId | None = ...,
             tokenDeviceId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["targetUserId", b"targetUserId", "tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "targetUserId", b"targetUserId", "tokenDeviceId", b"tokenDeviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["targetUserId", b"targetUserId", "tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "targetUserId", b"targetUserId", "tokenDeviceId", b"tokenDeviceId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -640,9 +925,13 @@ class UserNFCTokenManagementTrait(_message.Message):
             tokenDeviceId: _common_pb2.ResourceId | None = ...,
             enabled: _builtins.bool = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "tokenDeviceId", b"tokenDeviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enabled", b"enabled", "tokenDeviceId", b"tokenDeviceId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -664,9 +953,18 @@ class UserNFCTokenManagementTrait(_message.Message):
             authorized: _builtins.bool = ...,
             structureId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["structureId", b"structureId", "tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "structureId", b"structureId", "tokenDeviceId", b"tokenDeviceId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["authorized", b"authorized", "structureId", b"structureId", "tokenDeviceId", b"tokenDeviceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "authorized",
+            b"authorized",
+            "structureId",
+            b"structureId",
+            "tokenDeviceId",
+            b"tokenDeviceId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -677,7 +975,9 @@ class UserNFCTokenManagementTrait(_message.Message):
         USERNFCTOKEN_FIELD_NUMBER: _builtins.int
         INITIATINGUSERID_FIELD_NUMBER: _builtins.int
         PREVIOUSUSERID_FIELD_NUMBER: _builtins.int
-        nfcTokenManagementEvent: Global___UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+        nfcTokenManagementEvent: (
+            Global___UserNFCTokenManagementTrait.NFCTokenEvent.ValueType
+        )
         @_builtins.property
         def userNfcToken(self) -> Global___UserNFCTokensTrait.UserNFCTokenData: ...
         @_builtins.property
@@ -692,9 +992,25 @@ class UserNFCTokenManagementTrait(_message.Message):
             initiatingUserId: _common_pb2.ResourceId | None = ...,
             previousUserId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["initiatingUserId", b"initiatingUserId", "previousUserId", b"previousUserId", "userNfcToken", b"userNfcToken"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "initiatingUserId",
+            b"initiatingUserId",
+            "previousUserId",
+            b"previousUserId",
+            "userNfcToken",
+            b"userNfcToken",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["initiatingUserId", b"initiatingUserId", "nfcTokenManagementEvent", b"nfcTokenManagementEvent", "previousUserId", b"previousUserId", "userNfcToken", b"userNfcToken"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "initiatingUserId",
+            b"initiatingUserId",
+            "nfcTokenManagementEvent",
+            b"nfcTokenManagementEvent",
+            "previousUserId",
+            b"previousUserId",
+            "userNfcToken",
+            b"userNfcToken",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -711,32 +1027,68 @@ class PincodeInputTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PincodeEntryResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PincodeInputTrait._PincodeEntryResult.ValueType], _builtins.type):
+    class _PincodeEntryResultEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PINCODE_ENTRY_RESULT_UNSPECIFIED: PincodeInputTrait._PincodeEntryResult.ValueType  # 0
-        PINCODE_ENTRY_RESULT_FAILURE_INVALID_PINCODE: PincodeInputTrait._PincodeEntryResult.ValueType  # 1
-        PINCODE_ENTRY_RESULT_FAILURE_OUT_OF_SCHEDULE: PincodeInputTrait._PincodeEntryResult.ValueType  # 2
-        PINCODE_ENTRY_RESULT_FAILURE_PINCODE_DISABLED: PincodeInputTrait._PincodeEntryResult.ValueType  # 3
-        PINCODE_ENTRY_RESULT_SUCCESS: PincodeInputTrait._PincodeEntryResult.ValueType  # 4
+        PINCODE_ENTRY_RESULT_UNSPECIFIED: (
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        )  # 0
+        PINCODE_ENTRY_RESULT_FAILURE_INVALID_PINCODE: (
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        )  # 1
+        PINCODE_ENTRY_RESULT_FAILURE_OUT_OF_SCHEDULE: (
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        )  # 2
+        PINCODE_ENTRY_RESULT_FAILURE_PINCODE_DISABLED: (
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        )  # 3
+        PINCODE_ENTRY_RESULT_SUCCESS: (
+            PincodeInputTrait._PincodeEntryResult.ValueType
+        )  # 4
 
-    class PincodeEntryResult(_PincodeEntryResult, metaclass=_PincodeEntryResultEnumTypeWrapper): ...
-    PINCODE_ENTRY_RESULT_UNSPECIFIED: PincodeInputTrait.PincodeEntryResult.ValueType  # 0
-    PINCODE_ENTRY_RESULT_FAILURE_INVALID_PINCODE: PincodeInputTrait.PincodeEntryResult.ValueType  # 1
-    PINCODE_ENTRY_RESULT_FAILURE_OUT_OF_SCHEDULE: PincodeInputTrait.PincodeEntryResult.ValueType  # 2
-    PINCODE_ENTRY_RESULT_FAILURE_PINCODE_DISABLED: PincodeInputTrait.PincodeEntryResult.ValueType  # 3
+    class PincodeEntryResult(
+        _PincodeEntryResult, metaclass=_PincodeEntryResultEnumTypeWrapper
+    ): ...
+    PINCODE_ENTRY_RESULT_UNSPECIFIED: (
+        PincodeInputTrait.PincodeEntryResult.ValueType
+    )  # 0
+    PINCODE_ENTRY_RESULT_FAILURE_INVALID_PINCODE: (
+        PincodeInputTrait.PincodeEntryResult.ValueType
+    )  # 1
+    PINCODE_ENTRY_RESULT_FAILURE_OUT_OF_SCHEDULE: (
+        PincodeInputTrait.PincodeEntryResult.ValueType
+    )  # 2
+    PINCODE_ENTRY_RESULT_FAILURE_PINCODE_DISABLED: (
+        PincodeInputTrait.PincodeEntryResult.ValueType
+    )  # 3
     PINCODE_ENTRY_RESULT_SUCCESS: PincodeInputTrait.PincodeEntryResult.ValueType  # 4
 
     class _PincodeInputState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PincodeInputStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PincodeInputTrait._PincodeInputState.ValueType], _builtins.type):
+    class _PincodeInputStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PincodeInputTrait._PincodeInputState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PINCODE_INPUT_STATE_UNSPECIFIED: PincodeInputTrait._PincodeInputState.ValueType  # 0
+        PINCODE_INPUT_STATE_UNSPECIFIED: (
+            PincodeInputTrait._PincodeInputState.ValueType
+        )  # 0
         PINCODE_INPUT_STATE_ENABLED: PincodeInputTrait._PincodeInputState.ValueType  # 1
-        PINCODE_INPUT_STATE_DISABLED: PincodeInputTrait._PincodeInputState.ValueType  # 2
+        PINCODE_INPUT_STATE_DISABLED: (
+            PincodeInputTrait._PincodeInputState.ValueType
+        )  # 2
 
-    class PincodeInputState(_PincodeInputState, metaclass=_PincodeInputStateEnumTypeWrapper): ...
+    class PincodeInputState(
+        _PincodeInputState, metaclass=_PincodeInputStateEnumTypeWrapper
+    ): ...
     PINCODE_INPUT_STATE_UNSPECIFIED: PincodeInputTrait.PincodeInputState.ValueType  # 0
     PINCODE_INPUT_STATE_ENABLED: PincodeInputTrait.PincodeInputState.ValueType  # 1
     PINCODE_INPUT_STATE_DISABLED: PincodeInputTrait.PincodeInputState.ValueType  # 2
@@ -763,9 +1115,20 @@ class PincodeInputTrait(_message.Message):
             invalidEntryCount: _builtins.int = ...,
             pincodeEntryResult: Global___PincodeInputTrait.PincodeEntryResult.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["pincodeCredentialEnabled", b"pincodeCredentialEnabled", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "pincodeCredentialEnabled", b"pincodeCredentialEnabled", "userId", b"userId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["invalidEntryCount", b"invalidEntryCount", "pincodeCredentialEnabled", b"pincodeCredentialEnabled", "pincodeEntryResult", b"pincodeEntryResult", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "invalidEntryCount",
+            b"invalidEntryCount",
+            "pincodeCredentialEnabled",
+            b"pincodeCredentialEnabled",
+            "pincodeEntryResult",
+            b"pincodeEntryResult",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -785,7 +1148,9 @@ class PincodeInputTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["userId", b"userId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["pincodeInputState", b"pincodeInputState", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "pincodeInputState", b"pincodeInputState", "userId", b"userId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     PINCODEINPUTSTATE_FIELD_NUMBER: _builtins.int
@@ -795,7 +1160,9 @@ class PincodeInputTrait(_message.Message):
         *,
         pincodeInputState: Global___PincodeInputTrait.PincodeInputState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["pincodeInputState", b"pincodeInputState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "pincodeInputState", b"pincodeInputState"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PincodeInputTrait: _TypeAlias = PincodeInputTrait  # noqa: Y015
@@ -808,7 +1175,10 @@ class TamperTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TamperStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TamperTrait._TamperState.ValueType], _builtins.type):
+    class _TamperStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[TamperTrait._TamperState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         TAMPER_STATE_UNSPECIFIED: TamperTrait._TamperState.ValueType  # 0
         TAMPER_STATE_CLEAR: TamperTrait._TamperState.ValueType  # 1
@@ -825,18 +1195,41 @@ class TamperTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TamperStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TamperTrait._TamperStateChangeReason.ValueType], _builtins.type):
+    class _TamperStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            TamperTrait._TamperStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        TAMPER_STATE_CHANGE_REASON_UNSPECIFIED: TamperTrait._TamperStateChangeReason.ValueType  # 0
-        TAMPER_STATE_CHANGE_REASON_CLEAR_SECURE: TamperTrait._TamperStateChangeReason.ValueType  # 1
-        TAMPER_STATE_CHANGE_REASON_CLEAR_DISARM: TamperTrait._TamperStateChangeReason.ValueType  # 2
-        TAMPER_STATE_CHANGE_REASON_CLEAR_SNOOZE: TamperTrait._TamperStateChangeReason.ValueType  # 3
+        TAMPER_STATE_CHANGE_REASON_UNSPECIFIED: (
+            TamperTrait._TamperStateChangeReason.ValueType
+        )  # 0
+        TAMPER_STATE_CHANGE_REASON_CLEAR_SECURE: (
+            TamperTrait._TamperStateChangeReason.ValueType
+        )  # 1
+        TAMPER_STATE_CHANGE_REASON_CLEAR_DISARM: (
+            TamperTrait._TamperStateChangeReason.ValueType
+        )  # 2
+        TAMPER_STATE_CHANGE_REASON_CLEAR_SNOOZE: (
+            TamperTrait._TamperStateChangeReason.ValueType
+        )  # 3
 
-    class TamperStateChangeReason(_TamperStateChangeReason, metaclass=_TamperStateChangeReasonEnumTypeWrapper): ...
-    TAMPER_STATE_CHANGE_REASON_UNSPECIFIED: TamperTrait.TamperStateChangeReason.ValueType  # 0
-    TAMPER_STATE_CHANGE_REASON_CLEAR_SECURE: TamperTrait.TamperStateChangeReason.ValueType  # 1
-    TAMPER_STATE_CHANGE_REASON_CLEAR_DISARM: TamperTrait.TamperStateChangeReason.ValueType  # 2
-    TAMPER_STATE_CHANGE_REASON_CLEAR_SNOOZE: TamperTrait.TamperStateChangeReason.ValueType  # 3
+    class TamperStateChangeReason(
+        _TamperStateChangeReason, metaclass=_TamperStateChangeReasonEnumTypeWrapper
+    ): ...
+    TAMPER_STATE_CHANGE_REASON_UNSPECIFIED: (
+        TamperTrait.TamperStateChangeReason.ValueType
+    )  # 0
+    TAMPER_STATE_CHANGE_REASON_CLEAR_SECURE: (
+        TamperTrait.TamperStateChangeReason.ValueType
+    )  # 1
+    TAMPER_STATE_CHANGE_REASON_CLEAR_DISARM: (
+        TamperTrait.TamperStateChangeReason.ValueType
+    )  # 2
+    TAMPER_STATE_CHANGE_REASON_CLEAR_SNOOZE: (
+        TamperTrait.TamperStateChangeReason.ValueType
+    )  # 3
 
     @_typing.final
     class ResetTamperRequest(_message.Message):
@@ -867,9 +1260,20 @@ class TamperTrait(_message.Message):
             reason: Global___TamperTrait.TamperStateChangeReason.ValueType = ...,
             tamperStateChangeTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["tamperStateChangeTime", b"tamperStateChangeTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "tamperStateChangeTime", b"tamperStateChangeTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["priorTamperState", b"priorTamperState", "reason", b"reason", "tamperState", b"tamperState", "tamperStateChangeTime", b"tamperStateChangeTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "priorTamperState",
+            b"priorTamperState",
+            "reason",
+            b"reason",
+            "tamperState",
+            b"tamperState",
+            "tamperStateChangeTime",
+            b"tamperStateChangeTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TAMPERSTATE_FIELD_NUMBER: _builtins.int
@@ -887,9 +1291,18 @@ class TamperTrait(_message.Message):
         firstObservedAt: _timestamp_pb2.Timestamp | None = ...,
         firstObservedAtMs: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["firstObservedAt", b"firstObservedAt", "firstObservedAtMs", b"firstObservedAtMs", "tamperState", b"tamperState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "firstObservedAt",
+        b"firstObservedAt",
+        "firstObservedAtMs",
+        b"firstObservedAtMs",
+        "tamperState",
+        b"tamperState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TamperTrait: _TypeAlias = TamperTrait  # noqa: Y015
@@ -902,26 +1315,65 @@ class UserNFCTokenAccessTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _UserNFCTokenAccessResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType], _builtins.type):
+    class _UserNFCTokenAccessResultEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        USER_NFC_TOKEN_ACCESS_RESULT_UNSPECIFIED: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 0
-        USER_NFC_TOKEN_ACCESS_RESULT_SUCCESS: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 1
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_UNKNOWN_TOKEN: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 2
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_TOKEN: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 3
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OUT_OF_SCHEDULE: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 4
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_TOKEN_DISABLED: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 5
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_VERSION: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 6
-        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OTHER_REASON: UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType  # 7
+        USER_NFC_TOKEN_ACCESS_RESULT_UNSPECIFIED: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 0
+        USER_NFC_TOKEN_ACCESS_RESULT_SUCCESS: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 1
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_UNKNOWN_TOKEN: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 2
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_TOKEN: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 3
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OUT_OF_SCHEDULE: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 4
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_TOKEN_DISABLED: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 5
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_VERSION: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 6
+        USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OTHER_REASON: (
+            UserNFCTokenAccessTrait._UserNFCTokenAccessResult.ValueType
+        )  # 7
 
-    class UserNFCTokenAccessResult(_UserNFCTokenAccessResult, metaclass=_UserNFCTokenAccessResultEnumTypeWrapper): ...
-    USER_NFC_TOKEN_ACCESS_RESULT_UNSPECIFIED: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 0
-    USER_NFC_TOKEN_ACCESS_RESULT_SUCCESS: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 1
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_UNKNOWN_TOKEN: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 2
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_TOKEN: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 3
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OUT_OF_SCHEDULE: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 4
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_TOKEN_DISABLED: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 5
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_VERSION: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 6
-    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OTHER_REASON: UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType  # 7
+    class UserNFCTokenAccessResult(
+        _UserNFCTokenAccessResult, metaclass=_UserNFCTokenAccessResultEnumTypeWrapper
+    ): ...
+    USER_NFC_TOKEN_ACCESS_RESULT_UNSPECIFIED: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 0
+    USER_NFC_TOKEN_ACCESS_RESULT_SUCCESS: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 1
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_UNKNOWN_TOKEN: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 2
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_TOKEN: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 3
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OUT_OF_SCHEDULE: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 4
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_TOKEN_DISABLED: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 5
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_INVALID_VERSION: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 6
+    USER_NFC_TOKEN_ACCESS_RESULT_FAILURE_OTHER_REASON: (
+        UserNFCTokenAccessTrait.UserNFCTokenAccessResult.ValueType
+    )  # 7
 
     @_typing.final
     class UserNFCTokenAccessEvent(_message.Message):
@@ -942,9 +1394,13 @@ class UserNFCTokenAccessTrait(_message.Message):
             tokenId: _common_pb2.ResourceId | None = ...,
             userId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["tokenId", b"tokenId", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "tokenId", b"tokenId", "userId", b"userId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["result", b"result", "tokenId", b"tokenId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "result", b"result", "tokenId", b"tokenId", "userId", b"userId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -974,7 +1430,9 @@ class UserNFCTokensTrait(_message.Message):
         @_builtins.property
         def tokenDeviceId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def structureIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def structureIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         @_builtins.property
         def metadata(self) -> Global___UserNFCTokenMetadataTrait.Metadata: ...
         def __init__(
@@ -987,18 +1445,43 @@ class UserNFCTokensTrait(_message.Message):
             label: _builtins.str = ...,
             metadata: Global___UserNFCTokenMetadataTrait.Metadata | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["metadata", b"metadata", "tokenDeviceId", b"tokenDeviceId", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "metadata",
+            b"metadata",
+            "tokenDeviceId",
+            b"tokenDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "label", b"label", "metadata", b"metadata", "structureIds", b"structureIds", "tokenDeviceId", b"tokenDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enabled",
+            b"enabled",
+            "label",
+            b"label",
+            "metadata",
+            b"metadata",
+            "structureIds",
+            b"structureIds",
+            "tokenDeviceId",
+            b"tokenDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     USERNFCTOKENS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def userNfcTokens(self) -> _containers.RepeatedCompositeFieldContainer[Global___UserNFCTokensTrait.UserNFCTokenData]: ...
+    def userNfcTokens(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___UserNFCTokensTrait.UserNFCTokenData
+    ]: ...
     def __init__(
         self,
         *,
-        userNfcTokens: _abc.Iterable[Global___UserNFCTokensTrait.UserNFCTokenData] | None = ...,
+        userNfcTokens: _abc.Iterable[Global___UserNFCTokensTrait.UserNFCTokenData]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["userNfcTokens", b"userNfcTokens"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -1023,7 +1506,9 @@ class UserNFCTokenMetadataTrait(_message.Message):
             serialNumber: _builtins.str = ...,
             tagNumber: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["serialNumber", b"serialNumber", "tagNumber", b"tagNumber"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "serialNumber", b"serialNumber", "tagNumber", b"tagNumber"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     METADATA_FIELD_NUMBER: _builtins.int
@@ -1056,9 +1541,13 @@ class BoltLockSettingsTrait(_message.Message):
         autoRelockOn: _builtins.bool = ...,
         autoRelockDuration: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["autoRelockDuration", b"autoRelockDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "autoRelockDuration", b"autoRelockDuration"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["autoRelockDuration", b"autoRelockDuration", "autoRelockOn", b"autoRelockOn"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "autoRelockDuration", b"autoRelockDuration", "autoRelockOn", b"autoRelockOn"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BoltLockSettingsTrait: _TypeAlias = BoltLockSettingsTrait  # noqa: Y015
@@ -1071,22 +1560,48 @@ class BoltLockCapabilitiesTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoltLockCapabilitiesHandednessEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType], _builtins.type):
+    class _BoltLockCapabilitiesHandednessEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        BOLT_LOCK_CAPABILITIES_HANDEDNESS_UNSPECIFIED: BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType  # 0
-        BOLT_LOCK_CAPABILITIES_HANDEDNESS_RIGHT: BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType  # 1
-        BOLT_LOCK_CAPABILITIES_HANDEDNESS_LEFT: BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType  # 2
-        BOLT_LOCK_CAPABILITIES_HANDEDNESS_FIXED_UNKNOWN: BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType  # 3
+        BOLT_LOCK_CAPABILITIES_HANDEDNESS_UNSPECIFIED: (
+            BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType
+        )  # 0
+        BOLT_LOCK_CAPABILITIES_HANDEDNESS_RIGHT: (
+            BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType
+        )  # 1
+        BOLT_LOCK_CAPABILITIES_HANDEDNESS_LEFT: (
+            BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType
+        )  # 2
+        BOLT_LOCK_CAPABILITIES_HANDEDNESS_FIXED_UNKNOWN: (
+            BoltLockCapabilitiesTrait._BoltLockCapabilitiesHandedness.ValueType
+        )  # 3
 
-    class BoltLockCapabilitiesHandedness(_BoltLockCapabilitiesHandedness, metaclass=_BoltLockCapabilitiesHandednessEnumTypeWrapper): ...
-    BOLT_LOCK_CAPABILITIES_HANDEDNESS_UNSPECIFIED: BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType  # 0
-    BOLT_LOCK_CAPABILITIES_HANDEDNESS_RIGHT: BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType  # 1
-    BOLT_LOCK_CAPABILITIES_HANDEDNESS_LEFT: BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType  # 2
-    BOLT_LOCK_CAPABILITIES_HANDEDNESS_FIXED_UNKNOWN: BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType  # 3
+    class BoltLockCapabilitiesHandedness(
+        _BoltLockCapabilitiesHandedness,
+        metaclass=_BoltLockCapabilitiesHandednessEnumTypeWrapper,
+    ): ...
+    BOLT_LOCK_CAPABILITIES_HANDEDNESS_UNSPECIFIED: (
+        BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    )  # 0
+    BOLT_LOCK_CAPABILITIES_HANDEDNESS_RIGHT: (
+        BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    )  # 1
+    BOLT_LOCK_CAPABILITIES_HANDEDNESS_LEFT: (
+        BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    )  # 2
+    BOLT_LOCK_CAPABILITIES_HANDEDNESS_FIXED_UNKNOWN: (
+        BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    )  # 3
 
     HANDEDNESS_FIELD_NUMBER: _builtins.int
     MAXAUTORELOCKDURATION_FIELD_NUMBER: _builtins.int
-    handedness: Global___BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    handedness: (
+        Global___BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType
+    )
     @_builtins.property
     def maxAutoRelockDuration(self) -> _duration_pb2.Duration: ...
     def __init__(
@@ -1095,9 +1610,13 @@ class BoltLockCapabilitiesTrait(_message.Message):
         handedness: Global___BoltLockCapabilitiesTrait.BoltLockCapabilitiesHandedness.ValueType = ...,
         maxAutoRelockDuration: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["maxAutoRelockDuration", b"maxAutoRelockDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "maxAutoRelockDuration", b"maxAutoRelockDuration"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["handedness", b"handedness", "maxAutoRelockDuration", b"maxAutoRelockDuration"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "handedness", b"handedness", "maxAutoRelockDuration", b"maxAutoRelockDuration"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BoltLockCapabilitiesTrait: _TypeAlias = BoltLockCapabilitiesTrait  # noqa: Y015
@@ -1123,7 +1642,9 @@ class UserNFCTokenSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1145,18 +1666,34 @@ class UserNFCTokenSettingsTrait(_message.Message):
             tokenDeviceId: _common_pb2.ResourceId | None = ...,
             publicKey: _builtins.bytes = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["tokenDeviceId", b"tokenDeviceId", "userId", b"userId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "tokenDeviceId", b"tokenDeviceId", "userId", b"userId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["publicKey", b"publicKey", "tokenDeviceId", b"tokenDeviceId", "userId", b"userId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "publicKey",
+            b"publicKey",
+            "tokenDeviceId",
+            b"tokenDeviceId",
+            "userId",
+            b"userId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     USERNFCTOKENS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def userNfcTokens(self) -> _containers.MessageMap[_builtins.int, Global___UserNFCTokenSettingsTrait.UserNFCToken]: ...
+    def userNfcTokens(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___UserNFCTokenSettingsTrait.UserNFCToken
+    ]: ...
     def __init__(
         self,
         *,
-        userNfcTokens: _abc.Mapping[_builtins.int, Global___UserNFCTokenSettingsTrait.UserNFCToken] | None = ...,
+        userNfcTokens: _abc.Mapping[
+            _builtins.int, Global___UserNFCTokenSettingsTrait.UserNFCToken
+        ]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["userNfcTokens", b"userNfcTokens"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -1179,9 +1716,13 @@ class DoorCheckSettingsTrait(_message.Message):
         doorCheckEnabled: _wrappers_pb2.BoolValue | None = ...,
         sensorDeviceId: _common_pb2.ResourceId | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["doorCheckEnabled", b"doorCheckEnabled", "sensorDeviceId", b"sensorDeviceId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "doorCheckEnabled", b"doorCheckEnabled", "sensorDeviceId", b"sensorDeviceId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["doorCheckEnabled", b"doorCheckEnabled", "sensorDeviceId", b"sensorDeviceId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "doorCheckEnabled", b"doorCheckEnabled", "sensorDeviceId", b"sensorDeviceId"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DoorCheckSettingsTrait: _TypeAlias = DoorCheckSettingsTrait  # noqa: Y015
@@ -1201,9 +1742,16 @@ class PincodeInputSettingsTrait(_message.Message):
         wrongEntryCodeLimit: _builtins.int = ...,
         wrongEntryDisableTime: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["wrongEntryDisableTime", b"wrongEntryDisableTime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "wrongEntryDisableTime", b"wrongEntryDisableTime"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["wrongEntryCodeLimit", b"wrongEntryCodeLimit", "wrongEntryDisableTime", b"wrongEntryDisableTime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "wrongEntryCodeLimit",
+        b"wrongEntryCodeLimit",
+        "wrongEntryDisableTime",
+        b"wrongEntryDisableTime",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PincodeInputSettingsTrait: _TypeAlias = PincodeInputSettingsTrait  # noqa: Y015
@@ -1225,7 +1773,14 @@ class UserPincodesCapabilitiesTrait(_message.Message):
         maxPincodeLength: _builtins.int = ...,
         maxPincodesSupported: _builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["maxPincodeLength", b"maxPincodeLength", "maxPincodesSupported", b"maxPincodesSupported", "minPincodeLength", b"minPincodeLength"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "maxPincodeLength",
+        b"maxPincodeLength",
+        "maxPincodesSupported",
+        b"maxPincodesSupported",
+        "minPincodeLength",
+        b"minPincodeLength",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___UserPincodesCapabilitiesTrait: _TypeAlias = UserPincodesCapabilitiesTrait  # noqa: Y015

@@ -29,7 +29,12 @@ class SelfTestRunnerTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SelfTestTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestRunnerTrait._SelfTestType.ValueType], _builtins.type):
+    class _SelfTestTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SelfTestRunnerTrait._SelfTestType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         SELF_TEST_TYPE_UNSPECIFIED: SelfTestRunnerTrait._SelfTestType.ValueType  # 0
         SELF_TEST_TYPE_SOUND_CHECK: SelfTestRunnerTrait._SelfTestType.ValueType  # 1
@@ -46,12 +51,19 @@ class SelfTestRunnerTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SelfTestResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestRunnerTrait._SelfTestResult.ValueType], _builtins.type):
+    class _SelfTestResultEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SelfTestRunnerTrait._SelfTestResult.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         SELF_TEST_RESULT_UNSPECIFIED: SelfTestRunnerTrait._SelfTestResult.ValueType  # 0
         SELF_TEST_RESULT_PASS: SelfTestRunnerTrait._SelfTestResult.ValueType  # 1
         SELF_TEST_RESULT_FAIL_WARN: SelfTestRunnerTrait._SelfTestResult.ValueType  # 2
-        SELF_TEST_RESULT_FAIL_CRITICAL: SelfTestRunnerTrait._SelfTestResult.ValueType  # 3
+        SELF_TEST_RESULT_FAIL_CRITICAL: (
+            SelfTestRunnerTrait._SelfTestResult.ValueType
+        )  # 3
 
     class SelfTestResult(_SelfTestResult, metaclass=_SelfTestResultEnumTypeWrapper): ...
     SELF_TEST_RESULT_UNSPECIFIED: SelfTestRunnerTrait.SelfTestResult.ValueType  # 0
@@ -63,24 +75,53 @@ class SelfTestRunnerTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RunSelfTestStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SelfTestRunnerTrait._RunSelfTestStatus.ValueType], _builtins.type):
+    class _RunSelfTestStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RUN_SELF_TEST_STATUS_UNSPECIFIED: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 0
-        RUN_SELF_TEST_STATUS_SUCCESS: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 1
-        RUN_SELF_TEST_STATUS_WILL_NOT_RUN: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 2
-        RUN_SELF_TEST_STATUS_EXCEEDS_TIMEOUT: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 4
-        RUN_SELF_TEST_STATUS_ALREADY_RUN: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 5
+        RUN_SELF_TEST_STATUS_UNSPECIFIED: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 0
+        RUN_SELF_TEST_STATUS_SUCCESS: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 1
+        RUN_SELF_TEST_STATUS_WILL_NOT_RUN: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 2
+        RUN_SELF_TEST_STATUS_EXCEEDS_TIMEOUT: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 4
+        RUN_SELF_TEST_STATUS_ALREADY_RUN: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 5
         RUN_SELF_TEST_STATUS_BUSY: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 6
-        RUN_SELF_TEST_STATUS_INTERNAL_ERROR: SelfTestRunnerTrait._RunSelfTestStatus.ValueType  # 7
+        RUN_SELF_TEST_STATUS_INTERNAL_ERROR: (
+            SelfTestRunnerTrait._RunSelfTestStatus.ValueType
+        )  # 7
 
-    class RunSelfTestStatus(_RunSelfTestStatus, metaclass=_RunSelfTestStatusEnumTypeWrapper): ...
-    RUN_SELF_TEST_STATUS_UNSPECIFIED: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 0
+    class RunSelfTestStatus(
+        _RunSelfTestStatus, metaclass=_RunSelfTestStatusEnumTypeWrapper
+    ): ...
+    RUN_SELF_TEST_STATUS_UNSPECIFIED: (
+        SelfTestRunnerTrait.RunSelfTestStatus.ValueType
+    )  # 0
     RUN_SELF_TEST_STATUS_SUCCESS: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 1
-    RUN_SELF_TEST_STATUS_WILL_NOT_RUN: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 2
-    RUN_SELF_TEST_STATUS_EXCEEDS_TIMEOUT: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 4
-    RUN_SELF_TEST_STATUS_ALREADY_RUN: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 5
+    RUN_SELF_TEST_STATUS_WILL_NOT_RUN: (
+        SelfTestRunnerTrait.RunSelfTestStatus.ValueType
+    )  # 2
+    RUN_SELF_TEST_STATUS_EXCEEDS_TIMEOUT: (
+        SelfTestRunnerTrait.RunSelfTestStatus.ValueType
+    )  # 4
+    RUN_SELF_TEST_STATUS_ALREADY_RUN: (
+        SelfTestRunnerTrait.RunSelfTestStatus.ValueType
+    )  # 5
     RUN_SELF_TEST_STATUS_BUSY: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 6
-    RUN_SELF_TEST_STATUS_INTERNAL_ERROR: SelfTestRunnerTrait.RunSelfTestStatus.ValueType  # 7
+    RUN_SELF_TEST_STATUS_INTERNAL_ERROR: (
+        SelfTestRunnerTrait.RunSelfTestStatus.ValueType
+    )  # 7
 
     @_typing.final
     class TestId(_message.Message):
@@ -97,9 +138,13 @@ class SelfTestRunnerTrait(_message.Message):
             rootOrchestratorId: _common_pb2.ResourceId | None = ...,
             instanceId: _builtins.int = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["rootOrchestratorId", b"rootOrchestratorId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "rootOrchestratorId", b"rootOrchestratorId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["instanceId", b"instanceId", "rootOrchestratorId", b"rootOrchestratorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "instanceId", b"instanceId", "rootOrchestratorId", b"rootOrchestratorId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -118,9 +163,13 @@ class SelfTestRunnerTrait(_message.Message):
             testId: Global___SelfTestRunnerTrait.TestId | None = ...,
             orchestratorId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["orchestratorId", b"orchestratorId", "testId", b"testId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "orchestratorId", b"orchestratorId", "testId", b"testId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["orchestratorId", b"orchestratorId", "testId", b"testId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "orchestratorId", b"orchestratorId", "testId", b"testId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -136,7 +185,9 @@ class SelfTestRunnerTrait(_message.Message):
         @_builtins.property
         def testId(self) -> Global___SelfTestRunnerTrait.TestId: ...
         @_builtins.property
-        def relatedResults(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.EventId]: ...
+        def relatedResults(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.EventId]: ...
         def __init__(
             self,
             *,
@@ -147,7 +198,16 @@ class SelfTestRunnerTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["relatedResults", b"relatedResults", "result", b"result", "testId", b"testId", "testStatus", b"testStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "relatedResults",
+            b"relatedResults",
+            "result",
+            b"result",
+            "testId",
+            b"testId",
+            "testStatus",
+            b"testStatus",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -166,9 +226,13 @@ class SelfTestRunnerTrait(_message.Message):
             testId: Global___SelfTestRunnerTrait.TestId | None = ...,
             parentId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["parentId", b"parentId", "testId", b"testId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "parentId", b"parentId", "testId", b"testId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["parentId", b"parentId", "testId", b"testId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "parentId", b"parentId", "testId", b"testId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -188,7 +252,9 @@ class SelfTestRunnerTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["result", b"result", "testId", b"testId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "result", b"result", "testId", b"testId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -207,9 +273,13 @@ class SelfTestRunnerTrait(_message.Message):
             testId: Global___SelfTestRunnerTrait.TestId | None = ...,
             runnerId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["runnerId", b"runnerId", "testId", b"testId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "runnerId", b"runnerId", "testId", b"testId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["runnerId", b"runnerId", "testId", b"testId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "runnerId", b"runnerId", "testId", b"testId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -224,17 +294,33 @@ class SelfTestRunnerTrait(_message.Message):
         @_builtins.property
         def testTimeout(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def testTypes(self) -> _containers.RepeatedScalarFieldContainer[Global___SelfTestRunnerTrait.SelfTestType.ValueType]: ...
+        def testTypes(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SelfTestRunnerTrait.SelfTestType.ValueType
+        ]: ...
         def __init__(
             self,
             *,
             testId: Global___SelfTestRunnerTrait.TestId | None = ...,
             testTimeout: _duration_pb2.Duration | None = ...,
-            testTypes: _abc.Iterable[Global___SelfTestRunnerTrait.SelfTestType.ValueType] | None = ...,
+            testTypes: _abc.Iterable[
+                Global___SelfTestRunnerTrait.SelfTestType.ValueType
+            ]
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "testTimeout", b"testTimeout"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "testId", b"testId", "testTimeout", b"testTimeout"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["testId", b"testId", "testTimeout", b"testTimeout", "testTypes", b"testTypes"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "testId",
+            b"testId",
+            "testTimeout",
+            b"testTimeout",
+            "testTypes",
+            b"testTypes",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -251,7 +337,9 @@ class SelfTestRunnerTrait(_message.Message):
             result: Global___SelfTestRunnerTrait.SelfTestResult.ValueType = ...,
             testStatus: Global___SelfTestRunnerTrait.RunSelfTestStatus.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["result", b"result", "testStatus", b"testStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "result", b"result", "testStatus", b"testStatus"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CURRENTSELFTESTID_FIELD_NUMBER: _builtins.int
@@ -266,9 +354,19 @@ class SelfTestRunnerTrait(_message.Message):
         currentSelfTestId: Global___SelfTestRunnerTrait.TestId | None = ...,
         previousSelfTestId: Global___SelfTestRunnerTrait.TestId | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["currentSelfTestId", b"currentSelfTestId", "previousSelfTestId", b"previousSelfTestId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "currentSelfTestId",
+        b"currentSelfTestId",
+        "previousSelfTestId",
+        b"previousSelfTestId",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentSelfTestId", b"currentSelfTestId", "previousSelfTestId", b"previousSelfTestId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentSelfTestId",
+        b"currentSelfTestId",
+        "previousSelfTestId",
+        b"previousSelfTestId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SelfTestRunnerTrait: _TypeAlias = SelfTestRunnerTrait  # noqa: Y015

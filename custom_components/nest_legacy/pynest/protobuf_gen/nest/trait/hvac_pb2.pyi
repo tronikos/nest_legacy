@@ -34,94 +34,215 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsControlModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType], _builtins.type):
+    class _RcsControlModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_CONTROL_MODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType  # 0
-        RCS_CONTROL_MODE_HOLD: RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType  # 1
-        RCS_CONTROL_MODE_SCHEDULE: RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType  # 2
-        RCS_CONTROL_MODE_SCHEDULE_OVERRIDE: RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType  # 3
+        RCS_CONTROL_MODE_UNSPECIFIED: (
+            RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType
+        )  # 0
+        RCS_CONTROL_MODE_HOLD: (
+            RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType
+        )  # 1
+        RCS_CONTROL_MODE_SCHEDULE: (
+            RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType
+        )  # 2
+        RCS_CONTROL_MODE_SCHEDULE_OVERRIDE: (
+            RemoteComfortSensingSettingsTrait._RcsControlMode.ValueType
+        )  # 3
 
     class RcsControlMode(_RcsControlMode, metaclass=_RcsControlModeEnumTypeWrapper): ...
-    RCS_CONTROL_MODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType  # 0
-    RCS_CONTROL_MODE_HOLD: RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType  # 1
-    RCS_CONTROL_MODE_SCHEDULE: RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType  # 2
-    RCS_CONTROL_MODE_SCHEDULE_OVERRIDE: RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType  # 3
+    RCS_CONTROL_MODE_UNSPECIFIED: (
+        RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType
+    )  # 0
+    RCS_CONTROL_MODE_HOLD: (
+        RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType
+    )  # 1
+    RCS_CONTROL_MODE_SCHEDULE: (
+        RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType
+    )  # 2
+    RCS_CONTROL_MODE_SCHEDULE_OVERRIDE: (
+        RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType
+    )  # 3
 
     class _RcsSourceType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsSourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType], _builtins.type):
+    class _RcsSourceTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_SOURCE_TYPE_UNSPECIFIED: RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType  # 0
-        RCS_SOURCE_TYPE_BACKPLATE: RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType  # 1
-        RCS_SOURCE_TYPE_SINGLE_SENSOR: RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType  # 2
-        RCS_SOURCE_TYPE_MULTI_SENSOR: RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType  # 3
+        RCS_SOURCE_TYPE_UNSPECIFIED: (
+            RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType
+        )  # 0
+        RCS_SOURCE_TYPE_BACKPLATE: (
+            RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType
+        )  # 1
+        RCS_SOURCE_TYPE_SINGLE_SENSOR: (
+            RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType
+        )  # 2
+        RCS_SOURCE_TYPE_MULTI_SENSOR: (
+            RemoteComfortSensingSettingsTrait._RcsSourceType.ValueType
+        )  # 3
 
     class RcsSourceType(_RcsSourceType, metaclass=_RcsSourceTypeEnumTypeWrapper): ...
-    RCS_SOURCE_TYPE_UNSPECIFIED: RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType  # 0
-    RCS_SOURCE_TYPE_BACKPLATE: RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType  # 1
-    RCS_SOURCE_TYPE_SINGLE_SENSOR: RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType  # 2
-    RCS_SOURCE_TYPE_MULTI_SENSOR: RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType  # 3
+    RCS_SOURCE_TYPE_UNSPECIFIED: (
+        RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+    )  # 0
+    RCS_SOURCE_TYPE_BACKPLATE: (
+        RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+    )  # 1
+    RCS_SOURCE_TYPE_SINGLE_SENSOR: (
+        RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+    )  # 2
+    RCS_SOURCE_TYPE_MULTI_SENSOR: (
+        RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+    )  # 3
 
     class _StatusCode:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingSettingsTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        STATUS_CODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 0
-        STATUS_CODE_SUCCESS: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 1
-        STATUS_CODE_FAILURE: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 2
-        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 4096
-        STATUS_CODE_SENSOR_LIMIT_REACHED: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 4097
-        STATUS_CODE_SENSOR_NOT_ASSOCIATED: RemoteComfortSensingSettingsTrait._StatusCode.ValueType  # 8192
+        STATUS_CODE_UNSPECIFIED: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 0
+        STATUS_CODE_SUCCESS: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 1
+        STATUS_CODE_FAILURE: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 2
+        STATUS_CODE_SENSOR_ALREADY_ASSOCIATED: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 4096
+        STATUS_CODE_SENSOR_LIMIT_REACHED: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 4097
+        STATUS_CODE_SENSOR_NOT_ASSOCIATED: (
+            RemoteComfortSensingSettingsTrait._StatusCode.ValueType
+        )  # 8192
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
     STATUS_CODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 0
     STATUS_CODE_SUCCESS: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 1
     STATUS_CODE_FAILURE: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 2
-    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 4096
-    STATUS_CODE_SENSOR_LIMIT_REACHED: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 4097
-    STATUS_CODE_SENSOR_NOT_ASSOCIATED: RemoteComfortSensingSettingsTrait.StatusCode.ValueType  # 8192
+    STATUS_CODE_SENSOR_ALREADY_ASSOCIATED: (
+        RemoteComfortSensingSettingsTrait.StatusCode.ValueType
+    )  # 4096
+    STATUS_CODE_SENSOR_LIMIT_REACHED: (
+        RemoteComfortSensingSettingsTrait.StatusCode.ValueType
+    )  # 4097
+    STATUS_CODE_SENSOR_NOT_ASSOCIATED: (
+        RemoteComfortSensingSettingsTrait.StatusCode.ValueType
+    )  # 8192
 
     class _CompatibleSensorStatusCode:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CompatibleSensorStatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType], _builtins.type):
+    class _CompatibleSensorStatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        COMPATIBLE_SENSOR_STATUS_CODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType  # 0
-        COMPATIBLE_SENSOR_STATUS_CODE_ASSOCIATED: RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType  # 1
-        COMPATIBLE_SENSOR_STATUS_CODE_NOT_ASSOCIATED: RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType  # 2
+        COMPATIBLE_SENSOR_STATUS_CODE_UNSPECIFIED: (
+            RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType
+        )  # 0
+        COMPATIBLE_SENSOR_STATUS_CODE_ASSOCIATED: (
+            RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType
+        )  # 1
+        COMPATIBLE_SENSOR_STATUS_CODE_NOT_ASSOCIATED: (
+            RemoteComfortSensingSettingsTrait._CompatibleSensorStatusCode.ValueType
+        )  # 2
 
-    class CompatibleSensorStatusCode(_CompatibleSensorStatusCode, metaclass=_CompatibleSensorStatusCodeEnumTypeWrapper): ...
-    COMPATIBLE_SENSOR_STATUS_CODE_UNSPECIFIED: RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType  # 0
-    COMPATIBLE_SENSOR_STATUS_CODE_ASSOCIATED: RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType  # 1
-    COMPATIBLE_SENSOR_STATUS_CODE_NOT_ASSOCIATED: RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType  # 2
+    class CompatibleSensorStatusCode(
+        _CompatibleSensorStatusCode,
+        metaclass=_CompatibleSensorStatusCodeEnumTypeWrapper,
+    ): ...
+    COMPATIBLE_SENSOR_STATUS_CODE_UNSPECIFIED: (
+        RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType
+    )  # 0
+    COMPATIBLE_SENSOR_STATUS_CODE_ASSOCIATED: (
+        RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType
+    )  # 1
+    COMPATIBLE_SENSOR_STATUS_CODE_NOT_ASSOCIATED: (
+        RemoteComfortSensingSettingsTrait.CompatibleSensorStatusCode.ValueType
+    )  # 2
 
     class _SensorSelectionChangeReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SensorSelectionChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType], _builtins.type):
+    class _SensorSelectionChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SENSOR_SELECTION_CHANGE_REASON_UNSPECIFIED: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 0
-        SENSOR_SELECTION_CHANGE_REASON_NONE: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 1
-        SENSOR_SELECTION_CHANGE_REASON_ADHOC: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 2
-        SENSOR_SELECTION_CHANGE_REASON_SCHEDULE: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 3
-        SENSOR_SELECTION_CHANGE_REASON_EARLY_ON: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 4
-        SENSOR_SELECTION_CHANGE_REASON_FAILSAFE: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 5
-        SENSOR_SELECTION_CHANGE_REASON_PERIODICAL: RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType  # 6
+        SENSOR_SELECTION_CHANGE_REASON_UNSPECIFIED: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 0
+        SENSOR_SELECTION_CHANGE_REASON_NONE: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 1
+        SENSOR_SELECTION_CHANGE_REASON_ADHOC: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 2
+        SENSOR_SELECTION_CHANGE_REASON_SCHEDULE: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 3
+        SENSOR_SELECTION_CHANGE_REASON_EARLY_ON: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 4
+        SENSOR_SELECTION_CHANGE_REASON_FAILSAFE: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 5
+        SENSOR_SELECTION_CHANGE_REASON_PERIODICAL: (
+            RemoteComfortSensingSettingsTrait._SensorSelectionChangeReason.ValueType
+        )  # 6
 
-    class SensorSelectionChangeReason(_SensorSelectionChangeReason, metaclass=_SensorSelectionChangeReasonEnumTypeWrapper): ...
-    SENSOR_SELECTION_CHANGE_REASON_UNSPECIFIED: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 0
-    SENSOR_SELECTION_CHANGE_REASON_NONE: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 1
-    SENSOR_SELECTION_CHANGE_REASON_ADHOC: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 2
-    SENSOR_SELECTION_CHANGE_REASON_SCHEDULE: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 3
-    SENSOR_SELECTION_CHANGE_REASON_EARLY_ON: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 4
-    SENSOR_SELECTION_CHANGE_REASON_FAILSAFE: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 5
-    SENSOR_SELECTION_CHANGE_REASON_PERIODICAL: RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType  # 6
+    class SensorSelectionChangeReason(
+        _SensorSelectionChangeReason,
+        metaclass=_SensorSelectionChangeReasonEnumTypeWrapper,
+    ): ...
+    SENSOR_SELECTION_CHANGE_REASON_UNSPECIFIED: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 0
+    SENSOR_SELECTION_CHANGE_REASON_NONE: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 1
+    SENSOR_SELECTION_CHANGE_REASON_ADHOC: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 2
+    SENSOR_SELECTION_CHANGE_REASON_SCHEDULE: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 3
+    SENSOR_SELECTION_CHANGE_REASON_EARLY_ON: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 4
+    SENSOR_SELECTION_CHANGE_REASON_FAILSAFE: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 5
+    SENSOR_SELECTION_CHANGE_REASON_PERIODICAL: (
+        RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType
+    )  # 6
 
     @_typing.final
     class RcsSensorId(_message.Message):
@@ -143,7 +264,9 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "productId", b"productId", "vendorId", b"vendorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId", b"deviceId", "productId", b"productId", "vendorId", b"vendorId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -154,14 +277,21 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         MULTISENSORGROUP_FIELD_NUMBER: _builtins.int
         multiSensorEnabled: _builtins.bool
         @_builtins.property
-        def multiSensorGroup(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def multiSensorGroup(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         def __init__(
             self,
             *,
             multiSensorEnabled: _builtins.bool = ...,
             multiSensorGroup: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["multiSensorEnabled", b"multiSensorEnabled", "multiSensorGroup", b"multiSensorGroup"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "multiSensorEnabled",
+            b"multiSensorEnabled",
+            "multiSensorGroup",
+            b"multiSensorGroup",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -170,7 +300,9 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
 
         RCSSOURCETYPE_FIELD_NUMBER: _builtins.int
         ACTIVERCSSENSOR_FIELD_NUMBER: _builtins.int
-        rcsSourceType: Global___RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+        rcsSourceType: (
+            Global___RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType
+        )
         @_builtins.property
         def activeRcsSensor(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -179,9 +311,13 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
             rcsSourceType: Global___RemoteComfortSensingSettingsTrait.RcsSourceType.ValueType = ...,
             activeRcsSensor: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["activeRcsSensor", b"activeRcsSensor"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "activeRcsSensor", b"activeRcsSensor"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["activeRcsSensor", b"activeRcsSensor", "rcsSourceType", b"rcsSourceType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "activeRcsSensor", b"activeRcsSensor", "rcsSourceType", b"rcsSourceType"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -194,17 +330,27 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         startSecondsInDay: _builtins.int
         endSecondsInDay: _builtins.int
         @_builtins.property
-        def rcsSelection(self) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
+        def rcsSelection(
+            self,
+        ) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
         def __init__(
             self,
             *,
-            rcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection | None = ...,
+            rcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection
+            | None = ...,
             startSecondsInDay: _builtins.int = ...,
             endSecondsInDay: _builtins.int = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["rcsSelection", b"rcsSelection"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["endSecondsInDay", b"endSecondsInDay", "rcsSelection", b"rcsSelection", "startSecondsInDay", b"startSecondsInDay"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "endSecondsInDay",
+            b"endSecondsInDay",
+            "rcsSelection",
+            b"rcsSelection",
+            "startSecondsInDay",
+            b"startSecondsInDay",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -219,25 +365,37 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
             VALUE_FIELD_NUMBER: _builtins.int
             key: _builtins.int
             @_builtins.property
-            def value(self) -> Global___RemoteComfortSensingSettingsTrait.RcsInterval: ...
+            def value(
+                self,
+            ) -> Global___RemoteComfortSensingSettingsTrait.RcsInterval: ...
             def __init__(
                 self,
                 *,
                 key: _builtins.int = ...,
-                value: Global___RemoteComfortSensingSettingsTrait.RcsInterval | None = ...,
+                value: Global___RemoteComfortSensingSettingsTrait.RcsInterval
+                | None = ...,
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         INTERVALS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def intervals(self) -> _containers.MessageMap[_builtins.int, Global___RemoteComfortSensingSettingsTrait.RcsInterval]: ...
+        def intervals(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___RemoteComfortSensingSettingsTrait.RcsInterval
+        ]: ...
         def __init__(
             self,
             *,
-            intervals: _abc.Mapping[_builtins.int, Global___RemoteComfortSensingSettingsTrait.RcsInterval] | None = ...,
+            intervals: _abc.Mapping[
+                _builtins.int, Global___RemoteComfortSensingSettingsTrait.RcsInterval
+            ]
+            | None = ...,
         ) -> None: ...
         _ClearFieldArgType: _TypeAlias = _typing.Literal["intervals", b"intervals"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -311,16 +469,25 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         PREVIOUSSENSORIDS_FIELD_NUMBER: _builtins.int
         CURRENTSENSORIDS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def previousSensorIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def previousSensorIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         @_builtins.property
-        def currentSensorIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def currentSensorIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         def __init__(
             self,
             *,
             previousSensorIds: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
             currentSensorIds: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentSensorIds", b"currentSensorIds", "previousSensorIds", b"previousSensorIds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentSensorIds",
+            b"currentSensorIds",
+            "previousSensorIds",
+            b"previousSensorIds",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -371,13 +538,22 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
 
         COMPATIBLESENSORS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def compatibleSensors(self) -> _containers.RepeatedCompositeFieldContainer[Global___RemoteComfortSensingSettingsTrait.SensorCompatibility]: ...
+        def compatibleSensors(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___RemoteComfortSensingSettingsTrait.SensorCompatibility
+        ]: ...
         def __init__(
             self,
             *,
-            compatibleSensors: _abc.Iterable[Global___RemoteComfortSensingSettingsTrait.SensorCompatibility] | None = ...,
+            compatibleSensors: _abc.Iterable[
+                Global___RemoteComfortSensingSettingsTrait.SensorCompatibility
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["compatibleSensors", b"compatibleSensors"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "compatibleSensors", b"compatibleSensors"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -397,7 +573,9 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId", b"resourceId", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -419,9 +597,21 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
             prevSensorSelection: Global___HvacSensor.SensorSelection | None = ...,
             changeReason: Global___RemoteComfortSensingSettingsTrait.SensorSelectionChangeReason.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevSensorSelection", b"prevSensorSelection", "sensorSelection", b"sensorSelection"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevSensorSelection",
+            b"prevSensorSelection",
+            "sensorSelection",
+            b"sensorSelection",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["changeReason", b"changeReason", "prevSensorSelection", b"prevSensorSelection", "sensorSelection", b"sensorSelection"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "changeReason",
+            b"changeReason",
+            "prevSensorSelection",
+            b"prevSensorSelection",
+            "sensorSelection",
+            b"sensorSelection",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     RCSCONTROLMODE_FIELD_NUMBER: _builtins.int
@@ -432,31 +622,71 @@ class RemoteComfortSensingSettingsTrait(_message.Message):
     SENSORSELECTION_FIELD_NUMBER: _builtins.int
     rcsControlMode: Global___RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType
     @_builtins.property
-    def activeRcsSelection(self) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
+    def activeRcsSelection(
+        self,
+    ) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
     @_builtins.property
-    def rcsControlSchedule(self) -> Global___RemoteComfortSensingSettingsTrait.RcsSchedule: ...
+    def rcsControlSchedule(
+        self,
+    ) -> Global___RemoteComfortSensingSettingsTrait.RcsSchedule: ...
     @_builtins.property
-    def associatedRcsSensors(self) -> _containers.RepeatedCompositeFieldContainer[Global___RemoteComfortSensingSettingsTrait.RcsSensorId]: ...
+    def associatedRcsSensors(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___RemoteComfortSensingSettingsTrait.RcsSensorId
+    ]: ...
     @_builtins.property
-    def multiSensorSettings(self) -> Global___RemoteComfortSensingSettingsTrait.MultiSensorSettings: ...
+    def multiSensorSettings(
+        self,
+    ) -> Global___RemoteComfortSensingSettingsTrait.MultiSensorSettings: ...
     @_builtins.property
     def sensorSelection(self) -> Global___HvacSensor.SensorSelection: ...
     def __init__(
         self,
         *,
         rcsControlMode: Global___RemoteComfortSensingSettingsTrait.RcsControlMode.ValueType = ...,
-        activeRcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection | None = ...,
-        rcsControlSchedule: Global___RemoteComfortSensingSettingsTrait.RcsSchedule | None = ...,
-        associatedRcsSensors: _abc.Iterable[Global___RemoteComfortSensingSettingsTrait.RcsSensorId] | None = ...,
-        multiSensorSettings: Global___RemoteComfortSensingSettingsTrait.MultiSensorSettings | None = ...,
+        activeRcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection
+        | None = ...,
+        rcsControlSchedule: Global___RemoteComfortSensingSettingsTrait.RcsSchedule
+        | None = ...,
+        associatedRcsSensors: _abc.Iterable[
+            Global___RemoteComfortSensingSettingsTrait.RcsSensorId
+        ]
+        | None = ...,
+        multiSensorSettings: Global___RemoteComfortSensingSettingsTrait.MultiSensorSettings
+        | None = ...,
         sensorSelection: Global___HvacSensor.SensorSelection | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["activeRcsSelection", b"activeRcsSelection", "multiSensorSettings", b"multiSensorSettings", "rcsControlSchedule", b"rcsControlSchedule", "sensorSelection", b"sensorSelection"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "activeRcsSelection",
+        b"activeRcsSelection",
+        "multiSensorSettings",
+        b"multiSensorSettings",
+        "rcsControlSchedule",
+        b"rcsControlSchedule",
+        "sensorSelection",
+        b"sensorSelection",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["activeRcsSelection", b"activeRcsSelection", "associatedRcsSensors", b"associatedRcsSensors", "multiSensorSettings", b"multiSensorSettings", "rcsControlMode", b"rcsControlMode", "rcsControlSchedule", b"rcsControlSchedule", "sensorSelection", b"sensorSelection"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "activeRcsSelection",
+        b"activeRcsSelection",
+        "associatedRcsSensors",
+        b"associatedRcsSensors",
+        "multiSensorSettings",
+        b"multiSensorSettings",
+        "rcsControlMode",
+        b"rcsControlMode",
+        "rcsControlSchedule",
+        b"rcsControlSchedule",
+        "sensorSelection",
+        b"sensorSelection",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___RemoteComfortSensingSettingsTrait: _TypeAlias = RemoteComfortSensingSettingsTrait  # noqa: Y015
+Global___RemoteComfortSensingSettingsTrait: _TypeAlias = (
+    RemoteComfortSensingSettingsTrait  # noqa: Y015
+)
 
 @_typing.final
 class HvacControl(_message.Message):
@@ -466,19 +696,26 @@ class HvacControl(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TargetChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacControl._TargetChangeReason.ValueType], _builtins.type):
+    class _TargetChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[HvacControl._TargetChangeReason.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         TARGET_CHANGE_REASON_UNSPECIFIED: HvacControl._TargetChangeReason.ValueType  # 0
         TARGET_CHANGE_REASON_NONE: HvacControl._TargetChangeReason.ValueType  # 1
         TARGET_CHANGE_REASON_ADHOC: HvacControl._TargetChangeReason.ValueType  # 2
         TARGET_CHANGE_REASON_SCHEDULE: HvacControl._TargetChangeReason.ValueType  # 3
         TARGET_CHANGE_REASON_EARLY_ON: HvacControl._TargetChangeReason.ValueType  # 4
-        TARGET_CHANGE_REASON_EMERGENCY_HEAT: HvacControl._TargetChangeReason.ValueType  # 5
+        TARGET_CHANGE_REASON_EMERGENCY_HEAT: (
+            HvacControl._TargetChangeReason.ValueType
+        )  # 5
         TARGET_CHANGE_REASON_HOLD: HvacControl._TargetChangeReason.ValueType  # 6
         TARGET_CHANGE_REASON_ECO_MODE: HvacControl._TargetChangeReason.ValueType  # 7
         TARGET_CHANGE_REASON_PERIODICAL: HvacControl._TargetChangeReason.ValueType  # 8
 
-    class TargetChangeReason(_TargetChangeReason, metaclass=_TargetChangeReasonEnumTypeWrapper): ...
+    class TargetChangeReason(
+        _TargetChangeReason, metaclass=_TargetChangeReasonEnumTypeWrapper
+    ): ...
     TARGET_CHANGE_REASON_UNSPECIFIED: HvacControl.TargetChangeReason.ValueType  # 0
     TARGET_CHANGE_REASON_NONE: HvacControl.TargetChangeReason.ValueType  # 1
     TARGET_CHANGE_REASON_ADHOC: HvacControl.TargetChangeReason.ValueType  # 2
@@ -520,7 +757,9 @@ class HvacControl(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enabled", b"enabled", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -537,7 +776,9 @@ class HvacControl(_message.Message):
             value: _builtins.float = ...,
             enabled: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "enabled", b"enabled", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -556,9 +797,13 @@ class HvacControl(_message.Message):
             heatingTarget: Global___HvacControl.TemperatureThreshold | None = ...,
             coolingTarget: Global___HvacControl.TemperatureThreshold | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -575,14 +820,23 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HvacSystemEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType], _builtins.type):
+    class _HvacSystemEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HVAC_SYSTEM_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType  # 0
+        HVAC_SYSTEM_UNSPECIFIED: (
+            HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType
+        )  # 0
         HVAC_SYSTEM_COOL: HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType  # 1
         HVAC_SYSTEM_HEAT: HvacDiagnosticsAlertsSettingsTrait._HvacSystem.ValueType  # 2
 
     class HvacSystem(_HvacSystem, metaclass=_HvacSystemEnumTypeWrapper): ...
-    HVAC_SYSTEM_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait.HvacSystem.ValueType  # 0
+    HVAC_SYSTEM_UNSPECIFIED: (
+        HvacDiagnosticsAlertsSettingsTrait.HvacSystem.ValueType
+    )  # 0
     HVAC_SYSTEM_COOL: HvacDiagnosticsAlertsSettingsTrait.HvacSystem.ValueType  # 1
     HVAC_SYSTEM_HEAT: HvacDiagnosticsAlertsSettingsTrait.HvacSystem.ValueType  # 2
 
@@ -590,46 +844,97 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RangeInclusionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType], _builtins.type):
+    class _RangeInclusionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RANGE_INCLUSION_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType  # 0
-        RANGE_INCLUSION_ABOVE_BOUNDS: HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType  # 1
-        RANGE_INCLUSION_BELOW_BOUNDS: HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType  # 2
+        RANGE_INCLUSION_UNSPECIFIED: (
+            HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType
+        )  # 0
+        RANGE_INCLUSION_ABOVE_BOUNDS: (
+            HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType
+        )  # 1
+        RANGE_INCLUSION_BELOW_BOUNDS: (
+            HvacDiagnosticsAlertsSettingsTrait._RangeInclusion.ValueType
+        )  # 2
 
     class RangeInclusion(_RangeInclusion, metaclass=_RangeInclusionEnumTypeWrapper): ...
-    RANGE_INCLUSION_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType  # 0
-    RANGE_INCLUSION_ABOVE_BOUNDS: HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType  # 1
-    RANGE_INCLUSION_BELOW_BOUNDS: HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType  # 2
+    RANGE_INCLUSION_UNSPECIFIED: (
+        HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType
+    )  # 0
+    RANGE_INCLUSION_ABOVE_BOUNDS: (
+        HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType
+    )  # 1
+    RANGE_INCLUSION_BELOW_BOUNDS: (
+        HvacDiagnosticsAlertsSettingsTrait.RangeInclusion.ValueType
+    )  # 2
 
     class _FailureCause:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FailureCauseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType], _builtins.type):
+    class _FailureCauseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        FAILURE_CAUSE_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType  # 0
-        FAILURE_CAUSE_BY_ASSEMBLY_LINE: HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType  # 1
-        FAILURE_CAUSE_BY_IMPROPER_USAGE: HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType  # 2
+        FAILURE_CAUSE_UNSPECIFIED: (
+            HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType
+        )  # 0
+        FAILURE_CAUSE_BY_ASSEMBLY_LINE: (
+            HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType
+        )  # 1
+        FAILURE_CAUSE_BY_IMPROPER_USAGE: (
+            HvacDiagnosticsAlertsSettingsTrait._FailureCause.ValueType
+        )  # 2
 
     class FailureCause(_FailureCause, metaclass=_FailureCauseEnumTypeWrapper): ...
-    FAILURE_CAUSE_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType  # 0
-    FAILURE_CAUSE_BY_ASSEMBLY_LINE: HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType  # 1
-    FAILURE_CAUSE_BY_IMPROPER_USAGE: HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType  # 2
+    FAILURE_CAUSE_UNSPECIFIED: (
+        HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType
+    )  # 0
+    FAILURE_CAUSE_BY_ASSEMBLY_LINE: (
+        HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType
+    )  # 1
+    FAILURE_CAUSE_BY_IMPROPER_USAGE: (
+        HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType
+    )  # 2
 
     class _WiringError:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _WiringErrorEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType], _builtins.type):
+    class _WiringErrorEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        WIRING_ERROR_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType  # 0
-        WIRING_ERROR_NO_POWER_TO_C: HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType  # 1
-        WIRING_ERROR_LOW_POWER_TO_C: HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType  # 2
+        WIRING_ERROR_UNSPECIFIED: (
+            HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType
+        )  # 0
+        WIRING_ERROR_NO_POWER_TO_C: (
+            HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType
+        )  # 1
+        WIRING_ERROR_LOW_POWER_TO_C: (
+            HvacDiagnosticsAlertsSettingsTrait._WiringError.ValueType
+        )  # 2
 
     class WiringError(_WiringError, metaclass=_WiringErrorEnumTypeWrapper): ...
-    WIRING_ERROR_UNSPECIFIED: HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType  # 0
-    WIRING_ERROR_NO_POWER_TO_C: HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType  # 1
-    WIRING_ERROR_LOW_POWER_TO_C: HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType  # 2
+    WIRING_ERROR_UNSPECIFIED: (
+        HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType
+    )  # 0
+    WIRING_ERROR_NO_POWER_TO_C: (
+        HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType
+    )  # 1
+    WIRING_ERROR_LOW_POWER_TO_C: (
+        HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType
+    )  # 2
 
     @_typing.final
     class HvacSystemAlertEvent(_message.Message):
@@ -648,11 +953,17 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         optOutUrl: _builtins.str
         proLeadEnabled: _builtins.bool
         isWithinServiceArea: _builtins.bool
-        hvacVendorPartner: Global___HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType
+        hvacVendorPartner: (
+            Global___HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType
+        )
         @_builtins.property
-        def nestReportedIssue(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.NestReportedIssue: ...
+        def nestReportedIssue(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.NestReportedIssue: ...
         @_builtins.property
-        def proInfo(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.ProInformation: ...
+        def proInfo(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.ProInformation: ...
         def __init__(
             self,
             *,
@@ -660,14 +971,35 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             structureCountryCode: _builtins.str = ...,
             optOutUrl: _builtins.str = ...,
             proLeadEnabled: _builtins.bool = ...,
-            nestReportedIssue: Global___HvacDiagnosticsAlertsSettingsTrait.NestReportedIssue | None = ...,
+            nestReportedIssue: Global___HvacDiagnosticsAlertsSettingsTrait.NestReportedIssue
+            | None = ...,
             isWithinServiceArea: _builtins.bool = ...,
-            proInfo: Global___HvacDiagnosticsAlertsSettingsTrait.ProInformation | None = ...,
+            proInfo: Global___HvacDiagnosticsAlertsSettingsTrait.ProInformation
+            | None = ...,
             hvacVendorPartner: Global___HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["nestReportedIssue", b"nestReportedIssue", "proInfo", b"proInfo"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "nestReportedIssue", b"nestReportedIssue", "proInfo", b"proInfo"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacVendorPartner", b"hvacVendorPartner", "isWithinServiceArea", b"isWithinServiceArea", "nestReportedIssue", b"nestReportedIssue", "optOutUrl", b"optOutUrl", "proInfo", b"proInfo", "proLeadEnabled", b"proLeadEnabled", "structureCountryCode", b"structureCountryCode", "structurePostalCode", b"structurePostalCode"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "hvacVendorPartner",
+            b"hvacVendorPartner",
+            "isWithinServiceArea",
+            b"isWithinServiceArea",
+            "nestReportedIssue",
+            b"nestReportedIssue",
+            "optOutUrl",
+            b"optOutUrl",
+            "proInfo",
+            b"proInfo",
+            "proLeadEnabled",
+            b"proLeadEnabled",
+            "structureCountryCode",
+            b"structureCountryCode",
+            "structurePostalCode",
+            b"structurePostalCode",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -696,7 +1028,18 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["address", b"address"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["address", b"address", "businessName", b"businessName", "email", b"email", "phoneNumber", b"phoneNumber", "proId", b"proId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "address",
+            b"address",
+            "businessName",
+            b"businessName",
+            "email",
+            b"email",
+            "phoneNumber",
+            b"phoneNumber",
+            "proId",
+            b"proId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -730,29 +1073,49 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         deviceSerialNumber: _builtins.str
         hvacDeliveryType: Global___EquipmentSettingsTrait.DeliveryType.ValueType
         @_builtins.property
-        def degradation(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.Degradation: ...
+        def degradation(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.Degradation: ...
         @_builtins.property
-        def intermittent(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.Intermittent: ...
+        def intermittent(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.Intermittent: ...
         @_builtins.property
         def severe(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.Severe: ...
         @_builtins.property
-        def temperatureAlert(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.TemperatureAlert: ...
+        def temperatureAlert(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.TemperatureAlert: ...
         @_builtins.property
-        def humidityAlert(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HumidityAlert: ...
+        def humidityAlert(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.HumidityAlert: ...
         @_builtins.property
-        def furnaceHeadsUp(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.FurnaceHeadsUp: ...
+        def furnaceHeadsUp(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.FurnaceHeadsUp: ...
         @_builtins.property
         def bookAProUrl(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
-        def hardwareResistorFailure(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HardwareResistorFailure: ...
+        def hardwareResistorFailure(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.HardwareResistorFailure: ...
         @_builtins.property
-        def hardwareWiringError(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HardwareWiringError: ...
+        def hardwareWiringError(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.HardwareWiringError: ...
         @_builtins.property
         def phoenixDeviceId(self) -> _common_pb2.ResourceId: ...
         @_builtins.property
-        def heatLinkPowerSupplyFailure(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyFailure: ...
+        def heatLinkPowerSupplyFailure(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyFailure: ...
         @_builtins.property
-        def heatLinkPowerSupplyReplacement(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyReplacement: ...
+        def heatLinkPowerSupplyReplacement(
+            self,
+        ) -> (
+            Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyReplacement
+        ): ...
         def __init__(
             self,
             *,
@@ -761,24 +1124,97 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             surveyUrlNongaia: _builtins.str = ...,
             visualAssetUrl: _builtins.str = ...,
             hvacSystem: Global___HvacDiagnosticsAlertsSettingsTrait.HvacSystem.ValueType = ...,
-            degradation: Global___HvacDiagnosticsAlertsSettingsTrait.Degradation | None = ...,
-            intermittent: Global___HvacDiagnosticsAlertsSettingsTrait.Intermittent | None = ...,
+            degradation: Global___HvacDiagnosticsAlertsSettingsTrait.Degradation
+            | None = ...,
+            intermittent: Global___HvacDiagnosticsAlertsSettingsTrait.Intermittent
+            | None = ...,
             severe: Global___HvacDiagnosticsAlertsSettingsTrait.Severe | None = ...,
-            temperatureAlert: Global___HvacDiagnosticsAlertsSettingsTrait.TemperatureAlert | None = ...,
-            humidityAlert: Global___HvacDiagnosticsAlertsSettingsTrait.HumidityAlert | None = ...,
-            furnaceHeadsUp: Global___HvacDiagnosticsAlertsSettingsTrait.FurnaceHeadsUp | None = ...,
+            temperatureAlert: Global___HvacDiagnosticsAlertsSettingsTrait.TemperatureAlert
+            | None = ...,
+            humidityAlert: Global___HvacDiagnosticsAlertsSettingsTrait.HumidityAlert
+            | None = ...,
+            furnaceHeadsUp: Global___HvacDiagnosticsAlertsSettingsTrait.FurnaceHeadsUp
+            | None = ...,
             bookAProUrl: _wrappers_pb2.StringValue | None = ...,
-            hardwareResistorFailure: Global___HvacDiagnosticsAlertsSettingsTrait.HardwareResistorFailure | None = ...,
+            hardwareResistorFailure: Global___HvacDiagnosticsAlertsSettingsTrait.HardwareResistorFailure
+            | None = ...,
             deviceSerialNumber: _builtins.str = ...,
-            hardwareWiringError: Global___HvacDiagnosticsAlertsSettingsTrait.HardwareWiringError | None = ...,
+            hardwareWiringError: Global___HvacDiagnosticsAlertsSettingsTrait.HardwareWiringError
+            | None = ...,
             phoenixDeviceId: _common_pb2.ResourceId | None = ...,
             hvacDeliveryType: Global___EquipmentSettingsTrait.DeliveryType.ValueType = ...,
-            heatLinkPowerSupplyFailure: Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyFailure | None = ...,
-            heatLinkPowerSupplyReplacement: Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyReplacement | None = ...,
+            heatLinkPowerSupplyFailure: Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyFailure
+            | None = ...,
+            heatLinkPowerSupplyReplacement: Global___HvacDiagnosticsAlertsSettingsTrait.HeatLinkPowerSupplyReplacement
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["bookAProUrl", b"bookAProUrl", "degradation", b"degradation", "furnaceHeadsUp", b"furnaceHeadsUp", "hardwareResistorFailure", b"hardwareResistorFailure", "hardwareWiringError", b"hardwareWiringError", "heatLinkPowerSupplyFailure", b"heatLinkPowerSupplyFailure", "heatLinkPowerSupplyReplacement", b"heatLinkPowerSupplyReplacement", "humidityAlert", b"humidityAlert", "intermittent", b"intermittent", "phoenixDeviceId", b"phoenixDeviceId", "severe", b"severe", "temperatureAlert", b"temperatureAlert"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "bookAProUrl",
+            b"bookAProUrl",
+            "degradation",
+            b"degradation",
+            "furnaceHeadsUp",
+            b"furnaceHeadsUp",
+            "hardwareResistorFailure",
+            b"hardwareResistorFailure",
+            "hardwareWiringError",
+            b"hardwareWiringError",
+            "heatLinkPowerSupplyFailure",
+            b"heatLinkPowerSupplyFailure",
+            "heatLinkPowerSupplyReplacement",
+            b"heatLinkPowerSupplyReplacement",
+            "humidityAlert",
+            b"humidityAlert",
+            "intermittent",
+            b"intermittent",
+            "phoenixDeviceId",
+            b"phoenixDeviceId",
+            "severe",
+            b"severe",
+            "temperatureAlert",
+            b"temperatureAlert",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bookAProUrl", b"bookAProUrl", "degradation", b"degradation", "deviceSerialNumber", b"deviceSerialNumber", "furnaceHeadsUp", b"furnaceHeadsUp", "hardwareResistorFailure", b"hardwareResistorFailure", "hardwareWiringError", b"hardwareWiringError", "heatLinkPowerSupplyFailure", b"heatLinkPowerSupplyFailure", "heatLinkPowerSupplyReplacement", b"heatLinkPowerSupplyReplacement", "humidityAlert", b"humidityAlert", "hvacDeliveryType", b"hvacDeliveryType", "hvacSystem", b"hvacSystem", "intermittent", b"intermittent", "issueId", b"issueId", "phoenixDeviceId", b"phoenixDeviceId", "severe", b"severe", "surveyUrlGaia", b"surveyUrlGaia", "surveyUrlNongaia", b"surveyUrlNongaia", "temperatureAlert", b"temperatureAlert", "visualAssetUrl", b"visualAssetUrl"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bookAProUrl",
+            b"bookAProUrl",
+            "degradation",
+            b"degradation",
+            "deviceSerialNumber",
+            b"deviceSerialNumber",
+            "furnaceHeadsUp",
+            b"furnaceHeadsUp",
+            "hardwareResistorFailure",
+            b"hardwareResistorFailure",
+            "hardwareWiringError",
+            b"hardwareWiringError",
+            "heatLinkPowerSupplyFailure",
+            b"heatLinkPowerSupplyFailure",
+            "heatLinkPowerSupplyReplacement",
+            b"heatLinkPowerSupplyReplacement",
+            "humidityAlert",
+            b"humidityAlert",
+            "hvacDeliveryType",
+            b"hvacDeliveryType",
+            "hvacSystem",
+            b"hvacSystem",
+            "intermittent",
+            b"intermittent",
+            "issueId",
+            b"issueId",
+            "phoenixDeviceId",
+            b"phoenixDeviceId",
+            "severe",
+            b"severe",
+            "surveyUrlGaia",
+            b"surveyUrlGaia",
+            "surveyUrlNongaia",
+            b"surveyUrlNongaia",
+            "temperatureAlert",
+            b"temperatureAlert",
+            "visualAssetUrl",
+            b"visualAssetUrl",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -800,9 +1236,18 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             misbehavingCycles: _builtins.int = ...,
             issueStartTimestamp: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp", "misbehavingCycles", b"misbehavingCycles"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "duration",
+            b"duration",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+            "misbehavingCycles",
+            b"misbehavingCycles",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -827,9 +1272,23 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             actualTemperatureChange: _builtins.float = ...,
             expectedTemperatureChange: _builtins.float = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["issueEndTimestamp", b"issueEndTimestamp", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "issueEndTimestamp",
+            b"issueEndTimestamp",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actualTemperatureChange", b"actualTemperatureChange", "expectedTemperatureChange", b"expectedTemperatureChange", "issueEndTimestamp", b"issueEndTimestamp", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actualTemperatureChange",
+            b"actualTemperatureChange",
+            "expectedTemperatureChange",
+            b"expectedTemperatureChange",
+            "issueEndTimestamp",
+            b"issueEndTimestamp",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -846,23 +1305,56 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         @_builtins.property
         def duration(self) -> _duration_pb2.Duration: ...
         @_builtins.property
-        def historical(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.HistoricalDegradationDetails: ...
+        def historical(
+            self,
+        ) -> (
+            Global___HvacDiagnosticsAlertsSettingsTrait.HistoricalDegradationDetails
+        ): ...
         @_builtins.property
-        def cohort(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.CohortAnalysisDetails: ...
+        def cohort(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.CohortAnalysisDetails: ...
         @_builtins.property
-        def auxHeat(self) -> Global___HvacDiagnosticsAlertsSettingsTrait.ExcessiveAuxHeatDetails: ...
+        def auxHeat(
+            self,
+        ) -> Global___HvacDiagnosticsAlertsSettingsTrait.ExcessiveAuxHeatDetails: ...
         def __init__(
             self,
             *,
             issueStartTimestamp: _timestamp_pb2.Timestamp | None = ...,
             duration: _duration_pb2.Duration | None = ...,
-            historical: Global___HvacDiagnosticsAlertsSettingsTrait.HistoricalDegradationDetails | None = ...,
-            cohort: Global___HvacDiagnosticsAlertsSettingsTrait.CohortAnalysisDetails | None = ...,
-            auxHeat: Global___HvacDiagnosticsAlertsSettingsTrait.ExcessiveAuxHeatDetails | None = ...,
+            historical: Global___HvacDiagnosticsAlertsSettingsTrait.HistoricalDegradationDetails
+            | None = ...,
+            cohort: Global___HvacDiagnosticsAlertsSettingsTrait.CohortAnalysisDetails
+            | None = ...,
+            auxHeat: Global___HvacDiagnosticsAlertsSettingsTrait.ExcessiveAuxHeatDetails
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["auxHeat", b"auxHeat", "cohort", b"cohort", "duration", b"duration", "historical", b"historical", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "auxHeat",
+            b"auxHeat",
+            "cohort",
+            b"cohort",
+            "duration",
+            b"duration",
+            "historical",
+            b"historical",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["auxHeat", b"auxHeat", "cohort", b"cohort", "duration", b"duration", "historical", b"historical", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "auxHeat",
+            b"auxHeat",
+            "cohort",
+            b"cohort",
+            "duration",
+            b"duration",
+            "historical",
+            b"historical",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -884,9 +1376,18 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             observedRuntime: _duration_pb2.Duration | None = ...,
             extraRuntimePercentage: _builtins.float = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["expectedRuntime", b"expectedRuntime", "observedRuntime", b"observedRuntime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "expectedRuntime", b"expectedRuntime", "observedRuntime", b"observedRuntime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["expectedRuntime", b"expectedRuntime", "extraRuntimePercentage", b"extraRuntimePercentage", "observedRuntime", b"observedRuntime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "expectedRuntime",
+            b"expectedRuntime",
+            "extraRuntimePercentage",
+            b"extraRuntimePercentage",
+            "observedRuntime",
+            b"observedRuntime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -901,9 +1402,13 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             *,
             observedRuntime: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["observedRuntime", b"observedRuntime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "observedRuntime", b"observedRuntime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["observedRuntime", b"observedRuntime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "observedRuntime", b"observedRuntime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -916,7 +1421,9 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         HEATPUMPSETTINGS_FIELD_NUMBER: _builtins.int
         EXPECTEDAUXHEATRUNTIME_FIELD_NUMBER: _builtins.int
         POTENTIALENERGYSAVINGSPERCENTAGE_FIELD_NUMBER: _builtins.int
-        heatPumpSettings: Global___HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+        heatPumpSettings: (
+            Global___HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+        )
         potentialEnergySavingsPercentage: _builtins.float
         @_builtins.property
         def overallHeatRuntime(self) -> _duration_pb2.Duration: ...
@@ -936,9 +1443,31 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             expectedAuxHeatRuntime: _duration_pb2.Duration | None = ...,
             potentialEnergySavingsPercentage: _builtins.float = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["auxHeatRuntime", b"auxHeatRuntime", "compressorHeatRuntime", b"compressorHeatRuntime", "expectedAuxHeatRuntime", b"expectedAuxHeatRuntime", "overallHeatRuntime", b"overallHeatRuntime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "auxHeatRuntime",
+            b"auxHeatRuntime",
+            "compressorHeatRuntime",
+            b"compressorHeatRuntime",
+            "expectedAuxHeatRuntime",
+            b"expectedAuxHeatRuntime",
+            "overallHeatRuntime",
+            b"overallHeatRuntime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["auxHeatRuntime", b"auxHeatRuntime", "compressorHeatRuntime", b"compressorHeatRuntime", "expectedAuxHeatRuntime", b"expectedAuxHeatRuntime", "heatPumpSettings", b"heatPumpSettings", "overallHeatRuntime", b"overallHeatRuntime", "potentialEnergySavingsPercentage", b"potentialEnergySavingsPercentage"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "auxHeatRuntime",
+            b"auxHeatRuntime",
+            "compressorHeatRuntime",
+            b"compressorHeatRuntime",
+            "expectedAuxHeatRuntime",
+            b"expectedAuxHeatRuntime",
+            "heatPumpSettings",
+            b"heatPumpSettings",
+            "overallHeatRuntime",
+            b"overallHeatRuntime",
+            "potentialEnergySavingsPercentage",
+            b"potentialEnergySavingsPercentage",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -975,9 +1504,28 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             upperTemperatureBound: _builtins.float = ...,
             lowerTemperatureBound: _builtins.float = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["avgObservedTemperature", b"avgObservedTemperature", "duration", b"duration", "inclusion", b"inclusion", "issueStartTimestamp", b"issueStartTimestamp", "lowerTemperatureBound", b"lowerTemperatureBound", "maxObservedTemperature", b"maxObservedTemperature", "minObservedTemperature", b"minObservedTemperature", "upperTemperatureBound", b"upperTemperatureBound"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "avgObservedTemperature",
+            b"avgObservedTemperature",
+            "duration",
+            b"duration",
+            "inclusion",
+            b"inclusion",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+            "lowerTemperatureBound",
+            b"lowerTemperatureBound",
+            "maxObservedTemperature",
+            b"maxObservedTemperature",
+            "minObservedTemperature",
+            b"minObservedTemperature",
+            "upperTemperatureBound",
+            b"upperTemperatureBound",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1014,9 +1562,28 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             upperHumidityBound: _builtins.float = ...,
             lowerHumidityBound: _builtins.float = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration", b"duration", "issueStartTimestamp", b"issueStartTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["avgObservedHumidity", b"avgObservedHumidity", "duration", b"duration", "inclusion", b"inclusion", "issueStartTimestamp", b"issueStartTimestamp", "lowerHumidityBound", b"lowerHumidityBound", "maxObservedHumidity", b"maxObservedHumidity", "minObservedHumidity", b"minObservedHumidity", "upperHumidityBound", b"upperHumidityBound"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "avgObservedHumidity",
+            b"avgObservedHumidity",
+            "duration",
+            b"duration",
+            "inclusion",
+            b"inclusion",
+            "issueStartTimestamp",
+            b"issueStartTimestamp",
+            "lowerHumidityBound",
+            b"lowerHumidityBound",
+            "maxObservedHumidity",
+            b"maxObservedHumidity",
+            "minObservedHumidity",
+            b"minObservedHumidity",
+            "upperHumidityBound",
+            b"upperHumidityBound",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1031,9 +1598,13 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             *,
             detectedTimestamp: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1051,9 +1622,13 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             detectedTimestamp: _timestamp_pb2.Timestamp | None = ...,
             failureCause: Global___HvacDiagnosticsAlertsSettingsTrait.FailureCause.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp", "failureCause", b"failureCause"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp", "failureCause", b"failureCause"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1071,9 +1646,13 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             detectedTimestamp: _timestamp_pb2.Timestamp | None = ...,
             wiringError: Global___HvacDiagnosticsAlertsSettingsTrait.WiringError.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["detectedTimestamp", b"detectedTimestamp", "wiringError", b"wiringError"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "detectedTimestamp", b"detectedTimestamp", "wiringError", b"wiringError"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1092,9 +1671,19 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
             heatLinkLastSeenConnected: _timestamp_pb2.Timestamp | None = ...,
             headUnitLastSeenConnected: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["headUnitLastSeenConnected", b"headUnitLastSeenConnected", "heatLinkLastSeenConnected", b"heatLinkLastSeenConnected"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "headUnitLastSeenConnected",
+            b"headUnitLastSeenConnected",
+            "heatLinkLastSeenConnected",
+            b"heatLinkLastSeenConnected",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["headUnitLastSeenConnected", b"headUnitLastSeenConnected", "heatLinkLastSeenConnected", b"heatLinkLastSeenConnected"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "headUnitLastSeenConnected",
+            b"headUnitLastSeenConnected",
+            "heatLinkLastSeenConnected",
+            b"heatLinkLastSeenConnected",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1127,12 +1716,28 @@ class HvacDiagnosticsAlertsSettingsTrait(_message.Message):
         lastAlertTime: _timestamp_pb2.Timestamp | None = ...,
         lastConsentTime: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["enableAlerts", b"enableAlerts", "lastAlertTime", b"lastAlertTime", "lastConsentTime", b"lastConsentTime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "enableAlerts",
+        b"enableAlerts",
+        "lastAlertTime",
+        b"lastAlertTime",
+        "lastConsentTime",
+        b"lastConsentTime",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enableAlerts", b"enableAlerts", "lastAlertTime", b"lastAlertTime", "lastConsentTime", b"lastConsentTime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enableAlerts",
+        b"enableAlerts",
+        "lastAlertTime",
+        b"lastAlertTime",
+        "lastConsentTime",
+        b"lastConsentTime",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___HvacDiagnosticsAlertsSettingsTrait: _TypeAlias = HvacDiagnosticsAlertsSettingsTrait  # noqa: Y015
+Global___HvacDiagnosticsAlertsSettingsTrait: _TypeAlias = (
+    HvacDiagnosticsAlertsSettingsTrait  # noqa: Y015
+)
 
 @_typing.final
 class EquipmentSettingsTrait(_message.Message):
@@ -1142,13 +1747,22 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DeliveryTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DeliveryType.ValueType], _builtins.type):
+    class _DeliveryTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DeliveryType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         DELIVERY_TYPE_UNSPECIFIED: EquipmentSettingsTrait._DeliveryType.ValueType  # 0
         DELIVERY_TYPE_FORCED_AIR: EquipmentSettingsTrait._DeliveryType.ValueType  # 1
-        DELIVERY_TYPE_IN_FLOOR_RADIANT: EquipmentSettingsTrait._DeliveryType.ValueType  # 2
+        DELIVERY_TYPE_IN_FLOOR_RADIANT: (
+            EquipmentSettingsTrait._DeliveryType.ValueType
+        )  # 2
         DELIVERY_TYPE_RADIATORS: EquipmentSettingsTrait._DeliveryType.ValueType  # 3
-        DELIVERY_TYPE_ELECTRIC_STRIP: EquipmentSettingsTrait._DeliveryType.ValueType  # 4
+        DELIVERY_TYPE_ELECTRIC_STRIP: (
+            EquipmentSettingsTrait._DeliveryType.ValueType
+        )  # 4
 
     class DeliveryType(_DeliveryType, metaclass=_DeliveryTypeEnumTypeWrapper): ...
     DELIVERY_TYPE_UNSPECIFIED: EquipmentSettingsTrait.DeliveryType.ValueType  # 0
@@ -1161,15 +1775,26 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FuelSourceTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._FuelSourceType.ValueType], _builtins.type):
+    class _FuelSourceTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._FuelSourceType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        FUEL_SOURCE_TYPE_UNSPECIFIED: EquipmentSettingsTrait._FuelSourceType.ValueType  # 0
+        FUEL_SOURCE_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._FuelSourceType.ValueType
+        )  # 0
         FUEL_SOURCE_TYPE_GAS: EquipmentSettingsTrait._FuelSourceType.ValueType  # 1
         FUEL_SOURCE_TYPE_ELECTRIC: EquipmentSettingsTrait._FuelSourceType.ValueType  # 2
         FUEL_SOURCE_TYPE_OIL: EquipmentSettingsTrait._FuelSourceType.ValueType  # 3
         FUEL_SOURCE_TYPE_LP: EquipmentSettingsTrait._FuelSourceType.ValueType  # 4
-        FUEL_SOURCE_TYPE_GEOTHERMAL: EquipmentSettingsTrait._FuelSourceType.ValueType  # 5
-        FUEL_SOURCE_TYPE_DISTRICT_HEATING: EquipmentSettingsTrait._FuelSourceType.ValueType  # 6
+        FUEL_SOURCE_TYPE_GEOTHERMAL: (
+            EquipmentSettingsTrait._FuelSourceType.ValueType
+        )  # 5
+        FUEL_SOURCE_TYPE_DISTRICT_HEATING: (
+            EquipmentSettingsTrait._FuelSourceType.ValueType
+        )  # 6
         FUEL_SOURCE_TYPE_PELLETS: EquipmentSettingsTrait._FuelSourceType.ValueType  # 7
 
     class FuelSourceType(_FuelSourceType, metaclass=_FuelSourceTypeEnumTypeWrapper): ...
@@ -1179,14 +1804,19 @@ class EquipmentSettingsTrait(_message.Message):
     FUEL_SOURCE_TYPE_OIL: EquipmentSettingsTrait.FuelSourceType.ValueType  # 3
     FUEL_SOURCE_TYPE_LP: EquipmentSettingsTrait.FuelSourceType.ValueType  # 4
     FUEL_SOURCE_TYPE_GEOTHERMAL: EquipmentSettingsTrait.FuelSourceType.ValueType  # 5
-    FUEL_SOURCE_TYPE_DISTRICT_HEATING: EquipmentSettingsTrait.FuelSourceType.ValueType  # 6
+    FUEL_SOURCE_TYPE_DISTRICT_HEATING: (
+        EquipmentSettingsTrait.FuelSourceType.ValueType
+    )  # 6
     FUEL_SOURCE_TYPE_PELLETS: EquipmentSettingsTrait.FuelSourceType.ValueType  # 7
 
     class _StarType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StarTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._StarType.ValueType], _builtins.type):
+    class _StarTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._StarType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STAR_TYPE_UNSPECIFIED: EquipmentSettingsTrait._StarType.ValueType  # 0
         STAR_TYPE_EMERGENCY_HEAT: EquipmentSettingsTrait._StarType.ValueType  # 1
@@ -1215,7 +1845,10 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _Y2TypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._Y2Type.ValueType], _builtins.type):
+    class _Y2TypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._Y2Type.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         Y2_TYPE_UNSPECIFIED: EquipmentSettingsTrait._Y2Type.ValueType  # 0
         Y2_TYPE_HEATING_AND_COOLING: EquipmentSettingsTrait._Y2Type.ValueType  # 1
@@ -1234,7 +1867,12 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AqWireTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._AqWireType.ValueType], _builtins.type):
+    class _AqWireTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._AqWireType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         AQ_WIRE_TYPE_UNSPECIFIED: EquipmentSettingsTrait._AqWireType.ValueType  # 0
         AQ_WIRE_TYPE_VENTILATOR: EquipmentSettingsTrait._AqWireType.ValueType  # 1
@@ -1251,114 +1889,244 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DehumidifierOrientationEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DehumidifierOrientation.ValueType], _builtins.type):
+    class _DehumidifierOrientationEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DehumidifierOrientation.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEHUMIDIFIER_ORIENTATION_UNSPECIFIED: EquipmentSettingsTrait._DehumidifierOrientation.ValueType  # 0
-        DEHUMIDIFIER_ORIENTATION_NORMAL: EquipmentSettingsTrait._DehumidifierOrientation.ValueType  # 1
-        DEHUMIDIFIER_ORIENTATION_REVERSED: EquipmentSettingsTrait._DehumidifierOrientation.ValueType  # 2
+        DEHUMIDIFIER_ORIENTATION_UNSPECIFIED: (
+            EquipmentSettingsTrait._DehumidifierOrientation.ValueType
+        )  # 0
+        DEHUMIDIFIER_ORIENTATION_NORMAL: (
+            EquipmentSettingsTrait._DehumidifierOrientation.ValueType
+        )  # 1
+        DEHUMIDIFIER_ORIENTATION_REVERSED: (
+            EquipmentSettingsTrait._DehumidifierOrientation.ValueType
+        )  # 2
 
-    class DehumidifierOrientation(_DehumidifierOrientation, metaclass=_DehumidifierOrientationEnumTypeWrapper): ...
-    DEHUMIDIFIER_ORIENTATION_UNSPECIFIED: EquipmentSettingsTrait.DehumidifierOrientation.ValueType  # 0
-    DEHUMIDIFIER_ORIENTATION_NORMAL: EquipmentSettingsTrait.DehumidifierOrientation.ValueType  # 1
-    DEHUMIDIFIER_ORIENTATION_REVERSED: EquipmentSettingsTrait.DehumidifierOrientation.ValueType  # 2
+    class DehumidifierOrientation(
+        _DehumidifierOrientation, metaclass=_DehumidifierOrientationEnumTypeWrapper
+    ): ...
+    DEHUMIDIFIER_ORIENTATION_UNSPECIFIED: (
+        EquipmentSettingsTrait.DehumidifierOrientation.ValueType
+    )  # 0
+    DEHUMIDIFIER_ORIENTATION_NORMAL: (
+        EquipmentSettingsTrait.DehumidifierOrientation.ValueType
+    )  # 1
+    DEHUMIDIFIER_ORIENTATION_REVERSED: (
+        EquipmentSettingsTrait.DehumidifierOrientation.ValueType
+    )  # 2
 
     class _DehumidifierType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DehumidifierTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DehumidifierType.ValueType], _builtins.type):
+    class _DehumidifierTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DehumidifierType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEHUMIDIFIER_TYPE_UNSPECIFIED: EquipmentSettingsTrait._DehumidifierType.ValueType  # 0
-        DEHUMIDIFIER_TYPE_AC_INTEGRATED: EquipmentSettingsTrait._DehumidifierType.ValueType  # 1
-        DEHUMIDIFIER_TYPE_STAND_ALONE: EquipmentSettingsTrait._DehumidifierType.ValueType  # 2
+        DEHUMIDIFIER_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._DehumidifierType.ValueType
+        )  # 0
+        DEHUMIDIFIER_TYPE_AC_INTEGRATED: (
+            EquipmentSettingsTrait._DehumidifierType.ValueType
+        )  # 1
+        DEHUMIDIFIER_TYPE_STAND_ALONE: (
+            EquipmentSettingsTrait._DehumidifierType.ValueType
+        )  # 2
 
-    class DehumidifierType(_DehumidifierType, metaclass=_DehumidifierTypeEnumTypeWrapper): ...
-    DEHUMIDIFIER_TYPE_UNSPECIFIED: EquipmentSettingsTrait.DehumidifierType.ValueType  # 0
-    DEHUMIDIFIER_TYPE_AC_INTEGRATED: EquipmentSettingsTrait.DehumidifierType.ValueType  # 1
-    DEHUMIDIFIER_TYPE_STAND_ALONE: EquipmentSettingsTrait.DehumidifierType.ValueType  # 2
+    class DehumidifierType(
+        _DehumidifierType, metaclass=_DehumidifierTypeEnumTypeWrapper
+    ): ...
+    DEHUMIDIFIER_TYPE_UNSPECIFIED: (
+        EquipmentSettingsTrait.DehumidifierType.ValueType
+    )  # 0
+    DEHUMIDIFIER_TYPE_AC_INTEGRATED: (
+        EquipmentSettingsTrait.DehumidifierType.ValueType
+    )  # 1
+    DEHUMIDIFIER_TYPE_STAND_ALONE: (
+        EquipmentSettingsTrait.DehumidifierType.ValueType
+    )  # 2
 
     class _DehumidifierFanType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DehumidifierFanTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DehumidifierFanType.ValueType], _builtins.type):
+    class _DehumidifierFanTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DehumidifierFanType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEHUMIDIFIER_FAN_TYPE_UNSPECIFIED: EquipmentSettingsTrait._DehumidifierFanType.ValueType  # 0
-        DEHUMIDIFIER_FAN_TYPE_ACTIVATE: EquipmentSettingsTrait._DehumidifierFanType.ValueType  # 1
-        DEHUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: EquipmentSettingsTrait._DehumidifierFanType.ValueType  # 2
+        DEHUMIDIFIER_FAN_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._DehumidifierFanType.ValueType
+        )  # 0
+        DEHUMIDIFIER_FAN_TYPE_ACTIVATE: (
+            EquipmentSettingsTrait._DehumidifierFanType.ValueType
+        )  # 1
+        DEHUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: (
+            EquipmentSettingsTrait._DehumidifierFanType.ValueType
+        )  # 2
 
-    class DehumidifierFanType(_DehumidifierFanType, metaclass=_DehumidifierFanTypeEnumTypeWrapper): ...
-    DEHUMIDIFIER_FAN_TYPE_UNSPECIFIED: EquipmentSettingsTrait.DehumidifierFanType.ValueType  # 0
-    DEHUMIDIFIER_FAN_TYPE_ACTIVATE: EquipmentSettingsTrait.DehumidifierFanType.ValueType  # 1
-    DEHUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: EquipmentSettingsTrait.DehumidifierFanType.ValueType  # 2
+    class DehumidifierFanType(
+        _DehumidifierFanType, metaclass=_DehumidifierFanTypeEnumTypeWrapper
+    ): ...
+    DEHUMIDIFIER_FAN_TYPE_UNSPECIFIED: (
+        EquipmentSettingsTrait.DehumidifierFanType.ValueType
+    )  # 0
+    DEHUMIDIFIER_FAN_TYPE_ACTIVATE: (
+        EquipmentSettingsTrait.DehumidifierFanType.ValueType
+    )  # 1
+    DEHUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: (
+        EquipmentSettingsTrait.DehumidifierFanType.ValueType
+    )  # 2
 
     class _HumidifierType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HumidifierTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._HumidifierType.ValueType], _builtins.type):
+    class _HumidifierTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._HumidifierType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HUMIDIFIER_TYPE_UNSPECIFIED: EquipmentSettingsTrait._HumidifierType.ValueType  # 0
-        HUMIDIFIER_TYPE_STEAM_GENERATING: EquipmentSettingsTrait._HumidifierType.ValueType  # 1
+        HUMIDIFIER_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._HumidifierType.ValueType
+        )  # 0
+        HUMIDIFIER_TYPE_STEAM_GENERATING: (
+            EquipmentSettingsTrait._HumidifierType.ValueType
+        )  # 1
         HUMIDIFIER_TYPE_BYPASS: EquipmentSettingsTrait._HumidifierType.ValueType  # 2
 
     class HumidifierType(_HumidifierType, metaclass=_HumidifierTypeEnumTypeWrapper): ...
     HUMIDIFIER_TYPE_UNSPECIFIED: EquipmentSettingsTrait.HumidifierType.ValueType  # 0
-    HUMIDIFIER_TYPE_STEAM_GENERATING: EquipmentSettingsTrait.HumidifierType.ValueType  # 1
+    HUMIDIFIER_TYPE_STEAM_GENERATING: (
+        EquipmentSettingsTrait.HumidifierType.ValueType
+    )  # 1
     HUMIDIFIER_TYPE_BYPASS: EquipmentSettingsTrait.HumidifierType.ValueType  # 2
 
     class _HumidifierFanType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HumidifierFanTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._HumidifierFanType.ValueType], _builtins.type):
+    class _HumidifierFanTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._HumidifierFanType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HUMIDIFIER_FAN_TYPE_UNSPECIFIED: EquipmentSettingsTrait._HumidifierFanType.ValueType  # 0
-        HUMIDIFIER_FAN_TYPE_ACTIVATE: EquipmentSettingsTrait._HumidifierFanType.ValueType  # 1
-        HUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: EquipmentSettingsTrait._HumidifierFanType.ValueType  # 2
+        HUMIDIFIER_FAN_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._HumidifierFanType.ValueType
+        )  # 0
+        HUMIDIFIER_FAN_TYPE_ACTIVATE: (
+            EquipmentSettingsTrait._HumidifierFanType.ValueType
+        )  # 1
+        HUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: (
+            EquipmentSettingsTrait._HumidifierFanType.ValueType
+        )  # 2
 
-    class HumidifierFanType(_HumidifierFanType, metaclass=_HumidifierFanTypeEnumTypeWrapper): ...
-    HUMIDIFIER_FAN_TYPE_UNSPECIFIED: EquipmentSettingsTrait.HumidifierFanType.ValueType  # 0
-    HUMIDIFIER_FAN_TYPE_ACTIVATE: EquipmentSettingsTrait.HumidifierFanType.ValueType  # 1
-    HUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: EquipmentSettingsTrait.HumidifierFanType.ValueType  # 2
+    class HumidifierFanType(
+        _HumidifierFanType, metaclass=_HumidifierFanTypeEnumTypeWrapper
+    ): ...
+    HUMIDIFIER_FAN_TYPE_UNSPECIFIED: (
+        EquipmentSettingsTrait.HumidifierFanType.ValueType
+    )  # 0
+    HUMIDIFIER_FAN_TYPE_ACTIVATE: (
+        EquipmentSettingsTrait.HumidifierFanType.ValueType
+    )  # 1
+    HUMIDIFIER_FAN_TYPE_DONT_ACTIVATE: (
+        EquipmentSettingsTrait.HumidifierFanType.ValueType
+    )  # 2
 
     class _DualFuelSelection:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DualFuelSelectionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DualFuelSelection.ValueType], _builtins.type):
+    class _DualFuelSelectionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DualFuelSelection.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DUAL_FUEL_SELECTION_UNSPECIFIED: EquipmentSettingsTrait._DualFuelSelection.ValueType  # 0
-        DUAL_FUEL_SELECTION_DUAL_FUEL: EquipmentSettingsTrait._DualFuelSelection.ValueType  # 1
-        DUAL_FUEL_SELECTION_SINGLE_FUEL: EquipmentSettingsTrait._DualFuelSelection.ValueType  # 2
+        DUAL_FUEL_SELECTION_UNSPECIFIED: (
+            EquipmentSettingsTrait._DualFuelSelection.ValueType
+        )  # 0
+        DUAL_FUEL_SELECTION_DUAL_FUEL: (
+            EquipmentSettingsTrait._DualFuelSelection.ValueType
+        )  # 1
+        DUAL_FUEL_SELECTION_SINGLE_FUEL: (
+            EquipmentSettingsTrait._DualFuelSelection.ValueType
+        )  # 2
 
-    class DualFuelSelection(_DualFuelSelection, metaclass=_DualFuelSelectionEnumTypeWrapper): ...
-    DUAL_FUEL_SELECTION_UNSPECIFIED: EquipmentSettingsTrait.DualFuelSelection.ValueType  # 0
-    DUAL_FUEL_SELECTION_DUAL_FUEL: EquipmentSettingsTrait.DualFuelSelection.ValueType  # 1
-    DUAL_FUEL_SELECTION_SINGLE_FUEL: EquipmentSettingsTrait.DualFuelSelection.ValueType  # 2
+    class DualFuelSelection(
+        _DualFuelSelection, metaclass=_DualFuelSelectionEnumTypeWrapper
+    ): ...
+    DUAL_FUEL_SELECTION_UNSPECIFIED: (
+        EquipmentSettingsTrait.DualFuelSelection.ValueType
+    )  # 0
+    DUAL_FUEL_SELECTION_DUAL_FUEL: (
+        EquipmentSettingsTrait.DualFuelSelection.ValueType
+    )  # 1
+    DUAL_FUEL_SELECTION_SINGLE_FUEL: (
+        EquipmentSettingsTrait.DualFuelSelection.ValueType
+    )  # 2
 
     class _DualFuelOverride:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DualFuelOverrideEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._DualFuelOverride.ValueType], _builtins.type):
+    class _DualFuelOverrideEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._DualFuelOverride.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DUAL_FUEL_OVERRIDE_UNSPECIFIED: EquipmentSettingsTrait._DualFuelOverride.ValueType  # 0
+        DUAL_FUEL_OVERRIDE_UNSPECIFIED: (
+            EquipmentSettingsTrait._DualFuelOverride.ValueType
+        )  # 0
         DUAL_FUEL_OVERRIDE_NONE: EquipmentSettingsTrait._DualFuelOverride.ValueType  # 1
-        DUAL_FUEL_OVERRIDE_ALWAYS_ALT: EquipmentSettingsTrait._DualFuelOverride.ValueType  # 2
-        DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY: EquipmentSettingsTrait._DualFuelOverride.ValueType  # 3
+        DUAL_FUEL_OVERRIDE_ALWAYS_ALT: (
+            EquipmentSettingsTrait._DualFuelOverride.ValueType
+        )  # 2
+        DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY: (
+            EquipmentSettingsTrait._DualFuelOverride.ValueType
+        )  # 3
 
-    class DualFuelOverride(_DualFuelOverride, metaclass=_DualFuelOverrideEnumTypeWrapper): ...
-    DUAL_FUEL_OVERRIDE_UNSPECIFIED: EquipmentSettingsTrait.DualFuelOverride.ValueType  # 0
+    class DualFuelOverride(
+        _DualFuelOverride, metaclass=_DualFuelOverrideEnumTypeWrapper
+    ): ...
+    DUAL_FUEL_OVERRIDE_UNSPECIFIED: (
+        EquipmentSettingsTrait.DualFuelOverride.ValueType
+    )  # 0
     DUAL_FUEL_OVERRIDE_NONE: EquipmentSettingsTrait.DualFuelOverride.ValueType  # 1
-    DUAL_FUEL_OVERRIDE_ALWAYS_ALT: EquipmentSettingsTrait.DualFuelOverride.ValueType  # 2
-    DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY: EquipmentSettingsTrait.DualFuelOverride.ValueType  # 3
+    DUAL_FUEL_OVERRIDE_ALWAYS_ALT: (
+        EquipmentSettingsTrait.DualFuelOverride.ValueType
+    )  # 2
+    DUAL_FUEL_OVERRIDE_ALWAYS_PRIMARY: (
+        EquipmentSettingsTrait.DualFuelOverride.ValueType
+    )  # 3
 
     class _ObOrientation:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ObOrientationEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._ObOrientation.ValueType], _builtins.type):
+    class _ObOrientationEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._ObOrientation.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         OB_ORIENTATION_UNSPECIFIED: EquipmentSettingsTrait._ObOrientation.ValueType  # 0
         OB_ORIENTATION_O: EquipmentSettingsTrait._ObOrientation.ValueType  # 1
@@ -1373,7 +2141,12 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ObPersistenceEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._ObPersistence.ValueType], _builtins.type):
+    class _ObPersistenceEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._ObPersistence.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         OB_PERSISTENCE_UNSPECIFIED: EquipmentSettingsTrait._ObPersistence.ValueType  # 0
         OB_PERSISTENCE_SEASONAL: EquipmentSettingsTrait._ObPersistence.ValueType  # 1
@@ -1388,7 +2161,12 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BoilerTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._BoilerType.ValueType], _builtins.type):
+    class _BoilerTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._BoilerType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         BOILER_TYPE_UNSPECIFIED: EquipmentSettingsTrait._BoilerType.ValueType  # 0
         BOILER_TYPE_COMBI: EquipmentSettingsTrait._BoilerType.ValueType  # 1
@@ -1411,13 +2189,24 @@ class EquipmentSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _VentilatorTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EquipmentSettingsTrait._VentilatorType.ValueType], _builtins.type):
+    class _VentilatorTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EquipmentSettingsTrait._VentilatorType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        VENTILATOR_TYPE_UNSPECIFIED: EquipmentSettingsTrait._VentilatorType.ValueType  # 0
+        VENTILATOR_TYPE_UNSPECIFIED: (
+            EquipmentSettingsTrait._VentilatorType.ValueType
+        )  # 0
         VENTILATOR_TYPE_HRV: EquipmentSettingsTrait._VentilatorType.ValueType  # 1
         VENTILATOR_TYPE_ERV: EquipmentSettingsTrait._VentilatorType.ValueType  # 2
-        VENTILATOR_TYPE_SUPPLY_ONLY: EquipmentSettingsTrait._VentilatorType.ValueType  # 3
-        VENTILATOR_TYPE_EXHAUST_ONLY: EquipmentSettingsTrait._VentilatorType.ValueType  # 4
+        VENTILATOR_TYPE_SUPPLY_ONLY: (
+            EquipmentSettingsTrait._VentilatorType.ValueType
+        )  # 3
+        VENTILATOR_TYPE_EXHAUST_ONLY: (
+            EquipmentSettingsTrait._VentilatorType.ValueType
+        )  # 4
 
     class VentilatorType(_VentilatorType, metaclass=_VentilatorTypeEnumTypeWrapper): ...
     VENTILATOR_TYPE_UNSPECIFIED: EquipmentSettingsTrait.VentilatorType.ValueType  # 0
@@ -1489,13 +2278,19 @@ class EquipmentSettingsTrait(_message.Message):
     emergencyHeatSource: Global___EquipmentSettingsTrait.FuelSourceType.ValueType
     starType: Global___EquipmentSettingsTrait.StarType.ValueType
     y2Type: Global___EquipmentSettingsTrait.Y2Type.ValueType
-    dehumidifierFanActivation: Global___EquipmentSettingsTrait.DehumidifierFanType.ValueType
-    dehumidifierOrientationSelected: Global___EquipmentSettingsTrait.DehumidifierOrientation.ValueType
+    dehumidifierFanActivation: (
+        Global___EquipmentSettingsTrait.DehumidifierFanType.ValueType
+    )
+    dehumidifierOrientationSelected: (
+        Global___EquipmentSettingsTrait.DehumidifierOrientation.ValueType
+    )
     dehumidifierType: Global___EquipmentSettingsTrait.DehumidifierType.ValueType
     humidifierFanActivation: Global___EquipmentSettingsTrait.HumidifierFanType.ValueType
     humidifierType: Global___EquipmentSettingsTrait.HumidifierType.ValueType
     dualFuelSelected: Global___EquipmentSettingsTrait.DualFuelSelection.ValueType
-    dualFuelBreakpointOverride: Global___EquipmentSettingsTrait.DualFuelOverride.ValueType
+    dualFuelBreakpointOverride: (
+        Global___EquipmentSettingsTrait.DualFuelOverride.ValueType
+    )
     obOrientation: Global___EquipmentSettingsTrait.ObOrientation.ValueType
     obPersistence: Global___EquipmentSettingsTrait.ObPersistence.ValueType
     boilerType: Global___EquipmentSettingsTrait.BoilerType.ValueType
@@ -1558,9 +2353,103 @@ class EquipmentSettingsTrait(_message.Message):
         compressorLockout: _duration_pb2.Duration | None = ...,
         heatMinCycleTime: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["boilerSupplyTemperature", b"boilerSupplyTemperature", "compressorLockout", b"compressorLockout", "compressorMinCycleTime", b"compressorMinCycleTime", "dualFuelBreakpoint", b"dualFuelBreakpoint", "heatMinCycleTime", b"heatMinCycleTime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "boilerSupplyTemperature",
+        b"boilerSupplyTemperature",
+        "compressorLockout",
+        b"compressorLockout",
+        "compressorMinCycleTime",
+        b"compressorMinCycleTime",
+        "dualFuelBreakpoint",
+        b"dualFuelBreakpoint",
+        "heatMinCycleTime",
+        b"heatMinCycleTime",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["activateFanIfHeatSourceIsGas", b"activateFanIfHeatSourceIsGas", "altHeatStage1Delivery", b"altHeatStage1Delivery", "altHeatStage1Source", b"altHeatStage1Source", "altHeatStage2Delivery", b"altHeatStage2Delivery", "altHeatStage2Source", b"altHeatStage2Source", "aqWireType", b"aqWireType", "auxHeatStage1Delivery", b"auxHeatStage1Delivery", "auxHeatStage1Source", b"auxHeatStage1Source", "boilerSupplyTemperature", b"boilerSupplyTemperature", "boilerType", b"boilerType", "compressorLockout", b"compressorLockout", "compressorMinCycleTime", b"compressorMinCycleTime", "coolingStage1Delivery", b"coolingStage1Delivery", "coolingStage1Source", b"coolingStage1Source", "coolingStage2Delivery", b"coolingStage2Delivery", "coolingStage2Source", b"coolingStage2Source", "coolingStage3Delivery", b"coolingStage3Delivery", "coolingStage3Source", b"coolingStage3Source", "dehumidifierFanActivation", b"dehumidifierFanActivation", "dehumidifierOrientationSelected", b"dehumidifierOrientationSelected", "dehumidifierType", b"dehumidifierType", "dualFuelBreakpoint", b"dualFuelBreakpoint", "dualFuelBreakpointOverride", b"dualFuelBreakpointOverride", "dualFuelSelected", b"dualFuelSelected", "emergencyHeatDelivery", b"emergencyHeatDelivery", "emergencyHeatSource", b"emergencyHeatSource", "heatMinCycleTime", b"heatMinCycleTime", "heatStage1Delivery", b"heatStage1Delivery", "heatStage1Source", b"heatStage1Source", "heatStage2Delivery", b"heatStage2Delivery", "heatStage2Source", b"heatStage2Source", "heatStage3Delivery", b"heatStage3Delivery", "heatStage3Source", b"heatStage3Source", "humidifierFanActivation", b"humidifierFanActivation", "humidifierType", b"humidifierType", "obOrientation", b"obOrientation", "obPersistence", b"obPersistence", "starType", b"starType", "ventilatorRequiresFanActivation", b"ventilatorRequiresFanActivation", "ventilatorType", b"ventilatorType", "y2Type", b"y2Type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "activateFanIfHeatSourceIsGas",
+        b"activateFanIfHeatSourceIsGas",
+        "altHeatStage1Delivery",
+        b"altHeatStage1Delivery",
+        "altHeatStage1Source",
+        b"altHeatStage1Source",
+        "altHeatStage2Delivery",
+        b"altHeatStage2Delivery",
+        "altHeatStage2Source",
+        b"altHeatStage2Source",
+        "aqWireType",
+        b"aqWireType",
+        "auxHeatStage1Delivery",
+        b"auxHeatStage1Delivery",
+        "auxHeatStage1Source",
+        b"auxHeatStage1Source",
+        "boilerSupplyTemperature",
+        b"boilerSupplyTemperature",
+        "boilerType",
+        b"boilerType",
+        "compressorLockout",
+        b"compressorLockout",
+        "compressorMinCycleTime",
+        b"compressorMinCycleTime",
+        "coolingStage1Delivery",
+        b"coolingStage1Delivery",
+        "coolingStage1Source",
+        b"coolingStage1Source",
+        "coolingStage2Delivery",
+        b"coolingStage2Delivery",
+        "coolingStage2Source",
+        b"coolingStage2Source",
+        "coolingStage3Delivery",
+        b"coolingStage3Delivery",
+        "coolingStage3Source",
+        b"coolingStage3Source",
+        "dehumidifierFanActivation",
+        b"dehumidifierFanActivation",
+        "dehumidifierOrientationSelected",
+        b"dehumidifierOrientationSelected",
+        "dehumidifierType",
+        b"dehumidifierType",
+        "dualFuelBreakpoint",
+        b"dualFuelBreakpoint",
+        "dualFuelBreakpointOverride",
+        b"dualFuelBreakpointOverride",
+        "dualFuelSelected",
+        b"dualFuelSelected",
+        "emergencyHeatDelivery",
+        b"emergencyHeatDelivery",
+        "emergencyHeatSource",
+        b"emergencyHeatSource",
+        "heatMinCycleTime",
+        b"heatMinCycleTime",
+        "heatStage1Delivery",
+        b"heatStage1Delivery",
+        "heatStage1Source",
+        b"heatStage1Source",
+        "heatStage2Delivery",
+        b"heatStage2Delivery",
+        "heatStage2Source",
+        b"heatStage2Source",
+        "heatStage3Delivery",
+        b"heatStage3Delivery",
+        "heatStage3Source",
+        b"heatStage3Source",
+        "humidifierFanActivation",
+        b"humidifierFanActivation",
+        "humidifierType",
+        b"humidifierType",
+        "obOrientation",
+        b"obOrientation",
+        "obPersistence",
+        b"obPersistence",
+        "starType",
+        b"starType",
+        "ventilatorRequiresFanActivation",
+        b"ventilatorRequiresFanActivation",
+        "ventilatorType",
+        b"ventilatorType",
+        "y2Type",
+        b"y2Type",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EquipmentSettingsTrait: _TypeAlias = EquipmentSettingsTrait  # noqa: Y015
@@ -1573,14 +2462,27 @@ class EnergyCaption(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _InteractionBehaviorEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._InteractionBehavior.ValueType], _builtins.type):
+    class _InteractionBehaviorEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyCaption._InteractionBehavior.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        INTERACTION_BEHAVIOR_UNSPECIFIED: EnergyCaption._InteractionBehavior.ValueType  # 0
+        INTERACTION_BEHAVIOR_UNSPECIFIED: (
+            EnergyCaption._InteractionBehavior.ValueType
+        )  # 0
         INTERACTION_BEHAVIOR_CONTINUE: EnergyCaption._InteractionBehavior.ValueType  # 1
-        INTERACTION_BEHAVIOR_SILENTLY_EXIT: EnergyCaption._InteractionBehavior.ValueType  # 2
-        INTERACTION_BEHAVIOR_CONFIRM_EXIT: EnergyCaption._InteractionBehavior.ValueType  # 3
+        INTERACTION_BEHAVIOR_SILENTLY_EXIT: (
+            EnergyCaption._InteractionBehavior.ValueType
+        )  # 2
+        INTERACTION_BEHAVIOR_CONFIRM_EXIT: (
+            EnergyCaption._InteractionBehavior.ValueType
+        )  # 3
 
-    class InteractionBehavior(_InteractionBehavior, metaclass=_InteractionBehaviorEnumTypeWrapper): ...
+    class InteractionBehavior(
+        _InteractionBehavior, metaclass=_InteractionBehaviorEnumTypeWrapper
+    ): ...
     INTERACTION_BEHAVIOR_UNSPECIFIED: EnergyCaption.InteractionBehavior.ValueType  # 0
     INTERACTION_BEHAVIOR_CONTINUE: EnergyCaption.InteractionBehavior.ValueType  # 1
     INTERACTION_BEHAVIOR_SILENTLY_EXIT: EnergyCaption.InteractionBehavior.ValueType  # 2
@@ -1590,16 +2492,23 @@ class EnergyCaption(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AppUserIntentEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._AppUserIntent.ValueType], _builtins.type):
+    class _AppUserIntentEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EnergyCaption._AppUserIntent.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         APP_USER_INTENT_UNSPECIFIED: EnergyCaption._AppUserIntent.ValueType  # 0
-        APP_USER_INTENT_INEFFICIENT_TEMPERATURE_CHANGE: EnergyCaption._AppUserIntent.ValueType  # 1
+        APP_USER_INTENT_INEFFICIENT_TEMPERATURE_CHANGE: (
+            EnergyCaption._AppUserIntent.ValueType
+        )  # 1
         APP_USER_INTENT_MODE_CHANGE: EnergyCaption._AppUserIntent.ValueType  # 2
         APP_USER_INTENT_USER_HOLD: EnergyCaption._AppUserIntent.ValueType  # 3
 
     class AppUserIntent(_AppUserIntent, metaclass=_AppUserIntentEnumTypeWrapper): ...
     APP_USER_INTENT_UNSPECIFIED: EnergyCaption.AppUserIntent.ValueType  # 0
-    APP_USER_INTENT_INEFFICIENT_TEMPERATURE_CHANGE: EnergyCaption.AppUserIntent.ValueType  # 1
+    APP_USER_INTENT_INEFFICIENT_TEMPERATURE_CHANGE: (
+        EnergyCaption.AppUserIntent.ValueType
+    )  # 1
     APP_USER_INTENT_MODE_CHANGE: EnergyCaption.AppUserIntent.ValueType  # 2
     APP_USER_INTENT_USER_HOLD: EnergyCaption.AppUserIntent.ValueType  # 3
 
@@ -1607,56 +2516,106 @@ class EnergyCaption(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AppSpeedBumpButtonActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._AppSpeedBumpButtonAction.ValueType], _builtins.type):
+    class _AppSpeedBumpButtonActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyCaption._AppSpeedBumpButtonAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        APP_SPEED_BUMP_BUTTON_ACTION_UNSPECIFIED: EnergyCaption._AppSpeedBumpButtonAction.ValueType  # 0
-        APP_SPEED_BUMP_BUTTON_ACTION_DISMISS: EnergyCaption._AppSpeedBumpButtonAction.ValueType  # 1
-        APP_SPEED_BUMP_BUTTON_ACTION_OPT_OUT_ENERGY_PROGRAM: EnergyCaption._AppSpeedBumpButtonAction.ValueType  # 2
+        APP_SPEED_BUMP_BUTTON_ACTION_UNSPECIFIED: (
+            EnergyCaption._AppSpeedBumpButtonAction.ValueType
+        )  # 0
+        APP_SPEED_BUMP_BUTTON_ACTION_DISMISS: (
+            EnergyCaption._AppSpeedBumpButtonAction.ValueType
+        )  # 1
+        APP_SPEED_BUMP_BUTTON_ACTION_OPT_OUT_ENERGY_PROGRAM: (
+            EnergyCaption._AppSpeedBumpButtonAction.ValueType
+        )  # 2
 
-    class AppSpeedBumpButtonAction(_AppSpeedBumpButtonAction, metaclass=_AppSpeedBumpButtonActionEnumTypeWrapper): ...
-    APP_SPEED_BUMP_BUTTON_ACTION_UNSPECIFIED: EnergyCaption.AppSpeedBumpButtonAction.ValueType  # 0
-    APP_SPEED_BUMP_BUTTON_ACTION_DISMISS: EnergyCaption.AppSpeedBumpButtonAction.ValueType  # 1
-    APP_SPEED_BUMP_BUTTON_ACTION_OPT_OUT_ENERGY_PROGRAM: EnergyCaption.AppSpeedBumpButtonAction.ValueType  # 2
+    class AppSpeedBumpButtonAction(
+        _AppSpeedBumpButtonAction, metaclass=_AppSpeedBumpButtonActionEnumTypeWrapper
+    ): ...
+    APP_SPEED_BUMP_BUTTON_ACTION_UNSPECIFIED: (
+        EnergyCaption.AppSpeedBumpButtonAction.ValueType
+    )  # 0
+    APP_SPEED_BUMP_BUTTON_ACTION_DISMISS: (
+        EnergyCaption.AppSpeedBumpButtonAction.ValueType
+    )  # 1
+    APP_SPEED_BUMP_BUTTON_ACTION_OPT_OUT_ENERGY_PROGRAM: (
+        EnergyCaption.AppSpeedBumpButtonAction.ValueType
+    )  # 2
 
     class _ScheduleMessageType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ScheduleMessageTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._ScheduleMessageType.ValueType], _builtins.type):
+    class _ScheduleMessageTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnergyCaption._ScheduleMessageType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SCHEDULE_MESSAGE_TYPE_UNSPECIFIED: EnergyCaption._ScheduleMessageType.ValueType  # 0
-        SCHEDULE_MESSAGE_TYPE_ATOM_UPDATE: EnergyCaption._ScheduleMessageType.ValueType  # 1
-        SCHEDULE_MESSAGE_TYPE_SCHEDULE_ADD: EnergyCaption._ScheduleMessageType.ValueType  # 2
-        SCHEDULE_MESSAGE_TYPE_SCHEDULE_SHIFT: EnergyCaption._ScheduleMessageType.ValueType  # 3
+        SCHEDULE_MESSAGE_TYPE_UNSPECIFIED: (
+            EnergyCaption._ScheduleMessageType.ValueType
+        )  # 0
+        SCHEDULE_MESSAGE_TYPE_ATOM_UPDATE: (
+            EnergyCaption._ScheduleMessageType.ValueType
+        )  # 1
+        SCHEDULE_MESSAGE_TYPE_SCHEDULE_ADD: (
+            EnergyCaption._ScheduleMessageType.ValueType
+        )  # 2
+        SCHEDULE_MESSAGE_TYPE_SCHEDULE_SHIFT: (
+            EnergyCaption._ScheduleMessageType.ValueType
+        )  # 3
 
-    class ScheduleMessageType(_ScheduleMessageType, metaclass=_ScheduleMessageTypeEnumTypeWrapper): ...
+    class ScheduleMessageType(
+        _ScheduleMessageType, metaclass=_ScheduleMessageTypeEnumTypeWrapper
+    ): ...
     SCHEDULE_MESSAGE_TYPE_UNSPECIFIED: EnergyCaption.ScheduleMessageType.ValueType  # 0
     SCHEDULE_MESSAGE_TYPE_ATOM_UPDATE: EnergyCaption.ScheduleMessageType.ValueType  # 1
     SCHEDULE_MESSAGE_TYPE_SCHEDULE_ADD: EnergyCaption.ScheduleMessageType.ValueType  # 2
-    SCHEDULE_MESSAGE_TYPE_SCHEDULE_SHIFT: EnergyCaption.ScheduleMessageType.ValueType  # 3
+    SCHEDULE_MESSAGE_TYPE_SCHEDULE_SHIFT: (
+        EnergyCaption.ScheduleMessageType.ValueType
+    )  # 3
 
     class _EnergyProgramId:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EnergyProgramIdEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._EnergyProgramId.ValueType], _builtins.type):
+    class _EnergyProgramIdEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EnergyCaption._EnergyProgramId.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ENERGY_PROGRAM_ID_UNSPECIFIED: EnergyCaption._EnergyProgramId.ValueType  # 0
-        ENERGY_PROGRAM_ID_RUSH_HOUR_REWARDS: EnergyCaption._EnergyProgramId.ValueType  # 1
+        ENERGY_PROGRAM_ID_RUSH_HOUR_REWARDS: (
+            EnergyCaption._EnergyProgramId.ValueType
+        )  # 1
         ENERGY_PROGRAM_ID_TIME_OF_USE: EnergyCaption._EnergyProgramId.ValueType  # 2
-        ENERGY_PROGRAM_ID_ENERGY_MANAGEMENT_FOR_EMISSIONS: EnergyCaption._EnergyProgramId.ValueType  # 3
+        ENERGY_PROGRAM_ID_ENERGY_MANAGEMENT_FOR_EMISSIONS: (
+            EnergyCaption._EnergyProgramId.ValueType
+        )  # 3
 
-    class EnergyProgramId(_EnergyProgramId, metaclass=_EnergyProgramIdEnumTypeWrapper): ...
+    class EnergyProgramId(
+        _EnergyProgramId, metaclass=_EnergyProgramIdEnumTypeWrapper
+    ): ...
     ENERGY_PROGRAM_ID_UNSPECIFIED: EnergyCaption.EnergyProgramId.ValueType  # 0
     ENERGY_PROGRAM_ID_RUSH_HOUR_REWARDS: EnergyCaption.EnergyProgramId.ValueType  # 1
     ENERGY_PROGRAM_ID_TIME_OF_USE: EnergyCaption.EnergyProgramId.ValueType  # 2
-    ENERGY_PROGRAM_ID_ENERGY_MANAGEMENT_FOR_EMISSIONS: EnergyCaption.EnergyProgramId.ValueType  # 3
+    ENERGY_PROGRAM_ID_ENERGY_MANAGEMENT_FOR_EMISSIONS: (
+        EnergyCaption.EnergyProgramId.ValueType
+    )  # 3
 
     class _EventPhase:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EventPhaseEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnergyCaption._EventPhase.ValueType], _builtins.type):
+    class _EventPhaseEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EnergyCaption._EventPhase.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         EVENT_PHASE_UNSPECIFIED: EnergyCaption._EventPhase.ValueType  # 0
         EVENT_PHASE_DEFAULT: EnergyCaption._EventPhase.ValueType  # 1
@@ -1681,8 +2640,12 @@ class EnergyCaption(_message.Message):
         ONEMERGENCYHEAT_FIELD_NUMBER: _builtins.int
         speedbumpText: _builtins.str
         speedbumpShortlinkCode: _builtins.str
-        onEfficientTemperatureChange: Global___EnergyCaption.InteractionBehavior.ValueType
-        onInefficientTemperatureChange: Global___EnergyCaption.InteractionBehavior.ValueType
+        onEfficientTemperatureChange: (
+            Global___EnergyCaption.InteractionBehavior.ValueType
+        )
+        onInefficientTemperatureChange: (
+            Global___EnergyCaption.InteractionBehavior.ValueType
+        )
         onModeChange: Global___EnergyCaption.InteractionBehavior.ValueType
         onAtomSelection: Global___EnergyCaption.InteractionBehavior.ValueType
         onUserHold: Global___EnergyCaption.InteractionBehavior.ValueType
@@ -1699,7 +2662,24 @@ class EnergyCaption(_message.Message):
             onUserHold: Global___EnergyCaption.InteractionBehavior.ValueType = ...,
             onEmergencyHeat: Global___EnergyCaption.InteractionBehavior.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["onAtomSelection", b"onAtomSelection", "onEfficientTemperatureChange", b"onEfficientTemperatureChange", "onEmergencyHeat", b"onEmergencyHeat", "onInefficientTemperatureChange", b"onInefficientTemperatureChange", "onModeChange", b"onModeChange", "onUserHold", b"onUserHold", "speedbumpShortlinkCode", b"speedbumpShortlinkCode", "speedbumpText", b"speedbumpText"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "onAtomSelection",
+            b"onAtomSelection",
+            "onEfficientTemperatureChange",
+            b"onEfficientTemperatureChange",
+            "onEmergencyHeat",
+            b"onEmergencyHeat",
+            "onInefficientTemperatureChange",
+            b"onInefficientTemperatureChange",
+            "onModeChange",
+            b"onModeChange",
+            "onUserHold",
+            b"onUserHold",
+            "speedbumpShortlinkCode",
+            b"speedbumpShortlinkCode",
+            "speedbumpText",
+            b"speedbumpText",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1719,7 +2699,14 @@ class EnergyCaption(_message.Message):
             secondCaption: _builtins.str = ...,
             menuExplanation: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["firstCaption", b"firstCaption", "menuExplanation", b"menuExplanation", "secondCaption", b"secondCaption"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "firstCaption",
+            b"firstCaption",
+            "menuExplanation",
+            b"menuExplanation",
+            "secondCaption",
+            b"secondCaption",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1734,7 +2721,11 @@ class EnergyCaption(_message.Message):
         @_builtins.property
         def bannerText(self) -> _ui_pb2.SoyMessage.SoyTemplateMessage: ...
         @_builtins.property
-        def speedBumps(self) -> _containers.RepeatedCompositeFieldContainer[Global___EnergyCaption.AppSpeedBump]: ...
+        def speedBumps(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[
+            Global___EnergyCaption.AppSpeedBump
+        ]: ...
         def __init__(
             self,
             *,
@@ -1742,9 +2733,18 @@ class EnergyCaption(_message.Message):
             bannerText: _ui_pb2.SoyMessage.SoyTemplateMessage | None = ...,
             speedBumps: _abc.Iterable[Global___EnergyCaption.AppSpeedBump] | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["bannerText", b"bannerText", "caption", b"caption"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "bannerText", b"bannerText", "caption", b"caption"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bannerText", b"bannerText", "caption", b"caption", "speedBumps", b"speedBumps"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bannerText",
+            b"bannerText",
+            "caption",
+            b"caption",
+            "speedBumps",
+            b"speedBumps",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1763,7 +2763,11 @@ class EnergyCaption(_message.Message):
         learnMoreUrl: _builtins.str
         helpCenterContext: _builtins.str
         @_builtins.property
-        def userIntents(self) -> _containers.RepeatedScalarFieldContainer[Global___EnergyCaption.AppUserIntent.ValueType]: ...
+        def userIntents(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___EnergyCaption.AppUserIntent.ValueType
+        ]: ...
         @_builtins.property
         def title(self) -> _ui_pb2.SoyMessage.SoyTemplateMessage: ...
         @_builtins.property
@@ -1775,7 +2779,8 @@ class EnergyCaption(_message.Message):
         def __init__(
             self,
             *,
-            userIntents: _abc.Iterable[Global___EnergyCaption.AppUserIntent.ValueType] | None = ...,
+            userIntents: _abc.Iterable[Global___EnergyCaption.AppUserIntent.ValueType]
+            | None = ...,
             iconUrl: _builtins.str = ...,
             title: _ui_pb2.SoyMessage.SoyTemplateMessage | None = ...,
             description: _ui_pb2.SoyMessage.SoyTemplateMessage | None = ...,
@@ -1784,9 +2789,35 @@ class EnergyCaption(_message.Message):
             primaryButton: Global___EnergyCaption.AppSpeedBumpButton | None = ...,
             secondaryButton: Global___EnergyCaption.AppSpeedBumpButton | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["description", b"description", "primaryButton", b"primaryButton", "secondaryButton", b"secondaryButton", "title", b"title"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "description",
+            b"description",
+            "primaryButton",
+            b"primaryButton",
+            "secondaryButton",
+            b"secondaryButton",
+            "title",
+            b"title",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["description", b"description", "helpCenterContext", b"helpCenterContext", "iconUrl", b"iconUrl", "learnMoreUrl", b"learnMoreUrl", "primaryButton", b"primaryButton", "secondaryButton", b"secondaryButton", "title", b"title", "userIntents", b"userIntents"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "description",
+            b"description",
+            "helpCenterContext",
+            b"helpCenterContext",
+            "iconUrl",
+            b"iconUrl",
+            "learnMoreUrl",
+            b"learnMoreUrl",
+            "primaryButton",
+            b"primaryButton",
+            "secondaryButton",
+            b"secondaryButton",
+            "title",
+            b"title",
+            "userIntents",
+            b"userIntents",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1806,7 +2837,9 @@ class EnergyCaption(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["text", b"text"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["action", b"action", "text", b"text"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "action", b"action", "text", b"text"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1832,9 +2865,25 @@ class EnergyCaption(_message.Message):
             appCaption: Global___EnergyCaption.AppCaption | None = ...,
             behavior: Global___EnergyCaption.UxBehaviorConfiguration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["appCaption", b"appCaption", "behavior", b"behavior", "deviceCaption", b"deviceCaption"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "appCaption",
+            b"appCaption",
+            "behavior",
+            b"behavior",
+            "deviceCaption",
+            b"deviceCaption",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["appCaption", b"appCaption", "behavior", b"behavior", "deviceCaption", b"deviceCaption", "icon", b"icon"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "appCaption",
+            b"appCaption",
+            "behavior",
+            b"behavior",
+            "deviceCaption",
+            b"deviceCaption",
+            "icon",
+            b"icon",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1853,7 +2902,11 @@ class EnergyCaption(_message.Message):
         atomId: _builtins.int
         type: Global___EnergyCaption.ScheduleMessageType.ValueType
         @_builtins.property
-        def daysOfWeek(self) -> _containers.RepeatedScalarFieldContainer[_common_pb2.DayOfWeek.ValueType]: ...
+        def daysOfWeek(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            _common_pb2.DayOfWeek.ValueType
+        ]: ...
         @_builtins.property
         def startTimeOfDay(self) -> _common_pb2.TimeOfDay: ...
         @_builtins.property
@@ -1874,9 +2927,35 @@ class EnergyCaption(_message.Message):
             endOfLife: _timestamp_pb2.Timestamp | None = ...,
             type: Global___EnergyCaption.ScheduleMessageType.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["duration", b"duration", "endOfLife", b"endOfLife", "startTimeOfDay", b"startTimeOfDay", "uxConfig", b"uxConfig"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "duration",
+            b"duration",
+            "endOfLife",
+            b"endOfLife",
+            "startTimeOfDay",
+            b"startTimeOfDay",
+            "uxConfig",
+            b"uxConfig",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["atomId", b"atomId", "daysOfWeek", b"daysOfWeek", "duration", b"duration", "endOfLife", b"endOfLife", "id", b"id", "startTimeOfDay", b"startTimeOfDay", "type", b"type", "uxConfig", b"uxConfig"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "atomId",
+            b"atomId",
+            "daysOfWeek",
+            b"daysOfWeek",
+            "duration",
+            b"duration",
+            "endOfLife",
+            b"endOfLife",
+            "id",
+            b"id",
+            "startTimeOfDay",
+            b"startTimeOfDay",
+            "type",
+            b"type",
+            "uxConfig",
+            b"uxConfig",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1899,7 +2978,9 @@ class EnergyCaption(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["uxConfig", b"uxConfig"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["designation", b"designation", "id", b"id", "uxConfig", b"uxConfig"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "designation", b"designation", "id", b"id", "uxConfig", b"uxConfig"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1923,7 +3004,9 @@ class EnergyCaption(_message.Message):
             ) -> None: ...
             _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
             def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-            _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+            _ClearFieldArgType: _TypeAlias = _typing.Literal[
+                "key", b"key", "value", b"value"
+            ]  # noqa: Y015
             def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
         ID_FIELD_NUMBER: _builtins.int
@@ -1932,15 +3015,24 @@ class EnergyCaption(_message.Message):
         id: _builtins.int
         canonicalProgram: Global___EnergyCaption.EnergyProgramId.ValueType
         @_builtins.property
-        def phases(self) -> _containers.MessageMap[_builtins.int, Global___EnergyCaption.PhaseConfiguration]: ...
+        def phases(
+            self,
+        ) -> _containers.MessageMap[
+            _builtins.int, Global___EnergyCaption.PhaseConfiguration
+        ]: ...
         def __init__(
             self,
             *,
             id: _builtins.int = ...,
             canonicalProgram: Global___EnergyCaption.EnergyProgramId.ValueType = ...,
-            phases: _abc.Mapping[_builtins.int, Global___EnergyCaption.PhaseConfiguration] | None = ...,
+            phases: _abc.Mapping[
+                _builtins.int, Global___EnergyCaption.PhaseConfiguration
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["canonicalProgram", b"canonicalProgram", "id", b"id", "phases", b"phases"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "canonicalProgram", b"canonicalProgram", "id", b"id", "phases", b"phases"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -1971,9 +3063,27 @@ class EnergyCaption(_message.Message):
             optOutTimeout: _timestamp_pb2.Timestamp | None = ...,
             deviceCaptionOverride: Global___EnergyCaption.DeviceCaption | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["deviceCaptionOverride", b"deviceCaptionOverride", "optOutTimeout", b"optOutTimeout"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceCaptionOverride",
+            b"deviceCaptionOverride",
+            "optOutTimeout",
+            b"optOutTimeout",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceCaptionOverride", b"deviceCaptionOverride", "eventId", b"eventId", "isCritical", b"isCritical", "optOutTimeout", b"optOutTimeout", "phaseId", b"phaseId", "programId", b"programId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceCaptionOverride",
+            b"deviceCaptionOverride",
+            "eventId",
+            b"eventId",
+            "isCritical",
+            b"isCritical",
+            "optOutTimeout",
+            b"optOutTimeout",
+            "phaseId",
+            b"phaseId",
+            "programId",
+            b"programId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -1990,106 +3100,264 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsSensorInsightTemperatureEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType], _builtins.type):
+    class _RcsSensorInsightTemperatureEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_SENSOR_INSIGHT_TEMPERATURE_UNSPECIFIED: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 0
-        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST_AND_SWINGS: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 2
-        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 3
-        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER_AND_SWINGS: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 4
-        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 5
-        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST_AND_SWINGS: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 6
-        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 7
-        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER_AND_SWINGS: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 8
-        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 9
-        RCS_SENSOR_INSIGHT_TEMPERATURE_SWINGS: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 10
-        RCS_SENSOR_INSIGHT_TEMPERATURE_SIMILAR: RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType  # 11
+        RCS_SENSOR_INSIGHT_TEMPERATURE_UNSPECIFIED: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 0
+        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST_AND_SWINGS: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 2
+        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 3
+        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER_AND_SWINGS: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 4
+        RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 5
+        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST_AND_SWINGS: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 6
+        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 7
+        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER_AND_SWINGS: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 8
+        RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 9
+        RCS_SENSOR_INSIGHT_TEMPERATURE_SWINGS: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 10
+        RCS_SENSOR_INSIGHT_TEMPERATURE_SIMILAR: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightTemperature.ValueType
+        )  # 11
 
-    class RcsSensorInsightTemperature(_RcsSensorInsightTemperature, metaclass=_RcsSensorInsightTemperatureEnumTypeWrapper): ...
-    RCS_SENSOR_INSIGHT_TEMPERATURE_UNSPECIFIED: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 0
-    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST_AND_SWINGS: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 2
-    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 3
-    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER_AND_SWINGS: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 4
-    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 5
-    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST_AND_SWINGS: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 6
-    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 7
-    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER_AND_SWINGS: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 8
-    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 9
-    RCS_SENSOR_INSIGHT_TEMPERATURE_SWINGS: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 10
-    RCS_SENSOR_INSIGHT_TEMPERATURE_SIMILAR: RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType  # 11
+    class RcsSensorInsightTemperature(
+        _RcsSensorInsightTemperature,
+        metaclass=_RcsSensorInsightTemperatureEnumTypeWrapper,
+    ): ...
+    RCS_SENSOR_INSIGHT_TEMPERATURE_UNSPECIFIED: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 0
+    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST_AND_SWINGS: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 2
+    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMEST: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 3
+    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER_AND_SWINGS: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 4
+    RCS_SENSOR_INSIGHT_TEMPERATURE_WARMER: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 5
+    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST_AND_SWINGS: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 6
+    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLEST: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 7
+    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER_AND_SWINGS: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 8
+    RCS_SENSOR_INSIGHT_TEMPERATURE_COOLER: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 9
+    RCS_SENSOR_INSIGHT_TEMPERATURE_SWINGS: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 10
+    RCS_SENSOR_INSIGHT_TEMPERATURE_SIMILAR: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightTemperature.ValueType
+    )  # 11
 
     class _RcsSensorInsightControllability:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsSensorInsightControllabilityEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType], _builtins.type):
+    class _RcsSensorInsightControllabilityEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNSPECIFIED: RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType  # 0
-        RCS_SENSOR_INSIGHT_CONTROLLABILITY_TYPICAL: RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType  # 1
-        RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNRESPONSIVE_TO_HVAC: RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType  # 2
-        RCS_SENSOR_INSIGHT_CONTROLLABILITY_INTERMITTENTLY_STALE: RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType  # 3
+        RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNSPECIFIED: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType
+        )  # 0
+        RCS_SENSOR_INSIGHT_CONTROLLABILITY_TYPICAL: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType
+        )  # 1
+        RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNRESPONSIVE_TO_HVAC: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType
+        )  # 2
+        RCS_SENSOR_INSIGHT_CONTROLLABILITY_INTERMITTENTLY_STALE: (
+            RemoteComfortSensingStateTrait._RcsSensorInsightControllability.ValueType
+        )  # 3
 
-    class RcsSensorInsightControllability(_RcsSensorInsightControllability, metaclass=_RcsSensorInsightControllabilityEnumTypeWrapper): ...
-    RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNSPECIFIED: RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType  # 0
-    RCS_SENSOR_INSIGHT_CONTROLLABILITY_TYPICAL: RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType  # 1
-    RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNRESPONSIVE_TO_HVAC: RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType  # 2
-    RCS_SENSOR_INSIGHT_CONTROLLABILITY_INTERMITTENTLY_STALE: RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType  # 3
+    class RcsSensorInsightControllability(
+        _RcsSensorInsightControllability,
+        metaclass=_RcsSensorInsightControllabilityEnumTypeWrapper,
+    ): ...
+    RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNSPECIFIED: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType
+    )  # 0
+    RCS_SENSOR_INSIGHT_CONTROLLABILITY_TYPICAL: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType
+    )  # 1
+    RCS_SENSOR_INSIGHT_CONTROLLABILITY_UNRESPONSIVE_TO_HVAC: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType
+    )  # 2
+    RCS_SENSOR_INSIGHT_CONTROLLABILITY_INTERMITTENTLY_STALE: (
+        RemoteComfortSensingStateTrait.RcsSensorInsightControllability.ValueType
+    )  # 3
 
     class _SensorDataRecency:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SensorDataRecencyEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingStateTrait._SensorDataRecency.ValueType], _builtins.type):
+    class _SensorDataRecencyEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SENSOR_DATA_RECENCY_UNSPECIFIED: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 0
-        SENSOR_DATA_RECENCY_OK: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 1
-        SENSOR_DATA_RECENCY_STALE: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 2
-        SENSOR_DATA_RECENCY_EXTREMELY_STALE: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 3
-        SENSOR_DATA_RECENCY_FAIRLY_STALE: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 4
-        SENSOR_DATA_RECENCY_WAITING_FOR_INITIAL_DATA: RemoteComfortSensingStateTrait._SensorDataRecency.ValueType  # 5
+        SENSOR_DATA_RECENCY_UNSPECIFIED: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 0
+        SENSOR_DATA_RECENCY_OK: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 1
+        SENSOR_DATA_RECENCY_STALE: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 2
+        SENSOR_DATA_RECENCY_EXTREMELY_STALE: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 3
+        SENSOR_DATA_RECENCY_FAIRLY_STALE: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 4
+        SENSOR_DATA_RECENCY_WAITING_FOR_INITIAL_DATA: (
+            RemoteComfortSensingStateTrait._SensorDataRecency.ValueType
+        )  # 5
 
-    class SensorDataRecency(_SensorDataRecency, metaclass=_SensorDataRecencyEnumTypeWrapper): ...
-    SENSOR_DATA_RECENCY_UNSPECIFIED: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 0
-    SENSOR_DATA_RECENCY_OK: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 1
-    SENSOR_DATA_RECENCY_STALE: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 2
-    SENSOR_DATA_RECENCY_EXTREMELY_STALE: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 3
-    SENSOR_DATA_RECENCY_FAIRLY_STALE: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 4
-    SENSOR_DATA_RECENCY_WAITING_FOR_INITIAL_DATA: RemoteComfortSensingStateTrait.SensorDataRecency.ValueType  # 5
+    class SensorDataRecency(
+        _SensorDataRecency, metaclass=_SensorDataRecencyEnumTypeWrapper
+    ): ...
+    SENSOR_DATA_RECENCY_UNSPECIFIED: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 0
+    SENSOR_DATA_RECENCY_OK: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 1
+    SENSOR_DATA_RECENCY_STALE: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 2
+    SENSOR_DATA_RECENCY_EXTREMELY_STALE: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 3
+    SENSOR_DATA_RECENCY_FAIRLY_STALE: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 4
+    SENSOR_DATA_RECENCY_WAITING_FOR_INITIAL_DATA: (
+        RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+    )  # 5
 
     class _RcsThermostatAlert:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsThermostatAlertEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType], _builtins.type):
+    class _RcsThermostatAlertEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_THERMOSTAT_ALERT_UNSPECIFIED: RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType  # 0
-        RCS_THERMOSTAT_ALERT_TEMPERATURE_OVERSHOOT: RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType  # 1
-        RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_HEAT: RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType  # 2
-        RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_COOL: RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType  # 4
-        RCS_THERMOSTAT_ALERT_CONNECTIVITY_FAILSAFE: RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType  # 8
+        RCS_THERMOSTAT_ALERT_UNSPECIFIED: (
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        )  # 0
+        RCS_THERMOSTAT_ALERT_TEMPERATURE_OVERSHOOT: (
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        )  # 1
+        RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_HEAT: (
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        )  # 2
+        RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_COOL: (
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        )  # 4
+        RCS_THERMOSTAT_ALERT_CONNECTIVITY_FAILSAFE: (
+            RemoteComfortSensingStateTrait._RcsThermostatAlert.ValueType
+        )  # 8
 
-    class RcsThermostatAlert(_RcsThermostatAlert, metaclass=_RcsThermostatAlertEnumTypeWrapper): ...
-    RCS_THERMOSTAT_ALERT_UNSPECIFIED: RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType  # 0
-    RCS_THERMOSTAT_ALERT_TEMPERATURE_OVERSHOOT: RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType  # 1
-    RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_HEAT: RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType  # 2
-    RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_COOL: RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType  # 4
-    RCS_THERMOSTAT_ALERT_CONNECTIVITY_FAILSAFE: RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType  # 8
+    class RcsThermostatAlert(
+        _RcsThermostatAlert, metaclass=_RcsThermostatAlertEnumTypeWrapper
+    ): ...
+    RCS_THERMOSTAT_ALERT_UNSPECIFIED: (
+        RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    )  # 0
+    RCS_THERMOSTAT_ALERT_TEMPERATURE_OVERSHOOT: (
+        RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    )  # 1
+    RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_HEAT: (
+        RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    )  # 2
+    RCS_THERMOSTAT_ALERT_EXCESSIVE_RUNTIME_COOL: (
+        RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    )  # 4
+    RCS_THERMOSTAT_ALERT_CONNECTIVITY_FAILSAFE: (
+        RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    )  # 8
 
     class _RcsSingleSensorFailsafeStatus:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RcsSingleSensorFailsafeStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType], _builtins.type):
+    class _RcsSingleSensorFailsafeStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_UNSPECIFIED: RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType  # 0
-        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_OK: RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType  # 1
-        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_DATA_STALE: RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType  # 2
-        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_WAITING_FOR_INITIAL_DATA: RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType  # 3
+        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_UNSPECIFIED: (
+            RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType
+        )  # 0
+        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_OK: (
+            RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType
+        )  # 1
+        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_DATA_STALE: (
+            RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType
+        )  # 2
+        RCS_SINGLE_SENSOR_FAILSAFE_STATUS_WAITING_FOR_INITIAL_DATA: (
+            RemoteComfortSensingStateTrait._RcsSingleSensorFailsafeStatus.ValueType
+        )  # 3
 
-    class RcsSingleSensorFailsafeStatus(_RcsSingleSensorFailsafeStatus, metaclass=_RcsSingleSensorFailsafeStatusEnumTypeWrapper): ...
-    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_UNSPECIFIED: RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType  # 0
-    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_OK: RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType  # 1
-    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_DATA_STALE: RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType  # 2
-    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_WAITING_FOR_INITIAL_DATA: RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType  # 3
+    class RcsSingleSensorFailsafeStatus(
+        _RcsSingleSensorFailsafeStatus,
+        metaclass=_RcsSingleSensorFailsafeStatusEnumTypeWrapper,
+    ): ...
+    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_UNSPECIFIED: (
+        RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType
+    )  # 0
+    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_OK: (
+        RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType
+    )  # 1
+    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_DATA_STALE: (
+        RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType
+    )  # 2
+    RCS_SINGLE_SENSOR_FAILSAFE_STATUS_WAITING_FOR_INITIAL_DATA: (
+        RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType
+    )  # 3
 
     @_typing.final
     class RcsSensorInsightsEntry(_message.Message):
@@ -2104,11 +3372,14 @@ class RemoteComfortSensingStateTrait(_message.Message):
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___RemoteComfortSensingStateTrait.RcsSensorInsight | None = ...,
+            value: Global___RemoteComfortSensingStateTrait.RcsSensorInsight
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2128,7 +3399,9 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2151,7 +3424,14 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["sensorId", b"sensorId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["controllabilityInsight", b"controllabilityInsight", "sensorId", b"sensorId", "temperatureInsight", b"temperatureInsight"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "controllabilityInsight",
+            b"controllabilityInsight",
+            "sensorId",
+            b"sensorId",
+            "temperatureInsight",
+            b"temperatureInsight",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2171,7 +3451,9 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["sensorId", b"sensorId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["dataRecency", b"dataRecency", "sensorId", b"sensorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "dataRecency", b"dataRecency", "sensorId", b"sensorId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2182,16 +3464,26 @@ class RemoteComfortSensingStateTrait(_message.Message):
         EFFECTIVEACTIVERCSSELECTION_FIELD_NUMBER: _builtins.int
         singleSensorStatus: Global___RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType
         @_builtins.property
-        def effectiveActiveRcsSelection(self) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
+        def effectiveActiveRcsSelection(
+            self,
+        ) -> Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection: ...
         def __init__(
             self,
             *,
             singleSensorStatus: Global___RemoteComfortSensingStateTrait.RcsSingleSensorFailsafeStatus.ValueType = ...,
-            effectiveActiveRcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection | None = ...,
+            effectiveActiveRcsSelection: Global___RemoteComfortSensingSettingsTrait.RcsSourceSelection
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["effectiveActiveRcsSelection", b"effectiveActiveRcsSelection"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "effectiveActiveRcsSelection", b"effectiveActiveRcsSelection"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["effectiveActiveRcsSelection", b"effectiveActiveRcsSelection", "singleSensorStatus", b"singleSensorStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "effectiveActiveRcsSelection",
+            b"effectiveActiveRcsSelection",
+            "singleSensorStatus",
+            b"singleSensorStatus",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2200,13 +3492,22 @@ class RemoteComfortSensingStateTrait(_message.Message):
 
         RCSTHERMOSTATALERTS_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def rcsThermostatAlerts(self) -> _containers.RepeatedScalarFieldContainer[Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType]: ...
+        def rcsThermostatAlerts(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+        ]: ...
         def __init__(
             self,
             *,
-            rcsThermostatAlerts: _abc.Iterable[Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType] | None = ...,
+            rcsThermostatAlerts: _abc.Iterable[
+                Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["rcsThermostatAlerts", b"rcsThermostatAlerts"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "rcsThermostatAlerts", b"rcsThermostatAlerts"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2216,8 +3517,12 @@ class RemoteComfortSensingStateTrait(_message.Message):
         SENSORID_FIELD_NUMBER: _builtins.int
         CURRENTDATARECENCY_FIELD_NUMBER: _builtins.int
         PRIORDATARECENCY_FIELD_NUMBER: _builtins.int
-        currentDataRecency: Global___RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
-        priorDataRecency: Global___RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+        currentDataRecency: (
+            Global___RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+        )
+        priorDataRecency: (
+            Global___RemoteComfortSensingStateTrait.SensorDataRecency.ValueType
+        )
         @_builtins.property
         def sensorId(self) -> _common_pb2.ResourceId: ...
         def __init__(
@@ -2229,7 +3534,14 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["sensorId", b"sensorId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentDataRecency", b"currentDataRecency", "priorDataRecency", b"priorDataRecency", "sensorId", b"sensorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentDataRecency",
+            b"currentDataRecency",
+            "priorDataRecency",
+            b"priorDataRecency",
+            "sensorId",
+            b"sensorId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2252,7 +3564,14 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["sensorId", b"sensorId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentIsOvershoot", b"currentIsOvershoot", "priorIsOvershoot", b"priorIsOvershoot", "sensorId", b"sensorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentIsOvershoot",
+            b"currentIsOvershoot",
+            "priorIsOvershoot",
+            b"priorIsOvershoot",
+            "sensorId",
+            b"sensorId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2263,14 +3582,18 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ALERT_FIELD_NUMBER: _builtins.int
         alert: Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
         @_builtins.property
-        def sensorIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def sensorIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         def __init__(
             self,
             *,
             sensorIds: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
             alert: Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alert", b"alert", "sensorIds", b"sensorIds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alert", b"alert", "sensorIds", b"sensorIds"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2281,14 +3604,18 @@ class RemoteComfortSensingStateTrait(_message.Message):
         ALERT_FIELD_NUMBER: _builtins.int
         alert: Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
         @_builtins.property
-        def sensorIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def sensorIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         def __init__(
             self,
             *,
             sensorIds: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
             alert: Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alert", b"alert", "sensorIds", b"sensorIds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alert", b"alert", "sensorIds", b"sensorIds"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     RCSCAPABLE_FIELD_NUMBER: _builtins.int
@@ -2299,28 +3626,73 @@ class RemoteComfortSensingStateTrait(_message.Message):
     RCSFAILSAFESTATE_FIELD_NUMBER: _builtins.int
     rcsCapable: _builtins.bool
     @_builtins.property
-    def multiSensorTemperature(self) -> _sensor_pb2.TemperatureTrait.TemperatureSample: ...
+    def multiSensorTemperature(
+        self,
+    ) -> _sensor_pb2.TemperatureTrait.TemperatureSample: ...
     @_builtins.property
-    def rcsSensorInsights(self) -> _containers.MessageMap[_builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorInsight]: ...
+    def rcsSensorInsights(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorInsight
+    ]: ...
     @_builtins.property
-    def rcsThermostatAlerts(self) -> _containers.RepeatedScalarFieldContainer[Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType]: ...
+    def rcsThermostatAlerts(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+    ]: ...
     @_builtins.property
-    def rcsSensorStatuses(self) -> _containers.MessageMap[_builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorStatus]: ...
+    def rcsSensorStatuses(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorStatus
+    ]: ...
     @_builtins.property
-    def rcsFailsafeState(self) -> Global___RemoteComfortSensingStateTrait.RcsFailsafeState: ...
+    def rcsFailsafeState(
+        self,
+    ) -> Global___RemoteComfortSensingStateTrait.RcsFailsafeState: ...
     def __init__(
         self,
         *,
         rcsCapable: _builtins.bool = ...,
-        multiSensorTemperature: _sensor_pb2.TemperatureTrait.TemperatureSample | None = ...,
-        rcsSensorInsights: _abc.Mapping[_builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorInsight] | None = ...,
-        rcsThermostatAlerts: _abc.Iterable[Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType] | None = ...,
-        rcsSensorStatuses: _abc.Mapping[_builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorStatus] | None = ...,
-        rcsFailsafeState: Global___RemoteComfortSensingStateTrait.RcsFailsafeState | None = ...,
+        multiSensorTemperature: _sensor_pb2.TemperatureTrait.TemperatureSample
+        | None = ...,
+        rcsSensorInsights: _abc.Mapping[
+            _builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorInsight
+        ]
+        | None = ...,
+        rcsThermostatAlerts: _abc.Iterable[
+            Global___RemoteComfortSensingStateTrait.RcsThermostatAlert.ValueType
+        ]
+        | None = ...,
+        rcsSensorStatuses: _abc.Mapping[
+            _builtins.int, Global___RemoteComfortSensingStateTrait.RcsSensorStatus
+        ]
+        | None = ...,
+        rcsFailsafeState: Global___RemoteComfortSensingStateTrait.RcsFailsafeState
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["multiSensorTemperature", b"multiSensorTemperature", "rcsFailsafeState", b"rcsFailsafeState"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "multiSensorTemperature",
+        b"multiSensorTemperature",
+        "rcsFailsafeState",
+        b"rcsFailsafeState",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["multiSensorTemperature", b"multiSensorTemperature", "rcsCapable", b"rcsCapable", "rcsFailsafeState", b"rcsFailsafeState", "rcsSensorInsights", b"rcsSensorInsights", "rcsSensorStatuses", b"rcsSensorStatuses", "rcsThermostatAlerts", b"rcsThermostatAlerts"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "multiSensorTemperature",
+        b"multiSensorTemperature",
+        "rcsCapable",
+        b"rcsCapable",
+        "rcsFailsafeState",
+        b"rcsFailsafeState",
+        "rcsSensorInsights",
+        b"rcsSensorInsights",
+        "rcsSensorStatuses",
+        b"rcsSensorStatuses",
+        "rcsThermostatAlerts",
+        b"rcsThermostatAlerts",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RemoteComfortSensingStateTrait: _TypeAlias = RemoteComfortSensingStateTrait  # noqa: Y015
@@ -2333,32 +3705,64 @@ class SetPointScheduleSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SetPointScheduleTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType], _builtins.type):
+    class _SetPointScheduleTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SET_POINT_SCHEDULE_TYPE_UNSPECIFIED: SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType  # 0
-        SET_POINT_SCHEDULE_TYPE_HEAT: SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType  # 1
-        SET_POINT_SCHEDULE_TYPE_COOL: SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType  # 2
-        SET_POINT_SCHEDULE_TYPE_RANGE: SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType  # 3
+        SET_POINT_SCHEDULE_TYPE_UNSPECIFIED: (
+            SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType
+        )  # 0
+        SET_POINT_SCHEDULE_TYPE_HEAT: (
+            SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType
+        )  # 1
+        SET_POINT_SCHEDULE_TYPE_COOL: (
+            SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType
+        )  # 2
+        SET_POINT_SCHEDULE_TYPE_RANGE: (
+            SetPointScheduleSettingsTrait._SetPointScheduleType.ValueType
+        )  # 3
 
-    class SetPointScheduleType(_SetPointScheduleType, metaclass=_SetPointScheduleTypeEnumTypeWrapper): ...
-    SET_POINT_SCHEDULE_TYPE_UNSPECIFIED: SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType  # 0
-    SET_POINT_SCHEDULE_TYPE_HEAT: SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType  # 1
-    SET_POINT_SCHEDULE_TYPE_COOL: SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType  # 2
-    SET_POINT_SCHEDULE_TYPE_RANGE: SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType  # 3
+    class SetPointScheduleType(
+        _SetPointScheduleType, metaclass=_SetPointScheduleTypeEnumTypeWrapper
+    ): ...
+    SET_POINT_SCHEDULE_TYPE_UNSPECIFIED: (
+        SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+    )  # 0
+    SET_POINT_SCHEDULE_TYPE_HEAT: (
+        SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+    )  # 1
+    SET_POINT_SCHEDULE_TYPE_COOL: (
+        SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+    )  # 2
+    SET_POINT_SCHEDULE_TYPE_RANGE: (
+        SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
+    )  # 3
 
     class _SetPointType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SetPointTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SetPointScheduleSettingsTrait._SetPointType.ValueType], _builtins.type):
+    class _SetPointTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SetPointScheduleSettingsTrait._SetPointType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SET_POINT_TYPE_UNSPECIFIED: SetPointScheduleSettingsTrait._SetPointType.ValueType  # 0
+        SET_POINT_TYPE_UNSPECIFIED: (
+            SetPointScheduleSettingsTrait._SetPointType.ValueType
+        )  # 0
         SET_POINT_TYPE_HEAT: SetPointScheduleSettingsTrait._SetPointType.ValueType  # 1
         SET_POINT_TYPE_COOL: SetPointScheduleSettingsTrait._SetPointType.ValueType  # 2
         SET_POINT_TYPE_RANGE: SetPointScheduleSettingsTrait._SetPointType.ValueType  # 3
 
     class SetPointType(_SetPointType, metaclass=_SetPointTypeEnumTypeWrapper): ...
-    SET_POINT_TYPE_UNSPECIFIED: SetPointScheduleSettingsTrait.SetPointType.ValueType  # 0
+    SET_POINT_TYPE_UNSPECIFIED: (
+        SetPointScheduleSettingsTrait.SetPointType.ValueType
+    )  # 0
     SET_POINT_TYPE_HEAT: SetPointScheduleSettingsTrait.SetPointType.ValueType  # 1
     SET_POINT_TYPE_COOL: SetPointScheduleSettingsTrait.SetPointType.ValueType  # 2
     SET_POINT_TYPE_RANGE: SetPointScheduleSettingsTrait.SetPointType.ValueType  # 3
@@ -2371,16 +3775,21 @@ class SetPointScheduleSettingsTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___SetPointScheduleSettingsTrait.TemperatureSetPoint: ...
+        def value(
+            self,
+        ) -> Global___SetPointScheduleSettingsTrait.TemperatureSetPoint: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___SetPointScheduleSettingsTrait.TemperatureSetPoint | None = ...,
+            value: Global___SetPointScheduleSettingsTrait.TemperatureSetPoint
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2416,9 +3825,33 @@ class SetPointScheduleSettingsTrait(_message.Message):
             currentActorInfo: Global___HvacActor.HvacActorStruct | None = ...,
             originalActorInfo: Global___HvacActor.HvacActorStruct | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "currentActorInfo", b"currentActorInfo", "heatingTarget", b"heatingTarget", "originalActorInfo", b"originalActorInfo"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "currentActorInfo",
+            b"currentActorInfo",
+            "heatingTarget",
+            b"heatingTarget",
+            "originalActorInfo",
+            b"originalActorInfo",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["coolingTarget", b"coolingTarget", "currentActorInfo", b"currentActorInfo", "dayOfWeek", b"dayOfWeek", "heatingTarget", b"heatingTarget", "originalActorInfo", b"originalActorInfo", "secondsInDay", b"secondsInDay", "setpointType", b"setpointType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "coolingTarget",
+            b"coolingTarget",
+            "currentActorInfo",
+            b"currentActorInfo",
+            "dayOfWeek",
+            b"dayOfWeek",
+            "heatingTarget",
+            b"heatingTarget",
+            "originalActorInfo",
+            b"originalActorInfo",
+            "secondsInDay",
+            b"secondsInDay",
+            "setpointType",
+            b"setpointType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     NAME_FIELD_NUMBER: _builtins.int
@@ -2427,15 +3860,24 @@ class SetPointScheduleSettingsTrait(_message.Message):
     name: _builtins.str
     type: Global___SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType
     @_builtins.property
-    def setpoints(self) -> _containers.MessageMap[_builtins.int, Global___SetPointScheduleSettingsTrait.TemperatureSetPoint]: ...
+    def setpoints(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___SetPointScheduleSettingsTrait.TemperatureSetPoint
+    ]: ...
     def __init__(
         self,
         *,
         name: _builtins.str = ...,
         type: Global___SetPointScheduleSettingsTrait.SetPointScheduleType.ValueType = ...,
-        setpoints: _abc.Mapping[_builtins.int, Global___SetPointScheduleSettingsTrait.TemperatureSetPoint] | None = ...,
+        setpoints: _abc.Mapping[
+            _builtins.int, Global___SetPointScheduleSettingsTrait.TemperatureSetPoint
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["name", b"name", "setpoints", b"setpoints", "type", b"type"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "name", b"name", "setpoints", b"setpoints", "type", b"type"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SetPointScheduleSettingsTrait: _TypeAlias = SetPointScheduleSettingsTrait  # noqa: Y015
@@ -2448,75 +3890,181 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsAnchorTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType], _builtins.type):
+    class _SeasonalSavingsAnchorTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_ANCHOR_TYPE_UNSPECIFIED: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 0
-        SEASONAL_SAVINGS_ANCHOR_TYPE_WAKEUP: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 1
-        SEASONAL_SAVINGS_ANCHOR_TYPE_EVENING_RETURN: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 2
-        SEASONAL_SAVINGS_ANCHOR_TYPE_BED_TIME: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 3
-        SEASONAL_SAVINGS_ANCHOR_TYPE_MORNING_LEAVE: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 4
-        SEASONAL_SAVINGS_ANCHOR_TYPE_FIXED: SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType  # 5
+        SEASONAL_SAVINGS_ANCHOR_TYPE_UNSPECIFIED: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_ANCHOR_TYPE_WAKEUP: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_ANCHOR_TYPE_EVENING_RETURN: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_ANCHOR_TYPE_BED_TIME: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 3
+        SEASONAL_SAVINGS_ANCHOR_TYPE_MORNING_LEAVE: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 4
+        SEASONAL_SAVINGS_ANCHOR_TYPE_FIXED: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsAnchorType.ValueType
+        )  # 5
 
-    class SeasonalSavingsAnchorType(_SeasonalSavingsAnchorType, metaclass=_SeasonalSavingsAnchorTypeEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_ANCHOR_TYPE_UNSPECIFIED: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 0
-    SEASONAL_SAVINGS_ANCHOR_TYPE_WAKEUP: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 1
-    SEASONAL_SAVINGS_ANCHOR_TYPE_EVENING_RETURN: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 2
-    SEASONAL_SAVINGS_ANCHOR_TYPE_BED_TIME: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 3
-    SEASONAL_SAVINGS_ANCHOR_TYPE_MORNING_LEAVE: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 4
-    SEASONAL_SAVINGS_ANCHOR_TYPE_FIXED: SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType  # 5
+    class SeasonalSavingsAnchorType(
+        _SeasonalSavingsAnchorType, metaclass=_SeasonalSavingsAnchorTypeEnumTypeWrapper
+    ): ...
+    SEASONAL_SAVINGS_ANCHOR_TYPE_UNSPECIFIED: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_ANCHOR_TYPE_WAKEUP: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_ANCHOR_TYPE_EVENING_RETURN: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_ANCHOR_TYPE_BED_TIME: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 3
+    SEASONAL_SAVINGS_ANCHOR_TYPE_MORNING_LEAVE: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 4
+    SEASONAL_SAVINGS_ANCHOR_TYPE_FIXED: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+    )  # 5
 
     class _SeasonalSavingsPunishmentCarry:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsPunishmentCarryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType], _builtins.type):
+    class _SeasonalSavingsPunishmentCarryEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_PUNISHMENT_CARRY_UNSPECIFIED: SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType  # 0
-        SEASONAL_SAVINGS_PUNISHMENT_CARRY_DO_NOT_CARRY: SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType  # 1
-        SEASONAL_SAVINGS_PUNISHMENT_CARRY_SAME_NAME: SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType  # 2
-        SEASONAL_SAVINGS_PUNISHMENT_CARRY_SUM_ALL: SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType  # 3
+        SEASONAL_SAVINGS_PUNISHMENT_CARRY_UNSPECIFIED: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_PUNISHMENT_CARRY_DO_NOT_CARRY: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_PUNISHMENT_CARRY_SAME_NAME: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_PUNISHMENT_CARRY_SUM_ALL: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsPunishmentCarry.ValueType
+        )  # 3
 
-    class SeasonalSavingsPunishmentCarry(_SeasonalSavingsPunishmentCarry, metaclass=_SeasonalSavingsPunishmentCarryEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_PUNISHMENT_CARRY_UNSPECIFIED: SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType  # 0
-    SEASONAL_SAVINGS_PUNISHMENT_CARRY_DO_NOT_CARRY: SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType  # 1
-    SEASONAL_SAVINGS_PUNISHMENT_CARRY_SAME_NAME: SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType  # 2
-    SEASONAL_SAVINGS_PUNISHMENT_CARRY_SUM_ALL: SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType  # 3
+    class SeasonalSavingsPunishmentCarry(
+        _SeasonalSavingsPunishmentCarry,
+        metaclass=_SeasonalSavingsPunishmentCarryEnumTypeWrapper,
+    ): ...
+    SEASONAL_SAVINGS_PUNISHMENT_CARRY_UNSPECIFIED: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_PUNISHMENT_CARRY_DO_NOT_CARRY: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_PUNISHMENT_CARRY_SAME_NAME: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_PUNISHMENT_CARRY_SUM_ALL: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsPunishmentCarry.ValueType
+    )  # 3
 
     class _SeasonalSavingsSetpointDirection:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsSetpointDirectionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType], _builtins.type):
+    class _SeasonalSavingsSetpointDirectionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_UNSPECIFIED: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 0
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_DOWNWARD: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 1
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_DOWNWARD: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 2
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_EQUAL: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 4
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_UPWARD: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 8
-        SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_UPWARD: SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType  # 16
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_UNSPECIFIED: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_DOWNWARD: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_DOWNWARD: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_EQUAL: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 4
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_UPWARD: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 8
+        SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_UPWARD: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSetpointDirection.ValueType
+        )  # 16
 
-    class SeasonalSavingsSetpointDirection(_SeasonalSavingsSetpointDirection, metaclass=_SeasonalSavingsSetpointDirectionEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_UNSPECIFIED: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 0
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_DOWNWARD: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 1
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_DOWNWARD: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 2
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_EQUAL: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 4
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_UPWARD: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 8
-    SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_UPWARD: SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType  # 16
+    class SeasonalSavingsSetpointDirection(
+        _SeasonalSavingsSetpointDirection,
+        metaclass=_SeasonalSavingsSetpointDirectionEnumTypeWrapper,
+    ): ...
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_UNSPECIFIED: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_DOWNWARD: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_DOWNWARD: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_EQUAL: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 4
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_VISIBLY_UPWARD: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 8
+    SEASONAL_SAVINGS_SETPOINT_DIRECTION_NONVISIBLY_UPWARD: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+    )  # 16
 
     class _SeasonalSavingsSeasonType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsSeasonTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType], _builtins.type):
+    class _SeasonalSavingsSeasonTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_SEASON_TYPE_UNSPECIFIED: SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType  # 0
-        SEASONAL_SAVINGS_SEASON_TYPE_SUMMER: SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType  # 1
-        SEASONAL_SAVINGS_SEASON_TYPE_WINTER: SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType  # 2
+        SEASONAL_SAVINGS_SEASON_TYPE_UNSPECIFIED: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_SEASON_TYPE_SUMMER: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_SEASON_TYPE_WINTER: (
+            SeasonalSavingsSettingsTrait._SeasonalSavingsSeasonType.ValueType
+        )  # 2
 
-    class SeasonalSavingsSeasonType(_SeasonalSavingsSeasonType, metaclass=_SeasonalSavingsSeasonTypeEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_SEASON_TYPE_UNSPECIFIED: SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType  # 0
-    SEASONAL_SAVINGS_SEASON_TYPE_SUMMER: SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType  # 1
-    SEASONAL_SAVINGS_SEASON_TYPE_WINTER: SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType  # 2
+    class SeasonalSavingsSeasonType(
+        _SeasonalSavingsSeasonType, metaclass=_SeasonalSavingsSeasonTypeEnumTypeWrapper
+    ): ...
+    SEASONAL_SAVINGS_SEASON_TYPE_UNSPECIFIED: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_SEASON_TYPE_SUMMER: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_SEASON_TYPE_WINTER: (
+        SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType
+    )  # 2
 
     @_typing.final
     class StagesEntry(_message.Message):
@@ -2526,16 +4074,21 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage: ...
+        def value(
+            self,
+        ) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage | None = ...,
+            value: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2552,8 +4105,12 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         STARTDELAYAFTERANCHORTIMESECONDS_FIELD_NUMBER: _builtins.int
         ENDDELAYBEFOREWRONGDIRECTIONSECONDS_FIELD_NUMBER: _builtins.int
         ENDDELAYBEFOREANCHORTIMESECONDS_FIELD_NUMBER: _builtins.int
-        startAnchor: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
-        endAnchor: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+        startAnchor: (
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+        )
+        endAnchor: (
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchorType.ValueType
+        )
         startBeforeSeconds: _builtins.int
         startAfterOffsetSeconds: _builtins.int
         endBeforeOffsetSeconds: _builtins.int
@@ -2576,7 +4133,28 @@ class SeasonalSavingsSettingsTrait(_message.Message):
             endDelayBeforeWrongDirectionSeconds: _builtins.int = ...,
             endDelayBeforeAnchorTimeSeconds: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["endAfterOffsetSeconds", b"endAfterOffsetSeconds", "endAnchor", b"endAnchor", "endBeforeOffsetSeconds", b"endBeforeOffsetSeconds", "endDelayBeforeAnchorTimeSeconds", b"endDelayBeforeAnchorTimeSeconds", "endDelayBeforeWrongDirectionSeconds", b"endDelayBeforeWrongDirectionSeconds", "startAfterOffsetSeconds", b"startAfterOffsetSeconds", "startAnchor", b"startAnchor", "startBeforeSeconds", b"startBeforeSeconds", "startDelayAfterAnchorTimeSeconds", b"startDelayAfterAnchorTimeSeconds", "startDelayAfterWrongDirectionSeconds", b"startDelayAfterWrongDirectionSeconds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "endAfterOffsetSeconds",
+            b"endAfterOffsetSeconds",
+            "endAnchor",
+            b"endAnchor",
+            "endBeforeOffsetSeconds",
+            b"endBeforeOffsetSeconds",
+            "endDelayBeforeAnchorTimeSeconds",
+            b"endDelayBeforeAnchorTimeSeconds",
+            "endDelayBeforeWrongDirectionSeconds",
+            b"endDelayBeforeWrongDirectionSeconds",
+            "startAfterOffsetSeconds",
+            b"startAfterOffsetSeconds",
+            "startAnchor",
+            b"startAnchor",
+            "startBeforeSeconds",
+            b"startBeforeSeconds",
+            "startDelayAfterAnchorTimeSeconds",
+            b"startDelayAfterAnchorTimeSeconds",
+            "startDelayAfterWrongDirectionSeconds",
+            b"startDelayAfterWrongDirectionSeconds",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2602,7 +4180,18 @@ class SeasonalSavingsSettingsTrait(_message.Message):
             strengthScheduleEdit: _builtins.float = ...,
             strengthDialChange: _builtins.float = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["carryMode", b"carryMode", "interstageCarryFactor", b"interstageCarryFactor", "intrastageCarryFactor", b"intrastageCarryFactor", "strengthDialChange", b"strengthDialChange", "strengthScheduleEdit", b"strengthScheduleEdit"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "carryMode",
+            b"carryMode",
+            "interstageCarryFactor",
+            b"interstageCarryFactor",
+            "intrastageCarryFactor",
+            b"intrastageCarryFactor",
+            "strengthDialChange",
+            b"strengthDialChange",
+            "strengthScheduleEdit",
+            b"strengthScheduleEdit",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2620,32 +4209,85 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         dailyTemperatureChange: _builtins.float
         forceVisibleChangeOnFirstday: _builtins.bool
         @_builtins.property
-        def anchorDescription(self) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchor: ...
+        def anchorDescription(
+            self,
+        ) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchor: ...
         @_builtins.property
-        def punishment(self) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsPunishment: ...
+        def punishment(
+            self,
+        ) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsPunishment: ...
         @_builtins.property
-        def blackoutDays(self) -> _containers.RepeatedScalarFieldContainer[_common_pb2.DayOfWeek.ValueType]: ...
+        def blackoutDays(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            _common_pb2.DayOfWeek.ValueType
+        ]: ...
         @_builtins.property
-        def startSetpointDirectionMask(self) -> _containers.RepeatedScalarFieldContainer[Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType]: ...
+        def startSetpointDirectionMask(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+        ]: ...
         @_builtins.property
-        def endSetpointDirectionMask(self) -> _containers.RepeatedScalarFieldContainer[Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType]: ...
+        def endSetpointDirectionMask(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+        ]: ...
         @_builtins.property
-        def qualParameters(self) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsQualificationParameters: ...
+        def qualParameters(
+            self,
+        ) -> (
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsQualificationParameters
+        ): ...
         def __init__(
             self,
             *,
             dailyTemperatureChange: _builtins.float = ...,
-            anchorDescription: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchor | None = ...,
-            punishment: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsPunishment | None = ...,
+            anchorDescription: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAnchor
+            | None = ...,
+            punishment: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsPunishment
+            | None = ...,
             blackoutDays: _abc.Iterable[_common_pb2.DayOfWeek.ValueType] | None = ...,
             forceVisibleChangeOnFirstday: _builtins.bool = ...,
-            startSetpointDirectionMask: _abc.Iterable[Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType] | None = ...,
-            endSetpointDirectionMask: _abc.Iterable[Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType] | None = ...,
-            qualParameters: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsQualificationParameters | None = ...,
+            startSetpointDirectionMask: _abc.Iterable[
+                Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+            ]
+            | None = ...,
+            endSetpointDirectionMask: _abc.Iterable[
+                Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSetpointDirection.ValueType
+            ]
+            | None = ...,
+            qualParameters: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsQualificationParameters
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["anchorDescription", b"anchorDescription", "punishment", b"punishment", "qualParameters", b"qualParameters"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "anchorDescription",
+            b"anchorDescription",
+            "punishment",
+            b"punishment",
+            "qualParameters",
+            b"qualParameters",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["anchorDescription", b"anchorDescription", "blackoutDays", b"blackoutDays", "dailyTemperatureChange", b"dailyTemperatureChange", "endSetpointDirectionMask", b"endSetpointDirectionMask", "forceVisibleChangeOnFirstday", b"forceVisibleChangeOnFirstday", "punishment", b"punishment", "qualParameters", b"qualParameters", "startSetpointDirectionMask", b"startSetpointDirectionMask"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "anchorDescription",
+            b"anchorDescription",
+            "blackoutDays",
+            b"blackoutDays",
+            "dailyTemperatureChange",
+            b"dailyTemperatureChange",
+            "endSetpointDirectionMask",
+            b"endSetpointDirectionMask",
+            "forceVisibleChangeOnFirstday",
+            b"forceVisibleChangeOnFirstday",
+            "punishment",
+            b"punishment",
+            "qualParameters",
+            b"qualParameters",
+            "startSetpointDirectionMask",
+            b"startSetpointDirectionMask",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2698,7 +4340,36 @@ class SeasonalSavingsSettingsTrait(_message.Message):
             requireForecast: _builtins.bool = ...,
             dailyCoolingSecondsMinimum: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["dailyCoolingSecondsMaximum", b"dailyCoolingSecondsMaximum", "dailyCoolingSecondsMinimum", b"dailyCoolingSecondsMinimum", "dailyHeatingSecondsMaximum", b"dailyHeatingSecondsMaximum", "dailyHeatingSecondsMinimum", b"dailyHeatingSecondsMinimum", "maximumSavings", b"maximumSavings", "minimumDailySetpoints", b"minimumDailySetpoints", "minimumLearningState", b"minimumLearningState", "minimumSavings", b"minimumSavings", "minimumWeeklySetpoints", b"minimumWeeklySetpoints", "nextdayForecastTemperatureMaximum", b"nextdayForecastTemperatureMaximum", "nextdayForecastTemperatureMinimum", b"nextdayForecastTemperatureMinimum", "requireAutoawayEta", b"requireAutoawayEta", "requireForecast", b"requireForecast", "requireUsageWithinLimits", b"requireUsageWithinLimits"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "dailyCoolingSecondsMaximum",
+            b"dailyCoolingSecondsMaximum",
+            "dailyCoolingSecondsMinimum",
+            b"dailyCoolingSecondsMinimum",
+            "dailyHeatingSecondsMaximum",
+            b"dailyHeatingSecondsMaximum",
+            "dailyHeatingSecondsMinimum",
+            b"dailyHeatingSecondsMinimum",
+            "maximumSavings",
+            b"maximumSavings",
+            "minimumDailySetpoints",
+            b"minimumDailySetpoints",
+            "minimumLearningState",
+            b"minimumLearningState",
+            "minimumSavings",
+            b"minimumSavings",
+            "minimumWeeklySetpoints",
+            b"minimumWeeklySetpoints",
+            "nextdayForecastTemperatureMaximum",
+            b"nextdayForecastTemperatureMaximum",
+            "nextdayForecastTemperatureMinimum",
+            b"nextdayForecastTemperatureMinimum",
+            "requireAutoawayEta",
+            b"requireAutoawayEta",
+            "requireForecast",
+            b"requireForecast",
+            "requireUsageWithinLimits",
+            b"requireUsageWithinLimits",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2715,7 +4386,9 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         numberUpdates: _builtins.int
         forceQualify: _builtins.bool
         @_builtins.property
-        def algoConstants(self) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAlgoConstants: ...
+        def algoConstants(
+            self,
+        ) -> Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAlgoConstants: ...
         def __init__(
             self,
             *,
@@ -2723,11 +4396,25 @@ class SeasonalSavingsSettingsTrait(_message.Message):
             expirationSeconds: _builtins.int = ...,
             numberUpdates: _builtins.int = ...,
             forceQualify: _builtins.bool = ...,
-            algoConstants: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAlgoConstants | None = ...,
+            algoConstants: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsAlgoConstants
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["algoConstants", b"algoConstants"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "algoConstants", b"algoConstants"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["algoConstants", b"algoConstants", "expirationSeconds", b"expirationSeconds", "forceQualify", b"forceQualify", "numberUpdates", b"numberUpdates", "stageIndex", b"stageIndex"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "algoConstants",
+            b"algoConstants",
+            "expirationSeconds",
+            b"expirationSeconds",
+            "forceQualify",
+            b"forceQualify",
+            "numberUpdates",
+            b"numberUpdates",
+            "stageIndex",
+            b"stageIndex",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     EVENTGUID_FIELD_NUMBER: _builtins.int
@@ -2767,7 +4454,11 @@ class SeasonalSavingsSettingsTrait(_message.Message):
     @_builtins.property
     def qualStopTimeLocal(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
-    def stages(self) -> _containers.MessageMap[_builtins.int, Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage]: ...
+    def stages(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage
+    ]: ...
     @_builtins.property
     def partnerName(self) -> Global___PartnerInformation.PartnerName: ...
     def __init__(
@@ -2780,7 +4471,10 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         afterglowSeconds: _builtins.int = ...,
         pausedExpirationSeconds: _builtins.int = ...,
         forceIgnoreBlackoutTimes: _builtins.bool = ...,
-        stages: _abc.Mapping[_builtins.int, Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage] | None = ...,
+        stages: _abc.Mapping[
+            _builtins.int, Global___SeasonalSavingsSettingsTrait.SeasonalSavingsStage
+        ]
+        | None = ...,
         partnerName: Global___PartnerInformation.PartnerName | None = ...,
         season: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType = ...,
         campaignId: _builtins.str = ...,
@@ -2792,9 +4486,53 @@ class SeasonalSavingsSettingsTrait(_message.Message):
         rtsVersion: _builtins.str = ...,
         rtsType: _builtins.str = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["partnerName", b"partnerName", "qualStartTimeLocal", b"qualStartTimeLocal", "qualStopTimeLocal", b"qualStopTimeLocal"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "partnerName",
+        b"partnerName",
+        "qualStartTimeLocal",
+        b"qualStartTimeLocal",
+        "qualStopTimeLocal",
+        b"qualStopTimeLocal",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["afterglowSeconds", b"afterglowSeconds", "campaignId", b"campaignId", "debugName", b"debugName", "eventGuid", b"eventGuid", "forceIgnoreBlackoutTimes", b"forceIgnoreBlackoutTimes", "partnerName", b"partnerName", "pausedExpirationSeconds", b"pausedExpirationSeconds", "qualStartTimeLocal", b"qualStartTimeLocal", "qualStopTimeLocal", b"qualStopTimeLocal", "rtsActualResultsStageIndex", b"rtsActualResultsStageIndex", "rtsRequestedAction", b"rtsRequestedAction", "rtsState", b"rtsState", "rtsStopReason", b"rtsStopReason", "rtsType", b"rtsType", "rtsVersion", b"rtsVersion", "season", b"season", "setPointType", b"setPointType", "stages", b"stages"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "afterglowSeconds",
+        b"afterglowSeconds",
+        "campaignId",
+        b"campaignId",
+        "debugName",
+        b"debugName",
+        "eventGuid",
+        b"eventGuid",
+        "forceIgnoreBlackoutTimes",
+        b"forceIgnoreBlackoutTimes",
+        "partnerName",
+        b"partnerName",
+        "pausedExpirationSeconds",
+        b"pausedExpirationSeconds",
+        "qualStartTimeLocal",
+        b"qualStartTimeLocal",
+        "qualStopTimeLocal",
+        b"qualStopTimeLocal",
+        "rtsActualResultsStageIndex",
+        b"rtsActualResultsStageIndex",
+        "rtsRequestedAction",
+        b"rtsRequestedAction",
+        "rtsState",
+        b"rtsState",
+        "rtsStopReason",
+        b"rtsStopReason",
+        "rtsType",
+        b"rtsType",
+        "rtsVersion",
+        b"rtsVersion",
+        "season",
+        b"season",
+        "setPointType",
+        b"setPointType",
+        "stages",
+        b"stages",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SeasonalSavingsSettingsTrait: _TypeAlias = SeasonalSavingsSettingsTrait  # noqa: Y015
@@ -2807,103 +4545,263 @@ class DemandResponseTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseEventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseTrait._DemandResponseEventType.ValueType], _builtins.type):
+    class _DemandResponseEventTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseTrait._DemandResponseEventType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: DemandResponseTrait._DemandResponseEventType.ValueType  # 0
-        DEMAND_RESPONSE_EVENT_TYPE_STANDARD: DemandResponseTrait._DemandResponseEventType.ValueType  # 1
-        DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: DemandResponseTrait._DemandResponseEventType.ValueType  # 2
+        DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: (
+            DemandResponseTrait._DemandResponseEventType.ValueType
+        )  # 0
+        DEMAND_RESPONSE_EVENT_TYPE_STANDARD: (
+            DemandResponseTrait._DemandResponseEventType.ValueType
+        )  # 1
+        DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: (
+            DemandResponseTrait._DemandResponseEventType.ValueType
+        )  # 2
 
-    class DemandResponseEventType(_DemandResponseEventType, metaclass=_DemandResponseEventTypeEnumTypeWrapper): ...
-    DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: DemandResponseTrait.DemandResponseEventType.ValueType  # 0
-    DEMAND_RESPONSE_EVENT_TYPE_STANDARD: DemandResponseTrait.DemandResponseEventType.ValueType  # 1
-    DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: DemandResponseTrait.DemandResponseEventType.ValueType  # 2
+    class DemandResponseEventType(
+        _DemandResponseEventType, metaclass=_DemandResponseEventTypeEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: (
+        DemandResponseTrait.DemandResponseEventType.ValueType
+    )  # 0
+    DEMAND_RESPONSE_EVENT_TYPE_STANDARD: (
+        DemandResponseTrait.DemandResponseEventType.ValueType
+    )  # 1
+    DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: (
+        DemandResponseTrait.DemandResponseEventType.ValueType
+    )  # 2
 
     class _DemandResponseState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseTrait._DemandResponseState.ValueType], _builtins.type):
+    class _DemandResponseStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseTrait._DemandResponseState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_STATE_UNSPECIFIED: DemandResponseTrait._DemandResponseState.ValueType  # 0
-        DEMAND_RESPONSE_STATE_INITIAL: DemandResponseTrait._DemandResponseState.ValueType  # 1
-        DEMAND_RESPONSE_STATE_EVENT_RECEIVED: DemandResponseTrait._DemandResponseState.ValueType  # 2
-        DEMAND_RESPONSE_STATE_PRESENTING_EVENT: DemandResponseTrait._DemandResponseState.ValueType  # 3
-        DEMAND_RESPONSE_STATE_PRECONDITIONING: DemandResponseTrait._DemandResponseState.ValueType  # 4
-        DEMAND_RESPONSE_STATE_CRUISE_CONTROL: DemandResponseTrait._DemandResponseState.ValueType  # 5
-        DEMAND_RESPONSE_STATE_MANUAL_MODE: DemandResponseTrait._DemandResponseState.ValueType  # 6
-        DEMAND_RESPONSE_STATE_MANUAL_EFFICIENT: DemandResponseTrait._DemandResponseState.ValueType  # 7
-        DEMAND_RESPONSE_STATE_FINISHED: DemandResponseTrait._DemandResponseState.ValueType  # 8
+        DEMAND_RESPONSE_STATE_UNSPECIFIED: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 0
+        DEMAND_RESPONSE_STATE_INITIAL: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 1
+        DEMAND_RESPONSE_STATE_EVENT_RECEIVED: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 2
+        DEMAND_RESPONSE_STATE_PRESENTING_EVENT: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 3
+        DEMAND_RESPONSE_STATE_PRECONDITIONING: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 4
+        DEMAND_RESPONSE_STATE_CRUISE_CONTROL: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 5
+        DEMAND_RESPONSE_STATE_MANUAL_MODE: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 6
+        DEMAND_RESPONSE_STATE_MANUAL_EFFICIENT: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 7
+        DEMAND_RESPONSE_STATE_FINISHED: (
+            DemandResponseTrait._DemandResponseState.ValueType
+        )  # 8
 
-    class DemandResponseState(_DemandResponseState, metaclass=_DemandResponseStateEnumTypeWrapper): ...
-    DEMAND_RESPONSE_STATE_UNSPECIFIED: DemandResponseTrait.DemandResponseState.ValueType  # 0
-    DEMAND_RESPONSE_STATE_INITIAL: DemandResponseTrait.DemandResponseState.ValueType  # 1
-    DEMAND_RESPONSE_STATE_EVENT_RECEIVED: DemandResponseTrait.DemandResponseState.ValueType  # 2
-    DEMAND_RESPONSE_STATE_PRESENTING_EVENT: DemandResponseTrait.DemandResponseState.ValueType  # 3
-    DEMAND_RESPONSE_STATE_PRECONDITIONING: DemandResponseTrait.DemandResponseState.ValueType  # 4
-    DEMAND_RESPONSE_STATE_CRUISE_CONTROL: DemandResponseTrait.DemandResponseState.ValueType  # 5
-    DEMAND_RESPONSE_STATE_MANUAL_MODE: DemandResponseTrait.DemandResponseState.ValueType  # 6
-    DEMAND_RESPONSE_STATE_MANUAL_EFFICIENT: DemandResponseTrait.DemandResponseState.ValueType  # 7
-    DEMAND_RESPONSE_STATE_FINISHED: DemandResponseTrait.DemandResponseState.ValueType  # 8
+    class DemandResponseState(
+        _DemandResponseState, metaclass=_DemandResponseStateEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_STATE_UNSPECIFIED: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 0
+    DEMAND_RESPONSE_STATE_INITIAL: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 1
+    DEMAND_RESPONSE_STATE_EVENT_RECEIVED: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 2
+    DEMAND_RESPONSE_STATE_PRESENTING_EVENT: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 3
+    DEMAND_RESPONSE_STATE_PRECONDITIONING: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 4
+    DEMAND_RESPONSE_STATE_CRUISE_CONTROL: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 5
+    DEMAND_RESPONSE_STATE_MANUAL_MODE: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 6
+    DEMAND_RESPONSE_STATE_MANUAL_EFFICIENT: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 7
+    DEMAND_RESPONSE_STATE_FINISHED: (
+        DemandResponseTrait.DemandResponseState.ValueType
+    )  # 8
 
     class _DemandResponseStopReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseStopReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseTrait._DemandResponseStopReason.ValueType], _builtins.type):
+    class _DemandResponseStopReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_STOP_REASON_UNSPECIFIED: DemandResponseTrait._DemandResponseStopReason.ValueType  # 0
-        DEMAND_RESPONSE_STOP_REASON_TEMPERATURE_CHANGE: DemandResponseTrait._DemandResponseStopReason.ValueType  # 1
-        DEMAND_RESPONSE_STOP_REASON_MODE_CHANGE: DemandResponseTrait._DemandResponseStopReason.ValueType  # 2
-        DEMAND_RESPONSE_STOP_REASON_RECENT_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 3
-        DEMAND_RESPONSE_STOP_REASON_COMPLETED: DemandResponseTrait._DemandResponseStopReason.ValueType  # 4
-        DEMAND_RESPONSE_STOP_REASON_BAD_PARAMETERS: DemandResponseTrait._DemandResponseStopReason.ValueType  # 5
-        DEMAND_RESPONSE_STOP_REASON_UNKNOWN: DemandResponseTrait._DemandResponseStopReason.ValueType  # 6
-        DEMAND_RESPONSE_STOP_REASON_KILLED_BEFORE_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 7
-        DEMAND_RESPONSE_STOP_REASON_KILLED_DURING_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 8
-        DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_BEFORE_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 9
-        DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_DURING_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 10
-        DEMAND_RESPONSE_STOP_REASON_RECEIVED_LATE: DemandResponseTrait._DemandResponseStopReason.ValueType  # 11
-        DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_DURING_QUALIFICATION: DemandResponseTrait._DemandResponseStopReason.ValueType  # 12
-        DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_DURING_QUALIFICATION: DemandResponseTrait._DemandResponseStopReason.ValueType  # 13
-        DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_AT_EVENT_START: DemandResponseTrait._DemandResponseStopReason.ValueType  # 14
-        DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_AT_EVENT_START: DemandResponseTrait._DemandResponseStopReason.ValueType  # 15
-        DEMAND_RESPONSE_STOP_REASON_SYSTEM_TURNED_OFF_DURING_EVENT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 16
-        DEMAND_RESPONSE_STOP_REASON_OPT_OUT: DemandResponseTrait._DemandResponseStopReason.ValueType  # 17
+        DEMAND_RESPONSE_STOP_REASON_UNSPECIFIED: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 0
+        DEMAND_RESPONSE_STOP_REASON_TEMPERATURE_CHANGE: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 1
+        DEMAND_RESPONSE_STOP_REASON_MODE_CHANGE: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 2
+        DEMAND_RESPONSE_STOP_REASON_RECENT_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 3
+        DEMAND_RESPONSE_STOP_REASON_COMPLETED: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 4
+        DEMAND_RESPONSE_STOP_REASON_BAD_PARAMETERS: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 5
+        DEMAND_RESPONSE_STOP_REASON_UNKNOWN: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 6
+        DEMAND_RESPONSE_STOP_REASON_KILLED_BEFORE_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 7
+        DEMAND_RESPONSE_STOP_REASON_KILLED_DURING_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 8
+        DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_BEFORE_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 9
+        DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_DURING_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 10
+        DEMAND_RESPONSE_STOP_REASON_RECEIVED_LATE: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 11
+        DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_DURING_QUALIFICATION: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 12
+        DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_DURING_QUALIFICATION: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 13
+        DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_AT_EVENT_START: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 14
+        DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_AT_EVENT_START: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 15
+        DEMAND_RESPONSE_STOP_REASON_SYSTEM_TURNED_OFF_DURING_EVENT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 16
+        DEMAND_RESPONSE_STOP_REASON_OPT_OUT: (
+            DemandResponseTrait._DemandResponseStopReason.ValueType
+        )  # 17
 
-    class DemandResponseStopReason(_DemandResponseStopReason, metaclass=_DemandResponseStopReasonEnumTypeWrapper): ...
-    DEMAND_RESPONSE_STOP_REASON_UNSPECIFIED: DemandResponseTrait.DemandResponseStopReason.ValueType  # 0
-    DEMAND_RESPONSE_STOP_REASON_TEMPERATURE_CHANGE: DemandResponseTrait.DemandResponseStopReason.ValueType  # 1
-    DEMAND_RESPONSE_STOP_REASON_MODE_CHANGE: DemandResponseTrait.DemandResponseStopReason.ValueType  # 2
-    DEMAND_RESPONSE_STOP_REASON_RECENT_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 3
-    DEMAND_RESPONSE_STOP_REASON_COMPLETED: DemandResponseTrait.DemandResponseStopReason.ValueType  # 4
-    DEMAND_RESPONSE_STOP_REASON_BAD_PARAMETERS: DemandResponseTrait.DemandResponseStopReason.ValueType  # 5
-    DEMAND_RESPONSE_STOP_REASON_UNKNOWN: DemandResponseTrait.DemandResponseStopReason.ValueType  # 6
-    DEMAND_RESPONSE_STOP_REASON_KILLED_BEFORE_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 7
-    DEMAND_RESPONSE_STOP_REASON_KILLED_DURING_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 8
-    DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_BEFORE_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 9
-    DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_DURING_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 10
-    DEMAND_RESPONSE_STOP_REASON_RECEIVED_LATE: DemandResponseTrait.DemandResponseStopReason.ValueType  # 11
-    DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_DURING_QUALIFICATION: DemandResponseTrait.DemandResponseStopReason.ValueType  # 12
-    DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_DURING_QUALIFICATION: DemandResponseTrait.DemandResponseStopReason.ValueType  # 13
-    DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_AT_EVENT_START: DemandResponseTrait.DemandResponseStopReason.ValueType  # 14
-    DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_AT_EVENT_START: DemandResponseTrait.DemandResponseStopReason.ValueType  # 15
-    DEMAND_RESPONSE_STOP_REASON_SYSTEM_TURNED_OFF_DURING_EVENT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 16
-    DEMAND_RESPONSE_STOP_REASON_OPT_OUT: DemandResponseTrait.DemandResponseStopReason.ValueType  # 17
+    class DemandResponseStopReason(
+        _DemandResponseStopReason, metaclass=_DemandResponseStopReasonEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_STOP_REASON_UNSPECIFIED: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 0
+    DEMAND_RESPONSE_STOP_REASON_TEMPERATURE_CHANGE: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 1
+    DEMAND_RESPONSE_STOP_REASON_MODE_CHANGE: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 2
+    DEMAND_RESPONSE_STOP_REASON_RECENT_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 3
+    DEMAND_RESPONSE_STOP_REASON_COMPLETED: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 4
+    DEMAND_RESPONSE_STOP_REASON_BAD_PARAMETERS: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 5
+    DEMAND_RESPONSE_STOP_REASON_UNKNOWN: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 6
+    DEMAND_RESPONSE_STOP_REASON_KILLED_BEFORE_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 7
+    DEMAND_RESPONSE_STOP_REASON_KILLED_DURING_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 8
+    DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_BEFORE_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 9
+    DEMAND_RESPONSE_STOP_REASON_RECEIVED_NEW_DR_DURING_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 10
+    DEMAND_RESPONSE_STOP_REASON_RECEIVED_LATE: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 11
+    DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_DURING_QUALIFICATION: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 12
+    DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_DURING_QUALIFICATION: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 13
+    DEMAND_RESPONSE_STOP_REASON_WRONG_SCHEDULE_MODE_AT_EVENT_START: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 14
+    DEMAND_RESPONSE_STOP_REASON_SYSTEM_OFF_AT_EVENT_START: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 15
+    DEMAND_RESPONSE_STOP_REASON_SYSTEM_TURNED_OFF_DURING_EVENT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 16
+    DEMAND_RESPONSE_STOP_REASON_OPT_OUT: (
+        DemandResponseTrait.DemandResponseStopReason.ValueType
+    )  # 17
 
     class _DemandResponseProgramType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseProgramTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseTrait._DemandResponseProgramType.ValueType], _builtins.type):
+    class _DemandResponseProgramTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseTrait._DemandResponseProgramType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_PROGRAM_TYPE_UNSPECIFIED: DemandResponseTrait._DemandResponseProgramType.ValueType  # 0
-        DEMAND_RESPONSE_PROGRAM_TYPE_SUMMER_RUSH_HOUR_REWARDS: DemandResponseTrait._DemandResponseProgramType.ValueType  # 1
-        DEMAND_RESPONSE_PROGRAM_TYPE_WINTER_RUSH_HOUR_REWARDS: DemandResponseTrait._DemandResponseProgramType.ValueType  # 2
+        DEMAND_RESPONSE_PROGRAM_TYPE_UNSPECIFIED: (
+            DemandResponseTrait._DemandResponseProgramType.ValueType
+        )  # 0
+        DEMAND_RESPONSE_PROGRAM_TYPE_SUMMER_RUSH_HOUR_REWARDS: (
+            DemandResponseTrait._DemandResponseProgramType.ValueType
+        )  # 1
+        DEMAND_RESPONSE_PROGRAM_TYPE_WINTER_RUSH_HOUR_REWARDS: (
+            DemandResponseTrait._DemandResponseProgramType.ValueType
+        )  # 2
 
-    class DemandResponseProgramType(_DemandResponseProgramType, metaclass=_DemandResponseProgramTypeEnumTypeWrapper): ...
-    DEMAND_RESPONSE_PROGRAM_TYPE_UNSPECIFIED: DemandResponseTrait.DemandResponseProgramType.ValueType  # 0
-    DEMAND_RESPONSE_PROGRAM_TYPE_SUMMER_RUSH_HOUR_REWARDS: DemandResponseTrait.DemandResponseProgramType.ValueType  # 1
-    DEMAND_RESPONSE_PROGRAM_TYPE_WINTER_RUSH_HOUR_REWARDS: DemandResponseTrait.DemandResponseProgramType.ValueType  # 2
+    class DemandResponseProgramType(
+        _DemandResponseProgramType, metaclass=_DemandResponseProgramTypeEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_PROGRAM_TYPE_UNSPECIFIED: (
+        DemandResponseTrait.DemandResponseProgramType.ValueType
+    )  # 0
+    DEMAND_RESPONSE_PROGRAM_TYPE_SUMMER_RUSH_HOUR_REWARDS: (
+        DemandResponseTrait.DemandResponseProgramType.ValueType
+    )  # 1
+    DEMAND_RESPONSE_PROGRAM_TYPE_WINTER_RUSH_HOUR_REWARDS: (
+        DemandResponseTrait.DemandResponseProgramType.ValueType
+    )  # 2
 
     @_typing.final
     class StateItemsEntry(_message.Message):
@@ -2913,16 +4811,21 @@ class DemandResponseTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___DemandResponseTrait.DemandResponseEventStateItem: ...
+        def value(
+            self,
+        ) -> Global___DemandResponseTrait.DemandResponseEventStateItem: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___DemandResponseTrait.DemandResponseEventStateItem | None = ...,
+            value: Global___DemandResponseTrait.DemandResponseEventStateItem
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -2959,9 +4862,31 @@ class DemandResponseTrait(_message.Message):
             requiredScheduleMode: Global___DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType = ...,
             partnerName: Global___PartnerInformation.PartnerName | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["cruiseControlTemperature", b"cruiseControlTemperature", "partnerName", b"partnerName"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "cruiseControlTemperature",
+            b"cruiseControlTemperature",
+            "partnerName",
+            b"partnerName",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["cruiseControlTemperature", b"cruiseControlTemperature", "eventGuid", b"eventGuid", "inPeakPeriod", b"inPeakPeriod", "optedOut", b"optedOut", "partnerName", b"partnerName", "requiredScheduleMode", b"requiredScheduleMode", "state", b"state", "stopReason", b"stopReason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "cruiseControlTemperature",
+            b"cruiseControlTemperature",
+            "eventGuid",
+            b"eventGuid",
+            "inPeakPeriod",
+            b"inPeakPeriod",
+            "optedOut",
+            b"optedOut",
+            "partnerName",
+            b"partnerName",
+            "requiredScheduleMode",
+            b"requiredScheduleMode",
+            "state",
+            b"state",
+            "stopReason",
+            b"stopReason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3007,9 +4932,41 @@ class DemandResponseTrait(_message.Message):
             stopTimeUtc: _timestamp_pb2.Timestamp | None = ...,
             partnerName: Global___PartnerInformation.PartnerName | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["partnerName", b"partnerName", "peakPeriodStartTimeUtc", b"peakPeriodStartTimeUtc", "qualificationStartTimeUtc", b"qualificationStartTimeUtc", "startTimeUtc", b"startTimeUtc", "stopTimeUtc", b"stopTimeUtc"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "partnerName",
+            b"partnerName",
+            "peakPeriodStartTimeUtc",
+            b"peakPeriodStartTimeUtc",
+            "qualificationStartTimeUtc",
+            b"qualificationStartTimeUtc",
+            "startTimeUtc",
+            b"startTimeUtc",
+            "stopTimeUtc",
+            b"stopTimeUtc",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["currentState", b"currentState", "eventGuid", b"eventGuid", "eventType", b"eventType", "lengthEventSeconds", b"lengthEventSeconds", "partnerName", b"partnerName", "peakPeriodStartTimeUtc", b"peakPeriodStartTimeUtc", "previousState", b"previousState", "qualificationStartTimeUtc", b"qualificationStartTimeUtc", "startTimeUtc", b"startTimeUtc", "stopTimeUtc", b"stopTimeUtc"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "currentState",
+            b"currentState",
+            "eventGuid",
+            b"eventGuid",
+            "eventType",
+            b"eventType",
+            "lengthEventSeconds",
+            b"lengthEventSeconds",
+            "partnerName",
+            b"partnerName",
+            "peakPeriodStartTimeUtc",
+            b"peakPeriodStartTimeUtc",
+            "previousState",
+            b"previousState",
+            "qualificationStartTimeUtc",
+            b"qualificationStartTimeUtc",
+            "startTimeUtc",
+            b"startTimeUtc",
+            "stopTimeUtc",
+            b"stopTimeUtc",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3038,7 +4995,18 @@ class DemandResponseTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["partnerName", b"partnerName"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["eventId", b"eventId", "eventType", b"eventType", "partnerId", b"partnerId", "partnerName", b"partnerName", "programType", b"programType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "eventId",
+            b"eventId",
+            "eventType",
+            b"eventType",
+            "partnerId",
+            b"partnerId",
+            "partnerName",
+            b"partnerName",
+            "programType",
+            b"programType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3071,18 +5039,47 @@ class DemandResponseTrait(_message.Message):
             peakPeriodEndTime: _timestamp_pb2.Timestamp | None = ...,
             stopReason: Global___DemandResponseTrait.DemandResponseStopReason.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["peakPeriodEndTime", b"peakPeriodEndTime", "peakPeriodStartTime", b"peakPeriodStartTime", "preconditioningPeriodEndTime", b"preconditioningPeriodEndTime", "preconditioningPeriodStartTime", b"preconditioningPeriodStartTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "peakPeriodEndTime",
+            b"peakPeriodEndTime",
+            "peakPeriodStartTime",
+            b"peakPeriodStartTime",
+            "preconditioningPeriodEndTime",
+            b"preconditioningPeriodEndTime",
+            "preconditioningPeriodStartTime",
+            b"preconditioningPeriodStartTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["eventId", b"eventId", "peakPeriodEndTime", b"peakPeriodEndTime", "peakPeriodStartTime", b"peakPeriodStartTime", "preconditioningPeriodEndTime", b"preconditioningPeriodEndTime", "preconditioningPeriodStartTime", b"preconditioningPeriodStartTime", "stopReason", b"stopReason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "eventId",
+            b"eventId",
+            "peakPeriodEndTime",
+            b"peakPeriodEndTime",
+            "peakPeriodStartTime",
+            b"peakPeriodStartTime",
+            "preconditioningPeriodEndTime",
+            b"preconditioningPeriodEndTime",
+            "preconditioningPeriodStartTime",
+            b"preconditioningPeriodStartTime",
+            "stopReason",
+            b"stopReason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STATEITEMS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def stateItems(self) -> _containers.MessageMap[_builtins.int, Global___DemandResponseTrait.DemandResponseEventStateItem]: ...
+    def stateItems(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___DemandResponseTrait.DemandResponseEventStateItem
+    ]: ...
     def __init__(
         self,
         *,
-        stateItems: _abc.Mapping[_builtins.int, Global___DemandResponseTrait.DemandResponseEventStateItem] | None = ...,
+        stateItems: _abc.Mapping[
+            _builtins.int, Global___DemandResponseTrait.DemandResponseEventStateItem
+        ]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["stateItems", b"stateItems"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -3097,7 +5094,10 @@ class HvacActor(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HvacActorMethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacActor._HvacActorMethod.ValueType], _builtins.type):
+    class _HvacActorMethodEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[HvacActor._HvacActorMethod.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HVAC_ACTOR_METHOD_UNSPECIFIED: HvacActor._HvacActorMethod.ValueType  # 0
         HVAC_ACTOR_METHOD_NOBODY: HvacActor._HvacActorMethod.ValueType  # 1
@@ -3117,13 +5117,19 @@ class HvacActor(_message.Message):
         HVAC_ACTOR_METHOD_WORKS_WITH_NEST: HvacActor._HvacActorMethod.ValueType  # 15
         HVAC_ACTOR_METHOD_AMBER_PROGRAMMER: HvacActor._HvacActorMethod.ValueType  # 16
         HVAC_ACTOR_METHOD_GOOGLE_ASSISTANT: HvacActor._HvacActorMethod.ValueType  # 17
-        HVAC_ACTOR_METHOD_SMART_DEVICE_MANAGEMENT: HvacActor._HvacActorMethod.ValueType  # 18
+        HVAC_ACTOR_METHOD_SMART_DEVICE_MANAGEMENT: (
+            HvacActor._HvacActorMethod.ValueType
+        )  # 18
         HVAC_ACTOR_METHOD_GOOGLE_ENERGY: HvacActor._HvacActorMethod.ValueType  # 19
         HVAC_ACTOR_METHOD_MATTER: HvacActor._HvacActorMethod.ValueType  # 20
         HVAC_ACTOR_METHOD_ENERGY_CAPTION: HvacActor._HvacActorMethod.ValueType  # 21
-        HVAC_ACTOR_METHOD_GOOGLE_ASSISTANT_SCHEDULED_ROUTINE: HvacActor._HvacActorMethod.ValueType  # 22
+        HVAC_ACTOR_METHOD_GOOGLE_ASSISTANT_SCHEDULED_ROUTINE: (
+            HvacActor._HvacActorMethod.ValueType
+        )  # 22
 
-    class HvacActorMethod(_HvacActorMethod, metaclass=_HvacActorMethodEnumTypeWrapper): ...
+    class HvacActorMethod(
+        _HvacActorMethod, metaclass=_HvacActorMethodEnumTypeWrapper
+    ): ...
     HVAC_ACTOR_METHOD_UNSPECIFIED: HvacActor.HvacActorMethod.ValueType  # 0
     HVAC_ACTOR_METHOD_NOBODY: HvacActor.HvacActorMethod.ValueType  # 1
     HVAC_ACTOR_METHOD_SCHEDULE_LEARNING: HvacActor.HvacActorMethod.ValueType  # 2
@@ -3146,7 +5152,9 @@ class HvacActor(_message.Message):
     HVAC_ACTOR_METHOD_GOOGLE_ENERGY: HvacActor.HvacActorMethod.ValueType  # 19
     HVAC_ACTOR_METHOD_MATTER: HvacActor.HvacActorMethod.ValueType  # 20
     HVAC_ACTOR_METHOD_ENERGY_CAPTION: HvacActor.HvacActorMethod.ValueType  # 21
-    HVAC_ACTOR_METHOD_GOOGLE_ASSISTANT_SCHEDULED_ROUTINE: HvacActor.HvacActorMethod.ValueType  # 22
+    HVAC_ACTOR_METHOD_GOOGLE_ASSISTANT_SCHEDULED_ROUTINE: (
+        HvacActor.HvacActorMethod.ValueType
+    )  # 22
 
     @_typing.final
     class HvacActorStruct(_message.Message):
@@ -3170,9 +5178,20 @@ class HvacActor(_message.Message):
             timeOfAction: _timestamp_pb2.Timestamp | None = ...,
             originatorRtsId: _builtins.str = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["originator", b"originator", "timeOfAction", b"timeOfAction"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "originator", b"originator", "timeOfAction", b"timeOfAction"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["method", b"method", "originator", b"originator", "originatorRtsId", b"originatorRtsId", "timeOfAction", b"timeOfAction"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "method",
+            b"method",
+            "originator",
+            b"originator",
+            "originatorRtsId",
+            b"originatorRtsId",
+            "timeOfAction",
+            b"timeOfAction",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -3189,7 +5208,10 @@ class FanControlTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FanSpeedSettingEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlTrait._FanSpeedSetting.ValueType], _builtins.type):
+    class _FanSpeedSettingEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[FanControlTrait._FanSpeedSetting.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         FAN_SPEED_SETTING_UNSPECIFIED: FanControlTrait._FanSpeedSetting.ValueType  # 0
         FAN_SPEED_SETTING_STAGE1: FanControlTrait._FanSpeedSetting.ValueType  # 1
@@ -3198,7 +5220,9 @@ class FanControlTrait(_message.Message):
         FAN_SPEED_SETTING_OFF: FanControlTrait._FanSpeedSetting.ValueType  # 4
         FAN_SPEED_SETTING_AUTO: FanControlTrait._FanSpeedSetting.ValueType  # 5
 
-    class FanSpeedSetting(_FanSpeedSetting, metaclass=_FanSpeedSettingEnumTypeWrapper): ...
+    class FanSpeedSetting(
+        _FanSpeedSetting, metaclass=_FanSpeedSettingEnumTypeWrapper
+    ): ...
     FAN_SPEED_SETTING_UNSPECIFIED: FanControlTrait.FanSpeedSetting.ValueType  # 0
     FAN_SPEED_SETTING_STAGE1: FanControlTrait.FanSpeedSetting.ValueType  # 1
     FAN_SPEED_SETTING_STAGE2: FanControlTrait.FanSpeedSetting.ValueType  # 2
@@ -3210,14 +5234,21 @@ class FanControlTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FanSpeedStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlTrait._FanSpeedState.ValueType], _builtins.type):
+    class _FanSpeedStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[FanControlTrait._FanSpeedState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         FAN_SPEED_STATE_UNSPECIFIED: FanControlTrait._FanSpeedState.ValueType  # 0
         FAN_SPEED_STATE_OFF: FanControlTrait._FanSpeedState.ValueType  # 1
         FAN_SPEED_STATE_TIMER: FanControlTrait._FanSpeedState.ValueType  # 2
         FAN_SPEED_STATE_SCHEDULE: FanControlTrait._FanSpeedState.ValueType  # 3
-        FAN_SPEED_STATE_EQUIPMENT_ACTIVATION: FanControlTrait._FanSpeedState.ValueType  # 4
-        FAN_SPEED_STATE_VENTILATION_ACTIVATION: FanControlTrait._FanSpeedState.ValueType  # 5
+        FAN_SPEED_STATE_EQUIPMENT_ACTIVATION: (
+            FanControlTrait._FanSpeedState.ValueType
+        )  # 4
+        FAN_SPEED_STATE_VENTILATION_ACTIVATION: (
+            FanControlTrait._FanSpeedState.ValueType
+        )  # 5
         FAN_SPEED_STATE_SYSTEM_TEST: FanControlTrait._FanSpeedState.ValueType  # 6
 
     class FanSpeedState(_FanSpeedState, metaclass=_FanSpeedStateEnumTypeWrapper): ...
@@ -3233,23 +5264,34 @@ class FanControlTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _VentilationStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlTrait._VentilationState.ValueType], _builtins.type):
+    class _VentilationStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            FanControlTrait._VentilationState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         VENTILATION_STATE_UNSPECIFIED: FanControlTrait._VentilationState.ValueType  # 0
         VENTILATION_STATE_OFF: FanControlTrait._VentilationState.ValueType  # 1
         VENTILATION_STATE_TIMER: FanControlTrait._VentilationState.ValueType  # 2
         VENTILATION_STATE_SCHEDULE: FanControlTrait._VentilationState.ValueType  # 3
-        VENTILATION_STATE_INDOOR_AIR_QUALITY: FanControlTrait._VentilationState.ValueType  # 4
+        VENTILATION_STATE_INDOOR_AIR_QUALITY: (
+            FanControlTrait._VentilationState.ValueType
+        )  # 4
         VENTILATION_STATE_HEATING: FanControlTrait._VentilationState.ValueType  # 5
         VENTILATION_STATE_COOLING: FanControlTrait._VentilationState.ValueType  # 6
         VENTILATION_STATE_SYSTEM_TEST: FanControlTrait._VentilationState.ValueType  # 7
 
-    class VentilationState(_VentilationState, metaclass=_VentilationStateEnumTypeWrapper): ...
+    class VentilationState(
+        _VentilationState, metaclass=_VentilationStateEnumTypeWrapper
+    ): ...
     VENTILATION_STATE_UNSPECIFIED: FanControlTrait.VentilationState.ValueType  # 0
     VENTILATION_STATE_OFF: FanControlTrait.VentilationState.ValueType  # 1
     VENTILATION_STATE_TIMER: FanControlTrait.VentilationState.ValueType  # 2
     VENTILATION_STATE_SCHEDULE: FanControlTrait.VentilationState.ValueType  # 3
-    VENTILATION_STATE_INDOOR_AIR_QUALITY: FanControlTrait.VentilationState.ValueType  # 4
+    VENTILATION_STATE_INDOOR_AIR_QUALITY: (
+        FanControlTrait.VentilationState.ValueType
+    )  # 4
     VENTILATION_STATE_HEATING: FanControlTrait.VentilationState.ValueType  # 5
     VENTILATION_STATE_COOLING: FanControlTrait.VentilationState.ValueType  # 6
     VENTILATION_STATE_SYSTEM_TEST: FanControlTrait.VentilationState.ValueType  # 7
@@ -3258,18 +5300,33 @@ class FanControlTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _VentilationAlertEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlTrait._VentilationAlert.ValueType], _builtins.type):
+    class _VentilationAlertEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            FanControlTrait._VentilationAlert.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         VENTILATION_ALERT_UNSPECIFIED: FanControlTrait._VentilationAlert.ValueType  # 0
         VENTILATION_ALERT_OK: FanControlTrait._VentilationAlert.ValueType  # 1
-        VENTILATION_ALERT_OUTDOOR_AIR_QUALITY: FanControlTrait._VentilationAlert.ValueType  # 2
-        VENTILATION_ALERT_INDOOR_AIR_QUALITY: FanControlTrait._VentilationAlert.ValueType  # 3
+        VENTILATION_ALERT_OUTDOOR_AIR_QUALITY: (
+            FanControlTrait._VentilationAlert.ValueType
+        )  # 2
+        VENTILATION_ALERT_INDOOR_AIR_QUALITY: (
+            FanControlTrait._VentilationAlert.ValueType
+        )  # 3
 
-    class VentilationAlert(_VentilationAlert, metaclass=_VentilationAlertEnumTypeWrapper): ...
+    class VentilationAlert(
+        _VentilationAlert, metaclass=_VentilationAlertEnumTypeWrapper
+    ): ...
     VENTILATION_ALERT_UNSPECIFIED: FanControlTrait.VentilationAlert.ValueType  # 0
     VENTILATION_ALERT_OK: FanControlTrait.VentilationAlert.ValueType  # 1
-    VENTILATION_ALERT_OUTDOOR_AIR_QUALITY: FanControlTrait.VentilationAlert.ValueType  # 2
-    VENTILATION_ALERT_INDOOR_AIR_QUALITY: FanControlTrait.VentilationAlert.ValueType  # 3
+    VENTILATION_ALERT_OUTDOOR_AIR_QUALITY: (
+        FanControlTrait.VentilationAlert.ValueType
+    )  # 2
+    VENTILATION_ALERT_INDOOR_AIR_QUALITY: (
+        FanControlTrait.VentilationAlert.ValueType
+    )  # 3
 
     @_typing.final
     class FanState(_message.Message):
@@ -3288,7 +5345,14 @@ class FanControlTrait(_message.Message):
             userRequestedFanRunning: _builtins.bool = ...,
             fanSpeedState: Global___FanControlTrait.FanSpeedState.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fanSpeedState", b"fanSpeedState", "speed", b"speed", "userRequestedFanRunning", b"userRequestedFanRunning"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fanSpeedState",
+            b"fanSpeedState",
+            "speed",
+            b"speed",
+            "userRequestedFanRunning",
+            b"userRequestedFanRunning",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3307,9 +5371,13 @@ class FanControlTrait(_message.Message):
             fanState: Global___FanControlTrait.FanState | None = ...,
             priorFanState: Global___FanControlTrait.FanState | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["fanState", b"fanState", "priorFanState", b"priorFanState"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "fanState", b"fanState", "priorFanState", b"priorFanState"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fanState", b"fanState", "priorFanState", b"priorFanState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fanState", b"fanState", "priorFanState", b"priorFanState"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3326,7 +5394,9 @@ class FanControlTrait(_message.Message):
             alert: Global___FanControlTrait.VentilationAlert.ValueType = ...,
             priorAlert: Global___FanControlTrait.VentilationAlert.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alert", b"alert", "priorAlert", b"priorAlert"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alert", b"alert", "priorAlert", b"priorAlert"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CURRENTSPEED_FIELD_NUMBER: _builtins.int
@@ -3348,7 +5418,18 @@ class FanControlTrait(_message.Message):
         ventilationAlert: Global___FanControlTrait.VentilationAlert.ValueType = ...,
         fanSpeedState: Global___FanControlTrait.FanSpeedState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentSpeed", b"currentSpeed", "fanSpeedState", b"fanSpeedState", "userRequestedFanRunning", b"userRequestedFanRunning", "ventilationAlert", b"ventilationAlert", "ventilationState", b"ventilationState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentSpeed",
+        b"currentSpeed",
+        "fanSpeedState",
+        b"fanSpeedState",
+        "userRequestedFanRunning",
+        b"userRequestedFanRunning",
+        "ventilationAlert",
+        b"ventilationAlert",
+        "ventilationState",
+        b"ventilationState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FanControlTrait: _TypeAlias = FanControlTrait  # noqa: Y015
@@ -3361,19 +5442,40 @@ class DisplaySettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FarsightDisplayEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DisplaySettingsTrait._FarsightDisplay.ValueType], _builtins.type):
+    class _FarsightDisplayEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        FARSIGHT_DISPLAY_UNSPECIFIED: DisplaySettingsTrait._FarsightDisplay.ValueType  # 0
-        FARSIGHT_DISPLAY_TARGET_TEMP: DisplaySettingsTrait._FarsightDisplay.ValueType  # 1
-        FARSIGHT_DISPLAY_CURRENT_TEMP: DisplaySettingsTrait._FarsightDisplay.ValueType  # 2
-        FARSIGHT_DISPLAY_ANALOG_CLOCK: DisplaySettingsTrait._FarsightDisplay.ValueType  # 3
-        FARSIGHT_DISPLAY_DIGITAL_CLOCK: DisplaySettingsTrait._FarsightDisplay.ValueType  # 4
+        FARSIGHT_DISPLAY_UNSPECIFIED: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 0
+        FARSIGHT_DISPLAY_TARGET_TEMP: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 1
+        FARSIGHT_DISPLAY_CURRENT_TEMP: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 2
+        FARSIGHT_DISPLAY_ANALOG_CLOCK: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 3
+        FARSIGHT_DISPLAY_DIGITAL_CLOCK: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 4
         FARSIGHT_DISPLAY_WEATHER: DisplaySettingsTrait._FarsightDisplay.ValueType  # 5
         FARSIGHT_DISPLAY_NONE: DisplaySettingsTrait._FarsightDisplay.ValueType  # 6
-        FARSIGHT_DISPLAY_CUSTOM_PANEL: DisplaySettingsTrait._FarsightDisplay.ValueType  # 7
-        FARSIGHT_DISPLAY_TEMPERATURES: DisplaySettingsTrait._FarsightDisplay.ValueType  # 8
+        FARSIGHT_DISPLAY_CUSTOM_PANEL: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 7
+        FARSIGHT_DISPLAY_TEMPERATURES: (
+            DisplaySettingsTrait._FarsightDisplay.ValueType
+        )  # 8
 
-    class FarsightDisplay(_FarsightDisplay, metaclass=_FarsightDisplayEnumTypeWrapper): ...
+    class FarsightDisplay(
+        _FarsightDisplay, metaclass=_FarsightDisplayEnumTypeWrapper
+    ): ...
     FARSIGHT_DISPLAY_UNSPECIFIED: DisplaySettingsTrait.FarsightDisplay.ValueType  # 0
     FARSIGHT_DISPLAY_TARGET_TEMP: DisplaySettingsTrait.FarsightDisplay.ValueType  # 1
     FARSIGHT_DISPLAY_CURRENT_TEMP: DisplaySettingsTrait.FarsightDisplay.ValueType  # 2
@@ -3388,13 +5490,22 @@ class DisplaySettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _TemperatureScaleEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DisplaySettingsTrait._TemperatureScale.ValueType], _builtins.type):
+    class _TemperatureScaleEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DisplaySettingsTrait._TemperatureScale.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        TEMPERATURE_SCALE_UNSPECIFIED: DisplaySettingsTrait._TemperatureScale.ValueType  # 0
+        TEMPERATURE_SCALE_UNSPECIFIED: (
+            DisplaySettingsTrait._TemperatureScale.ValueType
+        )  # 0
         TEMPERATURE_SCALE_C: DisplaySettingsTrait._TemperatureScale.ValueType  # 1
         TEMPERATURE_SCALE_F: DisplaySettingsTrait._TemperatureScale.ValueType  # 2
 
-    class TemperatureScale(_TemperatureScale, metaclass=_TemperatureScaleEnumTypeWrapper): ...
+    class TemperatureScale(
+        _TemperatureScale, metaclass=_TemperatureScaleEnumTypeWrapper
+    ): ...
     TEMPERATURE_SCALE_UNSPECIFIED: DisplaySettingsTrait.TemperatureScale.ValueType  # 0
     TEMPERATURE_SCALE_C: DisplaySettingsTrait.TemperatureScale.ValueType  # 1
     TEMPERATURE_SCALE_F: DisplaySettingsTrait.TemperatureScale.ValueType  # 2
@@ -3403,36 +5514,95 @@ class DisplaySettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CustomDisplayElementEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DisplaySettingsTrait._CustomDisplayElement.ValueType], _builtins.type):
+    class _CustomDisplayElementEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        CUSTOM_DISPLAY_ELEMENT_UNSPECIFIED: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 0
-        CUSTOM_DISPLAY_ELEMENT_NONE: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 1
-        CUSTOM_DISPLAY_ELEMENT_TIME: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 2
-        CUSTOM_DISPLAY_ELEMENT_DATE: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 3
-        CUSTOM_DISPLAY_ELEMENT_TARGET_TEMP: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 4
-        CUSTOM_DISPLAY_ELEMENT_INDOOR_TEMP: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 5
-        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_TEMP: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 6
-        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_AQI: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 7
-        CUSTOM_DISPLAY_ELEMENT_INDOOR_HUMIDITY: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 8
-        CUSTOM_DISPLAY_ELEMENT_INDOOR_AQ: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 9
-        CUSTOM_DISPLAY_ELEMENT_LEAF_COUNT: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 10
-        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_HUMIDITY: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 11
-        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_FEELS_LIKE_TEMP: DisplaySettingsTrait._CustomDisplayElement.ValueType  # 12
+        CUSTOM_DISPLAY_ELEMENT_UNSPECIFIED: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 0
+        CUSTOM_DISPLAY_ELEMENT_NONE: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 1
+        CUSTOM_DISPLAY_ELEMENT_TIME: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 2
+        CUSTOM_DISPLAY_ELEMENT_DATE: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 3
+        CUSTOM_DISPLAY_ELEMENT_TARGET_TEMP: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 4
+        CUSTOM_DISPLAY_ELEMENT_INDOOR_TEMP: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 5
+        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_TEMP: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 6
+        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_AQI: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 7
+        CUSTOM_DISPLAY_ELEMENT_INDOOR_HUMIDITY: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 8
+        CUSTOM_DISPLAY_ELEMENT_INDOOR_AQ: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 9
+        CUSTOM_DISPLAY_ELEMENT_LEAF_COUNT: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 10
+        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_HUMIDITY: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 11
+        CUSTOM_DISPLAY_ELEMENT_OUTDOOR_FEELS_LIKE_TEMP: (
+            DisplaySettingsTrait._CustomDisplayElement.ValueType
+        )  # 12
 
-    class CustomDisplayElement(_CustomDisplayElement, metaclass=_CustomDisplayElementEnumTypeWrapper): ...
-    CUSTOM_DISPLAY_ELEMENT_UNSPECIFIED: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 0
-    CUSTOM_DISPLAY_ELEMENT_NONE: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 1
-    CUSTOM_DISPLAY_ELEMENT_TIME: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 2
-    CUSTOM_DISPLAY_ELEMENT_DATE: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 3
-    CUSTOM_DISPLAY_ELEMENT_TARGET_TEMP: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 4
-    CUSTOM_DISPLAY_ELEMENT_INDOOR_TEMP: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 5
-    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_TEMP: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 6
-    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_AQI: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 7
-    CUSTOM_DISPLAY_ELEMENT_INDOOR_HUMIDITY: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 8
-    CUSTOM_DISPLAY_ELEMENT_INDOOR_AQ: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 9
-    CUSTOM_DISPLAY_ELEMENT_LEAF_COUNT: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 10
-    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_HUMIDITY: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 11
-    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_FEELS_LIKE_TEMP: DisplaySettingsTrait.CustomDisplayElement.ValueType  # 12
+    class CustomDisplayElement(
+        _CustomDisplayElement, metaclass=_CustomDisplayElementEnumTypeWrapper
+    ): ...
+    CUSTOM_DISPLAY_ELEMENT_UNSPECIFIED: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 0
+    CUSTOM_DISPLAY_ELEMENT_NONE: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 1
+    CUSTOM_DISPLAY_ELEMENT_TIME: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 2
+    CUSTOM_DISPLAY_ELEMENT_DATE: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 3
+    CUSTOM_DISPLAY_ELEMENT_TARGET_TEMP: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 4
+    CUSTOM_DISPLAY_ELEMENT_INDOOR_TEMP: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 5
+    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_TEMP: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 6
+    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_AQI: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 7
+    CUSTOM_DISPLAY_ELEMENT_INDOOR_HUMIDITY: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 8
+    CUSTOM_DISPLAY_ELEMENT_INDOOR_AQ: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 9
+    CUSTOM_DISPLAY_ELEMENT_LEAF_COUNT: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 10
+    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_HUMIDITY: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 11
+    CUSTOM_DISPLAY_ELEMENT_OUTDOOR_FEELS_LIKE_TEMP: (
+        DisplaySettingsTrait.CustomDisplayElement.ValueType
+    )  # 12
 
     @_typing.final
     class FarsightCustomDisplaySettings(_message.Message):
@@ -3451,7 +5621,14 @@ class DisplaySettingsTrait(_message.Message):
             centerElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
             bottomElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bottomElement", b"bottomElement", "centerElement", b"centerElement", "topElement", b"topElement"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bottomElement",
+            b"bottomElement",
+            "centerElement",
+            b"centerElement",
+            "topElement",
+            b"topElement",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3465,7 +5642,9 @@ class DisplaySettingsTrait(_message.Message):
             *,
             bottomElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bottomElement", b"bottomElement"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bottomElement", b"bottomElement"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3482,7 +5661,9 @@ class DisplaySettingsTrait(_message.Message):
             topElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
             bottomElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bottomElement", b"bottomElement", "topElement", b"topElement"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bottomElement", b"bottomElement", "topElement", b"topElement"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3502,7 +5683,14 @@ class DisplaySettingsTrait(_message.Message):
             primaryElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
             bottomElement: Global___DisplaySettingsTrait.CustomDisplayElement.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["bottomElement", b"bottomElement", "primaryElement", b"primaryElement", "topElement", b"topElement"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "bottomElement",
+            b"bottomElement",
+            "primaryElement",
+            b"primaryElement",
+            "topElement",
+            b"topElement",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     FARSIGHTDISPLAY_FIELD_NUMBER: _builtins.int
@@ -3523,38 +5711,99 @@ class DisplaySettingsTrait(_message.Message):
     farsightNearOnly: _builtins.bool
     farsightDismissOnVeryNear: _builtins.bool
     @_builtins.property
-    def analogClockSettings(self) -> Global___DisplaySettingsTrait.FarsightDisplayAnalogClockSettings: ...
+    def analogClockSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightDisplayAnalogClockSettings: ...
     @_builtins.property
-    def digitalClockSettings(self) -> Global___DisplaySettingsTrait.FarsightDisplayDigitalClockSettings: ...
+    def digitalClockSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightDisplayDigitalClockSettings: ...
     @_builtins.property
-    def customPanelSettings(self) -> Global___DisplaySettingsTrait.FarsightDisplayCustomPanelSettings: ...
+    def customPanelSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightDisplayCustomPanelSettings: ...
     @_builtins.property
-    def farsightAnalogClockSettings(self) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
+    def farsightAnalogClockSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
     @_builtins.property
-    def farsightDigitalClockSettings(self) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
+    def farsightDigitalClockSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
     @_builtins.property
-    def farsightWeatherSettings(self) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
+    def farsightWeatherSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
     @_builtins.property
-    def farsightTemperaturesSettings(self) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
+    def farsightTemperaturesSettings(
+        self,
+    ) -> Global___DisplaySettingsTrait.FarsightCustomDisplaySettings: ...
     def __init__(
         self,
         *,
         farsightDisplay: Global___DisplaySettingsTrait.FarsightDisplay.ValueType = ...,
         temperatureScale: Global___DisplaySettingsTrait.TemperatureScale.ValueType = ...,
-        analogClockSettings: Global___DisplaySettingsTrait.FarsightDisplayAnalogClockSettings | None = ...,
-        digitalClockSettings: Global___DisplaySettingsTrait.FarsightDisplayDigitalClockSettings | None = ...,
-        customPanelSettings: Global___DisplaySettingsTrait.FarsightDisplayCustomPanelSettings | None = ...,
+        analogClockSettings: Global___DisplaySettingsTrait.FarsightDisplayAnalogClockSettings
+        | None = ...,
+        digitalClockSettings: Global___DisplaySettingsTrait.FarsightDisplayDigitalClockSettings
+        | None = ...,
+        customPanelSettings: Global___DisplaySettingsTrait.FarsightDisplayCustomPanelSettings
+        | None = ...,
         wakeOnRemoteTempChange: _builtins.bool = ...,
         farsightNearOnly: _builtins.bool = ...,
         farsightDismissOnVeryNear: _builtins.bool = ...,
-        farsightAnalogClockSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings | None = ...,
-        farsightDigitalClockSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings | None = ...,
-        farsightWeatherSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings | None = ...,
-        farsightTemperaturesSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings | None = ...,
+        farsightAnalogClockSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings
+        | None = ...,
+        farsightDigitalClockSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings
+        | None = ...,
+        farsightWeatherSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings
+        | None = ...,
+        farsightTemperaturesSettings: Global___DisplaySettingsTrait.FarsightCustomDisplaySettings
+        | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["analogClockSettings", b"analogClockSettings", "customPanelSettings", b"customPanelSettings", "digitalClockSettings", b"digitalClockSettings", "farsightAnalogClockSettings", b"farsightAnalogClockSettings", "farsightDigitalClockSettings", b"farsightDigitalClockSettings", "farsightTemperaturesSettings", b"farsightTemperaturesSettings", "farsightWeatherSettings", b"farsightWeatherSettings"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "analogClockSettings",
+        b"analogClockSettings",
+        "customPanelSettings",
+        b"customPanelSettings",
+        "digitalClockSettings",
+        b"digitalClockSettings",
+        "farsightAnalogClockSettings",
+        b"farsightAnalogClockSettings",
+        "farsightDigitalClockSettings",
+        b"farsightDigitalClockSettings",
+        "farsightTemperaturesSettings",
+        b"farsightTemperaturesSettings",
+        "farsightWeatherSettings",
+        b"farsightWeatherSettings",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["analogClockSettings", b"analogClockSettings", "customPanelSettings", b"customPanelSettings", "digitalClockSettings", b"digitalClockSettings", "farsightAnalogClockSettings", b"farsightAnalogClockSettings", "farsightDigitalClockSettings", b"farsightDigitalClockSettings", "farsightDismissOnVeryNear", b"farsightDismissOnVeryNear", "farsightDisplay", b"farsightDisplay", "farsightNearOnly", b"farsightNearOnly", "farsightTemperaturesSettings", b"farsightTemperaturesSettings", "farsightWeatherSettings", b"farsightWeatherSettings", "temperatureScale", b"temperatureScale", "wakeOnRemoteTempChange", b"wakeOnRemoteTempChange"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "analogClockSettings",
+        b"analogClockSettings",
+        "customPanelSettings",
+        b"customPanelSettings",
+        "digitalClockSettings",
+        b"digitalClockSettings",
+        "farsightAnalogClockSettings",
+        b"farsightAnalogClockSettings",
+        "farsightDigitalClockSettings",
+        b"farsightDigitalClockSettings",
+        "farsightDismissOnVeryNear",
+        b"farsightDismissOnVeryNear",
+        "farsightDisplay",
+        b"farsightDisplay",
+        "farsightNearOnly",
+        b"farsightNearOnly",
+        "farsightTemperaturesSettings",
+        b"farsightTemperaturesSettings",
+        "farsightWeatherSettings",
+        b"farsightWeatherSettings",
+        "temperatureScale",
+        b"temperatureScale",
+        "wakeOnRemoteTempChange",
+        b"wakeOnRemoteTempChange",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DisplaySettingsTrait: _TypeAlias = DisplaySettingsTrait  # noqa: Y015
@@ -3567,24 +5816,47 @@ class AssociatedHeatlinksTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ResponseStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[AssociatedHeatlinksTrait._ResponseStatus.ValueType], _builtins.type):
+    class _ResponseStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RESPONSE_STATUS_UNSPECIFIED: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 0
-        RESPONSE_STATUS_HEATLINK_EXISTS: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 1
-        RESPONSE_STATUS_HEATLINK_DOESNT_EXIST: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 2
+        RESPONSE_STATUS_UNSPECIFIED: (
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        )  # 0
+        RESPONSE_STATUS_HEATLINK_EXISTS: (
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        )  # 1
+        RESPONSE_STATUS_HEATLINK_DOESNT_EXIST: (
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        )  # 2
         RESPONSE_STATUS_SUCCESS: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 3
         RESPONSE_STATUS_FAILURE: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 4
-        RESPONSE_STATUS_MISSING_PARAMS: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 5
-        RESPONSE_STATUS_HEATLINK_LIMIT_EXCEEDED: AssociatedHeatlinksTrait._ResponseStatus.ValueType  # 6
+        RESPONSE_STATUS_MISSING_PARAMS: (
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        )  # 5
+        RESPONSE_STATUS_HEATLINK_LIMIT_EXCEEDED: (
+            AssociatedHeatlinksTrait._ResponseStatus.ValueType
+        )  # 6
 
     class ResponseStatus(_ResponseStatus, metaclass=_ResponseStatusEnumTypeWrapper): ...
     RESPONSE_STATUS_UNSPECIFIED: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 0
-    RESPONSE_STATUS_HEATLINK_EXISTS: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 1
-    RESPONSE_STATUS_HEATLINK_DOESNT_EXIST: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 2
+    RESPONSE_STATUS_HEATLINK_EXISTS: (
+        AssociatedHeatlinksTrait.ResponseStatus.ValueType
+    )  # 1
+    RESPONSE_STATUS_HEATLINK_DOESNT_EXIST: (
+        AssociatedHeatlinksTrait.ResponseStatus.ValueType
+    )  # 2
     RESPONSE_STATUS_SUCCESS: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 3
     RESPONSE_STATUS_FAILURE: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 4
-    RESPONSE_STATUS_MISSING_PARAMS: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 5
-    RESPONSE_STATUS_HEATLINK_LIMIT_EXCEEDED: AssociatedHeatlinksTrait.ResponseStatus.ValueType  # 6
+    RESPONSE_STATUS_MISSING_PARAMS: (
+        AssociatedHeatlinksTrait.ResponseStatus.ValueType
+    )  # 5
+    RESPONSE_STATUS_HEATLINK_LIMIT_EXCEEDED: (
+        AssociatedHeatlinksTrait.ResponseStatus.ValueType
+    )  # 6
 
     @_typing.final
     class AssociatedHeatlink(_message.Message):
@@ -3606,7 +5878,9 @@ class AssociatedHeatlinksTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "productId", b"productId", "vendorId", b"vendorId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId", b"deviceId", "productId", b"productId", "vendorId", b"vendorId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3673,11 +5947,16 @@ class AssociatedHeatlinksTrait(_message.Message):
 
     HEATLINKS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def heatlinks(self) -> _containers.RepeatedCompositeFieldContainer[Global___AssociatedHeatlinksTrait.AssociatedHeatlink]: ...
+    def heatlinks(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___AssociatedHeatlinksTrait.AssociatedHeatlink
+    ]: ...
     def __init__(
         self,
         *,
-        heatlinks: _abc.Iterable[Global___AssociatedHeatlinksTrait.AssociatedHeatlink] | None = ...,
+        heatlinks: _abc.Iterable[Global___AssociatedHeatlinksTrait.AssociatedHeatlink]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["heatlinks", b"heatlinks"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -3692,22 +5971,46 @@ class DemandResponseConfigurationTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseEventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseConfigurationTrait._DemandResponseEventType.ValueType], _builtins.type):
+    class _DemandResponseEventTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseConfigurationTrait._DemandResponseEventType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: DemandResponseConfigurationTrait._DemandResponseEventType.ValueType  # 0
-        DEMAND_RESPONSE_EVENT_TYPE_STANDARD: DemandResponseConfigurationTrait._DemandResponseEventType.ValueType  # 1
-        DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: DemandResponseConfigurationTrait._DemandResponseEventType.ValueType  # 2
+        DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: (
+            DemandResponseConfigurationTrait._DemandResponseEventType.ValueType
+        )  # 0
+        DEMAND_RESPONSE_EVENT_TYPE_STANDARD: (
+            DemandResponseConfigurationTrait._DemandResponseEventType.ValueType
+        )  # 1
+        DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: (
+            DemandResponseConfigurationTrait._DemandResponseEventType.ValueType
+        )  # 2
 
-    class DemandResponseEventType(_DemandResponseEventType, metaclass=_DemandResponseEventTypeEnumTypeWrapper): ...
-    DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: DemandResponseConfigurationTrait.DemandResponseEventType.ValueType  # 0
-    DEMAND_RESPONSE_EVENT_TYPE_STANDARD: DemandResponseConfigurationTrait.DemandResponseEventType.ValueType  # 1
-    DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: DemandResponseConfigurationTrait.DemandResponseEventType.ValueType  # 2
+    class DemandResponseEventType(
+        _DemandResponseEventType, metaclass=_DemandResponseEventTypeEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_EVENT_TYPE_UNSPECIFIED: (
+        DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+    )  # 0
+    DEMAND_RESPONSE_EVENT_TYPE_STANDARD: (
+        DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+    )  # 1
+    DEMAND_RESPONSE_EVENT_TYPE_CRITICAL: (
+        DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+    )  # 2
 
     class _DemandResponseRequiredScheduleMode:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseRequiredScheduleModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType], _builtins.type):
+    class _DemandResponseRequiredScheduleModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_UNSPECIFIED: DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType  # 0
         DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_HEAT: DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType  # 1
@@ -3715,12 +6018,25 @@ class DemandResponseConfigurationTrait(_message.Message):
         DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_RANGE: DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType  # 3
         DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_NONE: DemandResponseConfigurationTrait._DemandResponseRequiredScheduleMode.ValueType  # 4
 
-    class DemandResponseRequiredScheduleMode(_DemandResponseRequiredScheduleMode, metaclass=_DemandResponseRequiredScheduleModeEnumTypeWrapper): ...
-    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_UNSPECIFIED: DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType  # 0
-    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_HEAT: DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType  # 1
-    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_COOL: DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType  # 2
-    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_RANGE: DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType  # 3
-    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_NONE: DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType  # 4
+    class DemandResponseRequiredScheduleMode(
+        _DemandResponseRequiredScheduleMode,
+        metaclass=_DemandResponseRequiredScheduleModeEnumTypeWrapper,
+    ): ...
+    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_UNSPECIFIED: (
+        DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType
+    )  # 0
+    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_HEAT: (
+        DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType
+    )  # 1
+    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_COOL: (
+        DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType
+    )  # 2
+    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_RANGE: (
+        DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType
+    )  # 3
+    DEMAND_RESPONSE_REQUIRED_SCHEDULE_MODE_NONE: (
+        DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType
+    )  # 4
 
     @_typing.final
     class ConfigurationItemsEntry(_message.Message):
@@ -3730,16 +6046,21 @@ class DemandResponseConfigurationTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem: ...
+        def value(
+            self,
+        ) -> Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem | None = ...,
+            value: Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3796,9 +6117,13 @@ class DemandResponseConfigurationTrait(_message.Message):
         peakRampOutSeconds: _builtins.int
         preparationRampInSeconds: _builtins.int
         @_builtins.property
-        def preparationMinimumDisplayedOffset(self) -> Global___HvacControl.Temperature: ...
+        def preparationMinimumDisplayedOffset(
+            self,
+        ) -> Global___HvacControl.Temperature: ...
         @_builtins.property
-        def preparationMaximumDisplayedOffset(self) -> Global___HvacControl.Temperature: ...
+        def preparationMaximumDisplayedOffset(
+            self,
+        ) -> Global___HvacControl.Temperature: ...
         @_builtins.property
         def eventMinimumDisplayedOffset(self) -> Global___HvacControl.Temperature: ...
         @_builtins.property
@@ -3806,31 +6131,39 @@ class DemandResponseConfigurationTrait(_message.Message):
         @_builtins.property
         def weightTemperatureDeviation(self) -> Global___HvacControl.Temperature: ...
         @_builtins.property
-        def defaultPolicyPreparationOffset(self) -> Global___HvacControl.Temperature: ...
+        def defaultPolicyPreparationOffset(
+            self,
+        ) -> Global___HvacControl.Temperature: ...
         @_builtins.property
         def defaultPolicyEventOffset(self) -> Global___HvacControl.Temperature: ...
         @_builtins.property
-        def baselinePreparationSafetyOffset(self) -> Global___HvacControl.Temperature: ...
+        def baselinePreparationSafetyOffset(
+            self,
+        ) -> Global___HvacControl.Temperature: ...
         @_builtins.property
         def baselineEventSafetyOffset(self) -> Global___HvacControl.Temperature: ...
         def __init__(
             self,
             *,
-            preparationMinimumDisplayedOffset: Global___HvacControl.Temperature | None = ...,
-            preparationMaximumDisplayedOffset: Global___HvacControl.Temperature | None = ...,
+            preparationMinimumDisplayedOffset: Global___HvacControl.Temperature
+            | None = ...,
+            preparationMaximumDisplayedOffset: Global___HvacControl.Temperature
+            | None = ...,
             eventMinimumDisplayedOffset: Global___HvacControl.Temperature | None = ...,
             eventMaximumDisplayedOffset: Global___HvacControl.Temperature | None = ...,
             cycleLengthStepsize: _builtins.int = ...,
             weightTemperatureDeviation: Global___HvacControl.Temperature | None = ...,
             weightOffpeakUsage: _builtins.float = ...,
             weightPeakUsage: _builtins.float = ...,
-            defaultPolicyPreparationOffset: Global___HvacControl.Temperature | None = ...,
+            defaultPolicyPreparationOffset: Global___HvacControl.Temperature
+            | None = ...,
             defaultPolicyEventOffset: Global___HvacControl.Temperature | None = ...,
             defaultEventOffsetStartTimePercent: _builtins.float = ...,
             minimumTimeFromAdjustmentToEventEnd: _builtins.int = ...,
             setpointType: Global___SetPointScheduleSettingsTrait.SetPointType.ValueType = ...,
             shouldPredictAutoArrival: _builtins.bool = ...,
-            baselinePreparationSafetyOffset: Global___HvacControl.Temperature | None = ...,
+            baselinePreparationSafetyOffset: Global___HvacControl.Temperature
+            | None = ...,
             baselineEventSafetyOffset: Global___HvacControl.Temperature | None = ...,
             baselineSafetyCheckTimeout: _builtins.int = ...,
             minimumReoptimizationTimeout: _builtins.int = ...,
@@ -3846,9 +6179,87 @@ class DemandResponseConfigurationTrait(_message.Message):
             peakRampOutSeconds: _builtins.int = ...,
             preparationRampInSeconds: _builtins.int = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["baselineEventSafetyOffset", b"baselineEventSafetyOffset", "baselinePreparationSafetyOffset", b"baselinePreparationSafetyOffset", "defaultPolicyEventOffset", b"defaultPolicyEventOffset", "defaultPolicyPreparationOffset", b"defaultPolicyPreparationOffset", "eventMaximumDisplayedOffset", b"eventMaximumDisplayedOffset", "eventMinimumDisplayedOffset", b"eventMinimumDisplayedOffset", "preparationMaximumDisplayedOffset", b"preparationMaximumDisplayedOffset", "preparationMinimumDisplayedOffset", b"preparationMinimumDisplayedOffset", "weightTemperatureDeviation", b"weightTemperatureDeviation"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "baselineEventSafetyOffset",
+            b"baselineEventSafetyOffset",
+            "baselinePreparationSafetyOffset",
+            b"baselinePreparationSafetyOffset",
+            "defaultPolicyEventOffset",
+            b"defaultPolicyEventOffset",
+            "defaultPolicyPreparationOffset",
+            b"defaultPolicyPreparationOffset",
+            "eventMaximumDisplayedOffset",
+            b"eventMaximumDisplayedOffset",
+            "eventMinimumDisplayedOffset",
+            b"eventMinimumDisplayedOffset",
+            "preparationMaximumDisplayedOffset",
+            b"preparationMaximumDisplayedOffset",
+            "preparationMinimumDisplayedOffset",
+            b"preparationMinimumDisplayedOffset",
+            "weightTemperatureDeviation",
+            b"weightTemperatureDeviation",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["baselineEventSafetyOffset", b"baselineEventSafetyOffset", "baselinePreparationSafetyOffset", b"baselinePreparationSafetyOffset", "baselineSafetyCheckTimeout", b"baselineSafetyCheckTimeout", "cycleLengthStepsize", b"cycleLengthStepsize", "defaultEventOffsetStartTimePercent", b"defaultEventOffsetStartTimePercent", "defaultPolicyEventOffset", b"defaultPolicyEventOffset", "defaultPolicyPreparationOffset", b"defaultPolicyPreparationOffset", "eventMaximumDisplayedOffset", b"eventMaximumDisplayedOffset", "eventMinimumDisplayedOffset", b"eventMinimumDisplayedOffset", "minimumLengthFactorBetweenEvents", b"minimumLengthFactorBetweenEvents", "minimumReoptimizationTimeout", b"minimumReoptimizationTimeout", "minimumTimeFromAdjustmentToEventEnd", b"minimumTimeFromAdjustmentToEventEnd", "numUctRollouts", b"numUctRollouts", "obeyDualfuelBreakpoint", b"obeyDualfuelBreakpoint", "obeyHeatpumpLockouts", b"obeyHeatpumpLockouts", "obeyPreconditioningSetting", b"obeyPreconditioningSetting", "peakRampInInitialOffset", b"peakRampInInitialOffset", "peakRampInSeconds", b"peakRampInSeconds", "peakRampOutSeconds", b"peakRampOutSeconds", "preparationMaximumDisplayedOffset", b"preparationMaximumDisplayedOffset", "preparationMinimumDisplayedOffset", b"preparationMinimumDisplayedOffset", "preparationRampInSeconds", b"preparationRampInSeconds", "setpointType", b"setpointType", "shouldPredictAutoArrival", b"shouldPredictAutoArrival", "useOneSidedTempError", b"useOneSidedTempError", "useUct", b"useUct", "weightOffpeakUsage", b"weightOffpeakUsage", "weightPeakUsage", b"weightPeakUsage", "weightTemperatureDeviation", b"weightTemperatureDeviation"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "baselineEventSafetyOffset",
+            b"baselineEventSafetyOffset",
+            "baselinePreparationSafetyOffset",
+            b"baselinePreparationSafetyOffset",
+            "baselineSafetyCheckTimeout",
+            b"baselineSafetyCheckTimeout",
+            "cycleLengthStepsize",
+            b"cycleLengthStepsize",
+            "defaultEventOffsetStartTimePercent",
+            b"defaultEventOffsetStartTimePercent",
+            "defaultPolicyEventOffset",
+            b"defaultPolicyEventOffset",
+            "defaultPolicyPreparationOffset",
+            b"defaultPolicyPreparationOffset",
+            "eventMaximumDisplayedOffset",
+            b"eventMaximumDisplayedOffset",
+            "eventMinimumDisplayedOffset",
+            b"eventMinimumDisplayedOffset",
+            "minimumLengthFactorBetweenEvents",
+            b"minimumLengthFactorBetweenEvents",
+            "minimumReoptimizationTimeout",
+            b"minimumReoptimizationTimeout",
+            "minimumTimeFromAdjustmentToEventEnd",
+            b"minimumTimeFromAdjustmentToEventEnd",
+            "numUctRollouts",
+            b"numUctRollouts",
+            "obeyDualfuelBreakpoint",
+            b"obeyDualfuelBreakpoint",
+            "obeyHeatpumpLockouts",
+            b"obeyHeatpumpLockouts",
+            "obeyPreconditioningSetting",
+            b"obeyPreconditioningSetting",
+            "peakRampInInitialOffset",
+            b"peakRampInInitialOffset",
+            "peakRampInSeconds",
+            b"peakRampInSeconds",
+            "peakRampOutSeconds",
+            b"peakRampOutSeconds",
+            "preparationMaximumDisplayedOffset",
+            b"preparationMaximumDisplayedOffset",
+            "preparationMinimumDisplayedOffset",
+            b"preparationMinimumDisplayedOffset",
+            "preparationRampInSeconds",
+            b"preparationRampInSeconds",
+            "setpointType",
+            b"setpointType",
+            "shouldPredictAutoArrival",
+            b"shouldPredictAutoArrival",
+            "useOneSidedTempError",
+            b"useOneSidedTempError",
+            "useUct",
+            b"useUct",
+            "weightOffpeakUsage",
+            b"weightOffpeakUsage",
+            "weightPeakUsage",
+            b"weightPeakUsage",
+            "weightTemperatureDeviation",
+            b"weightTemperatureDeviation",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3871,7 +6282,9 @@ class DemandResponseConfigurationTrait(_message.Message):
         REQUIREDSCHEDULEMODE_FIELD_NUMBER: _builtins.int
         eventGuid: _builtins.str
         debugName: _builtins.str
-        eventType: Global___DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+        eventType: (
+            Global___DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+        )
         lengthPreparationSeconds: _builtins.int
         lengthEventSeconds: _builtins.int
         preparationSpeedbumpDisabled: _builtins.bool
@@ -3887,7 +6300,9 @@ class DemandResponseConfigurationTrait(_message.Message):
         @_builtins.property
         def stopTimeUtc(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def optimizationParameters(self) -> Global___DemandResponseConfigurationTrait.DemandResponseOptimizationParameters: ...
+        def optimizationParameters(
+            self,
+        ) -> Global___DemandResponseConfigurationTrait.DemandResponseOptimizationParameters: ...
         @_builtins.property
         def partnerName(self) -> Global___PartnerInformation.PartnerName: ...
         def __init__(
@@ -3904,13 +6319,58 @@ class DemandResponseConfigurationTrait(_message.Message):
             lengthPreparationSeconds: _builtins.int = ...,
             lengthEventSeconds: _builtins.int = ...,
             preparationSpeedbumpDisabled: _builtins.bool = ...,
-            optimizationParameters: Global___DemandResponseConfigurationTrait.DemandResponseOptimizationParameters | None = ...,
+            optimizationParameters: Global___DemandResponseConfigurationTrait.DemandResponseOptimizationParameters
+            | None = ...,
             partnerName: Global___PartnerInformation.PartnerName | None = ...,
             requiredScheduleMode: Global___DemandResponseConfigurationTrait.DemandResponseRequiredScheduleMode.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["optimizationParameters", b"optimizationParameters", "partnerName", b"partnerName", "peakPeriodStartTimeUtc", b"peakPeriodStartTimeUtc", "qualificationStartTimeUtc", b"qualificationStartTimeUtc", "qualificationStopTimeUtc", b"qualificationStopTimeUtc", "startTimeUtc", b"startTimeUtc", "stopTimeUtc", b"stopTimeUtc"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "optimizationParameters",
+            b"optimizationParameters",
+            "partnerName",
+            b"partnerName",
+            "peakPeriodStartTimeUtc",
+            b"peakPeriodStartTimeUtc",
+            "qualificationStartTimeUtc",
+            b"qualificationStartTimeUtc",
+            "qualificationStopTimeUtc",
+            b"qualificationStopTimeUtc",
+            "startTimeUtc",
+            b"startTimeUtc",
+            "stopTimeUtc",
+            b"stopTimeUtc",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["debugName", b"debugName", "eventGuid", b"eventGuid", "eventType", b"eventType", "lengthEventSeconds", b"lengthEventSeconds", "lengthPreparationSeconds", b"lengthPreparationSeconds", "optimizationParameters", b"optimizationParameters", "partnerName", b"partnerName", "peakPeriodStartTimeUtc", b"peakPeriodStartTimeUtc", "preparationSpeedbumpDisabled", b"preparationSpeedbumpDisabled", "qualificationStartTimeUtc", b"qualificationStartTimeUtc", "qualificationStopTimeUtc", b"qualificationStopTimeUtc", "requiredScheduleMode", b"requiredScheduleMode", "startTimeUtc", b"startTimeUtc", "stopTimeUtc", b"stopTimeUtc"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "debugName",
+            b"debugName",
+            "eventGuid",
+            b"eventGuid",
+            "eventType",
+            b"eventType",
+            "lengthEventSeconds",
+            b"lengthEventSeconds",
+            "lengthPreparationSeconds",
+            b"lengthPreparationSeconds",
+            "optimizationParameters",
+            b"optimizationParameters",
+            "partnerName",
+            b"partnerName",
+            "peakPeriodStartTimeUtc",
+            b"peakPeriodStartTimeUtc",
+            "preparationSpeedbumpDisabled",
+            b"preparationSpeedbumpDisabled",
+            "qualificationStartTimeUtc",
+            b"qualificationStartTimeUtc",
+            "qualificationStopTimeUtc",
+            b"qualificationStopTimeUtc",
+            "requiredScheduleMode",
+            b"requiredScheduleMode",
+            "startTimeUtc",
+            b"startTimeUtc",
+            "stopTimeUtc",
+            b"stopTimeUtc",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -3931,12 +6391,16 @@ class DemandResponseConfigurationTrait(_message.Message):
         partnerId: _builtins.str
         partnerName: _builtins.str
         peakTemperatureOffsetCelsius: _builtins.float
-        eventType: Global___DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+        eventType: (
+            Global___DemandResponseConfigurationTrait.DemandResponseEventType.ValueType
+        )
         programType: Global___DemandResponseTrait.DemandResponseProgramType.ValueType
         @_builtins.property
         def preconditioningStartTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def preconditioningTemperatureOffsetCelsius(self) -> _wrappers_pb2.FloatValue: ...
+        def preconditioningTemperatureOffsetCelsius(
+            self,
+        ) -> _wrappers_pb2.FloatValue: ...
         @_builtins.property
         def peakStartTime(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
@@ -3948,27 +6412,69 @@ class DemandResponseConfigurationTrait(_message.Message):
             partnerId: _builtins.str = ...,
             partnerName: _builtins.str = ...,
             preconditioningStartTime: _timestamp_pb2.Timestamp | None = ...,
-            preconditioningTemperatureOffsetCelsius: _wrappers_pb2.FloatValue | None = ...,
+            preconditioningTemperatureOffsetCelsius: _wrappers_pb2.FloatValue
+            | None = ...,
             peakStartTime: _timestamp_pb2.Timestamp | None = ...,
             peakEndTime: _timestamp_pb2.Timestamp | None = ...,
             peakTemperatureOffsetCelsius: _builtins.float = ...,
             eventType: Global___DemandResponseConfigurationTrait.DemandResponseEventType.ValueType = ...,
             programType: Global___DemandResponseTrait.DemandResponseProgramType.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["peakEndTime", b"peakEndTime", "peakStartTime", b"peakStartTime", "preconditioningStartTime", b"preconditioningStartTime", "preconditioningTemperatureOffsetCelsius", b"preconditioningTemperatureOffsetCelsius"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "peakEndTime",
+            b"peakEndTime",
+            "peakStartTime",
+            b"peakStartTime",
+            "preconditioningStartTime",
+            b"preconditioningStartTime",
+            "preconditioningTemperatureOffsetCelsius",
+            b"preconditioningTemperatureOffsetCelsius",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["eventId", b"eventId", "eventType", b"eventType", "partnerId", b"partnerId", "partnerName", b"partnerName", "peakEndTime", b"peakEndTime", "peakStartTime", b"peakStartTime", "peakTemperatureOffsetCelsius", b"peakTemperatureOffsetCelsius", "preconditioningStartTime", b"preconditioningStartTime", "preconditioningTemperatureOffsetCelsius", b"preconditioningTemperatureOffsetCelsius", "programType", b"programType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "eventId",
+            b"eventId",
+            "eventType",
+            b"eventType",
+            "partnerId",
+            b"partnerId",
+            "partnerName",
+            b"partnerName",
+            "peakEndTime",
+            b"peakEndTime",
+            "peakStartTime",
+            b"peakStartTime",
+            "peakTemperatureOffsetCelsius",
+            b"peakTemperatureOffsetCelsius",
+            "preconditioningStartTime",
+            b"preconditioningStartTime",
+            "preconditioningTemperatureOffsetCelsius",
+            b"preconditioningTemperatureOffsetCelsius",
+            "programType",
+            b"programType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CONFIGURATIONITEMS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def configurationItems(self) -> _containers.MessageMap[_builtins.int, Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem]: ...
+    def configurationItems(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int,
+        Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem,
+    ]: ...
     def __init__(
         self,
         *,
-        configurationItems: _abc.Mapping[_builtins.int, Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem] | None = ...,
+        configurationItems: _abc.Mapping[
+            _builtins.int,
+            Global___DemandResponseConfigurationTrait.DemandResponseEventConfigurationItem,
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["configurationItems", b"configurationItems"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "configurationItems", b"configurationItems"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DemandResponseConfigurationTrait: _TypeAlias = DemandResponseConfigurationTrait  # noqa: Y015
@@ -3981,7 +6487,10 @@ class EcoModeStateTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EcoModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EcoModeStateTrait._EcoMode.ValueType], _builtins.type):
+    class _EcoModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[EcoModeStateTrait._EcoMode.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ECO_MODE_UNSPECIFIED: EcoModeStateTrait._EcoMode.ValueType  # 0
         ECO_MODE_INACTIVE: EcoModeStateTrait._EcoMode.ValueType  # 1
@@ -3998,22 +6507,51 @@ class EcoModeStateTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EcoModeChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EcoModeStateTrait._EcoModeChangeReason.ValueType], _builtins.type):
+    class _EcoModeChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ECO_MODE_CHANGE_REASON_UNSPECIFIED: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 0
-        ECO_MODE_CHANGE_REASON_MANUAL: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 1
-        ECO_MODE_CHANGE_REASON_STRUCTURE_MODE: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 2
-        ECO_MODE_CHANGE_REASON_OCCUPANCY: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 3
-        ECO_MODE_CHANGE_REASON_TEMPERATURE: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 4
-        ECO_MODE_CHANGE_REASON_FEATURE_ENABLE: EcoModeStateTrait._EcoModeChangeReason.ValueType  # 5
+        ECO_MODE_CHANGE_REASON_UNSPECIFIED: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 0
+        ECO_MODE_CHANGE_REASON_MANUAL: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 1
+        ECO_MODE_CHANGE_REASON_STRUCTURE_MODE: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 2
+        ECO_MODE_CHANGE_REASON_OCCUPANCY: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 3
+        ECO_MODE_CHANGE_REASON_TEMPERATURE: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 4
+        ECO_MODE_CHANGE_REASON_FEATURE_ENABLE: (
+            EcoModeStateTrait._EcoModeChangeReason.ValueType
+        )  # 5
 
-    class EcoModeChangeReason(_EcoModeChangeReason, metaclass=_EcoModeChangeReasonEnumTypeWrapper): ...
-    ECO_MODE_CHANGE_REASON_UNSPECIFIED: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 0
+    class EcoModeChangeReason(
+        _EcoModeChangeReason, metaclass=_EcoModeChangeReasonEnumTypeWrapper
+    ): ...
+    ECO_MODE_CHANGE_REASON_UNSPECIFIED: (
+        EcoModeStateTrait.EcoModeChangeReason.ValueType
+    )  # 0
     ECO_MODE_CHANGE_REASON_MANUAL: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 1
-    ECO_MODE_CHANGE_REASON_STRUCTURE_MODE: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 2
-    ECO_MODE_CHANGE_REASON_OCCUPANCY: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 3
-    ECO_MODE_CHANGE_REASON_TEMPERATURE: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 4
-    ECO_MODE_CHANGE_REASON_FEATURE_ENABLE: EcoModeStateTrait.EcoModeChangeReason.ValueType  # 5
+    ECO_MODE_CHANGE_REASON_STRUCTURE_MODE: (
+        EcoModeStateTrait.EcoModeChangeReason.ValueType
+    )  # 2
+    ECO_MODE_CHANGE_REASON_OCCUPANCY: (
+        EcoModeStateTrait.EcoModeChangeReason.ValueType
+    )  # 3
+    ECO_MODE_CHANGE_REASON_TEMPERATURE: (
+        EcoModeStateTrait.EcoModeChangeReason.ValueType
+    )  # 4
+    ECO_MODE_CHANGE_REASON_FEATURE_ENABLE: (
+        EcoModeStateTrait.EcoModeChangeReason.ValueType
+    )  # 5
 
     @_typing.final
     class EcoModeChangeRequest(_message.Message):
@@ -4035,7 +6573,9 @@ class EcoModeStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["ecoModeActor", b"ecoModeActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["ecoMode", b"ecoMode", "ecoModeActor", b"ecoModeActor", "setAll", b"setAll"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "ecoMode", b"ecoMode", "ecoModeActor", b"ecoModeActor", "setAll", b"setAll"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4061,7 +6601,16 @@ class EcoModeStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["ecoModeActor", b"ecoModeActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["ecoMode", b"ecoMode", "ecoModeActor", b"ecoModeActor", "ecoModeChangeReason", b"ecoModeChangeReason", "priorEcoMode", b"priorEcoMode"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "ecoMode",
+            b"ecoMode",
+            "ecoModeActor",
+            b"ecoModeActor",
+            "ecoModeChangeReason",
+            b"ecoModeChangeReason",
+            "priorEcoMode",
+            b"priorEcoMode",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4081,7 +6630,9 @@ class EcoModeStateTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["ecoModeActor", b"ecoModeActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["ecoModeActor", b"ecoModeActor", "requestedEcoMode", b"requestedEcoMode"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "ecoModeActor", b"ecoModeActor", "requestedEcoMode", b"requestedEcoMode"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ECOMODE_FIELD_NUMBER: _builtins.int
@@ -4100,7 +6651,14 @@ class EcoModeStateTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["ecoModeActor", b"ecoModeActor"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ecoMode", b"ecoMode", "ecoModeActor", b"ecoModeActor", "ecoModeChangeReason", b"ecoModeChangeReason"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ecoMode",
+        b"ecoMode",
+        "ecoModeActor",
+        b"ecoModeActor",
+        "ecoModeChangeReason",
+        b"ecoModeChangeReason",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EcoModeStateTrait: _TypeAlias = EcoModeStateTrait  # noqa: Y015
@@ -4113,7 +6671,10 @@ class HvacMessageCenterConfig(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _IconEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._Icon.ValueType], _builtins.type):
+    class _IconEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._Icon.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ICON_UNSPECIFIED: HvacMessageCenterConfig._Icon.ValueType  # 0
         ICON_INFO: HvacMessageCenterConfig._Icon.ValueType  # 1
@@ -4146,7 +6707,12 @@ class HvacMessageCenterConfig(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ElementStyleEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._ElementStyle.ValueType], _builtins.type):
+    class _ElementStyleEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacMessageCenterConfig._ElementStyle.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ELEMENT_STYLE_UNSPECIFIED: HvacMessageCenterConfig._ElementStyle.ValueType  # 0
         ELEMENT_STYLE_HEADER: HvacMessageCenterConfig._ElementStyle.ValueType  # 1
@@ -4169,7 +6735,12 @@ class HvacMessageCenterConfig(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ElementColorEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._ElementColor.ValueType], _builtins.type):
+    class _ElementColorEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacMessageCenterConfig._ElementColor.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ELEMENT_COLOR_UNSPECIFIED: HvacMessageCenterConfig._ElementColor.ValueType  # 0
         ELEMENT_COLOR_WHITE: HvacMessageCenterConfig._ElementColor.ValueType  # 1
@@ -4188,42 +6759,96 @@ class HvacMessageCenterConfig(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _MessageTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._MessageType.ValueType], _builtins.type):
+    class _MessageTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacMessageCenterConfig._MessageType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         MESSAGE_TYPE_UNSPECIFIED: HvacMessageCenterConfig._MessageType.ValueType  # 0
-        MESSAGE_TYPE_CLOUD_RHR_PRESENTING: HvacMessageCenterConfig._MessageType.ValueType  # 1
-        MESSAGE_TYPE_FURNACE_HEADSUP: HvacMessageCenterConfig._MessageType.ValueType  # 2
-        MESSAGE_TYPE_HARDWARE_RESISTOR_FAILURE: HvacMessageCenterConfig._MessageType.ValueType  # 3
-        MESSAGE_TYPE_HARDWARE_WIRING_ERROR: HvacMessageCenterConfig._MessageType.ValueType  # 4
-        MESSAGE_TYPE_CLOUD_SEASONAL_SAVINGS_EFFICIENT_COMFORT: HvacMessageCenterConfig._MessageType.ValueType  # 5
-        MESSAGE_TYPE_USAGE_DRIVEN_SAVINGS_SCHEDULE_IMPROVEMENT: HvacMessageCenterConfig._MessageType.ValueType  # 6
-        MESSAGE_TYPE_GAMMA_GROWTH_CAMPAIGN: HvacMessageCenterConfig._MessageType.ValueType  # 7
-        MESSAGE_TYPE_GREEN_ENERGY_WELCOME: HvacMessageCenterConfig._MessageType.ValueType  # 8
-        MESSAGE_TYPE_GREEN_ENERGY_LEAFS_EARNED_MILESTONE: HvacMessageCenterConfig._MessageType.ValueType  # 9
-        MESSAGE_TYPE_GREEN_ENERGY_MONTHLY_IMPACT_SUMMARY: HvacMessageCenterConfig._MessageType.ValueType  # 10
-        MESSAGE_TYPE_SEASONAL_SAVINGS_3: HvacMessageCenterConfig._MessageType.ValueType  # 11
-        MESSAGE_TYPE_EARLY_LEARNING_SLEEP_SETBACK_REMINDER: HvacMessageCenterConfig._MessageType.ValueType  # 12
+        MESSAGE_TYPE_CLOUD_RHR_PRESENTING: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 1
+        MESSAGE_TYPE_FURNACE_HEADSUP: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 2
+        MESSAGE_TYPE_HARDWARE_RESISTOR_FAILURE: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 3
+        MESSAGE_TYPE_HARDWARE_WIRING_ERROR: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 4
+        MESSAGE_TYPE_CLOUD_SEASONAL_SAVINGS_EFFICIENT_COMFORT: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 5
+        MESSAGE_TYPE_USAGE_DRIVEN_SAVINGS_SCHEDULE_IMPROVEMENT: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 6
+        MESSAGE_TYPE_GAMMA_GROWTH_CAMPAIGN: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 7
+        MESSAGE_TYPE_GREEN_ENERGY_WELCOME: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 8
+        MESSAGE_TYPE_GREEN_ENERGY_LEAFS_EARNED_MILESTONE: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 9
+        MESSAGE_TYPE_GREEN_ENERGY_MONTHLY_IMPACT_SUMMARY: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 10
+        MESSAGE_TYPE_SEASONAL_SAVINGS_3: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 11
+        MESSAGE_TYPE_EARLY_LEARNING_SLEEP_SETBACK_REMINDER: (
+            HvacMessageCenterConfig._MessageType.ValueType
+        )  # 12
 
     class MessageType(_MessageType, metaclass=_MessageTypeEnumTypeWrapper): ...
     MESSAGE_TYPE_UNSPECIFIED: HvacMessageCenterConfig.MessageType.ValueType  # 0
-    MESSAGE_TYPE_CLOUD_RHR_PRESENTING: HvacMessageCenterConfig.MessageType.ValueType  # 1
+    MESSAGE_TYPE_CLOUD_RHR_PRESENTING: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 1
     MESSAGE_TYPE_FURNACE_HEADSUP: HvacMessageCenterConfig.MessageType.ValueType  # 2
-    MESSAGE_TYPE_HARDWARE_RESISTOR_FAILURE: HvacMessageCenterConfig.MessageType.ValueType  # 3
-    MESSAGE_TYPE_HARDWARE_WIRING_ERROR: HvacMessageCenterConfig.MessageType.ValueType  # 4
-    MESSAGE_TYPE_CLOUD_SEASONAL_SAVINGS_EFFICIENT_COMFORT: HvacMessageCenterConfig.MessageType.ValueType  # 5
-    MESSAGE_TYPE_USAGE_DRIVEN_SAVINGS_SCHEDULE_IMPROVEMENT: HvacMessageCenterConfig.MessageType.ValueType  # 6
-    MESSAGE_TYPE_GAMMA_GROWTH_CAMPAIGN: HvacMessageCenterConfig.MessageType.ValueType  # 7
-    MESSAGE_TYPE_GREEN_ENERGY_WELCOME: HvacMessageCenterConfig.MessageType.ValueType  # 8
-    MESSAGE_TYPE_GREEN_ENERGY_LEAFS_EARNED_MILESTONE: HvacMessageCenterConfig.MessageType.ValueType  # 9
-    MESSAGE_TYPE_GREEN_ENERGY_MONTHLY_IMPACT_SUMMARY: HvacMessageCenterConfig.MessageType.ValueType  # 10
+    MESSAGE_TYPE_HARDWARE_RESISTOR_FAILURE: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 3
+    MESSAGE_TYPE_HARDWARE_WIRING_ERROR: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 4
+    MESSAGE_TYPE_CLOUD_SEASONAL_SAVINGS_EFFICIENT_COMFORT: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 5
+    MESSAGE_TYPE_USAGE_DRIVEN_SAVINGS_SCHEDULE_IMPROVEMENT: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 6
+    MESSAGE_TYPE_GAMMA_GROWTH_CAMPAIGN: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 7
+    MESSAGE_TYPE_GREEN_ENERGY_WELCOME: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 8
+    MESSAGE_TYPE_GREEN_ENERGY_LEAFS_EARNED_MILESTONE: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 9
+    MESSAGE_TYPE_GREEN_ENERGY_MONTHLY_IMPACT_SUMMARY: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 10
     MESSAGE_TYPE_SEASONAL_SAVINGS_3: HvacMessageCenterConfig.MessageType.ValueType  # 11
-    MESSAGE_TYPE_EARLY_LEARNING_SLEEP_SETBACK_REMINDER: HvacMessageCenterConfig.MessageType.ValueType  # 12
+    MESSAGE_TYPE_EARLY_LEARNING_SLEEP_SETBACK_REMINDER: (
+        HvacMessageCenterConfig.MessageType.ValueType
+    )  # 12
 
     class _ValidMode:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ValidModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacMessageCenterConfig._ValidMode.ValueType], _builtins.type):
+    class _ValidModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacMessageCenterConfig._ValidMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         VALID_MODE_UNSPECIFIED: HvacMessageCenterConfig._ValidMode.ValueType  # 0
         VALID_MODE_SYSTEM_MODE_HEAT: HvacMessageCenterConfig._ValidMode.ValueType  # 1
@@ -4252,80 +6877,205 @@ class SeasonalSavingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsTrait._SeasonalSavingsState.ValueType], _builtins.type):
+    class _SeasonalSavingsStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_STATE_UNSPECIFIED: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 0
-        SEASONAL_SAVINGS_STATE_INITIAL: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 1
-        SEASONAL_SAVINGS_STATE_WAITING_TO_QUALIFY: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 2
-        SEASONAL_SAVINGS_STATE_PRESENTING_EVENT: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 3
-        SEASONAL_SAVINGS_STATE_WAITING: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 4
-        SEASONAL_SAVINGS_STATE_RUNNING: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 5
-        SEASONAL_SAVINGS_STATE_PAUSED: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 6
-        SEASONAL_SAVINGS_STATE_PRESENTING_FINAL_STAGE_COMPLETED: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 7
-        SEASONAL_SAVINGS_STATE_AFTERGLOW: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 8
-        SEASONAL_SAVINGS_STATE_FINISHED: SeasonalSavingsTrait._SeasonalSavingsState.ValueType  # 9
+        SEASONAL_SAVINGS_STATE_UNSPECIFIED: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_STATE_INITIAL: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_STATE_WAITING_TO_QUALIFY: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_STATE_PRESENTING_EVENT: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 3
+        SEASONAL_SAVINGS_STATE_WAITING: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 4
+        SEASONAL_SAVINGS_STATE_RUNNING: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 5
+        SEASONAL_SAVINGS_STATE_PAUSED: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 6
+        SEASONAL_SAVINGS_STATE_PRESENTING_FINAL_STAGE_COMPLETED: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 7
+        SEASONAL_SAVINGS_STATE_AFTERGLOW: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 8
+        SEASONAL_SAVINGS_STATE_FINISHED: (
+            SeasonalSavingsTrait._SeasonalSavingsState.ValueType
+        )  # 9
 
-    class SeasonalSavingsState(_SeasonalSavingsState, metaclass=_SeasonalSavingsStateEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_STATE_UNSPECIFIED: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 0
-    SEASONAL_SAVINGS_STATE_INITIAL: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 1
-    SEASONAL_SAVINGS_STATE_WAITING_TO_QUALIFY: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 2
-    SEASONAL_SAVINGS_STATE_PRESENTING_EVENT: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 3
-    SEASONAL_SAVINGS_STATE_WAITING: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 4
-    SEASONAL_SAVINGS_STATE_RUNNING: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 5
-    SEASONAL_SAVINGS_STATE_PAUSED: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 6
-    SEASONAL_SAVINGS_STATE_PRESENTING_FINAL_STAGE_COMPLETED: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 7
-    SEASONAL_SAVINGS_STATE_AFTERGLOW: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 8
-    SEASONAL_SAVINGS_STATE_FINISHED: SeasonalSavingsTrait.SeasonalSavingsState.ValueType  # 9
+    class SeasonalSavingsState(
+        _SeasonalSavingsState, metaclass=_SeasonalSavingsStateEnumTypeWrapper
+    ): ...
+    SEASONAL_SAVINGS_STATE_UNSPECIFIED: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_STATE_INITIAL: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_STATE_WAITING_TO_QUALIFY: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_STATE_PRESENTING_EVENT: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 3
+    SEASONAL_SAVINGS_STATE_WAITING: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 4
+    SEASONAL_SAVINGS_STATE_RUNNING: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 5
+    SEASONAL_SAVINGS_STATE_PAUSED: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 6
+    SEASONAL_SAVINGS_STATE_PRESENTING_FINAL_STAGE_COMPLETED: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 7
+    SEASONAL_SAVINGS_STATE_AFTERGLOW: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 8
+    SEASONAL_SAVINGS_STATE_FINISHED: (
+        SeasonalSavingsTrait.SeasonalSavingsState.ValueType
+    )  # 9
 
     class _SeasonalSavingsAction:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsTrait._SeasonalSavingsAction.ValueType], _builtins.type):
+    class _SeasonalSavingsActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_ACTION_UNSPECIFIED: SeasonalSavingsTrait._SeasonalSavingsAction.ValueType  # 0
-        SEASONAL_SAVINGS_ACTION_ACCEPT: SeasonalSavingsTrait._SeasonalSavingsAction.ValueType  # 1
-        SEASONAL_SAVINGS_ACTION_NOT_NOW: SeasonalSavingsTrait._SeasonalSavingsAction.ValueType  # 2
-        SEASONAL_SAVINGS_ACTION_STOP: SeasonalSavingsTrait._SeasonalSavingsAction.ValueType  # 3
-        SEASONAL_SAVINGS_ACTION_DONE: SeasonalSavingsTrait._SeasonalSavingsAction.ValueType  # 4
+        SEASONAL_SAVINGS_ACTION_UNSPECIFIED: (
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_ACTION_ACCEPT: (
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_ACTION_NOT_NOW: (
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_ACTION_STOP: (
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        )  # 3
+        SEASONAL_SAVINGS_ACTION_DONE: (
+            SeasonalSavingsTrait._SeasonalSavingsAction.ValueType
+        )  # 4
 
-    class SeasonalSavingsAction(_SeasonalSavingsAction, metaclass=_SeasonalSavingsActionEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_ACTION_UNSPECIFIED: SeasonalSavingsTrait.SeasonalSavingsAction.ValueType  # 0
-    SEASONAL_SAVINGS_ACTION_ACCEPT: SeasonalSavingsTrait.SeasonalSavingsAction.ValueType  # 1
-    SEASONAL_SAVINGS_ACTION_NOT_NOW: SeasonalSavingsTrait.SeasonalSavingsAction.ValueType  # 2
-    SEASONAL_SAVINGS_ACTION_STOP: SeasonalSavingsTrait.SeasonalSavingsAction.ValueType  # 3
-    SEASONAL_SAVINGS_ACTION_DONE: SeasonalSavingsTrait.SeasonalSavingsAction.ValueType  # 4
+    class SeasonalSavingsAction(
+        _SeasonalSavingsAction, metaclass=_SeasonalSavingsActionEnumTypeWrapper
+    ): ...
+    SEASONAL_SAVINGS_ACTION_UNSPECIFIED: (
+        SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_ACTION_ACCEPT: (
+        SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_ACTION_NOT_NOW: (
+        SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_ACTION_STOP: (
+        SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
+    )  # 3
+    SEASONAL_SAVINGS_ACTION_DONE: (
+        SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
+    )  # 4
 
     class _SeasonalSavingsStopReason:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SeasonalSavingsStopReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType], _builtins.type):
+    class _SeasonalSavingsStopReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SEASONAL_SAVINGS_STOP_REASON_UNSPECIFIED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 0
-        SEASONAL_SAVINGS_STOP_REASON_NONE: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 1
-        SEASONAL_SAVINGS_STOP_REASON_INVALID: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 2
-        SEASONAL_SAVINGS_STOP_REASON_KILLED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 3
-        SEASONAL_SAVINGS_STOP_REASON_KILLED_BY_SERVER: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 4
-        SEASONAL_SAVINGS_STOP_REASON_EVENT_EXPIRED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 5
-        SEASONAL_SAVINGS_STOP_REASON_PRESENTING_EXPIRED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 6
-        SEASONAL_SAVINGS_STOP_REASON_WAITING_EXPIRED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 7
-        SEASONAL_SAVINGS_STOP_REASON_PAUSED_EXPIRED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 8
-        SEASONAL_SAVINGS_STOP_REASON_DID_NOT_QUALIFY: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 9
-        SEASONAL_SAVINGS_STOP_REASON_USER_REQUESTED: SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType  # 10
+        SEASONAL_SAVINGS_STOP_REASON_UNSPECIFIED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 0
+        SEASONAL_SAVINGS_STOP_REASON_NONE: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 1
+        SEASONAL_SAVINGS_STOP_REASON_INVALID: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 2
+        SEASONAL_SAVINGS_STOP_REASON_KILLED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 3
+        SEASONAL_SAVINGS_STOP_REASON_KILLED_BY_SERVER: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 4
+        SEASONAL_SAVINGS_STOP_REASON_EVENT_EXPIRED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 5
+        SEASONAL_SAVINGS_STOP_REASON_PRESENTING_EXPIRED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 6
+        SEASONAL_SAVINGS_STOP_REASON_WAITING_EXPIRED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 7
+        SEASONAL_SAVINGS_STOP_REASON_PAUSED_EXPIRED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 8
+        SEASONAL_SAVINGS_STOP_REASON_DID_NOT_QUALIFY: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 9
+        SEASONAL_SAVINGS_STOP_REASON_USER_REQUESTED: (
+            SeasonalSavingsTrait._SeasonalSavingsStopReason.ValueType
+        )  # 10
 
-    class SeasonalSavingsStopReason(_SeasonalSavingsStopReason, metaclass=_SeasonalSavingsStopReasonEnumTypeWrapper): ...
-    SEASONAL_SAVINGS_STOP_REASON_UNSPECIFIED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 0
-    SEASONAL_SAVINGS_STOP_REASON_NONE: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 1
-    SEASONAL_SAVINGS_STOP_REASON_INVALID: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 2
-    SEASONAL_SAVINGS_STOP_REASON_KILLED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 3
-    SEASONAL_SAVINGS_STOP_REASON_KILLED_BY_SERVER: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 4
-    SEASONAL_SAVINGS_STOP_REASON_EVENT_EXPIRED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 5
-    SEASONAL_SAVINGS_STOP_REASON_PRESENTING_EXPIRED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 6
-    SEASONAL_SAVINGS_STOP_REASON_WAITING_EXPIRED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 7
-    SEASONAL_SAVINGS_STOP_REASON_PAUSED_EXPIRED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 8
-    SEASONAL_SAVINGS_STOP_REASON_DID_NOT_QUALIFY: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 9
-    SEASONAL_SAVINGS_STOP_REASON_USER_REQUESTED: SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType  # 10
+    class SeasonalSavingsStopReason(
+        _SeasonalSavingsStopReason, metaclass=_SeasonalSavingsStopReasonEnumTypeWrapper
+    ): ...
+    SEASONAL_SAVINGS_STOP_REASON_UNSPECIFIED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 0
+    SEASONAL_SAVINGS_STOP_REASON_NONE: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 1
+    SEASONAL_SAVINGS_STOP_REASON_INVALID: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 2
+    SEASONAL_SAVINGS_STOP_REASON_KILLED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 3
+    SEASONAL_SAVINGS_STOP_REASON_KILLED_BY_SERVER: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 4
+    SEASONAL_SAVINGS_STOP_REASON_EVENT_EXPIRED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 5
+    SEASONAL_SAVINGS_STOP_REASON_PRESENTING_EXPIRED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 6
+    SEASONAL_SAVINGS_STOP_REASON_WAITING_EXPIRED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 7
+    SEASONAL_SAVINGS_STOP_REASON_PAUSED_EXPIRED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 8
+    SEASONAL_SAVINGS_STOP_REASON_DID_NOT_QUALIFY: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 9
+    SEASONAL_SAVINGS_STOP_REASON_USER_REQUESTED: (
+        SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
+    )  # 10
 
     @_typing.final
     class SeasonalSavingsStateChangedEvent(_message.Message):
@@ -4343,7 +7093,9 @@ class SeasonalSavingsTrait(_message.Message):
         previousState: Global___SeasonalSavingsTrait.SeasonalSavingsState.ValueType
         action: Global___SeasonalSavingsTrait.SeasonalSavingsAction.ValueType
         stopReason: Global___SeasonalSavingsTrait.SeasonalSavingsStopReason.ValueType
-        season: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType
+        season: (
+            Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType
+        )
         @_builtins.property
         def predictedExpirationTimeUtc(self) -> _timestamp_pb2.Timestamp: ...
         def __init__(
@@ -4357,9 +7109,26 @@ class SeasonalSavingsTrait(_message.Message):
             predictedExpirationTimeUtc: _timestamp_pb2.Timestamp | None = ...,
             season: Global___SeasonalSavingsSettingsTrait.SeasonalSavingsSeasonType.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["predictedExpirationTimeUtc", b"predictedExpirationTimeUtc"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "predictedExpirationTimeUtc", b"predictedExpirationTimeUtc"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["action", b"action", "eventGuid", b"eventGuid", "predictedExpirationTimeUtc", b"predictedExpirationTimeUtc", "previousState", b"previousState", "season", b"season", "state", b"state", "stopReason", b"stopReason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "action",
+            b"action",
+            "eventGuid",
+            b"eventGuid",
+            "predictedExpirationTimeUtc",
+            b"predictedExpirationTimeUtc",
+            "previousState",
+            b"previousState",
+            "season",
+            b"season",
+            "state",
+            b"state",
+            "stopReason",
+            b"stopReason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     EVENTGUID_FIELD_NUMBER: _builtins.int
@@ -4390,9 +7159,31 @@ class SeasonalSavingsTrait(_message.Message):
         partnerName: Global___PartnerInformation.PartnerName | None = ...,
         predictedExpirationTimeUtc: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["partnerName", b"partnerName", "predictedCompletionTime", b"predictedCompletionTime", "predictedExpirationTimeUtc", b"predictedExpirationTimeUtc"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "partnerName",
+        b"partnerName",
+        "predictedCompletionTime",
+        b"predictedCompletionTime",
+        "predictedExpirationTimeUtc",
+        b"predictedExpirationTimeUtc",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["eventGuid", b"eventGuid", "partnerName", b"partnerName", "predictedCompletionTime", b"predictedCompletionTime", "predictedExpirationTimeUtc", b"predictedExpirationTimeUtc", "scheduleMode", b"scheduleMode", "state", b"state", "stopReason", b"stopReason"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "eventGuid",
+        b"eventGuid",
+        "partnerName",
+        b"partnerName",
+        "predictedCompletionTime",
+        b"predictedCompletionTime",
+        "predictedExpirationTimeUtc",
+        b"predictedExpirationTimeUtc",
+        "scheduleMode",
+        b"scheduleMode",
+        "state",
+        b"state",
+        "stopReason",
+        b"stopReason",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SeasonalSavingsTrait: _TypeAlias = SeasonalSavingsTrait  # noqa: Y015
@@ -4405,20 +7196,47 @@ class HvacControlTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HvacStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacControlTrait._HvacStateChangeReason.ValueType], _builtins.type):
+    class _HvacStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HVAC_STATE_CHANGE_REASON_UNSPECIFIED: HvacControlTrait._HvacStateChangeReason.ValueType  # 0
-        HVAC_STATE_CHANGE_REASON_UNKNOWN: HvacControlTrait._HvacStateChangeReason.ValueType  # 1
-        HVAC_STATE_CHANGE_REASON_HVAC_WIRE_POWER_LOSS: HvacControlTrait._HvacStateChangeReason.ValueType  # 2
-        HVAC_STATE_CHANGE_REASON_SYSTEM_TEST: HvacControlTrait._HvacStateChangeReason.ValueType  # 3
-        HVAC_STATE_CHANGE_REASON_SWITCH_SHUT_OFF: HvacControlTrait._HvacStateChangeReason.ValueType  # 4
+        HVAC_STATE_CHANGE_REASON_UNSPECIFIED: (
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        )  # 0
+        HVAC_STATE_CHANGE_REASON_UNKNOWN: (
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        )  # 1
+        HVAC_STATE_CHANGE_REASON_HVAC_WIRE_POWER_LOSS: (
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        )  # 2
+        HVAC_STATE_CHANGE_REASON_SYSTEM_TEST: (
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        )  # 3
+        HVAC_STATE_CHANGE_REASON_SWITCH_SHUT_OFF: (
+            HvacControlTrait._HvacStateChangeReason.ValueType
+        )  # 4
 
-    class HvacStateChangeReason(_HvacStateChangeReason, metaclass=_HvacStateChangeReasonEnumTypeWrapper): ...
-    HVAC_STATE_CHANGE_REASON_UNSPECIFIED: HvacControlTrait.HvacStateChangeReason.ValueType  # 0
-    HVAC_STATE_CHANGE_REASON_UNKNOWN: HvacControlTrait.HvacStateChangeReason.ValueType  # 1
-    HVAC_STATE_CHANGE_REASON_HVAC_WIRE_POWER_LOSS: HvacControlTrait.HvacStateChangeReason.ValueType  # 2
-    HVAC_STATE_CHANGE_REASON_SYSTEM_TEST: HvacControlTrait.HvacStateChangeReason.ValueType  # 3
-    HVAC_STATE_CHANGE_REASON_SWITCH_SHUT_OFF: HvacControlTrait.HvacStateChangeReason.ValueType  # 4
+    class HvacStateChangeReason(
+        _HvacStateChangeReason, metaclass=_HvacStateChangeReasonEnumTypeWrapper
+    ): ...
+    HVAC_STATE_CHANGE_REASON_UNSPECIFIED: (
+        HvacControlTrait.HvacStateChangeReason.ValueType
+    )  # 0
+    HVAC_STATE_CHANGE_REASON_UNKNOWN: (
+        HvacControlTrait.HvacStateChangeReason.ValueType
+    )  # 1
+    HVAC_STATE_CHANGE_REASON_HVAC_WIRE_POWER_LOSS: (
+        HvacControlTrait.HvacStateChangeReason.ValueType
+    )  # 2
+    HVAC_STATE_CHANGE_REASON_SYSTEM_TEST: (
+        HvacControlTrait.HvacStateChangeReason.ValueType
+    )  # 3
+    HVAC_STATE_CHANGE_REASON_SWITCH_SHUT_OFF: (
+        HvacControlTrait.HvacStateChangeReason.ValueType
+    )  # 4
 
     @_typing.final
     class HvacState(_message.Message):
@@ -4467,7 +7285,34 @@ class HvacControlTrait(_message.Message):
             dehumidifierActive: _builtins.bool = ...,
             ventilatorActive: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alternateHeatStage1Active", b"alternateHeatStage1Active", "alternateHeatStage2Active", b"alternateHeatStage2Active", "auxiliaryHeatActive", b"auxiliaryHeatActive", "coolStage1Active", b"coolStage1Active", "coolStage2Active", b"coolStage2Active", "coolStage3Active", b"coolStage3Active", "dehumidifierActive", b"dehumidifierActive", "emergencyHeatActive", b"emergencyHeatActive", "heatStage1Active", b"heatStage1Active", "heatStage2Active", b"heatStage2Active", "heatStage3Active", b"heatStage3Active", "humidifierActive", b"humidifierActive", "ventilatorActive", b"ventilatorActive"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alternateHeatStage1Active",
+            b"alternateHeatStage1Active",
+            "alternateHeatStage2Active",
+            b"alternateHeatStage2Active",
+            "auxiliaryHeatActive",
+            b"auxiliaryHeatActive",
+            "coolStage1Active",
+            b"coolStage1Active",
+            "coolStage2Active",
+            b"coolStage2Active",
+            "coolStage3Active",
+            b"coolStage3Active",
+            "dehumidifierActive",
+            b"dehumidifierActive",
+            "emergencyHeatActive",
+            b"emergencyHeatActive",
+            "heatStage1Active",
+            b"heatStage1Active",
+            "heatStage2Active",
+            b"heatStage2Active",
+            "heatStage3Active",
+            b"heatStage3Active",
+            "humidifierActive",
+            b"humidifierActive",
+            "ventilatorActive",
+            b"ventilatorActive",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4493,9 +7338,25 @@ class HvacControlTrait(_message.Message):
             priorStateEffectiveTime: _timestamp_pb2.Timestamp | None = ...,
             reason: Global___HvacControlTrait.HvacStateChangeReason.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["hvacState", b"hvacState", "priorHvacState", b"priorHvacState", "priorStateEffectiveTime", b"priorStateEffectiveTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "hvacState",
+            b"hvacState",
+            "priorHvacState",
+            b"priorHvacState",
+            "priorStateEffectiveTime",
+            b"priorStateEffectiveTime",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacState", b"hvacState", "priorHvacState", b"priorHvacState", "priorStateEffectiveTime", b"priorStateEffectiveTime", "reason", b"reason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "hvacState",
+            b"hvacState",
+            "priorHvacState",
+            b"priorHvacState",
+            "priorStateEffectiveTime",
+            b"priorStateEffectiveTime",
+            "reason",
+            b"reason",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     HVACSTATE_FIELD_NUMBER: _builtins.int
@@ -4520,9 +7381,27 @@ class HvacControlTrait(_message.Message):
         minCycleLockoutEnabled: _builtins.bool = ...,
         minCycleLockoutTimeout: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["compressorLockoutTimeout", b"compressorLockoutTimeout", "hvacState", b"hvacState", "minCycleLockoutTimeout", b"minCycleLockoutTimeout"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "compressorLockoutTimeout",
+        b"compressorLockoutTimeout",
+        "hvacState",
+        b"hvacState",
+        "minCycleLockoutTimeout",
+        b"minCycleLockoutTimeout",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["compressorLockoutEnabled", b"compressorLockoutEnabled", "compressorLockoutTimeout", b"compressorLockoutTimeout", "hvacState", b"hvacState", "minCycleLockoutEnabled", b"minCycleLockoutEnabled", "minCycleLockoutTimeout", b"minCycleLockoutTimeout"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "compressorLockoutEnabled",
+        b"compressorLockoutEnabled",
+        "compressorLockoutTimeout",
+        b"compressorLockoutTimeout",
+        "hvacState",
+        b"hvacState",
+        "minCycleLockoutEnabled",
+        b"minCycleLockoutEnabled",
+        "minCycleLockoutTimeout",
+        b"minCycleLockoutTimeout",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HvacControlTrait: _TypeAlias = HvacControlTrait  # noqa: Y015
@@ -4548,7 +7427,14 @@ class PartnerInformation(_message.Message):
             abbreviation: _builtins.str = ...,
             suppressNameInMessaging: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["abbreviation", b"abbreviation", "name", b"name", "suppressNameInMessaging", b"suppressNameInMessaging"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "abbreviation",
+            b"abbreviation",
+            "name",
+            b"name",
+            "suppressNameInMessaging",
+            b"suppressNameInMessaging",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -4565,7 +7451,10 @@ class WiringTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _WireTerminalEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[WiringTrait._WireTerminal.ValueType], _builtins.type):
+    class _WireTerminalEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[WiringTrait._WireTerminal.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         WIRE_TERMINAL_UNSPECIFIED: WiringTrait._WireTerminal.ValueType  # 0
         WIRE_TERMINAL_W1: WiringTrait._WireTerminal.ValueType  # 1
@@ -4600,7 +7489,10 @@ class WiringTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _WireLabelEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[WiringTrait._WireLabel.ValueType], _builtins.type):
+    class _WireLabelEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[WiringTrait._WireLabel.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         WIRE_LABEL_UNSPECIFIED: WiringTrait._WireLabel.ValueType  # 0
         WIRE_LABEL_NONE: WiringTrait._WireLabel.ValueType  # 1
@@ -4669,7 +7561,9 @@ class WiringTrait(_message.Message):
             wiringError: _builtins.str = ...,
             priorWiringError: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["priorWiringError", b"priorWiringError", "wiringError", b"wiringError"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "priorWiringError", b"priorWiringError", "wiringError", b"wiringError"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4679,16 +7573,35 @@ class WiringTrait(_message.Message):
         CONNECTIONSELECTRICAL_FIELD_NUMBER: _builtins.int
         PRIORCONNECTIONSELECTRICAL_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def connectionsElectrical(self) -> _containers.RepeatedScalarFieldContainer[Global___WiringTrait.WireTerminal.ValueType]: ...
+        def connectionsElectrical(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___WiringTrait.WireTerminal.ValueType
+        ]: ...
         @_builtins.property
-        def priorConnectionsElectrical(self) -> _containers.RepeatedScalarFieldContainer[Global___WiringTrait.WireTerminal.ValueType]: ...
+        def priorConnectionsElectrical(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___WiringTrait.WireTerminal.ValueType
+        ]: ...
         def __init__(
             self,
             *,
-            connectionsElectrical: _abc.Iterable[Global___WiringTrait.WireTerminal.ValueType] | None = ...,
-            priorConnectionsElectrical: _abc.Iterable[Global___WiringTrait.WireTerminal.ValueType] | None = ...,
+            connectionsElectrical: _abc.Iterable[
+                Global___WiringTrait.WireTerminal.ValueType
+            ]
+            | None = ...,
+            priorConnectionsElectrical: _abc.Iterable[
+                Global___WiringTrait.WireTerminal.ValueType
+            ]
+            | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["connectionsElectrical", b"connectionsElectrical", "priorConnectionsElectrical", b"priorConnectionsElectrical"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "connectionsElectrical",
+            b"connectionsElectrical",
+            "priorConnectionsElectrical",
+            b"priorConnectionsElectrical",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CONNECTIONSMECHANICAL_FIELD_NUMBER: _builtins.int
@@ -4721,16 +7634,30 @@ class WiringTrait(_message.Message):
     pinAqplusDescription: Global___WiringTrait.WireLabel.ValueType
     pinAqminusDescription: Global___WiringTrait.WireLabel.ValueType
     @_builtins.property
-    def connectionsMechanical(self) -> _containers.RepeatedScalarFieldContainer[Global___WiringTrait.WireTerminal.ValueType]: ...
+    def connectionsMechanical(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___WiringTrait.WireTerminal.ValueType
+    ]: ...
     @_builtins.property
-    def connectionsElectrical(self) -> _containers.RepeatedScalarFieldContainer[Global___WiringTrait.WireTerminal.ValueType]: ...
+    def connectionsElectrical(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___WiringTrait.WireTerminal.ValueType
+    ]: ...
     @_builtins.property
     def wiringErrorTimestamp(self) -> _timestamp_pb2.Timestamp: ...
     def __init__(
         self,
         *,
-        connectionsMechanical: _abc.Iterable[Global___WiringTrait.WireTerminal.ValueType] | None = ...,
-        connectionsElectrical: _abc.Iterable[Global___WiringTrait.WireTerminal.ValueType] | None = ...,
+        connectionsMechanical: _abc.Iterable[
+            Global___WiringTrait.WireTerminal.ValueType
+        ]
+        | None = ...,
+        connectionsElectrical: _abc.Iterable[
+            Global___WiringTrait.WireTerminal.ValueType
+        ]
+        | None = ...,
         pinCDescription: Global___WiringTrait.WireLabel.ValueType = ...,
         pinGDescription: Global___WiringTrait.WireLabel.ValueType = ...,
         pinObDescription: Global___WiringTrait.WireLabel.ValueType = ...,
@@ -4746,9 +7673,44 @@ class WiringTrait(_message.Message):
         pinAqplusDescription: Global___WiringTrait.WireLabel.ValueType = ...,
         pinAqminusDescription: Global___WiringTrait.WireLabel.ValueType = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["wiringErrorTimestamp", b"wiringErrorTimestamp"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "wiringErrorTimestamp", b"wiringErrorTimestamp"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["connectionsElectrical", b"connectionsElectrical", "connectionsMechanical", b"connectionsMechanical", "pinAqminusDescription", b"pinAqminusDescription", "pinAqplusDescription", b"pinAqplusDescription", "pinCDescription", b"pinCDescription", "pinGDescription", b"pinGDescription", "pinObDescription", b"pinObDescription", "pinRcDescription", b"pinRcDescription", "pinRhDescription", b"pinRhDescription", "pinStarDescription", b"pinStarDescription", "pinW1Description", b"pinW1Description", "pinW2AuxDescription", b"pinW2AuxDescription", "pinY1Description", b"pinY1Description", "pinY2Description", b"pinY2Description", "wiringError", b"wiringError", "wiringErrorTimestamp", b"wiringErrorTimestamp"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "connectionsElectrical",
+        b"connectionsElectrical",
+        "connectionsMechanical",
+        b"connectionsMechanical",
+        "pinAqminusDescription",
+        b"pinAqminusDescription",
+        "pinAqplusDescription",
+        b"pinAqplusDescription",
+        "pinCDescription",
+        b"pinCDescription",
+        "pinGDescription",
+        b"pinGDescription",
+        "pinObDescription",
+        b"pinObDescription",
+        "pinRcDescription",
+        b"pinRcDescription",
+        "pinRhDescription",
+        b"pinRhDescription",
+        "pinStarDescription",
+        b"pinStarDescription",
+        "pinW1Description",
+        b"pinW1Description",
+        "pinW2AuxDescription",
+        b"pinW2AuxDescription",
+        "pinY1Description",
+        b"pinY1Description",
+        "pinY2Description",
+        b"pinY2Description",
+        "wiringError",
+        b"wiringError",
+        "wiringErrorTimestamp",
+        b"wiringErrorTimestamp",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___WiringTrait: _TypeAlias = WiringTrait  # noqa: Y015
@@ -4761,15 +7723,32 @@ class FilterReminderTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FilterReminderLevelEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FilterReminderTrait._FilterReminderLevel.ValueType], _builtins.type):
+    class _FilterReminderLevelEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            FilterReminderTrait._FilterReminderLevel.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        FILTER_REMINDER_LEVEL_UNSPECIFIED: FilterReminderTrait._FilterReminderLevel.ValueType  # 0
-        FILTER_REMINDER_LEVEL_NONE: FilterReminderTrait._FilterReminderLevel.ValueType  # 1
-        FILTER_REMINDER_LEVEL_FIRST: FilterReminderTrait._FilterReminderLevel.ValueType  # 2
-        FILTER_REMINDER_LEVEL_SECOND: FilterReminderTrait._FilterReminderLevel.ValueType  # 3
+        FILTER_REMINDER_LEVEL_UNSPECIFIED: (
+            FilterReminderTrait._FilterReminderLevel.ValueType
+        )  # 0
+        FILTER_REMINDER_LEVEL_NONE: (
+            FilterReminderTrait._FilterReminderLevel.ValueType
+        )  # 1
+        FILTER_REMINDER_LEVEL_FIRST: (
+            FilterReminderTrait._FilterReminderLevel.ValueType
+        )  # 2
+        FILTER_REMINDER_LEVEL_SECOND: (
+            FilterReminderTrait._FilterReminderLevel.ValueType
+        )  # 3
 
-    class FilterReminderLevel(_FilterReminderLevel, metaclass=_FilterReminderLevelEnumTypeWrapper): ...
-    FILTER_REMINDER_LEVEL_UNSPECIFIED: FilterReminderTrait.FilterReminderLevel.ValueType  # 0
+    class FilterReminderLevel(
+        _FilterReminderLevel, metaclass=_FilterReminderLevelEnumTypeWrapper
+    ): ...
+    FILTER_REMINDER_LEVEL_UNSPECIFIED: (
+        FilterReminderTrait.FilterReminderLevel.ValueType
+    )  # 0
     FILTER_REMINDER_LEVEL_NONE: FilterReminderTrait.FilterReminderLevel.ValueType  # 1
     FILTER_REMINDER_LEVEL_FIRST: FilterReminderTrait.FilterReminderLevel.ValueType  # 2
     FILTER_REMINDER_LEVEL_SECOND: FilterReminderTrait.FilterReminderLevel.ValueType  # 3
@@ -4781,14 +7760,21 @@ class FilterReminderTrait(_message.Message):
         FILTERREMINDERLEVEL_FIELD_NUMBER: _builtins.int
         PRIORFILTERREMINDERLEVEL_FIELD_NUMBER: _builtins.int
         filterReminderLevel: Global___FilterReminderTrait.FilterReminderLevel.ValueType
-        priorFilterReminderLevel: Global___FilterReminderTrait.FilterReminderLevel.ValueType
+        priorFilterReminderLevel: (
+            Global___FilterReminderTrait.FilterReminderLevel.ValueType
+        )
         def __init__(
             self,
             *,
             filterReminderLevel: Global___FilterReminderTrait.FilterReminderLevel.ValueType = ...,
             priorFilterReminderLevel: Global___FilterReminderTrait.FilterReminderLevel.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["filterReminderLevel", b"filterReminderLevel", "priorFilterReminderLevel", b"priorFilterReminderLevel"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "filterReminderLevel",
+            b"filterReminderLevel",
+            "priorFilterReminderLevel",
+            b"priorFilterReminderLevel",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4803,15 +7789,21 @@ class FilterReminderTrait(_message.Message):
             *,
             filterReplacementNeeded: _wrappers_pb2.BoolValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["filterReplacementNeeded", b"filterReplacementNeeded"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "filterReplacementNeeded", b"filterReplacementNeeded"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["filterReplacementNeeded", b"filterReplacementNeeded"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "filterReplacementNeeded", b"filterReplacementNeeded"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     CURRENTFILTERREMINDERLEVEL_FIELD_NUMBER: _builtins.int
     FILTERREPLACEMENTNEEDED_FIELD_NUMBER: _builtins.int
     FILTERRUNTIME_FIELD_NUMBER: _builtins.int
-    currentFilterReminderLevel: Global___FilterReminderTrait.FilterReminderLevel.ValueType
+    currentFilterReminderLevel: (
+        Global___FilterReminderTrait.FilterReminderLevel.ValueType
+    )
     @_builtins.property
     def filterReplacementNeeded(self) -> _wrappers_pb2.BoolValue: ...
     @_builtins.property
@@ -4823,9 +7815,21 @@ class FilterReminderTrait(_message.Message):
         filterReplacementNeeded: _wrappers_pb2.BoolValue | None = ...,
         filterRuntime: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["filterReplacementNeeded", b"filterReplacementNeeded", "filterRuntime", b"filterRuntime"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "filterReplacementNeeded",
+        b"filterReplacementNeeded",
+        "filterRuntime",
+        b"filterRuntime",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentFilterReminderLevel", b"currentFilterReminderLevel", "filterReplacementNeeded", b"filterReplacementNeeded", "filterRuntime", b"filterRuntime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentFilterReminderLevel",
+        b"currentFilterReminderLevel",
+        "filterReplacementNeeded",
+        b"filterReplacementNeeded",
+        "filterRuntime",
+        b"filterRuntime",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FilterReminderTrait: _TypeAlias = FilterReminderTrait  # noqa: Y015
@@ -4848,7 +7852,9 @@ class SafetyShutoffTrait(_message.Message):
             active: _builtins.bool = ...,
             priorActive: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "priorActive", b"priorActive"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "active", b"active", "priorActive", b"priorActive"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4865,7 +7871,9 @@ class SafetyShutoffTrait(_message.Message):
             active: _builtins.bool = ...,
             priorActive: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "priorActive", b"priorActive"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "active", b"active", "priorActive", b"priorActive"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4882,7 +7890,9 @@ class SafetyShutoffTrait(_message.Message):
             active: _builtins.bool = ...,
             priorActive: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "priorActive", b"priorActive"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "active", b"active", "priorActive", b"priorActive"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     HVACCOSAFETYSHUTOFFACTIVE_FIELD_NUMBER: _builtins.int
@@ -4898,7 +7908,14 @@ class SafetyShutoffTrait(_message.Message):
         hvacSmokeSafetyShutoffActive: _builtins.bool = ...,
         hvacFurnaceShutdown: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacCoSafetyShutoffActive", b"hvacCoSafetyShutoffActive", "hvacFurnaceShutdown", b"hvacFurnaceShutdown", "hvacSmokeSafetyShutoffActive", b"hvacSmokeSafetyShutoffActive"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hvacCoSafetyShutoffActive",
+        b"hvacCoSafetyShutoffActive",
+        "hvacFurnaceShutdown",
+        b"hvacFurnaceShutdown",
+        "hvacSmokeSafetyShutoffActive",
+        b"hvacSmokeSafetyShutoffActive",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyShutoffTrait: _TypeAlias = SafetyShutoffTrait  # noqa: Y015
@@ -4911,7 +7928,12 @@ class ScheduleHoldSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HoldIntentEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ScheduleHoldSettingsTrait._HoldIntent.ValueType], _builtins.type):
+    class _HoldIntentEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            ScheduleHoldSettingsTrait._HoldIntent.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HOLD_INTENT_UNSPECIFIED: ScheduleHoldSettingsTrait._HoldIntent.ValueType  # 0
         HOLD_INTENT_DEFAULT: ScheduleHoldSettingsTrait._HoldIntent.ValueType  # 1
@@ -4957,9 +7979,33 @@ class ScheduleHoldSettingsTrait(_message.Message):
             atomId: _builtins.int = ...,
             isIndefinite: _builtins.bool = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["coolTarget", b"coolTarget", "endTime", b"endTime", "heatTarget", b"heatTarget"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "coolTarget",
+            b"coolTarget",
+            "endTime",
+            b"endTime",
+            "heatTarget",
+            b"heatTarget",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["atomId", b"atomId", "coolTarget", b"coolTarget", "endTime", b"endTime", "heatTarget", b"heatTarget", "initiatedBy", b"initiatedBy", "isIndefinite", b"isIndefinite", "lastUpdatedBy", b"lastUpdatedBy", "setpointType", b"setpointType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "atomId",
+            b"atomId",
+            "coolTarget",
+            b"coolTarget",
+            "endTime",
+            b"endTime",
+            "heatTarget",
+            b"heatTarget",
+            "initiatedBy",
+            b"initiatedBy",
+            "isIndefinite",
+            b"isIndefinite",
+            "lastUpdatedBy",
+            b"lastUpdatedBy",
+            "setpointType",
+            b"setpointType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -4980,9 +8026,18 @@ class ScheduleHoldSettingsTrait(_message.Message):
             intent: Global___ScheduleHoldSettingsTrait.HoldIntent.ValueType = ...,
             lastUserHoldDuration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["lastUserHoldDuration", b"lastUserHoldDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "lastUserHoldDuration", b"lastUserHoldDuration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["intent", b"intent", "isCritical", b"isCritical", "lastUserHoldDuration", b"lastUserHoldDuration"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "intent",
+            b"intent",
+            "isCritical",
+            b"isCritical",
+            "lastUserHoldDuration",
+            b"lastUserHoldDuration",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     HOLDSETPOINT_FIELD_NUMBER: _builtins.int
@@ -5001,9 +8056,23 @@ class ScheduleHoldSettingsTrait(_message.Message):
         holdMetadata: Global___ScheduleHoldSettingsTrait.HoldMetadata | None = ...,
         eventMetadata: Global___EnergyCaption.EventMetadata | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["eventMetadata", b"eventMetadata", "holdMetadata", b"holdMetadata", "holdSetpoint", b"holdSetpoint"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "eventMetadata",
+        b"eventMetadata",
+        "holdMetadata",
+        b"holdMetadata",
+        "holdSetpoint",
+        b"holdSetpoint",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["eventMetadata", b"eventMetadata", "holdMetadata", b"holdMetadata", "holdSetpoint", b"holdSetpoint"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "eventMetadata",
+        b"eventMetadata",
+        "holdMetadata",
+        b"holdMetadata",
+        "holdSetpoint",
+        b"holdSetpoint",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ScheduleHoldSettingsTrait: _TypeAlias = ScheduleHoldSettingsTrait  # noqa: Y015
@@ -5016,7 +8085,10 @@ class ScheduleHoldTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HoldStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ScheduleHoldTrait._HoldState.ValueType], _builtins.type):
+    class _HoldStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[ScheduleHoldTrait._HoldState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HOLD_STATE_UNSPECIFIED: ScheduleHoldTrait._HoldState.ValueType  # 0
         HOLD_STATE_INACTIVE: ScheduleHoldTrait._HoldState.ValueType  # 1
@@ -5031,32 +8103,83 @@ class ScheduleHoldTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HoldStateChangeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ScheduleHoldTrait._HoldStateChangeReason.ValueType], _builtins.type):
+    class _HoldStateChangeReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HOLD_STATE_CHANGE_REASON_UNSPECIFIED: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 0
-        HOLD_STATE_CHANGE_REASON_STARTED: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 1
-        HOLD_STATE_CHANGE_REASON_UPDATED: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 2
-        HOLD_STATE_CHANGE_REASON_EXPIRED: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 3
-        HOLD_STATE_CHANGE_REASON_CANCELLED_BY_INITIATOR: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 4
-        HOLD_STATE_CHANGE_REASON_OPTED_OUT: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 5
-        HOLD_STATE_CHANGE_REASON_REJECTED: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 6
-        HOLD_STATE_CHANGE_REASON_REJECTED_UNAVAILABLE: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 7
-        HOLD_STATE_CHANGE_REASON_REJECTED_WRONG_SCHEDULE_MODE: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 8
-        HOLD_STATE_CHANGE_REASON_REJECTED_INVALID_SETTINGS: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 9
-        HOLD_STATE_CHANGE_REASON_REJECTED_LACK_PERMISSION: ScheduleHoldTrait._HoldStateChangeReason.ValueType  # 10
+        HOLD_STATE_CHANGE_REASON_UNSPECIFIED: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 0
+        HOLD_STATE_CHANGE_REASON_STARTED: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 1
+        HOLD_STATE_CHANGE_REASON_UPDATED: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 2
+        HOLD_STATE_CHANGE_REASON_EXPIRED: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 3
+        HOLD_STATE_CHANGE_REASON_CANCELLED_BY_INITIATOR: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 4
+        HOLD_STATE_CHANGE_REASON_OPTED_OUT: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 5
+        HOLD_STATE_CHANGE_REASON_REJECTED: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 6
+        HOLD_STATE_CHANGE_REASON_REJECTED_UNAVAILABLE: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 7
+        HOLD_STATE_CHANGE_REASON_REJECTED_WRONG_SCHEDULE_MODE: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 8
+        HOLD_STATE_CHANGE_REASON_REJECTED_INVALID_SETTINGS: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 9
+        HOLD_STATE_CHANGE_REASON_REJECTED_LACK_PERMISSION: (
+            ScheduleHoldTrait._HoldStateChangeReason.ValueType
+        )  # 10
 
-    class HoldStateChangeReason(_HoldStateChangeReason, metaclass=_HoldStateChangeReasonEnumTypeWrapper): ...
-    HOLD_STATE_CHANGE_REASON_UNSPECIFIED: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 0
-    HOLD_STATE_CHANGE_REASON_STARTED: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 1
-    HOLD_STATE_CHANGE_REASON_UPDATED: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 2
-    HOLD_STATE_CHANGE_REASON_EXPIRED: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 3
-    HOLD_STATE_CHANGE_REASON_CANCELLED_BY_INITIATOR: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 4
-    HOLD_STATE_CHANGE_REASON_OPTED_OUT: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 5
-    HOLD_STATE_CHANGE_REASON_REJECTED: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 6
-    HOLD_STATE_CHANGE_REASON_REJECTED_UNAVAILABLE: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 7
-    HOLD_STATE_CHANGE_REASON_REJECTED_WRONG_SCHEDULE_MODE: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 8
-    HOLD_STATE_CHANGE_REASON_REJECTED_INVALID_SETTINGS: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 9
-    HOLD_STATE_CHANGE_REASON_REJECTED_LACK_PERMISSION: ScheduleHoldTrait.HoldStateChangeReason.ValueType  # 10
+    class HoldStateChangeReason(
+        _HoldStateChangeReason, metaclass=_HoldStateChangeReasonEnumTypeWrapper
+    ): ...
+    HOLD_STATE_CHANGE_REASON_UNSPECIFIED: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 0
+    HOLD_STATE_CHANGE_REASON_STARTED: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 1
+    HOLD_STATE_CHANGE_REASON_UPDATED: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 2
+    HOLD_STATE_CHANGE_REASON_EXPIRED: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 3
+    HOLD_STATE_CHANGE_REASON_CANCELLED_BY_INITIATOR: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 4
+    HOLD_STATE_CHANGE_REASON_OPTED_OUT: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 5
+    HOLD_STATE_CHANGE_REASON_REJECTED: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 6
+    HOLD_STATE_CHANGE_REASON_REJECTED_UNAVAILABLE: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 7
+    HOLD_STATE_CHANGE_REASON_REJECTED_WRONG_SCHEDULE_MODE: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 8
+    HOLD_STATE_CHANGE_REASON_REJECTED_INVALID_SETTINGS: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 9
+    HOLD_STATE_CHANGE_REASON_REJECTED_LACK_PERMISSION: (
+        ScheduleHoldTrait.HoldStateChangeReason.ValueType
+    )  # 10
 
     @_typing.final
     class ScheduleHoldEvent(_message.Message):
@@ -5081,7 +8204,18 @@ class ScheduleHoldTrait(_message.Message):
             initiatedBy: Global___HvacActor.HvacActorMethod.ValueType = ...,
             updatedBy: Global___HvacActor.HvacActorMethod.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["initiatedBy", b"initiatedBy", "prevState", b"prevState", "reason", b"reason", "state", b"state", "updatedBy", b"updatedBy"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "initiatedBy",
+            b"initiatedBy",
+            "prevState",
+            b"prevState",
+            "reason",
+            b"reason",
+            "state",
+            b"state",
+            "updatedBy",
+            b"updatedBy",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STATE_FIELD_NUMBER: _builtins.int
@@ -5100,7 +8234,9 @@ class ScheduleHoldTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["lastUpdateTime", b"lastUpdateTime"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["lastUpdateTime", b"lastUpdateTime", "reason", b"reason", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "lastUpdateTime", b"lastUpdateTime", "reason", b"reason", "state", b"state"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ScheduleHoldTrait: _TypeAlias = ScheduleHoldTrait  # noqa: Y015
@@ -5129,7 +8265,14 @@ class SeasonalSavingsActionTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["hvacActor", b"hvacActor"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["eventGuid", b"eventGuid", "hvacActor", b"hvacActor", "requestedAction", b"requestedAction"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "eventGuid",
+            b"eventGuid",
+            "hvacActor",
+            b"hvacActor",
+            "requestedAction",
+            b"requestedAction",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -5138,11 +8281,14 @@ class SeasonalSavingsActionTrait(_message.Message):
 
         ACTION_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def action(self) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
+        def action(
+            self,
+        ) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
         def __init__(
             self,
             *,
-            action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct | None = ...,
+            action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["action", b"action"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -5155,11 +8301,14 @@ class SeasonalSavingsActionTrait(_message.Message):
 
         ACTION_FIELD_NUMBER: _builtins.int
         @_builtins.property
-        def action(self) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
+        def action(
+            self,
+        ) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
         def __init__(
             self,
             *,
-            action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct | None = ...,
+            action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["action", b"action"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -5168,11 +8317,14 @@ class SeasonalSavingsActionTrait(_message.Message):
 
     ACTION_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def action(self) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
+    def action(
+        self,
+    ) -> Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct: ...
     def __init__(
         self,
         *,
-        action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct | None = ...,
+        action: Global___SeasonalSavingsActionTrait.SeasonalSavingsActionStruct
+        | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["action", b"action"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -5189,44 +8341,113 @@ class BackplateInfoTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _BackplateResetReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BackplateInfoTrait._BackplateResetReason.ValueType], _builtins.type):
+    class _BackplateResetReasonEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        BACKPLATE_RESET_REASON_UNSPECIFIED: BackplateInfoTrait._BackplateResetReason.ValueType  # 0
-        BACKPLATE_RESET_REASON_INVALID: BackplateInfoTrait._BackplateResetReason.ValueType  # 1
-        BACKPLATE_RESET_REASON_INIT: BackplateInfoTrait._BackplateResetReason.ValueType  # 2
-        BACKPLATE_RESET_REASON_TIMEOUT_COMMS: BackplateInfoTrait._BackplateResetReason.ValueType  # 3
-        BACKPLATE_RESET_REASON_EXIT: BackplateInfoTrait._BackplateResetReason.ValueType  # 4
-        BACKPLATE_RESET_REASON_CORRUPT_TYPE: BackplateInfoTrait._BackplateResetReason.ValueType  # 5
-        BACKPLATE_RESET_REASON_CORRUPT_MESSAGES: BackplateInfoTrait._BackplateResetReason.ValueType  # 6
-        BACKPLATE_RESET_REASON_TIMEOUT_MESSAGE: BackplateInfoTrait._BackplateResetReason.ValueType  # 7
-        BACKPLATE_RESET_REASON_RETRIES: BackplateInfoTrait._BackplateResetReason.ValueType  # 8
-        BACKPLATE_RESET_REASON_ASYNC: BackplateInfoTrait._BackplateResetReason.ValueType  # 9
-        BACKPLATE_RESET_REASON_UPDATE_COMPLETE: BackplateInfoTrait._BackplateResetReason.ValueType  # 10
-        BACKPLATE_RESET_REASON_ATTACH: BackplateInfoTrait._BackplateResetReason.ValueType  # 11
-        BACKPLATE_RESET_REASON_MISSED_TEMP: BackplateInfoTrait._BackplateResetReason.ValueType  # 12
-        BACKPLATE_RESET_REASON_I2C_DOWN: BackplateInfoTrait._BackplateResetReason.ValueType  # 13
-        BACKPLATE_RESET_REASON_TP_ERROR: BackplateInfoTrait._BackplateResetReason.ValueType  # 14
-        BACKPLATE_RESET_REASON_CORRUPTED_TEMP_MSG: BackplateInfoTrait._BackplateResetReason.ValueType  # 15
-        BACKPLATE_RESET_REASON_BP_POWER_MISMATCH: BackplateInfoTrait._BackplateResetReason.ValueType  # 16
+        BACKPLATE_RESET_REASON_UNSPECIFIED: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 0
+        BACKPLATE_RESET_REASON_INVALID: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 1
+        BACKPLATE_RESET_REASON_INIT: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 2
+        BACKPLATE_RESET_REASON_TIMEOUT_COMMS: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 3
+        BACKPLATE_RESET_REASON_EXIT: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 4
+        BACKPLATE_RESET_REASON_CORRUPT_TYPE: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 5
+        BACKPLATE_RESET_REASON_CORRUPT_MESSAGES: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 6
+        BACKPLATE_RESET_REASON_TIMEOUT_MESSAGE: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 7
+        BACKPLATE_RESET_REASON_RETRIES: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 8
+        BACKPLATE_RESET_REASON_ASYNC: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 9
+        BACKPLATE_RESET_REASON_UPDATE_COMPLETE: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 10
+        BACKPLATE_RESET_REASON_ATTACH: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 11
+        BACKPLATE_RESET_REASON_MISSED_TEMP: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 12
+        BACKPLATE_RESET_REASON_I2C_DOWN: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 13
+        BACKPLATE_RESET_REASON_TP_ERROR: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 14
+        BACKPLATE_RESET_REASON_CORRUPTED_TEMP_MSG: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 15
+        BACKPLATE_RESET_REASON_BP_POWER_MISMATCH: (
+            BackplateInfoTrait._BackplateResetReason.ValueType
+        )  # 16
 
-    class BackplateResetReason(_BackplateResetReason, metaclass=_BackplateResetReasonEnumTypeWrapper): ...
-    BACKPLATE_RESET_REASON_UNSPECIFIED: BackplateInfoTrait.BackplateResetReason.ValueType  # 0
-    BACKPLATE_RESET_REASON_INVALID: BackplateInfoTrait.BackplateResetReason.ValueType  # 1
+    class BackplateResetReason(
+        _BackplateResetReason, metaclass=_BackplateResetReasonEnumTypeWrapper
+    ): ...
+    BACKPLATE_RESET_REASON_UNSPECIFIED: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 0
+    BACKPLATE_RESET_REASON_INVALID: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 1
     BACKPLATE_RESET_REASON_INIT: BackplateInfoTrait.BackplateResetReason.ValueType  # 2
-    BACKPLATE_RESET_REASON_TIMEOUT_COMMS: BackplateInfoTrait.BackplateResetReason.ValueType  # 3
+    BACKPLATE_RESET_REASON_TIMEOUT_COMMS: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 3
     BACKPLATE_RESET_REASON_EXIT: BackplateInfoTrait.BackplateResetReason.ValueType  # 4
-    BACKPLATE_RESET_REASON_CORRUPT_TYPE: BackplateInfoTrait.BackplateResetReason.ValueType  # 5
-    BACKPLATE_RESET_REASON_CORRUPT_MESSAGES: BackplateInfoTrait.BackplateResetReason.ValueType  # 6
-    BACKPLATE_RESET_REASON_TIMEOUT_MESSAGE: BackplateInfoTrait.BackplateResetReason.ValueType  # 7
-    BACKPLATE_RESET_REASON_RETRIES: BackplateInfoTrait.BackplateResetReason.ValueType  # 8
+    BACKPLATE_RESET_REASON_CORRUPT_TYPE: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 5
+    BACKPLATE_RESET_REASON_CORRUPT_MESSAGES: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 6
+    BACKPLATE_RESET_REASON_TIMEOUT_MESSAGE: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 7
+    BACKPLATE_RESET_REASON_RETRIES: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 8
     BACKPLATE_RESET_REASON_ASYNC: BackplateInfoTrait.BackplateResetReason.ValueType  # 9
-    BACKPLATE_RESET_REASON_UPDATE_COMPLETE: BackplateInfoTrait.BackplateResetReason.ValueType  # 10
-    BACKPLATE_RESET_REASON_ATTACH: BackplateInfoTrait.BackplateResetReason.ValueType  # 11
-    BACKPLATE_RESET_REASON_MISSED_TEMP: BackplateInfoTrait.BackplateResetReason.ValueType  # 12
-    BACKPLATE_RESET_REASON_I2C_DOWN: BackplateInfoTrait.BackplateResetReason.ValueType  # 13
-    BACKPLATE_RESET_REASON_TP_ERROR: BackplateInfoTrait.BackplateResetReason.ValueType  # 14
-    BACKPLATE_RESET_REASON_CORRUPTED_TEMP_MSG: BackplateInfoTrait.BackplateResetReason.ValueType  # 15
-    BACKPLATE_RESET_REASON_BP_POWER_MISMATCH: BackplateInfoTrait.BackplateResetReason.ValueType  # 16
+    BACKPLATE_RESET_REASON_UPDATE_COMPLETE: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 10
+    BACKPLATE_RESET_REASON_ATTACH: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 11
+    BACKPLATE_RESET_REASON_MISSED_TEMP: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 12
+    BACKPLATE_RESET_REASON_I2C_DOWN: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 13
+    BACKPLATE_RESET_REASON_TP_ERROR: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 14
+    BACKPLATE_RESET_REASON_CORRUPTED_TEMP_MSG: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 15
+    BACKPLATE_RESET_REASON_BP_POWER_MISMATCH: (
+        BackplateInfoTrait.BackplateResetReason.ValueType
+    )  # 16
 
     @_typing.final
     class BackplateResetEvent(_message.Message):
@@ -5239,7 +8460,9 @@ class BackplateInfoTrait(_message.Message):
             *,
             backplateResetReason: Global___BackplateInfoTrait.BackplateResetReason.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["backplateResetReason", b"backplateResetReason"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "backplateResetReason", b"backplateResetReason"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SERIALNUMBER_FIELD_NUMBER: _builtins.int
@@ -5264,7 +8487,20 @@ class BackplateInfoTrait(_message.Message):
         bslVersion: _builtins.str = ...,
         bslInfo: _builtins.str = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bslInfo", b"bslInfo", "bslVersion", b"bslVersion", "model", b"model", "monoInfo", b"monoInfo", "monoVersion", b"monoVersion", "serialNumber", b"serialNumber"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "bslInfo",
+        b"bslInfo",
+        "bslVersion",
+        b"bslVersion",
+        "model",
+        b"model",
+        "monoInfo",
+        b"monoInfo",
+        "monoVersion",
+        b"monoVersion",
+        "serialNumber",
+        b"serialNumber",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___BackplateInfoTrait: _TypeAlias = BackplateInfoTrait  # noqa: Y015
@@ -5277,30 +8513,77 @@ class DemandResponseActionTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DemandResponseActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DemandResponseActionTrait._DemandResponseAction.ValueType], _builtins.type):
+    class _DemandResponseActionEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEMAND_RESPONSE_ACTION_UNSPECIFIED: DemandResponseActionTrait._DemandResponseAction.ValueType  # 0
-        DEMAND_RESPONSE_ACTION_KILL_EVENT: DemandResponseActionTrait._DemandResponseAction.ValueType  # 1
-        DEMAND_RESPONSE_ACTION_STOP: DemandResponseActionTrait._DemandResponseAction.ValueType  # 2
-        DEMAND_RESPONSE_ACTION_EVENT_RECEIVED: DemandResponseActionTrait._DemandResponseAction.ValueType  # 3
-        DEMAND_RESPONSE_ACTION_QUALIFIED: DemandResponseActionTrait._DemandResponseAction.ValueType  # 4
-        DEMAND_RESPONSE_ACTION_CROSSED_EVENT_START_TIME: DemandResponseActionTrait._DemandResponseAction.ValueType  # 5
-        DEMAND_RESPONSE_ACTION_CROSSED_EVENT_END_TIME: DemandResponseActionTrait._DemandResponseAction.ValueType  # 6
-        DEMAND_RESPONSE_ACTION_CROSSED_PEAK_PERIOD_START_TIME: DemandResponseActionTrait._DemandResponseAction.ValueType  # 7
-        DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE: DemandResponseActionTrait._DemandResponseAction.ValueType  # 8
-        DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE_EFFICIENT: DemandResponseActionTrait._DemandResponseAction.ValueType  # 9
+        DEMAND_RESPONSE_ACTION_UNSPECIFIED: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 0
+        DEMAND_RESPONSE_ACTION_KILL_EVENT: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 1
+        DEMAND_RESPONSE_ACTION_STOP: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 2
+        DEMAND_RESPONSE_ACTION_EVENT_RECEIVED: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 3
+        DEMAND_RESPONSE_ACTION_QUALIFIED: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 4
+        DEMAND_RESPONSE_ACTION_CROSSED_EVENT_START_TIME: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 5
+        DEMAND_RESPONSE_ACTION_CROSSED_EVENT_END_TIME: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 6
+        DEMAND_RESPONSE_ACTION_CROSSED_PEAK_PERIOD_START_TIME: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 7
+        DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 8
+        DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE_EFFICIENT: (
+            DemandResponseActionTrait._DemandResponseAction.ValueType
+        )  # 9
 
-    class DemandResponseAction(_DemandResponseAction, metaclass=_DemandResponseActionEnumTypeWrapper): ...
-    DEMAND_RESPONSE_ACTION_UNSPECIFIED: DemandResponseActionTrait.DemandResponseAction.ValueType  # 0
-    DEMAND_RESPONSE_ACTION_KILL_EVENT: DemandResponseActionTrait.DemandResponseAction.ValueType  # 1
-    DEMAND_RESPONSE_ACTION_STOP: DemandResponseActionTrait.DemandResponseAction.ValueType  # 2
-    DEMAND_RESPONSE_ACTION_EVENT_RECEIVED: DemandResponseActionTrait.DemandResponseAction.ValueType  # 3
-    DEMAND_RESPONSE_ACTION_QUALIFIED: DemandResponseActionTrait.DemandResponseAction.ValueType  # 4
-    DEMAND_RESPONSE_ACTION_CROSSED_EVENT_START_TIME: DemandResponseActionTrait.DemandResponseAction.ValueType  # 5
-    DEMAND_RESPONSE_ACTION_CROSSED_EVENT_END_TIME: DemandResponseActionTrait.DemandResponseAction.ValueType  # 6
-    DEMAND_RESPONSE_ACTION_CROSSED_PEAK_PERIOD_START_TIME: DemandResponseActionTrait.DemandResponseAction.ValueType  # 7
-    DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE: DemandResponseActionTrait.DemandResponseAction.ValueType  # 8
-    DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE_EFFICIENT: DemandResponseActionTrait.DemandResponseAction.ValueType  # 9
+    class DemandResponseAction(
+        _DemandResponseAction, metaclass=_DemandResponseActionEnumTypeWrapper
+    ): ...
+    DEMAND_RESPONSE_ACTION_UNSPECIFIED: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 0
+    DEMAND_RESPONSE_ACTION_KILL_EVENT: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 1
+    DEMAND_RESPONSE_ACTION_STOP: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 2
+    DEMAND_RESPONSE_ACTION_EVENT_RECEIVED: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 3
+    DEMAND_RESPONSE_ACTION_QUALIFIED: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 4
+    DEMAND_RESPONSE_ACTION_CROSSED_EVENT_START_TIME: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 5
+    DEMAND_RESPONSE_ACTION_CROSSED_EVENT_END_TIME: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 6
+    DEMAND_RESPONSE_ACTION_CROSSED_PEAK_PERIOD_START_TIME: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 7
+    DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 8
+    DEMAND_RESPONSE_ACTION_TEMPERATURE_CHANGE_EFFICIENT: (
+        DemandResponseActionTrait.DemandResponseAction.ValueType
+    )  # 9
 
     @_typing.final
     class ActionItemsEntry(_message.Message):
@@ -5310,16 +8593,21 @@ class DemandResponseActionTrait(_message.Message):
         VALUE_FIELD_NUMBER: _builtins.int
         key: _builtins.int
         @_builtins.property
-        def value(self) -> Global___DemandResponseActionTrait.DemandResponseEventActionItem: ...
+        def value(
+            self,
+        ) -> Global___DemandResponseActionTrait.DemandResponseEventActionItem: ...
         def __init__(
             self,
             *,
             key: _builtins.int = ...,
-            value: Global___DemandResponseActionTrait.DemandResponseEventActionItem | None = ...,
+            value: Global___DemandResponseActionTrait.DemandResponseEventActionItem
+            | None = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -5329,23 +8617,35 @@ class DemandResponseActionTrait(_message.Message):
         EVENTGUID_FIELD_NUMBER: _builtins.int
         REQUESTEDACTION_FIELD_NUMBER: _builtins.int
         eventGuid: _builtins.str
-        requestedAction: Global___DemandResponseActionTrait.DemandResponseAction.ValueType
+        requestedAction: (
+            Global___DemandResponseActionTrait.DemandResponseAction.ValueType
+        )
         def __init__(
             self,
             *,
             eventGuid: _builtins.str = ...,
             requestedAction: Global___DemandResponseActionTrait.DemandResponseAction.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["eventGuid", b"eventGuid", "requestedAction", b"requestedAction"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "eventGuid", b"eventGuid", "requestedAction", b"requestedAction"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     ACTIONITEMS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def actionItems(self) -> _containers.MessageMap[_builtins.int, Global___DemandResponseActionTrait.DemandResponseEventActionItem]: ...
+    def actionItems(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___DemandResponseActionTrait.DemandResponseEventActionItem
+    ]: ...
     def __init__(
         self,
         *,
-        actionItems: _abc.Mapping[_builtins.int, Global___DemandResponseActionTrait.DemandResponseEventActionItem] | None = ...,
+        actionItems: _abc.Mapping[
+            _builtins.int,
+            Global___DemandResponseActionTrait.DemandResponseEventActionItem,
+        ]
+        | None = ...,
     ) -> None: ...
     _ClearFieldArgType: _TypeAlias = _typing.Literal["actionItems", b"actionItems"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
@@ -5360,7 +8660,10 @@ class FanControlSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FanModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlSettingsTrait._FanMode.ValueType], _builtins.type):
+    class _FanModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[FanControlSettingsTrait._FanMode.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         FAN_MODE_UNSPECIFIED: FanControlSettingsTrait._FanMode.ValueType  # 0
         FAN_MODE_AUTO: FanControlSettingsTrait._FanMode.ValueType  # 1
@@ -5377,7 +8680,12 @@ class FanControlSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FanEquipmentEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlSettingsTrait._FanEquipment.ValueType], _builtins.type):
+    class _FanEquipmentEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            FanControlSettingsTrait._FanEquipment.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         FAN_EQUIPMENT_UNSPECIFIED: FanControlSettingsTrait._FanEquipment.ValueType  # 0
         FAN_EQUIPMENT_FAN_ONLY: FanControlSettingsTrait._FanEquipment.ValueType  # 1
@@ -5442,9 +8750,47 @@ class FanControlSettingsTrait(_message.Message):
         ventilationEnabled: _builtins.bool = ...,
         ventilationForHeatingAndCoolingEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["timerDuration", b"timerDuration", "timerEnd", b"timerEnd", "ventilationOnTimePerDay", b"ventilationOnTimePerDay"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "timerDuration",
+        b"timerDuration",
+        "timerEnd",
+        b"timerEnd",
+        "ventilationOnTimePerDay",
+        b"ventilationOnTimePerDay",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacOverrideSpeed", b"hvacOverrideSpeed", "mode", b"mode", "scheduleDutyCycle", b"scheduleDutyCycle", "scheduleEndTime", b"scheduleEndTime", "scheduleSpeed", b"scheduleSpeed", "scheduleStartTime", b"scheduleStartTime", "smartVentilationEnabled", b"smartVentilationEnabled", "timerDuration", b"timerDuration", "timerEnd", b"timerEnd", "timerEquipment", b"timerEquipment", "timerIsIndefinite", b"timerIsIndefinite", "timerSpeed", b"timerSpeed", "ventilationEnabled", b"ventilationEnabled", "ventilationForHeatingAndCoolingEnabled", b"ventilationForHeatingAndCoolingEnabled", "ventilationOnTimePerDay", b"ventilationOnTimePerDay"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hvacOverrideSpeed",
+        b"hvacOverrideSpeed",
+        "mode",
+        b"mode",
+        "scheduleDutyCycle",
+        b"scheduleDutyCycle",
+        "scheduleEndTime",
+        b"scheduleEndTime",
+        "scheduleSpeed",
+        b"scheduleSpeed",
+        "scheduleStartTime",
+        b"scheduleStartTime",
+        "smartVentilationEnabled",
+        b"smartVentilationEnabled",
+        "timerDuration",
+        b"timerDuration",
+        "timerEnd",
+        b"timerEnd",
+        "timerEquipment",
+        b"timerEquipment",
+        "timerIsIndefinite",
+        b"timerIsIndefinite",
+        "timerSpeed",
+        b"timerSpeed",
+        "ventilationEnabled",
+        b"ventilationEnabled",
+        "ventilationForHeatingAndCoolingEnabled",
+        b"ventilationForHeatingAndCoolingEnabled",
+        "ventilationOnTimePerDay",
+        b"ventilationOnTimePerDay",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FanControlSettingsTrait: _TypeAlias = FanControlSettingsTrait  # noqa: Y015
@@ -5457,20 +8803,47 @@ class HeatPumpControlSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HeatPumpSavingsModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType], _builtins.type):
+    class _HeatPumpSavingsModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HEAT_PUMP_SAVINGS_MODE_UNSPECIFIED: HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType  # 0
-        HEAT_PUMP_SAVINGS_MODE_MAX_SAVINGS: HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType  # 1
-        HEAT_PUMP_SAVINGS_MODE_BALANCED: HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType  # 2
-        HEAT_PUMP_SAVINGS_MODE_MAX_COMFORT: HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType  # 3
-        HEAT_PUMP_SAVINGS_MODE_OFF: HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType  # 4
+        HEAT_PUMP_SAVINGS_MODE_UNSPECIFIED: (
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        )  # 0
+        HEAT_PUMP_SAVINGS_MODE_MAX_SAVINGS: (
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        )  # 1
+        HEAT_PUMP_SAVINGS_MODE_BALANCED: (
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        )  # 2
+        HEAT_PUMP_SAVINGS_MODE_MAX_COMFORT: (
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        )  # 3
+        HEAT_PUMP_SAVINGS_MODE_OFF: (
+            HeatPumpControlSettingsTrait._HeatPumpSavingsMode.ValueType
+        )  # 4
 
-    class HeatPumpSavingsMode(_HeatPumpSavingsMode, metaclass=_HeatPumpSavingsModeEnumTypeWrapper): ...
-    HEAT_PUMP_SAVINGS_MODE_UNSPECIFIED: HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType  # 0
-    HEAT_PUMP_SAVINGS_MODE_MAX_SAVINGS: HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType  # 1
-    HEAT_PUMP_SAVINGS_MODE_BALANCED: HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType  # 2
-    HEAT_PUMP_SAVINGS_MODE_MAX_COMFORT: HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType  # 3
-    HEAT_PUMP_SAVINGS_MODE_OFF: HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType  # 4
+    class HeatPumpSavingsMode(
+        _HeatPumpSavingsMode, metaclass=_HeatPumpSavingsModeEnumTypeWrapper
+    ): ...
+    HEAT_PUMP_SAVINGS_MODE_UNSPECIFIED: (
+        HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )  # 0
+    HEAT_PUMP_SAVINGS_MODE_MAX_SAVINGS: (
+        HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )  # 1
+    HEAT_PUMP_SAVINGS_MODE_BALANCED: (
+        HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )  # 2
+    HEAT_PUMP_SAVINGS_MODE_MAX_COMFORT: (
+        HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )  # 3
+    HEAT_PUMP_SAVINGS_MODE_OFF: (
+        HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )  # 4
 
     HEATPUMPAUXTHRESHOLD_FIELD_NUMBER: _builtins.int
     HEATPUMPCOMPTHRESHOLD_FIELD_NUMBER: _builtins.int
@@ -5479,7 +8852,9 @@ class HeatPumpControlSettingsTrait(_message.Message):
     AUXMINDELAY_FIELD_NUMBER: _builtins.int
     AUXUPSTAGETHRESHOLD_FIELD_NUMBER: _builtins.int
     DUALFUELCHANGEOVERTHRESHOLD_FIELD_NUMBER: _builtins.int
-    heatPumpSavingsMode: Global___HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    heatPumpSavingsMode: (
+        Global___HeatPumpControlSettingsTrait.HeatPumpSavingsMode.ValueType
+    )
     @_builtins.property
     def heatPumpAuxThreshold(self) -> Global___HvacControl.TemperatureThreshold: ...
     @_builtins.property
@@ -5503,9 +8878,37 @@ class HeatPumpControlSettingsTrait(_message.Message):
         auxUpstageThreshold: _duration_pb2.Duration | None = ...,
         dualFuelChangeoverThreshold: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["auxMinDelay", b"auxMinDelay", "auxMinDelta", b"auxMinDelta", "auxUpstageThreshold", b"auxUpstageThreshold", "dualFuelChangeoverThreshold", b"dualFuelChangeoverThreshold", "heatPumpAuxThreshold", b"heatPumpAuxThreshold", "heatPumpCompThreshold", b"heatPumpCompThreshold"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "auxMinDelay",
+        b"auxMinDelay",
+        "auxMinDelta",
+        b"auxMinDelta",
+        "auxUpstageThreshold",
+        b"auxUpstageThreshold",
+        "dualFuelChangeoverThreshold",
+        b"dualFuelChangeoverThreshold",
+        "heatPumpAuxThreshold",
+        b"heatPumpAuxThreshold",
+        "heatPumpCompThreshold",
+        b"heatPumpCompThreshold",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["auxMinDelay", b"auxMinDelay", "auxMinDelta", b"auxMinDelta", "auxUpstageThreshold", b"auxUpstageThreshold", "dualFuelChangeoverThreshold", b"dualFuelChangeoverThreshold", "heatPumpAuxThreshold", b"heatPumpAuxThreshold", "heatPumpCompThreshold", b"heatPumpCompThreshold", "heatPumpSavingsMode", b"heatPumpSavingsMode"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "auxMinDelay",
+        b"auxMinDelay",
+        "auxMinDelta",
+        b"auxMinDelta",
+        "auxUpstageThreshold",
+        b"auxUpstageThreshold",
+        "dualFuelChangeoverThreshold",
+        b"dualFuelChangeoverThreshold",
+        "heatPumpAuxThreshold",
+        b"heatPumpAuxThreshold",
+        "heatPumpCompThreshold",
+        b"heatPumpCompThreshold",
+        "heatPumpSavingsMode",
+        b"heatPumpSavingsMode",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HeatPumpControlSettingsTrait: _TypeAlias = HeatPumpControlSettingsTrait  # noqa: Y015
@@ -5518,14 +8921,29 @@ class HvacVendorPartnerInfoTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HvacVendorPartnerEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType], _builtins.type):
+    class _HvacVendorPartnerEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HVAC_VENDOR_PARTNER_UNSPECIFIED: HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType  # 0
-        HVAC_VENDOR_PARTNER_GOODMAN: HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType  # 1
+        HVAC_VENDOR_PARTNER_UNSPECIFIED: (
+            HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType
+        )  # 0
+        HVAC_VENDOR_PARTNER_GOODMAN: (
+            HvacVendorPartnerInfoTrait._HvacVendorPartner.ValueType
+        )  # 1
 
-    class HvacVendorPartner(_HvacVendorPartner, metaclass=_HvacVendorPartnerEnumTypeWrapper): ...
-    HVAC_VENDOR_PARTNER_UNSPECIFIED: HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType  # 0
-    HVAC_VENDOR_PARTNER_GOODMAN: HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType  # 1
+    class HvacVendorPartner(
+        _HvacVendorPartner, metaclass=_HvacVendorPartnerEnumTypeWrapper
+    ): ...
+    HVAC_VENDOR_PARTNER_UNSPECIFIED: (
+        HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType
+    )  # 0
+    HVAC_VENDOR_PARTNER_GOODMAN: (
+        HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType
+    )  # 1
 
     HVACVENDORPARTNER_FIELD_NUMBER: _builtins.int
     hvacVendorPartner: Global___HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType
@@ -5534,7 +8952,9 @@ class HvacVendorPartnerInfoTrait(_message.Message):
         *,
         hvacVendorPartner: Global___HvacVendorPartnerInfoTrait.HvacVendorPartner.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacVendorPartner", b"hvacVendorPartner"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hvacVendorPartner", b"hvacVendorPartner"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HvacVendorPartnerInfoTrait: _TypeAlias = HvacVendorPartnerInfoTrait  # noqa: Y015
@@ -5547,13 +8967,28 @@ class NestProtectAlarmingTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmingStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[NestProtectAlarmingTrait._AlarmingStatus.ValueType], _builtins.type):
+    class _AlarmingStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ALARMING_STATUS_UNSPECIFIED: NestProtectAlarmingTrait._AlarmingStatus.ValueType  # 0
-        ALARMING_STATUS_HEADSUP_ONE: NestProtectAlarmingTrait._AlarmingStatus.ValueType  # 1
-        ALARMING_STATUS_HEADSUP_TWO: NestProtectAlarmingTrait._AlarmingStatus.ValueType  # 2
-        ALARMING_STATUS_ALARMING: NestProtectAlarmingTrait._AlarmingStatus.ValueType  # 3
-        ALARMING_STATUS_NOT_ALARMING: NestProtectAlarmingTrait._AlarmingStatus.ValueType  # 4
+        ALARMING_STATUS_UNSPECIFIED: (
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        )  # 0
+        ALARMING_STATUS_HEADSUP_ONE: (
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        )  # 1
+        ALARMING_STATUS_HEADSUP_TWO: (
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        )  # 2
+        ALARMING_STATUS_ALARMING: (
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        )  # 3
+        ALARMING_STATUS_NOT_ALARMING: (
+            NestProtectAlarmingTrait._AlarmingStatus.ValueType
+        )  # 4
 
     class AlarmingStatus(_AlarmingStatus, metaclass=_AlarmingStatusEnumTypeWrapper): ...
     ALARMING_STATUS_UNSPECIFIED: NestProtectAlarmingTrait.AlarmingStatus.ValueType  # 0
@@ -5579,7 +9014,9 @@ class NestProtectAlarmingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -5599,7 +9036,9 @@ class NestProtectAlarmingTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -5627,24 +9066,53 @@ class NestProtectAlarmingTrait(_message.Message):
             hushedState: _builtins.bool = ...,
             spokenWhereId: _common_pb2.StringRef | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "spokenWhereId", b"spokenWhereId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "deviceId", b"deviceId", "spokenWhereId", b"spokenWhereId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["coStatus", b"coStatus", "deviceId", b"deviceId", "hushedState", b"hushedState", "smokeStatus", b"smokeStatus", "spokenWhereId", b"spokenWhereId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "coStatus",
+            b"coStatus",
+            "deviceId",
+            b"deviceId",
+            "hushedState",
+            b"hushedState",
+            "smokeStatus",
+            b"smokeStatus",
+            "spokenWhereId",
+            b"spokenWhereId",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     NESTPROTECT_FIELD_NUMBER: _builtins.int
     TRANSIENTPROTECTITEM_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def nestProtect(self) -> _containers.MessageMap[_builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem]: ...
+    def nestProtect(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem
+    ]: ...
     @_builtins.property
-    def transientProtectItem(self) -> _containers.MessageMap[_builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem]: ...
+    def transientProtectItem(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem
+    ]: ...
     def __init__(
         self,
         *,
-        nestProtect: _abc.Mapping[_builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem] | None = ...,
-        transientProtectItem: _abc.Mapping[_builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem] | None = ...,
+        nestProtect: _abc.Mapping[
+            _builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem
+        ]
+        | None = ...,
+        transientProtectItem: _abc.Mapping[
+            _builtins.int, Global___NestProtectAlarmingTrait.NestProtectItem
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["nestProtect", b"nestProtect", "transientProtectItem", b"transientProtectItem"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "nestProtect", b"nestProtect", "transientProtectItem", b"transientProtectItem"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___NestProtectAlarmingTrait: _TypeAlias = NestProtectAlarmingTrait  # noqa: Y015
@@ -5657,15 +9125,32 @@ class PreconditioningTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _PreconditioningStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PreconditioningTrait._PreconditioningState.ValueType], _builtins.type):
+    class _PreconditioningStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            PreconditioningTrait._PreconditioningState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        PRECONDITIONING_STATE_UNSPECIFIED: PreconditioningTrait._PreconditioningState.ValueType  # 0
-        PRECONDITIONING_STATE_NONE: PreconditioningTrait._PreconditioningState.ValueType  # 1
-        PRECONDITIONING_STATE_HEAT: PreconditioningTrait._PreconditioningState.ValueType  # 2
-        PRECONDITIONING_STATE_COOL: PreconditioningTrait._PreconditioningState.ValueType  # 3
+        PRECONDITIONING_STATE_UNSPECIFIED: (
+            PreconditioningTrait._PreconditioningState.ValueType
+        )  # 0
+        PRECONDITIONING_STATE_NONE: (
+            PreconditioningTrait._PreconditioningState.ValueType
+        )  # 1
+        PRECONDITIONING_STATE_HEAT: (
+            PreconditioningTrait._PreconditioningState.ValueType
+        )  # 2
+        PRECONDITIONING_STATE_COOL: (
+            PreconditioningTrait._PreconditioningState.ValueType
+        )  # 3
 
-    class PreconditioningState(_PreconditioningState, metaclass=_PreconditioningStateEnumTypeWrapper): ...
-    PRECONDITIONING_STATE_UNSPECIFIED: PreconditioningTrait.PreconditioningState.ValueType  # 0
+    class PreconditioningState(
+        _PreconditioningState, metaclass=_PreconditioningStateEnumTypeWrapper
+    ): ...
+    PRECONDITIONING_STATE_UNSPECIFIED: (
+        PreconditioningTrait.PreconditioningState.ValueType
+    )  # 0
     PRECONDITIONING_STATE_NONE: PreconditioningTrait.PreconditioningState.ValueType  # 1
     PRECONDITIONING_STATE_HEAT: PreconditioningTrait.PreconditioningState.ValueType  # 2
     PRECONDITIONING_STATE_COOL: PreconditioningTrait.PreconditioningState.ValueType  # 3
@@ -5687,7 +9172,14 @@ class PreconditioningTrait(_message.Message):
             state: Global___PreconditioningTrait.PreconditioningState.ValueType = ...,
             priorState: Global___PreconditioningTrait.PreconditioningState.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["preconditioningActive", b"preconditioningActive", "priorState", b"priorState", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "preconditioningActive",
+            b"preconditioningActive",
+            "priorState",
+            b"priorState",
+            "state",
+            b"state",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     PRECONDITIONINGACTIVE_FIELD_NUMBER: _builtins.int
@@ -5700,7 +9192,9 @@ class PreconditioningTrait(_message.Message):
         preconditioningActive: _builtins.bool = ...,
         state: Global___PreconditioningTrait.PreconditioningState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["preconditioningActive", b"preconditioningActive", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "preconditioningActive", b"preconditioningActive", "state", b"state"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PreconditioningTrait: _TypeAlias = PreconditioningTrait  # noqa: Y015
@@ -5713,14 +9207,19 @@ class ResetTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ResetScheduleToEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ResetTrait._ResetScheduleTo.ValueType], _builtins.type):
+    class _ResetScheduleToEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[ResetTrait._ResetScheduleTo.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         RESET_SCHEDULE_TO_UNSPECIFIED: ResetTrait._ResetScheduleTo.ValueType  # 0
         RESET_SCHEDULE_TO_BLANK: ResetTrait._ResetScheduleTo.ValueType  # 1
         RESET_SCHEDULE_TO_BASIC: ResetTrait._ResetScheduleTo.ValueType  # 2
         RESET_SCHEDULE_TO_RELEARNABLE_BASIC: ResetTrait._ResetScheduleTo.ValueType  # 3
 
-    class ResetScheduleTo(_ResetScheduleTo, metaclass=_ResetScheduleToEnumTypeWrapper): ...
+    class ResetScheduleTo(
+        _ResetScheduleTo, metaclass=_ResetScheduleToEnumTypeWrapper
+    ): ...
     RESET_SCHEDULE_TO_UNSPECIFIED: ResetTrait.ResetScheduleTo.ValueType  # 0
     RESET_SCHEDULE_TO_BLANK: ResetTrait.ResetScheduleTo.ValueType  # 1
     RESET_SCHEDULE_TO_BASIC: ResetTrait.ResetScheduleTo.ValueType  # 2
@@ -5754,14 +9253,23 @@ class SafetyTemperatureTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SafetyTempStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SafetyTemperatureTrait._SafetyTempState.ValueType], _builtins.type):
+    class _SafetyTempStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            SafetyTemperatureTrait._SafetyTempState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        SAFETY_TEMP_STATE_UNSPECIFIED: SafetyTemperatureTrait._SafetyTempState.ValueType  # 0
+        SAFETY_TEMP_STATE_UNSPECIFIED: (
+            SafetyTemperatureTrait._SafetyTempState.ValueType
+        )  # 0
         SAFETY_TEMP_STATE_NONE: SafetyTemperatureTrait._SafetyTempState.ValueType  # 1
         SAFETY_TEMP_STATE_HEAT: SafetyTemperatureTrait._SafetyTempState.ValueType  # 2
         SAFETY_TEMP_STATE_COOL: SafetyTemperatureTrait._SafetyTempState.ValueType  # 3
 
-    class SafetyTempState(_SafetyTempState, metaclass=_SafetyTempStateEnumTypeWrapper): ...
+    class SafetyTempState(
+        _SafetyTempState, metaclass=_SafetyTempStateEnumTypeWrapper
+    ): ...
     SAFETY_TEMP_STATE_UNSPECIFIED: SafetyTemperatureTrait.SafetyTempState.ValueType  # 0
     SAFETY_TEMP_STATE_NONE: SafetyTemperatureTrait.SafetyTempState.ValueType  # 1
     SAFETY_TEMP_STATE_HEAT: SafetyTemperatureTrait.SafetyTempState.ValueType  # 2
@@ -5787,7 +9295,9 @@ class SafetyTemperatureTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["safetyTemp", b"safetyTemp"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["priorState", b"priorState", "safetyTemp", b"safetyTemp", "state", b"state"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "priorState", b"priorState", "safetyTemp", b"safetyTemp", "state", b"state"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SAFETYTEMPACTIVATINGHVAC_FIELD_NUMBER: _builtins.int
@@ -5800,7 +9310,9 @@ class SafetyTemperatureTrait(_message.Message):
         safetyTempActivatingHvac: _builtins.bool = ...,
         state: Global___SafetyTemperatureTrait.SafetyTempState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["safetyTempActivatingHvac", b"safetyTempActivatingHvac", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "safetyTempActivatingHvac", b"safetyTempActivatingHvac", "state", b"state"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyTemperatureTrait: _TypeAlias = SafetyTemperatureTrait  # noqa: Y015
@@ -5829,7 +9341,14 @@ class TargetTemperatureSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["originator", b"originator"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["method", b"method", "originator", b"originator", "systemEnabled", b"systemEnabled"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "method",
+            b"method",
+            "originator",
+            b"originator",
+            "systemEnabled",
+            b"systemEnabled",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -5858,26 +9377,51 @@ class TargetTemperatureSettingsTrait(_message.Message):
             actor: Global___HvacActor.HvacActorStruct | None = ...,
             changeReason: Global___HvacControl.TargetChangeReason.ValueType = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor", "coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "actor",
+            b"actor",
+            "coolingTarget",
+            b"coolingTarget",
+            "heatingTarget",
+            b"heatingTarget",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["actor", b"actor", "changeReason", b"changeReason", "coolingTarget", b"coolingTarget", "heatingTarget", b"heatingTarget", "setpointType", b"setpointType"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "actor",
+            b"actor",
+            "changeReason",
+            b"changeReason",
+            "coolingTarget",
+            b"coolingTarget",
+            "heatingTarget",
+            b"heatingTarget",
+            "setpointType",
+            b"setpointType",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     TARGETTEMPERATURE_FIELD_NUMBER: _builtins.int
     ENABLED_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def targetTemperature(self) -> Global___SetPointScheduleSettingsTrait.TemperatureSetPoint: ...
+    def targetTemperature(
+        self,
+    ) -> Global___SetPointScheduleSettingsTrait.TemperatureSetPoint: ...
     @_builtins.property
     def enabled(self) -> _wrappers_pb2.BoolValue: ...
     def __init__(
         self,
         *,
-        targetTemperature: Global___SetPointScheduleSettingsTrait.TemperatureSetPoint | None = ...,
+        targetTemperature: Global___SetPointScheduleSettingsTrait.TemperatureSetPoint
+        | None = ...,
         enabled: _wrappers_pb2.BoolValue | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "targetTemperature", b"targetTemperature"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "enabled", b"enabled", "targetTemperature", b"targetTemperature"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "targetTemperature", b"targetTemperature"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enabled", b"enabled", "targetTemperature", b"targetTemperature"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TargetTemperatureSettingsTrait: _TypeAlias = TargetTemperatureSettingsTrait  # noqa: Y015
@@ -5897,7 +9441,9 @@ class AirwaveTrait(_message.Message):
             *,
             fanCoolingActive: _builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fanCoolingActive", b"fanCoolingActive"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fanCoolingActive", b"fanCoolingActive"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     FANCOOLINGACTIVE_FIELD_NUMBER: _builtins.int
@@ -5910,7 +9456,12 @@ class AirwaveTrait(_message.Message):
         fanCoolingActive: _builtins.bool = ...,
         fanCoolingReadiness: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["fanCoolingActive", b"fanCoolingActive", "fanCoolingReadiness", b"fanCoolingReadiness"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "fanCoolingActive",
+        b"fanCoolingActive",
+        "fanCoolingReadiness",
+        b"fanCoolingReadiness",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AirwaveTrait: _TypeAlias = AirwaveTrait  # noqa: Y015
@@ -5923,12 +9474,19 @@ class CoolToDryTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CoolToDryStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CoolToDryTrait._CoolToDryState.ValueType], _builtins.type):
+    class _CoolToDryStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[CoolToDryTrait._CoolToDryState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         COOL_TO_DRY_STATE_UNSPECIFIED: CoolToDryTrait._CoolToDryState.ValueType  # 0
         COOL_TO_DRY_STATE_OFF: CoolToDryTrait._CoolToDryState.ValueType  # 1
-        COOL_TO_DRY_STATE_ON_MOLD_PREVENTION: CoolToDryTrait._CoolToDryState.ValueType  # 2
-        COOL_TO_DRY_STATE_ON_AC_INTEGRATED: CoolToDryTrait._CoolToDryState.ValueType  # 3
+        COOL_TO_DRY_STATE_ON_MOLD_PREVENTION: (
+            CoolToDryTrait._CoolToDryState.ValueType
+        )  # 2
+        COOL_TO_DRY_STATE_ON_AC_INTEGRATED: (
+            CoolToDryTrait._CoolToDryState.ValueType
+        )  # 3
 
     class CoolToDryState(_CoolToDryState, metaclass=_CoolToDryStateEnumTypeWrapper): ...
     COOL_TO_DRY_STATE_UNSPECIFIED: CoolToDryTrait.CoolToDryState.ValueType  # 0
@@ -5946,7 +9504,9 @@ class CoolToDryTrait(_message.Message):
         isActive: _builtins.bool = ...,
         state: Global___CoolToDryTrait.CoolToDryState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["isActive", b"isActive", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "isActive", b"isActive", "state", b"state"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___CoolToDryTrait: _TypeAlias = CoolToDryTrait  # noqa: Y015
@@ -5959,31 +9519,65 @@ class EnterpriseProgramsEntitlementsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _EnterpriseProgramEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType], _builtins.type):
+    class _EnterpriseProgramEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        ENTERPRISE_PROGRAM_UNSPECIFIED: EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType  # 0
-        ENTERPRISE_PROGRAM_SEASONAL_SAVINGS: EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType  # 1
-        ENTERPRISE_PROGRAM_RUSH_HOUR_REWARDS: EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType  # 2
-        ENTERPRISE_PROGRAM_TIME_OF_SAVINGS: EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType  # 4
+        ENTERPRISE_PROGRAM_UNSPECIFIED: (
+            EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType
+        )  # 0
+        ENTERPRISE_PROGRAM_SEASONAL_SAVINGS: (
+            EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType
+        )  # 1
+        ENTERPRISE_PROGRAM_RUSH_HOUR_REWARDS: (
+            EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType
+        )  # 2
+        ENTERPRISE_PROGRAM_TIME_OF_SAVINGS: (
+            EnterpriseProgramsEntitlementsTrait._EnterpriseProgram.ValueType
+        )  # 4
 
-    class EnterpriseProgram(_EnterpriseProgram, metaclass=_EnterpriseProgramEnumTypeWrapper): ...
-    ENTERPRISE_PROGRAM_UNSPECIFIED: EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType  # 0
-    ENTERPRISE_PROGRAM_SEASONAL_SAVINGS: EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType  # 1
-    ENTERPRISE_PROGRAM_RUSH_HOUR_REWARDS: EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType  # 2
-    ENTERPRISE_PROGRAM_TIME_OF_SAVINGS: EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType  # 4
+    class EnterpriseProgram(
+        _EnterpriseProgram, metaclass=_EnterpriseProgramEnumTypeWrapper
+    ): ...
+    ENTERPRISE_PROGRAM_UNSPECIFIED: (
+        EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+    )  # 0
+    ENTERPRISE_PROGRAM_SEASONAL_SAVINGS: (
+        EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+    )  # 1
+    ENTERPRISE_PROGRAM_RUSH_HOUR_REWARDS: (
+        EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+    )  # 2
+    ENTERPRISE_PROGRAM_TIME_OF_SAVINGS: (
+        EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+    )  # 4
 
     SUPPORTEDPROGRAMS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def supportedPrograms(self) -> _containers.RepeatedScalarFieldContainer[Global___EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType]: ...
+    def supportedPrograms(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+    ]: ...
     def __init__(
         self,
         *,
-        supportedPrograms: _abc.Iterable[Global___EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType] | None = ...,
+        supportedPrograms: _abc.Iterable[
+            Global___EnterpriseProgramsEntitlementsTrait.EnterpriseProgram.ValueType
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["supportedPrograms", b"supportedPrograms"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "supportedPrograms", b"supportedPrograms"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-Global___EnterpriseProgramsEntitlementsTrait: _TypeAlias = EnterpriseProgramsEntitlementsTrait  # noqa: Y015
+Global___EnterpriseProgramsEntitlementsTrait: _TypeAlias = (
+    EnterpriseProgramsEntitlementsTrait  # noqa: Y015
+)
 
 @_typing.final
 class FanControlCapabilitiesTrait(_message.Message):
@@ -5993,16 +9587,33 @@ class FanControlCapabilitiesTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _FanTotalStagesEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[FanControlCapabilitiesTrait._FanTotalStages.ValueType], _builtins.type):
+    class _FanTotalStagesEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        FAN_TOTAL_STAGES_UNSPECIFIED: FanControlCapabilitiesTrait._FanTotalStages.ValueType  # 0
-        FAN_TOTAL_STAGES_STAGE1: FanControlCapabilitiesTrait._FanTotalStages.ValueType  # 1
-        FAN_TOTAL_STAGES_STAGE2: FanControlCapabilitiesTrait._FanTotalStages.ValueType  # 2
-        FAN_TOTAL_STAGES_STAGE3: FanControlCapabilitiesTrait._FanTotalStages.ValueType  # 3
-        FAN_TOTAL_STAGES_NONE: FanControlCapabilitiesTrait._FanTotalStages.ValueType  # 4
+        FAN_TOTAL_STAGES_UNSPECIFIED: (
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        )  # 0
+        FAN_TOTAL_STAGES_STAGE1: (
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        )  # 1
+        FAN_TOTAL_STAGES_STAGE2: (
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        )  # 2
+        FAN_TOTAL_STAGES_STAGE3: (
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        )  # 3
+        FAN_TOTAL_STAGES_NONE: (
+            FanControlCapabilitiesTrait._FanTotalStages.ValueType
+        )  # 4
 
     class FanTotalStages(_FanTotalStages, metaclass=_FanTotalStagesEnumTypeWrapper): ...
-    FAN_TOTAL_STAGES_UNSPECIFIED: FanControlCapabilitiesTrait.FanTotalStages.ValueType  # 0
+    FAN_TOTAL_STAGES_UNSPECIFIED: (
+        FanControlCapabilitiesTrait.FanTotalStages.ValueType
+    )  # 0
     FAN_TOTAL_STAGES_STAGE1: FanControlCapabilitiesTrait.FanTotalStages.ValueType  # 1
     FAN_TOTAL_STAGES_STAGE2: FanControlCapabilitiesTrait.FanTotalStages.ValueType  # 2
     FAN_TOTAL_STAGES_STAGE3: FanControlCapabilitiesTrait.FanTotalStages.ValueType  # 3
@@ -6025,9 +9636,20 @@ class FanControlCapabilitiesTrait(_message.Message):
         supportsTimerInOffMode: _builtins.bool = ...,
         maxTimerDuration: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["maxTimerDuration", b"maxTimerDuration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "maxTimerDuration", b"maxTimerDuration"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["maxAvailableSpeed", b"maxAvailableSpeed", "maxTimerDuration", b"maxTimerDuration", "supportsIndefiniteTimer", b"supportsIndefiniteTimer", "supportsTimerInOffMode", b"supportsTimerInOffMode"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "maxAvailableSpeed",
+        b"maxAvailableSpeed",
+        "maxTimerDuration",
+        b"maxTimerDuration",
+        "supportsIndefiniteTimer",
+        b"supportsIndefiniteTimer",
+        "supportsTimerInOffMode",
+        b"supportsTimerInOffMode",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FanControlCapabilitiesTrait: _TypeAlias = FanControlCapabilitiesTrait  # noqa: Y015
@@ -6052,9 +9674,19 @@ class FilterReminderSettingsTrait(_message.Message):
             filterChangedDate: _timestamp_pb2.Timestamp | None = ...,
             filterChangedSetDate: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["filterChangedDate", b"filterChangedDate", "filterChangedSetDate", b"filterChangedSetDate"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "filterChangedDate",
+            b"filterChangedDate",
+            "filterChangedSetDate",
+            b"filterChangedSetDate",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["filterChangedDate", b"filterChangedDate", "filterChangedSetDate", b"filterChangedSetDate"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "filterChangedDate",
+            b"filterChangedDate",
+            "filterChangedSetDate",
+            b"filterChangedSetDate",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     FILTERCHANGEDDATE_FIELD_NUMBER: _builtins.int
@@ -6076,9 +9708,25 @@ class FilterReminderSettingsTrait(_message.Message):
         filterReminderEnabled: _builtins.bool = ...,
         filterReplacementThreshold: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["filterChangedDate", b"filterChangedDate", "filterChangedSetDate", b"filterChangedSetDate", "filterReplacementThreshold", b"filterReplacementThreshold"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "filterChangedDate",
+        b"filterChangedDate",
+        "filterChangedSetDate",
+        b"filterChangedSetDate",
+        "filterReplacementThreshold",
+        b"filterReplacementThreshold",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["filterChangedDate", b"filterChangedDate", "filterChangedSetDate", b"filterChangedSetDate", "filterReminderEnabled", b"filterReminderEnabled", "filterReplacementThreshold", b"filterReplacementThreshold"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "filterChangedDate",
+        b"filterChangedDate",
+        "filterChangedSetDate",
+        b"filterChangedSetDate",
+        "filterReminderEnabled",
+        b"filterReminderEnabled",
+        "filterReplacementThreshold",
+        b"filterReplacementThreshold",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___FilterReminderSettingsTrait: _TypeAlias = FilterReminderSettingsTrait  # noqa: Y015
@@ -6091,25 +9739,50 @@ class HeatLinkSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HeatLinkConnectionTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType], _builtins.type):
+    class _HeatLinkConnectionTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HEAT_LINK_CONNECTION_TYPE_UNSPECIFIED: HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType  # 0
-        HEAT_LINK_CONNECTION_TYPE_ON_OFF: HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType  # 1
-        HEAT_LINK_CONNECTION_TYPE_OPENTHERM: HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType  # 2
-        HEAT_LINK_CONNECTION_TYPE_NOT_CONNECTED: HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType  # 3
+        HEAT_LINK_CONNECTION_TYPE_UNSPECIFIED: (
+            HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType
+        )  # 0
+        HEAT_LINK_CONNECTION_TYPE_ON_OFF: (
+            HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType
+        )  # 1
+        HEAT_LINK_CONNECTION_TYPE_OPENTHERM: (
+            HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType
+        )  # 2
+        HEAT_LINK_CONNECTION_TYPE_NOT_CONNECTED: (
+            HeatLinkSettingsTrait._HeatLinkConnectionType.ValueType
+        )  # 3
 
-    class HeatLinkConnectionType(_HeatLinkConnectionType, metaclass=_HeatLinkConnectionTypeEnumTypeWrapper): ...
-    HEAT_LINK_CONNECTION_TYPE_UNSPECIFIED: HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType  # 0
-    HEAT_LINK_CONNECTION_TYPE_ON_OFF: HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType  # 1
-    HEAT_LINK_CONNECTION_TYPE_OPENTHERM: HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType  # 2
-    HEAT_LINK_CONNECTION_TYPE_NOT_CONNECTED: HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType  # 3
+    class HeatLinkConnectionType(
+        _HeatLinkConnectionType, metaclass=_HeatLinkConnectionTypeEnumTypeWrapper
+    ): ...
+    HEAT_LINK_CONNECTION_TYPE_UNSPECIFIED: (
+        HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    )  # 0
+    HEAT_LINK_CONNECTION_TYPE_ON_OFF: (
+        HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    )  # 1
+    HEAT_LINK_CONNECTION_TYPE_OPENTHERM: (
+        HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    )  # 2
+    HEAT_LINK_CONNECTION_TYPE_NOT_CONNECTED: (
+        HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    )  # 3
 
     MANUALMODEACTIVE_FIELD_NUMBER: _builtins.int
     HEATCONNECTIONTYPE_FIELD_NUMBER: _builtins.int
     HOTWATERCONNECTIONTYPE_FIELD_NUMBER: _builtins.int
     manualModeActive: _builtins.bool
     heatConnectionType: Global___HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
-    hotWaterConnectionType: Global___HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    hotWaterConnectionType: (
+        Global___HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType
+    )
     def __init__(
         self,
         *,
@@ -6117,7 +9790,14 @@ class HeatLinkSettingsTrait(_message.Message):
         heatConnectionType: Global___HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType = ...,
         hotWaterConnectionType: Global___HeatLinkSettingsTrait.HeatLinkConnectionType.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["heatConnectionType", b"heatConnectionType", "hotWaterConnectionType", b"hotWaterConnectionType", "manualModeActive", b"manualModeActive"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "heatConnectionType",
+        b"heatConnectionType",
+        "hotWaterConnectionType",
+        b"hotWaterConnectionType",
+        "manualModeActive",
+        b"manualModeActive",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HeatLinkSettingsTrait: _TypeAlias = HeatLinkSettingsTrait  # noqa: Y015
@@ -6130,20 +9810,37 @@ class HeatLinkTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HvacConnectionStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HeatLinkTrait._HvacConnectionState.ValueType], _builtins.type):
+    class _HvacConnectionStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HeatLinkTrait._HvacConnectionState.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        HVAC_CONNECTION_STATE_UNSPECIFIED: HeatLinkTrait._HvacConnectionState.ValueType  # 0
-        HVAC_CONNECTION_STATE_DISCONNECTED: HeatLinkTrait._HvacConnectionState.ValueType  # 1
+        HVAC_CONNECTION_STATE_UNSPECIFIED: (
+            HeatLinkTrait._HvacConnectionState.ValueType
+        )  # 0
+        HVAC_CONNECTION_STATE_DISCONNECTED: (
+            HeatLinkTrait._HvacConnectionState.ValueType
+        )  # 1
         HVAC_CONNECTION_STATE_WIRED: HeatLinkTrait._HvacConnectionState.ValueType  # 2
-        HVAC_CONNECTION_STATE_WIRELESS: HeatLinkTrait._HvacConnectionState.ValueType  # 3
-        HVAC_CONNECTION_STATE_WIRED_AND_WIRELESS: HeatLinkTrait._HvacConnectionState.ValueType  # 4
+        HVAC_CONNECTION_STATE_WIRELESS: (
+            HeatLinkTrait._HvacConnectionState.ValueType
+        )  # 3
+        HVAC_CONNECTION_STATE_WIRED_AND_WIRELESS: (
+            HeatLinkTrait._HvacConnectionState.ValueType
+        )  # 4
 
-    class HvacConnectionState(_HvacConnectionState, metaclass=_HvacConnectionStateEnumTypeWrapper): ...
+    class HvacConnectionState(
+        _HvacConnectionState, metaclass=_HvacConnectionStateEnumTypeWrapper
+    ): ...
     HVAC_CONNECTION_STATE_UNSPECIFIED: HeatLinkTrait.HvacConnectionState.ValueType  # 0
     HVAC_CONNECTION_STATE_DISCONNECTED: HeatLinkTrait.HvacConnectionState.ValueType  # 1
     HVAC_CONNECTION_STATE_WIRED: HeatLinkTrait.HvacConnectionState.ValueType  # 2
     HVAC_CONNECTION_STATE_WIRELESS: HeatLinkTrait.HvacConnectionState.ValueType  # 3
-    HVAC_CONNECTION_STATE_WIRED_AND_WIRELESS: HeatLinkTrait.HvacConnectionState.ValueType  # 4
+    HVAC_CONNECTION_STATE_WIRED_AND_WIRELESS: (
+        HeatLinkTrait.HvacConnectionState.ValueType
+    )  # 4
 
     CONNECTIONSTATUS_FIELD_NUMBER: _builtins.int
     HEATLINKMODEL_FIELD_NUMBER: _builtins.int
@@ -6164,9 +9861,25 @@ class HeatLinkTrait(_message.Message):
         heatLinkSerialNumber: _wrappers_pb2.StringValue | None = ...,
         heatLinkSwVersion: _wrappers_pb2.StringValue | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["heatLinkModel", b"heatLinkModel", "heatLinkSerialNumber", b"heatLinkSerialNumber", "heatLinkSwVersion", b"heatLinkSwVersion"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "heatLinkModel",
+        b"heatLinkModel",
+        "heatLinkSerialNumber",
+        b"heatLinkSerialNumber",
+        "heatLinkSwVersion",
+        b"heatLinkSwVersion",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["connectionStatus", b"connectionStatus", "heatLinkModel", b"heatLinkModel", "heatLinkSerialNumber", b"heatLinkSerialNumber", "heatLinkSwVersion", b"heatLinkSwVersion"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "connectionStatus",
+        b"connectionStatus",
+        "heatLinkModel",
+        b"heatLinkModel",
+        "heatLinkSerialNumber",
+        b"heatLinkSerialNumber",
+        "heatLinkSwVersion",
+        b"heatLinkSwVersion",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HeatLinkTrait: _TypeAlias = HeatLinkTrait  # noqa: Y015
@@ -6179,7 +9892,12 @@ class HotWaterSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HotWaterModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HotWaterSettingsTrait._HotWaterMode.ValueType], _builtins.type):
+    class _HotWaterModeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HotWaterSettingsTrait._HotWaterMode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HOT_WATER_MODE_UNSPECIFIED: HotWaterSettingsTrait._HotWaterMode.ValueType  # 0
         HOT_WATER_MODE_SCHEDULE: HotWaterSettingsTrait._HotWaterMode.ValueType  # 1
@@ -6208,9 +9926,20 @@ class HotWaterSettingsTrait(_message.Message):
         mode: Global___HotWaterSettingsTrait.HotWaterMode.ValueType = ...,
         temperature: Global___HvacControl.Temperature | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["boostTimerEnd", b"boostTimerEnd", "temperature", b"temperature"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "boostTimerEnd", b"boostTimerEnd", "temperature", b"temperature"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["boostTimerEnd", b"boostTimerEnd", "mode", b"mode", "structureModeFollowEnabled", b"structureModeFollowEnabled", "temperature", b"temperature"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "boostTimerEnd",
+        b"boostTimerEnd",
+        "mode",
+        b"mode",
+        "structureModeFollowEnabled",
+        b"structureModeFollowEnabled",
+        "temperature",
+        b"temperature",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HotWaterSettingsTrait: _TypeAlias = HotWaterSettingsTrait  # noqa: Y015
@@ -6227,14 +9956,21 @@ class HvacSensor(_message.Message):
         SENSORSWITHWEAVEIDS_FIELD_NUMBER: _builtins.int
         isThermostatSelected: _builtins.bool
         @_builtins.property
-        def sensorsWithWeaveIds(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+        def sensorsWithWeaveIds(
+            self,
+        ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
         def __init__(
             self,
             *,
             isThermostatSelected: _builtins.bool = ...,
             sensorsWithWeaveIds: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["isThermostatSelected", b"isThermostatSelected", "sensorsWithWeaveIds", b"sensorsWithWeaveIds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "isThermostatSelected",
+            b"isThermostatSelected",
+            "sensorsWithWeaveIds",
+            b"sensorsWithWeaveIds",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -6288,9 +10024,33 @@ class LeafTrait(_message.Message):
         setpointThresholdCool: Global___HvacControl.Temperature | None = ...,
         scheduleDelta: Global___HvacControl.Temperature | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["ecoThresholdCool", b"ecoThresholdCool", "ecoThresholdHeat", b"ecoThresholdHeat", "scheduleDelta", b"scheduleDelta", "setpointThresholdCool", b"setpointThresholdCool", "setpointThresholdHeat", b"setpointThresholdHeat"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "ecoThresholdCool",
+        b"ecoThresholdCool",
+        "ecoThresholdHeat",
+        b"ecoThresholdHeat",
+        "scheduleDelta",
+        b"scheduleDelta",
+        "setpointThresholdCool",
+        b"setpointThresholdCool",
+        "setpointThresholdHeat",
+        b"setpointThresholdHeat",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "ecoThresholdCool", b"ecoThresholdCool", "ecoThresholdHeat", b"ecoThresholdHeat", "scheduleDelta", b"scheduleDelta", "setpointThresholdCool", b"setpointThresholdCool", "setpointThresholdHeat", b"setpointThresholdHeat"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "active",
+        b"active",
+        "ecoThresholdCool",
+        b"ecoThresholdCool",
+        "ecoThresholdHeat",
+        b"ecoThresholdHeat",
+        "scheduleDelta",
+        b"scheduleDelta",
+        "setpointThresholdCool",
+        b"setpointThresholdCool",
+        "setpointThresholdHeat",
+        b"setpointThresholdHeat",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LeafTrait: _TypeAlias = LeafTrait  # noqa: Y015
@@ -6314,9 +10074,13 @@ class SunblockTrait(_message.Message):
             active: _builtins.bool = ...,
             lastChangeTime: _timestamp_pb2.Timestamp | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["lastChangeTime", b"lastChangeTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "lastChangeTime", b"lastChangeTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "lastChangeTime", b"lastChangeTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "active", b"active", "lastChangeTime", b"lastChangeTime"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     READY_FIELD_NUMBER: _builtins.int
@@ -6329,7 +10093,9 @@ class SunblockTrait(_message.Message):
         ready: _builtins.bool = ...,
         active: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["active", b"active", "ready", b"ready"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "active", b"active", "ready", b"ready"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SunblockTrait: _TypeAlias = SunblockTrait  # noqa: Y015
@@ -6345,7 +10111,9 @@ class AirwaveSettingsTrait(_message.Message):
         *,
         fanCoolingEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["fanCoolingEnabled", b"fanCoolingEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "fanCoolingEnabled", b"fanCoolingEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___AirwaveSettingsTrait: _TypeAlias = AirwaveSettingsTrait  # noqa: Y015
@@ -6373,9 +10141,25 @@ class CoolToDrySettingsTrait(_message.Message):
         minTemperature: _wrappers_pb2.FloatValue | None = ...,
         targetHumidity: _wrappers_pb2.FloatValue | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["minTemperature", b"minTemperature", "overcoolMaxDelta", b"overcoolMaxDelta", "targetHumidity", b"targetHumidity"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "minTemperature",
+        b"minTemperature",
+        "overcoolMaxDelta",
+        b"overcoolMaxDelta",
+        "targetHumidity",
+        b"targetHumidity",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "minTemperature", b"minTemperature", "overcoolMaxDelta", b"overcoolMaxDelta", "targetHumidity", b"targetHumidity"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enabled",
+        b"enabled",
+        "minTemperature",
+        b"minTemperature",
+        "overcoolMaxDelta",
+        b"overcoolMaxDelta",
+        "targetHumidity",
+        b"targetHumidity",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___CoolToDrySettingsTrait: _TypeAlias = CoolToDrySettingsTrait  # noqa: Y015
@@ -6407,9 +10191,29 @@ class EcoModeSettingsTrait(_message.Message):
         suppressAutoEcoDuration: _duration_pb2.Duration | None = ...,
         suppressAutoEcoTimeout: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["ecoTemperatureCool", b"ecoTemperatureCool", "ecoTemperatureHeat", b"ecoTemperatureHeat", "suppressAutoEcoDuration", b"suppressAutoEcoDuration", "suppressAutoEcoTimeout", b"suppressAutoEcoTimeout"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "ecoTemperatureCool",
+        b"ecoTemperatureCool",
+        "ecoTemperatureHeat",
+        b"ecoTemperatureHeat",
+        "suppressAutoEcoDuration",
+        b"suppressAutoEcoDuration",
+        "suppressAutoEcoTimeout",
+        b"suppressAutoEcoTimeout",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ecoTemperatureCool", b"ecoTemperatureCool", "ecoTemperatureHeat", b"ecoTemperatureHeat", "structureModeFollowEnabled", b"structureModeFollowEnabled", "suppressAutoEcoDuration", b"suppressAutoEcoDuration", "suppressAutoEcoTimeout", b"suppressAutoEcoTimeout"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ecoTemperatureCool",
+        b"ecoTemperatureCool",
+        "ecoTemperatureHeat",
+        b"ecoTemperatureHeat",
+        "structureModeFollowEnabled",
+        b"structureModeFollowEnabled",
+        "suppressAutoEcoDuration",
+        b"suppressAutoEcoDuration",
+        "suppressAutoEcoTimeout",
+        b"suppressAutoEcoTimeout",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EcoModeSettingsTrait: _TypeAlias = EcoModeSettingsTrait  # noqa: Y015
@@ -6430,9 +10234,19 @@ class EcoModeTrait(_message.Message):
         currentEcoTemperatureHeat: Global___HvacControl.Temperature | None = ...,
         currentEcoTemperatureCool: Global___HvacControl.Temperature | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["currentEcoTemperatureCool", b"currentEcoTemperatureCool", "currentEcoTemperatureHeat", b"currentEcoTemperatureHeat"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "currentEcoTemperatureCool",
+        b"currentEcoTemperatureCool",
+        "currentEcoTemperatureHeat",
+        b"currentEcoTemperatureHeat",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["currentEcoTemperatureCool", b"currentEcoTemperatureCool", "currentEcoTemperatureHeat", b"currentEcoTemperatureHeat"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "currentEcoTemperatureCool",
+        b"currentEcoTemperatureCool",
+        "currentEcoTemperatureHeat",
+        b"currentEcoTemperatureHeat",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EcoModeTrait: _TypeAlias = EcoModeTrait  # noqa: Y015
@@ -6448,7 +10262,9 @@ class EmergencyHeatSettingsTrait(_message.Message):
         *,
         emergencyHeatEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["emergencyHeatEnabled", b"emergencyHeatEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "emergencyHeatEnabled", b"emergencyHeatEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___EmergencyHeatSettingsTrait: _TypeAlias = EmergencyHeatSettingsTrait  # noqa: Y015
@@ -6467,7 +10283,12 @@ class HeatPumpControlTrait(_message.Message):
         heatPumpReady: _builtins.bool = ...,
         heatPumpSetbackActive: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["heatPumpReady", b"heatPumpReady", "heatPumpSetbackActive", b"heatPumpSetbackActive"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "heatPumpReady",
+        b"heatPumpReady",
+        "heatPumpSetbackActive",
+        b"heatPumpSetbackActive",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HeatPumpControlTrait: _TypeAlias = HeatPumpControlTrait  # noqa: Y015
@@ -6497,9 +10318,22 @@ class HotWaterTrait(_message.Message):
         nextTransitionTime: _timestamp_pb2.Timestamp | None = ...,
         temperature: Global___HvacControl.Temperature | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["nextTransitionTime", b"nextTransitionTime", "temperature", b"temperature"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "nextTransitionTime", b"nextTransitionTime", "temperature", b"temperature"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["awayActive", b"awayActive", "boilerActive", b"boilerActive", "controlActive", b"controlActive", "nextTransitionTime", b"nextTransitionTime", "temperature", b"temperature"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "awayActive",
+        b"awayActive",
+        "boilerActive",
+        b"boilerActive",
+        "controlActive",
+        b"controlActive",
+        "nextTransitionTime",
+        b"nextTransitionTime",
+        "temperature",
+        b"temperature",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HotWaterTrait: _TypeAlias = HotWaterTrait  # noqa: Y015
@@ -6533,9 +10367,29 @@ class HumidityControlSettingsTrait(_message.Message):
         humidifierTargetHumidity: Global___HvacControl.HumidityThreshold | None = ...,
         dehumidifierTargetHumidity: Global___HvacControl.HumidityThreshold | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["dehumidifierTargetHumidity", b"dehumidifierTargetHumidity", "humidifierTargetHumidity", b"humidifierTargetHumidity", "targetHumidity", b"targetHumidity"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "dehumidifierTargetHumidity",
+        b"dehumidifierTargetHumidity",
+        "humidifierTargetHumidity",
+        b"humidifierTargetHumidity",
+        "targetHumidity",
+        b"targetHumidity",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["dehumidifierTargetHumidity", b"dehumidifierTargetHumidity", "humidifierTargetHumidity", b"humidifierTargetHumidity", "quietEndSecondsInDay", b"quietEndSecondsInDay", "quietStartSecondsInDay", b"quietStartSecondsInDay", "quietTimesEnabled", b"quietTimesEnabled", "targetHumidity", b"targetHumidity"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "dehumidifierTargetHumidity",
+        b"dehumidifierTargetHumidity",
+        "humidifierTargetHumidity",
+        b"humidifierTargetHumidity",
+        "quietEndSecondsInDay",
+        b"quietEndSecondsInDay",
+        "quietStartSecondsInDay",
+        b"quietStartSecondsInDay",
+        "quietTimesEnabled",
+        b"quietTimesEnabled",
+        "targetHumidity",
+        b"targetHumidity",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HumidityControlSettingsTrait: _TypeAlias = HumidityControlSettingsTrait  # noqa: Y015
@@ -6548,14 +10402,18 @@ class HvacDisplayTrait(_message.Message):
     THERMOSTATSTATE_FIELD_NUMBER: _builtins.int
     ignoreHvacStaging: _builtins.bool
     @_builtins.property
-    def thermostatState(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    def thermostatState(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
     def __init__(
         self,
         *,
         ignoreHvacStaging: _builtins.bool = ...,
         thermostatState: _abc.Iterable[_builtins.str] | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ignoreHvacStaging", b"ignoreHvacStaging", "thermostatState", b"thermostatState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "ignoreHvacStaging", b"ignoreHvacStaging", "thermostatState", b"thermostatState"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HvacDisplayTrait: _TypeAlias = HvacDisplayTrait  # noqa: Y015
@@ -6628,7 +10486,48 @@ class HvacEquipmentCapabilitiesTrait(_message.Message):
         hasBoilerSupplyTemperature: _builtins.bool = ...,
         hasVentilator: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hasAirFilter", b"hasAirFilter", "hasAuxHeat", b"hasAuxHeat", "hasBoilerSupplyTemperature", b"hasBoilerSupplyTemperature", "hasDehumidifier", b"hasDehumidifier", "hasDualFuel", b"hasDualFuel", "hasEmergencyHeat", b"hasEmergencyHeat", "hasFossilFuel", b"hasFossilFuel", "hasHeatPump", b"hasHeatPump", "hasHotWaterControl", b"hasHotWaterControl", "hasHotWaterTemperature", b"hasHotWaterTemperature", "hasHumidifier", b"hasHumidifier", "hasStage1AlternateHeat", b"hasStage1AlternateHeat", "hasStage1Cool", b"hasStage1Cool", "hasStage1Heat", b"hasStage1Heat", "hasStage2AlternateHeat", b"hasStage2AlternateHeat", "hasStage2Cool", b"hasStage2Cool", "hasStage2Heat", b"hasStage2Heat", "hasStage3Cool", b"hasStage3Cool", "hasStage3Heat", b"hasStage3Heat", "hasVentilator", b"hasVentilator"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hasAirFilter",
+        b"hasAirFilter",
+        "hasAuxHeat",
+        b"hasAuxHeat",
+        "hasBoilerSupplyTemperature",
+        b"hasBoilerSupplyTemperature",
+        "hasDehumidifier",
+        b"hasDehumidifier",
+        "hasDualFuel",
+        b"hasDualFuel",
+        "hasEmergencyHeat",
+        b"hasEmergencyHeat",
+        "hasFossilFuel",
+        b"hasFossilFuel",
+        "hasHeatPump",
+        b"hasHeatPump",
+        "hasHotWaterControl",
+        b"hasHotWaterControl",
+        "hasHotWaterTemperature",
+        b"hasHotWaterTemperature",
+        "hasHumidifier",
+        b"hasHumidifier",
+        "hasStage1AlternateHeat",
+        b"hasStage1AlternateHeat",
+        "hasStage1Cool",
+        b"hasStage1Cool",
+        "hasStage1Heat",
+        b"hasStage1Heat",
+        "hasStage2AlternateHeat",
+        b"hasStage2AlternateHeat",
+        "hasStage2Cool",
+        b"hasStage2Cool",
+        "hasStage2Heat",
+        b"hasStage2Heat",
+        "hasStage3Cool",
+        b"hasStage3Cool",
+        "hasStage3Heat",
+        b"hasStage3Heat",
+        "hasVentilator",
+        b"hasVentilator",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HvacEquipmentCapabilitiesTrait: _TypeAlias = HvacEquipmentCapabilitiesTrait  # noqa: Y015
@@ -6671,7 +10570,26 @@ class InstallationSettingsTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["proId", b"proId"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["oobHomeInfoCompleted", b"oobHomeInfoCompleted", "oobStartupCompleted", b"oobStartupCompleted", "oobSummaryCompleted", b"oobSummaryCompleted", "oobTempCompleted", b"oobTempCompleted", "oobTestCompleted", b"oobTestCompleted", "oobWhereCompleted", b"oobWhereCompleted", "oobWifiCompleted", b"oobWifiCompleted", "oobWiresCompleted", b"oobWiresCompleted", "proId", b"proId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "oobHomeInfoCompleted",
+        b"oobHomeInfoCompleted",
+        "oobStartupCompleted",
+        b"oobStartupCompleted",
+        "oobSummaryCompleted",
+        b"oobSummaryCompleted",
+        "oobTempCompleted",
+        b"oobTempCompleted",
+        "oobTestCompleted",
+        b"oobTestCompleted",
+        "oobWhereCompleted",
+        b"oobWhereCompleted",
+        "oobWifiCompleted",
+        b"oobWifiCompleted",
+        "oobWiresCompleted",
+        b"oobWiresCompleted",
+        "proId",
+        b"proId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___InstallationSettingsTrait: _TypeAlias = InstallationSettingsTrait  # noqa: Y015
@@ -6700,9 +10618,22 @@ class PreconditioningSettingsTrait(_message.Message):
         coolPreconditioningEnabled: _builtins.bool = ...,
         returnHomePreconditioningEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["maxNighttimeSeconds", b"maxNighttimeSeconds"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "maxNighttimeSeconds", b"maxNighttimeSeconds"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["coolPreconditioningEnabled", b"coolPreconditioningEnabled", "heatPreconditioningEnabled", b"heatPreconditioningEnabled", "maxNighttimeSeconds", b"maxNighttimeSeconds", "preconditioningEnabled", b"preconditioningEnabled", "returnHomePreconditioningEnabled", b"returnHomePreconditioningEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "coolPreconditioningEnabled",
+        b"coolPreconditioningEnabled",
+        "heatPreconditioningEnabled",
+        b"heatPreconditioningEnabled",
+        "maxNighttimeSeconds",
+        b"maxNighttimeSeconds",
+        "preconditioningEnabled",
+        b"preconditioningEnabled",
+        "returnHomePreconditioningEnabled",
+        b"returnHomePreconditioningEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___PreconditioningSettingsTrait: _TypeAlias = PreconditioningSettingsTrait  # noqa: Y015
@@ -6718,7 +10649,9 @@ class RadiantControlSettingsTrait(_message.Message):
         *,
         radiantControlEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["radiantControlEnabled", b"radiantControlEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "radiantControlEnabled", b"radiantControlEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___RadiantControlSettingsTrait: _TypeAlias = RadiantControlSettingsTrait  # noqa: Y015
@@ -6734,7 +10667,9 @@ class SafetyShutoffCapabilitiesTrait(_message.Message):
         *,
         smokeShutoffSupported: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["smokeShutoffSupported", b"smokeShutoffSupported"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "smokeShutoffSupported", b"smokeShutoffSupported"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyShutoffCapabilitiesTrait: _TypeAlias = SafetyShutoffCapabilitiesTrait  # noqa: Y015
@@ -6753,7 +10688,12 @@ class SafetyShutoffSettingsTrait(_message.Message):
         hvacCoSafetyShutoffEnabled: _builtins.bool = ...,
         hvacSmokeSafetyShutoffEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["hvacCoSafetyShutoffEnabled", b"hvacCoSafetyShutoffEnabled", "hvacSmokeSafetyShutoffEnabled", b"hvacSmokeSafetyShutoffEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "hvacCoSafetyShutoffEnabled",
+        b"hvacCoSafetyShutoffEnabled",
+        "hvacSmokeSafetyShutoffEnabled",
+        b"hvacSmokeSafetyShutoffEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyShutoffSettingsTrait: _TypeAlias = SafetyShutoffSettingsTrait  # noqa: Y015
@@ -6774,9 +10714,13 @@ class SafetyTemperatureSettingsTrait(_message.Message):
         lowerSafetyTemp: Global___HvacControl.TemperatureThreshold | None = ...,
         upperSafetyTemp: Global___HvacControl.TemperatureThreshold | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["lowerSafetyTemp", b"lowerSafetyTemp", "upperSafetyTemp", b"upperSafetyTemp"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "lowerSafetyTemp", b"lowerSafetyTemp", "upperSafetyTemp", b"upperSafetyTemp"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["lowerSafetyTemp", b"lowerSafetyTemp", "upperSafetyTemp", b"upperSafetyTemp"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "lowerSafetyTemp", b"lowerSafetyTemp", "upperSafetyTemp", b"upperSafetyTemp"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyTemperatureSettingsTrait: _TypeAlias = SafetyTemperatureSettingsTrait  # noqa: Y015
@@ -6792,7 +10736,9 @@ class ScheduleLearningSettingsTrait(_message.Message):
         *,
         scheduleLearningEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["scheduleLearningEnabled", b"scheduleLearningEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "scheduleLearningEnabled", b"scheduleLearningEnabled"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___ScheduleLearningSettingsTrait: _TypeAlias = ScheduleLearningSettingsTrait  # noqa: Y015
@@ -6835,9 +10781,20 @@ class TemperatureLockSettingsTrait(_message.Message):
         temperatureLow: Global___HvacControl.Temperature | None = ...,
         pinHash: _builtins.str = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["temperatureHigh", b"temperatureHigh", "temperatureLow", b"temperatureLow"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "temperatureHigh", b"temperatureHigh", "temperatureLow", b"temperatureLow"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "pinHash", b"pinHash", "temperatureHigh", b"temperatureHigh", "temperatureLow", b"temperatureLow"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enabled",
+        b"enabled",
+        "pinHash",
+        b"pinHash",
+        "temperatureHigh",
+        b"temperatureHigh",
+        "temperatureLow",
+        b"temperatureLow",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TemperatureLockSettingsTrait: _TypeAlias = TemperatureLockSettingsTrait  # noqa: Y015
@@ -6858,9 +10815,19 @@ class TimeToTemperatureTrait(_message.Message):
         timeToTargetTemperature: _duration_pb2.Duration | None = ...,
         predictedTimeOfReachingTarget: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["predictedTimeOfReachingTarget", b"predictedTimeOfReachingTarget", "timeToTargetTemperature", b"timeToTargetTemperature"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "predictedTimeOfReachingTarget",
+        b"predictedTimeOfReachingTarget",
+        "timeToTargetTemperature",
+        b"timeToTargetTemperature",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["predictedTimeOfReachingTarget", b"predictedTimeOfReachingTarget", "timeToTargetTemperature", b"timeToTargetTemperature"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "predictedTimeOfReachingTarget",
+        b"predictedTimeOfReachingTarget",
+        "timeToTargetTemperature",
+        b"timeToTargetTemperature",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___TimeToTemperatureTrait: _TypeAlias = TimeToTemperatureTrait  # noqa: Y015
@@ -6882,7 +10849,14 @@ class UtilitySettingsTrait(_message.Message):
         touEnabled: _builtins.bool = ...,
         demandChargeEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["demandChargeEnabled", b"demandChargeEnabled", "demandResponseEnabled", b"demandResponseEnabled", "touEnabled", b"touEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "demandChargeEnabled",
+        b"demandChargeEnabled",
+        "demandResponseEnabled",
+        b"demandResponseEnabled",
+        "touEnabled",
+        b"touEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___UtilitySettingsTrait: _TypeAlias = UtilitySettingsTrait  # noqa: Y015
@@ -6917,7 +10891,9 @@ class KryptoniteObservedBeaconTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["lastBeaconTime", b"lastBeaconTime"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["lastBeaconTime", b"lastBeaconTime"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "lastBeaconTime", b"lastBeaconTime"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___KryptoniteObservedBeaconTrait: _TypeAlias = KryptoniteObservedBeaconTrait  # noqa: Y015

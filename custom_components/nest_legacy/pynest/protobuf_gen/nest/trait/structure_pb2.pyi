@@ -30,7 +30,10 @@ class HomeInfoSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _HouseTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HomeInfoSettingsTrait._HouseType.ValueType], _builtins.type):
+    class _HouseTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[HomeInfoSettingsTrait._HouseType.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         HOUSE_TYPE_UNSPECIFIED: HomeInfoSettingsTrait._HouseType.ValueType  # 0
         HOUSE_TYPE_SINGLE_FAMILY: HomeInfoSettingsTrait._HouseType.ValueType  # 1
@@ -51,9 +54,16 @@ class HomeInfoSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _NumThermostatsEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HomeInfoSettingsTrait._NumThermostats.ValueType], _builtins.type):
+    class _NumThermostatsEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HomeInfoSettingsTrait._NumThermostats.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        NUM_THERMOSTATS_UNSPECIFIED: HomeInfoSettingsTrait._NumThermostats.ValueType  # 0
+        NUM_THERMOSTATS_UNSPECIFIED: (
+            HomeInfoSettingsTrait._NumThermostats.ValueType
+        )  # 0
         NUM_THERMOSTATS_ONE: HomeInfoSettingsTrait._NumThermostats.ValueType  # 1
         NUM_THERMOSTATS_TWO: HomeInfoSettingsTrait._NumThermostats.ValueType  # 2
         NUM_THERMOSTATS_THREE: HomeInfoSettingsTrait._NumThermostats.ValueType  # 3
@@ -74,9 +84,16 @@ class HomeInfoSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _RenovationDateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HomeInfoSettingsTrait._RenovationDate.ValueType], _builtins.type):
+    class _RenovationDateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HomeInfoSettingsTrait._RenovationDate.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        RENOVATION_DATE_UNSPECIFIED: HomeInfoSettingsTrait._RenovationDate.ValueType  # 0
+        RENOVATION_DATE_UNSPECIFIED: (
+            HomeInfoSettingsTrait._RenovationDate.ValueType
+        )  # 0
         RENOVATION_DATE_DONT_KNOW: HomeInfoSettingsTrait._RenovationDate.ValueType  # 1
         RENOVATION_DATE_PRE_1940: HomeInfoSettingsTrait._RenovationDate.ValueType  # 2
         RENOVATION_DATE_1940: HomeInfoSettingsTrait._RenovationDate.ValueType  # 3
@@ -107,13 +124,24 @@ class HomeInfoSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _MeasurementScaleEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[HomeInfoSettingsTrait._MeasurementScale.ValueType], _builtins.type):
+    class _MeasurementScaleEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            HomeInfoSettingsTrait._MeasurementScale.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        MEASUREMENT_SCALE_UNSPECIFIED: HomeInfoSettingsTrait._MeasurementScale.ValueType  # 0
+        MEASUREMENT_SCALE_UNSPECIFIED: (
+            HomeInfoSettingsTrait._MeasurementScale.ValueType
+        )  # 0
         MEASUREMENT_SCALE_METRIC: HomeInfoSettingsTrait._MeasurementScale.ValueType  # 1
-        MEASUREMENT_SCALE_IMPERIAL: HomeInfoSettingsTrait._MeasurementScale.ValueType  # 2
+        MEASUREMENT_SCALE_IMPERIAL: (
+            HomeInfoSettingsTrait._MeasurementScale.ValueType
+        )  # 2
 
-    class MeasurementScale(_MeasurementScale, metaclass=_MeasurementScaleEnumTypeWrapper): ...
+    class MeasurementScale(
+        _MeasurementScale, metaclass=_MeasurementScaleEnumTypeWrapper
+    ): ...
     MEASUREMENT_SCALE_UNSPECIFIED: HomeInfoSettingsTrait.MeasurementScale.ValueType  # 0
     MEASUREMENT_SCALE_METRIC: HomeInfoSettingsTrait.MeasurementScale.ValueType  # 1
     MEASUREMENT_SCALE_IMPERIAL: HomeInfoSettingsTrait.MeasurementScale.ValueType  # 2
@@ -137,7 +165,18 @@ class HomeInfoSettingsTrait(_message.Message):
         structureArea: _builtins.float = ...,
         measurementScale: Global___HomeInfoSettingsTrait.MeasurementScale.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["houseType", b"houseType", "measurementScale", b"measurementScale", "renovationDate", b"renovationDate", "structureArea", b"structureArea", "userSpecifiedNumThermostats", b"userSpecifiedNumThermostats"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "houseType",
+        b"houseType",
+        "measurementScale",
+        b"measurementScale",
+        "renovationDate",
+        b"renovationDate",
+        "structureArea",
+        b"structureArea",
+        "userSpecifiedNumThermostats",
+        b"userSpecifiedNumThermostats",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___HomeInfoSettingsTrait: _TypeAlias = HomeInfoSettingsTrait  # noqa: Y015
@@ -150,7 +189,10 @@ class StructureInfoTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureInfoTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[StructureInfoTrait._StatusCode.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: StructureInfoTrait._StatusCode.ValueType  # 0
         STATUS_CODE_SUCCESS: StructureInfoTrait._StatusCode.ValueType  # 1
@@ -179,7 +221,9 @@ class StructureInfoTrait(_message.Message):
             key: _builtins.str = ...,
             value: _builtins.int = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -216,7 +260,9 @@ class StructureInfoTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["name", b"name", "resourceId", b"resourceId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "name", b"name", "resourceId", b"resourceId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -236,7 +282,9 @@ class StructureInfoTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId", b"resourceId", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     RTSSTRUCTUREID_FIELD_NUMBER: _builtins.int
@@ -268,7 +316,9 @@ class StructureInfoTrait(_message.Message):
     @_builtins.property
     def hgId(self) -> _wrappers_pb2.StringValue: ...
     @_builtins.property
-    def maxResourceCounts(self) -> _containers.ScalarMap[_builtins.str, _builtins.int]: ...
+    def maxResourceCounts(
+        self,
+    ) -> _containers.ScalarMap[_builtins.str, _builtins.int]: ...
     def __init__(
         self,
         *,
@@ -286,9 +336,38 @@ class StructureInfoTrait(_message.Message):
         hgId: _wrappers_pb2.StringValue | None = ...,
         maxResourceCounts: _abc.Mapping[_builtins.str, _builtins.int] | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["createdAt", b"createdAt", "hgId", b"hgId", "pairerId", b"pairerId"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "createdAt", b"createdAt", "hgId", b"hgId", "pairerId", b"pairerId"
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["createdAt", b"createdAt", "hgId", b"hgId", "maxNestConnectCount", b"maxNestConnectCount", "maxNestGuardCount", b"maxNestGuardCount", "maxNestLockCount", b"maxNestLockCount", "maxNestMoonstoneCount", b"maxNestMoonstoneCount", "maxNestProtectCount", b"maxNestProtectCount", "maxNestSensorCount", b"maxNestSensorCount", "maxResourceCounts", b"maxResourceCounts", "name", b"name", "pairerId", b"pairerId", "primaryFabricId", b"primaryFabricId", "rtsStructureId", b"rtsStructureId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "createdAt",
+        b"createdAt",
+        "hgId",
+        b"hgId",
+        "maxNestConnectCount",
+        b"maxNestConnectCount",
+        "maxNestGuardCount",
+        b"maxNestGuardCount",
+        "maxNestLockCount",
+        b"maxNestLockCount",
+        "maxNestMoonstoneCount",
+        b"maxNestMoonstoneCount",
+        "maxNestProtectCount",
+        b"maxNestProtectCount",
+        "maxNestSensorCount",
+        b"maxNestSensorCount",
+        "maxResourceCounts",
+        b"maxResourceCounts",
+        "name",
+        b"name",
+        "pairerId",
+        b"pairerId",
+        "primaryFabricId",
+        b"primaryFabricId",
+        "rtsStructureId",
+        b"rtsStructureId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureInfoTrait: _TypeAlias = StructureInfoTrait  # noqa: Y015
@@ -301,13 +380,20 @@ class StructureLocationTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[StructureLocationTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            StructureLocationTrait._StatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: StructureLocationTrait._StatusCode.ValueType  # 0
         STATUS_CODE_SUCCESS: StructureLocationTrait._StatusCode.ValueType  # 1
         STATUS_CODE_FAILURE: StructureLocationTrait._StatusCode.ValueType  # 2
         STATUS_CODE_UNAUTHORIZED: StructureLocationTrait._StatusCode.ValueType  # 3
-        STATUS_CODE_RESOURCE_NOT_FOUND: StructureLocationTrait._StatusCode.ValueType  # 4
+        STATUS_CODE_RESOURCE_NOT_FOUND: (
+            StructureLocationTrait._StatusCode.ValueType
+        )  # 4
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
     STATUS_CODE_UNSPECIFIED: StructureLocationTrait.StatusCode.ValueType  # 0
@@ -330,7 +416,9 @@ class StructureLocationTrait(_message.Message):
             latitude: _builtins.float = ...,
             longitude: _builtins.float = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["latitude", b"latitude", "longitude", b"longitude"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "latitude", b"latitude", "longitude", b"longitude"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -352,7 +440,9 @@ class StructureLocationTrait(_message.Message):
         @_builtins.property
         def countryCode(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
-        def addressLines(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+        def addressLines(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
         @_builtins.property
         def city(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
@@ -373,9 +463,41 @@ class StructureLocationTrait(_message.Message):
             geoCoordinate: Global___StructureLocationTrait.GeoCoordinate | None = ...,
             timezoneName: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["city", b"city", "countryCode", b"countryCode", "geoCoordinate", b"geoCoordinate", "postalCode", b"postalCode", "resourceId", b"resourceId", "state", b"state", "timezoneName", b"timezoneName"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "city",
+            b"city",
+            "countryCode",
+            b"countryCode",
+            "geoCoordinate",
+            b"geoCoordinate",
+            "postalCode",
+            b"postalCode",
+            "resourceId",
+            b"resourceId",
+            "state",
+            b"state",
+            "timezoneName",
+            b"timezoneName",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["addressLines", b"addressLines", "city", b"city", "countryCode", b"countryCode", "geoCoordinate", b"geoCoordinate", "postalCode", b"postalCode", "resourceId", b"resourceId", "state", b"state", "timezoneName", b"timezoneName"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "addressLines",
+            b"addressLines",
+            "city",
+            b"city",
+            "countryCode",
+            b"countryCode",
+            "geoCoordinate",
+            b"geoCoordinate",
+            "postalCode",
+            b"postalCode",
+            "resourceId",
+            b"resourceId",
+            "state",
+            b"state",
+            "timezoneName",
+            b"timezoneName",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -395,7 +517,9 @@ class StructureLocationTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId", b"resourceId", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     POSTALCODE_FIELD_NUMBER: _builtins.int
@@ -409,7 +533,9 @@ class StructureLocationTrait(_message.Message):
     @_builtins.property
     def countryCode(self) -> _wrappers_pb2.StringValue: ...
     @_builtins.property
-    def addressLines(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    def addressLines(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
     @_builtins.property
     def city(self) -> _wrappers_pb2.StringValue: ...
     @_builtins.property
@@ -426,9 +552,33 @@ class StructureLocationTrait(_message.Message):
         state: _wrappers_pb2.StringValue | None = ...,
         geoCoordinate: Global___StructureLocationTrait.GeoCoordinate | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["city", b"city", "countryCode", b"countryCode", "geoCoordinate", b"geoCoordinate", "postalCode", b"postalCode", "state", b"state"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "city",
+        b"city",
+        "countryCode",
+        b"countryCode",
+        "geoCoordinate",
+        b"geoCoordinate",
+        "postalCode",
+        b"postalCode",
+        "state",
+        b"state",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["addressLines", b"addressLines", "city", b"city", "countryCode", b"countryCode", "geoCoordinate", b"geoCoordinate", "postalCode", b"postalCode", "state", b"state"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "addressLines",
+        b"addressLines",
+        "city",
+        b"city",
+        "countryCode",
+        b"countryCode",
+        "geoCoordinate",
+        b"geoCoordinate",
+        "postalCode",
+        b"postalCode",
+        "state",
+        b"state",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___StructureLocationTrait: _TypeAlias = StructureLocationTrait  # noqa: Y015

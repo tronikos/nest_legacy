@@ -38,18 +38,29 @@ class SoftwareComponentTrait(_message.Message):
             componentName: _builtins.str = ...,
             componentVersion: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["componentName", b"componentName", "componentVersion", b"componentVersion"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "componentName", b"componentName", "componentVersion", b"componentVersion"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SOFTWARECOMPONENTS_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def softwareComponents(self) -> _containers.RepeatedCompositeFieldContainer[Global___SoftwareComponentTrait.SoftwareComponentTypeStruct]: ...
+    def softwareComponents(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___SoftwareComponentTrait.SoftwareComponentTypeStruct
+    ]: ...
     def __init__(
         self,
         *,
-        softwareComponents: _abc.Iterable[Global___SoftwareComponentTrait.SoftwareComponentTypeStruct] | None = ...,
+        softwareComponents: _abc.Iterable[
+            Global___SoftwareComponentTrait.SoftwareComponentTypeStruct
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["softwareComponents", b"softwareComponents"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "softwareComponents", b"softwareComponents"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SoftwareComponentTrait: _TypeAlias = SoftwareComponentTrait  # noqa: Y015
@@ -96,9 +107,39 @@ class DeviceIdentityTrait(_message.Message):
         deviceId: _common_pb2.ResourceId | None = ...,
         fabricId: _builtins.int = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "manufacturingDate", b"manufacturingDate", "productIdDescription", b"productIdDescription", "vendorIdDescription", b"vendorIdDescription"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "deviceId",
+        b"deviceId",
+        "manufacturingDate",
+        b"manufacturingDate",
+        "productIdDescription",
+        b"productIdDescription",
+        "vendorIdDescription",
+        b"vendorIdDescription",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["deviceId", b"deviceId", "fabricId", b"fabricId", "manufacturingDate", b"manufacturingDate", "productIdDescription", b"productIdDescription", "productRevision", b"productRevision", "serialNumber", b"serialNumber", "softwareVersion", b"softwareVersion", "vendorId", b"vendorId", "vendorIdDescription", b"vendorIdDescription", "vendorProductId", b"vendorProductId"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "deviceId",
+        b"deviceId",
+        "fabricId",
+        b"fabricId",
+        "manufacturingDate",
+        b"manufacturingDate",
+        "productIdDescription",
+        b"productIdDescription",
+        "productRevision",
+        b"productRevision",
+        "serialNumber",
+        b"serialNumber",
+        "softwareVersion",
+        b"softwareVersion",
+        "vendorId",
+        b"vendorId",
+        "vendorIdDescription",
+        b"vendorIdDescription",
+        "vendorProductId",
+        b"vendorProductId",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DeviceIdentityTrait: _TypeAlias = DeviceIdentityTrait  # noqa: Y015

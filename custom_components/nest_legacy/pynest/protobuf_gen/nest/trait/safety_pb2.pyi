@@ -28,7 +28,10 @@ class SafetyAlarmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmLevelEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._AlarmLevel.ValueType], _builtins.type):
+    class _AlarmLevelEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._AlarmLevel.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ALARM_LEVEL_UNSPECIFIED: SafetyAlarmTrait._AlarmLevel.ValueType  # 0
         ALARM_LEVEL_IDLE: SafetyAlarmTrait._AlarmLevel.ValueType  # 1
@@ -51,7 +54,10 @@ class SafetyAlarmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _AlarmStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._AlarmState.ValueType], _builtins.type):
+    class _AlarmStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._AlarmState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         ALARM_STATE_UNSPECIFIED: SafetyAlarmTrait._AlarmState.ValueType  # 0
         ALARM_STATE_IDLE: SafetyAlarmTrait._AlarmState.ValueType  # 1
@@ -70,7 +76,10 @@ class SafetyAlarmTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _SilenceStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._SilenceState.ValueType], _builtins.type):
+    class _SilenceStateEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[SafetyAlarmTrait._SilenceState.ValueType],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         SILENCE_STATE_UNSPECIFIED: SafetyAlarmTrait._SilenceState.ValueType  # 0
         SILENCE_STATE_DISALLOWED: SafetyAlarmTrait._SilenceState.ValueType  # 1
@@ -113,9 +122,26 @@ class SafetyAlarmTrait(_message.Message):
             prevSilenceState: Global___SafetyAlarmTrait.SilenceState.ValueType = ...,
             prevStateDuration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevStateDuration", b"prevStateDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevStateDuration", b"prevStateDuration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmLevel", b"alarmLevel", "alarmState", b"alarmState", "prevAlarmState", b"prevAlarmState", "prevSilenceState", b"prevSilenceState", "prevStateDuration", b"prevStateDuration", "sessionId", b"sessionId", "silenceState", b"silenceState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmLevel",
+            b"alarmLevel",
+            "alarmState",
+            b"alarmState",
+            "prevAlarmState",
+            b"prevAlarmState",
+            "prevSilenceState",
+            b"prevSilenceState",
+            "prevStateDuration",
+            b"prevStateDuration",
+            "sessionId",
+            b"sessionId",
+            "silenceState",
+            b"silenceState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SESSIONID_FIELD_NUMBER: _builtins.int
@@ -131,7 +157,14 @@ class SafetyAlarmTrait(_message.Message):
         alarmState: Global___SafetyAlarmTrait.AlarmState.ValueType = ...,
         silenceState: Global___SafetyAlarmTrait.SilenceState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmState", b"alarmState", "sessionId", b"sessionId", "silenceState", b"silenceState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmState",
+        b"alarmState",
+        "sessionId",
+        b"sessionId",
+        "silenceState",
+        b"silenceState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyAlarmTrait: _TypeAlias = SafetyAlarmTrait  # noqa: Y015
@@ -160,7 +193,14 @@ class SafetyAlarmRemoteTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["originator", b"originator"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmState", b"alarmState", "originator", b"originator", "silenceState", b"silenceState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmState",
+            b"alarmState",
+            "originator",
+            b"originator",
+            "silenceState",
+            b"silenceState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -172,16 +212,24 @@ class SafetyAlarmRemoteTrait(_message.Message):
         @_builtins.property
         def remoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         @_builtins.property
-        def prevRemoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
+        def prevRemoteStatus(
+            self,
+        ) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         def __init__(
             self,
             *,
-            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
-            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
+            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
+            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -236,9 +284,39 @@ class SafetyAlarmCOTrait(_message.Message):
             blameThreshold: _sensor_pb2.CarbonMonoxideTrait.CoSample | None = ...,
             blameDuration: _duration_pb2.Duration | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["blameDuration", b"blameDuration", "blameThreshold", b"blameThreshold", "peakConcentration", b"peakConcentration", "prevStateDuration", b"prevStateDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "blameDuration",
+            b"blameDuration",
+            "blameThreshold",
+            b"blameThreshold",
+            "peakConcentration",
+            b"peakConcentration",
+            "prevStateDuration",
+            b"prevStateDuration",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmLevel", b"alarmLevel", "alarmState", b"alarmState", "blameDuration", b"blameDuration", "blameThreshold", b"blameThreshold", "peakConcentration", b"peakConcentration", "prevAlarmState", b"prevAlarmState", "prevSilenceState", b"prevSilenceState", "prevStateDuration", b"prevStateDuration", "sessionId", b"sessionId", "silenceState", b"silenceState"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmLevel",
+            b"alarmLevel",
+            "alarmState",
+            b"alarmState",
+            "blameDuration",
+            b"blameDuration",
+            "blameThreshold",
+            b"blameThreshold",
+            "peakConcentration",
+            b"peakConcentration",
+            "prevAlarmState",
+            b"prevAlarmState",
+            "prevSilenceState",
+            b"prevSilenceState",
+            "prevStateDuration",
+            b"prevStateDuration",
+            "sessionId",
+            b"sessionId",
+            "silenceState",
+            b"silenceState",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SESSIONID_FIELD_NUMBER: _builtins.int
@@ -266,9 +344,29 @@ class SafetyAlarmCOTrait(_message.Message):
         blameThreshold: _sensor_pb2.CarbonMonoxideTrait.CoSample | None = ...,
         blameDuration: _duration_pb2.Duration | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["blameDuration", b"blameDuration", "blameThreshold", b"blameThreshold", "peakConcentration", b"peakConcentration"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "blameDuration",
+        b"blameDuration",
+        "blameThreshold",
+        b"blameThreshold",
+        "peakConcentration",
+        b"peakConcentration",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmState", b"alarmState", "blameDuration", b"blameDuration", "blameThreshold", b"blameThreshold", "peakConcentration", b"peakConcentration", "sessionId", b"sessionId", "silenceState", b"silenceState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmState",
+        b"alarmState",
+        "blameDuration",
+        b"blameDuration",
+        "blameThreshold",
+        b"blameThreshold",
+        "peakConcentration",
+        b"peakConcentration",
+        "sessionId",
+        b"sessionId",
+        "silenceState",
+        b"silenceState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyAlarmCOTrait: _TypeAlias = SafetyAlarmCOTrait  # noqa: Y015
@@ -286,16 +384,24 @@ class SafetyAlarmRemoteCOTrait(_message.Message):
         @_builtins.property
         def remoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         @_builtins.property
-        def prevRemoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
+        def prevRemoteStatus(
+            self,
+        ) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         def __init__(
             self,
             *,
-            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
-            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
+            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
+            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -317,16 +423,24 @@ class SafetyAlarmRemoteSmokeTrait(_message.Message):
         @_builtins.property
         def remoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         @_builtins.property
-        def prevRemoteStatus(self) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
+        def prevRemoteStatus(
+            self,
+        ) -> Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus: ...
         def __init__(
             self,
             *,
-            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
-            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus | None = ...,
+            remoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
+            prevRemoteStatus: Global___SafetyAlarmRemoteTrait.SafetyAlarmStatus
+            | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "prevRemoteStatus", b"prevRemoteStatus", "remoteStatus", b"remoteStatus"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -372,9 +486,28 @@ class SafetyAlarmSmokeTrait(_message.Message):
             prevStateDuration: _duration_pb2.Duration | None = ...,
             steamDetected: _builtins.bool = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["prevStateDuration", b"prevStateDuration"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "prevStateDuration", b"prevStateDuration"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmLevel", b"alarmLevel", "alarmState", b"alarmState", "prevAlarmState", b"prevAlarmState", "prevSilenceState", b"prevSilenceState", "prevStateDuration", b"prevStateDuration", "sessionId", b"sessionId", "silenceState", b"silenceState", "steamDetected", b"steamDetected"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "alarmLevel",
+            b"alarmLevel",
+            "alarmState",
+            b"alarmState",
+            "prevAlarmState",
+            b"prevAlarmState",
+            "prevSilenceState",
+            b"prevSilenceState",
+            "prevStateDuration",
+            b"prevStateDuration",
+            "sessionId",
+            b"sessionId",
+            "silenceState",
+            b"silenceState",
+            "steamDetected",
+            b"steamDetected",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     SESSIONID_FIELD_NUMBER: _builtins.int
@@ -390,7 +523,14 @@ class SafetyAlarmSmokeTrait(_message.Message):
         alarmState: Global___SafetyAlarmTrait.AlarmState.ValueType = ...,
         silenceState: Global___SafetyAlarmTrait.SilenceState.ValueType = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alarmState", b"alarmState", "sessionId", b"sessionId", "silenceState", b"silenceState"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "alarmState",
+        b"alarmState",
+        "sessionId",
+        b"sessionId",
+        "silenceState",
+        b"silenceState",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyAlarmSmokeTrait: _TypeAlias = SafetyAlarmSmokeTrait  # noqa: Y015
@@ -409,7 +549,12 @@ class SafetyAlarmSettingsTrait(_message.Message):
         headsUpEnabled: _builtins.bool = ...,
         steamDetectionEnabled: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["headsUpEnabled", b"headsUpEnabled", "steamDetectionEnabled", b"steamDetectionEnabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "headsUpEnabled",
+        b"headsUpEnabled",
+        "steamDetectionEnabled",
+        b"steamDetectionEnabled",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___SafetyAlarmSettingsTrait: _TypeAlias = SafetyAlarmSettingsTrait  # noqa: Y015

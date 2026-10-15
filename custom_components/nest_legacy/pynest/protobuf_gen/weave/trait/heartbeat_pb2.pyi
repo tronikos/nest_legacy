@@ -30,36 +30,76 @@ class LivenessTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LivenessDeviceStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LivenessTrait._LivenessDeviceStatus.ValueType], _builtins.type):
+    class _LivenessDeviceStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LIVENESS_DEVICE_STATUS_UNSPECIFIED: LivenessTrait._LivenessDeviceStatus.ValueType  # 0
-        LIVENESS_DEVICE_STATUS_ONLINE: LivenessTrait._LivenessDeviceStatus.ValueType  # 1
-        LIVENESS_DEVICE_STATUS_UNREACHABLE: LivenessTrait._LivenessDeviceStatus.ValueType  # 2
-        LIVENESS_DEVICE_STATUS_UNINITIALIZED: LivenessTrait._LivenessDeviceStatus.ValueType  # 3
-        LIVENESS_DEVICE_STATUS_REBOOTING: LivenessTrait._LivenessDeviceStatus.ValueType  # 4
-        LIVENESS_DEVICE_STATUS_UPGRADING: LivenessTrait._LivenessDeviceStatus.ValueType  # 5
-        LIVENESS_DEVICE_STATUS_SCHEDULED_DOWN: LivenessTrait._LivenessDeviceStatus.ValueType  # 6
+        LIVENESS_DEVICE_STATUS_UNSPECIFIED: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 0
+        LIVENESS_DEVICE_STATUS_ONLINE: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 1
+        LIVENESS_DEVICE_STATUS_UNREACHABLE: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 2
+        LIVENESS_DEVICE_STATUS_UNINITIALIZED: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 3
+        LIVENESS_DEVICE_STATUS_REBOOTING: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 4
+        LIVENESS_DEVICE_STATUS_UPGRADING: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 5
+        LIVENESS_DEVICE_STATUS_SCHEDULED_DOWN: (
+            LivenessTrait._LivenessDeviceStatus.ValueType
+        )  # 6
 
-    class LivenessDeviceStatus(_LivenessDeviceStatus, metaclass=_LivenessDeviceStatusEnumTypeWrapper): ...
-    LIVENESS_DEVICE_STATUS_UNSPECIFIED: LivenessTrait.LivenessDeviceStatus.ValueType  # 0
+    class LivenessDeviceStatus(
+        _LivenessDeviceStatus, metaclass=_LivenessDeviceStatusEnumTypeWrapper
+    ): ...
+    LIVENESS_DEVICE_STATUS_UNSPECIFIED: (
+        LivenessTrait.LivenessDeviceStatus.ValueType
+    )  # 0
     LIVENESS_DEVICE_STATUS_ONLINE: LivenessTrait.LivenessDeviceStatus.ValueType  # 1
-    LIVENESS_DEVICE_STATUS_UNREACHABLE: LivenessTrait.LivenessDeviceStatus.ValueType  # 2
-    LIVENESS_DEVICE_STATUS_UNINITIALIZED: LivenessTrait.LivenessDeviceStatus.ValueType  # 3
+    LIVENESS_DEVICE_STATUS_UNREACHABLE: (
+        LivenessTrait.LivenessDeviceStatus.ValueType
+    )  # 2
+    LIVENESS_DEVICE_STATUS_UNINITIALIZED: (
+        LivenessTrait.LivenessDeviceStatus.ValueType
+    )  # 3
     LIVENESS_DEVICE_STATUS_REBOOTING: LivenessTrait.LivenessDeviceStatus.ValueType  # 4
     LIVENESS_DEVICE_STATUS_UPGRADING: LivenessTrait.LivenessDeviceStatus.ValueType  # 5
-    LIVENESS_DEVICE_STATUS_SCHEDULED_DOWN: LivenessTrait.LivenessDeviceStatus.ValueType  # 6
+    LIVENESS_DEVICE_STATUS_SCHEDULED_DOWN: (
+        LivenessTrait.LivenessDeviceStatus.ValueType
+    )  # 6
 
     class _DeviceFrontendType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _DeviceFrontendTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LivenessTrait._DeviceFrontendType.ValueType], _builtins.type):
+    class _DeviceFrontendTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LivenessTrait._DeviceFrontendType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        DEVICE_FRONTEND_TYPE_UNSPECIFIED: LivenessTrait._DeviceFrontendType.ValueType  # 0
+        DEVICE_FRONTEND_TYPE_UNSPECIFIED: (
+            LivenessTrait._DeviceFrontendType.ValueType
+        )  # 0
         DEVICE_FRONTEND_TYPE_LYCRA: LivenessTrait._DeviceFrontendType.ValueType  # 1
-        DEVICE_FRONTEND_TYPE_WEAVE_FE_1: LivenessTrait._DeviceFrontendType.ValueType  # 2
+        DEVICE_FRONTEND_TYPE_WEAVE_FE_1: (
+            LivenessTrait._DeviceFrontendType.ValueType
+        )  # 2
 
-    class DeviceFrontendType(_DeviceFrontendType, metaclass=_DeviceFrontendTypeEnumTypeWrapper): ...
+    class DeviceFrontendType(
+        _DeviceFrontendType, metaclass=_DeviceFrontendTypeEnumTypeWrapper
+    ): ...
     DEVICE_FRONTEND_TYPE_UNSPECIFIED: LivenessTrait.DeviceFrontendType.ValueType  # 0
     DEVICE_FRONTEND_TYPE_LYCRA: LivenessTrait.DeviceFrontendType.ValueType  # 1
     DEVICE_FRONTEND_TYPE_WEAVE_FE_1: LivenessTrait.DeviceFrontendType.ValueType  # 2
@@ -104,7 +144,11 @@ class LivenessTrait(_message.Message):
         @_builtins.property
         def timePrevStatusChanged(self) -> _timestamp_pb2.Timestamp: ...
         @_builtins.property
-        def frontend(self) -> _containers.RepeatedScalarFieldContainer[Global___LivenessTrait.DeviceFrontendType.ValueType]: ...
+        def frontend(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[
+            Global___LivenessTrait.DeviceFrontendType.ValueType
+        ]: ...
         @_builtins.property
         def disconnected(self) -> _wrappers_pb2.BoolValue: ...
         @_builtins.property
@@ -127,15 +171,74 @@ class LivenessTrait(_message.Message):
             tunnelClosedTime: _timestamp_pb2.Timestamp | None = ...,
             timeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
             timePrevStatusChanged: _timestamp_pb2.Timestamp | None = ...,
-            frontend: _abc.Iterable[Global___LivenessTrait.DeviceFrontendType.ValueType] | None = ...,
+            frontend: _abc.Iterable[Global___LivenessTrait.DeviceFrontendType.ValueType]
+            | None = ...,
             disconnected: _wrappers_pb2.BoolValue | None = ...,
             disconnectedTimeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
             connectionClosedTime: _timestamp_pb2.Timestamp | None = ...,
             traitLabel: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["commandRequestUnresponsiveness", b"commandRequestUnresponsiveness", "connectionClosedTime", b"connectionClosedTime", "disconnected", b"disconnected", "disconnectedTimeStatusChanged", b"disconnectedTimeStatusChanged", "lastContactedTime", b"lastContactedTime", "lastWdmHeartbeatTime", b"lastWdmHeartbeatTime", "notifyRequestUnresponsiveness", b"notifyRequestUnresponsiveness", "timePrevStatusChanged", b"timePrevStatusChanged", "timeStatusChanged", b"timeStatusChanged", "traitLabel", b"traitLabel", "tunnelClosedTime", b"tunnelClosedTime", "tunnelDisconnected", b"tunnelDisconnected"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "commandRequestUnresponsiveness",
+            b"commandRequestUnresponsiveness",
+            "connectionClosedTime",
+            b"connectionClosedTime",
+            "disconnected",
+            b"disconnected",
+            "disconnectedTimeStatusChanged",
+            b"disconnectedTimeStatusChanged",
+            "lastContactedTime",
+            b"lastContactedTime",
+            "lastWdmHeartbeatTime",
+            b"lastWdmHeartbeatTime",
+            "notifyRequestUnresponsiveness",
+            b"notifyRequestUnresponsiveness",
+            "timePrevStatusChanged",
+            b"timePrevStatusChanged",
+            "timeStatusChanged",
+            b"timeStatusChanged",
+            "traitLabel",
+            b"traitLabel",
+            "tunnelClosedTime",
+            b"tunnelClosedTime",
+            "tunnelDisconnected",
+            b"tunnelDisconnected",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["commandRequestUnresponsiveness", b"commandRequestUnresponsiveness", "connectionClosedTime", b"connectionClosedTime", "disconnected", b"disconnected", "disconnectedTimeStatusChanged", b"disconnectedTimeStatusChanged", "frontend", b"frontend", "heartbeatStatus", b"heartbeatStatus", "lastContactedTime", b"lastContactedTime", "lastWdmHeartbeatTime", b"lastWdmHeartbeatTime", "notifyRequestUnresponsiveness", b"notifyRequestUnresponsiveness", "prevStatus", b"prevStatus", "status", b"status", "timePrevStatusChanged", b"timePrevStatusChanged", "timeStatusChanged", b"timeStatusChanged", "traitLabel", b"traitLabel", "tunnelClosedTime", b"tunnelClosedTime", "tunnelDisconnected", b"tunnelDisconnected"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "commandRequestUnresponsiveness",
+            b"commandRequestUnresponsiveness",
+            "connectionClosedTime",
+            b"connectionClosedTime",
+            "disconnected",
+            b"disconnected",
+            "disconnectedTimeStatusChanged",
+            b"disconnectedTimeStatusChanged",
+            "frontend",
+            b"frontend",
+            "heartbeatStatus",
+            b"heartbeatStatus",
+            "lastContactedTime",
+            b"lastContactedTime",
+            "lastWdmHeartbeatTime",
+            b"lastWdmHeartbeatTime",
+            "notifyRequestUnresponsiveness",
+            b"notifyRequestUnresponsiveness",
+            "prevStatus",
+            b"prevStatus",
+            "status",
+            b"status",
+            "timePrevStatusChanged",
+            b"timePrevStatusChanged",
+            "timeStatusChanged",
+            b"timeStatusChanged",
+            "traitLabel",
+            b"traitLabel",
+            "tunnelClosedTime",
+            b"tunnelClosedTime",
+            "tunnelDisconnected",
+            b"tunnelDisconnected",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -160,9 +263,20 @@ class LivenessTrait(_message.Message):
             occurrenceTime: _timestamp_pb2.Timestamp | None = ...,
             connectionTag: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["connectionTag", b"connectionTag", "occurrenceTime", b"occurrenceTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "connectionTag", b"connectionTag", "occurrenceTime", b"occurrenceTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["connectionId", b"connectionId", "connectionTag", b"connectionTag", "frontend", b"frontend", "occurrenceTime", b"occurrenceTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "connectionId",
+            b"connectionId",
+            "connectionTag",
+            b"connectionTag",
+            "frontend",
+            b"frontend",
+            "occurrenceTime",
+            b"occurrenceTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -187,9 +301,20 @@ class LivenessTrait(_message.Message):
             occurrenceTime: _timestamp_pb2.Timestamp | None = ...,
             connectionTag: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["connectionTag", b"connectionTag", "occurrenceTime", b"occurrenceTime"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "connectionTag", b"connectionTag", "occurrenceTime", b"occurrenceTime"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["connectionId", b"connectionId", "connectionTag", b"connectionTag", "frontend", b"frontend", "occurrenceTime", b"occurrenceTime"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "connectionId",
+            b"connectionId",
+            "connectionTag",
+            b"connectionTag",
+            "frontend",
+            b"frontend",
+            "occurrenceTime",
+            b"occurrenceTime",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     STATUS_FIELD_NUMBER: _builtins.int
@@ -222,11 +347,15 @@ class LivenessTrait(_message.Message):
     @_builtins.property
     def notifyRequestUnresponsiveness(self) -> _wrappers_pb2.BoolValue: ...
     @_builtins.property
-    def notifyRequestUnresponsivenessTimeStatusChanged(self) -> _timestamp_pb2.Timestamp: ...
+    def notifyRequestUnresponsivenessTimeStatusChanged(
+        self,
+    ) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
     def commandRequestUnresponsiveness(self) -> _wrappers_pb2.BoolValue: ...
     @_builtins.property
-    def commandRequestUnresponsivenessTimeStatusChanged(self) -> _timestamp_pb2.Timestamp: ...
+    def commandRequestUnresponsivenessTimeStatusChanged(
+        self,
+    ) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
     def publisherName(self) -> _wrappers_pb2.StringValue: ...
     @_builtins.property
@@ -240,7 +369,11 @@ class LivenessTrait(_message.Message):
     @_builtins.property
     def tunnelClosedTime(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
-    def frontend(self) -> _containers.RepeatedScalarFieldContainer[Global___LivenessTrait.DeviceFrontendType.ValueType]: ...
+    def frontend(
+        self,
+    ) -> _containers.RepeatedScalarFieldContainer[
+        Global___LivenessTrait.DeviceFrontendType.ValueType
+    ]: ...
     @_builtins.property
     def disconnected(self) -> _wrappers_pb2.BoolValue: ...
     @_builtins.property
@@ -256,23 +389,98 @@ class LivenessTrait(_message.Message):
         heartbeatStatus: Global___LivenessTrait.LivenessDeviceStatus.ValueType = ...,
         timeHeartbeatStatusChanged: _timestamp_pb2.Timestamp | None = ...,
         notifyRequestUnresponsiveness: _wrappers_pb2.BoolValue | None = ...,
-        notifyRequestUnresponsivenessTimeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
+        notifyRequestUnresponsivenessTimeStatusChanged: _timestamp_pb2.Timestamp
+        | None = ...,
         commandRequestUnresponsiveness: _wrappers_pb2.BoolValue | None = ...,
-        commandRequestUnresponsivenessTimeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
+        commandRequestUnresponsivenessTimeStatusChanged: _timestamp_pb2.Timestamp
+        | None = ...,
         publisherName: _wrappers_pb2.StringValue | None = ...,
         tunnelDisconnected: _wrappers_pb2.BoolValue | None = ...,
         tunnelDisconnectedTimeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
         lastContactedTime: _timestamp_pb2.Timestamp | None = ...,
         lastWdmHeartbeatTime: _timestamp_pb2.Timestamp | None = ...,
         tunnelClosedTime: _timestamp_pb2.Timestamp | None = ...,
-        frontend: _abc.Iterable[Global___LivenessTrait.DeviceFrontendType.ValueType] | None = ...,
+        frontend: _abc.Iterable[Global___LivenessTrait.DeviceFrontendType.ValueType]
+        | None = ...,
         disconnected: _wrappers_pb2.BoolValue | None = ...,
         disconnectedTimeStatusChanged: _timestamp_pb2.Timestamp | None = ...,
         connectionClosedTime: _timestamp_pb2.Timestamp | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["commandRequestUnresponsiveness", b"commandRequestUnresponsiveness", "commandRequestUnresponsivenessTimeStatusChanged", b"commandRequestUnresponsivenessTimeStatusChanged", "connectionClosedTime", b"connectionClosedTime", "disconnected", b"disconnected", "disconnectedTimeStatusChanged", b"disconnectedTimeStatusChanged", "lastContactedTime", b"lastContactedTime", "lastWdmHeartbeatTime", b"lastWdmHeartbeatTime", "maxInactivityDuration", b"maxInactivityDuration", "notifyRequestUnresponsiveness", b"notifyRequestUnresponsiveness", "notifyRequestUnresponsivenessTimeStatusChanged", b"notifyRequestUnresponsivenessTimeStatusChanged", "publisherName", b"publisherName", "timeHeartbeatStatusChanged", b"timeHeartbeatStatusChanged", "timeStatusChanged", b"timeStatusChanged", "tunnelClosedTime", b"tunnelClosedTime", "tunnelDisconnected", b"tunnelDisconnected", "tunnelDisconnectedTimeStatusChanged", b"tunnelDisconnectedTimeStatusChanged"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "commandRequestUnresponsiveness",
+        b"commandRequestUnresponsiveness",
+        "commandRequestUnresponsivenessTimeStatusChanged",
+        b"commandRequestUnresponsivenessTimeStatusChanged",
+        "connectionClosedTime",
+        b"connectionClosedTime",
+        "disconnected",
+        b"disconnected",
+        "disconnectedTimeStatusChanged",
+        b"disconnectedTimeStatusChanged",
+        "lastContactedTime",
+        b"lastContactedTime",
+        "lastWdmHeartbeatTime",
+        b"lastWdmHeartbeatTime",
+        "maxInactivityDuration",
+        b"maxInactivityDuration",
+        "notifyRequestUnresponsiveness",
+        b"notifyRequestUnresponsiveness",
+        "notifyRequestUnresponsivenessTimeStatusChanged",
+        b"notifyRequestUnresponsivenessTimeStatusChanged",
+        "publisherName",
+        b"publisherName",
+        "timeHeartbeatStatusChanged",
+        b"timeHeartbeatStatusChanged",
+        "timeStatusChanged",
+        b"timeStatusChanged",
+        "tunnelClosedTime",
+        b"tunnelClosedTime",
+        "tunnelDisconnected",
+        b"tunnelDisconnected",
+        "tunnelDisconnectedTimeStatusChanged",
+        b"tunnelDisconnectedTimeStatusChanged",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["commandRequestUnresponsiveness", b"commandRequestUnresponsiveness", "commandRequestUnresponsivenessTimeStatusChanged", b"commandRequestUnresponsivenessTimeStatusChanged", "connectionClosedTime", b"connectionClosedTime", "disconnected", b"disconnected", "disconnectedTimeStatusChanged", b"disconnectedTimeStatusChanged", "frontend", b"frontend", "heartbeatStatus", b"heartbeatStatus", "lastContactedTime", b"lastContactedTime", "lastWdmHeartbeatTime", b"lastWdmHeartbeatTime", "maxInactivityDuration", b"maxInactivityDuration", "notifyRequestUnresponsiveness", b"notifyRequestUnresponsiveness", "notifyRequestUnresponsivenessTimeStatusChanged", b"notifyRequestUnresponsivenessTimeStatusChanged", "publisherName", b"publisherName", "status", b"status", "timeHeartbeatStatusChanged", b"timeHeartbeatStatusChanged", "timeStatusChanged", b"timeStatusChanged", "tunnelClosedTime", b"tunnelClosedTime", "tunnelDisconnected", b"tunnelDisconnected", "tunnelDisconnectedTimeStatusChanged", b"tunnelDisconnectedTimeStatusChanged"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "commandRequestUnresponsiveness",
+        b"commandRequestUnresponsiveness",
+        "commandRequestUnresponsivenessTimeStatusChanged",
+        b"commandRequestUnresponsivenessTimeStatusChanged",
+        "connectionClosedTime",
+        b"connectionClosedTime",
+        "disconnected",
+        b"disconnected",
+        "disconnectedTimeStatusChanged",
+        b"disconnectedTimeStatusChanged",
+        "frontend",
+        b"frontend",
+        "heartbeatStatus",
+        b"heartbeatStatus",
+        "lastContactedTime",
+        b"lastContactedTime",
+        "lastWdmHeartbeatTime",
+        b"lastWdmHeartbeatTime",
+        "maxInactivityDuration",
+        b"maxInactivityDuration",
+        "notifyRequestUnresponsiveness",
+        b"notifyRequestUnresponsiveness",
+        "notifyRequestUnresponsivenessTimeStatusChanged",
+        b"notifyRequestUnresponsivenessTimeStatusChanged",
+        "publisherName",
+        b"publisherName",
+        "status",
+        b"status",
+        "timeHeartbeatStatusChanged",
+        b"timeHeartbeatStatusChanged",
+        "timeStatusChanged",
+        b"timeStatusChanged",
+        "tunnelClosedTime",
+        b"tunnelClosedTime",
+        "tunnelDisconnected",
+        b"tunnelDisconnected",
+        "tunnelDisconnectedTimeStatusChanged",
+        b"tunnelDisconnectedTimeStatusChanged",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LivenessTrait: _TypeAlias = LivenessTrait  # noqa: Y015

@@ -30,22 +30,53 @@ class CustomLocatedAnnotationsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _CustomLocatedStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType], _builtins.type):
+    class _CustomLocatedStatusEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        CUSTOM_LOCATED_STATUS_UNSPECIFIED: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 0
-        CUSTOM_LOCATED_STATUS_ANNOTATION_EXISTS: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 1
-        CUSTOM_LOCATED_STATUS_ANNOTATION_DOESNT_EXIST: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 2
-        CUSTOM_LOCATED_STATUS_MISSING_PARAMS: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 3
-        CUSTOM_LOCATED_STATUS_SUCCESS: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 4
-        CUSTOM_LOCATED_STATUS_FAILURE: CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType  # 5
+        CUSTOM_LOCATED_STATUS_UNSPECIFIED: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 0
+        CUSTOM_LOCATED_STATUS_ANNOTATION_EXISTS: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 1
+        CUSTOM_LOCATED_STATUS_ANNOTATION_DOESNT_EXIST: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 2
+        CUSTOM_LOCATED_STATUS_MISSING_PARAMS: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 3
+        CUSTOM_LOCATED_STATUS_SUCCESS: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 4
+        CUSTOM_LOCATED_STATUS_FAILURE: (
+            CustomLocatedAnnotationsTrait._CustomLocatedStatus.ValueType
+        )  # 5
 
-    class CustomLocatedStatus(_CustomLocatedStatus, metaclass=_CustomLocatedStatusEnumTypeWrapper): ...
-    CUSTOM_LOCATED_STATUS_UNSPECIFIED: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 0
-    CUSTOM_LOCATED_STATUS_ANNOTATION_EXISTS: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 1
-    CUSTOM_LOCATED_STATUS_ANNOTATION_DOESNT_EXIST: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 2
-    CUSTOM_LOCATED_STATUS_MISSING_PARAMS: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 3
-    CUSTOM_LOCATED_STATUS_SUCCESS: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 4
-    CUSTOM_LOCATED_STATUS_FAILURE: CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType  # 5
+    class CustomLocatedStatus(
+        _CustomLocatedStatus, metaclass=_CustomLocatedStatusEnumTypeWrapper
+    ): ...
+    CUSTOM_LOCATED_STATUS_UNSPECIFIED: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 0
+    CUSTOM_LOCATED_STATUS_ANNOTATION_EXISTS: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 1
+    CUSTOM_LOCATED_STATUS_ANNOTATION_DOESNT_EXIST: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 2
+    CUSTOM_LOCATED_STATUS_MISSING_PARAMS: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 3
+    CUSTOM_LOCATED_STATUS_SUCCESS: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 4
+    CUSTOM_LOCATED_STATUS_FAILURE: (
+        CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType
+    )  # 5
 
     @_typing.final
     class WheresListEntry(_message.Message):
@@ -64,7 +95,9 @@ class CustomLocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -84,7 +117,9 @@ class CustomLocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -107,9 +142,13 @@ class CustomLocatedAnnotationsTrait(_message.Message):
             legacyUuid: _common_pb2.StringRef | None = ...,
             whereId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -128,9 +167,13 @@ class CustomLocatedAnnotationsTrait(_message.Message):
             label: _common_pb2.StringRef | None = ...,
             fixtureId: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["fixtureId", b"fixtureId", "label", b"label"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "fixtureId", b"fixtureId", "label", b"label"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fixtureId", b"fixtureId", "label", b"label"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fixtureId", b"fixtureId", "label", b"label"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -167,7 +210,9 @@ class CustomLocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["whereItem", b"whereItem"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["status", b"status", "whereItem", b"whereItem"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "status", b"status", "whereItem", b"whereItem"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -230,12 +275,15 @@ class CustomLocatedAnnotationsTrait(_message.Message):
         def __init__(
             self,
             *,
-            fixtureItem: Global___CustomLocatedAnnotationsTrait.FixtureItem | None = ...,
+            fixtureItem: Global___CustomLocatedAnnotationsTrait.FixtureItem
+            | None = ...,
             status: Global___CustomLocatedAnnotationsTrait.CustomLocatedStatus.ValueType = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["fixtureItem", b"fixtureItem"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["fixtureItem", b"fixtureItem", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "fixtureItem", b"fixtureItem", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -306,16 +354,32 @@ class CustomLocatedAnnotationsTrait(_message.Message):
     WHERESLIST_FIELD_NUMBER: _builtins.int
     FIXTURESLIST_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def wheresList(self) -> _containers.MessageMap[_builtins.int, Global___CustomLocatedAnnotationsTrait.WhereItem]: ...
+    def wheresList(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___CustomLocatedAnnotationsTrait.WhereItem
+    ]: ...
     @_builtins.property
-    def fixturesList(self) -> _containers.MessageMap[_builtins.int, Global___CustomLocatedAnnotationsTrait.FixtureItem]: ...
+    def fixturesList(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___CustomLocatedAnnotationsTrait.FixtureItem
+    ]: ...
     def __init__(
         self,
         *,
-        wheresList: _abc.Mapping[_builtins.int, Global___CustomLocatedAnnotationsTrait.WhereItem] | None = ...,
-        fixturesList: _abc.Mapping[_builtins.int, Global___CustomLocatedAnnotationsTrait.FixtureItem] | None = ...,
+        wheresList: _abc.Mapping[
+            _builtins.int, Global___CustomLocatedAnnotationsTrait.WhereItem
+        ]
+        | None = ...,
+        fixturesList: _abc.Mapping[
+            _builtins.int, Global___CustomLocatedAnnotationsTrait.FixtureItem
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["fixturesList", b"fixturesList", "wheresList", b"wheresList"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "fixturesList", b"fixturesList", "wheresList", b"wheresList"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___CustomLocatedAnnotationsTrait: _TypeAlias = CustomLocatedAnnotationsTrait  # noqa: Y015
@@ -328,102 +392,249 @@ class LocatedTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LocatedMajorFixtureTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedTrait._LocatedMajorFixtureType.ValueType], _builtins.type):
+    class _LocatedMajorFixtureTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LOCATED_MAJOR_FIXTURE_TYPE_UNSPECIFIED: LocatedTrait._LocatedMajorFixtureType.ValueType  # 0
-        LOCATED_MAJOR_FIXTURE_TYPE_DOOR: LocatedTrait._LocatedMajorFixtureType.ValueType  # 1
-        LOCATED_MAJOR_FIXTURE_TYPE_WINDOW: LocatedTrait._LocatedMajorFixtureType.ValueType  # 2
-        LOCATED_MAJOR_FIXTURE_TYPE_WALL: LocatedTrait._LocatedMajorFixtureType.ValueType  # 3
-        LOCATED_MAJOR_FIXTURE_TYPE_OBJECT: LocatedTrait._LocatedMajorFixtureType.ValueType  # 4
+        LOCATED_MAJOR_FIXTURE_TYPE_UNSPECIFIED: (
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        )  # 0
+        LOCATED_MAJOR_FIXTURE_TYPE_DOOR: (
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        )  # 1
+        LOCATED_MAJOR_FIXTURE_TYPE_WINDOW: (
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        )  # 2
+        LOCATED_MAJOR_FIXTURE_TYPE_WALL: (
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        )  # 3
+        LOCATED_MAJOR_FIXTURE_TYPE_OBJECT: (
+            LocatedTrait._LocatedMajorFixtureType.ValueType
+        )  # 4
 
-    class LocatedMajorFixtureType(_LocatedMajorFixtureType, metaclass=_LocatedMajorFixtureTypeEnumTypeWrapper): ...
-    LOCATED_MAJOR_FIXTURE_TYPE_UNSPECIFIED: LocatedTrait.LocatedMajorFixtureType.ValueType  # 0
+    class LocatedMajorFixtureType(
+        _LocatedMajorFixtureType, metaclass=_LocatedMajorFixtureTypeEnumTypeWrapper
+    ): ...
+    LOCATED_MAJOR_FIXTURE_TYPE_UNSPECIFIED: (
+        LocatedTrait.LocatedMajorFixtureType.ValueType
+    )  # 0
     LOCATED_MAJOR_FIXTURE_TYPE_DOOR: LocatedTrait.LocatedMajorFixtureType.ValueType  # 1
-    LOCATED_MAJOR_FIXTURE_TYPE_WINDOW: LocatedTrait.LocatedMajorFixtureType.ValueType  # 2
+    LOCATED_MAJOR_FIXTURE_TYPE_WINDOW: (
+        LocatedTrait.LocatedMajorFixtureType.ValueType
+    )  # 2
     LOCATED_MAJOR_FIXTURE_TYPE_WALL: LocatedTrait.LocatedMajorFixtureType.ValueType  # 3
-    LOCATED_MAJOR_FIXTURE_TYPE_OBJECT: LocatedTrait.LocatedMajorFixtureType.ValueType  # 4
+    LOCATED_MAJOR_FIXTURE_TYPE_OBJECT: (
+        LocatedTrait.LocatedMajorFixtureType.ValueType
+    )  # 4
 
     class _LocatedMinorFixtureTypeDoor:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LocatedMinorFixtureTypeDoorEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType], _builtins.type):
+    class _LocatedMinorFixtureTypeDoorEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_UNSPECIFIED: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 0
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GENERIC: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 1
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_HINGED: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 2
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_FRENCH: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 3
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_SLIDING: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 4
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SEGMENTED: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 5
-        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SINGLE_PANEL: LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType  # 6
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_UNSPECIFIED: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 0
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GENERIC: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 1
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_HINGED: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 2
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_FRENCH: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 3
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_SLIDING: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 4
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SEGMENTED: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 5
+        LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SINGLE_PANEL: (
+            LocatedTrait._LocatedMinorFixtureTypeDoor.ValueType
+        )  # 6
 
-    class LocatedMinorFixtureTypeDoor(_LocatedMinorFixtureTypeDoor, metaclass=_LocatedMinorFixtureTypeDoorEnumTypeWrapper): ...
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_UNSPECIFIED: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 0
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GENERIC: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 1
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_HINGED: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 2
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_FRENCH: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 3
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_SLIDING: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 4
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SEGMENTED: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 5
-    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SINGLE_PANEL: LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType  # 6
+    class LocatedMinorFixtureTypeDoor(
+        _LocatedMinorFixtureTypeDoor,
+        metaclass=_LocatedMinorFixtureTypeDoorEnumTypeWrapper,
+    ): ...
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_UNSPECIFIED: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 0
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GENERIC: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 1
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_HINGED: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 2
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_FRENCH: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 3
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_SLIDING: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 4
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SEGMENTED: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 5
+    LOCATED_MINOR_FIXTURE_TYPE_DOOR_GARAGE_SINGLE_PANEL: (
+        LocatedTrait.LocatedMinorFixtureTypeDoor.ValueType
+    )  # 6
 
     class _LocatedMinorFixtureTypeWindow:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LocatedMinorFixtureTypeWindowEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType], _builtins.type):
+    class _LocatedMinorFixtureTypeWindowEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_UNSPECIFIED: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 0
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_GENERIC: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 1
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_SINGLE_HUNG: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 2
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_SINGLE_HUNG: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 3
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_DOUBLE_HUNG: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 4
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_DOUBLE_HUNG: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 5
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_CASEMENT: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 6
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_CASEMENT: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 7
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_TILTTURN: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 8
-        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_ROOF: LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType  # 9
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_UNSPECIFIED: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 0
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_GENERIC: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 1
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_SINGLE_HUNG: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 2
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_SINGLE_HUNG: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 3
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_DOUBLE_HUNG: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 4
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_DOUBLE_HUNG: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 5
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_CASEMENT: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 6
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_CASEMENT: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 7
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_TILTTURN: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 8
+        LOCATED_MINOR_FIXTURE_TYPE_WINDOW_ROOF: (
+            LocatedTrait._LocatedMinorFixtureTypeWindow.ValueType
+        )  # 9
 
-    class LocatedMinorFixtureTypeWindow(_LocatedMinorFixtureTypeWindow, metaclass=_LocatedMinorFixtureTypeWindowEnumTypeWrapper): ...
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_UNSPECIFIED: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 0
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_GENERIC: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 1
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_SINGLE_HUNG: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 2
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_SINGLE_HUNG: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 3
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_DOUBLE_HUNG: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 4
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_DOUBLE_HUNG: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 5
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_CASEMENT: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 6
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_CASEMENT: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 7
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_TILTTURN: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 8
-    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_ROOF: LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType  # 9
+    class LocatedMinorFixtureTypeWindow(
+        _LocatedMinorFixtureTypeWindow,
+        metaclass=_LocatedMinorFixtureTypeWindowEnumTypeWrapper,
+    ): ...
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_UNSPECIFIED: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 0
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_GENERIC: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 1
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_SINGLE_HUNG: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 2
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_SINGLE_HUNG: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 3
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_DOUBLE_HUNG: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 4
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_DOUBLE_HUNG: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 5
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_VERTICAL_CASEMENT: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 6
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_HORIZONTAL_CASEMENT: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 7
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_TILTTURN: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 8
+    LOCATED_MINOR_FIXTURE_TYPE_WINDOW_ROOF: (
+        LocatedTrait.LocatedMinorFixtureTypeWindow.ValueType
+    )  # 9
 
     class _LocatedMinorFixtureTypeWall:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LocatedMinorFixtureTypeWallEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedTrait._LocatedMinorFixtureTypeWall.ValueType], _builtins.type):
+    class _LocatedMinorFixtureTypeWallEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedTrait._LocatedMinorFixtureTypeWall.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LOCATED_MINOR_FIXTURE_TYPE_WALL_UNSPECIFIED: LocatedTrait._LocatedMinorFixtureTypeWall.ValueType  # 0
-        LOCATED_MINOR_FIXTURE_TYPE_WALL_GENERIC: LocatedTrait._LocatedMinorFixtureTypeWall.ValueType  # 1
-        LOCATED_MINOR_FIXTURE_TYPE_WALL_CORNER: LocatedTrait._LocatedMinorFixtureTypeWall.ValueType  # 2
-        LOCATED_MINOR_FIXTURE_TYPE_WALL_FLUSH: LocatedTrait._LocatedMinorFixtureTypeWall.ValueType  # 3
+        LOCATED_MINOR_FIXTURE_TYPE_WALL_UNSPECIFIED: (
+            LocatedTrait._LocatedMinorFixtureTypeWall.ValueType
+        )  # 0
+        LOCATED_MINOR_FIXTURE_TYPE_WALL_GENERIC: (
+            LocatedTrait._LocatedMinorFixtureTypeWall.ValueType
+        )  # 1
+        LOCATED_MINOR_FIXTURE_TYPE_WALL_CORNER: (
+            LocatedTrait._LocatedMinorFixtureTypeWall.ValueType
+        )  # 2
+        LOCATED_MINOR_FIXTURE_TYPE_WALL_FLUSH: (
+            LocatedTrait._LocatedMinorFixtureTypeWall.ValueType
+        )  # 3
 
-    class LocatedMinorFixtureTypeWall(_LocatedMinorFixtureTypeWall, metaclass=_LocatedMinorFixtureTypeWallEnumTypeWrapper): ...
-    LOCATED_MINOR_FIXTURE_TYPE_WALL_UNSPECIFIED: LocatedTrait.LocatedMinorFixtureTypeWall.ValueType  # 0
-    LOCATED_MINOR_FIXTURE_TYPE_WALL_GENERIC: LocatedTrait.LocatedMinorFixtureTypeWall.ValueType  # 1
-    LOCATED_MINOR_FIXTURE_TYPE_WALL_CORNER: LocatedTrait.LocatedMinorFixtureTypeWall.ValueType  # 2
-    LOCATED_MINOR_FIXTURE_TYPE_WALL_FLUSH: LocatedTrait.LocatedMinorFixtureTypeWall.ValueType  # 3
+    class LocatedMinorFixtureTypeWall(
+        _LocatedMinorFixtureTypeWall,
+        metaclass=_LocatedMinorFixtureTypeWallEnumTypeWrapper,
+    ): ...
+    LOCATED_MINOR_FIXTURE_TYPE_WALL_UNSPECIFIED: (
+        LocatedTrait.LocatedMinorFixtureTypeWall.ValueType
+    )  # 0
+    LOCATED_MINOR_FIXTURE_TYPE_WALL_GENERIC: (
+        LocatedTrait.LocatedMinorFixtureTypeWall.ValueType
+    )  # 1
+    LOCATED_MINOR_FIXTURE_TYPE_WALL_CORNER: (
+        LocatedTrait.LocatedMinorFixtureTypeWall.ValueType
+    )  # 2
+    LOCATED_MINOR_FIXTURE_TYPE_WALL_FLUSH: (
+        LocatedTrait.LocatedMinorFixtureTypeWall.ValueType
+    )  # 3
 
     class _LocatedMinorFixtureTypeObject:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _LocatedMinorFixtureTypeObjectEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedTrait._LocatedMinorFixtureTypeObject.ValueType], _builtins.type):
+    class _LocatedMinorFixtureTypeObjectEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedTrait._LocatedMinorFixtureTypeObject.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        LOCATED_MINOR_FIXTURE_TYPE_OBJECT_UNSPECIFIED: LocatedTrait._LocatedMinorFixtureTypeObject.ValueType  # 0
-        LOCATED_MINOR_FIXTURE_TYPE_OBJECT_GENERIC: LocatedTrait._LocatedMinorFixtureTypeObject.ValueType  # 1
+        LOCATED_MINOR_FIXTURE_TYPE_OBJECT_UNSPECIFIED: (
+            LocatedTrait._LocatedMinorFixtureTypeObject.ValueType
+        )  # 0
+        LOCATED_MINOR_FIXTURE_TYPE_OBJECT_GENERIC: (
+            LocatedTrait._LocatedMinorFixtureTypeObject.ValueType
+        )  # 1
 
-    class LocatedMinorFixtureTypeObject(_LocatedMinorFixtureTypeObject, metaclass=_LocatedMinorFixtureTypeObjectEnumTypeWrapper): ...
-    LOCATED_MINOR_FIXTURE_TYPE_OBJECT_UNSPECIFIED: LocatedTrait.LocatedMinorFixtureTypeObject.ValueType  # 0
-    LOCATED_MINOR_FIXTURE_TYPE_OBJECT_GENERIC: LocatedTrait.LocatedMinorFixtureTypeObject.ValueType  # 1
+    class LocatedMinorFixtureTypeObject(
+        _LocatedMinorFixtureTypeObject,
+        metaclass=_LocatedMinorFixtureTypeObjectEnumTypeWrapper,
+    ): ...
+    LOCATED_MINOR_FIXTURE_TYPE_OBJECT_UNSPECIFIED: (
+        LocatedTrait.LocatedMinorFixtureTypeObject.ValueType
+    )  # 0
+    LOCATED_MINOR_FIXTURE_TYPE_OBJECT_GENERIC: (
+        LocatedTrait.LocatedMinorFixtureTypeObject.ValueType
+    )  # 1
 
     @_typing.final
     class LocatedFixtureType(_message.Message):
@@ -448,7 +659,18 @@ class LocatedTrait(_message.Message):
             minorTypeWall: Global___LocatedTrait.LocatedMinorFixtureTypeWall.ValueType = ...,
             minorTypeObject: Global___LocatedTrait.LocatedMinorFixtureTypeObject.ValueType = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["majorType", b"majorType", "minorTypeDoor", b"minorTypeDoor", "minorTypeObject", b"minorTypeObject", "minorTypeWall", b"minorTypeWall", "minorTypeWindow", b"minorTypeWindow"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "majorType",
+            b"majorType",
+            "minorTypeDoor",
+            b"minorTypeDoor",
+            "minorTypeObject",
+            b"minorTypeObject",
+            "minorTypeWall",
+            b"minorTypeWall",
+            "minorTypeWindow",
+            b"minorTypeWindow",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -465,15 +687,26 @@ class LocatedAnnotationsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocatedAnnotationsTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            LocatedAnnotationsTrait._StatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: LocatedAnnotationsTrait._StatusCode.ValueType  # 0
         STATUS_CODE_SUCCESS: LocatedAnnotationsTrait._StatusCode.ValueType  # 1
         STATUS_CODE_FAILURE: LocatedAnnotationsTrait._StatusCode.ValueType  # 2
         STATUS_CODE_MISSING_LABEL: LocatedAnnotationsTrait._StatusCode.ValueType  # 4096
-        STATUS_CODE_ANNOTATION_EXISTS: LocatedAnnotationsTrait._StatusCode.ValueType  # 4097
-        STATUS_CODE_MISSING_ANNOTATION: LocatedAnnotationsTrait._StatusCode.ValueType  # 8192
-        STATUS_CODE_ANNOTATION_DOESNT_EXIST: LocatedAnnotationsTrait._StatusCode.ValueType  # 8193
+        STATUS_CODE_ANNOTATION_EXISTS: (
+            LocatedAnnotationsTrait._StatusCode.ValueType
+        )  # 4097
+        STATUS_CODE_MISSING_ANNOTATION: (
+            LocatedAnnotationsTrait._StatusCode.ValueType
+        )  # 8192
+        STATUS_CODE_ANNOTATION_DOESNT_EXIST: (
+            LocatedAnnotationsTrait._StatusCode.ValueType
+        )  # 8193
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
     STATUS_CODE_UNSPECIFIED: LocatedAnnotationsTrait.StatusCode.ValueType  # 0
@@ -482,7 +715,9 @@ class LocatedAnnotationsTrait(_message.Message):
     STATUS_CODE_MISSING_LABEL: LocatedAnnotationsTrait.StatusCode.ValueType  # 4096
     STATUS_CODE_ANNOTATION_EXISTS: LocatedAnnotationsTrait.StatusCode.ValueType  # 4097
     STATUS_CODE_MISSING_ANNOTATION: LocatedAnnotationsTrait.StatusCode.ValueType  # 8192
-    STATUS_CODE_ANNOTATION_DOESNT_EXIST: LocatedAnnotationsTrait.StatusCode.ValueType  # 8193
+    STATUS_CODE_ANNOTATION_DOESNT_EXIST: (
+        LocatedAnnotationsTrait.StatusCode.ValueType
+    )  # 8193
 
     @_typing.final
     class PredefinedWheresEntry(_message.Message):
@@ -501,7 +736,9 @@ class LocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -521,7 +758,9 @@ class LocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -541,7 +780,9 @@ class LocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "key", b"key", "value", b"value"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -563,9 +804,13 @@ class LocatedAnnotationsTrait(_message.Message):
             label: _common_pb2.StringRef | None = ...,
             legacyUuid: _builtins.str = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["label", b"label", "whereId", b"whereId"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "label", b"label", "whereId", b"whereId"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "label", b"label", "legacyUuid", b"legacyUuid", "whereId", b"whereId"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -599,7 +844,9 @@ class LocatedAnnotationsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["whereItem", b"whereItem"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["status", b"status", "whereItem", b"whereItem"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "status", b"status", "whereItem", b"whereItem"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -671,19 +918,45 @@ class LocatedAnnotationsTrait(_message.Message):
     CUSTOMWHERES_FIELD_NUMBER: _builtins.int
     DEPRECATEDPREDEFINEDWHERESTOINCLUDE_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def predefinedWheres(self) -> _containers.MessageMap[_builtins.int, Global___LocatedAnnotationsTrait.WhereItem]: ...
+    def predefinedWheres(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___LocatedAnnotationsTrait.WhereItem
+    ]: ...
     @_builtins.property
-    def customWheres(self) -> _containers.MessageMap[_builtins.int, Global___LocatedAnnotationsTrait.WhereItem]: ...
+    def customWheres(
+        self,
+    ) -> _containers.MessageMap[
+        _builtins.int, Global___LocatedAnnotationsTrait.WhereItem
+    ]: ...
     @_builtins.property
-    def deprecatedPredefinedWheresToInclude(self) -> _containers.MessageMap[_builtins.int, _common_pb2.ResourceId]: ...
+    def deprecatedPredefinedWheresToInclude(
+        self,
+    ) -> _containers.MessageMap[_builtins.int, _common_pb2.ResourceId]: ...
     def __init__(
         self,
         *,
-        predefinedWheres: _abc.Mapping[_builtins.int, Global___LocatedAnnotationsTrait.WhereItem] | None = ...,
-        customWheres: _abc.Mapping[_builtins.int, Global___LocatedAnnotationsTrait.WhereItem] | None = ...,
-        deprecatedPredefinedWheresToInclude: _abc.Mapping[_builtins.int, _common_pb2.ResourceId] | None = ...,
+        predefinedWheres: _abc.Mapping[
+            _builtins.int, Global___LocatedAnnotationsTrait.WhereItem
+        ]
+        | None = ...,
+        customWheres: _abc.Mapping[
+            _builtins.int, Global___LocatedAnnotationsTrait.WhereItem
+        ]
+        | None = ...,
+        deprecatedPredefinedWheresToInclude: _abc.Mapping[
+            _builtins.int, _common_pb2.ResourceId
+        ]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["customWheres", b"customWheres", "deprecatedPredefinedWheresToInclude", b"deprecatedPredefinedWheresToInclude", "predefinedWheres", b"predefinedWheres"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "customWheres",
+        b"customWheres",
+        "deprecatedPredefinedWheresToInclude",
+        b"deprecatedPredefinedWheresToInclude",
+        "predefinedWheres",
+        b"predefinedWheres",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LocatedAnnotationsTrait: _TypeAlias = LocatedAnnotationsTrait  # noqa: Y015
@@ -696,13 +969,20 @@ class DeviceLocatedSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _StatusCodeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DeviceLocatedSettingsTrait._StatusCode.ValueType], _builtins.type):
+    class _StatusCodeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DeviceLocatedSettingsTrait._StatusCode.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
         STATUS_CODE_UNSPECIFIED: DeviceLocatedSettingsTrait._StatusCode.ValueType  # 0
         STATUS_CODE_SUCCESS: DeviceLocatedSettingsTrait._StatusCode.ValueType  # 1
         STATUS_CODE_INTERNAL: DeviceLocatedSettingsTrait._StatusCode.ValueType  # 2
         STATUS_CODE_UNAUTHORIZED: DeviceLocatedSettingsTrait._StatusCode.ValueType  # 3
-        STATUS_CODE_RESOURCE_NOT_FOUND: DeviceLocatedSettingsTrait._StatusCode.ValueType  # 4
+        STATUS_CODE_RESOURCE_NOT_FOUND: (
+            DeviceLocatedSettingsTrait._StatusCode.ValueType
+        )  # 4
 
     class StatusCode(_StatusCode, metaclass=_StatusCodeEnumTypeWrapper): ...
     STATUS_CODE_UNSPECIFIED: DeviceLocatedSettingsTrait.StatusCode.ValueType  # 0
@@ -725,7 +1005,9 @@ class DeviceLocatedSettingsTrait(_message.Message):
             whereLabel: _builtins.str = ...,
             locale: _builtins.str = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["locale", b"locale", "whereLabel", b"whereLabel"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "locale", b"locale", "whereLabel", b"whereLabel"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -740,9 +1022,13 @@ class DeviceLocatedSettingsTrait(_message.Message):
             *,
             whereAnnotationRid: _common_pb2.ResourceId | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["whereAnnotationRid", b"whereAnnotationRid"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "whereAnnotationRid", b"whereAnnotationRid"
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["whereAnnotationRid", b"whereAnnotationRid"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "whereAnnotationRid", b"whereAnnotationRid"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -762,7 +1048,9 @@ class DeviceLocatedSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "roomName", b"roomName"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId", b"resourceId", "roomName", b"roomName"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -782,7 +1070,9 @@ class DeviceLocatedSettingsTrait(_message.Message):
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["resourceId", b"resourceId", "status", b"status"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "resourceId", b"resourceId", "status", b"status"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     WHEREANNOTATIONRID_FIELD_NUMBER: _builtins.int
@@ -805,11 +1095,15 @@ class DeviceLocatedSettingsTrait(_message.Message):
     @_builtins.property
     def whereLabel(self) -> _common_pb2.StringRef: ...
     @_builtins.property
-    def whereSpokenAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def whereSpokenAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
     def fixtureNameLabel(self) -> _common_pb2.StringRef: ...
     @_builtins.property
-    def fixtureSpokenAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def fixtureSpokenAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
     def lastModifiedTimestamp(self) -> _timestamp_pb2.Timestamp: ...
     @_builtins.property
@@ -828,9 +1122,45 @@ class DeviceLocatedSettingsTrait(_message.Message):
         lastKnownRelocationTimestamp: _timestamp_pb2.Timestamp | None = ...,
         whereLegacyUuid: _builtins.str = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["fixtureAnnotationRid", b"fixtureAnnotationRid", "fixtureNameLabel", b"fixtureNameLabel", "fixtureType", b"fixtureType", "lastKnownRelocationTimestamp", b"lastKnownRelocationTimestamp", "lastModifiedTimestamp", b"lastModifiedTimestamp", "whereAnnotationRid", b"whereAnnotationRid", "whereLabel", b"whereLabel"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal[
+        "fixtureAnnotationRid",
+        b"fixtureAnnotationRid",
+        "fixtureNameLabel",
+        b"fixtureNameLabel",
+        "fixtureType",
+        b"fixtureType",
+        "lastKnownRelocationTimestamp",
+        b"lastKnownRelocationTimestamp",
+        "lastModifiedTimestamp",
+        b"lastModifiedTimestamp",
+        "whereAnnotationRid",
+        b"whereAnnotationRid",
+        "whereLabel",
+        b"whereLabel",
+    ]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["fixtureAnnotationRid", b"fixtureAnnotationRid", "fixtureNameLabel", b"fixtureNameLabel", "fixtureSpokenAnnotationRids", b"fixtureSpokenAnnotationRids", "fixtureType", b"fixtureType", "lastKnownRelocationTimestamp", b"lastKnownRelocationTimestamp", "lastModifiedTimestamp", b"lastModifiedTimestamp", "whereAnnotationRid", b"whereAnnotationRid", "whereLabel", b"whereLabel", "whereLegacyUuid", b"whereLegacyUuid", "whereSpokenAnnotationRids", b"whereSpokenAnnotationRids"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "fixtureAnnotationRid",
+        b"fixtureAnnotationRid",
+        "fixtureNameLabel",
+        b"fixtureNameLabel",
+        "fixtureSpokenAnnotationRids",
+        b"fixtureSpokenAnnotationRids",
+        "fixtureType",
+        b"fixtureType",
+        "lastKnownRelocationTimestamp",
+        b"lastKnownRelocationTimestamp",
+        "lastModifiedTimestamp",
+        b"lastModifiedTimestamp",
+        "whereAnnotationRid",
+        b"whereAnnotationRid",
+        "whereLabel",
+        b"whereLabel",
+        "whereLegacyUuid",
+        b"whereLegacyUuid",
+        "whereSpokenAnnotationRids",
+        b"whereSpokenAnnotationRids",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DeviceLocatedSettingsTrait: _TypeAlias = DeviceLocatedSettingsTrait  # noqa: Y015
@@ -853,7 +1183,9 @@ class GeoCommon(_message.Message):
             latitude: _builtins.float = ...,
             longitude: _builtins.float = ...,
         ) -> None: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["latitude", b"latitude", "longitude", b"longitude"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "latitude", b"latitude", "longitude", b"longitude"
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @_typing.final
@@ -869,7 +1201,9 @@ class GeoCommon(_message.Message):
         @_builtins.property
         def postalCode(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
-        def addressLines(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+        def addressLines(
+            self,
+        ) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
         @_builtins.property
         def locality(self) -> _wrappers_pb2.StringValue: ...
         @_builtins.property
@@ -883,9 +1217,27 @@ class GeoCommon(_message.Message):
             locality: _wrappers_pb2.StringValue | None = ...,
             administrativeArea: _wrappers_pb2.StringValue | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["administrativeArea", b"administrativeArea", "locality", b"locality", "postalCode", b"postalCode"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal[
+            "administrativeArea",
+            b"administrativeArea",
+            "locality",
+            b"locality",
+            "postalCode",
+            b"postalCode",
+        ]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["addressLines", b"addressLines", "administrativeArea", b"administrativeArea", "locality", b"locality", "postalCode", b"postalCode", "regionCode", b"regionCode"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal[
+            "addressLines",
+            b"addressLines",
+            "administrativeArea",
+            b"administrativeArea",
+            "locality",
+            b"locality",
+            "postalCode",
+            b"postalCode",
+            "regionCode",
+            b"regionCode",
+        ]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     def __init__(
@@ -904,25 +1256,51 @@ class DeviceLocatedCapabilitiesTrait(_message.Message):
     VALIDFIXTURESPOKENANNOTATIONRIDS_FIELD_NUMBER: _builtins.int
     VALIDFIXTURETYPES_FIELD_NUMBER: _builtins.int
     @_builtins.property
-    def validWhereAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def validWhereAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
-    def validWhereSpokenAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def validWhereSpokenAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
-    def validFixtureAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def validFixtureAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
-    def validFixtureSpokenAnnotationRids(self) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
+    def validFixtureSpokenAnnotationRids(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[_common_pb2.ResourceId]: ...
     @_builtins.property
-    def validFixtureTypes(self) -> _containers.RepeatedCompositeFieldContainer[Global___LocatedTrait.LocatedFixtureType]: ...
+    def validFixtureTypes(
+        self,
+    ) -> _containers.RepeatedCompositeFieldContainer[
+        Global___LocatedTrait.LocatedFixtureType
+    ]: ...
     def __init__(
         self,
         *,
         validWhereAnnotationRids: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
-        validWhereSpokenAnnotationRids: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
+        validWhereSpokenAnnotationRids: _abc.Iterable[_common_pb2.ResourceId]
+        | None = ...,
         validFixtureAnnotationRids: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
-        validFixtureSpokenAnnotationRids: _abc.Iterable[_common_pb2.ResourceId] | None = ...,
-        validFixtureTypes: _abc.Iterable[Global___LocatedTrait.LocatedFixtureType] | None = ...,
+        validFixtureSpokenAnnotationRids: _abc.Iterable[_common_pb2.ResourceId]
+        | None = ...,
+        validFixtureTypes: _abc.Iterable[Global___LocatedTrait.LocatedFixtureType]
+        | None = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["validFixtureAnnotationRids", b"validFixtureAnnotationRids", "validFixtureSpokenAnnotationRids", b"validFixtureSpokenAnnotationRids", "validFixtureTypes", b"validFixtureTypes", "validWhereAnnotationRids", b"validWhereAnnotationRids", "validWhereSpokenAnnotationRids", b"validWhereSpokenAnnotationRids"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "validFixtureAnnotationRids",
+        b"validFixtureAnnotationRids",
+        "validFixtureSpokenAnnotationRids",
+        b"validFixtureSpokenAnnotationRids",
+        "validFixtureTypes",
+        b"validFixtureTypes",
+        "validWhereAnnotationRids",
+        b"validWhereAnnotationRids",
+        "validWhereSpokenAnnotationRids",
+        b"validWhereSpokenAnnotationRids",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DeviceLocatedCapabilitiesTrait: _TypeAlias = DeviceLocatedCapabilitiesTrait  # noqa: Y015

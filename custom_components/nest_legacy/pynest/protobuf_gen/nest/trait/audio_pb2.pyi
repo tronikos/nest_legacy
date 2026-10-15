@@ -27,7 +27,9 @@ class MicrophoneSettingsTrait(_message.Message):
         *,
         enableMicrophone: _builtins.bool = ...,
     ) -> None: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enableMicrophone", b"enableMicrophone"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "enableMicrophone", b"enableMicrophone"
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___MicrophoneSettingsTrait: _TypeAlias = MicrophoneSettingsTrait  # noqa: Y015

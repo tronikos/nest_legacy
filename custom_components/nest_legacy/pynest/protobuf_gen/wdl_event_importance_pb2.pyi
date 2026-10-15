@@ -20,7 +20,9 @@ class _EventImportance:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
 
-class _EventImportanceEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_EventImportance.ValueType], _builtins.type):
+class _EventImportanceEnumTypeWrapper(
+    _enum_type_wrapper._EnumTypeWrapper[_EventImportance.ValueType], _builtins.type
+):
     DESCRIPTOR: _descriptor.EnumDescriptor
     EVENT_IMPORTANCE_UNSPECIFIED: _EventImportance.ValueType  # 0
     EVENT_IMPORTANCE_PRODUCTION_CRITICAL: _EventImportance.ValueType  # 1

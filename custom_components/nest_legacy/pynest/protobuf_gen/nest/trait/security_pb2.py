@@ -4,6 +4,7 @@
 # source: nest/trait/security.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -20,165 +21,285 @@ from ...nest.trait import occupancy_pb2 as nest_dot_trait_dot_occupancy__pb2
 from ...weave import common_pb2 as weave_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19nest/trait/security.proto\x12\x13nest.trait.security\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x19nest/trait/detector.proto\x1a\x1anest/trait/occupancy.proto\x1a\x12weave/common.proto\"\xd5\x1b\n\x10SecurityArmTrait\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12\x1c\n\x14securityArmSessionId\x18\x02 \x01(\r\x12T\n\x0e\x61llowanceState\x18\x03 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12;\n\x17\x61llowanceExpirationTime\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x15\x65xitAllowanceDuration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.Duration\x12H\n\x08\x61rmActor\x18\x06 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12+\n\x07\x61rmTime\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xbe\x02\n\x12SecurityArmRequest\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12H\n\x08\x61rmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\x63\n\x15\x61\x63knowledgedIssuesSet\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12/\n\rlocationScope\x18\x04 \x01(\x0b\x32\x18.weave.common.ResourceId\x1aj\n\x13SecurityArmResponse\x12S\n\x0cresponseType\x18\x01 \x01(\x0e\x32=.nest.trait.security.SecurityArmTrait.SecurityArmResponseType\x1a\x95\x01\n\x18SecurityArmCancelRequest\x12H\n\x08\x61rmActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12/\n\rlocationScope\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x1av\n\x19SecurityArmCancelResponse\x12Y\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x43.nest.trait.security.SecurityArmTrait.SecurityArmCancelResponseType\x1a\xa9\x04\n\x1bSecurityArmStateChangeEvent\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12M\n\rpriorArmState\x18\x02 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12H\n\x08\x61rmActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\x1c\n\x14securityArmSessionId\x18\x04 \x01(\r\x12X\n\x0c\x63hangeReason\x18\x05 \x01(\x0e\x32\x42.nest.trait.security.SecurityArmTrait.SecurityArmStateChangeReason\x12T\n\x0e\x61llowanceState\x18\x06 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12Y\n\x13priorAllowanceState\x18\x07 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x1a\x9f\x02\n!SecurityAllowanceStateChangeEvent\x12T\n\x0e\x61llowanceState\x18\x01 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12Y\n\x13priorAllowanceState\x18\x02 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12+\n\x08\x64uration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\x8f\x01\n\x10SecurityArmState\x12\"\n\x1eSECURITY_ARM_STATE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_ARM_STATE_DISARMED\x10\x01\x12\x1a\n\x16SECURITY_ARM_STATE_SL1\x10\x02\x12\x1a\n\x16SECURITY_ARM_STATE_SL2\x10\x03\"\x92\x01\n\x16SecurityAllowanceState\x12(\n$SECURITY_ALLOWANCE_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cSECURITY_ALLOWANCE_STATE_OFF\x10\x01\x12,\n(SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE\x10\x02\"\xfd\x01\n\nStatusCode\x12\x1b\n\x17STATUS_CODE_UNSPECIFIED\x10\x00\x12\x17\n\x13STATUS_CODE_ALREADY\x10\x01\x12%\n!STATUS_CODE_UNACKNOWLEDGED_ISSUES\x10\x02\x12\x1f\n\x1bSTATUS_CODE_BLOCKING_ISSUES\x10\x03\x12\x1f\n\x1bSTATUS_CODE_OUT_OF_SCHEDULE\x10\x04\x12)\n%STATUS_CODE_UNAUTHORIZED_STATE_CHANGE\x10\x05\x12%\n!STATUS_CODE_LOCATION_OUT_OF_SCOPE\x10\x06\"\xb9\x03\n\x17SecurityArmResponseType\x12*\n&SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12&\n\"SECURITY_ARM_RESPONSE_TYPE_SUCCESS\x10\x01\x12+\n\'SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x39\n5SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES\x10\x03\x12\x33\n/SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES\x10\x04\x12\x33\n/SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE\x10\x05\x12=\n9SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE\x10\x06\x12\x39\n5SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE\x10\x07\"\xed\x02\n\x1dSecurityArmCancelResponseType\x12\x31\n-SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12-\n)SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS\x10\x01\x12\x32\n.SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12.\n*SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE\x10\x03\x12\x44\n@SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE\x10\x04\x12@\n<SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE\x10\x05\"\xb6\x01\n\x1cSecurityArmStateChangeReason\x12\x30\n,SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED\x10\x00\x12\x30\n,SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST\x10\x01\x12\x32\n.SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED\x10\x02\"\x88\x13\n\x14\x41larmSupervisorTrait\x12\\\n\x14\x61larmSupervisorState\x18\x01 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12\x35\n\x11\x61larmingStateTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12V\n\x16\x61larmAcknowledegeActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1a\xee\x03\n\x1f\x41larmSupervisorStateChangeEvent\x12Z\n\x12priorAlarmingState\x18\x01 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12U\n\ralarmingState\x18\x02 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12_\n\x11\x64\x65viceAlarmReason\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x66\n\x15\x61larmSupervisorReason\x18\x04 \x01(\x0e\x32G.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorDecisionReason\x12O\n\x0ftriggeringActor\x18\x05 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1az\n\x1b\x41larmingAcknowledgeResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1a\x66\n\x1a\x41larmingAcknowledgeRequest\x12H\n\x08\x61\x63kActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1aw\n\x18SetPrealarmTimerResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ao\n\x17SetPrealarmTimerRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1az\n\x1bRemovePrealarmTimerResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ar\n\x1aRemovePrealarmTimerRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1aq\n\x12RaiseAlarmResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ai\n\x11RaiseAlarmRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\"\xd0\x01\n\x14\x41larmSupervisorState\x12&\n\"ALARM_SUPERVISOR_STATE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x41LARM_SUPERVISOR_STATE_IDLE\x10\x01\x12%\n!ALARM_SUPERVISOR_STATE_EVALUATING\x10\x02\x12#\n\x1f\x41LARM_SUPERVISOR_STATE_SILENCED\x10\x03\x12#\n\x1f\x41LARM_SUPERVISOR_STATE_ALARMING\x10\x04\"\xfe\x01\n\x1d\x41larmSupervisorDecisionReason\x12\x30\n,ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED\x10\x00\x12\x33\n/ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB\x10\x01\x12\x33\n/ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING\x10\x02\x12\x41\n=ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE\x10\x03\"\xa1\x02\n\x1b\x41larmSupervisorResponseType\x12.\n*ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12*\n&ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS\x10\x01\x12/\n+ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x37\n3ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES\x10\x03\x12<\n8ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE\x10\x04\"\xa3\x1a\n\x14SecurityDecisionFact\x1a\xd5\x01\n\x1aSecurityDecisionFactStruct\x12T\n\x08\x66\x61\x63tType\x18\x01 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12\x32\n\x10originResourceId\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb2\x18\n\x18SecurityDecisionFactType\x12+\n\'SECURITY_DECISION_FACT_TYPE_UNSPECIFIED\x10\x00\x12)\n%SECURITY_DECISION_FACT_TYPE_OPEN_DOOR\x10\x01\x12\x30\n,SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS\x10\x02\x12*\n&SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR\x10\x03\x12+\n\'SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW\x10\x04\x12\x32\n.SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS\x10\x05\x12,\n(SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW\x10\x06\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION\x10\x07\x12\x32\n.SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION\x10\x08\x12\x30\n,SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED\x10\t\x12\x35\n1SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE\x10\n\x12\x34\n0SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE\x10\x0b\x12+\n\'SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE\x10\x0c\x12*\n&SECURITY_DECISION_FACT_TYPE_HUB_ONLINE\x10\r\x12*\n&SECURITY_DECISION_FACT_TYPE_HUB_TAMPER\x10\x0e\x12\x32\n.SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED\x10\x0f\x12\x34\n0SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER\x10\x10\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED\x10\x11\x12;\n7SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE\x10\x12\x12\x44\n@SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED\x10\x13\x12\x45\nASECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE\x10\x14\x12N\nJSECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED\x10\x15\x12.\n*SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING\x10\x16\x12\x36\n2SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED\x10\x17\x12\x34\n0SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY\x10\x18\x12\x44\n@SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL\x10\x19\x12\x42\n>SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL\x10\x1a\x12=\n9SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS\x10\x1b\x12\x30\n,SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS\x10\x1c\x12:\n6SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS\x10\x1d\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL\x10\x1e\x12\x39\n5SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW\x10\x1f\x12\x44\n@SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW\x10 \x12\x37\n3SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED\x10!\x12\x33\n/SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN\x10\"\x12\x35\n1SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED\x10#\x12\x31\n-SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN\x10$\x12\x39\n5SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED\x10%\x12\x35\n1SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN\x10&\x12\x35\n1SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED\x10\'\x12\x31\n-SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN\x10(\x12;\n7SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP\x10)\x12\x43\n?SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED\x10*\x12\x34\n0SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE\x10+\x12<\n8SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED\x10,\x12>\n:SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE\x10-\x12\x46\nBSECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED\x10.\x12\x30\n,SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE\x10/\x12\x34\n0SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE\x10\x30\x12\x33\n/SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM\x10\x31\x12;\n7SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED\x10\x32\x12\x36\n2SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS\x10\x33\x12/\n+SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK\x10\x34\x12\x33\n/SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE\x10\x35\x12;\n7SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED\x10\x36\"\xd6\x12\n\x15SecurityAlarmingTrait\x12W\n\ralarmingState\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12Y\n\x0b\x61larmReason\x18\x02 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12:\n\x16prealarmExpirationTime\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x13prealarmingDuration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x61larmingStateTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x9e\x04\n SecurityAlarmingStateChangeEvent\x12W\n\ralarmingState\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12\\\n\x12priorAlarmingState\x18\x02 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12`\n\x12initialAlarmReason\x18\x03 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x1c\n\x14securityArmSessionId\x18\x04 \x01(\r\x12\x62\n\x0c\x63hangeReason\x18\x05 \x01(\x0e\x32L.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingStateChangeReason\x12_\n\x11latestAlarmReason\x18\x06 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\xc4\x02\n\x1eSecurityAlarmingSetToIdleEvent\x12J\n\nalarmActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\\\n\x12priorAlarmingState\x18\x02 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12Z\n\x0c\x61larmReasons\x18\x04 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\xce\x02\n\x1dSecurityAlarmingDecisionEvent\x12Z\n\x0c\x64\x65\x63isionFact\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12Y\n\x06result\x18\x02 \x01(\x0e\x32I.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingDecisionResult\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12X\n\x0eresultingState\x18\x04 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\"\xb1\x01\n\x15SecurityAlarmingState\x12\'\n#SECURITY_ALARMING_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cSECURITY_ALARMING_STATE_IDLE\x10\x01\x12\'\n#SECURITY_ALARMING_STATE_PREALARMING\x10\x02\x12$\n SECURITY_ALARMING_STATE_ALARMING\x10\x03\"\xb3\x02\n!SecurityAlarmingStateChangeReason\x12\x35\n1SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED\x10\x00\x12\x31\n-SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED\x10\x01\x12\x35\n1SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER\x10\x02\x12:\n6SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION\x10\x03\x12\x31\n-SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED\x10\x04\"\xba\x02\n\x1eSecurityAlarmingDecisionResult\x12\x31\n-SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED\x10\x00\x12\x38\n4SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM\x10\x01\x12=\n9SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM\x10\x02\x12;\n7SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION\x10\x03\x12/\n+SECURITY_ALARMING_DECISION_RESULT_NO_ACTION\x10\x04\"\xcd\t\n\x15SecuritySettingsTrait\x12\x1c\n\x14\x62ypassFeatureEnabled\x18\x01 \x01(\x08\x12\x1b\n\x13petRejectionEnabled\x18\x02 \x01(\x08\x12\x1e\n\x16motionDetectionEnabled\x18\x03 \x01(\x08\x12]\n\x14securitySettingsMode\x18\x04 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12(\n automaticallyArmOnScheduledNight\x18\x05 \x01(\x08\x1a\x81\x02\n\x1fSecuritySettingsModeChangeEvent\x12\x65\n\x1cpreviousSecuritySettingsMode\x18\x01 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12`\n\x17newSecuritySettingsMode\x18\x02 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12\x15\n\rsetToDefaults\x18\x03 \x01(\x08\x1a\x99\x01\n!SecuritySettingsModeChangeRequest\x12]\n\x14securitySettingsMode\x18\x01 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12\x15\n\rsetToDefaults\x18\x02 \x01(\x08\x1al\n#ResetIntrusionSettingsByModeRequest\x12\x45\n\x05state\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x1ap\n\x1cLimitedSettingsChangeRequest\x12P\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecuritySettingsTrait.LimitedSettingsAction\"\xcb\x01\n\x14SecuritySettingsMode\x12&\n\"SECURITY_SETTINGS_MODE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_SETTINGS_MODE_NEST\x10\x01\x12\"\n\x1eSECURITY_SETTINGS_MODE_UL_CERT\x10\x02\x12\"\n\x1eSECURITY_SETTINGS_MODE_EU_CERT\x10\x03\x12\"\n\x1eSECURITY_SETTINGS_MODE_UK_CERT\x10\x04\"\x81\x01\n\x15LimitedSettingsAction\x12\'\n#LIMITED_SETTINGS_ACTION_UNSPECIFIED\x10\x00\x12\x1e\n\x1aLIMITED_SETTINGS_ACTION_ON\x10\x01\x12\x1f\n\x1bLIMITED_SETTINGS_ACTION_OFF\x10\x02\"\xe6\x06\n\rSecurityActor\x1a\xb4\x01\n\x13SecurityActorStruct\x12\x46\n\x06method\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityActor.SecurityActorMethod\x12,\n\noriginator\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\'\n\x05\x61gent\x18\x03 \x01(\x0b\x32\x18.weave.common.ResourceId\"\x9d\x05\n\x13SecurityActorMethod\x12%\n!SECURITY_ACTOR_METHOD_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_ACTOR_METHOD_OTHER\x10\x01\x12 \n\x1cSECURITY_ACTOR_METHOD_KEYPAD\x10\x02\x12$\n SECURITY_ACTOR_METHOD_KEYPAD_PIN\x10\x03\x12$\n SECURITY_ACTOR_METHOD_AUTH_TOKEN\x10\x04\x12.\n*SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT\x10\x05\x12.\n*SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT\x10\x06\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT\x10\x07\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT\x10\x08\x12+\n\'SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER\x10\t\x12)\n%SECURITY_ACTOR_METHOD_REMOTE_DELEGATE\x10\n\x12,\n(SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN\x10\x0b\x12)\n%SECURITY_ACTOR_METHOD_VOICE_ASSISTANT\x10\x0c\x12#\n\x1fSECURITY_ACTOR_METHOD_PEER_LOCK\x10\r\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT\x10\x0e\"\xfb\t\n\x12PanicAlarmingTrait\x12V\n\x12panicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12-\n\tpanicTime\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xca\x01\n\x19PanicAlarmingStateRequest\x12\\\n\x18targetPanicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1az\n\x1aPanicAlarmingStateResponse\x12\\\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x46.nest.trait.security.PanicAlarmingTrait.PanicAlarmingStateResponseType\x1a\xa5\x02\n\x1dPanicAlarmingStateChangeEvent\x12V\n\x12panicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12[\n\x17priorPanicAlarmingState\x18\x02 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\"\x9c\x01\n\x12PanicAlarmingState\x12$\n PANIC_ALARMING_STATE_UNSPECIFIED\x10\x00\x12\x1d\n\x19PANIC_ALARMING_STATE_IDLE\x10\x01\x12!\n\x1dPANIC_ALARMING_STATE_PREPANIC\x10\x02\x12\x1e\n\x1aPANIC_ALARMING_STATE_PANIC\x10\x03\"\xfc\x01\n\x1ePanicAlarmingStateResponseType\x12\x32\n.PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12.\n*PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS\x10\x01\x12\x33\n/PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x41\n=PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST\x10\x03\"\xd3\x06\n SecurityIssuesAndExceptionsTrait\x12^\n\x10\x62lockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x61\n\x13nonblockingIssueSet\x18\x02 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12Z\n\x0c\x65xceptionSet\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x83\x01\n!SecurityBlockingIssuesChangeEvent\x12^\n\x10\x62lockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x89\x01\n$SecurityNonBlockingIssuesChangeEvent\x12\x61\n\x13nonblockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a{\n\x1dSecurityExceptionsChangeEvent\x12Z\n\x0c\x65xceptionSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x80\x01\n&SecurityNewIssuesByEndOfAllowanceEvent\x12V\n\x08issueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\"\xea\x08\n\x1eSecurityIntrusionSettingsTrait\x12(\n ambientMotionForIntrusionEnabled\x18\x03 \x01(\x08\x12k\n\x14\x63ustomIntrusionRules\x18\x04 \x03(\x0b\x32M.nest.trait.security.SecurityIntrusionSettingsTrait.CustomIntrusionRulesEntry\x1a\x84\x01\n\x19\x43ustomIntrusionRulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.nest.trait.security.SecurityIntrusionSettingsTrait.CustomIntrusionRule:\x02\x38\x01\x1a\xc6\x02\n\x13\x43ustomIntrusionRule\x12*\n\x08\x64\x65viceId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12X\n\x05state\x18\x02 \x01(\x0e\x32I.nest.trait.security.SecurityIntrusionSettingsTrait.ExpandedSecurityState\x12T\n\x08\x66\x61\x63tType\x18\x03 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12S\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x43.nest.trait.security.SecurityIntrusionSettingsTrait.IntrusionAction\"\x90\x01\n\x0fIntrusionAction\x12 \n\x1cINTRUSION_ACTION_UNSPECIFIED\x10\x00\x12\x19\n\x15INTRUSION_ACTION_NONE\x10\x01\x12\x1d\n\x19INTRUSION_ACTION_PREALARM\x10\x02\x12!\n\x1dINTRUSION_ACTION_INSTANTALARM\x10\x03\"\xcd\x02\n\x15\x45xpandedSecurityState\x12\'\n#EXPANDED_SECURITY_STATE_UNSPECIFIED\x10\x00\x12$\n EXPANDED_SECURITY_STATE_DISARMED\x10\x01\x12%\n!EXPANDED_SECURITY_STATE_ARMED_SL1\x10\x02\x12.\n*EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE\x10\x03\x12\x37\n3EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE\x10\x04\x12%\n!EXPANDED_SECURITY_STATE_ARMED_SL2\x10\x05\x12.\n*EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE\x10\x06\"\xe5\x01\n#SecurityActionOnUnlockSettingsTrait\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12W\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32G.nest.trait.security.SecurityActionOnUnlockSettingsTrait.SecurityAction\"T\n\x0eSecurityAction\x12\x1f\n\x1bSECURITY_ACTION_UNSPECIFIED\x10\x00\x12!\n\x1dSECURITY_ACTION_DISARM_TO_SL0\x10\x01\"\x91\x06\n\x1dSecurityAlarmingSettingsTrait\x12\x36\n\x13prealarmingDuration\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x39\n\x16prealarmingDurationSl1\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12x\n\x1b\x63ustomPrealarmDurationRules\x18\x03 \x03(\x0b\x32S.nest.trait.security.SecurityAlarmingSettingsTrait.CustomPrealarmDurationRulesEntry\x12\x62\n\x16\x61\x64vancedModeExceptions\x18\x04 \x03(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x1a\x89\x01\n CustomPrealarmDurationRulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12T\n\x05value\x18\x02 \x01(\x0b\x32\x45.nest.trait.security.SecurityAlarmingSettingsTrait.CustomPreAlarmRule:\x02\x38\x01\x1a\x92\x02\n\x12\x43ustomPreAlarmRule\x12*\n\x08\x64\x65viceId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x45\n\x05state\x18\x02 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12T\n\x08\x66\x61\x63tType\x18\x03 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12\x33\n\x10prealarmDuration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xba\x03\n\x16SecurityOpenCloseTrait\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x33\n\x0f\x66irstObservedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11\x66irstObservedAtMs\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0f\x62ypassRequested\x18  \x01(\x08\x1a\xce\x01\n\x16SecurityOpenCloseEvent\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12O\n\x13priorOpenCloseState\x18\x02 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x17\n\x0f\x62ypassRequested\x18  \x01(\x08\"D\n\x18\x44istributedSecurityTrait\x12(\n\x06master\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\"\x81\x02\n\x1d\x45nhancedBoltLockSettingsTrait\x12\x14\n\x0c\x61utoRelockOn\x18\x01 \x01(\x08\x12\x35\n\x12\x61utoRelockDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12_\n\x1fignoreAutoRelockOnStructureMode\x18  \x03(\x0e\x32\x36.nest.trait.occupancy.StructureModeTrait.StructureMode\x12\x14\n\x0coneTouchLock\x18! \x01(\x08\x12\x1c\n\x14homeAwayAssistLockOn\x18\" \x01(\x08\"E\n+SecurityActionOnNFCTokenGlobalSettingsTrait\x12\x16\n\x0e\x66\x65\x61tureEnabled\x18\x01 \x01(\x08\"?\n%SecurityActionOnNFCTokenSettingsTrait\x12\x16\n\x0e\x66\x65\x61tureEnabled\x18\x01 \x01(\x08\"M\n\x1fSecurityArmCommandSettingsTrait\x12*\n\x07timeout\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xd5\x01\n\x18SecurityArmSettingsTrait\x12\x38\n\x15\x65xitAllowanceDuration\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1a\n\x12\x61rmingRequiresAuth\x18\x02 \x01(\x08\x12\"\n\x1aignoringIssuesRequiresAuth\x18\x03 \x01(\x08\x12#\n\x1bstructureModeLinkingEnabled\x18\x04 \x01(\x08\x12\x1a\n\x12\x64isarmOnDoorUnlock\x18\x05 \x01(\x08\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x19nest/trait/security.proto\x12\x13nest.trait.security\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x19nest/trait/detector.proto\x1a\x1anest/trait/occupancy.proto\x1a\x12weave/common.proto"\xd5\x1b\n\x10SecurityArmTrait\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12\x1c\n\x14securityArmSessionId\x18\x02 \x01(\r\x12T\n\x0e\x61llowanceState\x18\x03 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12;\n\x17\x61llowanceExpirationTime\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x15\x65xitAllowanceDuration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.Duration\x12H\n\x08\x61rmActor\x18\x06 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12+\n\x07\x61rmTime\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xbe\x02\n\x12SecurityArmRequest\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12H\n\x08\x61rmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\x63\n\x15\x61\x63knowledgedIssuesSet\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12/\n\rlocationScope\x18\x04 \x01(\x0b\x32\x18.weave.common.ResourceId\x1aj\n\x13SecurityArmResponse\x12S\n\x0cresponseType\x18\x01 \x01(\x0e\x32=.nest.trait.security.SecurityArmTrait.SecurityArmResponseType\x1a\x95\x01\n\x18SecurityArmCancelRequest\x12H\n\x08\x61rmActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12/\n\rlocationScope\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x1av\n\x19SecurityArmCancelResponse\x12Y\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x43.nest.trait.security.SecurityArmTrait.SecurityArmCancelResponseType\x1a\xa9\x04\n\x1bSecurityArmStateChangeEvent\x12H\n\x08\x61rmState\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12M\n\rpriorArmState\x18\x02 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12H\n\x08\x61rmActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\x1c\n\x14securityArmSessionId\x18\x04 \x01(\r\x12X\n\x0c\x63hangeReason\x18\x05 \x01(\x0e\x32\x42.nest.trait.security.SecurityArmTrait.SecurityArmStateChangeReason\x12T\n\x0e\x61llowanceState\x18\x06 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12Y\n\x13priorAllowanceState\x18\x07 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x1a\x9f\x02\n!SecurityAllowanceStateChangeEvent\x12T\n\x0e\x61llowanceState\x18\x01 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12Y\n\x13priorAllowanceState\x18\x02 \x01(\x0e\x32<.nest.trait.security.SecurityArmTrait.SecurityAllowanceState\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12+\n\x08\x64uration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration"\x8f\x01\n\x10SecurityArmState\x12"\n\x1eSECURITY_ARM_STATE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_ARM_STATE_DISARMED\x10\x01\x12\x1a\n\x16SECURITY_ARM_STATE_SL1\x10\x02\x12\x1a\n\x16SECURITY_ARM_STATE_SL2\x10\x03"\x92\x01\n\x16SecurityAllowanceState\x12(\n$SECURITY_ALLOWANCE_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cSECURITY_ALLOWANCE_STATE_OFF\x10\x01\x12,\n(SECURITY_ALLOWANCE_STATE_TIMED_ALLOWANCE\x10\x02"\xfd\x01\n\nStatusCode\x12\x1b\n\x17STATUS_CODE_UNSPECIFIED\x10\x00\x12\x17\n\x13STATUS_CODE_ALREADY\x10\x01\x12%\n!STATUS_CODE_UNACKNOWLEDGED_ISSUES\x10\x02\x12\x1f\n\x1bSTATUS_CODE_BLOCKING_ISSUES\x10\x03\x12\x1f\n\x1bSTATUS_CODE_OUT_OF_SCHEDULE\x10\x04\x12)\n%STATUS_CODE_UNAUTHORIZED_STATE_CHANGE\x10\x05\x12%\n!STATUS_CODE_LOCATION_OUT_OF_SCOPE\x10\x06"\xb9\x03\n\x17SecurityArmResponseType\x12*\n&SECURITY_ARM_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12&\n"SECURITY_ARM_RESPONSE_TYPE_SUCCESS\x10\x01\x12+\n\'SECURITY_ARM_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x39\n5SECURITY_ARM_RESPONSE_TYPE_FAIL_UNACKNOWLEDGED_ISSUES\x10\x03\x12\x33\n/SECURITY_ARM_RESPONSE_TYPE_FAIL_BLOCKING_ISSUES\x10\x04\x12\x33\n/SECURITY_ARM_RESPONSE_TYPE_FAIL_OUT_OF_SCHEDULE\x10\x05\x12=\n9SECURITY_ARM_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE\x10\x06\x12\x39\n5SECURITY_ARM_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE\x10\x07"\xed\x02\n\x1dSecurityArmCancelResponseType\x12\x31\n-SECURITY_ARM_CANCEL_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12-\n)SECURITY_ARM_CANCEL_RESPONSE_TYPE_SUCCESS\x10\x01\x12\x32\n.SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12.\n*SECURITY_ARM_CANCEL_RESPONSE_TYPE_TOO_LATE\x10\x03\x12\x44\n@SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_UNAUTHORIZED_STATE_CHANGE\x10\x04\x12@\n<SECURITY_ARM_CANCEL_RESPONSE_TYPE_FAIL_LOCATION_OUT_OF_SCOPE\x10\x05"\xb6\x01\n\x1cSecurityArmStateChangeReason\x12\x30\n,SECURITY_ARM_STATE_CHANGE_REASON_UNSPECIFIED\x10\x00\x12\x30\n,SECURITY_ARM_STATE_CHANGE_REASON_ARM_REQUEST\x10\x01\x12\x32\n.SECURITY_ARM_STATE_CHANGE_REASON_ARM_CANCELLED\x10\x02"\x88\x13\n\x14\x41larmSupervisorTrait\x12\\\n\x14\x61larmSupervisorState\x18\x01 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12\x35\n\x11\x61larmingStateTime\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12V\n\x16\x61larmAcknowledegeActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1a\xee\x03\n\x1f\x41larmSupervisorStateChangeEvent\x12Z\n\x12priorAlarmingState\x18\x01 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12U\n\ralarmingState\x18\x02 \x01(\x0e\x32>.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorState\x12_\n\x11\x64\x65viceAlarmReason\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x66\n\x15\x61larmSupervisorReason\x18\x04 \x01(\x0e\x32G.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorDecisionReason\x12O\n\x0ftriggeringActor\x18\x05 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1az\n\x1b\x41larmingAcknowledgeResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1a\x66\n\x1a\x41larmingAcknowledgeRequest\x12H\n\x08\x61\x63kActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1aw\n\x18SetPrealarmTimerResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ao\n\x17SetPrealarmTimerRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1az\n\x1bRemovePrealarmTimerResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ar\n\x1aRemovePrealarmTimerRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1aq\n\x12RaiseAlarmResponse\x12[\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x45.nest.trait.security.AlarmSupervisorTrait.AlarmSupervisorResponseType\x1ai\n\x11RaiseAlarmRequest\x12T\n\x06reason\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct"\xd0\x01\n\x14\x41larmSupervisorState\x12&\n"ALARM_SUPERVISOR_STATE_UNSPECIFIED\x10\x00\x12\x1f\n\x1b\x41LARM_SUPERVISOR_STATE_IDLE\x10\x01\x12%\n!ALARM_SUPERVISOR_STATE_EVALUATING\x10\x02\x12#\n\x1f\x41LARM_SUPERVISOR_STATE_SILENCED\x10\x03\x12#\n\x1f\x41LARM_SUPERVISOR_STATE_ALARMING\x10\x04"\xfe\x01\n\x1d\x41larmSupervisorDecisionReason\x12\x30\n,ALARM_SUPERVISOR_DECISION_REASON_UNSPECIFIED\x10\x00\x12\x33\n/ALARM_SUPERVISOR_DECISION_REASON_SMASH_AND_GRAB\x10\x01\x12\x33\n/ALARM_SUPERVISOR_DECISION_REASON_USER_SILENCING\x10\x02\x12\x41\n=ALARM_SUPERVISOR_DECISION_REASON_DEVICE_ALARMING_STATE_CHANGE\x10\x03"\xa1\x02\n\x1b\x41larmSupervisorResponseType\x12.\n*ALARM_SUPERVISOR_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12*\n&ALARM_SUPERVISOR_RESPONSE_TYPE_SUCCESS\x10\x01\x12/\n+ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x37\n3ALARM_SUPERVISOR_RESPONSE_TYPE_FAIL_INTERNAL_ISSUES\x10\x03\x12<\n8ALARM_SUPERVISOR_RESPONSE_TYPE_UNAUTHORIZED_STATE_CHANGE\x10\x04"\xa3\x1a\n\x14SecurityDecisionFact\x1a\xd5\x01\n\x1aSecurityDecisionFactStruct\x12T\n\x08\x66\x61\x63tType\x18\x01 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12\x32\n\x10originResourceId\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12-\n\ttimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"\xb2\x18\n\x18SecurityDecisionFactType\x12+\n\'SECURITY_DECISION_FACT_TYPE_UNSPECIFIED\x10\x00\x12)\n%SECURITY_DECISION_FACT_TYPE_OPEN_DOOR\x10\x01\x12\x30\n,SECURITY_DECISION_FACT_TYPE_OPEN_DOOR_BYPASS\x10\x02\x12*\n&SECURITY_DECISION_FACT_TYPE_CLOSE_DOOR\x10\x03\x12+\n\'SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW\x10\x04\x12\x32\n.SECURITY_DECISION_FACT_TYPE_OPEN_WINDOW_BYPASS\x10\x05\x12,\n(SECURITY_DECISION_FACT_TYPE_CLOSE_WINDOW\x10\x06\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_AMBIENT_MOTION\x10\x07\x12\x32\n.SECURITY_DECISION_FACT_TYPE_HUB_AMBIENT_MOTION\x10\x08\x12\x30\n,SECURITY_DECISION_FACT_TYPE_HUB_DEVICE_MOVED\x10\t\x12\x35\n1SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_OFFLINE\x10\n\x12\x34\n0SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONLINE\x10\x0b\x12+\n\'SECURITY_DECISION_FACT_TYPE_HUB_OFFLINE\x10\x0c\x12*\n&SECURITY_DECISION_FACT_TYPE_HUB_ONLINE\x10\r\x12*\n&SECURITY_DECISION_FACT_TYPE_HUB_TAMPER\x10\x0e\x12\x32\n.SECURITY_DECISION_FACT_TYPE_HUB_TAMPER_CLEARED\x10\x0f\x12\x34\n0SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER\x10\x10\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_TAMPER_CLEARED\x10\x11\x12;\n7SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE\x10\x12\x12\x44\n@SECURITY_DECISION_FACT_TYPE_HUB_ONGOING_SOFTWARE_UPDATE_FINISHED\x10\x13\x12\x45\nASECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE\x10\x14\x12N\nJSECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_ONGOING_SOFTWARE_UPDATE_FINISHED\x10\x15\x12.\n*SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING\x10\x16\x12\x36\n2SECURITY_DECISION_FACT_TYPE_ACTIVE_JAMMING_CLEARED\x10\x17\x12\x34\n0SECURITY_DECISION_FACT_TYPE_HUB_CHARGING_BATTERY\x10\x18\x12\x44\n@SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_UNSAFE_LEVEL\x10\x19\x12\x42\n>SECURITY_DECISION_FACT_TYPE_HUB_DISCHARGING_BATTERY_SAFE_LEVEL\x10\x1a\x12=\n9SECURITY_DECISION_FACT_TYPE_MULTIPLE_FAILED_AUTH_ATTEMPTS\x10\x1b\x12\x30\n,SECURITY_DECISION_FACT_TYPE_HUB_BUTTON_PRESS\x10\x1c\x12:\n6SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BUTTON_PRESS\x10\x1d\x12<\n8SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_NORMAL\x10\x1e\x12\x39\n5SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_LOW\x10\x1f\x12\x44\n@SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_BATTERY_CRITICALLY_LOW\x10 \x12\x37\n3SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_RESTORED\x10!\x12\x33\n/SECURITY_DECISION_FACT_TYPE_THREAD_NETWORK_DOWN\x10"\x12\x35\n1SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_RESTORED\x10#\x12\x31\n-SECURITY_DECISION_FACT_TYPE_WIFI_NETWORK_DOWN\x10$\x12\x39\n5SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_RESTORED\x10%\x12\x35\n1SECURITY_DECISION_FACT_TYPE_CELLULAR_NETWORK_DOWN\x10&\x12\x35\n1SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_RESTORED\x10\'\x12\x31\n-SECURITY_DECISION_FACT_TYPE_WEAVE_TUNNEL_DOWN\x10(\x12;\n7SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP\x10)\x12\x43\n?SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_PIR_HEAT_RAMP_CLEARED\x10*\x12\x34\n0SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE\x10+\x12<\n8SECURITY_DECISION_FACT_TYPE_HUB_HARDWARE_FAILURE_CLEARED\x10,\x12>\n:SECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE\x10-\x12\x46\nBSECURITY_DECISION_FACT_TYPE_REMOTE_SENSOR_HARDWARE_FAILURE_CLEARED\x10.\x12\x30\n,SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_IDLE\x10/\x12\x34\n0SECURITY_DECISION_FACT_TYPE_PANIC_ALARM_NOT_IDLE\x10\x30\x12\x33\n/SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM\x10\x31\x12;\n7SECURITY_DECISION_FACT_TYPE_CREDENTIALS_PROBLEM_CLEARED\x10\x32\x12\x36\n2SECURITY_DECISION_FACT_TYPE_MISSED_CRITICAL_EVENTS\x10\x33\x12/\n+SECURITY_DECISION_FACT_TYPE_HUB_GLASS_BREAK\x10\x34\x12\x33\n/SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE\x10\x35\x12;\n7SECURITY_DECISION_FACT_TYPE_SOUND_CHECK_FAILURE_CLEARED\x10\x36"\xd6\x12\n\x15SecurityAlarmingTrait\x12W\n\ralarmingState\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12Y\n\x0b\x61larmReason\x18\x02 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12:\n\x16prealarmExpirationTime\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x13prealarmingDuration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x35\n\x11\x61larmingStateTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x9e\x04\n SecurityAlarmingStateChangeEvent\x12W\n\ralarmingState\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12\\\n\x12priorAlarmingState\x18\x02 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12`\n\x12initialAlarmReason\x18\x03 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x1c\n\x14securityArmSessionId\x18\x04 \x01(\r\x12\x62\n\x0c\x63hangeReason\x18\x05 \x01(\x0e\x32L.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingStateChangeReason\x12_\n\x11latestAlarmReason\x18\x06 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\xc4\x02\n\x1eSecurityAlarmingSetToIdleEvent\x12J\n\nalarmActor\x18\x01 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12\\\n\x12priorAlarmingState\x18\x02 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12Z\n\x0c\x61larmReasons\x18\x04 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\xce\x02\n\x1dSecurityAlarmingDecisionEvent\x12Z\n\x0c\x64\x65\x63isionFact\x18\x01 \x01(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12Y\n\x06result\x18\x02 \x01(\x0e\x32I.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingDecisionResult\x12\x1c\n\x14securityArmSessionId\x18\x03 \x01(\r\x12X\n\x0eresultingState\x18\x04 \x01(\x0e\x32@.nest.trait.security.SecurityAlarmingTrait.SecurityAlarmingState"\xb1\x01\n\x15SecurityAlarmingState\x12\'\n#SECURITY_ALARMING_STATE_UNSPECIFIED\x10\x00\x12 \n\x1cSECURITY_ALARMING_STATE_IDLE\x10\x01\x12\'\n#SECURITY_ALARMING_STATE_PREALARMING\x10\x02\x12$\n SECURITY_ALARMING_STATE_ALARMING\x10\x03"\xb3\x02\n!SecurityAlarmingStateChangeReason\x12\x35\n1SECURITY_ALARMING_STATE_CHANGE_REASON_UNSPECIFIED\x10\x00\x12\x31\n-SECURITY_ALARMING_STATE_CHANGE_REASON_CLEARED\x10\x01\x12\x35\n1SECURITY_ALARMING_STATE_CHANGE_REASON_NEW_TRIGGER\x10\x02\x12:\n6SECURITY_ALARMING_STATE_CHANGE_REASON_TIMED_TRANSITION\x10\x03\x12\x31\n-SECURITY_ALARMING_STATE_CHANGE_REASON_RESUMED\x10\x04"\xba\x02\n\x1eSecurityAlarmingDecisionResult\x12\x31\n-SECURITY_ALARMING_DECISION_RESULT_UNSPECIFIED\x10\x00\x12\x38\n4SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_PREALARM\x10\x01\x12=\n9SECURITY_ALARMING_DECISION_RESULT_TRIGGERED_INSTANT_ALARM\x10\x02\x12;\n7SECURITY_ALARMING_DECISION_RESULT_RECONFIRMED_INTRUSION\x10\x03\x12/\n+SECURITY_ALARMING_DECISION_RESULT_NO_ACTION\x10\x04"\xcd\t\n\x15SecuritySettingsTrait\x12\x1c\n\x14\x62ypassFeatureEnabled\x18\x01 \x01(\x08\x12\x1b\n\x13petRejectionEnabled\x18\x02 \x01(\x08\x12\x1e\n\x16motionDetectionEnabled\x18\x03 \x01(\x08\x12]\n\x14securitySettingsMode\x18\x04 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12(\n automaticallyArmOnScheduledNight\x18\x05 \x01(\x08\x1a\x81\x02\n\x1fSecuritySettingsModeChangeEvent\x12\x65\n\x1cpreviousSecuritySettingsMode\x18\x01 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12`\n\x17newSecuritySettingsMode\x18\x02 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12\x15\n\rsetToDefaults\x18\x03 \x01(\x08\x1a\x99\x01\n!SecuritySettingsModeChangeRequest\x12]\n\x14securitySettingsMode\x18\x01 \x01(\x0e\x32?.nest.trait.security.SecuritySettingsTrait.SecuritySettingsMode\x12\x15\n\rsetToDefaults\x18\x02 \x01(\x08\x1al\n#ResetIntrusionSettingsByModeRequest\x12\x45\n\x05state\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x1ap\n\x1cLimitedSettingsChangeRequest\x12P\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32@.nest.trait.security.SecuritySettingsTrait.LimitedSettingsAction"\xcb\x01\n\x14SecuritySettingsMode\x12&\n"SECURITY_SETTINGS_MODE_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_SETTINGS_MODE_NEST\x10\x01\x12"\n\x1eSECURITY_SETTINGS_MODE_UL_CERT\x10\x02\x12"\n\x1eSECURITY_SETTINGS_MODE_EU_CERT\x10\x03\x12"\n\x1eSECURITY_SETTINGS_MODE_UK_CERT\x10\x04"\x81\x01\n\x15LimitedSettingsAction\x12\'\n#LIMITED_SETTINGS_ACTION_UNSPECIFIED\x10\x00\x12\x1e\n\x1aLIMITED_SETTINGS_ACTION_ON\x10\x01\x12\x1f\n\x1bLIMITED_SETTINGS_ACTION_OFF\x10\x02"\xe6\x06\n\rSecurityActor\x1a\xb4\x01\n\x13SecurityActorStruct\x12\x46\n\x06method\x18\x01 \x01(\x0e\x32\x36.nest.trait.security.SecurityActor.SecurityActorMethod\x12,\n\noriginator\x18\x02 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\'\n\x05\x61gent\x18\x03 \x01(\x0b\x32\x18.weave.common.ResourceId"\x9d\x05\n\x13SecurityActorMethod\x12%\n!SECURITY_ACTOR_METHOD_UNSPECIFIED\x10\x00\x12\x1f\n\x1bSECURITY_ACTOR_METHOD_OTHER\x10\x01\x12 \n\x1cSECURITY_ACTOR_METHOD_KEYPAD\x10\x02\x12$\n SECURITY_ACTOR_METHOD_KEYPAD_PIN\x10\x03\x12$\n SECURITY_ACTOR_METHOD_AUTH_TOKEN\x10\x04\x12.\n*SECURITY_ACTOR_METHOD_REMOTE_USER_EXPLICIT\x10\x05\x12.\n*SECURITY_ACTOR_METHOD_REMOTE_USER_IMPLICIT\x10\x06\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_REMINDER_EXPLICIT\x10\x07\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_REMINDER_IMPLICIT\x10\x08\x12+\n\'SECURITY_ACTOR_METHOD_REMOTE_USER_OTHER\x10\t\x12)\n%SECURITY_ACTOR_METHOD_REMOTE_DELEGATE\x10\n\x12,\n(SECURITY_ACTOR_METHOD_LOW_POWER_SHUTDOWN\x10\x0b\x12)\n%SECURITY_ACTOR_METHOD_VOICE_ASSISTANT\x10\x0c\x12#\n\x1fSECURITY_ACTOR_METHOD_PEER_LOCK\x10\r\x12\x32\n.SECURITY_ACTOR_METHOD_REMOTE_SCHEDULE_IMPLICIT\x10\x0e"\xfb\t\n\x12PanicAlarmingTrait\x12V\n\x12panicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x12-\n\tpanicTime\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\xca\x01\n\x19PanicAlarmingStateRequest\x12\\\n\x18targetPanicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x02 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct\x1az\n\x1aPanicAlarmingStateResponse\x12\\\n\x0cresponseType\x18\x01 \x01(\x0e\x32\x46.nest.trait.security.PanicAlarmingTrait.PanicAlarmingStateResponseType\x1a\xa5\x02\n\x1dPanicAlarmingStateChangeEvent\x12V\n\x12panicAlarmingState\x18\x01 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12[\n\x17priorPanicAlarmingState\x18\x02 \x01(\x0e\x32:.nest.trait.security.PanicAlarmingTrait.PanicAlarmingState\x12O\n\x0fpanicAlarmActor\x18\x03 \x01(\x0b\x32\x36.nest.trait.security.SecurityActor.SecurityActorStruct"\x9c\x01\n\x12PanicAlarmingState\x12$\n PANIC_ALARMING_STATE_UNSPECIFIED\x10\x00\x12\x1d\n\x19PANIC_ALARMING_STATE_IDLE\x10\x01\x12!\n\x1dPANIC_ALARMING_STATE_PREPANIC\x10\x02\x12\x1e\n\x1aPANIC_ALARMING_STATE_PANIC\x10\x03"\xfc\x01\n\x1ePanicAlarmingStateResponseType\x12\x32\n.PANIC_ALARMING_STATE_RESPONSE_TYPE_UNSPECIFIED\x10\x00\x12.\n*PANIC_ALARMING_STATE_RESPONSE_TYPE_SUCCESS\x10\x01\x12\x33\n/PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_ALREADY\x10\x02\x12\x41\n=PANIC_ALARMING_STATE_RESPONSE_TYPE_FAIL_INVALID_STATE_REQUEST\x10\x03"\xd3\x06\n SecurityIssuesAndExceptionsTrait\x12^\n\x10\x62lockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12\x61\n\x13nonblockingIssueSet\x18\x02 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x12Z\n\x0c\x65xceptionSet\x18\x03 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x83\x01\n!SecurityBlockingIssuesChangeEvent\x12^\n\x10\x62lockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x89\x01\n$SecurityNonBlockingIssuesChangeEvent\x12\x61\n\x13nonblockingIssueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a{\n\x1dSecurityExceptionsChangeEvent\x12Z\n\x0c\x65xceptionSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct\x1a\x80\x01\n&SecurityNewIssuesByEndOfAllowanceEvent\x12V\n\x08issueSet\x18\x01 \x03(\x0b\x32\x44.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactStruct"\xea\x08\n\x1eSecurityIntrusionSettingsTrait\x12(\n ambientMotionForIntrusionEnabled\x18\x03 \x01(\x08\x12k\n\x14\x63ustomIntrusionRules\x18\x04 \x03(\x0b\x32M.nest.trait.security.SecurityIntrusionSettingsTrait.CustomIntrusionRulesEntry\x1a\x84\x01\n\x19\x43ustomIntrusionRulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12V\n\x05value\x18\x02 \x01(\x0b\x32G.nest.trait.security.SecurityIntrusionSettingsTrait.CustomIntrusionRule:\x02\x38\x01\x1a\xc6\x02\n\x13\x43ustomIntrusionRule\x12*\n\x08\x64\x65viceId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12X\n\x05state\x18\x02 \x01(\x0e\x32I.nest.trait.security.SecurityIntrusionSettingsTrait.ExpandedSecurityState\x12T\n\x08\x66\x61\x63tType\x18\x03 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12S\n\x06\x61\x63tion\x18\x04 \x01(\x0e\x32\x43.nest.trait.security.SecurityIntrusionSettingsTrait.IntrusionAction"\x90\x01\n\x0fIntrusionAction\x12 \n\x1cINTRUSION_ACTION_UNSPECIFIED\x10\x00\x12\x19\n\x15INTRUSION_ACTION_NONE\x10\x01\x12\x1d\n\x19INTRUSION_ACTION_PREALARM\x10\x02\x12!\n\x1dINTRUSION_ACTION_INSTANTALARM\x10\x03"\xcd\x02\n\x15\x45xpandedSecurityState\x12\'\n#EXPANDED_SECURITY_STATE_UNSPECIFIED\x10\x00\x12$\n EXPANDED_SECURITY_STATE_DISARMED\x10\x01\x12%\n!EXPANDED_SECURITY_STATE_ARMED_SL1\x10\x02\x12.\n*EXPANDED_SECURITY_STATE_ARMED_SL1_NOT_IDLE\x10\x03\x12\x37\n3EXPANDED_SECURITY_STATE_ARMED_SL2_IN_EXIT_ALLOWANCE\x10\x04\x12%\n!EXPANDED_SECURITY_STATE_ARMED_SL2\x10\x05\x12.\n*EXPANDED_SECURITY_STATE_ARMED_SL2_NOT_IDLE\x10\x06"\xe5\x01\n#SecurityActionOnUnlockSettingsTrait\x12\x0f\n\x07\x65nabled\x18\x01 \x01(\x08\x12W\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32G.nest.trait.security.SecurityActionOnUnlockSettingsTrait.SecurityAction"T\n\x0eSecurityAction\x12\x1f\n\x1bSECURITY_ACTION_UNSPECIFIED\x10\x00\x12!\n\x1dSECURITY_ACTION_DISARM_TO_SL0\x10\x01"\x91\x06\n\x1dSecurityAlarmingSettingsTrait\x12\x36\n\x13prealarmingDuration\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x39\n\x16prealarmingDurationSl1\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12x\n\x1b\x63ustomPrealarmDurationRules\x18\x03 \x03(\x0b\x32S.nest.trait.security.SecurityAlarmingSettingsTrait.CustomPrealarmDurationRulesEntry\x12\x62\n\x16\x61\x64vancedModeExceptions\x18\x04 \x03(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x1a\x89\x01\n CustomPrealarmDurationRulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\r\x12T\n\x05value\x18\x02 \x01(\x0b\x32\x45.nest.trait.security.SecurityAlarmingSettingsTrait.CustomPreAlarmRule:\x02\x38\x01\x1a\x92\x02\n\x12\x43ustomPreAlarmRule\x12*\n\x08\x64\x65viceId\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId\x12\x45\n\x05state\x18\x02 \x01(\x0e\x32\x36.nest.trait.security.SecurityArmTrait.SecurityArmState\x12T\n\x08\x66\x61\x63tType\x18\x03 \x01(\x0e\x32\x42.nest.trait.security.SecurityDecisionFact.SecurityDecisionFactType\x12\x33\n\x10prealarmDuration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration"\xba\x03\n\x16SecurityOpenCloseTrait\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x33\n\x0f\x66irstObservedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\x11\x66irstObservedAtMs\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0f\x62ypassRequested\x18  \x01(\x08\x1a\xce\x01\n\x16SecurityOpenCloseEvent\x12J\n\x0eopenCloseState\x18\x01 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12O\n\x13priorOpenCloseState\x18\x02 \x01(\x0e\x32\x32.nest.trait.detector.OpenCloseTrait.OpenCloseState\x12\x17\n\x0f\x62ypassRequested\x18  \x01(\x08"D\n\x18\x44istributedSecurityTrait\x12(\n\x06master\x18\x01 \x01(\x0b\x32\x18.weave.common.ResourceId"\x81\x02\n\x1d\x45nhancedBoltLockSettingsTrait\x12\x14\n\x0c\x61utoRelockOn\x18\x01 \x01(\x08\x12\x35\n\x12\x61utoRelockDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12_\n\x1fignoreAutoRelockOnStructureMode\x18  \x03(\x0e\x32\x36.nest.trait.occupancy.StructureModeTrait.StructureMode\x12\x14\n\x0coneTouchLock\x18! \x01(\x08\x12\x1c\n\x14homeAwayAssistLockOn\x18" \x01(\x08"E\n+SecurityActionOnNFCTokenGlobalSettingsTrait\x12\x16\n\x0e\x66\x65\x61tureEnabled\x18\x01 \x01(\x08"?\n%SecurityActionOnNFCTokenSettingsTrait\x12\x16\n\x0e\x66\x65\x61tureEnabled\x18\x01 \x01(\x08"M\n\x1fSecurityArmCommandSettingsTrait\x12*\n\x07timeout\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration"\xd5\x01\n\x18SecurityArmSettingsTrait\x12\x38\n\x15\x65xitAllowanceDuration\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x1a\n\x12\x61rmingRequiresAuth\x18\x02 \x01(\x08\x12"\n\x1aignoringIssuesRequiresAuth\x18\x03 \x01(\x08\x12#\n\x1bstructureModeLinkingEnabled\x18\x04 \x01(\x08\x12\x1a\n\x12\x64isarmOnDoorUnlock\x18\x05 \x01(\x08\x62\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'nest.trait.security_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "nest.trait.security_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY']._loaded_options = None
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY']._serialized_options = b'8\001'
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY']._loaded_options = None
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY']._serialized_options = b'8\001'
-  _globals['_SECURITYARMTRAIT']._serialized_start=191
-  _globals['_SECURITYARMTRAIT']._serialized_end=3732
-  _globals['_SECURITYARMTRAIT_SECURITYARMREQUEST']._serialized_start=640
-  _globals['_SECURITYARMTRAIT_SECURITYARMREQUEST']._serialized_end=958
-  _globals['_SECURITYARMTRAIT_SECURITYARMRESPONSE']._serialized_start=960
-  _globals['_SECURITYARMTRAIT_SECURITYARMRESPONSE']._serialized_end=1066
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELREQUEST']._serialized_start=1069
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELREQUEST']._serialized_end=1218
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSE']._serialized_start=1220
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSE']._serialized_end=1338
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATECHANGEEVENT']._serialized_start=1341
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATECHANGEEVENT']._serialized_end=1894
-  _globals['_SECURITYARMTRAIT_SECURITYALLOWANCESTATECHANGEEVENT']._serialized_start=1897
-  _globals['_SECURITYARMTRAIT_SECURITYALLOWANCESTATECHANGEEVENT']._serialized_end=2184
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATE']._serialized_start=2187
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATE']._serialized_end=2330
-  _globals['_SECURITYARMTRAIT_SECURITYALLOWANCESTATE']._serialized_start=2333
-  _globals['_SECURITYARMTRAIT_SECURITYALLOWANCESTATE']._serialized_end=2479
-  _globals['_SECURITYARMTRAIT_STATUSCODE']._serialized_start=2482
-  _globals['_SECURITYARMTRAIT_STATUSCODE']._serialized_end=2735
-  _globals['_SECURITYARMTRAIT_SECURITYARMRESPONSETYPE']._serialized_start=2738
-  _globals['_SECURITYARMTRAIT_SECURITYARMRESPONSETYPE']._serialized_end=3179
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSETYPE']._serialized_start=3182
-  _globals['_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSETYPE']._serialized_end=3547
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATECHANGEREASON']._serialized_start=3550
-  _globals['_SECURITYARMTRAIT_SECURITYARMSTATECHANGEREASON']._serialized_end=3732
-  _globals['_ALARMSUPERVISORTRAIT']._serialized_start=3735
-  _globals['_ALARMSUPERVISORTRAIT']._serialized_end=6175
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATECHANGEEVENT']._serialized_start=3997
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATECHANGEEVENT']._serialized_end=4491
-  _globals['_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGERESPONSE']._serialized_start=4493
-  _globals['_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGERESPONSE']._serialized_end=4615
-  _globals['_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGEREQUEST']._serialized_start=4617
-  _globals['_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGEREQUEST']._serialized_end=4719
-  _globals['_ALARMSUPERVISORTRAIT_SETPREALARMTIMERRESPONSE']._serialized_start=4721
-  _globals['_ALARMSUPERVISORTRAIT_SETPREALARMTIMERRESPONSE']._serialized_end=4840
-  _globals['_ALARMSUPERVISORTRAIT_SETPREALARMTIMERREQUEST']._serialized_start=4842
-  _globals['_ALARMSUPERVISORTRAIT_SETPREALARMTIMERREQUEST']._serialized_end=4953
-  _globals['_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERRESPONSE']._serialized_start=4955
-  _globals['_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERRESPONSE']._serialized_end=5077
-  _globals['_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERREQUEST']._serialized_start=5079
-  _globals['_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERREQUEST']._serialized_end=5193
-  _globals['_ALARMSUPERVISORTRAIT_RAISEALARMRESPONSE']._serialized_start=5195
-  _globals['_ALARMSUPERVISORTRAIT_RAISEALARMRESPONSE']._serialized_end=5308
-  _globals['_ALARMSUPERVISORTRAIT_RAISEALARMREQUEST']._serialized_start=5310
-  _globals['_ALARMSUPERVISORTRAIT_RAISEALARMREQUEST']._serialized_end=5415
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATE']._serialized_start=5418
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATE']._serialized_end=5626
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORDECISIONREASON']._serialized_start=5629
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORDECISIONREASON']._serialized_end=5883
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORRESPONSETYPE']._serialized_start=5886
-  _globals['_ALARMSUPERVISORTRAIT_ALARMSUPERVISORRESPONSETYPE']._serialized_end=6175
-  _globals['_SECURITYDECISIONFACT']._serialized_start=6178
-  _globals['_SECURITYDECISIONFACT']._serialized_end=9541
-  _globals['_SECURITYDECISIONFACT_SECURITYDECISIONFACTSTRUCT']._serialized_start=6203
-  _globals['_SECURITYDECISIONFACT_SECURITYDECISIONFACTSTRUCT']._serialized_end=6416
-  _globals['_SECURITYDECISIONFACT_SECURITYDECISIONFACTTYPE']._serialized_start=6419
-  _globals['_SECURITYDECISIONFACT_SECURITYDECISIONFACTTYPE']._serialized_end=9541
-  _globals['_SECURITYALARMINGTRAIT']._serialized_start=9544
-  _globals['_SECURITYALARMINGTRAIT']._serialized_end=11934
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEEVENT']._serialized_start=9921
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEEVENT']._serialized_end=10463
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSETTOIDLEEVENT']._serialized_start=10466
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSETTOIDLEEVENT']._serialized_end=10790
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONEVENT']._serialized_start=10793
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONEVENT']._serialized_end=11127
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATE']._serialized_start=11130
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATE']._serialized_end=11307
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEREASON']._serialized_start=11310
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEREASON']._serialized_end=11617
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONRESULT']._serialized_start=11620
-  _globals['_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONRESULT']._serialized_end=11934
-  _globals['_SECURITYSETTINGSTRAIT']._serialized_start=11937
-  _globals['_SECURITYSETTINGSTRAIT']._serialized_end=13166
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEEVENT']._serialized_start=12191
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEEVENT']._serialized_end=12448
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEREQUEST']._serialized_start=12451
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEREQUEST']._serialized_end=12604
-  _globals['_SECURITYSETTINGSTRAIT_RESETINTRUSIONSETTINGSBYMODEREQUEST']._serialized_start=12606
-  _globals['_SECURITYSETTINGSTRAIT_RESETINTRUSIONSETTINGSBYMODEREQUEST']._serialized_end=12714
-  _globals['_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSCHANGEREQUEST']._serialized_start=12716
-  _globals['_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSCHANGEREQUEST']._serialized_end=12828
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODE']._serialized_start=12831
-  _globals['_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODE']._serialized_end=13034
-  _globals['_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSACTION']._serialized_start=13037
-  _globals['_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSACTION']._serialized_end=13166
-  _globals['_SECURITYACTOR']._serialized_start=13169
-  _globals['_SECURITYACTOR']._serialized_end=14039
-  _globals['_SECURITYACTOR_SECURITYACTORSTRUCT']._serialized_start=13187
-  _globals['_SECURITYACTOR_SECURITYACTORSTRUCT']._serialized_end=13367
-  _globals['_SECURITYACTOR_SECURITYACTORMETHOD']._serialized_start=13370
-  _globals['_SECURITYACTOR_SECURITYACTORMETHOD']._serialized_end=14039
-  _globals['_PANICALARMINGTRAIT']._serialized_start=14042
-  _globals['_PANICALARMINGTRAIT']._serialized_end=15317
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATEREQUEST']._serialized_start=14281
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATEREQUEST']._serialized_end=14483
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSE']._serialized_start=14485
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSE']._serialized_end=14607
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATECHANGEEVENT']._serialized_start=14610
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATECHANGEEVENT']._serialized_end=14903
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATE']._serialized_start=14906
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATE']._serialized_end=15062
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSETYPE']._serialized_start=15065
-  _globals['_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSETYPE']._serialized_end=15317
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT']._serialized_start=15320
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT']._serialized_end=16171
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYBLOCKINGISSUESCHANGEEVENT']._serialized_start=15644
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYBLOCKINGISSUESCHANGEEVENT']._serialized_end=15775
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNONBLOCKINGISSUESCHANGEEVENT']._serialized_start=15778
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNONBLOCKINGISSUESCHANGEEVENT']._serialized_end=15915
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYEXCEPTIONSCHANGEEVENT']._serialized_start=15917
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYEXCEPTIONSCHANGEEVENT']._serialized_end=16040
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNEWISSUESBYENDOFALLOWANCEEVENT']._serialized_start=16043
-  _globals['_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNEWISSUESBYENDOFALLOWANCEEVENT']._serialized_end=16171
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT']._serialized_start=16174
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT']._serialized_end=17304
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY']._serialized_start=16360
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY']._serialized_end=16492
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULE']._serialized_start=16495
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULE']._serialized_end=16821
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_INTRUSIONACTION']._serialized_start=16824
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_INTRUSIONACTION']._serialized_end=16968
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_EXPANDEDSECURITYSTATE']._serialized_start=16971
-  _globals['_SECURITYINTRUSIONSETTINGSTRAIT_EXPANDEDSECURITYSTATE']._serialized_end=17304
-  _globals['_SECURITYACTIONONUNLOCKSETTINGSTRAIT']._serialized_start=17307
-  _globals['_SECURITYACTIONONUNLOCKSETTINGSTRAIT']._serialized_end=17536
-  _globals['_SECURITYACTIONONUNLOCKSETTINGSTRAIT_SECURITYACTION']._serialized_start=17452
-  _globals['_SECURITYACTIONONUNLOCKSETTINGSTRAIT_SECURITYACTION']._serialized_end=17536
-  _globals['_SECURITYALARMINGSETTINGSTRAIT']._serialized_start=17539
-  _globals['_SECURITYALARMINGSETTINGSTRAIT']._serialized_end=18324
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY']._serialized_start=17910
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY']._serialized_end=18047
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMRULE']._serialized_start=18050
-  _globals['_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMRULE']._serialized_end=18324
-  _globals['_SECURITYOPENCLOSETRAIT']._serialized_start=18327
-  _globals['_SECURITYOPENCLOSETRAIT']._serialized_end=18769
-  _globals['_SECURITYOPENCLOSETRAIT_SECURITYOPENCLOSEEVENT']._serialized_start=18563
-  _globals['_SECURITYOPENCLOSETRAIT_SECURITYOPENCLOSEEVENT']._serialized_end=18769
-  _globals['_DISTRIBUTEDSECURITYTRAIT']._serialized_start=18771
-  _globals['_DISTRIBUTEDSECURITYTRAIT']._serialized_end=18839
-  _globals['_ENHANCEDBOLTLOCKSETTINGSTRAIT']._serialized_start=18842
-  _globals['_ENHANCEDBOLTLOCKSETTINGSTRAIT']._serialized_end=19099
-  _globals['_SECURITYACTIONONNFCTOKENGLOBALSETTINGSTRAIT']._serialized_start=19101
-  _globals['_SECURITYACTIONONNFCTOKENGLOBALSETTINGSTRAIT']._serialized_end=19170
-  _globals['_SECURITYACTIONONNFCTOKENSETTINGSTRAIT']._serialized_start=19172
-  _globals['_SECURITYACTIONONNFCTOKENSETTINGSTRAIT']._serialized_end=19235
-  _globals['_SECURITYARMCOMMANDSETTINGSTRAIT']._serialized_start=19237
-  _globals['_SECURITYARMCOMMANDSETTINGSTRAIT']._serialized_end=19314
-  _globals['_SECURITYARMSETTINGSTRAIT']._serialized_start=19317
-  _globals['_SECURITYARMSETTINGSTRAIT']._serialized_end=19530
+    DESCRIPTOR._loaded_options = None
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY"
+    ]._loaded_options = None
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY"
+    ]._serialized_options = b"8\001"
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY"
+    ]._loaded_options = None
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY"
+    ]._serialized_options = b"8\001"
+    _globals["_SECURITYARMTRAIT"]._serialized_start = 191
+    _globals["_SECURITYARMTRAIT"]._serialized_end = 3732
+    _globals["_SECURITYARMTRAIT_SECURITYARMREQUEST"]._serialized_start = 640
+    _globals["_SECURITYARMTRAIT_SECURITYARMREQUEST"]._serialized_end = 958
+    _globals["_SECURITYARMTRAIT_SECURITYARMRESPONSE"]._serialized_start = 960
+    _globals["_SECURITYARMTRAIT_SECURITYARMRESPONSE"]._serialized_end = 1066
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELREQUEST"]._serialized_start = 1069
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELREQUEST"]._serialized_end = 1218
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSE"]._serialized_start = 1220
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSE"]._serialized_end = 1338
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATECHANGEEVENT"]._serialized_start = 1341
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATECHANGEEVENT"]._serialized_end = 1894
+    _globals[
+        "_SECURITYARMTRAIT_SECURITYALLOWANCESTATECHANGEEVENT"
+    ]._serialized_start = 1897
+    _globals[
+        "_SECURITYARMTRAIT_SECURITYALLOWANCESTATECHANGEEVENT"
+    ]._serialized_end = 2184
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATE"]._serialized_start = 2187
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATE"]._serialized_end = 2330
+    _globals["_SECURITYARMTRAIT_SECURITYALLOWANCESTATE"]._serialized_start = 2333
+    _globals["_SECURITYARMTRAIT_SECURITYALLOWANCESTATE"]._serialized_end = 2479
+    _globals["_SECURITYARMTRAIT_STATUSCODE"]._serialized_start = 2482
+    _globals["_SECURITYARMTRAIT_STATUSCODE"]._serialized_end = 2735
+    _globals["_SECURITYARMTRAIT_SECURITYARMRESPONSETYPE"]._serialized_start = 2738
+    _globals["_SECURITYARMTRAIT_SECURITYARMRESPONSETYPE"]._serialized_end = 3179
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSETYPE"]._serialized_start = 3182
+    _globals["_SECURITYARMTRAIT_SECURITYARMCANCELRESPONSETYPE"]._serialized_end = 3547
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATECHANGEREASON"]._serialized_start = 3550
+    _globals["_SECURITYARMTRAIT_SECURITYARMSTATECHANGEREASON"]._serialized_end = 3732
+    _globals["_ALARMSUPERVISORTRAIT"]._serialized_start = 3735
+    _globals["_ALARMSUPERVISORTRAIT"]._serialized_end = 6175
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATECHANGEEVENT"
+    ]._serialized_start = 3997
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATECHANGEEVENT"
+    ]._serialized_end = 4491
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGERESPONSE"
+    ]._serialized_start = 4493
+    _globals["_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGERESPONSE"]._serialized_end = 4615
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGEREQUEST"
+    ]._serialized_start = 4617
+    _globals["_ALARMSUPERVISORTRAIT_ALARMINGACKNOWLEDGEREQUEST"]._serialized_end = 4719
+    _globals["_ALARMSUPERVISORTRAIT_SETPREALARMTIMERRESPONSE"]._serialized_start = 4721
+    _globals["_ALARMSUPERVISORTRAIT_SETPREALARMTIMERRESPONSE"]._serialized_end = 4840
+    _globals["_ALARMSUPERVISORTRAIT_SETPREALARMTIMERREQUEST"]._serialized_start = 4842
+    _globals["_ALARMSUPERVISORTRAIT_SETPREALARMTIMERREQUEST"]._serialized_end = 4953
+    _globals[
+        "_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERRESPONSE"
+    ]._serialized_start = 4955
+    _globals["_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERRESPONSE"]._serialized_end = 5077
+    _globals[
+        "_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERREQUEST"
+    ]._serialized_start = 5079
+    _globals["_ALARMSUPERVISORTRAIT_REMOVEPREALARMTIMERREQUEST"]._serialized_end = 5193
+    _globals["_ALARMSUPERVISORTRAIT_RAISEALARMRESPONSE"]._serialized_start = 5195
+    _globals["_ALARMSUPERVISORTRAIT_RAISEALARMRESPONSE"]._serialized_end = 5308
+    _globals["_ALARMSUPERVISORTRAIT_RAISEALARMREQUEST"]._serialized_start = 5310
+    _globals["_ALARMSUPERVISORTRAIT_RAISEALARMREQUEST"]._serialized_end = 5415
+    _globals["_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATE"]._serialized_start = 5418
+    _globals["_ALARMSUPERVISORTRAIT_ALARMSUPERVISORSTATE"]._serialized_end = 5626
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMSUPERVISORDECISIONREASON"
+    ]._serialized_start = 5629
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMSUPERVISORDECISIONREASON"
+    ]._serialized_end = 5883
+    _globals[
+        "_ALARMSUPERVISORTRAIT_ALARMSUPERVISORRESPONSETYPE"
+    ]._serialized_start = 5886
+    _globals["_ALARMSUPERVISORTRAIT_ALARMSUPERVISORRESPONSETYPE"]._serialized_end = 6175
+    _globals["_SECURITYDECISIONFACT"]._serialized_start = 6178
+    _globals["_SECURITYDECISIONFACT"]._serialized_end = 9541
+    _globals[
+        "_SECURITYDECISIONFACT_SECURITYDECISIONFACTSTRUCT"
+    ]._serialized_start = 6203
+    _globals["_SECURITYDECISIONFACT_SECURITYDECISIONFACTSTRUCT"]._serialized_end = 6416
+    _globals["_SECURITYDECISIONFACT_SECURITYDECISIONFACTTYPE"]._serialized_start = 6419
+    _globals["_SECURITYDECISIONFACT_SECURITYDECISIONFACTTYPE"]._serialized_end = 9541
+    _globals["_SECURITYALARMINGTRAIT"]._serialized_start = 9544
+    _globals["_SECURITYALARMINGTRAIT"]._serialized_end = 11934
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEEVENT"
+    ]._serialized_start = 9921
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEEVENT"
+    ]._serialized_end = 10463
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSETTOIDLEEVENT"
+    ]._serialized_start = 10466
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSETTOIDLEEVENT"
+    ]._serialized_end = 10790
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONEVENT"
+    ]._serialized_start = 10793
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONEVENT"
+    ]._serialized_end = 11127
+    _globals["_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATE"]._serialized_start = 11130
+    _globals["_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATE"]._serialized_end = 11307
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEREASON"
+    ]._serialized_start = 11310
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGSTATECHANGEREASON"
+    ]._serialized_end = 11617
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONRESULT"
+    ]._serialized_start = 11620
+    _globals[
+        "_SECURITYALARMINGTRAIT_SECURITYALARMINGDECISIONRESULT"
+    ]._serialized_end = 11934
+    _globals["_SECURITYSETTINGSTRAIT"]._serialized_start = 11937
+    _globals["_SECURITYSETTINGSTRAIT"]._serialized_end = 13166
+    _globals[
+        "_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEEVENT"
+    ]._serialized_start = 12191
+    _globals[
+        "_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEEVENT"
+    ]._serialized_end = 12448
+    _globals[
+        "_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEREQUEST"
+    ]._serialized_start = 12451
+    _globals[
+        "_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODECHANGEREQUEST"
+    ]._serialized_end = 12604
+    _globals[
+        "_SECURITYSETTINGSTRAIT_RESETINTRUSIONSETTINGSBYMODEREQUEST"
+    ]._serialized_start = 12606
+    _globals[
+        "_SECURITYSETTINGSTRAIT_RESETINTRUSIONSETTINGSBYMODEREQUEST"
+    ]._serialized_end = 12714
+    _globals[
+        "_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSCHANGEREQUEST"
+    ]._serialized_start = 12716
+    _globals[
+        "_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSCHANGEREQUEST"
+    ]._serialized_end = 12828
+    _globals["_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODE"]._serialized_start = 12831
+    _globals["_SECURITYSETTINGSTRAIT_SECURITYSETTINGSMODE"]._serialized_end = 13034
+    _globals["_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSACTION"]._serialized_start = 13037
+    _globals["_SECURITYSETTINGSTRAIT_LIMITEDSETTINGSACTION"]._serialized_end = 13166
+    _globals["_SECURITYACTOR"]._serialized_start = 13169
+    _globals["_SECURITYACTOR"]._serialized_end = 14039
+    _globals["_SECURITYACTOR_SECURITYACTORSTRUCT"]._serialized_start = 13187
+    _globals["_SECURITYACTOR_SECURITYACTORSTRUCT"]._serialized_end = 13367
+    _globals["_SECURITYACTOR_SECURITYACTORMETHOD"]._serialized_start = 13370
+    _globals["_SECURITYACTOR_SECURITYACTORMETHOD"]._serialized_end = 14039
+    _globals["_PANICALARMINGTRAIT"]._serialized_start = 14042
+    _globals["_PANICALARMINGTRAIT"]._serialized_end = 15317
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATEREQUEST"]._serialized_start = 14281
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATEREQUEST"]._serialized_end = 14483
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSE"]._serialized_start = 14485
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSE"]._serialized_end = 14607
+    _globals[
+        "_PANICALARMINGTRAIT_PANICALARMINGSTATECHANGEEVENT"
+    ]._serialized_start = 14610
+    _globals[
+        "_PANICALARMINGTRAIT_PANICALARMINGSTATECHANGEEVENT"
+    ]._serialized_end = 14903
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATE"]._serialized_start = 14906
+    _globals["_PANICALARMINGTRAIT_PANICALARMINGSTATE"]._serialized_end = 15062
+    _globals[
+        "_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSETYPE"
+    ]._serialized_start = 15065
+    _globals[
+        "_PANICALARMINGTRAIT_PANICALARMINGSTATERESPONSETYPE"
+    ]._serialized_end = 15317
+    _globals["_SECURITYISSUESANDEXCEPTIONSTRAIT"]._serialized_start = 15320
+    _globals["_SECURITYISSUESANDEXCEPTIONSTRAIT"]._serialized_end = 16171
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYBLOCKINGISSUESCHANGEEVENT"
+    ]._serialized_start = 15644
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYBLOCKINGISSUESCHANGEEVENT"
+    ]._serialized_end = 15775
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNONBLOCKINGISSUESCHANGEEVENT"
+    ]._serialized_start = 15778
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNONBLOCKINGISSUESCHANGEEVENT"
+    ]._serialized_end = 15915
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYEXCEPTIONSCHANGEEVENT"
+    ]._serialized_start = 15917
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYEXCEPTIONSCHANGEEVENT"
+    ]._serialized_end = 16040
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNEWISSUESBYENDOFALLOWANCEEVENT"
+    ]._serialized_start = 16043
+    _globals[
+        "_SECURITYISSUESANDEXCEPTIONSTRAIT_SECURITYNEWISSUESBYENDOFALLOWANCEEVENT"
+    ]._serialized_end = 16171
+    _globals["_SECURITYINTRUSIONSETTINGSTRAIT"]._serialized_start = 16174
+    _globals["_SECURITYINTRUSIONSETTINGSTRAIT"]._serialized_end = 17304
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY"
+    ]._serialized_start = 16360
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULESENTRY"
+    ]._serialized_end = 16492
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULE"
+    ]._serialized_start = 16495
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_CUSTOMINTRUSIONRULE"
+    ]._serialized_end = 16821
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_INTRUSIONACTION"
+    ]._serialized_start = 16824
+    _globals["_SECURITYINTRUSIONSETTINGSTRAIT_INTRUSIONACTION"]._serialized_end = 16968
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_EXPANDEDSECURITYSTATE"
+    ]._serialized_start = 16971
+    _globals[
+        "_SECURITYINTRUSIONSETTINGSTRAIT_EXPANDEDSECURITYSTATE"
+    ]._serialized_end = 17304
+    _globals["_SECURITYACTIONONUNLOCKSETTINGSTRAIT"]._serialized_start = 17307
+    _globals["_SECURITYACTIONONUNLOCKSETTINGSTRAIT"]._serialized_end = 17536
+    _globals[
+        "_SECURITYACTIONONUNLOCKSETTINGSTRAIT_SECURITYACTION"
+    ]._serialized_start = 17452
+    _globals[
+        "_SECURITYACTIONONUNLOCKSETTINGSTRAIT_SECURITYACTION"
+    ]._serialized_end = 17536
+    _globals["_SECURITYALARMINGSETTINGSTRAIT"]._serialized_start = 17539
+    _globals["_SECURITYALARMINGSETTINGSTRAIT"]._serialized_end = 18324
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY"
+    ]._serialized_start = 17910
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMDURATIONRULESENTRY"
+    ]._serialized_end = 18047
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMRULE"
+    ]._serialized_start = 18050
+    _globals[
+        "_SECURITYALARMINGSETTINGSTRAIT_CUSTOMPREALARMRULE"
+    ]._serialized_end = 18324
+    _globals["_SECURITYOPENCLOSETRAIT"]._serialized_start = 18327
+    _globals["_SECURITYOPENCLOSETRAIT"]._serialized_end = 18769
+    _globals["_SECURITYOPENCLOSETRAIT_SECURITYOPENCLOSEEVENT"]._serialized_start = 18563
+    _globals["_SECURITYOPENCLOSETRAIT_SECURITYOPENCLOSEEVENT"]._serialized_end = 18769
+    _globals["_DISTRIBUTEDSECURITYTRAIT"]._serialized_start = 18771
+    _globals["_DISTRIBUTEDSECURITYTRAIT"]._serialized_end = 18839
+    _globals["_ENHANCEDBOLTLOCKSETTINGSTRAIT"]._serialized_start = 18842
+    _globals["_ENHANCEDBOLTLOCKSETTINGSTRAIT"]._serialized_end = 19099
+    _globals["_SECURITYACTIONONNFCTOKENGLOBALSETTINGSTRAIT"]._serialized_start = 19101
+    _globals["_SECURITYACTIONONNFCTOKENGLOBALSETTINGSTRAIT"]._serialized_end = 19170
+    _globals["_SECURITYACTIONONNFCTOKENSETTINGSTRAIT"]._serialized_start = 19172
+    _globals["_SECURITYACTIONONNFCTOKENSETTINGSTRAIT"]._serialized_end = 19235
+    _globals["_SECURITYARMCOMMANDSETTINGSTRAIT"]._serialized_start = 19237
+    _globals["_SECURITYARMCOMMANDSETTINGSTRAIT"]._serialized_end = 19314
+    _globals["_SECURITYARMSETTINGSTRAIT"]._serialized_start = 19317
+    _globals["_SECURITYARMSETTINGSTRAIT"]._serialized_end = 19530
 # @@protoc_insertion_point(module_scope)

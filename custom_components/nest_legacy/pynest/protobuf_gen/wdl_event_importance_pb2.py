@@ -4,6 +4,7 @@
 # source: wdl-event-importance.proto
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
@@ -13,15 +14,17 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-
-
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1awdl-event-importance.proto\x12\x03wdl*\xbe\x01\n\x0f\x45ventImportance\x12 \n\x1c\x45VENT_IMPORTANCE_UNSPECIFIED\x10\x00\x12(\n$EVENT_IMPORTANCE_PRODUCTION_CRITICAL\x10\x01\x12(\n$EVENT_IMPORTANCE_PRODUCTION_STANDARD\x10\x02\x12\x19\n\x15\x45VENT_IMPORTANCE_INFO\x10\x03\x12\x1a\n\x16\x45VENT_IMPORTANCE_DEBUG\x10\x04\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b"\n\x1awdl-event-importance.proto\x12\x03wdl*\xbe\x01\n\x0f\x45ventImportance\x12 \n\x1c\x45VENT_IMPORTANCE_UNSPECIFIED\x10\x00\x12(\n$EVENT_IMPORTANCE_PRODUCTION_CRITICAL\x10\x01\x12(\n$EVENT_IMPORTANCE_PRODUCTION_STANDARD\x10\x02\x12\x19\n\x15\x45VENT_IMPORTANCE_INFO\x10\x03\x12\x1a\n\x16\x45VENT_IMPORTANCE_DEBUG\x10\x04\x62\x06proto3"
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'wdl_event_importance_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(
+    DESCRIPTOR, "wdl_event_importance_pb2", _globals
+)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_EVENTIMPORTANCE']._serialized_start=36
-  _globals['_EVENTIMPORTANCE']._serialized_end=226
+    DESCRIPTOR._loaded_options = None
+    _globals["_EVENTIMPORTANCE"]._serialized_start = 36
+    _globals["_EVENTIMPORTANCE"]._serialized_end = 226
 # @@protoc_insertion_point(module_scope)

@@ -26,11 +26,22 @@ class DoorbellIndoorChimeSettingsTrait(_message.Message):
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
-    class _ChimeTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType], _builtins.type):
+    class _ChimeTypeEnumTypeWrapper(
+        _enum_type_wrapper._EnumTypeWrapper[
+            DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType
+        ],
+        _builtins.type,
+    ):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        CHIME_TYPE_UNSPECIFIED: DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType  # 0
-        CHIME_TYPE_MECHANICAL: DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType  # 1
-        CHIME_TYPE_ELECTRONIC: DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType  # 2
+        CHIME_TYPE_UNSPECIFIED: (
+            DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType
+        )  # 0
+        CHIME_TYPE_MECHANICAL: (
+            DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType
+        )  # 1
+        CHIME_TYPE_ELECTRONIC: (
+            DoorbellIndoorChimeSettingsTrait._ChimeType.ValueType
+        )  # 2
 
     class ChimeType(_ChimeType, metaclass=_ChimeTypeEnumTypeWrapper): ...
     CHIME_TYPE_UNSPECIFIED: DoorbellIndoorChimeSettingsTrait.ChimeType.ValueType  # 0
@@ -53,7 +64,14 @@ class DoorbellIndoorChimeSettingsTrait(_message.Message):
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["chimeDuration", b"chimeDuration"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["chimeDuration", b"chimeDuration", "chimeEnabled", b"chimeEnabled", "chimeType", b"chimeType"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal[
+        "chimeDuration",
+        b"chimeDuration",
+        "chimeEnabled",
+        b"chimeEnabled",
+        "chimeType",
+        b"chimeType",
+    ]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___DoorbellIndoorChimeSettingsTrait: _TypeAlias = DoorbellIndoorChimeSettingsTrait  # noqa: Y015
