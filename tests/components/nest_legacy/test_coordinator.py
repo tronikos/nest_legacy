@@ -238,6 +238,70 @@ async def test_command_retries_after_reauthenticating(
     mock_nest_client.async_authenticate_with_google_credentials.assert_awaited()
 
 
+async def test_camera_events_retry_after_reauthenticating(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """An expired session while polling events is refreshed and the poll retried.
+
+    The camera session token is short-lived, so the event poll runs into an
+    expired session regularly. Recovering from it keeps the camera in the
+    poll instead of dropping it for the rest of the client lifetime.
+    See issue #81.
+    """
+    # The background poll task calls this too, so the first call fails with the
+    # expired session and every later call succeeds.
+    mock_nest_client.async_get_camera_events.side_effect = (
+        AuthenticationFailedException("authentication failed"),
+        *([None] * 50),
+    )
+    camera = NestCamera(
+        object_key="DEVICE_0000000000000003",
+        serial_number=CAMERA_SERIAL,
+        name="Camera",
+        location="Living Room",
+        is_protobuf=True,
+        online=True,
+        streaming_enabled=True,
+    )
+
+    await _coordinator(init_integration)._async_process_events_for_device(
+        camera, start_time=0, poll_interval=5
+    )
+
+    assert mock_nest_client.async_get_camera_events.await_count >= 2
+    mock_nest_client.async_authenticate_with_google_credentials.assert_awaited()
+
+
+async def test_camera_events_give_up_after_a_failed_reauthentication(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """If reauthenticating also fails the event poll gives up on that camera."""
+    # Every call fails, so the retry after re-authenticating fails as well and
+    # the poll gives up on that camera.
+    mock_nest_client.async_get_camera_events.side_effect = (
+        AuthenticationFailedException("authentication failed")
+    )
+    camera = NestCamera(
+        object_key="DEVICE_0000000000000003",
+        serial_number=CAMERA_SERIAL,
+        name="Camera",
+        location="Living Room",
+        is_protobuf=True,
+        online=True,
+        streaming_enabled=True,
+    )
+
+    await _coordinator(init_integration)._async_process_events_for_device(
+        camera, start_time=0, poll_interval=5
+    )
+
+    assert mock_nest_client.async_get_camera_events.await_count >= 2
+
+
 async def test_command_gives_up_after_a_failed_reauthentication(
     hass: HomeAssistant,
     init_integration: MockConfigEntry,

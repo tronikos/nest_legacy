@@ -2371,11 +2371,33 @@ class NestClient:
 
         try:
             resp = await self._async_send_command(device, command)
+        except AuthenticationFailedException as err:
+            # PERMISSION_DENIED with an "authentication failed" message means the
+            # session expired, not that the account lacks the trait. The camera
+            # session token is short-lived, so this happens on every poll of a
+            # long-lived session and re-authenticating recovers it.
+            #
+            # AuthenticationFailedException also inherits from
+            # NonRetryablePynestException, so it has to be caught here, before the
+            # branch below: otherwise a transient expired session would blacklist
+            # the camera for the lifetime of the client.
+            #
+            # The camera is not blacklisted here. The error is propagated so the
+            # caller can refresh the session and retry.
+            _LOGGER.debug(
+                "Protobuf camera events for %s %s failed with an authentication "
+                "error, the session will be refreshed and the poll retried: %r",
+                device.location,
+                device.name,
+                err,
+            )
+            raise
         except NonRetryablePynestException as err:
             # Some accounts are not authorized for the camera_observation_history
             # trait and answer with PERMISSION_DENIED on every poll (see issue #61),
-            # with an "authentication failed" message that signing in again does
-            # not fix. This never recovers, so warn once and stop polling this camera.
+            # with a "The caller does not have permission" message that signing in
+            # again does not fix. This never recovers, so warn once and stop polling
+            # this camera.
             self._protobuf_events_unauthorized.add(device.object_key)
             _LOGGER.warning(
                 "Protobuf camera events are not available for %s %s, "

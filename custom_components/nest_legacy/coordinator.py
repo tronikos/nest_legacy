@@ -33,6 +33,7 @@ from .const import (
 from .events import NEST_LEGACY_EVENT
 from .pynest.client import NestClient
 from .pynest.exceptions import (
+    AuthenticationFailedException,
     BadCredentialsException,
     EmptyResponseException,
     NotAuthenticatedException,
@@ -749,6 +750,30 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             events = await self.client.async_get_camera_events(
                 device, start_time=int(start_time)
             )
+        except AuthenticationFailedException as err:
+            # The session expired (see issue #81). Re-authenticate and retry once
+            # against the fresh session: the camera is not permanently broken, so
+            # it must not be excluded from the event poll.
+            _LOGGER.debug(
+                "Session expired while fetching events for camera %s %s, "
+                "re-authenticating and retrying: %r",
+                device.location,
+                device.name,
+                err,
+            )
+            try:
+                await self.async_reauthenticate(force=True)
+                events = await self.client.async_get_camera_events(
+                    device, start_time=int(start_time)
+                )
+            except (ClientError, TimeoutError, PynestException) as retry_err:
+                _LOGGER.warning(
+                    "Error fetching events for camera %s %s after re-authenticating: %r",
+                    device.location,
+                    device.name,
+                    retry_err,
+                )
+                return
         except (ClientError, TimeoutError, PynestException) as err:
             _LOGGER.warning(
                 "Error fetching events for camera %s %s: %r",
