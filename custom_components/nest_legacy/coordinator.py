@@ -33,6 +33,7 @@ from .const import (
 from .events import NEST_LEGACY_EVENT
 from .pynest.client import NestClient
 from .pynest.exceptions import (
+    AuthenticationFailedException,
     BadCredentialsException,
     EmptyResponseException,
     NotAuthenticatedException,
@@ -88,6 +89,9 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         self._poll_task: asyncio.Task | None = None
         self._raw_data: dict[str, Any] = {}
         self._processed_event_ids: deque[str] = deque(maxlen=1000)
+        # Cameras whose event poll already warned, so a persistent failure logs
+        # once instead of on every cycle.
+        self._event_poll_warned: set[str] = set()
         self._last_event_poll_success_time: float | None = None
         self.first_protobuf_update_received = asyncio.Event()
         self._auth_lock = asyncio.Lock()
@@ -698,15 +702,9 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                     time.time() - MAX_EVENT_AGE_SECONDS,
                 )
 
-                # Gather all camera event tasks
-                tasks = [
-                    self._async_process_events_for_device(
-                        device, start_time, poll_interval
-                    )
-                    for device in self._cameras_to_poll()
-                ]
-                if tasks:
-                    await asyncio.gather(*tasks)
+                # Poll every camera once; the session is refreshed at most once
+                # per cycle if any of them reports an expired session.
+                await self._async_poll_cameras_once(start_time, poll_interval)
 
                 self._last_event_poll_success_time = time.time()
                 failures = 0  # Reset on success
@@ -736,6 +734,73 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             sleep_time = max(0.0, poll_interval - elapsed)
             await asyncio.sleep(sleep_time)
 
+    async def _async_poll_cameras_once(
+        self, start_time: float, poll_interval: float
+    ) -> None:
+        """Poll every camera once, refreshing the session at most once.
+
+        A stale session makes every camera answer an authentication error. The
+        refresh happens here, once for the whole cycle, rather than once per
+        camera: with several cameras a per-camera refresh would serialise N
+        Google logins behind _auth_lock on every poll.
+        """
+        devices = self._cameras_to_poll()
+        if not devices:
+            return
+        results = await asyncio.gather(
+            *(
+                self._async_process_events_for_device(device, start_time, poll_interval)
+                for device in devices
+            ),
+            return_exceptions=True,
+        )
+        expired: list[NestCamera] = []
+        for device, result in zip(devices, results, strict=True):
+            if isinstance(result, AuthenticationFailedException):
+                expired.append(device)
+            elif isinstance(result, Exception):
+                _LOGGER.debug("Camera event poll failed: %r", result)
+        if expired:
+            await self._async_reauthenticate_and_retry(
+                expired, start_time, poll_interval
+            )
+
+    async def _async_reauthenticate_and_retry(
+        self, devices: list[NestCamera], start_time: float, poll_interval: float
+    ) -> None:
+        """Refresh the session once and retry the cameras whose poll expired."""
+        try:
+            await self.async_reauthenticate(force=True)
+        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
+            # An authentication outage is not the camera's fault: forget the
+            # failures so a later forced refresh can still recover them, and let
+            # the next poll try again.
+            _LOGGER.warning(
+                "Could not refresh the Nest session, camera events will retry on "
+                "the next poll: %r",
+                err,
+            )
+            for device in devices:
+                self.client.reset_protobuf_auth_failures(device)
+            return
+        results = await asyncio.gather(
+            *(
+                self._async_process_events_for_device(device, start_time, poll_interval)
+                for device in devices
+            ),
+            return_exceptions=True,
+        )
+        for device, result in zip(devices, results, strict=True):
+            if isinstance(result, AuthenticationFailedException):
+                _LOGGER.debug(
+                    "Camera %s %s still answers an authentication error after "
+                    "refreshing the session",
+                    device.location,
+                    device.name,
+                )
+            elif isinstance(result, Exception):
+                _LOGGER.debug("Camera event poll failed after a refresh: %r", result)
+
     async def _async_process_events_for_device(
         self, device: NestCamera, start_time: float, poll_interval: float
     ) -> None:
@@ -749,14 +814,28 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             events = await self.client.async_get_camera_events(
                 device, start_time=int(start_time)
             )
+        except AuthenticationFailedException:
+            # An expired session is not specific to this camera: let the poll
+            # cycle refresh the session once and retry every camera that hit it.
+            raise
         except (ClientError, TimeoutError, PynestException) as err:
-            _LOGGER.warning(
-                "Error fetching events for camera %s %s: %r",
-                device.location,
-                device.name,
-                err,
-            )
+            if device.object_key in self._event_poll_warned:
+                _LOGGER.debug(
+                    "Error fetching events for camera %s %s: %r",
+                    device.location,
+                    device.name,
+                    err,
+                )
+            else:
+                self._event_poll_warned.add(device.object_key)
+                _LOGGER.warning(
+                    "Error fetching events for camera %s %s: %r",
+                    device.location,
+                    device.name,
+                    err,
+                )
             return
+        self._event_poll_warned.discard(device.object_key)
         if not events:
             return
 

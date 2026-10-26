@@ -3,7 +3,7 @@
 from http import HTTPStatus
 import time
 from typing import Any
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 from custom_components.nest_legacy.pynest.client import NestClient
 from custom_components.nest_legacy.pynest.enums import ThermostatHvacMode
@@ -426,23 +426,89 @@ async def test_protobuf_camera_events_stop_after_permission_denied(
     aioclient_mock: AiohttpClientMocker,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """A PERMISSION_DENIED camera is warned about once and then left alone.
+    """A camera that is still denied after a refresh is given up.
 
-    See issue #61: Google accounts that are not authorized for the
-    camera_observation_history trait used to warn on every poll.
+    See issues #61 and #81: Nest answers the same PERMISSION_DENIED
+    "authentication failed" both for a stale session and for an account that
+    may never read the camera_observation_history trait. The first failure is
+    retried after refreshing the session; only a failure that survives that is
+    permanent.
     """
-    # PERMISSION_DENIED, the failure behind issue #61.
+    # PERMISSION_DENIED, the answer behind both issues.
     aioclient_mock.post(
         SEND_COMMAND_URL, content=_command_response(7, "authentication failed")
     )
     camera = _protobuf_camera()
 
+    # First failure: the caller refreshes the session and retries.
+    with pytest.raises(AuthenticationFailedException):
+        await client.async_get_camera_events(camera)
+
+    # The retry against the fresh session fails the same way: give it up.
     assert await client.async_get_camera_events(camera) == []
+    # Now blacklisted, so it is not queried again.
     assert await client.async_get_camera_events(camera) == []
 
+    # One session call plus the two commands it took to give the camera up.
+    assert len(aioclient_mock.mock_calls) == 3
+    assert caplog.text.count("Protobuf camera events are not available") == 1
+
+
+async def test_protobuf_camera_events_stop_on_a_plain_permission_denial(
+    client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A denial that is not about authentication is given up straight away."""
+    aioclient_mock.post(
+        SEND_COMMAND_URL,
+        content=_command_response(7, "The caller does not have permission"),
+    )
+    camera = _protobuf_camera()
+
+    assert await client.async_get_camera_events(camera) == []
+
+    assert camera.object_key in client._protobuf_events_unauthorized
     # One session call plus the single command that was allowed through.
     assert len(aioclient_mock.mock_calls) == 2
     assert caplog.text.count("Protobuf camera events are not available") == 1
+
+
+async def test_protobuf_camera_events_survive_an_expired_session(
+    client: NestClient,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A poll that succeeds after a refresh resets the failure count.
+
+    The camera session token is short-lived, so the event poll runs into an
+    expired session regularly. Recovering from it keeps the camera in the poll
+    instead of dropping it, and the count starts again after every success.
+    See issue #81.
+    """
+    expired = AuthenticationFailedException(
+        "Command failed with code 7: authentication failed"
+    )
+    response = v1_pb2.SendCommandResponse()
+    response.ParseFromString(_camera_history_response(_EventType.EVENT_MOTION))
+    camera = _protobuf_camera()
+
+    with patch.object(
+        client,
+        "_async_send_command",
+        new=AsyncMock(side_effect=[expired, response, expired]),
+    ):
+        with pytest.raises(AuthenticationFailedException):
+            await client.async_get_camera_events(camera)
+
+        events = await client.async_get_camera_events(camera)
+
+        # The success reset the count, so this is a first failure again.
+        with pytest.raises(AuthenticationFailedException):
+            await client.async_get_camera_events(camera)
+
+    assert [event["types"] for event in events] == [["motion"]]
+    assert camera.object_key not in client._protobuf_events_unauthorized
+    assert "no longer polling it for events" not in caplog.text
 
 
 async def test_protobuf_camera_events_keep_polling_after_a_transient_error(

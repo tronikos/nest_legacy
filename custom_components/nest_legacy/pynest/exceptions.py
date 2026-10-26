@@ -27,7 +27,9 @@ class AuthenticationFailedException(
     """Raised when a command is denied because authentication failed.
 
     Nest answers this both for a stale session, which signing in again fixes,
-    and for a trait the account can never access, so it is not retried in place.
+    and for a trait the account can never access. The message cannot tell the
+    two apart, so it is not retried in place: the caller refreshes the session
+    once and treats a failure that survives that as permanent.
     """
 
 

@@ -84,6 +84,14 @@ from .protobuf_gen.weave.trait import (
     security_pb2 as weave_security_pb2,
 )
 
+# Nest answers PERMISSION_DENIED with an "authentication failed" message both for
+# a stale session, which signing in again fixes (issue #81), and for an account
+# that may never read the camera_observation_history trait (issue #61). The
+# message cannot tell them apart, so the camera is only given up on after this
+# many consecutive failures: the coordinator re-authenticates and retries once
+# in between, and a success resets the count.
+_PROTOBUF_AUTH_FAILURE_LIMIT = 2
+
 _NON_RETRYABLE_CODES = frozenset(
     {
         3,  # INVALID_ARGUMENT: Client specified an invalid argument.
@@ -402,7 +410,9 @@ def _raise_for_status_code(status_code: int, msg: str) -> NoReturn:
         raise NotAuthenticatedException(msg)
     # Nest answers PERMISSION_DENIED with "authentication failed" for a stale
     # session (see issue #81), but also for a trait the account can never
-    # access (see issue #61).
+    # access (see issue #61). The message cannot tell them apart, so callers
+    # recover by refreshing the session and retrying; only a failure that
+    # survives that is treated as permanent (see _PROTOBUF_AUTH_FAILURE_LIMIT).
     if status_code == 7 and "authenticat" in msg.lower():
         raise AuthenticationFailedException(msg)
     if status_code in _NON_RETRYABLE_CODES:
@@ -513,6 +523,9 @@ class NestClient:
         self._resource_types: dict[str, str] = {}
         self._legacy_protobuf_events_warned: bool = False
         self._protobuf_events_unauthorized: set[str] = set()
+        # Consecutive authentication failures per camera, reset on success. See
+        # _PROTOBUF_AUTH_FAILURE_LIMIT.
+        self._protobuf_auth_failures: dict[str, int] = {}
         # Collisions do not change between polls, so each one is only reported
         # once for the lifetime of the client.
         self._trait_label_collisions_warned: set[tuple[str, str]] = set()
@@ -2371,11 +2384,41 @@ class NestClient:
 
         try:
             resp = await self._async_send_command(device, command)
+        except AuthenticationFailedException as err:
+            # PERMISSION_DENIED with an "authentication failed" message covers two
+            # cases the message cannot tell apart: a stale session, which signing
+            # in again fixes (see issue #81), and an account that may never read
+            # the camera_observation_history trait (see issue #61). The caller
+            # re-authenticates and retries once, so only a failure that survives
+            # that treatment is permanent.
+            failures = self._protobuf_auth_failures.get(device.object_key, 0) + 1
+            self._protobuf_auth_failures[device.object_key] = failures
+            if failures < _PROTOBUF_AUTH_FAILURE_LIMIT:
+                _LOGGER.debug(
+                    "Protobuf camera events for %s %s answered an authentication "
+                    "error (%d/%d), refreshing the session and retrying: %r",
+                    device.location,
+                    device.name,
+                    failures,
+                    _PROTOBUF_AUTH_FAILURE_LIMIT,
+                    err,
+                )
+                raise
+            # A fresh session did not help, so this account cannot read the
+            # trait: warn once and stop polling this camera.
+            self._protobuf_events_unauthorized.add(device.object_key)
+            _LOGGER.warning(
+                "Protobuf camera events are not available for %s %s, "
+                "no longer polling it for events: %r",
+                device.location,
+                device.name,
+                err,
+            )
+            return []
         except NonRetryablePynestException as err:
-            # Some accounts are not authorized for the camera_observation_history
-            # trait and answer with PERMISSION_DENIED on every poll (see issue #61),
-            # with an "authentication failed" message that signing in again does
-            # not fix. This never recovers, so warn once and stop polling this camera.
+            # Any other non-retryable answer (for example a PERMISSION_DENIED
+            # whose message is not about authentication) means this camera will
+            # never recover, so warn once and stop polling it.
             self._protobuf_events_unauthorized.add(device.object_key)
             _LOGGER.warning(
                 "Protobuf camera events are not available for %s %s, "
@@ -2388,6 +2431,9 @@ class NestClient:
         except PynestException as err:
             _LOGGER.warning("Failed to fetch protobuf camera events: %r", err)
             return []
+
+        # The camera answered, so the session works: start counting again.
+        self._protobuf_auth_failures.pop(device.object_key, None)
 
         events: list[dict[str, Any]] = []
 
@@ -2423,6 +2469,14 @@ class NestClient:
         # Sort by start_time descending to match legacy API behavior
         events.sort(key=lambda x: x["start_time"], reverse=True)
         return events
+
+    def reset_protobuf_auth_failures(self, device: NestCamera) -> None:
+        """Forget a camera's consecutive authentication failures.
+
+        The coordinator calls this when it could not refresh the session: an
+        authentication outage must not count towards giving the camera up.
+        """
+        self._protobuf_auth_failures.pop(device.object_key, None)
 
     async def async_get_camera_events(
         self,
