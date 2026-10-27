@@ -3,7 +3,7 @@
 from http import HTTPStatus
 import time
 from typing import Any
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 from custom_components.nest_legacy.pynest.client import NestClient
 from custom_components.nest_legacy.pynest.enums import ThermostatHvacMode
@@ -131,7 +131,60 @@ def _protobuf_camera() -> NestCamera:
         name="Camera",
         location="Living Room",
         is_protobuf=True,
+        nexus_api_http_server_url="https://camera.example.com",
     )
+
+
+async def test_camera_snapshot_returns_the_confirmed_frame(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """The snapshot waits for the upload and reads twice.
+
+    A camera answers with the frame it had already uploaded: upload_live_image is
+    handled asynchronously, so a single read right after it returns the image
+    from before the request.
+    """
+    camera = _protobuf_camera()
+    fetch = AsyncMock(side_effect=[b"before", b"after"])
+    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response())
+
+    with patch.object(client, "_async_fetch_camera_snapshot", new=fetch):
+        assert await client.async_get_camera_snapshot(camera) == b"after"
+
+    assert fetch.await_count == 2
+
+
+async def test_camera_snapshot_falls_back_to_the_first_read(client: NestClient) -> None:
+    """A failed confirmation read does not lose the image."""
+    camera = _protobuf_camera()
+
+    with (
+        patch(
+            "custom_components.nest_legacy.pynest.client.NestClient"
+            "._async_send_command",
+            new=AsyncMock(return_value=None),
+        ),
+        patch.object(
+            client,
+            "_async_fetch_camera_snapshot",
+            new=AsyncMock(side_effect=[b"frame", None]),
+        ),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+
+async def test_camera_snapshot_reads_the_image(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """Both reads go to the URL the camera serves the image from."""
+    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response())
+    aioclient_mock.get("https://camera.example.com", content=b"frame")
+    aioclient_mock.mock_calls.clear()
+
+    assert await client.async_get_camera_snapshot(_protobuf_camera()) == b"frame"
+
+    gets = [call for call in aioclient_mock.mock_calls if call[0] == "GET"]
+    assert len(gets) == 2
 
 
 def _mock_trait_updates(aioclient_mock: AiohttpClientMocker) -> None:

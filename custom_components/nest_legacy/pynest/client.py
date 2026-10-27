@@ -84,6 +84,14 @@ from .protobuf_gen.weave.trait import (
     security_pb2 as weave_security_pb2,
 )
 
+# A camera answers a snapshot request with the frame it had already uploaded:
+# upload_live_image is handled asynchronously, so a GET sent right after it
+# returns the image from before the request (measured against a live camera: the
+# frame only changes a couple of seconds after the command). Wait for the upload
+# and confirm with a second read.
+_SNAPSHOT_SETTLE_DELAY = 1.0
+_SNAPSHOT_CONFIRM_DELAY = 0.5
+
 _NON_RETRYABLE_CODES = frozenset(
     {
         3,  # INVALID_ARGUMENT: Client specified an invalid argument.
@@ -2240,6 +2248,16 @@ class NestClient:
             )
         _LOGGER.debug("Requesting camera snapshot from URL: %s", url)
 
+        # Give the camera time to upload the frame this request asked for, then
+        # read twice: the first read can still be served from before the upload.
+        await asyncio.sleep(_SNAPSHOT_SETTLE_DELAY)
+        image = await self._async_fetch_camera_snapshot(url)
+        await asyncio.sleep(_SNAPSHOT_CONFIRM_DELAY)
+        confirmed = await self._async_fetch_camera_snapshot(url)
+        return confirmed if confirmed is not None else image
+
+    async def _async_fetch_camera_snapshot(self, url: str) -> bytes | None:
+        """Fetch the image the camera serves at a snapshot URL."""
         async with self._session.get(
             url, headers=self._get_camera_headers()
         ) as response:
