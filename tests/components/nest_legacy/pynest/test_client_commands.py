@@ -5,6 +5,7 @@ import time
 from typing import Any
 from unittest.mock import AsyncMock, patch
 
+from custom_components.nest_legacy.pynest import client as client_module
 from custom_components.nest_legacy.pynest.client import NestClient
 from custom_components.nest_legacy.pynest.enums import ThermostatHvacMode
 from custom_components.nest_legacy.pynest.exceptions import (
@@ -135,56 +136,112 @@ def _protobuf_camera() -> NestCamera:
     )
 
 
-async def test_camera_snapshot_returns_the_confirmed_frame(
-    client: NestClient, aioclient_mock: AiohttpClientMocker
+async def test_camera_snapshot_uses_the_url_the_upload_publishes(
+    client: NestClient,
 ) -> None:
-    """The snapshot waits for the upload and reads twice.
+    """The snapshot reads the URL the camera publishes for this upload.
 
-    A camera answers with the frame it had already uploaded: upload_live_image is
-    handled asynchronously, so a single read right after it returns the image
-    from before the request.
+    upload_live_image is asynchronous: the device keeps the previous image URL
+    until the trait stream carries the new one, so the snapshot has to wait for
+    that update instead of reading the URL it already had.
     """
     camera = _protobuf_camera()
-    fetch = AsyncMock(side_effect=[b"before", b"after"])
-    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response())
 
-    with patch.object(client, "_async_fetch_camera_snapshot", new=fetch):
-        assert await client.async_get_camera_snapshot(camera) == b"after"
+    async def send(device, command):
+        client._publish_live_image_url(device.object_key, "https://cam/new")
 
-    assert fetch.await_count == 2
-
-
-async def test_camera_snapshot_falls_back_to_the_first_read(client: NestClient) -> None:
-    """A failed confirmation read does not lose the image."""
-    camera = _protobuf_camera()
-
+    fetch = AsyncMock(return_value=b"frame")
     with (
-        patch(
-            "custom_components.nest_legacy.pynest.client.NestClient"
-            "._async_send_command",
-            new=AsyncMock(return_value=None),
-        ),
-        patch.object(
-            client,
-            "_async_fetch_camera_snapshot",
-            new=AsyncMock(side_effect=[b"frame", None]),
-        ),
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
     ):
         assert await client.async_get_camera_snapshot(camera) == b"frame"
 
+    fetch.assert_awaited_once_with("https://cam/new")
 
-async def test_camera_snapshot_reads_the_image(
+
+async def test_camera_snapshot_uses_the_last_known_url_when_nothing_arrives(
+    client: NestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A camera that does not publish a URL in time is read from the last one."""
+    monkeypatch.setattr(client_module, "_SNAPSHOT_URL_TIMEOUT", 0.05)
+    camera = _protobuf_camera()
+    client._live_image_urls[camera.object_key] = "https://cam/previous"
+
+    fetch = AsyncMock(return_value=b"frame")
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(return_value=None)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    fetch.assert_awaited_once_with("https://cam/previous")
+
+
+async def test_camera_snapshot_retries_with_a_new_upload_on_400(
+    client: NestClient,
+) -> None:
+    """A failed download asks the camera for a fresh upload and tries again."""
+    camera = _protobuf_camera()
+    published = []
+
+    async def send(device, command):
+        published.append(f"https://cam/{len(published) + 1}")
+        client._publish_live_image_url(device.object_key, published[-1])
+
+    fetch = AsyncMock(side_effect=[None, b"frame"])
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+        patch.object(client_module.asyncio, "sleep", new=AsyncMock(return_value=None)),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    assert [call.args[0] for call in fetch.await_args_list] == [
+        "https://cam/1",
+        "https://cam/2",
+    ]
+
+
+async def test_camera_snapshot_gives_up_after_the_last_attempt(
+    client: NestClient, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Three failed downloads end the request with one warning."""
+
+    async def send(device, command):
+        client._publish_live_image_url(device.object_key, "https://cam/new")
+
+    fetch = AsyncMock(return_value=None)
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+        patch.object(client_module.asyncio, "sleep", new=AsyncMock(return_value=None)),
+    ):
+        assert await client.async_get_camera_snapshot(_protobuf_camera()) is None
+
+    assert fetch.await_count == client_module._SNAPSHOT_ATTEMPTS
+    assert caplog.text.count("giving up for this request") == 1
+
+
+async def test_camera_snapshot_downloads_the_image(
     client: NestClient, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """Both reads go to the URL the camera serves the image from."""
-    aioclient_mock.post(SEND_COMMAND_URL, content=_command_response())
-    aioclient_mock.get("https://camera.example.com", content=b"frame")
+    """The URL is downloaded with the camera headers."""
+    camera = _protobuf_camera()
+
+    async def send(device, command):
+        client._publish_live_image_url(
+            device.object_key, "https://camera.example.com/snapshot"
+        )
+
+    aioclient_mock.get("https://camera.example.com/snapshot", content=b"frame")
     aioclient_mock.mock_calls.clear()
 
-    assert await client.async_get_camera_snapshot(_protobuf_camera()) == b"frame"
+    with patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
 
     gets = [call for call in aioclient_mock.mock_calls if call[0] == "GET"]
-    assert len(gets) == 2
+    assert len(gets) == 1
 
 
 def _mock_trait_updates(aioclient_mock: AiohttpClientMocker) -> None:
