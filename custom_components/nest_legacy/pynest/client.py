@@ -87,10 +87,16 @@ from .protobuf_gen.weave.trait import (
 # Nest answers PERMISSION_DENIED with an "authentication failed" message both for
 # a stale session, which signing in again fixes (issue #81), and for an account
 # that may never read the camera_observation_history trait (issue #61). The
-# message cannot tell them apart, so the camera is only given up on after this
-# many consecutive failures: the coordinator re-authenticates and retries once
-# in between, and a success resets the count.
+# message cannot tell them apart, so a camera only counts as failing after this
+# many consecutive failures: the coordinator re-authenticates and retries once in
+# between, and a success resets the count.
 _PROTOBUF_AUTH_FAILURE_LIMIT = 2
+# Giving a camera up for good is wrong even then: in a live installation the
+# channel started answering again two days after it had been written off. A
+# camera that keeps failing is paused instead, and the wait doubles each time up
+# to the cap, so a camera that never recovers costs one request an hour.
+_PROTOBUF_EVENTS_BACKOFF_BASE = 10 * 60
+_PROTOBUF_EVENTS_BACKOFF_MAX = 60 * 60
 
 _NON_RETRYABLE_CODES = frozenset(
     {
@@ -522,7 +528,9 @@ class NestClient:
         self._buckets_for_subscription: list[Bucket] = []
         self._resource_types: dict[str, str] = {}
         self._legacy_protobuf_events_warned: bool = False
-        self._protobuf_events_unauthorized: set[str] = set()
+        self._protobuf_events_paused_until: dict[str, float] = {}
+        # Consecutive pauses per camera, for the exponential backoff above.
+        self._protobuf_events_backoff: dict[str, int] = {}
         # Consecutive authentication failures per camera, reset on success. See
         # _PROTOBUF_AUTH_FAILURE_LIMIT.
         self._protobuf_auth_failures: dict[str, int] = {}
@@ -2404,36 +2412,26 @@ class NestClient:
                     err,
                 )
                 raise
-            # A fresh session did not help, so this account cannot read the
-            # trait: warn once and stop polling this camera.
-            self._protobuf_events_unauthorized.add(device.object_key)
-            _LOGGER.warning(
-                "Protobuf camera events are not available for %s %s, "
-                "no longer polling it for events: %r",
-                device.location,
-                device.name,
-                err,
-            )
+            # A fresh session did not help. That is not proof the account can
+            # never read the trait: the same camera started answering again after
+            # days, so pause it and try later instead of writing it off.
+            self._pause_protobuf_events(device, err)
             return []
         except NonRetryablePynestException as err:
             # Any other non-retryable answer (for example a PERMISSION_DENIED
-            # whose message is not about authentication) means this camera will
-            # never recover, so warn once and stop polling it.
-            self._protobuf_events_unauthorized.add(device.object_key)
-            _LOGGER.warning(
-                "Protobuf camera events are not available for %s %s, "
-                "no longer polling it for events: %r",
-                device.location,
-                device.name,
-                err,
-            )
+            # whose message is not about authentication) also earns a pause: the
+            # code is what the camera says, not what it will always say.
+            self._pause_protobuf_events(device, err)
             return []
         except PynestException as err:
             _LOGGER.warning("Failed to fetch protobuf camera events: %r", err)
             return []
 
-        # The camera answered, so the session works: start counting again.
+        # The camera answered, so the session works: start counting again, and
+        # forget the pause so a later failure starts the backoff from scratch.
         self._protobuf_auth_failures.pop(device.object_key, None)
+        self._protobuf_events_backoff.pop(device.object_key, None)
+        self._protobuf_events_paused_until.pop(device.object_key, None)
 
         events: list[dict[str, Any]] = []
 
@@ -2478,6 +2476,23 @@ class NestClient:
         """
         self._protobuf_auth_failures.pop(device.object_key, None)
 
+    def _pause_protobuf_events(self, device: NestCamera, err: Exception) -> None:
+        """Stop polling one camera's events for a while, doubling the wait each time."""
+        level = self._protobuf_events_backoff.get(device.object_key, 0) + 1
+        self._protobuf_events_backoff[device.object_key] = level
+        delay = min(
+            _PROTOBUF_EVENTS_BACKOFF_BASE * 2 ** (level - 1),
+            _PROTOBUF_EVENTS_BACKOFF_MAX,
+        )
+        self._protobuf_events_paused_until[device.object_key] = time.monotonic() + delay
+        _LOGGER.warning(
+            "Protobuf camera events for %s %s are failing (%r), retrying in %d min",
+            device.location,
+            device.name,
+            err,
+            max(1, int(delay // 60)),
+        )
+
     async def async_get_camera_events(
         self,
         device: NestCamera,
@@ -2497,7 +2512,9 @@ class NestClient:
                     )
                     self._legacy_protobuf_events_warned = True
                 return []
-            if device.object_key in self._protobuf_events_unauthorized:
+            if device.object_key in self._protobuf_events_paused_until and (
+                time.monotonic() < self._protobuf_events_paused_until[device.object_key]
+            ):
                 return []
             return await self._async_get_protobuf_camera_events(
                 device, start_time, end_time
