@@ -26,10 +26,16 @@ from homeassistant.components.climate import (
     SERVICE_SET_HVAC_MODE,
     HVACMode,
 )
+from homeassistant.components.media_source import (
+    URI_SCHEME,
+    Unresolvable,
+    async_browse_media,
+)
 from homeassistant.const import ATTR_ENTITY_ID, STATE_ON, STATE_UNAVAILABLE, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import device_registry as dr
+from homeassistant.setup import async_setup_component
 
 from .const import LOCK_KEY, STRUCTURE_KEY
 
@@ -584,4 +590,44 @@ async def test_camera_events_start_reauth_when_the_refresh_is_rejected(
         await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
 
     start_reauth.assert_called_once()
+    assert camera.object_key not in coordinator._event_poll_paused_until
+
+
+async def test_browsing_the_media_source_does_not_pause_the_events(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A browse that hits an expired session leaves the camera in the poll.
+
+    The media source calls async_get_camera_events and only reports the error:
+    it never refreshes or retries, so it must not count towards pausing the
+    camera (the review on #93). The client keeps no state, so the poll cycle
+    that follows an expired session still gets its refresh and its retry.
+    """
+    await _setup_without_event_poll(hass, mock_config_entry)
+    assert await async_setup_component(hass, "media_source", {})
+    expired = AuthenticationFailedException("authentication failed")
+    mock_nest_client.async_get_camera_events.side_effect = [
+        expired,  # the media browser, which gives up here
+        expired,  # the poll: the session expired
+        [CAMERA_EVENT],  # the retry after the refresh
+    ]
+
+    with pytest.raises(Unresolvable):
+        await async_browse_media(
+            hass,
+            f"{URI_SCHEME}{DOMAIN}/{mock_config_entry.entry_id}/"
+            f"{CAMERA_SERIAL}/2026-01-02",
+        )
+
+    coordinator = _coordinator(mock_config_entry)
+    camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
+    with patch.object(coordinator, "_cameras_to_poll", return_value=[camera]):
+        await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
+
+    # The browse fetched once, the poll fetched and retried once: no state was
+    # carried over from the caller that does not retry.
+    assert mock_nest_client.async_get_camera_events.await_count == 3
+    assert mock_nest_client.async_authenticate_with_google_credentials.await_count == 1
     assert camera.object_key not in coordinator._event_poll_paused_until
