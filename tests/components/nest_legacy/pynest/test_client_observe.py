@@ -1,5 +1,6 @@
 """Tests for the protobuf observe stream and camera event history."""
 
+import asyncio
 import logging
 from typing import Any
 
@@ -8,6 +9,9 @@ from custom_components.nest_legacy.pynest.exceptions import PynestException
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     hvac_pb2 as nest_hvac_pb2,
     security_pb2 as nest_security_pb2,
+)
+from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait.product import (
+    camera_pb2 as nest_camera_pb2,
 )
 from custom_components.nest_legacy.pynest.protobuf_gen.nestlabs.gateway import v2_pb2
 from custom_components.nest_legacy.pynest.protobuf_gen.weave.trait import (
@@ -200,6 +204,54 @@ async def test_observe_prefers_accepted_state(
         trait.lockedState
         == weave_security_pb2.BoltLockTrait.BoltLockedState.BOLT_LOCKED_STATE_LOCKED
     )
+
+
+async def test_observe_publishes_the_live_image_url(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """The URL a snapshot needs arrives on the stream, not in the reply.
+
+    upload_live_image is asynchronous: the command is acknowledged right away
+    and the camera publishes the URL later as an UploadLiveImageTrait.
+    """
+    url = "https://nexus.example.com/live/1"
+    waiter = asyncio.Event()
+    client._live_image_waiters[RESOURCE_ID] = waiter
+    aioclient_mock.post(
+        OBSERVE_URL,
+        content=_stream(
+            _trait_state(nest_camera_pb2.UploadLiveImageTrait(liveImageUrl=url))
+        ),
+    )
+
+    await _collect(client)
+
+    assert client._live_image_urls[RESOURCE_ID] == url
+    assert waiter.is_set()
+    # Publishing consumes the waiter so a later snapshot does not reuse it.
+    assert RESOURCE_ID not in client._live_image_waiters
+
+
+async def test_observe_ignores_the_older_live_image_url(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """An ACCEPTED upload answer wins over a CONFIRMED one in the same batch."""
+    fresh = "https://nexus.example.com/live/fresh"
+    stale = "https://nexus.example.com/live/stale"
+    aioclient_mock.post(
+        OBSERVE_URL,
+        content=_stream(
+            _trait_state(nest_camera_pb2.UploadLiveImageTrait(liveImageUrl=fresh)),
+            _trait_state(
+                nest_camera_pb2.UploadLiveImageTrait(liveImageUrl=stale),
+                accepted=False,
+            ),
+        ),
+    )
+
+    await _collect(client)
+
+    assert client._live_image_urls[RESOURCE_ID] == fresh
 
 
 async def test_observe_warns_about_colliding_labels(

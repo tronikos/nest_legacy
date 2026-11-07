@@ -84,6 +84,16 @@ from .protobuf_gen.weave.trait import (
     security_pb2 as weave_security_pb2,
 )
 
+# A camera answers a snapshot request with the frame it had already uploaded:
+# upload_live_image is handled asynchronously, so a GET sent right after it
+# returns the image from before the request. The camera publishes the URL of the
+# new upload through the trait stream about a second later, so wait for that
+# update and read the URL it carries instead of guessing a delay. Measured
+# against a live camera: the trait arrives in 0.9-1.3 s, the download takes 0.1 s.
+_SNAPSHOT_URL_TIMEOUT = 3.0
+_SNAPSHOT_ATTEMPTS = 3
+_SNAPSHOT_RETRY_DELAY = 1.0
+
 _NON_RETRYABLE_CODES = frozenset(
     {
         3,  # INVALID_ARGUMENT: Client specified an invalid argument.
@@ -513,6 +523,10 @@ class NestClient:
         self._resource_types: dict[str, str] = {}
         self._legacy_protobuf_events_warned: bool = False
         self._protobuf_events_unauthorized: set[str] = set()
+        # Latest liveImageUrl published by each camera's trait stream, and one
+        # waiter per camera for the snapshot code to know when it changed.
+        self._live_image_urls: dict[str, str] = {}
+        self._live_image_waiters: dict[str, asyncio.Event] = {}
         # Collisions do not change between polls, so each one is only reported
         # once for the lifetime of the client.
         self._trait_label_collisions_warned: set[tuple[str, str]] = set()
@@ -2211,6 +2225,11 @@ class NestClient:
 
     async def async_get_camera_snapshot(self, device: NestCamera) -> bytes | None:
         """Get a snapshot from a camera."""
+        # A protobuf camera learns its image URL from the trait stream, so an
+        # empty nexus_api_http_server_url is not fatal for it.
+        if device.is_protobuf:
+            return await self._async_get_protobuf_camera_snapshot(device)
+
         if not device.nexus_api_http_server_url:
             _LOGGER.error(
                 "Cannot get snapshot for %s, nexus_api_http_server_url is missing",
@@ -2218,37 +2237,118 @@ class NestClient:
             )
             return None
 
-        if device.is_protobuf:
-            try:
-                upload_req = (
-                    nest_camera_pb2.UploadLiveImageTrait.UploadLiveImageRequest()
-                )
-                command = v1_pb2.ResourceCommand(traitLabel="upload_live_image")
-                command.command.Pack(
-                    upload_req,
-                    type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-                )
-                await self._async_send_command(device, command)
-            except PynestException as err:
-                _LOGGER.warning("Failed to send upload_live_image command: %r", err)
-            url = device.nexus_api_http_server_url
-        else:
-            camera_uuid = device.object_key.split(".")[1]
-            url = urljoin(
-                device.nexus_api_http_server_url,
-                f"/get_image?uuid={camera_uuid}",
-            )
+        camera_uuid = device.object_key.split(".")[1]
+        url = urljoin(
+            device.nexus_api_http_server_url,
+            f"/get_image?uuid={camera_uuid}",
+        )
         _LOGGER.debug("Requesting camera snapshot from URL: %s", url)
+        return await self._async_fetch_camera_snapshot(url)
 
+    async def _async_get_protobuf_camera_snapshot(
+        self, device: NestCamera
+    ) -> bytes | None:
+        """Read the frame the last upload_live_image published.
+
+        The command is asynchronous, so the URL it produces only reaches the
+        client when the camera answers on the trait stream. Reading the device's
+        current URL straight away returns the frame of the previous request, and
+        the same URL stops answering once a newer upload replaces it.
+        """
+        for attempt in range(1, _SNAPSHOT_ATTEMPTS + 1):
+            # Concurrent callers for the same camera share one waiter: the
+            # camera answers a single upload with a single URL.
+            published = self._live_image_waiters.setdefault(
+                device.object_key, asyncio.Event()
+            )
+            try:
+                try:
+                    await self._async_send_command(
+                        device,
+                        self._upload_live_image_command(),
+                    )
+                except (TimeoutError, PynestException) as err:
+                    # _async_send_command already retried internally: repeating
+                    # it here would mean nine attempts and blow past the 10 s
+                    # Home Assistant allows for a camera image.
+                    _LOGGER.warning("Failed to send upload_live_image command: %r", err)
+                    return None
+                try:
+                    await asyncio.wait_for(
+                        published.wait(), timeout=_SNAPSHOT_URL_TIMEOUT
+                    )
+                except TimeoutError:
+                    _LOGGER.debug(
+                        "No new live image URL for %s %s within %.0fs, using the last one",
+                        device.location,
+                        device.name,
+                        _SNAPSHOT_URL_TIMEOUT,
+                    )
+            finally:
+                # Only the caller that still owns the waiter clears it; a
+                # concurrent call may have replaced it while we waited.
+                if self._live_image_waiters.get(device.object_key) is published:
+                    self._live_image_waiters.pop(device.object_key, None)
+
+            url = self._live_image_urls.get(
+                device.object_key, device.nexus_api_http_server_url
+            )
+            if not url:
+                _LOGGER.error(
+                    "Cannot get snapshot for %s, no live image URL is known",
+                    device.object_key,
+                )
+                return None
+
+            _LOGGER.debug(
+                "Requesting camera snapshot from URL (attempt %d/%d): %s",
+                attempt,
+                _SNAPSHOT_ATTEMPTS,
+                url,
+            )
+            image = await self._async_fetch_camera_snapshot(url)
+            if image is not None:
+                return image
+            if attempt < _SNAPSHOT_ATTEMPTS:
+                await asyncio.sleep(_SNAPSHOT_RETRY_DELAY)
+
+        _LOGGER.warning(
+            "Camera snapshot for %s %s failed %d times, giving up for this request",
+            device.location,
+            device.name,
+            _SNAPSHOT_ATTEMPTS,
+        )
+        return None
+
+    @staticmethod
+    def _upload_live_image_command() -> v1_pb2.ResourceCommand:
+        """Build the command that asks a camera to upload a fresh frame."""
+        upload_req = nest_camera_pb2.UploadLiveImageTrait.UploadLiveImageRequest()
+        command = v1_pb2.ResourceCommand(traitLabel="upload_live_image")
+        command.command.Pack(upload_req, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX)
+        return command
+
+    def _publish_live_image_url(self, resource_id: str, url: str | None) -> None:
+        """Remember a camera's new live image URL and wake whoever waits for it."""
+        if not url:
+            return
+        self._live_image_urls[resource_id] = url
+        waiter = self._live_image_waiters.pop(resource_id, None)
+        if waiter is not None:
+            waiter.set()
+
+    async def _async_fetch_camera_snapshot(self, url: str) -> bytes | None:
+        """Fetch the image the camera serves at a snapshot URL."""
         async with self._session.get(
             url, headers=self._get_camera_headers()
         ) as response:
             if response.ok:
                 return await response.read()
-            _LOGGER.error(
-                "Failed to get camera snapshot. Status: %s, URL: %s",
-                response.status,
-                response.url,
+            # A REST camera answers 400 while it has no frame ready; silent at
+            # DEBUG, a failing snapshot looked like a camera that simply has no
+            # image.
+            _LOGGER.warning(
+                "Camera snapshot answered %s: %s", response.status, response.url
             )
             return None
 
@@ -2673,6 +2773,12 @@ class NestClient:
                 continue
 
             updates[resource_id][descriptor_full_name] = unpacked_message
+
+            # Publish only the state that won the ACCEPTED precedence above: a
+            # batch carrying ACCEPTED and then an older CONFIRMED for the same
+            # trait must not leave the stale URL behind.
+            if isinstance(unpacked_message, nest_camera_pb2.UploadLiveImageTrait):
+                self._publish_live_image_url(resource_id, unpacked_message.liveImageUrl)
 
         return updates
 
