@@ -193,7 +193,6 @@ async def test_camera_snapshot_retries_with_a_new_upload_on_400(
     with (
         patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
         patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
-        patch.object(client_module.asyncio, "sleep", new=AsyncMock(return_value=None)),
     ):
         assert await client.async_get_camera_snapshot(camera) == b"frame"
 
@@ -215,7 +214,6 @@ async def test_camera_snapshot_gives_up_after_the_last_attempt(
     with (
         patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
         patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
-        patch.object(client_module.asyncio, "sleep", new=AsyncMock(return_value=None)),
     ):
         assert await client.async_get_camera_snapshot(_protobuf_camera()) is None
 
