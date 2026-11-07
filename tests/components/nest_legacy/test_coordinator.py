@@ -375,6 +375,92 @@ async def test_camera_events_pause_the_camera_after_a_failed_retry(
     assert caplog.text.count("paused for") == 1
 
 
+async def test_repeated_pauses_only_warn_once(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A camera that never recovers logs one warning, not one every hour.
+
+    An account without access to camera_observation_history (#61) pauses the
+    camera at 0m, 10m, 30m, 70m and hourly after that; at WARNING every step
+    that is a warning an hour, forever.
+    """
+    await _setup_without_event_poll(hass, mock_config_entry)
+    coordinator = _coordinator(mock_config_entry)
+    camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
+    denial = NonRetryablePynestException("denied")
+
+    with caplog.at_level("DEBUG", logger="custom_components.nest_legacy.coordinator"):
+        coordinator._pause_camera_events(camera, denial)
+        coordinator._pause_camera_events(camera, denial)
+        coordinator._pause_camera_events(camera, denial)
+
+    assert caplog.text.count("paused for") == 3
+    assert [r.levelname for r in caplog.records if "paused for" in r.message] == [
+        "WARNING",
+        "DEBUG",
+        "DEBUG",
+    ]
+
+
+async def test_event_window_does_not_advance_when_the_cycle_was_not_covered(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A cycle that could not poll its cameras must not move the event window."""
+    await _setup_without_event_poll(hass, mock_config_entry)
+    coordinator = _coordinator(mock_config_entry)
+    coordinator._last_event_poll_success_time = None
+    hass.config_entries.async_update_entry(
+        mock_config_entry, options={CONF_EVENT_POLL_INTERVAL: 5}
+    )
+
+    with (
+        patch.object(
+            coordinator, "_async_poll_cameras_once", AsyncMock(return_value=False)
+        ),
+        patch(
+            "custom_components.nest_legacy.coordinator.asyncio.sleep",
+            side_effect=asyncio.CancelledError,
+        ),
+        pytest.raises(asyncio.CancelledError),
+    ):
+        await coordinator._async_poll_camera_events()
+
+    assert coordinator._last_event_poll_success_time is None
+
+
+async def test_event_window_advances_when_the_cycle_was_covered(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A cycle that polled its cameras moves the window forward."""
+    await _setup_without_event_poll(hass, mock_config_entry)
+    coordinator = _coordinator(mock_config_entry)
+    coordinator._last_event_poll_success_time = None
+    hass.config_entries.async_update_entry(
+        mock_config_entry, options={CONF_EVENT_POLL_INTERVAL: 5}
+    )
+
+    with (
+        patch.object(
+            coordinator, "_async_poll_cameras_once", AsyncMock(return_value=True)
+        ),
+        patch(
+            "custom_components.nest_legacy.coordinator.asyncio.sleep",
+            side_effect=asyncio.CancelledError,
+        ),
+        pytest.raises(asyncio.CancelledError),
+    ):
+        await coordinator._async_poll_camera_events()
+
+    assert coordinator._last_event_poll_success_time is not None
+
+
 async def test_camera_events_survive_a_failed_reauthentication(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,
@@ -391,11 +477,15 @@ async def test_camera_events_survive_a_failed_reauthentication(
     coordinator = _coordinator(mock_config_entry)
     camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
 
-    with patch.object(coordinator, "_cameras_to_poll", return_value=[camera]):
+    with (
+        patch.object(coordinator, "_cameras_to_poll", return_value=[camera]),
+        pytest.raises(NestServiceException),
+    ):
         await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
 
     # The poll failed and the refresh failed: the camera is not paused for an
-    # outage that is not its fault, so the next poll tries again.
+    # outage that is not its fault, and the cycle reports that it covered
+    # nothing so the caller keeps the event window where it was.
     assert mock_nest_client.async_get_camera_events.await_count == 1
     assert camera.object_key not in coordinator._event_poll_paused_until
 
@@ -586,10 +676,17 @@ async def test_camera_events_start_reauth_when_the_refresh_is_rejected(
     with (
         patch.object(coordinator, "_cameras_to_poll", return_value=[camera]),
         patch.object(mock_config_entry, "async_start_reauth") as start_reauth,
+        patch.object(coordinator, "async_stop_subscriber") as stop_subscriber,
     ):
-        await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
+        covered = await coordinator._async_poll_cameras_once(
+            start_time=0, poll_interval=0
+        )
 
     start_reauth.assert_called_once()
+    # Signing in again cannot fix a revoked token: the poll task has to stop, or
+    # the loop retries every camera every cycle and asks Google each time.
+    stop_subscriber.assert_called_once()
+    assert covered is False
     assert camera.object_key not in coordinator._event_poll_paused_until
 
 

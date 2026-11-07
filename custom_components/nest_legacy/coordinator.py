@@ -713,11 +713,11 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 )
 
                 # Poll every camera once; the session is refreshed at most once
-                # per cycle if any of them reports an expired session.
-                await self._async_poll_cameras_once(start_time, poll_interval)
-
-                self._last_event_poll_success_time = time.time()
-                failures = 0  # Reset on success
+                # per cycle if any of them reports an expired session. The window
+                # only moves when the whole cycle covered its cameras.
+                if await self._async_poll_cameras_once(start_time, poll_interval):
+                    self._last_event_poll_success_time = time.time()
+                    failures = 0  # Reset on success
             except Exception as err:
                 delay = min(
                     MAX_BACKOFF_SECONDS,
@@ -746,13 +746,16 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
 
     async def _async_poll_cameras_once(
         self, start_time: float, poll_interval: float
-    ) -> None:
+    ) -> bool:
         """Poll every camera once, refreshing the session at most once.
 
         A stale session makes every camera answer an authentication error. The
         refresh happens here, once for the whole cycle, rather than once per
         camera: with several cameras a per-camera refresh would serialise N
         Google logins behind _auth_lock on every poll.
+
+        Returns True only when the cycle covered its cameras, so the caller knows
+        whether the event window may advance.
         """
         now = time.monotonic()
         devices = [
@@ -761,7 +764,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             if self._event_poll_paused_until.get(device.object_key, 0.0) <= now
         ]
         if not devices:
-            return
+            return True
         results = await asyncio.gather(
             *(
                 self._async_process_events_for_device(device, start_time, poll_interval)
@@ -777,40 +780,46 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             elif isinstance(result, Exception):
                 _LOGGER.debug("Camera event poll failed: %r", result)
                 unexpected = unexpected or result
-        if expired:
-            await self._async_reauthenticate_and_retry(
-                expired, start_time, poll_interval
-            )
+        if expired and not await self._async_reauthenticate_and_retry(
+            expired, start_time, poll_interval
+        ):
+            # The session could not be refreshed: this cycle did not cover the
+            # cameras, so the caller must not move the event window past it.
+            return False
         if unexpected is not None:
             # Let the poll loop see it: it logs the traceback, backs off and keeps
             # the event window where it was. Swallowing it here meant the window
             # advanced over events nobody parsed.
             raise unexpected
+        return True
 
     async def _async_reauthenticate_and_retry(
         self, devices: list[NestCamera], start_time: float, poll_interval: float
-    ) -> None:
-        """Refresh the session once and retry the cameras whose poll expired."""
+    ) -> bool:
+        """Refresh the session once and retry the cameras whose poll expired.
+
+        Returns False when the refresh failed and the cameras went unpolled, so
+        the caller keeps the event window where it was.
+        """
         try:
             await self.async_reauthenticate(force=True)
         except BadCredentialsException as err:
             # A revoked cookie or token cannot be fixed by signing in again: ask
             # the user to reauthenticate instead of hitting Google every cycle.
+            # Stopping the poll task is what actually ends the loop; returning on
+            # its own left it polling every camera every 5s.
             _LOGGER.warning(
                 "Nest rejected the stored credentials, starting reauthentication: %r",
                 err,
             )
             self.config_entry.async_start_reauth(self.hass)
-            return
-        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
-            # An authentication outage is not the camera's fault: the next poll
-            # tries again, and no camera is paused for it.
-            _LOGGER.warning(
-                "Could not refresh the Nest session, camera events will retry on "
-                "the next poll: %r",
-                err,
-            )
-            return
+            self.async_stop_subscriber()
+            return False
+        except ClientError, TimeoutError, PynestException, HomeAssistantError:
+            # An authentication outage is not the camera's fault: no camera is
+            # paused for it, and the caller must not advance the event window
+            # over a cycle in which nothing was polled.
+            raise
         results = await asyncio.gather(
             *(
                 self._async_process_events_for_device(device, start_time, poll_interval)
@@ -823,14 +832,15 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             if isinstance(result, AuthenticationFailedException):
                 # A fresh session did not help. That is not proof the camera is
                 # gone for good, so pause it and try again later.
-                self._async_pause_camera_events(device, result)
+                self._pause_camera_events(device, result)
             elif isinstance(result, Exception):
                 _LOGGER.debug("Camera event poll failed after a refresh: %r", result)
                 unexpected = unexpected or result
         if unexpected is not None:
             raise unexpected
+        return True
 
-    def _async_pause_camera_events(self, device: NestCamera, err: Exception) -> None:
+    def _pause_camera_events(self, device: NestCamera, err: Exception) -> None:
         """Stop polling one camera's events for a while, doubling the wait each time."""
         level = self._event_poll_backoff.get(device.object_key, 0) + 1
         self._event_poll_backoff[device.object_key] = level
@@ -839,7 +849,11 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             EVENT_PAUSE_MAX_SECONDS,
         )
         self._event_poll_paused_until[device.object_key] = time.monotonic() + delay
-        _LOGGER.warning(
+        # An account that can never read camera_observation_history (#61) pauses
+        # this camera forever, so only the first pause is news: at WARNING every
+        # step this would log once an hour, indefinitely.
+        log = _LOGGER.warning if level == 1 else _LOGGER.debug
+        log(
             "Camera events for %s %s are failing (%r), paused for %d min",
             device.location,
             device.name,
@@ -867,7 +881,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         except NonRetryablePynestException as err:
             # A denial that is not about authentication will not fix itself in a
             # second, so pause the camera instead of asking on every cycle.
-            self._async_pause_camera_events(device, err)
+            self._pause_camera_events(device, err)
             return
         except (ClientError, TimeoutError, PynestException) as err:
             if device.object_key in self._event_poll_warned:

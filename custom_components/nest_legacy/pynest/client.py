@@ -1434,7 +1434,6 @@ class NestClient:
                         (
                             NotAuthenticatedException,
                             NonRetryablePynestException,
-                            AuthenticationFailedException,
                         ),
                     )
                     or attempt == 2
@@ -1573,7 +1572,6 @@ class NestClient:
                         (
                             NotAuthenticatedException,
                             NonRetryablePynestException,
-                            AuthenticationFailedException,
                         ),
                     )
                     or attempt == 2
