@@ -251,6 +251,22 @@ def _milli_volt_to_percentage(state: int) -> float:
     return 0.0
 
 
+def _get_model_from_serial(serial_number: str | None) -> str:
+    """Determine thermostat model from serial number as a fallback."""
+    if not serial_number:
+        return "Thermostat"
+    prefix = serial_number[:2]
+    if prefix == "15":
+        return "Thermostat E"
+    if prefix in ("09", "10"):
+        return "Learning Thermostat (3rd gen)"
+    if prefix == "02":
+        return "Learning Thermostat (2nd gen)"
+    if prefix == "01":
+        return "Learning Thermostat (1st gen)"
+    return "Thermostat"
+
+
 def _optional_bool(value: Any) -> bool | None:
     """Return a REST boolean field, or None when the device does not send it."""
     return None if value is None else bool(value)
@@ -306,6 +322,13 @@ class NestParser:
                 device: NestDevice | None = None
                 if key.startswith("topaz."):
                     device = self._parse_protect(key, value, raw_data, wheres_map)
+                elif key.startswith("device."):
+                    if device := self._parse_thermostat(
+                        key, value, raw_data, wheres_map
+                    ):
+                        thermostats.append(device)
+                elif key.startswith("kryptonite."):
+                    device = self._parse_tempsensor(key, value, raw_data, wheres_map)
                 elif key.startswith("quartz."):
                     device = self._parse_camera(key, value, wheres_map)
                 elif key.startswith("structure."):
@@ -351,6 +374,23 @@ class NestParser:
                     devices.append(device)
             except (KeyError, TypeError, ValueError) as e:
                 _LOGGER.warning("Skipping device %s due to a parsing error: %s", key, e)
+
+        # Drop any REST device that also has a protobuf resource, so the
+        # protobuf version is kept and only one Heat Link is created.
+        protobuf_serials = {
+            device.serial_number for device in devices if device.is_protobuf
+        }
+        devices = [
+            device
+            for device in devices
+            if device.is_protobuf or device.serial_number not in protobuf_serials
+        ]
+        thermostats = [
+            thermostat
+            for thermostat in thermostats
+            if thermostat.is_protobuf
+            or thermostat.serial_number not in protobuf_serials
+        ]
 
         # Second pass to create derived devices like Heat Link
         devices.extend(
@@ -538,6 +578,278 @@ class NestParser:
             ntp_green_led_enable=value.get("ntp_green_led_enable", False),
             heads_up_enable=value.get("heads_up_enable", False),
             **rest_only,
+        )
+
+    def _parse_thermostat(
+        self,
+        key: str,
+        value: dict[str, Any],
+        raw_data: dict[str, Any],
+        wheres_map: dict[str, str],
+    ) -> NestThermostat | None:
+        """Parse a Nest Thermostat device."""
+        device_id = key.split(".")[1]
+        shared_key = f"shared.{device_id}"
+        if shared_key not in raw_data:
+            return None
+        shared_data = raw_data[shared_key]
+
+        data: dict[str, Any] = {**value, **shared_data}
+        track_key = f"track.{device_id}"
+        online = raw_data.get(track_key, {}).get("online", False)
+
+        # Occupancy
+        link_key = f"link.{device_id}"
+        structure_key = raw_data.get(link_key, {}).get("structure")
+        occupancy = (
+            not raw_data.get(structure_key, {}).get("away", True)
+            if structure_key
+            else False
+        )
+
+        hvac_state = ThermostatHvacState.OFF
+        if (
+            data.get("hvac_heater_state")
+            or data.get("hvac_heat_x2_state")
+            or data.get("hvac_heat_x3_state")
+            or data.get("hvac_aux_heater_state")
+            or data.get("hvac_alt_heat_state")
+            or data.get("hvac_alt_heat_x2_state")
+            or data.get("hvac_emer_heat_state")
+        ):
+            hvac_state = ThermostatHvacState.HEATING
+        elif (
+            data.get("hvac_ac_state")
+            or data.get("hvac_cool_x2_state")
+            or data.get("hvac_cool_x3_state")
+        ):
+            hvac_state = ThermostatHvacState.COOLING
+        elif data.get("fan_timer_timeout", 0) > 0 or data.get("hvac_fan_state", False):
+            hvac_state = ThermostatHvacState.FAN
+
+        temp_scale_value = data.get("temperature_scale")
+        try:
+            temp_scale = (
+                TemperatureScale(temp_scale_value)
+                if temp_scale_value
+                else TemperatureScale.CELSIUS
+            )
+        except ValueError, TypeError:
+            _LOGGER.warning(
+                "Unsupported value for TemperatureScale: '%s'. Defaulting to Celsius",
+                temp_scale_value,
+            )
+            temp_scale = TemperatureScale.CELSIUS
+
+        # Derive the underlying (non-eco) HVAC mode from target_temperature_type.
+        # This is used as a fallback when eco enabled flags are absent/false.
+        target_temp_type = data.get("target_temperature_type", "off")
+        try:
+            underlying_hvac_mode = (
+                ThermostatHvacMode.RANGE
+                if target_temp_type == "eco"
+                else ThermostatHvacMode(target_temp_type)
+            )
+        except ValueError:
+            _LOGGER.warning(
+                "Unsupported value for ThermostatHvacMode: '%s'. Defaulting to OFF",
+                target_temp_type,
+            )
+            underlying_hvac_mode = ThermostatHvacMode.OFF
+
+        is_eco = data.get("eco", {}).get("mode") in ("auto-eco", "manual-eco")
+        if is_eco:
+            eco_low = data.get("away_temperature_low")
+            eco_high = data.get("away_temperature_high")
+
+            can_heat = data.get("can_heat", False)
+            can_cool = data.get("can_cool", False)
+
+            # Check explicit enabled flags first (present on most firmware).
+            # When both are absent/false, fall back to equipment capabilities so
+            # that a heat-only device is not incorrectly reported as RANGE.
+            # Note: do NOT AND flags with can_heat/can_cool here — check flags
+            # raw, then use capabilities only in the fallback branch. This mirrors
+            # the protobuf path in _parse_proto_targets_and_mode.
+            # Also: do NOT use underlying_hvac_mode as the fallback — when eco is
+            # active the REST API sets target_temperature_type to "eco", which the
+            # try/except above maps to RANGE, causing the same wrong-mode bug.
+            heat_enabled = data.get("away_temperature_low_enabled", False)
+            cool_enabled = data.get("away_temperature_high_enabled", False)
+
+            if heat_enabled and not cool_enabled:
+                hvac_mode = ThermostatHvacMode.HEAT
+                target_temp = eco_low
+            elif cool_enabled and not heat_enabled:
+                hvac_mode = ThermostatHvacMode.COOL
+                target_temp = eco_high
+            elif can_heat and not can_cool:
+                # Neither flag set; deduce from hardware capabilities.
+                hvac_mode = ThermostatHvacMode.HEAT
+                target_temp = eco_low
+            elif can_cool and not can_heat:
+                hvac_mode = ThermostatHvacMode.COOL
+                target_temp = eco_high
+            else:
+                # True heat+cool device with no usable flags.
+                hvac_mode = ThermostatHvacMode.RANGE
+                target_temp = (
+                    (eco_low + eco_high) / 2
+                    if eco_low is not None and eco_high is not None
+                    else None
+                )
+
+            # Always expose eco setpoints as low/high so the UI can show the range.
+            target_low = eco_low if can_heat else None
+            target_high = eco_high if can_cool else None
+        else:
+            target_temp = data.get("target_temperature")
+            target_low = data.get("target_temperature_low")
+            target_high = data.get("target_temperature_high")
+            hvac_mode = underlying_hvac_mode
+
+        current_temperature = data.get("current_temperature")
+
+        # Check for active remote temperature sensor
+        rcs_settings_key = f"rcs_settings.{device_id}"
+        if rcs_settings_key in raw_data:
+            rcs_data = raw_data[rcs_settings_key]
+            active_sensors = rcs_data.get("active_rcs_sensors", [])
+            if active_sensors:
+                sensor_key = active_sensors[0]
+                if sensor_key in raw_data:
+                    sensor_data = raw_data[sensor_key]
+                    current_temperature = sensor_data.get("current_temperature")
+
+        current_temperature = _round_current_temp(current_temperature)
+        target_temperature = _round_target_temp(target_temp, temp_scale)
+        target_low = _round_target_temp(target_low, temp_scale)
+        target_high = _round_target_temp(target_high, temp_scale)
+
+        fan_timer_speed_str = data.get("fan_timer_speed", "stage0").replace("stage", "")
+        try:
+            fan_timer_speed = (
+                int(fan_timer_speed_str)
+                if fan_timer_speed_str and fan_timer_speed_str != "none"
+                else 1
+            )
+        except ValueError:
+            fan_timer_speed = 1
+
+        fan_max_speed_str = data.get("fan_capabilities", "stage1").replace("stage", "")
+        try:
+            fan_max_speed = (
+                int(fan_max_speed_str)
+                if fan_max_speed_str and fan_max_speed_str != "none"
+                else 1
+            )
+        except ValueError:
+            fan_max_speed = 1
+
+        batt_volts = data.get("battery_level")
+
+        return NestThermostat(
+            object_key=key,
+            serial_number=value["serial_number"],
+            location=self._get_location(value, wheres_map),
+            name=value.get("description", "Thermostat"),
+            model=value.get("model") or _get_model_from_serial(value["serial_number"]),
+            software_version=value.get("software_version"),
+            mac_address=value.get("mac_address"),
+            online=online,
+            temperature_scale=temp_scale,
+            current_temperature=current_temperature,
+            backplate_temperature=_round_current_temp(
+                value.get("backplate_temperature")
+            ),
+            target_temperature=target_temperature,
+            target_temperature_low=target_low,
+            target_temperature_high=target_high,
+            current_humidity=data.get("current_humidity"),
+            target_humidity=data.get("target_humidity"),
+            hvac_state=hvac_state,
+            hvac_mode=hvac_mode,
+            is_eco_mode=is_eco,
+            leaf=data.get("leaf", False),
+            temperature_lock=data.get("temperature_lock", False),
+            can_heat=data.get("can_heat", False),
+            can_cool=data.get("can_cool", False),
+            has_fan=data.get("has_fan", False),
+            fan_state=data.get("fan_timer_timeout", 0) > time.time(),
+            fan_timer_speed=fan_timer_speed,
+            fan_max_speed=fan_max_speed,
+            fan_duration=data.get("fan_duration", 900),
+            fan_timer_timeout=data.get("fan_timer_timeout", 0),
+            has_dehumidifier=data.get("has_dehumidifier", False),
+            dehumidifier_state=data.get("dehumidifier_state", False),
+            has_humidifier=data.get("has_humidifier", False),
+            humidifier_state=data.get("humidifier_state", False),
+            occupancy=occupancy,
+            battery_level=_scale_value(batt_volts, 3.6, 3.9, 0, 100)
+            if batt_volts is not None
+            else 0.0,
+            battery_voltage=batt_volts,
+            has_hot_water_control=data.get("has_hot_water_control", False),
+            has_hot_water_temperature=data.get("has_hot_water_temperature", False),
+            heat_link_model=data.get("heat_link_model"),
+            heat_link_serial_number=data.get("heat_link_serial_number"),
+            heat_link_sw_version=data.get("heat_link_sw_version"),
+            hot_water_active=data.get("hot_water_active", False),
+            hot_water_mode=HotWaterMode(data.get("hot_water_mode", "off")),
+            hot_water_away_enabled=data.get("hot_water_away_enabled", False),
+            hot_water_boost_time_to_end=data.get("hot_water_boost_time_to_end", 0),
+            hot_water_temperature=_round_target_temp(
+                data.get("hot_water_temperature"), temp_scale
+            ),
+            current_water_temperature=_round_current_temp(
+                data.get("current_water_temperature")
+            ),
+        )
+
+    def _parse_tempsensor(
+        self,
+        key: str,
+        value: dict[str, Any],
+        raw_data: dict[str, Any],
+        wheres_map: dict[str, str],
+    ) -> NestTempSensor | None:
+        """Parse a Nest Temperature Sensor."""
+        # Legacy API: Check rcs_settings to find association and active status
+        associated_thermostat = None
+        is_active = False
+
+        # Iterate all rcs_settings buckets to find which one contains this sensor
+        for rcs_key, rcs_data in raw_data.items():
+            if not rcs_key.startswith("rcs_settings."):
+                continue
+
+            rcs_val = rcs_data.get("value", {}) if "value" in rcs_data else rcs_data
+
+            associated_sensors = rcs_val.get("associated_rcs_sensors", [])
+            if key in associated_sensors:
+                # Found the thermostat this sensor belongs to
+                device_id = rcs_key.split(".")[1]
+                associated_thermostat = f"device.{device_id}"
+
+                # Check if active
+                active_sensors = rcs_val.get("active_rcs_sensors", [])
+                if key in active_sensors:
+                    is_active = True
+                break
+
+        return NestTempSensor(
+            object_key=key,
+            serial_number=value.get("serial_number", key.split(".")[1]),
+            location=self._get_location(value, wheres_map),
+            name=value.get("description", "Temperature Sensor"),
+            model=value.get("model"),
+            software_version=value.get("software_version"),
+            online=(time.time() - value.get("last_updated_at", 0)) < 3600 * 4,
+            current_temperature=_round_current_temp(value.get("current_temperature")),
+            battery_level=value.get("battery_level", 0.0),
+            battery_voltage=None,  # REST API reports percentage, not voltage
+            associated_thermostat_object_key=associated_thermostat,
+            is_active_sensor=is_active,
         )
 
     def _parse_bool(self, val: Any) -> bool:
@@ -2337,5 +2649,5 @@ class NestParser:
             current_temperature=thermostat.current_water_temperature,
             target_temperature=thermostat.hot_water_temperature,
             temperature_scale=thermostat.temperature_scale,
-            is_protobuf=True,
+            is_protobuf=thermostat.is_protobuf,
         )

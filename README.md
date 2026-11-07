@@ -237,7 +237,7 @@ If you are part of the Google Field Test program, check the "Use Field Test envi
 Once set up, you can click "Configure" on the integration entry to tweak settings:
 
 - **Camera Event Poll Interval:** How often to check for new camera events (default: 5 seconds). Set it to 0 to disable polling.
-- **Protobuf Options:** Enable/Disable the use of the newer Protobuf API for specific device types (Protects, Structure, Cameras). Thermostats, Temperature Sensors, Heat Links and Locks always use the Protobuf API.
+- **Protobuf Options:** Enable/Disable the use of the newer Protobuf API for specific device types (Protects, Structure, Cameras). Locks always use the Protobuf API; Thermostats, Temperature Sensors and Heat Links use it when available and fall back to the REST API.
 
 ## Troubleshooting
 

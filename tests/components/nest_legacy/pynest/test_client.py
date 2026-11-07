@@ -300,11 +300,7 @@ def _app_launch_buckets() -> dict[str, Any]:
 async def test_get_first_data(
     client: NestClient, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """App launch buckets are keyed by object key.
-
-    The protobuf stream owns the thermostat, so its REST buckets are neither
-    requested nor kept if the server sends them anyway.
-    """
+    """App launch buckets are keyed by object key, including REST thermostat buckets."""
     aioclient_mock.get(SESSION_URL, json=SESSION_RESPONSE)
     await client._async_get_session("test-token")
 
@@ -315,10 +311,10 @@ async def test_get_first_data(
 
     data = await client.async_get_first_data()
 
-    assert set(data) == {"topaz.09AA00AA00AA0AA1"}
+    assert set(data) == {"device.09AA00AA00AA0AAA", "topaz.09AA00AA00AA0AA1"}
     requested = aioclient_mock.mock_calls[-1][2]["known_bucket_types"]
-    assert "topaz" in requested
-    assert not {
+    assert {
+        "topaz",
         "device",
         "shared",
         "kryptonite",
@@ -327,7 +323,7 @@ async def test_get_first_data(
         "rcs_settings",
         "demand_response",
         "tuneups",
-    } & set(requested)
+    } <= set(requested)
 
 
 async def test_get_first_data_error(
