@@ -399,4 +399,3 @@ async def test_device_diagnostics_with_merged_identifiers(
 
     assert "error" not in device_diagnostics
     assert "processed_data" in device_diagnostics
-

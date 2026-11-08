@@ -392,4 +392,3 @@ async def test_subscriber_does_not_reload_before_first_protobuf_update(
         await _settle(hass, mock_nest_client.async_subscribe_for_updates, 2)
 
     mock_reload.assert_not_called()
-

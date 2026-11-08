@@ -24,6 +24,7 @@ from homeassistant.helpers import (
 
 from .const import DOMAIN
 from .coordinator import NestCoordinator
+from .pynest.models import NestDevice
 
 
 def async_setup_services(hass: HomeAssistant) -> None:
@@ -71,10 +72,9 @@ def async_setup_services(hass: HomeAssistant) -> None:
             )
         return entry.runtime_data
 
-    def _get_serial_from_ha_device(ha_device_id: str) -> str:
-        """Resolve HA device ID to Nest serial number."""
-        device_registry = dr.async_get(hass)
-        device_entry = device_registry.async_get(ha_device_id)
+    def _get_device(coordinator: NestCoordinator, ha_device_id: str) -> NestDevice:
+        """Resolve HA device ID to a NestDevice in coordinator data."""
+        device_entry = dr.async_get(hass).async_get(ha_device_id)
         if not device_entry:
             raise ServiceValidationError(
                 translation_domain=DOMAIN,
@@ -82,15 +82,25 @@ def async_setup_services(hass: HomeAssistant) -> None:
                 translation_placeholders={"device_id": ha_device_id},
             )
 
-        for domain, identifier in device_entry.identifiers:
-            if domain == DOMAIN:
-                return identifier
-
-        raise ServiceValidationError(
-            translation_domain=DOMAIN,
-            translation_key="device_not_nest_legacy",
-            translation_placeholders={"device_id": ha_device_id},
+        serial = next(
+            (id_val for domain, id_val in device_entry.identifiers if domain == DOMAIN),
+            None,
         )
+        if serial is None:
+            raise ServiceValidationError(
+                translation_domain=DOMAIN,
+                translation_key="device_not_nest_legacy",
+                translation_placeholders={"device_id": ha_device_id},
+            )
+
+        device = coordinator.data.get(serial)
+        if device is None:
+            raise ServiceValidationError(
+                translation_domain=DOMAIN,
+                translation_key="device_not_found",
+                translation_placeholders={"device_id": ha_device_id},
+            )
+        return device
 
     async def async_list_guests(call: ServiceCall) -> ServiceResponse:
         """List guests from the structure."""
@@ -101,9 +111,7 @@ def async_setup_services(hass: HomeAssistant) -> None:
     async def async_get_user_schedule(call: ServiceCall) -> ServiceResponse:
         """Get a user's schedule."""
         coordinator = _get_coordinator(call)
-        ha_device_id = call.data["device_id"]
-        serial = _get_serial_from_ha_device(ha_device_id)
-        device = coordinator.data[serial]
+        device = _get_device(coordinator, call.data["device_id"])
 
         user_id = call.data["user_id"]
 
@@ -121,9 +129,7 @@ def async_setup_services(hass: HomeAssistant) -> None:
     async def async_set_user_schedule(call: ServiceCall) -> None:
         """Set a user's schedule."""
         coordinator = _get_coordinator(call)
-        ha_device_id = call.data["device_id"]
-        serial = _get_serial_from_ha_device(ha_device_id)
-        device = coordinator.data[serial]
+        device = _get_device(coordinator, call.data["device_id"])
 
         user_id = call.data["user_id"]
 
@@ -175,9 +181,7 @@ def async_setup_services(hass: HomeAssistant) -> None:
     async def async_delete_user_schedule(call: ServiceCall) -> None:
         """Delete a user's schedule."""
         coordinator = _get_coordinator(call)
-        ha_device_id = call.data["device_id"]
-        serial = _get_serial_from_ha_device(ha_device_id)
-        device = coordinator.data[serial]
+        device = _get_device(coordinator, call.data["device_id"])
 
         user_id = call.data["user_id"]
 

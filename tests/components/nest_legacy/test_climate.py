@@ -33,7 +33,7 @@ from homeassistant.components.climate import (
 )
 from homeassistant.const import ATTR_ENTITY_ID, ATTR_TEMPERATURE, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import HomeAssistantError
+from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util.unit_system import METRIC_SYSTEM, US_CUSTOMARY_SYSTEM
 
@@ -340,6 +340,20 @@ async def test_set_fan_timer(
 
     _, data = mock_nest_client.async_set_device_data.call_args[0]
     assert data["fan_timer_timeout"] > 0
+
+
+async def test_set_fan_timer_rejects_non_positive_duration(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+) -> None:
+    """A zero or negative fan timer duration raises ServiceValidationError."""
+    with pytest.raises(ServiceValidationError):
+        await hass.services.async_call(
+            DOMAIN,
+            "set_fan_timer",
+            {ATTR_ENTITY_ID: ENTITY_ID, "duration": {"minutes": 0}},
+            blocking=True,
+        )
 
 
 async def test_set_fan_timer_without_fan(

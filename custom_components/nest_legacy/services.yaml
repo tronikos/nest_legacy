@@ -1,7 +1,7 @@
 list_guests:
   fields:
     config_entry_id:
-      required: true
+      required: false
       selector:
         config_entry:
           integration: nest_legacy
