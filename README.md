@@ -159,6 +159,95 @@ Sets the thermostat fan to run for a specific duration.
 - **Data:**
   - `duration` (Required): The length of time the fan should run (e.g., `00:15:00` for 15 minutes).
 
+## Automation Examples
+
+### Run thermostat fan for 30 minutes when humidity is high
+
+```yaml
+automation:
+  alias: "Run fan when humidity is high"
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.living_room_humidity
+      above: 60
+  actions:
+    - action: nest_legacy.set_fan_timer
+      target:
+        entity_id: climate.living_room
+      data:
+        duration: "00:30:00"
+```
+
+### Send a notification with a camera snapshot on person detection
+
+```yaml
+automation:
+  alias: "Person at front door"
+  triggers:
+    - trigger: state
+      entity_id: event.front_door_motion
+  conditions:
+    - condition: template
+      value_template: "{{ state_attr('event.front_door_motion', 'event_type') == 'camera_person' }}"
+  actions:
+    - action: notify.mobile_app
+      data:
+        title: "Person Detected"
+        message: "Someone is at the front door."
+        data:
+          image: "/api/camera_proxy/camera.front_door"
+```
+
+### Switch active temperature sensor at bedtime
+
+```yaml
+automation:
+  alias: "Use bedroom sensor at night"
+  triggers:
+    - trigger: time
+      at: "22:00:00"
+  actions:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.bedroom_control_thermostat
+```
+
+### Alert on Nest Protect smoke or CO detection
+
+```yaml
+automation:
+  alias: "Smoke or CO alarm"
+  triggers:
+    - trigger: state
+      entity_id:
+        - binary_sensor.hallway_smoke
+        - binary_sensor.hallway_carbon_monoxide
+      to: "on"
+  actions:
+    - action: notify.notify
+      data:
+        title: "Nest Protect Alert!"
+        message: "{{ trigger.to_state.attributes.friendly_name }} detected in the hallway!"
+```
+
+### Set home to Away when everyone leaves
+
+```yaml
+automation:
+  alias: "Set Nest to Away"
+  triggers:
+    - trigger: state
+      entity_id: zone.home
+      to: "0"
+      for: "00:10:00"
+  actions:
+    - action: select.select_option
+      target:
+        entity_id: select.home_mode
+      data:
+        option: away
+```
+
 ## Installation
 
 ### HACS
