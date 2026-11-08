@@ -466,3 +466,67 @@ async def test_google_auth_keeps_rotated_cookies_on_failure(
         )
 
     assert client.google_cookies == "SID=a; SIDCC=new"
+
+
+@pytest.mark.parametrize(
+    ("status", "expected"),
+    [
+        (HTTPStatus.INTERNAL_SERVER_ERROR, NestServiceException),
+        (HTTPStatus.BAD_GATEWAY, BadGatewayException),
+        (HTTPStatus.GATEWAY_TIMEOUT, GatewayTimeoutException),
+        (HTTPStatus.TOO_MANY_REQUESTS, NestServiceException),
+    ],
+)
+async def test_google_auth_transient_errors_are_retryable(
+    client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    status: int,
+    expected: type[Exception],
+) -> None:
+    """Transient HTTP failures on the Google token and JWT endpoints do not raise BadCredentialsException."""
+    aioclient_mock.get(ISSUE_TOKEN_URL, status=status, text="upstream outage")
+
+    with pytest.raises(expected) as err:
+        await client.async_authenticate_with_google_credentials(
+            ISSUE_TOKEN_URL, "SID=a"
+        )
+    assert not isinstance(err.value, BadCredentialsException)
+
+    aioclient_mock.clear_requests()
+    aioclient_mock.get(ISSUE_TOKEN_URL, json=GOOGLE_TOKEN_RESPONSE)
+    aioclient_mock.post(JWT_URL, status=status, text="upstream outage")
+
+    with pytest.raises(expected) as err:
+        await client.async_authenticate_with_google_credentials(
+            ISSUE_TOKEN_URL, "SID=a"
+        )
+    assert not isinstance(err.value, BadCredentialsException)
+
+
+async def test_google_jwt_handles_unknown_keys_and_error_payloads(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """Extra fields in the JWT response are ignored and error payloads raise BadCredentialsException."""
+    aioclient_mock.get(ISSUE_TOKEN_URL, json=GOOGLE_TOKEN_RESPONSE)
+    aioclient_mock.post(
+        JWT_URL, json={"jwt": "nest-jwt", "unexpected_field": "ignored"}
+    )
+    aioclient_mock.get(SESSION_URL, json=SESSION_RESPONSE)
+
+    session = await client.async_authenticate_with_google_credentials(
+        ISSUE_TOKEN_URL, "SID=a"
+    )
+    assert session.email == "test@example.com"
+
+    aioclient_mock.clear_requests()
+    aioclient_mock.get(ISSUE_TOKEN_URL, json=GOOGLE_TOKEN_RESPONSE)
+    aioclient_mock.post(
+        JWT_URL,
+        status=HTTPStatus.UNAUTHORIZED,
+        json={"error": {"code": 401, "message": "Invalid token"}},
+    )
+
+    with pytest.raises(BadCredentialsException, match="Invalid token"):
+        await client.async_authenticate_with_google_credentials(
+            ISSUE_TOKEN_URL, "SID=a"
+        )

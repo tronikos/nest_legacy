@@ -439,7 +439,13 @@ class NestAuthResponse:
     jwt: str | None = None
     claims: NestAuthClaims | dict[str, Any] | None = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """Handle nested dataclass."""
         if self.claims and isinstance(self.claims, dict):
             self.claims = NestAuthClaims.from_dict(self.claims)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> NestAuthResponse:
+        """Create an instance from a dict, ignoring unknown keys."""
+        known_fields = {f.name for f in fields(cls)}
+        return cls(**{k: v for k, v in data.items() if k in known_fields})

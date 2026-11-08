@@ -611,9 +611,32 @@ class NestClient:
             )
             if rotated:
                 _LOGGER.debug("Google rotated cookies: %s", ", ".join(rotated))
-            result = await response.json()
+            if not response.ok and _is_transient_status(response.status):
+                body = await response.text()
+                message = f"Failed to get Google access token: {response.status}"
+                _LOGGER.info(
+                    "Transient error getting Google access token, will retry. "
+                    "Status: %s, Body: %s",
+                    response.status,
+                    body,
+                )
+                raise _transient_exception(response.status, message)
+            try:
+                result = await response.json()
+            except ContentTypeError as err:
+                raise BadCredentialsException(
+                    f"Failed to get Google access token: {response.status}"
+                ) from err
+            if not isinstance(result, dict):
+                raise BadCredentialsException(
+                    "Invalid response from Google token endpoint"
+                )
             if "error" in result:
                 raise BadCredentialsException(result.get("detail", result["error"]))
+            if not response.ok:
+                raise BadCredentialsException(
+                    f"Failed to get Google access token: {response.status}"
+                )
             return GoogleAuthResponse.from_dict(result)
 
     async def _async_authenticate(self, access_token: str) -> NestSession:
@@ -637,8 +660,46 @@ class NestClient:
                 "Referer": f"https://{self._environment.host}",
             },
         ) as response:
-            result = await response.json()
-            nest_auth = NestAuthResponse(**result)
+            if not response.ok and _is_transient_status(response.status):
+                body = await response.text()
+                message = f"Failed to get Nest JWT: {response.status}"
+                _LOGGER.info(
+                    "Transient error getting Nest JWT, will retry. "
+                    "Status: %s, Body: %s",
+                    response.status,
+                    body,
+                )
+                raise _transient_exception(response.status, message)
+            try:
+                result = await response.json()
+            except ContentTypeError as err:
+                raise BadCredentialsException(
+                    f"Failed to get Nest JWT: {response.status}"
+                ) from err
+            if not isinstance(result, dict):
+                raise BadCredentialsException("Invalid response from Nest JWT endpoint")
+            if "error" in result:
+                error = result["error"]
+                if (
+                    isinstance(error, dict)
+                    and isinstance(status := error.get("code"), int)
+                    and _is_transient_status(status)
+                ):
+                    raise _transient_exception(
+                        status,
+                        str(error.get("message", f"Failed to get Nest JWT: {status}")),
+                    )
+                message = (
+                    str(error.get("message", error))
+                    if isinstance(error, dict)
+                    else str(error)
+                )
+                raise BadCredentialsException(message)
+            if not response.ok:
+                raise BadCredentialsException(
+                    f"Failed to get Nest JWT: {response.status}"
+                )
+            nest_auth = NestAuthResponse.from_dict(result)
             if not nest_auth.jwt:
                 raise BadCredentialsException("Could not get JWT from Google token")
             return await self._async_get_session(nest_auth.jwt)
