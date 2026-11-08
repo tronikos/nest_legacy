@@ -5,7 +5,7 @@ import datetime as dt
 import logging
 from typing import cast, override
 
-from aiohttp import web
+from aiohttp import ClientError, web
 
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.components.media_player import BrowseError, MediaClass
@@ -17,6 +17,7 @@ from homeassistant.components.media_source import (
     Unresolvable,
 )
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util import dt as dt_util
 
@@ -97,6 +98,8 @@ class NestEventClipView(NestEventMediaView):
         )
         coordinator = entry.runtime_data
         try:
+            if coordinator.client.is_expired():
+                await coordinator.async_reauthenticate()
             async with coordinator.client.async_get_camera_event_media_stream(
                 device, event_id, format="mp4"
             ) as response:
@@ -111,7 +114,7 @@ class NestEventClipView(NestEventMediaView):
                     await stream.write(chunk)
 
                 return stream
-        except PynestException as err:
+        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             _LOGGER.error("Error fetching event media clip: %r", err)
             raise web.HTTPInternalServerError from err
 
@@ -135,6 +138,8 @@ class NestEventThumbnailView(NestEventMediaView):
         )
         coordinator = entry.runtime_data
         try:
+            if coordinator.client.is_expired():
+                await coordinator.async_reauthenticate()
             async with coordinator.client.async_get_camera_event_media_stream(
                 device, event_id, height=92, format="jpeg"
             ) as response:
@@ -143,7 +148,7 @@ class NestEventThumbnailView(NestEventMediaView):
 
                 image_bytes = await response.read()
                 return web.Response(body=image_bytes, content_type="image/jpeg")
-        except PynestException as err:
+        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             _LOGGER.error("Error fetching event media thumbnail: %r", err)
             raise web.HTTPInternalServerError from err
 
@@ -205,7 +210,12 @@ class NestMediaSource(MediaSource):
         if len(parts) == 3:
             return await self._browse_event_types_for_day(entry, parts[1], parts[2])
         if len(parts) >= 4:
-            page = int(parts[4]) if len(parts) > 4 else 0
+            try:
+                page = int(parts[4]) if len(parts) > 4 else 0
+            except ValueError as err:
+                raise Unresolvable(
+                    f"Invalid media identifier page: {item.identifier}"
+                ) from err
             return await self._browse_events_paginated(
                 entry, parts[1], parts[2], parts[3], page
             )
@@ -326,19 +336,24 @@ class NestMediaSource(MediaSource):
         if not isinstance(device, NestCamera):
             raise Unresolvable(f"Device not found: {serial_number}")
 
-        day_dt = dt.datetime.strptime(day_str, "%Y-%m-%d").date()
+        try:
+            day_dt = dt.datetime.strptime(day_str, "%Y-%m-%d").date()
+        except ValueError as err:
+            raise Unresolvable(f"Invalid date: {day_str}") from err
         start_of_day = dt_util.start_of_local_day(
             dt.datetime.combine(day_dt, dt.time.min)
         )
         end_of_day = start_of_day + dt.timedelta(days=1)
 
         try:
+            if coordinator.client.is_expired():
+                await coordinator.async_reauthenticate()
             events = await coordinator.client.async_get_camera_events(
                 device,
                 start_time=int(start_of_day.timestamp()),
                 end_time=int(end_of_day.timestamp()),
             )
-        except PynestException as err:
+        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             raise Unresolvable(f"Error fetching events: {err}") from err
 
         event_counts: dict[str, int] = defaultdict(int)
@@ -397,7 +412,10 @@ class NestMediaSource(MediaSource):
         if not isinstance(device, NestCamera):
             raise Unresolvable(f"Device not found: {serial_number}")
 
-        day_dt = dt.datetime.strptime(day_str, "%Y-%m-%d").date()
+        try:
+            day_dt = dt.datetime.strptime(day_str, "%Y-%m-%d").date()
+        except ValueError as err:
+            raise Unresolvable(f"Invalid date: {day_str}") from err
         start_of_day = dt_util.start_of_local_day(
             dt.datetime.combine(day_dt, dt.time.min)
         )
@@ -405,13 +423,15 @@ class NestMediaSource(MediaSource):
 
         types_to_fetch = [browse_event_type] if browse_event_type != "all" else None
         try:
+            if coordinator.client.is_expired():
+                await coordinator.async_reauthenticate()
             all_events = await coordinator.client.async_get_camera_events(
                 device,
                 start_time=int(start_of_day.timestamp()),
                 end_time=int(end_of_day.timestamp()),
                 types=types_to_fetch,
             )
-        except PynestException as err:
+        except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             raise Unresolvable(f"Error fetching events: {err}") from err
 
         sorted_events = sorted(

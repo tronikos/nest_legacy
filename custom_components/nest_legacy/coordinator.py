@@ -715,13 +715,16 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 )
 
                 # Gather all camera event tasks
-                tasks = [
-                    self._async_process_events_for_device(
-                        device, start_time, poll_interval
-                    )
-                    for device in self._cameras_to_poll()
-                ]
-                if tasks:
+                cameras = self._cameras_to_poll()
+                if cameras:
+                    if self.client.is_expired():
+                        await self.async_reauthenticate()
+                    tasks = [
+                        self._async_process_events_for_device(
+                            device, start_time, poll_interval
+                        )
+                        for device in cameras
+                    ]
                     await asyncio.gather(*tasks)
 
                 self._last_event_poll_success_time = time.time()

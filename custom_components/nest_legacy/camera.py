@@ -74,6 +74,8 @@ class NestCameraEntity(NestEntity[NestCameraModel], Camera):
         if not self.is_on:
             return None
         try:
+            if self.coordinator.client.is_expired():
+                await self.coordinator.async_reauthenticate()
             return await self.coordinator.client.async_get_camera_snapshot(self.device)
         except (ClientError, TimeoutError, PynestException) as err:
             raise HomeAssistantError(
