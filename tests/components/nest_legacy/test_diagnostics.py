@@ -369,3 +369,34 @@ async def test_device_diagnostics_use_same_placeholders(
         entry_diagnostics["raw_api_data"][processed["object_key"]]
         == device_diagnostics["raw_data"]
     )
+
+
+async def test_device_diagnostics_with_merged_identifiers(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    device_registry: dr.DeviceRegistry,
+) -> None:
+    """A device merged with another integration still resolves its Nest serial."""
+    device = device_registry.async_get_device_by_identifier(
+        (DOMAIN, THERMOSTAT_SERIAL), init_integration.entry_id
+    )
+    assert device is not None
+    device_registry.async_update_device(
+        device.id,
+        new_identifiers={
+            ("other_domain", "foreign-id-1"),
+            ("another_domain", "foreign-id-2"),
+            (DOMAIN, THERMOSTAT_SERIAL),
+        },
+    )
+    updated_device = device_registry.async_get(device.id)
+    assert updated_device is not None
+
+    device_diagnostics = await get_diagnostics_for_device(
+        hass, hass_client, init_integration, updated_device
+    )
+
+    assert "error" not in device_diagnostics
+    assert "processed_data" in device_diagnostics
+

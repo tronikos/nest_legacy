@@ -52,6 +52,14 @@ INITIAL_BACKOFF_SECONDS = 0.1
 type NestConfigEntry = ConfigEntry[NestCoordinator]
 
 
+def _get_device_serial(device_entry: dr.DeviceEntry) -> str | None:
+    """Return the Nest serial number from a device entry's identifiers."""
+    return next(
+        (id_val for domain, id_val in device_entry.identifiers if domain == DOMAIN),
+        None,
+    )
+
+
 class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
     """Manages fetching and processing Nest data."""
 
@@ -408,8 +416,8 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 )
                 for device_entry in current_devices:
                     # Identifier is a tuple (DOMAIN, serial_number)
-                    serial_number = next(iter(device_entry.identifiers))[1]
-                    if serial_number not in new_devices:
+                    serial_number = _get_device_serial(device_entry)
+                    if serial_number is not None and serial_number not in new_devices:
                         _LOGGER.debug("Removing stale device %s", serial_number)
                         device_registry.async_update_device(
                             device_id=device_entry.id,
@@ -417,13 +425,16 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                         )
 
                 # If a new device was discovered during the update, reload the integration
-                if set(new_devices.keys()) - set(self.data.keys()):
+                if self.first_protobuf_update_received.is_set() and set(
+                    new_devices.keys()
+                ) - set(self.data.keys()):
                     _LOGGER.info("New Nest device discovered. Reloading integration")
                     self.hass.async_create_task(
                         self.hass.config_entries.async_reload(
                             self.config_entry.entry_id
                         )
                     )
+                    return
 
                 self.data = new_devices
                 self.async_set_updated_data(self.data)
@@ -547,8 +558,11 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                         device_registry, self.config_entry.entry_id
                     )
                     for device_entry in current_devices:
-                        serial_number = next(iter(device_entry.identifiers))[1]
-                        if serial_number not in new_devices:
+                        serial_number = _get_device_serial(device_entry)
+                        if (
+                            serial_number is not None
+                            and serial_number not in new_devices
+                        ):
                             _LOGGER.debug(
                                 "Removing stale device %s via observer", serial_number
                             )
@@ -568,6 +582,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                                 self.config_entry.entry_id
                             )
                         )
+                        return
 
                     self.data = new_devices
                     self.async_set_updated_data(self.data)
@@ -670,6 +685,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             )
             if device_entry.disabled
             for identifier in device_entry.identifiers
+            if identifier[0] == DOMAIN
         }
 
     async def _async_poll_camera_events(self) -> None:

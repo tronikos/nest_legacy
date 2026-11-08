@@ -339,3 +339,57 @@ async def test_disabled_camera_is_not_polled(
 
     device_registry.async_update_device(device.id, disabled_by=None)
     assert CAMERA_SERIAL in _polled_serials(coordinator)
+
+
+async def test_subscriber_preserves_devices_with_merged_identifiers(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    subscribe_results: asyncio.Queue[Any],
+    device_registry: dr.DeviceRegistry,
+) -> None:
+    """A device merged with another integration is not mistaken for stale."""
+    device = device_registry.async_get_device_by_identifier(
+        (DOMAIN, "09AA00AA00AA0AA1"), init_integration.entry_id
+    )
+    assert device is not None
+    device_registry.async_update_device(
+        device.id,
+        new_identifiers={
+            ("router", "mac-1"),
+            ("unifi", "client-2"),
+            (DOMAIN, "09AA00AA00AA0AA1"),
+        },
+    )
+
+    subscribe_results.put_nowait({})
+    await _settle(hass, mock_nest_client.async_subscribe_for_updates, 2)
+
+    updated = device_registry.async_get(device.id)
+    assert updated is not None
+    assert init_integration.entry_id in updated.config_entries
+
+
+async def test_subscriber_does_not_reload_before_first_protobuf_update(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    subscribe_results: asyncio.Queue[Any],
+    app_launch_data: dict[str, Any],
+) -> None:
+    """A REST update before initial protobuf setup completes does not reload."""
+    coordinator = _coordinator(init_integration)
+    coordinator.first_protobuf_update_received.clear()
+    new_protect = {
+        **app_launch_data[REST_PROTECT_KEY],
+        "serial_number": "09AA00AA00AA0NEW",
+    }
+
+    with patch.object(
+        hass.config_entries, "async_reload", new_callable=AsyncMock
+    ) as mock_reload:
+        subscribe_results.put_nowait({"topaz.09AA00AA00AA0NEW": new_protect})
+        await _settle(hass, mock_nest_client.async_subscribe_for_updates, 2)
+
+    mock_reload.assert_not_called()
+

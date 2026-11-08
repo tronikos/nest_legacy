@@ -15,7 +15,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import DeviceEntry
 
-from .const import CONF_COOKIES, CONF_ISSUE_TOKEN
+from .const import CONF_COOKIES, CONF_ISSUE_TOKEN, DOMAIN
 from .coordinator import NestConfigEntry, NestCoordinator
 from .pynest.exceptions import PynestException
 from .pynest.models import NestDevice, NestHeatLink
@@ -388,10 +388,12 @@ async def async_get_device_diagnostics(
 ) -> dict[str, Any]:
     """Return diagnostics for a device entry."""
     coordinator = entry.runtime_data
-    identifier = next(iter(device.identifiers))
-    serial_number = identifier[1]
+    serial_number = next(
+        (id_val for domain, id_val in device.identifiers if domain == DOMAIN),
+        None,
+    )
 
-    device_data = coordinator.data.get(serial_number)
+    device_data = coordinator.data.get(serial_number) if serial_number else None
     if not isinstance(device_data, NestDevice):
         return {"error": "Device not found in coordinator data"}
 
