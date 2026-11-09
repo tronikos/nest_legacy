@@ -2256,23 +2256,29 @@ class NestClient:
         the same URL stops answering once a newer upload replaces it.
         """
         for attempt in range(1, _SNAPSHOT_ATTEMPTS + 1):
-            # Concurrent callers for the same camera share one waiter: the
-            # camera answers a single upload with a single URL.
-            published = self._live_image_waiters.setdefault(
-                device.object_key, asyncio.Event()
-            )
+            # Concurrent callers for the same camera share one waiter, and only
+            # the caller that created it asks the camera to upload: a second
+            # command would invalidate the URL the first one is about to get.
+            published = self._live_image_waiters.get(device.object_key)
+            joined = published is not None
+            if published is None:
+                published = asyncio.Event()
+                self._live_image_waiters[device.object_key] = published
             try:
-                try:
-                    await self._async_send_command(
-                        device,
-                        self._upload_live_image_command(),
-                    )
-                except (TimeoutError, PynestException) as err:
-                    # _async_send_command already retried internally: repeating
-                    # it here would mean nine attempts and blow past the 10 s
-                    # Home Assistant allows for a camera image.
-                    _LOGGER.warning("Failed to send upload_live_image command: %r", err)
-                    return None
+                if not joined:
+                    try:
+                        await self._async_send_command(
+                            device,
+                            self._upload_live_image_command(),
+                        )
+                    except (TimeoutError, PynestException) as err:
+                        # _async_send_command already retried internally:
+                        # repeating it here would mean nine attempts and blow
+                        # past the 10 s Home Assistant allows for a camera image.
+                        _LOGGER.warning(
+                            "Failed to send upload_live_image command: %r", err
+                        )
+                        return None
                 try:
                     await asyncio.wait_for(
                         published.wait(), timeout=_SNAPSHOT_URL_TIMEOUT
@@ -2306,7 +2312,9 @@ class NestClient:
                 _SNAPSHOT_ATTEMPTS,
                 url,
             )
-            image = await self._async_fetch_camera_snapshot(url)
+            image = await self._async_fetch_camera_snapshot(
+                url, log_level=logging.DEBUG
+            )
             if image is not None:
                 return image
             if attempt < _SNAPSHOT_ATTEMPTS:
@@ -2337,18 +2345,25 @@ class NestClient:
         if waiter is not None:
             waiter.set()
 
-    async def _async_fetch_camera_snapshot(self, url: str) -> bytes | None:
-        """Fetch the image the camera serves at a snapshot URL."""
+    async def _async_fetch_camera_snapshot(
+        self, url: str, log_level: int = logging.WARNING
+    ) -> bytes | None:
+        """Fetch the image the camera serves at a snapshot URL.
+
+        The caller picks the level: a REST camera only asks once, so a failure
+        is worth a warning, while the protobuf path retries and warns once at
+        the end instead of on every attempt.
+        """
         async with self._session.get(
             url, headers=self._get_camera_headers()
         ) as response:
             if response.ok:
                 return await response.read()
-            # A REST camera answers 400 while it has no frame ready; silent at
-            # DEBUG, a failing snapshot looked like a camera that simply has no
-            # image.
-            _LOGGER.warning(
-                "Camera snapshot answered %s: %s", response.status, response.url
+            _LOGGER.log(
+                log_level,
+                "Camera snapshot answered %s: %s",
+                response.status,
+                response.url,
             )
             return None
 

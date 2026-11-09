@@ -1,5 +1,6 @@
 """Tests for the command paths of the pynest client."""
 
+import asyncio
 from http import HTTPStatus
 import time
 from typing import Any
@@ -157,7 +158,9 @@ async def test_camera_snapshot_uses_the_url_the_upload_publishes(
     ):
         assert await client.async_get_camera_snapshot(camera) == b"frame"
 
-    fetch.assert_awaited_once_with("https://cam/new")
+    fetch.assert_awaited_once_with(
+        "https://cam/new", log_level=client_module.logging.DEBUG
+    )
 
 
 async def test_camera_snapshot_uses_the_last_known_url_when_nothing_arrives(
@@ -175,7 +178,9 @@ async def test_camera_snapshot_uses_the_last_known_url_when_nothing_arrives(
     ):
         assert await client.async_get_camera_snapshot(camera) == b"frame"
 
-    fetch.assert_awaited_once_with("https://cam/previous")
+    fetch.assert_awaited_once_with(
+        "https://cam/previous", log_level=client_module.logging.DEBUG
+    )
 
 
 async def test_camera_snapshot_retries_with_a_new_upload_on_400(
@@ -200,6 +205,56 @@ async def test_camera_snapshot_retries_with_a_new_upload_on_400(
         "https://cam/1",
         "https://cam/2",
     ]
+
+
+async def test_a_joiner_does_not_send_a_second_upload(
+    client: NestClient,
+) -> None:
+    """A caller that joins an existing waiter leaves the upload alone.
+
+    A second upload_live_image invalidates the URL the first caller is about to
+    read, so only the caller that created the waiter asks the camera.
+    """
+    device = _protobuf_camera()
+    waiter = asyncio.Event()
+    waiter.set()  # a first call is already waiting, and its answer arrived
+    client._live_image_waiters[device.object_key] = waiter
+    send = AsyncMock()
+    fetch = AsyncMock(return_value=b"frame")
+
+    with (
+        patch.object(client, "_async_send_command", new=send),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(device) == b"frame"
+
+    send.assert_not_awaited()
+
+
+async def test_protobuf_snapshot_failures_warn_only_at_the_end(
+    client: NestClient,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A retrying snapshot does not log a warning per attempt."""
+    url = "https://nexus.example.com/snapshot"
+    client._live_image_urls[_protobuf_camera().object_key] = url
+
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(return_value=None)),
+        patch.object(
+            client,
+            "_async_fetch_camera_snapshot",
+            new=AsyncMock(return_value=None),
+        ) as fetch,
+        caplog.at_level("WARNING"),
+    ):
+        assert (
+            await client._async_get_protobuf_camera_snapshot(_protobuf_camera()) is None
+        )
+
+    levels = [c.kwargs.get("log_level") for c in fetch.await_args_list]
+    assert levels == [client_module.logging.DEBUG] * client_module._SNAPSHOT_ATTEMPTS
+    assert caplog.text.count("Camera snapshot answered") == 0
 
 
 async def test_camera_snapshot_gives_up_after_the_last_attempt(
