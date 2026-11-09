@@ -294,6 +294,113 @@ async def test_heat_link_boost(
     assert settings.boostTimerEnd.seconds == pytest.approx(time.time() + 3600, abs=5)
 
 
+async def test_rest_thermostat_write(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """A REST thermostat splits updates between shared and device buckets."""
+    aioclient_mock.post(PUT_URL, json={})
+    thermostat = NestThermostat(
+        object_key="device.09AA00AA00AA0AAA",
+        serial_number="09AA00AA00AA0AAA",
+        name="Thermostat",
+        hvac_mode=ThermostatHvacMode.HEAT,
+        target_temperature=20.0,
+        is_protobuf=False,
+    )
+
+    await client.async_set_device_data(
+        thermostat,
+        {
+            "exit_eco": True,
+            "hvac_mode": "heat",
+            "target_temperature": 21.5,
+            "temperature_lock": True,
+        },
+    )
+
+    objects = aioclient_mock.mock_calls[-1][2]["objects"]
+    assert objects == [
+        {
+            "object_key": "shared.09AA00AA00AA0AAA",
+            "op": "MERGE",
+            "value": {
+                "target_change_pending": True,
+                "target_temperature_type": "heat",
+                "target_temperature": 21.5,
+            },
+        },
+        {
+            "object_key": "device.09AA00AA00AA0AAA",
+            "op": "MERGE",
+            "value": {
+                "eco": {"mode": "schedule"},
+                "temperature_lock": True,
+            },
+        },
+    ]
+
+
+async def test_rest_heat_link_boost(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """A REST Heat Link writes boost settings to its thermostat's device bucket."""
+    aioclient_mock.post(PUT_URL, json={})
+    heat_link = NestHeatLink(
+        object_key="heatlink.09AA00AA00AA0HL1",
+        serial_number="09AA00AA00AA0HL1",
+        name="Heat Link",
+        associated_thermostat_object_key="device.09AA00AA00AA0AAA",
+        is_protobuf=False,
+    )
+
+    await client.async_set_device_data(
+        heat_link,
+        {
+            "hot_water_mode": "schedule",
+            "hot_water_boost": True,
+            "hot_water_boost_duration": 1800,
+        },
+    )
+
+    objects = aioclient_mock.mock_calls[-1][2]["objects"]
+    assert len(objects) == 1
+    assert objects[0]["object_key"] == "device.09AA00AA00AA0AAA"
+    assert objects[0]["op"] == "MERGE"
+    assert objects[0]["value"]["hot_water_active"] is True
+    assert objects[0]["value"]["hot_water_boost_time_to_end"] == pytest.approx(
+        time.time() + 1800, abs=5
+    )
+    assert "hot_water_mode" not in objects[0]["value"]
+
+
+async def test_rest_temp_sensor_active(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """A REST temperature sensor updates rcs_settings on its thermostat."""
+    aioclient_mock.post(PUT_URL, json={})
+    sensor = NestTempSensor(
+        object_key="kryptonite.18B430CCCCCC0001",
+        serial_number="18B430CCCCCC0001",
+        name="Sensor",
+        associated_thermostat_object_key="device.09AA00AA00AA0AAA",
+        is_protobuf=False,
+    )
+
+    await client.async_set_device_data(sensor, {"is_active_sensor": True})
+
+    objects = aioclient_mock.mock_calls[-1][2]["objects"]
+    assert objects == [
+        {
+            "object_key": "rcs_settings.09AA00AA00AA0AAA",
+            "op": "MERGE",
+            "value": {
+                "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+                "rcs_control_setting": "OVERRIDE",
+            },
+        }
+    ]
+
+
 async def test_generic_device_write(
     client: NestClient, aioclient_mock: AiohttpClientMocker
 ) -> None:

@@ -55,3 +55,20 @@ async def test_snapshot_failure_raises_translated_error(
         await async_get_image(hass, "camera.front_door_front_door_doorbell")
 
     assert err.value.translation_key == "camera_snapshot_failed"
+
+
+@pytest.mark.usefixtures("entity_registry_enabled_by_default")
+async def test_snapshot_refreshes_expired_session(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """Fetching a camera snapshot refreshes an expired session first."""
+    mock_nest_client.is_expired.return_value = True
+    mock_nest_client.async_get_camera_snapshot.return_value = b"jpeg-bytes"
+    mock_nest_client.async_authenticate_with_google_credentials.reset_mock()
+
+    image = await async_get_image(hass, "camera.front_door_front_door_doorbell")
+
+    assert image.content == b"jpeg-bytes"
+    mock_nest_client.async_authenticate_with_google_credentials.assert_awaited_once()

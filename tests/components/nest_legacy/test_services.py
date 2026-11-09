@@ -175,3 +175,26 @@ async def test_unknown_device_is_rejected(
             {"device_id": other.id, "user_id": "GUEST_1234"},
             blocking=True,
         )
+
+
+async def test_missing_coordinator_device_is_rejected(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    device_registry: dr.DeviceRegistry,
+) -> None:
+    """A device entry whose serial is not in coordinator data raises ServiceValidationError."""
+    orphan = device_registry.async_get_or_create(
+        config_entry_id=init_integration.entry_id,
+        identifiers={(DOMAIN, "missing-serial")},
+    )
+
+    with pytest.raises(ServiceValidationError) as err:
+        await hass.services.async_call(
+            DOMAIN,
+            "get_user_schedule",
+            {"device_id": orphan.id, "user_id": "GUEST_1234"},
+            blocking=True,
+            return_response=True,
+        )
+
+    assert err.value.translation_key == "device_not_found"

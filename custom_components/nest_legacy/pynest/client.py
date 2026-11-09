@@ -329,28 +329,33 @@ _BATCH_UPDATE_ENDPOINT = "/nestlabs.gateway.v1.TraitBatchApi/BatchUpdateState"
 
 _NESTLABS_TYPE_URL_PREFIX = "type.nestlabs.com/"
 
-# Thermostats, temperature sensors and Heat Links are read over protobuf, so
-# their buckets (device, shared, kryptonite, link, track, rcs_settings,
-# demand_response, tuneups) are not requested.
 _NEST_REQUEST: dict[str, Any] = {
     "known_bucket_types": [
         BucketType.BUCKETS,
         BucketType.DELAYED_TOPAZ,
+        BucketType.DEMAND_RESPONSE,
+        BucketType.DEVICE,
         BucketType.DEVICE_ALERT_DIALOG,
         BucketType.GEOFENCE_INFO,
+        BucketType.KRYPTONITE,
+        BucketType.LINK,
         BucketType.MESSAGE,
         BucketType.MESSAGE_CENTER,
         BucketType.METADATA,
         BucketType.OCCUPANCY,
         BucketType.QUARTZ,
         BucketType.SAFETY,
+        BucketType.RCS_SETTINGS,
         BucketType.SAFETY_SUMMARY,
         BucketType.SCHEDULE,
+        BucketType.SHARED,
         BucketType.STRUCTURE,
         BucketType.STRUCTURE_METADATA,
         BucketType.TOPAZ,
         BucketType.TOPAZ_RESOURCE,
+        BucketType.TRACK,
         BucketType.TRIP,
+        BucketType.TUNEUPS,
         BucketType.USER,
         BucketType.USER_SETTINGS,
         BucketType.WHERE,
@@ -525,8 +530,9 @@ class NestClient:
         # Build set of traits to observe based on flags
         self._observe_traits: set[type[Message]] = set()
         self._observe_traits.update(_OBSERVER_ALWAYS_INCLUDE_TRAITS)
-        # Locks, thermostats, temperature sensors and Heat Links are only
-        # ever read over protobuf, so their traits are unconditional.
+        # Lock and thermostat traits (including temperature sensors and Heat
+        # Links) are always observed; thermostats not exposed over protobuf
+        # fall back to their REST buckets in the parser.
         self._observe_traits.update(_OBSERVE_LOCK_TRAITS)
         self._observe_traits.update(_OBSERVE_THERMOSTAT_TRAITS)
         if enable_protobuf_protect:
@@ -606,9 +612,32 @@ class NestClient:
             )
             if rotated:
                 _LOGGER.debug("Google rotated cookies: %s", ", ".join(rotated))
-            result = await response.json()
+            if not response.ok and _is_transient_status(response.status):
+                body = await response.text()
+                message = f"Failed to get Google access token: {response.status}"
+                _LOGGER.info(
+                    "Transient error getting Google access token, will retry. "
+                    "Status: %s, Body: %s",
+                    response.status,
+                    body,
+                )
+                raise _transient_exception(response.status, message)
+            try:
+                result = await response.json()
+            except ContentTypeError as err:
+                raise BadCredentialsException(
+                    f"Failed to get Google access token: {response.status}"
+                ) from err
+            if not isinstance(result, dict):
+                raise BadCredentialsException(
+                    "Invalid response from Google token endpoint"
+                )
             if "error" in result:
                 raise BadCredentialsException(result.get("detail", result["error"]))
+            if not response.ok:
+                raise BadCredentialsException(
+                    f"Failed to get Google access token: {response.status}"
+                )
             return GoogleAuthResponse.from_dict(result)
 
     async def _async_authenticate(self, access_token: str) -> NestSession:
@@ -632,8 +661,46 @@ class NestClient:
                 "Referer": f"https://{self._environment.host}",
             },
         ) as response:
-            result = await response.json()
-            nest_auth = NestAuthResponse(**result)
+            if not response.ok and _is_transient_status(response.status):
+                body = await response.text()
+                message = f"Failed to get Nest JWT: {response.status}"
+                _LOGGER.info(
+                    "Transient error getting Nest JWT, will retry. "
+                    "Status: %s, Body: %s",
+                    response.status,
+                    body,
+                )
+                raise _transient_exception(response.status, message)
+            try:
+                result = await response.json()
+            except ContentTypeError as err:
+                raise BadCredentialsException(
+                    f"Failed to get Nest JWT: {response.status}"
+                ) from err
+            if not isinstance(result, dict):
+                raise BadCredentialsException("Invalid response from Nest JWT endpoint")
+            if "error" in result:
+                error = result["error"]
+                if (
+                    isinstance(error, dict)
+                    and isinstance(status := error.get("code"), int)
+                    and _is_transient_status(status)
+                ):
+                    raise _transient_exception(
+                        status,
+                        str(error.get("message", f"Failed to get Nest JWT: {status}")),
+                    )
+                message = (
+                    str(error.get("message", error))
+                    if isinstance(error, dict)
+                    else str(error)
+                )
+                raise BadCredentialsException(message)
+            if not response.ok:
+                raise BadCredentialsException(
+                    f"Failed to get Nest JWT: {response.status}"
+                )
+            nest_auth = NestAuthResponse.from_dict(result)
             if not nest_auth.jwt:
                 raise BadCredentialsException("Could not get JWT from Google token")
             return await self._async_get_session(nest_auth.jwt)
@@ -766,19 +833,7 @@ class NestClient:
 
     def _filter_buckets(self, buckets: list[Bucket]) -> list[Bucket]:
         """Filter buckets based on enabled protobuf features."""
-        # Thermostats, temperature sensors and Heat Links are read over
-        # protobuf. Their buckets are not requested, but drop them in case the
-        # server sends them anyway.
-        excluded_keys = {
-            BucketType.DEVICE,
-            BucketType.SHARED,
-            BucketType.KRYPTONITE,
-            BucketType.LINK,
-            BucketType.TRACK,
-            BucketType.RCS_SETTINGS,
-            BucketType.DEMAND_RESPONSE,
-            BucketType.TUNEUPS,
-        }
+        excluded_keys: set[BucketType] = set()
 
         if self._enable_protobuf_protect:
             excluded_keys.update(
@@ -961,6 +1016,48 @@ class NestClient:
             else:
                 return
 
+    async def _async_set_thermostat_property(
+        self, object_key: str, data: dict[str, Any]
+    ) -> None:
+        """Set properties for a thermostat."""
+        device_id = object_key.split(".")[1]
+        data = data.copy()
+
+        # Translate generic 'hvac_mode' key to legacy API's 'target_temperature_type'
+        if "hvac_mode" in data:
+            data["target_temperature_type"] = data.pop("hvac_mode")
+
+        # Translate semantic exit_eco flag to legacy REST eco payload
+        if data.pop("exit_eco", None):
+            data["eco"] = {"mode": "schedule"}
+
+        shared_properties = {
+            "target_temperature",
+            "target_temperature_low",
+            "target_temperature_high",
+            "target_temperature_type",
+        }
+        shared_payload = {k: v for k, v in data.items() if k in shared_properties}
+        device_payload = {k: v for k, v in data.items() if k not in shared_properties}
+
+        objects_to_update = []
+        if shared_payload:
+            shared_payload["target_change_pending"] = True
+            objects_to_update.append(
+                {
+                    "object_key": f"shared.{device_id}",
+                    "op": "MERGE",
+                    "value": shared_payload,
+                }
+            )
+        if device_payload:
+            objects_to_update.append(
+                {"object_key": object_key, "op": "MERGE", "value": device_payload}
+            )
+
+        if objects_to_update:
+            await self._async_update_objects(objects_to_update)
+
     async def _async_set_generic_property(
         self, object_key: str, data: dict[str, Any]
     ) -> None:
@@ -976,6 +1073,45 @@ class NestClient:
         current_traits: dict[str, Any] | None = None,
     ) -> None:
         """Set properties for a Heat Link."""
+        if (
+            device.associated_thermostat_object_key
+            and "DEVICE_" in device.associated_thermostat_object_key
+        ):
+            await self._async_set_protobuf_heatlink_property(
+                device, data, current_traits
+            )
+            return
+
+        if not device.associated_thermostat_object_key:
+            return
+
+        payload = data.copy()
+
+        # Legacy API does not support hot_water_mode directly
+        payload.pop("hot_water_mode", None)
+
+        if "hot_water_boost" in payload:
+            duration_seconds = payload.pop("hot_water_boost_duration", 1800)
+            is_boost = payload.pop("hot_water_boost")
+            if is_boost:
+                end_timestamp = int(time.time()) + duration_seconds
+            else:
+                end_timestamp = 0
+            payload["hot_water_boost_time_to_end"] = end_timestamp
+            payload["hot_water_active"] = is_boost
+
+        if payload:
+            await self._async_set_generic_property(
+                device.associated_thermostat_object_key, payload
+            )
+
+    async def _async_set_protobuf_heatlink_property(
+        self,
+        device: NestHeatLink,
+        data: dict[str, Any],
+        current_traits: dict[str, Any] | None = None,
+    ) -> None:
+        """Set properties for a Heat Link via Protobuf."""
         if not device.associated_thermostat_object_key:
             return
 
@@ -1946,14 +2082,16 @@ class NestClient:
         )
         await self._async_update_trait_state(req)
 
-    async def _async_set_thermostat_property(
+    async def _async_set_protobuf_thermostat_property(
         self,
         device: NestThermostat,
         data: dict[str, Any],
         current_traits: dict[str, Any] | None = None,
     ) -> None:
-        """Set properties for a Nest Thermostat."""
-        _LOGGER.debug("Setting thermostat property for %s: %s", device.object_key, data)
+        """Set properties for a protobuf-enabled Nest Thermostat."""
+        _LOGGER.debug(
+            "Setting protobuf thermostat property for %s: %s", device.object_key, data
+        )
 
         now = Timestamp()
         now.GetCurrentTime()
@@ -2136,7 +2274,12 @@ class NestClient:
         elif isinstance(device, NestHeatLink):
             await self._async_set_heatlink_property(device, data, current_traits)
         elif isinstance(device, NestThermostat):
-            await self._async_set_thermostat_property(device, data, current_traits)
+            if device.is_protobuf:
+                await self._async_set_protobuf_thermostat_property(
+                    device, data, current_traits
+                )
+            else:
+                await self._async_set_thermostat_property(device.object_key, data)
         elif isinstance(device, NestStructure):
             await self._async_set_structure_property(device, data)
         elif isinstance(device, NestLock):
@@ -2153,6 +2296,8 @@ class NestClient:
                 await self._async_set_sensor_active(
                     device, data["is_active_sensor"], current_traits
                 )
+            else:
+                await self._async_set_generic_property(device.object_key, data)
         else:
             await self._async_set_generic_property(device.object_key, data)
 
@@ -2163,6 +2308,24 @@ class NestClient:
         current_traits: dict[str, Any] | None = None,
     ) -> None:
         """Set a temperature sensor as the active sensor for its thermostat."""
+        if not device.associated_thermostat_object_key:
+            _LOGGER.warning(
+                "Sensor %s is not associated with any thermostat", device.name
+            )
+            return
+
+        if device.is_protobuf:
+            await self._async_set_protobuf_sensor_active(device, active, current_traits)
+        else:
+            await self._async_set_legacy_sensor_active(device, active)
+
+    async def _async_set_protobuf_sensor_active(
+        self,
+        device: NestTempSensor,
+        active: bool,
+        current_traits: dict[str, Any] | None = None,
+    ) -> None:
+        """Set active sensor via Protobuf."""
         # We need the current RCS trait to ensure we don't wipe other settings
         # The RCS trait lives on the Thermostat (associated_thermostat_object_key)
         thermostat_key = device.associated_thermostat_object_key
@@ -2209,6 +2372,31 @@ class NestClient:
             state=any_proto,
         )
         await self._async_update_trait_state(req)
+
+    async def _async_set_legacy_sensor_active(
+        self, device: NestTempSensor, active: bool
+    ) -> None:
+        """Set active sensor via Legacy API."""
+        # For legacy, the key is usually device.<serial>, but rcs_settings uses the serial directly
+        # rcs_settings.<serial>
+        thermostat_key = device.associated_thermostat_object_key
+        if not thermostat_key:
+            _LOGGER.warning(
+                "Sensor %s is not associated with any thermostat", device.name
+            )
+            return
+        device_id = thermostat_key.split(".")[1]
+        rcs_key = f"rcs_settings.{device_id}"
+
+        if active:
+            payload = {
+                "active_rcs_sensors": [device.object_key],
+                "rcs_control_setting": "OVERRIDE",
+            }
+        else:
+            payload = {"active_rcs_sensors": [], "rcs_control_setting": "OFF"}
+
+        await self._async_set_generic_property(rcs_key, payload)
 
     async def async_get_camera_snapshot(self, device: NestCamera) -> bytes | None:
         """Get a snapshot from a camera."""

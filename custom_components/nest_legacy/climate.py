@@ -17,7 +17,7 @@ from homeassistant.components.climate import (
 )
 from homeassistant.const import ATTR_TEMPERATURE, PRECISION_HALVES, UnitOfTemperature
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import HomeAssistantError
+from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
 
@@ -318,7 +318,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
 
         seconds = int(duration.total_seconds())
         if seconds <= 0:
-            raise ValueError(
+            raise ServiceValidationError(
                 f"Duration {seconds} for {self.entity_id} must be greater than 0 seconds"
             )
 

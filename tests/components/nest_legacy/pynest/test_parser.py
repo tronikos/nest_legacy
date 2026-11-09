@@ -12,16 +12,26 @@ from custom_components.nest_legacy.pynest.enums import (
     ThermostatHvacState,
 )
 from custom_components.nest_legacy.pynest.models import (
+    NestCamera,
+    NestDoorbell,
     NestHeatLink,
     NestLock,
     NestStructure,
+    NestTempSensor,
     NestThermostat,
 )
 from custom_components.nest_legacy.pynest.parser import NestParser
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     hvac_pb2 as nest_hvac_pb2,
     located_pb2 as nest_located_pb2,
+    occupancy_pb2 as nest_occupancy_pb2,
     structure_pb2 as nest_structure_pb2,
+)
+from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait.product import (
+    protect_pb2 as nest_protect_pb2,
+)
+from custom_components.nest_legacy.pynest.protobuf_gen.weave import (
+    common_pb2 as weave_common_pb2,
 )
 from custom_components.nest_legacy.pynest.protobuf_gen.weave.trait import (
     description_pb2 as weave_description_pb2,
@@ -37,6 +47,7 @@ from ..const import (
     HOT_WATER_TRANSITION_SECONDS,
     LOCK_KEY,
     LOCK_SERIAL,
+    PROTECT_KEY,
     PROTECT_SERIAL,
     STRUCTURE_KEY,
     TEMP_SENSOR_KEY,
@@ -106,18 +117,148 @@ async def test_every_device_type_is_parsed(
     }
 
 
-async def test_rest_thermostat_buckets_are_ignored(
+async def test_rest_thermostat_and_sensor_are_parsed(
     parser: NestParser, raw_data: dict[str, Any]
 ) -> None:
-    """Thermostats and their sensors are read over protobuf only."""
-    raw_data["device.09AA00AA00AA0AAA"] = {"serial_number": "09AA00AA00AA0AAA"}
-    raw_data["shared.09AA00AA00AA0AAA"] = {"target_temperature": 21.0}
-    raw_data["kryptonite.18B430CCCCCC0001"] = {"serial_number": "18B430CCCCCC0001"}
+    """REST-only thermostats, Heat Links and sensors are parsed alongside protobuf ones; see issue #99."""
+    raw_data["device.09AA00AA00AA0AAA"] = {
+        "serial_number": "09AA00AA00AA0AAA",
+        "where_id": "00000000-0000-0000-0000-000000000001",
+        "current_schedule_mode": "HEAT",
+        "leaf": True,
+        "current_humidity": 48,
+        "backplate_temperature": 20.5,
+        "temperature_scale": "C",
+        "has_hot_water_control": True,
+        "has_hot_water_temperature": True,
+        "hot_water_active": True,
+        "hot_water_boiling_state": True,
+        "hot_water_away_enabled": True,
+        "hot_water_away_active": False,
+        "hot_water_boost_time_to_end": 0,
+        "current_water_temperature": 52.0,
+        "hot_water_temperature": 60.0,
+        "heat_link_serial_number": "09AA00AA00AA0HL1",
+        "heat_link_model": "Amber-2.5",
+        "heat_link_sw_version": "2.1-9",
+        "eco": {"mode": "schedule"},
+    }
+    raw_data["shared.09AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "heat",
+        "current_temperature": 20.0,
+        "can_heat": True,
+        "can_cool": False,
+        "hvac_heater_state": True,
+    }
+    raw_data["track.09AA00AA00AA0AAA"] = {"online": True}
+    raw_data["link.09AA00AA00AA0AAA"] = {
+        "structure": "structure.00000000-0000-0000-0000-000000000001"
+    }
+    raw_data["rcs_settings.09AA00AA00AA0AAA"] = {
+        "associated_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+        "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+    }
+    raw_data["kryptonite.18B430CCCCCC0001"] = {
+        "serial_number": "18B430CCCCCC0001",
+        "where_id": "00000000-0000-0000-0000-000000000003",
+        "current_temperature": 19.25,
+        "battery_level": 88,
+        "model": "Kryptonite-1.0",
+    }
 
     devices = _by_serial(parser, raw_data)
 
-    assert "09AA00AA00AA0AAA" not in devices
-    assert "18B430CCCCCC0001" not in devices
+    # Protobuf thermostat is still parsed.
+    assert devices[THERMOSTAT_SERIAL].is_protobuf
+    # REST thermostat, its Heat Link, and its remote sensor are also parsed.
+    thermostat = devices["09AA00AA00AA0AAA"]
+    assert isinstance(thermostat, NestThermostat)
+    assert not thermostat.is_protobuf
+    assert thermostat.model == "Learning Thermostat (3rd gen)"
+    assert thermostat.hvac_mode is ThermostatHvacMode.HEAT
+    assert thermostat.hvac_state is ThermostatHvacState.HEATING
+    assert thermostat.hvac_stage is None
+    assert thermostat.target_temperature == 21.0
+    assert thermostat.current_temperature == 19.25
+    assert thermostat.backplate_temperature == 20.5
+
+    heat_link = devices["09AA00AA00AA0HL1"]
+    assert isinstance(heat_link, NestHeatLink)
+    assert not heat_link.is_protobuf
+    assert heat_link.associated_thermostat_object_key == "device.09AA00AA00AA0AAA"
+    assert heat_link.hot_water_active
+    assert heat_link.current_temperature == 52.0
+    assert heat_link.target_temperature == 60.0
+
+    sensor = devices["18B430CCCCCC0001"]
+    assert isinstance(sensor, NestTempSensor)
+    assert not sensor.is_protobuf
+    assert sensor.is_active_sensor
+    assert sensor.associated_thermostat_object_key == "device.09AA00AA00AA0AAA"
+    assert sensor.current_temperature == 19.25
+
+
+async def test_protobuf_thermostat_supersedes_rest_thermostat(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A thermostat or sensor on both APIs is parsed once from protobuf."""
+    raw_data[f"device.{THERMOSTAT_SERIAL}"] = {
+        "serial_number": THERMOSTAT_SERIAL,
+        "has_hot_water_control": True,
+        "heat_link_serial_number": "09AA00AA00AA0HL2",
+    }
+    raw_data[f"shared.{THERMOSTAT_SERIAL}"] = {"target_temperature": 18.0}
+    raw_data[f"kryptonite.{TEMP_SENSOR_SERIAL}"] = {
+        "serial_number": TEMP_SENSOR_SERIAL,
+        "current_temperature": 15.0,
+    }
+
+    parsed = parser.parse_all(raw_data).devices
+    thermostats = [d for d in parsed if d.serial_number == THERMOSTAT_SERIAL]
+    sensors = [d for d in parsed if d.serial_number == TEMP_SENSOR_SERIAL]
+
+    assert len(thermostats) == 1
+    assert thermostats[0].is_protobuf
+    assert len(sensors) == 1
+    assert sensors[0].is_protobuf
+    assert not [d for d in parsed if d.serial_number == "09AA00AA00AA0HL2"]
+
+
+async def test_rest_thermostat_eco_and_mode_fallbacks(
+    parser: NestParser,
+    raw_data: dict[str, Any],
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """REST thermostat eco mode and unknown target_temperature_type are handled."""
+    raw_data["device.15AA00AA00AA0AAA"] = {
+        "serial_number": "15AA00AA00AA0AAA",
+        "temperature_scale": "F",
+        "away_temperature_low": 12.0,
+        "away_temperature_low_enabled": True,
+        "away_temperature_high": 26.0,
+        "away_temperature_high_enabled": False,
+        "eco": {"mode": "manual-eco"},
+    }
+    raw_data["shared.15AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "invalid-mode",
+        "can_heat": True,
+        "can_cool": False,
+    }
+
+    thermostat = _by_serial(parser, raw_data)["15AA00AA00AA0AAA"]
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.model == "Thermostat E"
+    assert thermostat.temperature_scale is TemperatureScale.FAHRENHEIT
+    assert thermostat.is_eco_mode
+    assert thermostat.hvac_mode is ThermostatHvacMode.HEAT
+    assert thermostat.target_temperature == pytest.approx(12.2222, abs=1e-4)
+
+    raw_data["device.15AA00AA00AA0AAA"]["eco"] = {"mode": "schedule"}
+    thermostat = _by_serial(parser, raw_data)["15AA00AA00AA0AAA"]
+    assert thermostat.hvac_mode is ThermostatHvacMode.OFF
+    assert "Unsupported value for ThermostatHvacMode" in caplog.text
 
 
 async def test_locations_come_from_both_apis(
@@ -869,3 +1010,104 @@ async def test_protobuf_temperature_sensor(
     assert sensor.current_temperature == 19.5
     assert sensor.battery_level == pytest.approx(71, abs=0.1)
     assert not sensor.is_active_sensor
+
+
+async def test_rest_camera_parses_string_booleans(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """REST camera and doorbell boolean properties reported as strings are parsed."""
+    doorbell_data = raw_data["quartz.18B430CCCCCC0002"]
+    doorbell_data["properties"] = {
+        **doorbell_data.get("properties", {}),
+        "doorbell.indoor_chime.enabled": "false",
+        "doorbell.chime_assist.enabled": "false",
+        "video.flipped": "false",
+    }
+    raw_data["quartz.18B430CCCCCC0009"] = {
+        **doorbell_data,
+        "serial_number": "18B430CCCCCC0009",
+        "model": "Nest Cam Indoor",
+        "properties": {"video.flipped": "false"},
+    }
+
+    devices = _by_serial(parser, raw_data)
+    doorbell = devices["18B430CCCCCC0002"]
+    camera = devices["18B430CCCCCC0009"]
+
+    assert isinstance(doorbell, NestDoorbell)
+    assert doorbell.indoor_chime_enabled is False
+    assert doorbell.doorbell_chime_assist_enabled is False
+    assert doorbell.video_flipped is False
+    assert isinstance(camera, NestCamera)
+    assert not isinstance(camera, NestDoorbell)
+    assert camera.video_flipped is False
+
+
+async def test_rest_thermostat_occupancy_from_protobuf_structure(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A REST thermostat reads occupancy from the protobuf structure when REST structure is omitted."""
+    del raw_data["structure.00000000-0000-0000-0000-000000000001"]
+    raw_data["device.09AA00AA00AA0AAA"] = {
+        "serial_number": "09AA00AA00AA0AAA",
+        "current_schedule_mode": "HEAT",
+        "temperature_scale": "C",
+    }
+    raw_data["shared.09AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "heat",
+        "current_temperature": 20.0,
+        "can_heat": True,
+        "can_cool": False,
+    }
+    raw_data["link.09AA00AA00AA0AAA"] = {
+        "structure": "structure.00000000-0000-0000-0000-000000000001"
+    }
+
+    thermostat = _by_serial(parser, raw_data)["09AA00AA00AA0AAA"]
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.occupancy is True
+
+
+async def test_multi_home_protobuf_structure_traits(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """Protobuf devices match their own home's occupancy and safety summary."""
+    cabin_structure = {
+        nest_structure_pb2.StructureInfoTrait.DESCRIPTOR.full_name: (
+            nest_structure_pb2.StructureInfoTrait(
+                name="Cabin", rtsStructureId="structure.cabin-id"
+            )
+        ),
+        nest_occupancy_pb2.StructureModeTrait.DESCRIPTOR.full_name: (
+            nest_occupancy_pb2.StructureModeTrait(
+                structureMode=nest_occupancy_pb2.StructureModeTrait.StructureMode.STRUCTURE_MODE_AWAY
+            )
+        ),
+        nest_protect_pb2.SafetySummaryTrait.DESCRIPTOR.full_name: (
+            nest_protect_pb2.SafetySummaryTrait()
+        ),
+    }
+    # Place the away cabin structure before the main home in raw_data.
+    raw_data = {"STRUCTURE_00000000000000AA": cabin_structure, **raw_data}
+    raw_data[f"link.{THERMOSTAT_SERIAL}"] = {
+        "structure": "structure.00000000-0000-0000-0000-000000000001"
+    }
+    summary = nest_protect_pb2.SafetySummaryTrait(
+        criticalDevices=[
+            nest_protect_pb2.SafetySummaryTrait.DeviceStatus(
+                resourceId=weave_common_pb2.ResourceId(resourceId=PROTECT_KEY),
+                failures=[
+                    nest_protect_pb2.SafetySummaryTrait.FailureType.FAILURE_TYPE_SMOKE
+                ],
+            )
+        ]
+    )
+    raw_data[STRUCTURE_KEY][
+        nest_protect_pb2.SafetySummaryTrait.DESCRIPTOR.full_name
+    ] = summary
+
+    devices = _by_serial(parser, raw_data)
+
+    assert devices[THERMOSTAT_SERIAL].occupancy is True
+    assert devices[PROTECT_SERIAL].component_smoke_test_passed is False
