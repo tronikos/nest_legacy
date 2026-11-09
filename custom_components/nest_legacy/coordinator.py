@@ -798,8 +798,9 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
     ) -> bool:
         """Refresh the session once and retry the cameras whose poll expired.
 
-        Returns False when the refresh failed and the cameras went unpolled, so
-        the caller keeps the event window where it was.
+        Returns False when the credentials were rejected and reauthentication
+        was started. A transient refresh failure is raised instead, so the
+        caller keeps its event window where it was.
         """
         try:
             await self.async_reauthenticate(force=True)
@@ -815,11 +816,6 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             self.config_entry.async_start_reauth(self.hass)
             self.async_stop_subscriber()
             return False
-        except ClientError, TimeoutError, PynestException, HomeAssistantError:
-            # An authentication outage is not the camera's fault: no camera is
-            # paused for it, and the caller must not advance the event window
-            # over a cycle in which nothing was polled.
-            raise
         results = await asyncio.gather(
             *(
                 self._async_process_events_for_device(device, start_time, poll_interval)

@@ -1430,11 +1430,7 @@ class NestClient:
             except (ClientError, TimeoutError, PynestException) as err:
                 if (
                     isinstance(
-                        err,
-                        (
-                            NotAuthenticatedException,
-                            NonRetryablePynestException,
-                        ),
+                        err, (NotAuthenticatedException, NonRetryablePynestException)
                     )
                     or attempt == 2
                 ):
@@ -1568,11 +1564,7 @@ class NestClient:
             except (ClientError, TimeoutError, PynestException) as err:
                 if (
                     isinstance(
-                        err,
-                        (
-                            NotAuthenticatedException,
-                            NonRetryablePynestException,
-                        ),
+                        err, (NotAuthenticatedException, NonRetryablePynestException)
                     )
                     or attempt == 2
                 ):
