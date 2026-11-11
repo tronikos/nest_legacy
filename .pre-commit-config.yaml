@@ -4,6 +4,7 @@
 # https://github.com/home-assistant/core/blob/dev/.pre-commit-config.yaml
 exclude: ^custom_components/nest_legacy/pynest/protobuf_gen
 ci:
+  autoupdate_schedule: quarterly
   # mypy/pylint need requirements_test.txt installed; pre-commit.ci doesn't do that.
   skip: [mypy, pylint]
 repos:
