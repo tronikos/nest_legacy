@@ -1,10 +1,12 @@
 """Tests for the command paths of the pynest client."""
 
+import asyncio
 from http import HTTPStatus
 import time
 from typing import Any
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
+from custom_components.nest_legacy.pynest import client as client_module
 from custom_components.nest_legacy.pynest.client import NestClient
 from custom_components.nest_legacy.pynest.enums import ThermostatHvacMode
 from custom_components.nest_legacy.pynest.exceptions import (
@@ -131,7 +133,233 @@ def _protobuf_camera() -> NestCamera:
         name="Camera",
         location="Living Room",
         is_protobuf=True,
+        nexus_api_http_server_url="https://camera.example.com",
     )
+
+
+async def test_camera_snapshot_uses_the_url_the_upload_publishes(
+    client: NestClient,
+) -> None:
+    """The snapshot reads the URL the camera publishes for this upload.
+
+    upload_live_image is asynchronous: the device keeps the previous image URL
+    until the trait stream carries the new one, so the snapshot has to wait for
+    that update instead of reading the URL it already had.
+    """
+    camera = _protobuf_camera()
+
+    async def send(device, command):
+        client._publish_live_image_url(device.object_key, "https://cam/new")
+
+    fetch = AsyncMock(return_value=b"frame")
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    fetch.assert_awaited_once_with(
+        "https://cam/new", log_level=client_module.logging.DEBUG
+    )
+
+
+async def test_camera_snapshot_uses_the_last_known_url_when_nothing_arrives(
+    client: NestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A camera that does not publish a URL in time is read from the last one."""
+    monkeypatch.setattr(client_module, "_SNAPSHOT_URL_TIMEOUT", 0.05)
+    camera = _protobuf_camera()
+    client._live_image_urls[camera.object_key] = "https://cam/previous"
+
+    fetch = AsyncMock(return_value=b"frame")
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(return_value=None)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    fetch.assert_awaited_once_with(
+        "https://cam/previous", log_level=client_module.logging.DEBUG
+    )
+
+
+async def test_camera_snapshot_retries_with_a_new_upload_on_400(
+    client: NestClient,
+) -> None:
+    """A failed download asks the camera for a fresh upload and tries again."""
+    camera = _protobuf_camera()
+    published = []
+
+    async def send(device, command):
+        published.append(f"https://cam/{len(published) + 1}")
+        client._publish_live_image_url(device.object_key, published[-1])
+
+    fetch = AsyncMock(side_effect=[None, b"frame"])
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    assert [call.args[0] for call in fetch.await_args_list] == [
+        "https://cam/1",
+        "https://cam/2",
+    ]
+
+
+async def test_a_joiner_does_not_send_a_second_upload(
+    client: NestClient,
+) -> None:
+    """A caller that joins an existing waiter leaves the upload alone.
+
+    A second upload_live_image invalidates the URL the first caller is about to
+    read, so only the caller that created the waiter asks the camera.
+    """
+    device = _protobuf_camera()
+    waiter = asyncio.Event()
+    waiter.set()  # a first call is already waiting, and its answer arrived
+    client._live_image_waiters[device.object_key] = waiter
+    send = AsyncMock()
+    fetch = AsyncMock(return_value=b"frame")
+
+    with (
+        patch.object(client, "_async_send_command", new=send),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(device) == b"frame"
+
+    send.assert_not_awaited()
+
+
+async def test_protobuf_snapshot_failures_warn_only_at_the_end(
+    client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A retrying snapshot does not log a warning per attempt.
+
+    The download is the real one (a 400 from the mock), so this exercises the
+    level the protobuf path passes to it.
+    """
+    url = "https://nexus.example.com/snapshot"
+    aioclient_mock.get(url, status=HTTPStatus.BAD_REQUEST)
+    monkeypatch.setattr(client_module, "_SNAPSHOT_URL_TIMEOUT", 0.05)
+
+    async def send(device: NestCamera, command: Any) -> None:
+        client._publish_live_image_url(device.object_key, url)
+
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        caplog.at_level("DEBUG", logger="custom_components.nest_legacy.pynest.client"),
+    ):
+        assert (
+            await client._async_get_protobuf_camera_snapshot(_protobuf_camera()) is None
+        )
+
+    answered = [r for r in caplog.records if "Camera snapshot answered" in r.message]
+    assert len(answered) == client_module._SNAPSHOT_ATTEMPTS
+    assert {r.levelname for r in answered} == {"DEBUG"}
+    assert caplog.text.count("giving up for this request") == 1
+
+
+async def test_a_joiner_leaving_first_does_not_strand_the_owner(
+    client: NestClient,
+) -> None:
+    """A cancelled joiner must not pop the waiter the owner is still using."""
+    device = _protobuf_camera()
+    sent = asyncio.Event()
+
+    async def send(dev: NestCamera, command: Any) -> None:
+        sent.set()
+        await asyncio.sleep(0.05)
+        client._publish_live_image_url(dev.object_key, "https://cam/new")
+
+    fetch = AsyncMock(return_value=b"frame")
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        owner = asyncio.create_task(client.async_get_camera_snapshot(device))
+        await sent.wait()
+        joiner = asyncio.create_task(client.async_get_camera_snapshot(device))
+        await asyncio.sleep(0)
+        joiner.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await joiner
+
+        assert await owner == b"frame"
+
+    # One upload for the pair: the joiner reused the owner's waiter.
+    assert client._live_image_waiters == {}
+
+
+async def test_a_failed_upload_wakes_the_joiners(
+    client: NestClient,
+) -> None:
+    """When the command fails, whoever shares the waiter is released at once."""
+    device = _protobuf_camera()
+    captured: dict[str, asyncio.Event] = {}
+
+    async def send(dev: NestCamera, command: Any) -> None:
+        # A second caller joins while the command is in flight.
+        captured["event"] = client._live_image_waiters[dev.object_key]
+        raise PynestException("boom")
+
+    with patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)):
+        assert await client.async_get_camera_snapshot(device) is None
+
+    assert captured["event"].is_set()
+    assert device.object_key not in client._live_image_waiters
+
+
+def test_the_snapshot_budget_fits_the_camera_timeout() -> None:
+    """Three attempts must finish inside Home Assistant's 10 s image timeout."""
+    budget = (
+        client_module._SNAPSHOT_ATTEMPTS * client_module._SNAPSHOT_URL_TIMEOUT
+        + (client_module._SNAPSHOT_ATTEMPTS - 1) * client_module._SNAPSHOT_RETRY_DELAY
+    )
+    assert budget < 10
+
+
+async def test_camera_snapshot_gives_up_after_the_last_attempt(
+    client: NestClient, caplog: pytest.LogCaptureFixture
+) -> None:
+    """Three failed downloads end the request with one warning."""
+
+    async def send(device, command):
+        client._publish_live_image_url(device.object_key, "https://cam/new")
+
+    fetch = AsyncMock(return_value=None)
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        assert await client.async_get_camera_snapshot(_protobuf_camera()) is None
+
+    assert fetch.await_count == client_module._SNAPSHOT_ATTEMPTS
+    assert caplog.text.count("giving up for this request") == 1
+
+
+async def test_camera_snapshot_downloads_the_image(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """The URL is downloaded with the camera headers."""
+    camera = _protobuf_camera()
+
+    async def send(device, command):
+        client._publish_live_image_url(
+            device.object_key, "https://camera.example.com/snapshot"
+        )
+
+    aioclient_mock.get("https://camera.example.com/snapshot", content=b"frame")
+    aioclient_mock.mock_calls.clear()
+
+    with patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)):
+        assert await client.async_get_camera_snapshot(camera) == b"frame"
+
+    gets = [call for call in aioclient_mock.mock_calls if call[0] == "GET"]
+    assert len(gets) == 1
 
 
 def _mock_trait_updates(aioclient_mock: AiohttpClientMocker) -> None:
