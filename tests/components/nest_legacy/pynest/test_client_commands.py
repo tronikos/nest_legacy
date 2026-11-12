@@ -233,28 +233,93 @@ async def test_a_joiner_does_not_send_a_second_upload(
 
 async def test_protobuf_snapshot_failures_warn_only_at_the_end(
     client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    monkeypatch: pytest.MonkeyPatch,
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """A retrying snapshot does not log a warning per attempt."""
+    """A retrying snapshot does not log a warning per attempt.
+
+    The download is the real one (a 400 from the mock), so this exercises the
+    level the protobuf path passes to it.
+    """
     url = "https://nexus.example.com/snapshot"
-    client._live_image_urls[_protobuf_camera().object_key] = url
+    aioclient_mock.get(url, status=HTTPStatus.BAD_REQUEST)
+    monkeypatch.setattr(client_module, "_SNAPSHOT_URL_TIMEOUT", 0.05)
+
+    async def send(device: NestCamera, command: Any) -> None:
+        client._publish_live_image_url(device.object_key, url)
 
     with (
-        patch.object(client, "_async_send_command", new=AsyncMock(return_value=None)),
-        patch.object(
-            client,
-            "_async_fetch_camera_snapshot",
-            new=AsyncMock(return_value=None),
-        ) as fetch,
-        caplog.at_level("WARNING"),
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        caplog.at_level("DEBUG", logger="custom_components.nest_legacy.pynest.client"),
     ):
         assert (
             await client._async_get_protobuf_camera_snapshot(_protobuf_camera()) is None
         )
 
-    levels = [c.kwargs.get("log_level") for c in fetch.await_args_list]
-    assert levels == [client_module.logging.DEBUG] * client_module._SNAPSHOT_ATTEMPTS
-    assert caplog.text.count("Camera snapshot answered") == 0
+    answered = [r for r in caplog.records if "Camera snapshot answered" in r.message]
+    assert len(answered) == client_module._SNAPSHOT_ATTEMPTS
+    assert {r.levelname for r in answered} == {"DEBUG"}
+    assert caplog.text.count("giving up for this request") == 1
+
+
+async def test_a_joiner_leaving_first_does_not_strand_the_owner(
+    client: NestClient,
+) -> None:
+    """A cancelled joiner must not pop the waiter the owner is still using."""
+    device = _protobuf_camera()
+    sent = asyncio.Event()
+
+    async def send(dev: NestCamera, command: Any) -> None:
+        sent.set()
+        await asyncio.sleep(0.05)
+        client._publish_live_image_url(dev.object_key, "https://cam/new")
+
+    fetch = AsyncMock(return_value=b"frame")
+    with (
+        patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)),
+        patch.object(client, "_async_fetch_camera_snapshot", new=fetch),
+    ):
+        owner = asyncio.create_task(client.async_get_camera_snapshot(device))
+        await sent.wait()
+        joiner = asyncio.create_task(client.async_get_camera_snapshot(device))
+        await asyncio.sleep(0)
+        joiner.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await joiner
+
+        assert await owner == b"frame"
+
+    # One upload for the pair: the joiner reused the owner's waiter.
+    assert client._live_image_waiters == {}
+
+
+async def test_a_failed_upload_wakes_the_joiners(
+    client: NestClient,
+) -> None:
+    """When the command fails, whoever shares the waiter is released at once."""
+    device = _protobuf_camera()
+    captured: dict[str, asyncio.Event] = {}
+
+    async def send(dev: NestCamera, command: Any) -> None:
+        # A second caller joins while the command is in flight.
+        captured["event"] = client._live_image_waiters[dev.object_key]
+        raise PynestException("boom")
+
+    with patch.object(client, "_async_send_command", new=AsyncMock(side_effect=send)):
+        assert await client.async_get_camera_snapshot(device) is None
+
+    assert captured["event"].is_set()
+    assert device.object_key not in client._live_image_waiters
+
+
+def test_the_snapshot_budget_fits_the_camera_timeout() -> None:
+    """Three attempts must finish inside Home Assistant's 10 s image timeout."""
+    budget = (
+        client_module._SNAPSHOT_ATTEMPTS * client_module._SNAPSHOT_URL_TIMEOUT
+        + (client_module._SNAPSHOT_ATTEMPTS - 1) * client_module._SNAPSHOT_RETRY_DELAY
+    )
+    assert budget < 10
 
 
 async def test_camera_snapshot_gives_up_after_the_last_attempt(

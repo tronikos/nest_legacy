@@ -90,7 +90,7 @@ from .protobuf_gen.weave.trait import (
 # new upload through the trait stream about a second later, so wait for that
 # update and read the URL it carries instead of guessing a delay. Measured
 # against a live camera: the trait arrives in 0.9-1.3 s, the download takes 0.1 s.
-_SNAPSHOT_URL_TIMEOUT = 3.0
+_SNAPSHOT_URL_TIMEOUT = 2.0
 _SNAPSHOT_ATTEMPTS = 3
 _SNAPSHOT_RETRY_DELAY = 1.0
 
@@ -2256,6 +2256,7 @@ class NestClient:
         the same URL stops answering once a newer upload replaces it.
         """
         for attempt in range(1, _SNAPSHOT_ATTEMPTS + 1):
+            waited_out = False
             # Concurrent callers for the same camera share one waiter, and only
             # the caller that created it asks the camera to upload: a second
             # command would invalidate the URL the first one is about to get.
@@ -2284,6 +2285,7 @@ class NestClient:
                         published.wait(), timeout=_SNAPSHOT_URL_TIMEOUT
                     )
                 except TimeoutError:
+                    waited_out = True
                     _LOGGER.debug(
                         "No new live image URL for %s %s within %.0fs, using the last one",
                         device.location,
@@ -2291,10 +2293,18 @@ class NestClient:
                         _SNAPSHOT_URL_TIMEOUT,
                     )
             finally:
-                # Only the caller that still owns the waiter clears it; a
-                # concurrent call may have replaced it while we waited.
-                if self._live_image_waiters.get(device.object_key) is published:
+                # Only the owner clears the waiter: a joiner may leave earlier
+                # (a closed tab, a cancelled snapshot) and must not take the
+                # Event away from the caller that sent the command.
+                if (
+                    not joined
+                    and self._live_image_waiters.get(device.object_key) is published
+                ):
                     self._live_image_waiters.pop(device.object_key, None)
+                    if not published.is_set():
+                        # The command failed: wake anyone waiting on this upload
+                        # instead of leaving them out the whole timeout.
+                        published.set()
 
             url = self._live_image_urls.get(
                 device.object_key, device.nexus_api_http_server_url
@@ -2317,7 +2327,9 @@ class NestClient:
             )
             if image is not None:
                 return image
-            if attempt < _SNAPSHOT_ATTEMPTS:
+            # A wait that already burnt its timeout has spent the budget: do not
+            # add another second on top and push the request past HA's 10 s.
+            if attempt < _SNAPSHOT_ATTEMPTS and not waited_out:
                 await asyncio.sleep(_SNAPSHOT_RETRY_DELAY)
 
         _LOGGER.warning(
