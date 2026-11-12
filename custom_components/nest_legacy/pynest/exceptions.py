@@ -27,7 +27,10 @@ class AuthenticationFailedException(
     """Raised when a command is denied because authentication failed.
 
     Nest answers this both for a stale session, which signing in again fixes,
-    and for a trait the account can never access, so it is not retried in place.
+    and for a trait the account can never access. The message cannot tell the
+    two apart, so it is not retried in place: the caller refreshes the session
+    once and, if the failure survives that, pauses the camera's events with a
+    backoff instead of treating it as permanent.
     """
 
 

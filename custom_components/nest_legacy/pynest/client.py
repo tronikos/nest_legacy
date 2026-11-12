@@ -417,7 +417,9 @@ def _raise_for_status_code(status_code: int, msg: str) -> NoReturn:
         raise NotAuthenticatedException(msg)
     # Nest answers PERMISSION_DENIED with "authentication failed" for a stale
     # session (see issue #81), but also for a trait the account can never
-    # access (see issue #61).
+    # access (see issue #61). The message cannot tell them apart, so the caller
+    # refreshes the session and retries; only a failure that survives that is
+    # worth pausing the camera for (see the coordinator's event poll).
     if status_code == 7 and "authenticat" in msg.lower():
         raise AuthenticationFailedException(msg)
     if status_code in _NON_RETRYABLE_CODES:
@@ -527,7 +529,6 @@ class NestClient:
         self._buckets_for_subscription: list[Bucket] = []
         self._resource_types: dict[str, str] = {}
         self._legacy_protobuf_events_warned: bool = False
-        self._protobuf_events_unauthorized: set[str] = set()
         # Latest liveImageUrl published by each camera's trait stream, and one
         # waiter per camera for the snapshot code to know when it changed.
         self._live_image_urls: dict[str, str] = {}
@@ -2684,25 +2685,12 @@ class NestClient:
             type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
         )
 
-        try:
-            resp = await self._async_send_command(device, command)
-        except NonRetryablePynestException as err:
-            # Some accounts are not authorized for the camera_observation_history
-            # trait and answer with PERMISSION_DENIED on every poll (see issue #61),
-            # with an "authentication failed" message that signing in again does
-            # not fix. This never recovers, so warn once and stop polling this camera.
-            self._protobuf_events_unauthorized.add(device.object_key)
-            _LOGGER.warning(
-                "Protobuf camera events are not available for %s %s, "
-                "no longer polling it for events: %r",
-                device.location,
-                device.name,
-                err,
-            )
-            return []
-        except PynestException as err:
-            _LOGGER.warning("Failed to fetch protobuf camera events: %r", err)
-            return []
+        # Every failure is raised as it is: this method is called from the poll
+        # loop, which refreshes the session and retries, and from the media
+        # source, which does neither. Keeping the "how many failures" state here
+        # made a failure counted by one caller decide for the other (see the
+        # review on #93), so the policy lives one level up, in the coordinator.
+        resp = await self._async_send_command(device, command)
 
         events: list[dict[str, Any]] = []
 
@@ -2757,8 +2745,6 @@ class NestClient:
                         "Protobuf camera events are not supported for legacy Nest accounts"
                     )
                     self._legacy_protobuf_events_warned = True
-                return []
-            if device.object_key in self._protobuf_events_unauthorized:
                 return []
             return await self._async_get_protobuf_camera_events(
                 device, start_time, end_time

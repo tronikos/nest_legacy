@@ -35,6 +35,7 @@ from .pynest.client import NestClient
 from .pynest.exceptions import (
     BadCredentialsException,
     EmptyResponseException,
+    NonRetryablePynestException,
     NotAuthenticatedException,
     PynestException,
 )
@@ -47,6 +48,12 @@ _LOGGER = logging.getLogger(__name__)
 MAX_EVENT_AGE_SECONDS = 60
 MAX_BACKOFF_SECONDS = 60
 INITIAL_BACKOFF_SECONDS = 0.1
+# A camera whose event channel keeps failing after a forced refresh is paused
+# instead of being dropped for good: Nest answered code 7 for hours and the
+# same camera started working again two days later, so the wait doubles up to
+# the cap and a camera that never recovers costs one request an hour.
+EVENT_PAUSE_INITIAL_SECONDS = 10 * 60
+EVENT_PAUSE_MAX_SECONDS = 60 * 60
 
 
 type NestConfigEntry = ConfigEntry[NestCoordinator]
@@ -96,7 +103,13 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         self._poll_task: asyncio.Task | None = None
         self._raw_data: dict[str, Any] = {}
         self._processed_event_ids: deque[str] = deque(maxlen=1000)
+        # Cameras whose event poll already warned, so a persistent failure logs
+        # once instead of on every cycle.
+        self._event_poll_warned: set[str] = set()
         self._last_event_poll_success_time: float | None = None
+        # Cameras whose event channel is paused, and how many times in a row.
+        self._event_poll_paused_until: dict[str, float] = {}
+        self._event_poll_backoff: dict[str, int] = {}
         self.first_protobuf_update_received = asyncio.Event()
         self._auth_lock = asyncio.Lock()
         self.subscriber_healthy = True
@@ -714,21 +727,12 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                     time.time() - MAX_EVENT_AGE_SECONDS,
                 )
 
-                # Gather all camera event tasks
-                cameras = self._cameras_to_poll()
-                if cameras:
-                    if self.client.is_expired():
-                        await self.async_reauthenticate()
-                    tasks = [
-                        self._async_process_events_for_device(
-                            device, start_time, poll_interval
-                        )
-                        for device in cameras
-                    ]
-                    await asyncio.gather(*tasks)
-
-                self._last_event_poll_success_time = time.time()
-                failures = 0  # Reset on success
+                # Poll every camera once; the session is refreshed at most once
+                # per cycle if any of them reports an expired session. The window
+                # only moves when the whole cycle covered its cameras.
+                if await self._async_poll_cameras_once(start_time, poll_interval):
+                    self._last_event_poll_success_time = time.time()
+                    failures = 0  # Reset on success
             except Exception as err:
                 delay = min(
                     MAX_BACKOFF_SECONDS,
@@ -755,6 +759,149 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             sleep_time = max(0.0, poll_interval - elapsed)
             await asyncio.sleep(sleep_time)
 
+    async def _async_poll_cameras_once(
+        self, start_time: float, poll_interval: float
+    ) -> bool:
+        """Poll every camera once, refreshing the session at most once.
+
+        A stale session makes every camera answer an authentication error. The
+        refresh happens here, once for the whole cycle, rather than once per
+        camera: with several cameras a per-camera refresh would serialise N
+        Google logins behind _auth_lock on every poll.
+
+        Returns True only when the cycle covered its cameras, so the caller knows
+        whether the event window may advance.
+        """
+        now = time.monotonic()
+        devices = [
+            device
+            for device in self._cameras_to_poll()
+            if self._event_poll_paused_until.get(device.object_key, 0.0) <= now
+        ]
+        if not devices:
+            return True
+        if self.client.is_expired():
+            # The REST path answers 401/403 with an empty list instead of
+            # raising, so nothing downstream would notice a stale session while
+            # the subscriber sits in its 600 s long poll. Refreshing here also
+            # saves N doomed protobuf commands.
+            try:
+                await self.async_reauthenticate()
+            except BadCredentialsException as err:
+                _LOGGER.warning(
+                    "Nest rejected the stored credentials, starting reauthentication: %r",
+                    err,
+                )
+                self.config_entry.async_start_reauth(self.hass)
+                self._stop_streams_for_reauth()
+                return False
+        results = await asyncio.gather(
+            *(
+                self._async_process_events_for_device(device, start_time, poll_interval)
+                for device in devices
+            ),
+            return_exceptions=True,
+        )
+        expired: list[NestCamera] = []
+        unexpected: Exception | None = None
+        for device, result in zip(devices, results, strict=True):
+            if isinstance(result, NotAuthenticatedException):
+                # AuthenticationFailedException subclasses this, and a plain
+                # 401/403 (or gRPC code 16) means the same thing: refresh once.
+                expired.append(device)
+            elif isinstance(result, Exception):
+                _LOGGER.debug("Camera event poll failed: %r", result)
+                unexpected = unexpected or result
+        if expired and not await self._async_reauthenticate_and_retry(
+            expired, start_time, poll_interval
+        ):
+            # The session could not be refreshed: this cycle did not cover the
+            # cameras, so the caller must not move the event window past it.
+            return False
+        if unexpected is not None:
+            # Let the poll loop see it: it logs the traceback, backs off and keeps
+            # the event window where it was. Swallowing it here meant the window
+            # advanced over events nobody parsed.
+            raise unexpected
+        return True
+
+    async def _async_reauthenticate_and_retry(
+        self, devices: list[NestCamera], start_time: float, poll_interval: float
+    ) -> bool:
+        """Refresh the session once and retry the cameras whose poll expired.
+
+        Returns False when the credentials were rejected and reauthentication
+        was started. A transient refresh failure is raised instead, so the
+        caller keeps its event window where it was.
+        """
+        try:
+            await self.async_reauthenticate(force=True)
+        except BadCredentialsException as err:
+            # A revoked cookie or token cannot be fixed by signing in again: ask
+            # the user to reauthenticate instead of hitting Google every cycle.
+            # Stopping the poll task is what actually ends the loop; returning on
+            # its own left it polling every camera every 5s.
+            _LOGGER.warning(
+                "Nest rejected the stored credentials, starting reauthentication: %r",
+                err,
+            )
+            self.config_entry.async_start_reauth(self.hass)
+            self._stop_streams_for_reauth()
+            return False
+        results = await asyncio.gather(
+            *(
+                self._async_process_events_for_device(device, start_time, poll_interval)
+                for device in devices
+            ),
+            return_exceptions=True,
+        )
+        unexpected: Exception | None = None
+        for device, result in zip(devices, results, strict=True):
+            if isinstance(result, NotAuthenticatedException):
+                # A fresh session did not help. That is not proof the camera is
+                # gone for good, so pause it and try again later.
+                self._pause_camera_events(device, result)
+            elif isinstance(result, Exception):
+                _LOGGER.debug("Camera event poll failed after a refresh: %r", result)
+                unexpected = unexpected or result
+        if unexpected is not None:
+            raise unexpected
+        return True
+
+    def _stop_streams_for_reauth(self) -> None:
+        """Stop both streams and mark the entities unavailable until reauth.
+
+        ``async_stop_subscriber`` cancels the tasks, so the availability has to
+        be recalculated while they still count as active; otherwise the next
+        recalculation finds no stream running and reports the coordinator as
+        healthy again, leaving stale data on screen.
+        """
+        self.subscriber_healthy = False
+        self.observer_healthy = False
+        self._update_coordinator_availability()
+        self.async_stop_subscriber()
+
+    def _pause_camera_events(self, device: NestCamera, err: Exception) -> None:
+        """Stop polling one camera's events for a while, doubling the wait each time."""
+        level = self._event_poll_backoff.get(device.object_key, 0) + 1
+        self._event_poll_backoff[device.object_key] = level
+        delay = min(
+            EVENT_PAUSE_INITIAL_SECONDS * 2 ** (level - 1),
+            EVENT_PAUSE_MAX_SECONDS,
+        )
+        self._event_poll_paused_until[device.object_key] = time.monotonic() + delay
+        # An account that can never read camera_observation_history (#61) pauses
+        # this camera forever, so only the first pause is news: at WARNING every
+        # step this would log once an hour, indefinitely.
+        log = _LOGGER.warning if level == 1 else _LOGGER.debug
+        log(
+            "Camera events for %s %s are failing (%r), paused for %d min",
+            device.location,
+            device.name,
+            err,
+            max(1, int(delay // 60)),
+        )
+
     async def _async_process_events_for_device(
         self, device: NestCamera, start_time: float, poll_interval: float
     ) -> None:
@@ -768,14 +915,39 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             events = await self.client.async_get_camera_events(
                 device, start_time=int(start_time)
             )
-        except (ClientError, TimeoutError, PynestException) as err:
-            _LOGGER.warning(
-                "Error fetching events for camera %s %s: %r",
-                device.location,
-                device.name,
-                err,
-            )
+        except NotAuthenticatedException:
+            # An expired session is not specific to this camera: let the poll
+            # cycle refresh the session once and retry every camera that hit it.
+            # AuthenticationFailedException is one of these, but a plain 401 or
+            # gRPC code 16 is the same story.
+            raise
+        except NonRetryablePynestException as err:
+            # A denial that is not about authentication will not fix itself in a
+            # second, so pause the camera instead of asking on every cycle.
+            self._pause_camera_events(device, err)
             return
+        except (ClientError, TimeoutError, PynestException) as err:
+            if device.object_key in self._event_poll_warned:
+                _LOGGER.debug(
+                    "Error fetching events for camera %s %s: %r",
+                    device.location,
+                    device.name,
+                    err,
+                )
+            else:
+                self._event_poll_warned.add(device.object_key)
+                _LOGGER.warning(
+                    "Error fetching events for camera %s %s: %r",
+                    device.location,
+                    device.name,
+                    err,
+                )
+            return
+        self._event_poll_warned.discard(device.object_key)
+        # The camera answered: forget any pause so a later failure starts the
+        # backoff from scratch.
+        self._event_poll_backoff.pop(device.object_key, None)
+        self._event_poll_paused_until.pop(device.object_key, None)
         if not events:
             return
 
