@@ -690,6 +690,85 @@ async def test_camera_events_start_reauth_when_the_refresh_is_rejected(
     assert camera.object_key not in coordinator._event_poll_paused_until
 
 
+async def test_poll_refreshes_an_expired_session_before_polling(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A known-expired session is refreshed before the cameras are asked.
+
+    The REST path answers 401/403 with an empty list instead of raising, so
+    nothing downstream would notice the stale session while the subscriber sits
+    in its long poll.
+    """
+    await _setup_without_event_poll(hass, mock_config_entry)
+    coordinator = _coordinator(mock_config_entry)
+    camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
+    mock_nest_client.is_expired.return_value = True
+
+    with patch.object(coordinator, "_cameras_to_poll", return_value=[camera]):
+        await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
+
+    assert mock_nest_client.async_authenticate_with_google_credentials.await_count == 1
+    assert mock_nest_client.async_get_camera_events.await_count == 1
+
+
+async def test_plain_not_authenticated_is_refreshed_too(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A bare 401/403 (NotAuthenticatedException) also triggers one refresh."""
+    await _setup_without_event_poll(hass, mock_config_entry)
+    expired = NotAuthenticatedException("401")
+    mock_nest_client.async_get_camera_events.side_effect = [expired, []]
+    coordinator = _coordinator(mock_config_entry)
+    camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
+
+    with patch.object(coordinator, "_cameras_to_poll", return_value=[camera]):
+        covered = await coordinator._async_poll_cameras_once(
+            start_time=0, poll_interval=0
+        )
+
+    assert covered is True
+    assert mock_nest_client.async_authenticate_with_google_credentials.await_count == 1
+    assert mock_nest_client.async_get_camera_events.await_count == 2
+    assert camera.object_key not in coordinator._event_poll_paused_until
+
+
+async def test_revoked_credentials_mark_the_entities_unavailable(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """Stopping the streams for a reauth must not leave stale data on screen."""
+    await _setup_without_event_poll(hass, mock_config_entry)
+    mock_nest_client.async_get_camera_events.side_effect = (
+        AuthenticationFailedException("authentication failed")
+    )
+    mock_nest_client.async_authenticate_with_google_credentials.side_effect = (
+        BadCredentialsException("revoked")
+    )
+    coordinator = _coordinator(mock_config_entry)
+    camera = _camera("DEVICE_0000000000000003", CAMERA_SERIAL, "Camera")
+
+    with (
+        patch.object(coordinator, "_cameras_to_poll", return_value=[camera]),
+        patch.object(mock_config_entry, "async_start_reauth"),
+        patch.object(coordinator, "_update_coordinator_availability") as update,
+        patch.object(coordinator, "async_stop_subscriber") as stop,
+    ):
+        assert (
+            await coordinator._async_poll_cameras_once(start_time=0, poll_interval=0)
+            is False
+        )
+
+    assert coordinator.subscriber_healthy is False
+    assert coordinator.observer_healthy is False
+    update.assert_called_once_with()
+    stop.assert_called_once_with()
+
+
 async def test_browsing_the_media_source_does_not_pause_the_events(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,

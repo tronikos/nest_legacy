@@ -33,7 +33,6 @@ from .const import (
 from .events import NEST_LEGACY_EVENT
 from .pynest.client import NestClient
 from .pynest.exceptions import (
-    AuthenticationFailedException,
     BadCredentialsException,
     EmptyResponseException,
     NonRetryablePynestException,
@@ -781,6 +780,21 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         ]
         if not devices:
             return True
+        if self.client.is_expired():
+            # The REST path answers 401/403 with an empty list instead of
+            # raising, so nothing downstream would notice a stale session while
+            # the subscriber sits in its 600 s long poll. Refreshing here also
+            # saves N doomed protobuf commands.
+            try:
+                await self.async_reauthenticate()
+            except BadCredentialsException as err:
+                _LOGGER.warning(
+                    "Nest rejected the stored credentials, starting reauthentication: %r",
+                    err,
+                )
+                self.config_entry.async_start_reauth(self.hass)
+                self._stop_streams_for_reauth()
+                return False
         results = await asyncio.gather(
             *(
                 self._async_process_events_for_device(device, start_time, poll_interval)
@@ -791,7 +805,9 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         expired: list[NestCamera] = []
         unexpected: Exception | None = None
         for device, result in zip(devices, results, strict=True):
-            if isinstance(result, AuthenticationFailedException):
+            if isinstance(result, NotAuthenticatedException):
+                # AuthenticationFailedException subclasses this, and a plain
+                # 401/403 (or gRPC code 16) means the same thing: refresh once.
                 expired.append(device)
             elif isinstance(result, Exception):
                 _LOGGER.debug("Camera event poll failed: %r", result)
@@ -830,7 +846,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                 err,
             )
             self.config_entry.async_start_reauth(self.hass)
-            self.async_stop_subscriber()
+            self._stop_streams_for_reauth()
             return False
         results = await asyncio.gather(
             *(
@@ -841,7 +857,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         )
         unexpected: Exception | None = None
         for device, result in zip(devices, results, strict=True):
-            if isinstance(result, AuthenticationFailedException):
+            if isinstance(result, NotAuthenticatedException):
                 # A fresh session did not help. That is not proof the camera is
                 # gone for good, so pause it and try again later.
                 self._pause_camera_events(device, result)
@@ -851,6 +867,19 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
         if unexpected is not None:
             raise unexpected
         return True
+
+    def _stop_streams_for_reauth(self) -> None:
+        """Stop both streams and mark the entities unavailable until reauth.
+
+        ``async_stop_subscriber`` cancels the tasks, so the availability has to
+        be recalculated while they still count as active; otherwise the next
+        recalculation finds no stream running and reports the coordinator as
+        healthy again, leaving stale data on screen.
+        """
+        self.subscriber_healthy = False
+        self.observer_healthy = False
+        self._update_coordinator_availability()
+        self.async_stop_subscriber()
 
     def _pause_camera_events(self, device: NestCamera, err: Exception) -> None:
         """Stop polling one camera's events for a while, doubling the wait each time."""
@@ -886,9 +915,11 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             events = await self.client.async_get_camera_events(
                 device, start_time=int(start_time)
             )
-        except AuthenticationFailedException:
+        except NotAuthenticatedException:
             # An expired session is not specific to this camera: let the poll
             # cycle refresh the session once and retry every camera that hit it.
+            # AuthenticationFailedException is one of these, but a plain 401 or
+            # gRPC code 16 is the same story.
             raise
         except NonRetryablePynestException as err:
             # A denial that is not about authentication will not fix itself in a
