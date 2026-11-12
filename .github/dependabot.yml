@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "quarterly"
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "quarterly"
+    versioning-strategy: "increase-if-necessary"
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: "pylint-home-assistant"
+    groups:
+      test-dependencies:
+        patterns:
+          - "*"
