@@ -3,7 +3,7 @@
 # pytest-homeassistant-custom-component pins Home Assistant and the pytest
 # plugins core itself uses, so a single pin keeps this repository in step with
 # core's test harness.
-pytest-homeassistant-custom-component==0.13.361
+pytest-homeassistant-custom-component==0.13.375
 
 # Runtime requirements of the integration (see custom_components/nest_legacy/manifest.json)
 bidict>=0.23.1
@@ -11,12 +11,12 @@ googleapis-common-protos>=1.70.0
 protobuf>=6.31.1
 
 # Requirements of the Home Assistant integrations this one depends on
-PyTurboJPEG==1.8.0
+PyTurboJPEG==2.6.1
 
 # Linting, matching .pre-commit-config.yaml
-mypy==2.3.1
-prek==0.2.28
-pylint==4.0.7
-pylint-per-file-ignores==3.2.1
+mypy==2.4.1
+prek==0.5.10
+pylint==4.1.3
+pylint-per-file-ignores==4.0.0
 # Home Assistant's pylint plugins are not published to PyPI; install them from core.
 pylint-home-assistant @ git+https://github.com/home-assistant/core.git@dev#subdirectory=packages/pylint-home-assistant
