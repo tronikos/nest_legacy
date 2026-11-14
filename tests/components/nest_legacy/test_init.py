@@ -17,7 +17,7 @@ from homeassistant.helpers import device_registry as dr
 from . import setup_integration
 from .const import THERMOSTAT_SERIAL
 
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 
 async def test_setup_and_unload(

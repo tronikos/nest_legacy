@@ -38,7 +38,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from ..const import TEMP_SENSOR_KEY, THERMOSTAT_KEY
 from .test_client import SESSION_RESPONSE, SESSION_URL
 
-from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
+from pytest_homeassistant.test_util.aiohttp import AiohttpClientMocker
 
 PUT_URL = "https://transport.example.com/v6/put"
 SEND_COMMAND_URL = (

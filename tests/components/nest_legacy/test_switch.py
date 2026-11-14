@@ -25,10 +25,7 @@ from homeassistant.helpers import entity_registry as er
 from . import setup_integration
 from .const import HEAT_LINK_SERIAL, TEMP_SENSOR_KEY, THERMOSTAT_KEY
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 PATHLIGHT_ENTITY = "switch.hallway_hallway_protect_pathlight"
 STREAMING_ENTITY = "switch.front_door_front_door_doorbell_streaming"

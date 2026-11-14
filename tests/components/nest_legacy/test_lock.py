@@ -22,10 +22,7 @@ from homeassistant.helpers import entity_registry as er
 from . import setup_integration
 from .const import LOCK_KEY
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 ENTITY_ID = "lock.front_door_front_door"
 _BOLT_LOCK_KEY = weave_security_pb2.BoltLockTrait.DESCRIPTOR.full_name

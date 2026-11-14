@@ -17,10 +17,7 @@ from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from . import setup_integration
 from .const import TEMP_SENSOR_KEY, THERMOSTAT_KEY
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 TEMPERATURE_ENTITY = "sensor.hallway_hallway_upstairs_temperature"
 HVAC_STAGE_ENTITY = "sensor.hallway_hallway_upstairs_hvac_stage"

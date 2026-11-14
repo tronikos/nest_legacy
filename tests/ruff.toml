@@ -32,5 +32,5 @@ known-third-party = [
 # Core keeps its `tests` helpers in a trailing block; the equivalent import here
 # is the pytest plugin that provides them.
 forced-separate = [
-    "pytest_homeassistant_custom_component",
+    "pytest_homeassistant",
 ]

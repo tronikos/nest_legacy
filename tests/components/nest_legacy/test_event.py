@@ -11,10 +11,7 @@ from homeassistant.const import STATE_UNKNOWN, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 CHIME_ENTITY = "event.front_door_front_door_doorbell_chime"
 MOTION_ENTITY = "event.front_door_front_door_doorbell_motion"

@@ -5,7 +5,7 @@ import re
 from typing import Any, override
 
 from aiohttp import ClientError
-import voluptuous as vol
+import probatio
 
 from homeassistant.config_entries import (
     SOURCE_REAUTH,
@@ -133,12 +133,12 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
 
         return self.async_show_form(
             step_id="user",
-            data_schema=vol.Schema(
+            data_schema=probatio.Schema(
                 {
-                    vol.Required(CONF_ACCOUNT_TYPE, default="google"): vol.In(
+                    probatio.Required(CONF_ACCOUNT_TYPE, default="google"): probatio.In(
                         {"google": "Google Account", "nest": "Nest Account"}
                     ),
-                    vol.Optional(CONF_FIELD_TEST, default=False): bool,
+                    probatio.Optional(CONF_FIELD_TEST, default=False): bool,
                 }
             ),
         )
@@ -146,7 +146,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
     async def _show_form_and_handle_errors(
         self,
         step_id: str,
-        schema: vol.Schema,
+        schema: probatio.Schema,
         user_input: dict[str, Any] | None,
         errors: dict[str, str] | None = None,
     ) -> ConfigFlowResult:
@@ -192,8 +192,11 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         """Handle Google Account authentication."""
-        schema = vol.Schema(
-            {vol.Required(CONF_ISSUE_TOKEN): str, vol.Required(CONF_COOKIES): str}
+        schema = probatio.Schema(
+            {
+                probatio.Required(CONF_ISSUE_TOKEN): str,
+                probatio.Required(CONF_COOKIES): str,
+            }
         )
         errors: dict[str, str] = {}
         if user_input is not None:
@@ -207,7 +210,7 @@ class NestConfigFlow(ConfigFlow, domain=DOMAIN):
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         """Handle Nest Account authentication."""
-        schema = vol.Schema({vol.Required(CONF_ACCESS_TOKEN): str})
+        schema = probatio.Schema({probatio.Required(CONF_ACCESS_TOKEN): str})
         return await self._show_form_and_handle_errors(
             "nest_account", schema, user_input
         )
@@ -258,28 +261,28 @@ class NestOptionsFlowHandler(OptionsFlowWithReload):
             )
 
         options = {
-            vol.Optional(
+            probatio.Optional(
                 CONF_EVENT_POLL_INTERVAL,
                 default=self.config_entry.options.get(
                     CONF_EVENT_POLL_INTERVAL, DEFAULT_EVENT_POLL_INTERVAL
                 ),
-            ): vol.All(vol.Coerce(int), vol.Range(min=0)),
-            vol.Required(CONF_SECTION_PROTOBUF): section(
-                vol.Schema(
+            ): probatio.All(probatio.Coerce(int), probatio.Range(min=0)),
+            probatio.Required(CONF_SECTION_PROTOBUF): section(
+                probatio.Schema(
                     {
-                        vol.Optional(
+                        probatio.Optional(
                             CONF_ENABLE_PROTOBUF_STRUCTURE,
                             default=self.config_entry.options.get(
                                 CONF_ENABLE_PROTOBUF_STRUCTURE, False
                             ),
                         ): bool,
-                        vol.Optional(
+                        probatio.Optional(
                             CONF_ENABLE_PROTOBUF_PROTECT,
                             default=self.config_entry.options.get(
                                 CONF_ENABLE_PROTOBUF_PROTECT, False
                             ),
                         ): bool,
-                        vol.Optional(
+                        probatio.Optional(
                             CONF_ENABLE_PROTOBUF_CAMERA,
                             default=self.config_entry.options.get(
                                 CONF_ENABLE_PROTOBUF_CAMERA,
@@ -293,4 +296,6 @@ class NestOptionsFlowHandler(OptionsFlowWithReload):
             ),
         }
 
-        return self.async_show_form(step_id="user", data_schema=vol.Schema(options))
+        return self.async_show_form(
+            step_id="user", data_schema=probatio.Schema(options)
+        )

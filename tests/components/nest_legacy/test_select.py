@@ -21,10 +21,7 @@ from homeassistant.helpers import entity_registry as er
 from . import setup_integration
 from .const import THERMOSTAT_KEY, dual_fuel_trait
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 BRIGHTNESS_ENTITY = "select.hallway_hallway_protect_night_light_brightness"
 HOME_AWAY_ENTITY = "select.test_home"

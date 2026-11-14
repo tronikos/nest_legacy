@@ -3,7 +3,7 @@
 from typing import Any
 
 from google.protobuf.json_format import MessageToDict
-import voluptuous as vol
+import probatio
 
 from homeassistant.components.climate import (
     DOMAIN as CLIMATE_DOMAIN,
@@ -194,9 +194,9 @@ def async_setup_services(hass: HomeAssistant) -> None:
         DOMAIN,
         "list_guests",
         async_list_guests,
-        schema=vol.Schema(
+        schema=probatio.Schema(
             {
-                vol.Optional("config_entry_id"): cv.string,
+                probatio.Optional("config_entry_id"): cv.string,
             }
         ),
         supports_response=SupportsResponse.ONLY,
@@ -206,11 +206,11 @@ def async_setup_services(hass: HomeAssistant) -> None:
         DOMAIN,
         "get_user_schedule",
         async_get_user_schedule,
-        schema=vol.Schema(
+        schema=probatio.Schema(
             {
-                vol.Optional("config_entry_id"): cv.string,
-                vol.Required("device_id"): cv.string,
-                vol.Required("user_id"): cv.string,
+                probatio.Optional("config_entry_id"): cv.string,
+                probatio.Required("device_id"): cv.string,
+                probatio.Required("user_id"): cv.string,
             }
         ),
         supports_response=SupportsResponse.ONLY,
@@ -220,15 +220,15 @@ def async_setup_services(hass: HomeAssistant) -> None:
         DOMAIN,
         "set_user_schedule",
         async_set_user_schedule,
-        schema=vol.Schema(
+        schema=probatio.Schema(
             {
-                vol.Optional("config_entry_id"): cv.string,
-                vol.Required("device_id"): cv.string,
-                vol.Required("user_id"): cv.string,
-                vol.Optional("days_of_week"): vol.All(
+                probatio.Optional("config_entry_id"): cv.string,
+                probatio.Required("device_id"): cv.string,
+                probatio.Required("user_id"): cv.string,
+                probatio.Optional("days_of_week"): probatio.All(
                     cv.ensure_list,
                     [
-                        vol.In(
+                        probatio.In(
                             [
                                 "monday",
                                 "tuesday",
@@ -241,10 +241,10 @@ def async_setup_services(hass: HomeAssistant) -> None:
                         )
                     ],
                 ),
-                vol.Optional("start_time"): cv.time,
-                vol.Optional("duration"): cv.time_period,
-                vol.Optional("start_timebox"): cv.datetime,
-                vol.Optional("end_timebox"): cv.datetime,
+                probatio.Optional("start_time"): cv.time,
+                probatio.Optional("duration"): cv.time_period,
+                probatio.Optional("start_timebox"): cv.datetime,
+                probatio.Optional("end_timebox"): cv.datetime,
             }
         ),
     )
@@ -253,11 +253,11 @@ def async_setup_services(hass: HomeAssistant) -> None:
         DOMAIN,
         "delete_user_schedule",
         async_delete_user_schedule,
-        schema=vol.Schema(
+        schema=probatio.Schema(
             {
-                vol.Optional("config_entry_id"): cv.string,
-                vol.Required("device_id"): cv.string,
-                vol.Required("user_id"): cv.string,
+                probatio.Optional("config_entry_id"): cv.string,
+                probatio.Required("device_id"): cv.string,
+                probatio.Required("user_id"): cv.string,
             }
         ),
     )
@@ -268,7 +268,7 @@ def async_setup_services(hass: HomeAssistant) -> None:
         "set_fan_timer",
         entity_domain=CLIMATE_DOMAIN,
         schema={
-            vol.Required("duration"): cv.time_period,
+            probatio.Required("duration"): cv.time_period,
         },
         func="async_set_fan_timer",
         required_features=[ClimateEntityFeature.FAN_MODE],

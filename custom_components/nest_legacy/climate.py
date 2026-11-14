@@ -78,7 +78,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         super().__init__(coordinator, device)
 
         is_fahrenheit = device.temperature_scale == TemperatureScale.FAHRENHEIT
-        self._attr_temperature_unit = (
+        self._attr_native_temperature_unit = (
             UnitOfTemperature.FAHRENHEIT if is_fahrenheit else UnitOfTemperature.CELSIUS
         )
 
@@ -117,7 +117,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         """
         if value is None:
             return None
-        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+        if self.native_temperature_unit == UnitOfTemperature.FAHRENHEIT:
             return round(value * 9 / 5 + 32)
         return value
 
@@ -129,7 +129,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         baked directly into this conversion so it can't be skipped by a
         future caller.
         """
-        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+        if self.native_temperature_unit == UnitOfTemperature.FAHRENHEIT:
             return (round(value) - 32) * 5 / 9
         return round(value * 2.0) / 2.0
 
@@ -137,7 +137,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
     @property
     def target_temperature_step(self) -> float:
         """Return the supported step of target temperature."""
-        if self.temperature_unit == UnitOfTemperature.FAHRENHEIT:
+        if self.native_temperature_unit == UnitOfTemperature.FAHRENHEIT:
             return 1.0
         return PRECISION_HALVES
 
@@ -170,13 +170,13 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
 
     @override
     @property
-    def current_temperature(self) -> float | None:
+    def native_current_temperature(self) -> float | None:
         """Return the current temperature."""
         return self._c_to_native(self.device.current_temperature)
 
     @override
     @property
-    def target_temperature(self) -> float | None:
+    def native_target_temperature(self) -> float | None:
         """Return the temperature we try to reach."""
         if self.hvac_mode == HVACMode.HEAT_COOL:
             return None
@@ -184,7 +184,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
 
     @override
     @property
-    def target_temperature_high(self) -> float | None:
+    def native_target_temperature_high(self) -> float | None:
         """Return the highbound temperature."""
         return self._c_to_native(
             self.device.target_temperature_high
@@ -194,7 +194,7 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
 
     @override
     @property
-    def target_temperature_low(self) -> float | None:
+    def native_target_temperature_low(self) -> float | None:
         """Return the lowbound temperature."""
         return self._c_to_native(
             self.device.target_temperature_low

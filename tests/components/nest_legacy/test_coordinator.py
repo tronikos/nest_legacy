@@ -39,10 +39,7 @@ from homeassistant.setup import async_setup_component
 
 from .const import LOCK_KEY, STRUCTURE_KEY
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    async_capture_events,
-)
+from pytest_homeassistant.common import MockConfigEntry, async_capture_events
 
 REST_SMOKE = "binary_sensor.hallway_hallway_protect_smoke"
 PROTOBUF_CLIMATE = "climate.hallway_hallway_upstairs"
@@ -835,7 +832,7 @@ async def test_subscriber_preserves_devices_with_merged_identifiers(
 
     updated = device_registry.async_get(device.id)
     assert updated is not None
-    assert init_integration.entry_id in updated.config_entries
+    assert updated.config_entry_id == init_integration.entry_id
 
 
 async def test_subscriber_does_not_reload_before_first_protobuf_update(

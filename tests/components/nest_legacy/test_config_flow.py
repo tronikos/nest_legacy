@@ -34,7 +34,7 @@ from homeassistant.helpers.service_info.dhcp import DhcpServiceInfo
 
 from .conftest import EMAIL, USER_ID
 
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 ISSUE_TOKEN = (
     "https://accounts.google.com/o/oauth2/iframerpc?action=issueToken&client_id=test"

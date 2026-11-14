@@ -28,10 +28,7 @@ from homeassistant.helpers import entity_registry as er
 from . import setup_integration
 from .const import THERMOSTAT_KEY
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 ENTITY_ID = "fan.hallway_hallway_upstairs_fan"
 

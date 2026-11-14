@@ -1,9 +1,9 @@
 # Test and lint requirements for the Nest Legacy custom integration.
 #
-# pytest-homeassistant-custom-component pins Home Assistant and the pytest
-# plugins core itself uses, so a single pin keeps this repository in step with
-# core's test harness.
-pytest-homeassistant-custom-component==0.13.375
+# pytest-homeassistant pins Home Assistant and the pytest plugins core itself
+# uses, so a single pin keeps this repository in step with core's test harness.
+pytest-cov==7.1.0
+pytest-homeassistant==2026.11.1
 
 # Runtime requirements of the integration (see custom_components/nest_legacy/manifest.json)
 bidict>=0.23.1

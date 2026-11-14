@@ -23,10 +23,7 @@ from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from . import setup_integration
 from .const import THERMOSTAT_KEY, dual_fuel_trait
 
-from pytest_homeassistant_custom_component.common import (
-    MockConfigEntry,
-    snapshot_platform,
-)
+from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
 BREAKPOINT_ENTITY = "number.hallway_hallway_upstairs_dual_fuel_breakpoint"
 RELOCK_ENTITY = "number.front_door_front_door_auto_relock_duration"

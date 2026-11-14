@@ -18,7 +18,6 @@ from custom_components.nest_legacy.pynest.models import (
     NestUrls,
 )
 import pytest
-from syrupy.assertion import SnapshotAssertion
 
 from homeassistant.const import CONF_ACCESS_TOKEN, Platform
 from homeassistant.core import HomeAssistant
@@ -26,22 +25,10 @@ from homeassistant.core import HomeAssistant
 from . import async_load_fixture_json, setup_integration
 from .const import THERMOSTAT_KEY, hot_water_traits, protobuf_updates
 
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotExtension
+from pytest_homeassistant.common import MockConfigEntry
 
 USER_ID = "1234567890"
 EMAIL = "test@example.com"
-
-
-@pytest.fixture(autouse=True)
-def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
-    """Load the integration from custom_components rather than from core."""
-
-
-@pytest.fixture
-def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
-    """Return a snapshot assertion that understands Home Assistant objects."""
-    return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 
 @pytest.fixture

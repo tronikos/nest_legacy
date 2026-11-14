@@ -24,7 +24,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .test_client import SESSION_RESPONSE, SESSION_URL
 
-from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
+from pytest_homeassistant.test_util.aiohttp import AiohttpClientMocker
 
 OBSERVE_URL = (
     "https://grpc-web.production.nest.com/nestlabs.gateway.v2.GatewayService/Observe"
