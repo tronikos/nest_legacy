@@ -23,7 +23,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 
 from . import setup_integration
-from .const import HEAT_LINK_SERIAL, TEMP_SENSOR_KEY, THERMOSTAT_KEY
+from .const import HEAT_LINK_SERIAL, TEMP_SENSOR_KEY, TEMP_SENSOR_SERIAL, THERMOSTAT_KEY
 
 from pytest_homeassistant.common import MockConfigEntry, snapshot_platform
 
@@ -127,6 +127,62 @@ async def test_remote_sensor_control(
 
     _, data = mock_nest_client.async_set_device_data.call_args[0]
     assert data == {"is_active_sensor": False}
+
+
+@pytest.mark.parametrize("include_kryptonite_bucket", [True, False])
+async def test_rest_thermostat_remote_sensor_control(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    app_launch_data: dict[str, Any],
+    observe_data: dict[str, dict[str, Any]],
+    include_kryptonite_bucket: bool,
+) -> None:
+    """A sensor paired with a REST thermostat exposes the active sensor switch; see issue #103."""
+    del observe_data[THERMOSTAT_KEY]
+    app_launch_data["device.15AA00AA00AA0AAA"] = {
+        "serial_number": "15AA00AA00AA0AAA",
+        "where_id": "where-hallway",
+        "temperature_scale": "C",
+    }
+    app_launch_data["shared.15AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "heat",
+        "current_temperature": 20.0,
+        "can_heat": True,
+    }
+    app_launch_data["track.15AA00AA00AA0AAA"] = {"online": True}
+    app_launch_data["rcs_settings.15AA00AA00AA0AAA"] = {
+        "associated_rcs_sensors": [f"kryptonite.{TEMP_SENSOR_SERIAL}"],
+        "active_rcs_sensors": [],
+    }
+    if include_kryptonite_bucket:
+        app_launch_data[f"kryptonite.{TEMP_SENSOR_SERIAL}"] = {
+            "serial_number": TEMP_SENSOR_SERIAL,
+            "where_id": "where-hallway",
+            "description": "Study Sensor",
+            "current_temperature": 19.5,
+            "battery_level": 71,
+            "last_updated_at": 9999999999,
+        }
+
+    await setup_integration(hass, mock_config_entry)
+
+    state = hass.states.get(SENSOR_ENTITY)
+    assert state is not None
+    assert state.state == STATE_OFF
+
+    await hass.services.async_call(
+        SWITCH_DOMAIN, SERVICE_TURN_ON, {ATTR_ENTITY_ID: SENSOR_ENTITY}, blocking=True
+    )
+
+    call = mock_nest_client.async_set_device_data.call_args
+    device, data = call.args
+    assert device.serial_number == TEMP_SENSOR_SERIAL
+    assert device.is_protobuf is (not include_kryptonite_bucket)
+    assert device.associated_thermostat_object_key == "device.15AA00AA00AA0AAA"
+    assert data == {"is_active_sensor": True}
+    assert call.kwargs == {"current_traits": None}
 
 
 async def test_offline_device_is_unavailable(

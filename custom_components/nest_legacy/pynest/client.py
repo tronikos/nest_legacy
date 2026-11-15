@@ -2328,7 +2328,7 @@ class NestClient:
             )
             return
 
-        if device.is_protobuf:
+        if device.associated_thermostat_object_key.startswith("DEVICE_"):
             await self._async_set_protobuf_sensor_active(device, active, current_traits)
         else:
             await self._async_set_legacy_sensor_active(device, active)
@@ -2401,10 +2401,15 @@ class NestClient:
             return
         device_id = thermostat_key.split(".")[1]
         rcs_key = f"rcs_settings.{device_id}"
+        sensor_key = (
+            device.object_key
+            if device.object_key.startswith("kryptonite.")
+            else f"kryptonite.{device.serial_number}"
+        )
 
         if active:
             payload = {
-                "active_rcs_sensors": [device.object_key],
+                "active_rcs_sensors": [sensor_key],
                 "rcs_control_setting": "OVERRIDE",
             }
         else:

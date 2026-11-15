@@ -601,30 +601,64 @@ async def test_rest_heat_link_boost(
     assert "hot_water_mode" not in objects[0]["value"]
 
 
+@pytest.mark.parametrize(
+    ("object_key", "is_protobuf", "active", "expected_value"),
+    [
+        (
+            "kryptonite.18B430CCCCCC0001",
+            False,
+            True,
+            {
+                "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+                "rcs_control_setting": "OVERRIDE",
+            },
+        ),
+        (
+            "kryptonite.18B430CCCCCC0001",
+            False,
+            False,
+            {
+                "active_rcs_sensors": [],
+                "rcs_control_setting": "OFF",
+            },
+        ),
+        (
+            "DEVICE_0000000000000007",
+            True,
+            True,
+            {
+                "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+                "rcs_control_setting": "OVERRIDE",
+            },
+        ),
+    ],
+)
 async def test_rest_temp_sensor_active(
-    client: NestClient, aioclient_mock: AiohttpClientMocker
+    client: NestClient,
+    aioclient_mock: AiohttpClientMocker,
+    object_key: str,
+    is_protobuf: bool,
+    active: bool,
+    expected_value: dict[str, Any],
 ) -> None:
-    """A REST temperature sensor updates rcs_settings on its thermostat."""
+    """A sensor paired with a REST thermostat updates rcs_settings via REST; see issue #103."""
     aioclient_mock.post(PUT_URL, json={})
     sensor = NestTempSensor(
-        object_key="kryptonite.18B430CCCCCC0001",
+        object_key=object_key,
         serial_number="18B430CCCCCC0001",
         name="Sensor",
         associated_thermostat_object_key="device.09AA00AA00AA0AAA",
-        is_protobuf=False,
+        is_protobuf=is_protobuf,
     )
 
-    await client.async_set_device_data(sensor, {"is_active_sensor": True})
+    await client.async_set_device_data(sensor, {"is_active_sensor": active})
 
     objects = aioclient_mock.mock_calls[-1][2]["objects"]
     assert objects == [
         {
             "object_key": "rcs_settings.09AA00AA00AA0AAA",
             "op": "MERGE",
-            "value": {
-                "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
-                "rcs_control_setting": "OVERRIDE",
-            },
+            "value": expected_value,
         }
     ]
 

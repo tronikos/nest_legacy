@@ -25,6 +25,7 @@ from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     hvac_pb2 as nest_hvac_pb2,
     located_pb2 as nest_located_pb2,
     occupancy_pb2 as nest_occupancy_pb2,
+    sensor_pb2 as nest_sensor_pb2,
     structure_pb2 as nest_structure_pb2,
 )
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait.product import (
@@ -209,6 +210,10 @@ async def test_protobuf_thermostat_supersedes_rest_thermostat(
         "heat_link_serial_number": "09AA00AA00AA0HL2",
     }
     raw_data[f"shared.{THERMOSTAT_SERIAL}"] = {"target_temperature": 18.0}
+    raw_data[f"rcs_settings.{THERMOSTAT_SERIAL}"] = {
+        "associated_rcs_sensors": [f"kryptonite.{TEMP_SENSOR_SERIAL}"],
+        "active_rcs_sensors": [f"kryptonite.{TEMP_SENSOR_SERIAL}"],
+    }
     raw_data[f"kryptonite.{TEMP_SENSOR_SERIAL}"] = {
         "serial_number": TEMP_SENSOR_SERIAL,
         "current_temperature": 15.0,
@@ -222,7 +227,96 @@ async def test_protobuf_thermostat_supersedes_rest_thermostat(
     assert thermostats[0].is_protobuf
     assert len(sensors) == 1
     assert sensors[0].is_protobuf
+    assert isinstance(sensors[0], NestTempSensor)
+    assert sensors[0].associated_thermostat_object_key == THERMOSTAT_KEY
+    assert not sensors[0].is_active_sensor
     assert not [d for d in parsed if d.serial_number == "09AA00AA00AA0HL2"]
+
+
+async def test_rest_thermostat_keeps_dual_api_sensor_on_rest(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A sensor paired with a REST-only thermostat uses REST even if exposed on protobuf; see issue #103."""
+    raw_data["device.15AA00AA00AA0AAA"] = {
+        "serial_number": "15AA00AA00AA0AAA",
+        "temperature_scale": "C",
+    }
+    raw_data["shared.15AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "heat",
+        "current_temperature": 20.0,
+        "can_heat": True,
+    }
+    raw_data["rcs_settings.15AA00AA00AA0AAA"] = {
+        "associated_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+        "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+    }
+    raw_data["kryptonite.18B430CCCCCC0001"] = {
+        "serial_number": "18B430CCCCCC0001",
+        "current_temperature": 19.25,
+        "battery_level": 88,
+    }
+    temp_trait = nest_sensor_pb2.TemperatureTrait()
+    temp_trait.temperatureValue.temperature.value = 19.25
+    raw_data["DEVICE_0000000000000007"] = {
+        nest_sensor_pb2.TemperatureTrait.DESCRIPTOR.full_name: temp_trait,
+        weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name: (
+            weave_description_pb2.DeviceIdentityTrait(serialNumber="18B430CCCCCC0001")
+        ),
+    }
+
+    parsed = parser.parse_all(raw_data).devices
+    sensors = [d for d in parsed if d.serial_number == "18B430CCCCCC0001"]
+
+    assert len(sensors) == 1
+    sensor = sensors[0]
+    assert isinstance(sensor, NestTempSensor)
+    assert not sensor.is_protobuf
+    assert sensor.object_key == "kryptonite.18B430CCCCCC0001"
+    assert sensor.associated_thermostat_object_key == "device.15AA00AA00AA0AAA"
+    assert sensor.is_active_sensor
+
+
+async def test_rest_thermostat_associates_protobuf_only_sensor(
+    parser: NestParser, raw_data: dict[str, Any]
+) -> None:
+    """A protobuf-only sensor still associates with a REST thermostat via rcs_settings."""
+    raw_data["device.15AA00AA00AA0AAA"] = {
+        "serial_number": "15AA00AA00AA0AAA",
+        "temperature_scale": "C",
+    }
+    raw_data["shared.15AA00AA00AA0AAA"] = {
+        "target_temperature": 21.0,
+        "target_temperature_type": "heat",
+        "current_temperature": 20.0,
+        "can_heat": True,
+    }
+    raw_data["rcs_settings.15AA00AA00AA0AAA"] = {
+        "value": {
+            "associated_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+            "active_rcs_sensors": ["kryptonite.18B430CCCCCC0001"],
+        }
+    }
+    temp_trait = nest_sensor_pb2.TemperatureTrait()
+    temp_trait.temperatureValue.temperature.value = 19.25
+    raw_data["DEVICE_0000000000000007"] = {
+        nest_sensor_pb2.TemperatureTrait.DESCRIPTOR.full_name: temp_trait,
+        weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name: (
+            weave_description_pb2.DeviceIdentityTrait(serialNumber="18B430CCCCCC0001")
+        ),
+    }
+
+    devices = _by_serial(parser, raw_data)
+
+    sensor = devices["18B430CCCCCC0001"]
+    assert isinstance(sensor, NestTempSensor)
+    assert sensor.is_protobuf
+    assert sensor.associated_thermostat_object_key == "device.15AA00AA00AA0AAA"
+    assert sensor.is_active_sensor
+
+    thermostat = devices["15AA00AA00AA0AAA"]
+    assert isinstance(thermostat, NestThermostat)
+    assert thermostat.current_temperature == 19.25
 
 
 async def test_rest_thermostat_eco_and_mode_fallbacks(

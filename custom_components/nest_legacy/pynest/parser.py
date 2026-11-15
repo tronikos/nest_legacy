@@ -401,6 +401,7 @@ class NestParser:
         thermostats: list[NestThermostat] = []
 
         wheres_map = self._build_wheres_map(raw_data)
+        protobuf_thermostat_serials = self._get_protobuf_thermostat_serials(raw_data)
 
         for key, value in raw_data.items():
             try:
@@ -413,7 +414,9 @@ class NestParser:
                     ):
                         thermostats.append(device)
                 elif key.startswith("kryptonite."):
-                    device = self._parse_tempsensor(key, value, raw_data, wheres_map)
+                    device = self._parse_tempsensor(
+                        key, value, raw_data, wheres_map, protobuf_thermostat_serials
+                    )
                 elif key.startswith("quartz."):
                     device = self._parse_camera(key, value, wheres_map)
                 elif key.startswith("structure."):
@@ -452,7 +455,11 @@ class NestParser:
                         not in value
                     ):
                         device = self._parse_protobuf_sensor(
-                            key, value, raw_data, wheres_map
+                            key,
+                            value,
+                            raw_data,
+                            wheres_map,
+                            protobuf_thermostat_serials,
                         )
 
                 if device:
@@ -460,21 +467,47 @@ class NestParser:
             except (KeyError, TypeError, ValueError) as e:
                 _LOGGER.warning("Skipping device %s due to a parsing error: %s", key, e)
 
-        # Drop any REST device that also has a protobuf resource, so the
-        # protobuf version is kept and only one Heat Link is created.
-        protobuf_serials = {
-            device.serial_number for device in devices if device.is_protobuf
+        # Drop any REST device that also has a protobuf resource, except
+        # temperature sensors paired with a REST-only thermostat (Nest exposes
+        # sensors on protobuf even when their paired thermostat is REST-only).
+        parsed_protobuf_thermostat_serials = {
+            thermostat.serial_number
+            for thermostat in thermostats
+            if thermostat.is_protobuf
         }
-        devices = [
-            device
-            for device in devices
-            if device.is_protobuf or device.serial_number not in protobuf_serials
-        ]
         thermostats = [
             thermostat
             for thermostat in thermostats
             if thermostat.is_protobuf
-            or thermostat.serial_number not in protobuf_serials
+            or thermostat.serial_number not in parsed_protobuf_thermostat_serials
+        ]
+        rest_thermostat_keys = {
+            thermostat.object_key
+            for thermostat in thermostats
+            if not thermostat.is_protobuf
+        }
+        rest_sensor_serials = {
+            device.serial_number
+            for device in devices
+            if isinstance(device, NestTempSensor)
+            and not device.is_protobuf
+            and device.associated_thermostat_object_key in rest_thermostat_keys
+        }
+        protobuf_serials = {
+            device.serial_number
+            for device in devices
+            if device.is_protobuf and device.serial_number not in rest_sensor_serials
+        }
+        devices = [
+            device
+            for device in devices
+            if (
+                not device.is_protobuf
+                if device.serial_number in rest_sensor_serials
+                else (
+                    device.is_protobuf or device.serial_number not in protobuf_serials
+                )
+            )
         ]
 
         # Second pass to create derived devices like Heat Link
@@ -811,12 +844,19 @@ class NestParser:
         rcs_settings_key = f"rcs_settings.{device_id}"
         if rcs_settings_key in raw_data:
             rcs_data = raw_data[rcs_settings_key]
-            active_sensors = rcs_data.get("active_rcs_sensors", [])
+            rcs_val = rcs_data.get("value", {}) if "value" in rcs_data else rcs_data
+            active_sensors = rcs_val.get("active_rcs_sensors", [])
             if active_sensors:
                 sensor_key = active_sensors[0]
                 if sensor_key in raw_data:
                     sensor_data = raw_data[sensor_key]
                     current_temperature = sensor_data.get("current_temperature")
+                elif sensor_key.startswith("kryptonite."):
+                    sensor_temp = self._get_protobuf_sensor_temperature(
+                        sensor_key.split(".", 1)[1], raw_data
+                    )
+                    if sensor_temp is not None:
+                        current_temperature = sensor_temp
 
         current_temperature = _round_current_temp(current_temperature)
         target_temperature = _round_target_temp(target_temp, temp_scale)
@@ -903,36 +943,98 @@ class NestParser:
             ),
         )
 
+    def _get_protobuf_thermostat_serials(self, raw_data: dict[str, Any]) -> set[str]:
+        """Return serial numbers of thermostats present in protobuf data."""
+        serials: set[str] = set()
+        hvac_trait_name = nest_hvac_pb2.HvacControlTrait.DESCRIPTOR.full_name
+        identity_trait_name = (
+            weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name
+        )
+        for key, value in raw_data.items():
+            if (
+                key.startswith("DEVICE_")
+                and isinstance(value, dict)
+                and hvac_trait_name in value
+            ):
+                identity_trait = value.get(identity_trait_name)
+                serials.add(identity_trait.serialNumber if identity_trait else key)
+        return serials
+
+    def _find_rest_rcs_association(
+        self,
+        sensor_key: str,
+        raw_data: dict[str, Any],
+        protobuf_thermostat_serials: set[str] | None = None,
+    ) -> tuple[str | None, bool]:
+        """Find REST thermostat association and active status from rcs_settings."""
+        if protobuf_thermostat_serials is None:
+            protobuf_thermostat_serials = self._get_protobuf_thermostat_serials(
+                raw_data
+            )
+
+        for rcs_key, rcs_data in raw_data.items():
+            if not rcs_key.startswith("rcs_settings.") or not isinstance(
+                rcs_data, dict
+            ):
+                continue
+
+            device_id = rcs_key.split(".", 1)[1]
+            device_bucket = raw_data.get(f"device.{device_id}")
+            thermostat_serial = (
+                device_bucket.get("serial_number", device_id)
+                if isinstance(device_bucket, dict)
+                else device_id
+            )
+            if thermostat_serial in protobuf_thermostat_serials:
+                continue
+
+            rcs_val = rcs_data.get("value", {}) if "value" in rcs_data else rcs_data
+            associated_sensors = rcs_val.get("associated_rcs_sensors", [])
+            if sensor_key in associated_sensors:
+                active_sensors = rcs_val.get("active_rcs_sensors", [])
+                return f"device.{device_id}", sensor_key in active_sensors
+
+        return None, False
+
+    def _get_protobuf_sensor_temperature(
+        self, sensor_serial: str, raw_data: dict[str, Any]
+    ) -> float | None:
+        """Return temperature from a protobuf sensor matching serial_number."""
+        for key, traits in raw_data.items():
+            if (
+                not key.startswith("DEVICE_")
+                or not isinstance(traits, dict)
+                or nest_hvac_pb2.HvacControlTrait.DESCRIPTOR.full_name in traits
+                or nest_sensor_pb2.HumidityTrait.DESCRIPTOR.full_name in traits
+            ):
+                continue
+            identity_trait: weave_description_pb2.DeviceIdentityTrait | None = (
+                traits.get(
+                    weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name
+                )
+            )
+            serial = identity_trait.serialNumber if identity_trait else key
+            if serial != sensor_serial:
+                continue
+            temp_trait: nest_sensor_pb2.TemperatureTrait | None = traits.get(
+                nest_sensor_pb2.TemperatureTrait.DESCRIPTOR.full_name
+            )
+            if temp_trait and temp_trait.HasField("temperatureValue"):
+                return temp_trait.temperatureValue.temperature.value
+        return None
+
     def _parse_tempsensor(
         self,
         key: str,
         value: dict[str, Any],
         raw_data: dict[str, Any],
         wheres_map: dict[str, str],
+        protobuf_thermostat_serials: set[str] | None = None,
     ) -> NestTempSensor | None:
         """Parse a Nest Temperature Sensor."""
-        # Legacy API: Check rcs_settings to find association and active status
-        associated_thermostat = None
-        is_active = False
-
-        # Iterate all rcs_settings buckets to find which one contains this sensor
-        for rcs_key, rcs_data in raw_data.items():
-            if not rcs_key.startswith("rcs_settings."):
-                continue
-
-            rcs_val = rcs_data.get("value", {}) if "value" in rcs_data else rcs_data
-
-            associated_sensors = rcs_val.get("associated_rcs_sensors", [])
-            if key in associated_sensors:
-                # Found the thermostat this sensor belongs to
-                device_id = rcs_key.split(".")[1]
-                associated_thermostat = f"device.{device_id}"
-
-                # Check if active
-                active_sensors = rcs_val.get("active_rcs_sensors", [])
-                if key in active_sensors:
-                    is_active = True
-                break
+        associated_thermostat, is_active = self._find_rest_rcs_association(
+            key, raw_data, protobuf_thermostat_serials
+        )
 
         return NestTempSensor(
             object_key=key,
@@ -2506,6 +2608,7 @@ class NestParser:
         traits: dict[str, Any],
         raw_data: dict[str, Any],
         wheres_map: dict[str, str],
+        protobuf_thermostat_serials: set[str] | None = None,
     ) -> NestTempSensor | None:
         """Parse a Nest Temperature Sensor from protobuf data."""
         # Ensure it's a sensor and not a thermostat (thermostats also have temperature)
@@ -2522,11 +2625,20 @@ class NestParser:
         if not temp_trait:
             return None
 
+        # Identity
+        identity_trait: weave_description_pb2.DeviceIdentityTrait | None = traits.get(
+            weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name
+        )
+        serial_number = identity_trait.serialNumber if identity_trait else key
+
         # Determine Active Status by looking at all thermostats in raw_data
         associated_thermostat = None
         is_active = False
 
         for potential_key, potential_traits in raw_data.items():
+            if not isinstance(potential_traits, dict):
+                continue
+
             rcs_trait: nest_hvac_pb2.RemoteComfortSensingSettingsTrait | None = (
                 potential_traits.get(
                     nest_hvac_pb2.RemoteComfortSensingSettingsTrait.DESCRIPTOR.full_name
@@ -2554,11 +2666,12 @@ class NestParser:
                     is_active = True
                 break
 
-        # Identity
-        identity_trait: weave_description_pb2.DeviceIdentityTrait | None = traits.get(
-            weave_description_pb2.DeviceIdentityTrait.DESCRIPTOR.full_name
-        )
-        serial_number = identity_trait.serialNumber if identity_trait else key
+        if associated_thermostat is None:
+            associated_thermostat, is_active = self._find_rest_rcs_association(
+                f"kryptonite.{serial_number}",
+                raw_data,
+                protobuf_thermostat_serials,
+            )
 
         label_trait: weave_description_pb2.LabelSettingsTrait | None = traits.get(
             weave_description_pb2.LabelSettingsTrait.DESCRIPTOR.full_name

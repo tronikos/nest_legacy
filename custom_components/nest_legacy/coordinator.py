@@ -235,7 +235,8 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             ):
                 resource_id = device.associated_thermostat_object_key
 
-            current_traits = self._raw_data.get(resource_id)
+            if resource_id.startswith(("DEVICE_", "STRUCTURE_")):
+                current_traits = self._raw_data.get(resource_id)
 
         try:
             await self.client.async_set_device_data(
