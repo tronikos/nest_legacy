@@ -9,6 +9,7 @@ import time
 from typing import Any, NoReturn, TypeVar
 from urllib.parse import urljoin
 import uuid
+import xml.etree.ElementTree as ET
 
 from aiohttp import (
     ClientError,
@@ -379,6 +380,21 @@ _OBSERVE_TIMEOUT = 600  # seconds
 _CONNECT_TIMEOUT = 60  # seconds
 _PROTOBUF_COMMAND_TIMEOUT = 30  # seconds
 
+# Stored event media of Protobuf-only cameras. These cameras are not in the
+# legacy REST API, so nexusapi has nothing for them. The Home app plays their
+# history from a DASH manifest on this host, and the host accepts the Google
+# access token the integration already gets when it authenticates.
+_CAMERA_FRONTEND_URL = "https://nest-camera-frontend.googleapis.com"
+_DASH_MANIFEST_URL_FORMAT = (
+    _CAMERA_FRONTEND_URL
+    + "/dashmanifest/namespace/nest-phoenix-prod/device/{device_id}"
+)
+# Recording periods start a few seconds before the event that triggered them.
+_EVENT_CLIP_PADDING = 10  # seconds
+_EVENT_MEDIA_TIMEOUT = 40  # seconds
+# Events remembered per camera, so their media can be served by event id.
+_MAX_CACHED_EVENTS_PER_CAMERA = 500
+
 _LOGGER = logging.getLogger(__package__)
 
 
@@ -524,6 +540,8 @@ class NestClient:
         ]
         self._nest_session: NestSession | None = None
         self._google_cookies: str | None = None
+        self._google_access_token: str | None = None
+        self._protobuf_camera_events: dict[str, dict[str, dict[str, Any]]] = {}
         self._camera_session_token: str | None = None
         self._raw_data: dict[str, Any] = {}
         self._buckets_for_subscription: list[Bucket] = []
@@ -562,7 +580,7 @@ class NestClient:
         """Authenticate using Google issue token and cookies."""
         try:
             auth = await self._async_get_access_token_from_cookies(issue_token, cookies)
-            return await self._async_authenticate(auth.access_token)
+            session = await self._async_authenticate(auth.access_token)
         except (ClientError, TimeoutError, PynestException) as err:
             _LOGGER.debug(
                 "Expected error during Google credential authentication: %r", err
@@ -573,6 +591,10 @@ class NestClient:
                 "Unexpected error during Google credential authentication"
             )
             raise
+        # Kept for the camera frontend, which serves the stored event media of
+        # Protobuf-only cameras and takes this token as a Bearer token.
+        self._google_access_token = auth.access_token
+        return session
 
     async def async_authenticate_with_nest_token(
         self, access_token: str
@@ -2583,8 +2605,10 @@ class NestClient:
     ):
         """Get a historical media stream from a camera event."""
         if device.is_protobuf:
-            # Historical MP4 clips are not available over simple REST GET for Protobuf cameras
-            yield None
+            async with self._async_get_protobuf_event_media(
+                device, event_id, format
+            ) as response:
+                yield response
             return
 
         if not device.nexus_api_http_server_url:
@@ -2651,15 +2675,14 @@ class NestClient:
         if not zone_ids:
             zone_ids = [1]
 
-        events.append(
-            {
-                "id": cam_event.eventId,
-                "start_time": start_t,
-                "end_time": end_t,
-                "types": event_types,
-                "zone_ids": zone_ids,
-            }
-        )
+        event: dict[str, Any] = {
+            "id": cam_event.eventId,
+            "start_time": start_t,
+            "end_time": end_t,
+            "types": event_types,
+            "zone_ids": zone_ids,
+        }
+        events.append(event)
 
     async def _async_get_protobuf_camera_events(
         self,
@@ -2730,7 +2753,95 @@ class NestClient:
 
         # Sort by start_time descending to match legacy API behavior
         events.sort(key=lambda x: x["start_time"], reverse=True)
+        self._remember_protobuf_camera_events(device, events)
         return events
+
+    def _remember_protobuf_camera_events(
+        self, device: NestCamera, events: list[dict[str, Any]]
+    ) -> None:
+        """Remember events so their media can be looked up by event id."""
+        cache = self._protobuf_camera_events.setdefault(device.object_key, {})
+        for event in events:
+            cache[event["id"]] = event
+        if len(cache) > _MAX_CACHED_EVENTS_PER_CAMERA:
+            newest = sorted(cache.values(), key=lambda e: e["start_time"])
+            self._protobuf_camera_events[device.object_key] = {
+                e["id"]: e for e in newest[-_MAX_CACHED_EVENTS_PER_CAMERA:]
+            }
+
+    @contextlib.asynccontextmanager
+    async def _async_get_protobuf_event_media(
+        self, device: NestCamera, event_id: str, format: str
+    ):
+        """Get the stored clip of a Protobuf camera event."""
+        event = self._protobuf_camera_events.get(device.object_key, {}).get(event_id)
+        if event is None or not self._google_access_token:
+            # An event this client has not listed, or a legacy Nest token,
+            # which the camera frontend does not accept.
+            yield None
+            return
+
+        if format != "mp4":
+            # The events carry no usable snapshot URL, so there is no thumbnail.
+            yield None
+            return
+
+        segment_urls = await self._async_get_event_clip_segment_urls(device, event)
+        if not segment_urls:
+            yield None
+            return
+        segments: list[bytes] = []
+        for url in segment_urls:
+            async with self._session.get(
+                url,
+                headers=self._get_camera_frontend_headers(),
+                timeout=ClientTimeout(total=_EVENT_MEDIA_TIMEOUT),
+            ) as response:
+                if not response.ok:
+                    _LOGGER.error(
+                        "Failed to get camera event clip segment. Status: %s",
+                        response.status,
+                    )
+                    yield None
+                    return
+                segments.append(await response.read())
+        yield _BufferedMediaResponse(join_fragmented_mp4(segments))
+
+    async def _async_get_event_clip_segment_urls(
+        self, device: NestCamera, event: dict[str, Any]
+    ) -> list[str]:
+        """Return the video segments of the recording that holds the event."""
+        url = _DASH_MANIFEST_URL_FORMAT.format(device_id=device.object_key)
+        params = [
+            ("start_time", _iso_utc(event["start_time"] - _EVENT_CLIP_PADDING)),
+            ("end_time", _iso_utc(event["end_time"] + _EVENT_CLIP_PADDING)),
+            ("variant", "2"),
+            ("types", "1"),
+            ("types", "2"),
+        ]
+        async with self._session.get(
+            url,
+            params=params,
+            headers=self._get_camera_frontend_headers(),
+            timeout=ClientTimeout(total=_EVENT_MEDIA_TIMEOUT),
+        ) as response:
+            if not response.ok:
+                _LOGGER.error(
+                    "Failed to get camera event manifest. Status: %s",
+                    response.status,
+                )
+                return []
+            manifest = await response.text()
+        return select_event_clip_segments(
+            manifest, event["start_time"], event["end_time"]
+        )
+
+    def _get_camera_frontend_headers(self) -> dict[str, str]:
+        """Get headers for the host that serves stored camera event media."""
+        return {
+            "User-Agent": _USER_AGENT,
+            "Authorization": f"Bearer {self._google_access_token}",
+        }
 
     async def async_get_camera_events(
         self,
@@ -3050,3 +3161,161 @@ class NestClient:
                         )
 
             seen_labels[resource_id][descriptor_full_name] = (trait_label, state)
+
+
+def _iso_utc(timestamp: float) -> str:
+    """Format a Unix timestamp the way the DASH manifest endpoint expects."""
+    return (
+        dt.datetime.fromtimestamp(timestamp, tz=dt.UTC)
+        .isoformat(timespec="milliseconds")
+        .replace("+00:00", "Z")
+    )
+
+
+def _parse_dash_duration(value: str | None) -> float:
+    """Parse a DASH duration such as PT8.761S or PT1M2.5S into seconds."""
+    if not value or not value.startswith("PT"):
+        return 0.0
+    seconds = 0.0
+    number = ""
+    for char in value[2:]:
+        if char.isdigit() or char == ".":
+            number += char
+            continue
+        if not number:
+            return 0.0
+        seconds += float(number) * {"H": 3600, "M": 60, "S": 1}.get(char, 0)
+        number = ""
+    return seconds
+
+
+def select_event_clip_segments(
+    manifest: str, event_start: float, event_end: float
+) -> list[str]:
+    """Pick the video segments of the recording period that holds an event.
+
+    The manifest lists every recording period in the requested window, each
+    with its wall-clock start (programDateTime) and duration. The event's clip
+    is the period that overlaps the event the most, and of that period the
+    widest video representation. Its segments are fragmented MP4 that play
+    when joined in order.
+    """
+    try:
+        # The manifest comes from Google over an authenticated HTTPS request,
+        # and the expat that ships with Python guards against entity expansion.
+        root = ET.fromstring(manifest)  # noqa: S314
+    except ET.ParseError:
+        _LOGGER.error("Camera event manifest is not valid XML")
+        return []
+    # Match elements by local name, with or without the DASH namespace.
+    for element in root.iter():
+        element.tag = element.tag.rpartition("}")[2]
+
+    best: list[str] = []
+    best_overlap = -1.0
+    for period in root.iter("Period"):
+        program_time = period.get("programDateTime")
+        if not program_time:
+            continue
+        try:
+            start = dt.datetime.fromisoformat(program_time).timestamp()
+        except ValueError:
+            continue
+        end = start + _parse_dash_duration(period.get("duration"))
+        overlap = min(end, event_end) - max(start, event_start)
+        if event_end <= event_start:
+            # Zero-length event: take the period it falls in.
+            overlap = 0.0 if start <= event_start <= end else -1.0
+        if overlap < 0 or overlap <= best_overlap:
+            continue
+
+        segments: list[str] = []
+        widest = -1
+        for adaptation in period.iter("AdaptationSet"):
+            if adaptation.get("contentType") != "video":
+                continue
+            for representation in adaptation.iter("Representation"):
+                width = int(representation.get("width") or 0)
+                base = representation.findtext("BaseURL", "")
+                urls = [
+                    urljoin(base, segment.get("media", ""))
+                    for segment in representation.iter("SegmentURL")
+                    if segment.get("media")
+                ]
+                if base and urls and width > widest:
+                    widest = width
+                    segments = urls
+        if segments:
+            best = segments
+            best_overlap = overlap
+    return best
+
+
+# Boxes that describe or index one segment file. A joined clip keeps the
+# first segment's ftyp and moov and drops the rest, so it is one stream.
+_MP4_SEGMENT_HEADER_BOXES = frozenset({b"ftyp", b"moov"})
+_MP4_SEGMENT_INDEX_BOXES = frozenset({b"mfra", b"free", b"sidx", b"styp"})
+
+
+def _iter_mp4_boxes(data: bytes):
+    """Yield (type, box bytes) for the top-level boxes of an MP4 file."""
+    offset = 0
+    while offset + 8 <= len(data):
+        size = int.from_bytes(data[offset : offset + 4], "big")
+        box_type = data[offset + 4 : offset + 8]
+        if size == 1 and offset + 16 <= len(data):
+            size = int.from_bytes(data[offset + 8 : offset + 16], "big")
+        elif size == 0:
+            size = len(data) - offset
+        if size < 8 or offset + size > len(data):
+            # Not a box we can follow: hand back the rest unchanged.
+            yield b"", data[offset:]
+            return
+        yield box_type, data[offset : offset + size]
+        offset += size
+
+
+def join_fragmented_mp4(segments: list[bytes]) -> bytes:
+    """Join the segments of one recording into a single fragmented MP4.
+
+    Each segment the camera frontend serves is a complete fragmented MP4 file:
+    its own ftyp and moov, then moof/mdat fragments whose decode times run on
+    from the previous segment, then an mfra index. Played back to back that
+    works in some players only, so the joined clip keeps one ftyp and moov
+    and only the fragments of the later segments.
+    """
+    joined = bytearray()
+    for index, segment in enumerate(segments):
+        for box_type, box in _iter_mp4_boxes(segment):
+            if box_type in _MP4_SEGMENT_INDEX_BOXES:
+                continue
+            if index and box_type in _MP4_SEGMENT_HEADER_BOXES:
+                continue
+            joined.extend(box)
+    return bytes(joined)
+
+
+class _BufferedMediaResponse:
+    """Media held in memory, served like an aiohttp response."""
+
+    def __init__(self, data: bytes) -> None:
+        """Initialize with the complete media."""
+        self._data = data
+        self.content = _StreamReaderLike(data)
+
+    async def read(self) -> bytes:
+        """Return the complete media."""
+        return self._data
+
+
+class _StreamReaderLike:
+    """The part of aiohttp's StreamReader that the media views use."""
+
+    def __init__(self, data: bytes) -> None:
+        """Initialize with the complete media."""
+        self._data = data
+
+    async def iter_chunked(self, size: int):
+        """Yield the media in chunks."""
+        for offset in range(0, len(self._data), size):
+            yield self._data[offset : offset + size]
