@@ -1,6 +1,7 @@
 """Tests for the Nest Legacy coordinator's connection handling."""
 
 import asyncio
+from collections.abc import AsyncGenerator
 from dataclasses import replace
 import time
 from typing import Any
@@ -280,6 +281,54 @@ async def _setup_without_event_poll(
     hass.config_entries.async_update_entry(entry, options={CONF_EVENT_POLL_INTERVAL: 0})
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
+
+
+async def test_observer_backs_off_when_the_session_is_rejected_in_band(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A stream that connects and is then rejected re-auths with a growing backoff.
+
+    Nest sends the rejection inside a 200 response, after the connection marker,
+    so the marker must not count as success or the backoff never grows.
+    """
+
+    async def _rejected() -> AsyncGenerator[dict[str, Any]]:
+        yield {}
+        raise AuthenticationFailedException("authentication failed")
+
+    # Camera polling would share the patched sleep, so keep it out of the way.
+    await _setup_without_event_poll(hass, mock_config_entry)
+    mock_nest_client.async_observe_for_updates.side_effect = _rejected
+    mock_nest_client.async_authenticate_with_google_credentials.reset_mock()
+    delays: list[float] = []
+    real_sleep = asyncio.sleep
+
+    async def _sleep(delay: float) -> None:
+        # The patch reaches every asyncio.sleep, so let event loop yields through.
+        if not delay:
+            await real_sleep(0)
+            return
+        delays.append(delay)
+        if len(delays) == 4:
+            raise asyncio.CancelledError
+
+    with (
+        # Undo the autouse fixture's zero backoff: the growth is what is tested.
+        patch("custom_components.nest_legacy.coordinator.INITIAL_BACKOFF_SECONDS", 1),
+        patch("custom_components.nest_legacy.coordinator.MAX_BACKOFF_SECONDS", 60),
+        patch(
+            "custom_components.nest_legacy.coordinator.asyncio.sleep",
+            side_effect=_sleep,
+        ),
+        pytest.raises(asyncio.CancelledError),
+    ):
+        await _coordinator(mock_config_entry)._async_observe_for_updates()
+
+    assert delays == sorted(delays)
+    assert delays[-1] > delays[0]
+    assert mock_nest_client.async_authenticate_with_google_credentials.await_count >= 3
 
 
 async def test_camera_events_retry_after_reauthenticating(

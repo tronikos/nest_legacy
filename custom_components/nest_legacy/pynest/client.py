@@ -21,6 +21,7 @@ import google.protobuf.any_pb2
 from google.protobuf.duration_pb2 import Duration  # pylint: disable=no-name-in-module
 from google.protobuf.message import Message
 from google.protobuf.timestamp_pb2 import Timestamp  # pylint: disable=no-name-in-module
+from google.rpc import status_pb2
 
 from .enums import (
     BucketType,
@@ -2853,6 +2854,18 @@ class NestClient:
                     updates = self._parse_observe_response(inner_response)
                     if updates:
                         yield updates
+            elif tag >> 3 == 2:  # Field 2: google.rpc.Status, sent before a close
+                status = status_pb2.Status()
+                status.ParseFromString(
+                    bytes(full_frame_data[frame_size - message_length :])
+                )
+                if status.code:
+                    # Nest rejects a stale session in-band: the HTTP response is
+                    # still 200, so without this the stream just ends and is
+                    # reopened at once with the same session, in a tight loop.
+                    _raise_for_status_code(
+                        status.code, f"Observe stream closed: {status.message}"
+                    )
             else:
                 _LOGGER.debug(
                     "Skipping unknown field tag %s in observe stream",
@@ -2894,6 +2907,8 @@ class NestClient:
                     for updates in self._parse_observe_buffer(buffer):
                         yield updates
 
+        except PynestException:
+            raise
         except TimeoutError:
             _LOGGER.debug("Stream connection timed out due to inactivity")
         except ClientError as err:
