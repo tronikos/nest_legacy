@@ -529,6 +529,13 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                     force_reauth = False  # Reset on success
 
                 async for updates in self.client.async_observe_for_updates():
+                    if not updates:
+                        continue
+
+                    # Only real data proves the session works: the connection
+                    # marker arrives before Nest can reject the session in-band.
+                    failures = 0
+
                     if not self.observer_healthy:
                         self.observer_healthy = True
                         self._update_coordinator_availability()
@@ -536,13 +543,6 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
                     if self._observer_unavailable_logged:
                         _LOGGER.info("Nest Protobuf stream connection restored")
                         self._observer_unavailable_logged = False
-
-                    if not updates:
-                        continue
-
-                    # Only real data proves the session works: the connection
-                    # marker arrives before Nest can reject the session in-band.
-                    failures = 0
 
                     # Deep merge protobuf updates into raw_data
                     for resource_id, traits in updates.items():

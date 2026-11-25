@@ -294,14 +294,20 @@ async def test_observer_backs_off_when_the_session_is_rejected_in_band(
     so the marker must not count as success or the backoff never grows.
     """
 
+    health_after_marker: list[bool] = []
+
     async def _rejected() -> AsyncGenerator[dict[str, Any]]:
         yield {}
+        health_after_marker.append(coordinator.observer_healthy)
         raise AuthenticationFailedException("authentication failed")
 
     # Camera polling would share the patched sleep, so keep it out of the way.
     await _setup_without_event_poll(hass, mock_config_entry)
     mock_nest_client.async_observe_for_updates.side_effect = _rejected
     mock_nest_client.async_authenticate_with_google_credentials.reset_mock()
+    coordinator = _coordinator(mock_config_entry)
+    # Drive the observer directly, without the setup's background task alongside.
+    coordinator.async_stop_subscriber()
     delays: list[float] = []
     real_sleep = asyncio.sleep
 
@@ -324,11 +330,16 @@ async def test_observer_backs_off_when_the_session_is_rejected_in_band(
         ),
         pytest.raises(asyncio.CancelledError),
     ):
-        await _coordinator(mock_config_entry)._async_observe_for_updates()
+        await coordinator._async_observe_for_updates()
 
     assert delays == sorted(delays)
     assert delays[-1] > delays[0]
     assert mock_nest_client.async_authenticate_with_google_credentials.await_count >= 3
+    # Once unhealthy, the connection marker alone must not flip it back.
+    assert coordinator.observer_healthy is False
+    assert False in health_after_marker
+    first_unhealthy = health_after_marker.index(False)
+    assert not any(health_after_marker[first_unhealthy:])
 
 
 async def test_camera_events_retry_after_reauthenticating(
