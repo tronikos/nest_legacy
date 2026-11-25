@@ -14,6 +14,7 @@ from homeassistant.components.climate import (
     ATTR_CURRENT_TEMPERATURE,
     ATTR_FAN_MODE,
     ATTR_HVAC_ACTION,
+    ATTR_HVAC_MODE,
     ATTR_HVAC_MODES,
     ATTR_PRESET_MODE,
     ATTR_TARGET_TEMP_HIGH,
@@ -186,6 +187,52 @@ async def test_set_temperature_range(
     _, data = mock_nest_client.async_set_device_data.call_args[0]
     assert data["target_temperature_low"] == pytest.approx(19.444444444444443)
     assert data["target_temperature_high"] == pytest.approx(25)
+
+
+async def test_set_temperature_with_hvac_mode(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """An hvac_mode passed to set_temperature is sent with the setpoint."""
+    hass.config.units = US_CUSTOMARY_SYSTEM
+    await setup_integration(hass, mock_config_entry)
+
+    await hass.services.async_call(
+        CLIMATE_DOMAIN,
+        SERVICE_SET_TEMPERATURE,
+        {
+            ATTR_ENTITY_ID: ENTITY_ID,
+            ATTR_TEMPERATURE: 72,
+            ATTR_HVAC_MODE: HVACMode.HEAT,
+        },
+        blocking=True,
+    )
+
+    assert mock_nest_client.async_set_device_data.call_count == 1
+    _, data = mock_nest_client.async_set_device_data.call_args[0]
+    assert data["hvac_mode"] == "heat"
+    assert data["target_temperature"] == pytest.approx(22.22222222222222)
+
+
+async def test_set_temperature_without_hvac_mode_keeps_mode(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """Without an hvac_mode, set_temperature does not touch the mode."""
+    hass.config.units = US_CUSTOMARY_SYSTEM
+    await setup_integration(hass, mock_config_entry)
+
+    await hass.services.async_call(
+        CLIMATE_DOMAIN,
+        SERVICE_SET_TEMPERATURE,
+        {ATTR_ENTITY_ID: ENTITY_ID, ATTR_TEMPERATURE: 72},
+        blocking=True,
+    )
+
+    _, data = mock_nest_client.async_set_device_data.call_args[0]
+    assert "hvac_mode" not in data
 
 
 async def test_heat_only_thermostat(
