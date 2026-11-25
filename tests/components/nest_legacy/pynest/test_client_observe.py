@@ -5,7 +5,10 @@ import logging
 from typing import Any
 
 from custom_components.nest_legacy.pynest.client import NestClient
-from custom_components.nest_legacy.pynest.exceptions import PynestException
+from custom_components.nest_legacy.pynest.exceptions import (
+    AuthenticationFailedException,
+    PynestException,
+)
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     hvac_pb2 as nest_hvac_pb2,
     security_pb2 as nest_security_pb2,
@@ -330,3 +333,33 @@ async def test_observe_reports_a_failed_connection(
 
     with pytest.raises(PynestException):
         await _collect(client)
+
+
+def _status_frame(code: int, message: str) -> bytes:
+    """Return the status frame Nest sends before closing the stream."""
+    outer = v2_pb2.ObserveResponse()
+    outer.status.code = code
+    outer.status.message = message
+    return outer.SerializeToString()
+
+
+async def test_observe_raises_when_the_session_is_rejected_in_band(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """A stale session is rejected inside a 200 response, not with a 401."""
+    aioclient_mock.post(OBSERVE_URL, content=_status_frame(7, "authentication failed"))
+
+    stream = client.async_observe_for_updates()
+
+    assert await anext(stream) == {}
+    with pytest.raises(AuthenticationFailedException):
+        await anext(stream)
+
+
+async def test_observe_ignores_an_ok_status(
+    client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """An OK status before a close is a normal end of stream."""
+    aioclient_mock.post(OBSERVE_URL, content=_status_frame(0, ""))
+
+    assert await _collect(client) == [{}]

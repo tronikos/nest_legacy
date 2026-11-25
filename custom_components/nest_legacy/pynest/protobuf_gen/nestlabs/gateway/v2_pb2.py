@@ -16,11 +16,12 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.rpc import status_pb2 as google_dot_rpc_dot_status__pb2
 from ...nest import messages_pb2 as nest_dot_messages__pb2
 from ...nestlabs.gateway import v1_pb2 as nestlabs_dot_gateway_dot_v1__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19nestlabs/gateway/v2.proto\x12\x13nestlabs.gateway.v2\x1a\x19google/protobuf/any.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13nest/messages.proto\x1a\x19nestlabs/gateway/v1.proto\"b\n\tTraitMeta\x12\x12\n\ntraitLabel\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x33\n\rschemaVersion\x18\x03 \x01(\x0b\x32\x1c.nest.messages.SchemaVersion\"\xee\x01\n\tIfaceMeta\x12\x12\n\nifaceLabel\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12P\n\x11traitLabelMapping\x18\x03 \x03(\x0b\x32\x35.nestlabs.gateway.v2.IfaceMeta.TraitLabelMappingEntry\x12\x33\n\rschemaVersion\x18\x04 \x01(\x0b\x32\x1c.nest.messages.SchemaVersion\x1a\x38\n\x16TraitLabelMappingEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x01\n\x0cResourceMeta\x12\x12\n\nresourceId\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x33\n\x06status\x18\x03 \x01(\x0e\x32#.nestlabs.gateway.v2.ResourceStatus\x12\x32\n\ntraitMetas\x18\x04 \x03(\x0b\x32\x1e.nestlabs.gateway.v2.TraitMeta\x12\x1c\n\x14\x63urrentSchemaVersion\x18\x06 \x01(\r\x12\x32\n\nifaceMetas\x18\x07 \x03(\x0b\x32\x1e.nestlabs.gateway.v2.IfaceMeta\"1\n\x07TraitId\x12\x12\n\nresourceId\x18\x01 \x01(\t\x12\x12\n\ntraitLabel\x18\x02 \x01(\t\"-\n\x05Patch\x12$\n\x06values\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xce\x01\n\nTraitState\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12\x32\n\nstateTypes\x18\x02 \x03(\x0e\x32\x1e.nestlabs.gateway.v2.StateType\x12)\n\x05patch\x18\x03 \x01(\x0b\x32\x1a.nestlabs.gateway.v2.Patch\x12\x18\n\x10monotonicVersion\x18\x04 \x01(\x04\x12\x18\n\x10publisherVersion\x18\x05 \x01(\x04\"~\n\x16TraitTypeObserveParams\x12\x11\n\ttraitType\x18\x01 \x01(\t\x12\x32\n\x0estateFieldMask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x1d\n\x15observerSchemaVersion\x18\x03 \x01(\r\"l\n\x1aTraitInstanceObserveParams\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12\x1f\n\x17monotonicVersionFilters\x18\x02 \x03(\x04\"\xfd\x01\n\x0eObserveRequest\x12\x32\n\nstateTypes\x18\x01 \x03(\x0e\x32\x1e.nestlabs.gateway.v2.StateType\x12\x13\n\x0bresourceIds\x18\x02 \x03(\t\x12\x44\n\x0ftraitTypeParams\x18\x03 \x03(\x0b\x32+.nestlabs.gateway.v2.TraitTypeObserveParams\x12L\n\x13traitInstanceParams\x18\x04 \x03(\x0b\x32/.nestlabs.gateway.v2.TraitInstanceObserveParams\x12\x0e\n\x06userId\x18\x05 \x01(\t\"\x81\x01\n\x12TraitOperationList\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12<\n\x0ftraitOperations\x18\x02 \x03(\x0b\x32#.nestlabs.gateway.v1.TraitOperation\"\x81\x03\n\x0fObserveResponse\x12M\n\x0fobserveResponse\x18\x01 \x03(\x0b\x32\x34.nestlabs.gateway.v2.ObserveResponse.ObserveResponse\x1a\x9e\x02\n\x0fObserveResponse\x12\x38\n\rresourceMetas\x18\x01 \x03(\x0b\x32!.nestlabs.gateway.v2.ResourceMeta\x12$\n\x1cinitialResourceMetasContinue\x18\x02 \x01(\x08\x12\x34\n\x0btraitStates\x18\x03 \x03(\x0b\x32\x1f.nestlabs.gateway.v2.TraitState\x12\x44\n\x13traitOperationLists\x18\x04 \x03(\x0b\x32\'.nestlabs.gateway.v2.TraitOperationList\x12/\n\x0b\x63urrentTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*4\n\x0eResourceStatus\x12\n\n\x06NORMAL\x10\x00\x12\t\n\x05\x41\x44\x44\x45\x44\x10\x01\x12\x0b\n\x07REMOVED\x10\x02*D\n\tStateType\x12\x1a\n\x16STATE_TYPE_UNSPECIFIED\x10\x00\x12\r\n\tCONFIRMED\x10\x01\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x02\x32h\n\x0eGatewayService\x12V\n\x07Observe\x12#.nestlabs.gateway.v2.ObserveRequest\x1a$.nestlabs.gateway.v2.ObserveResponse0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19nestlabs/gateway/v2.proto\x12\x13nestlabs.gateway.v2\x1a\x19google/protobuf/any.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto\x1a\x13nest/messages.proto\x1a\x19nestlabs/gateway/v1.proto\"b\n\tTraitMeta\x12\x12\n\ntraitLabel\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x33\n\rschemaVersion\x18\x03 \x01(\x0b\x32\x1c.nest.messages.SchemaVersion\"\xee\x01\n\tIfaceMeta\x12\x12\n\nifaceLabel\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12P\n\x11traitLabelMapping\x18\x03 \x03(\x0b\x32\x35.nestlabs.gateway.v2.IfaceMeta.TraitLabelMappingEntry\x12\x33\n\rschemaVersion\x18\x04 \x01(\x0b\x32\x1c.nest.messages.SchemaVersion\x1a\x38\n\x16TraitLabelMappingEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xeb\x01\n\x0cResourceMeta\x12\x12\n\nresourceId\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x33\n\x06status\x18\x03 \x01(\x0e\x32#.nestlabs.gateway.v2.ResourceStatus\x12\x32\n\ntraitMetas\x18\x04 \x03(\x0b\x32\x1e.nestlabs.gateway.v2.TraitMeta\x12\x1c\n\x14\x63urrentSchemaVersion\x18\x06 \x01(\r\x12\x32\n\nifaceMetas\x18\x07 \x03(\x0b\x32\x1e.nestlabs.gateway.v2.IfaceMeta\"1\n\x07TraitId\x12\x12\n\nresourceId\x18\x01 \x01(\t\x12\x12\n\ntraitLabel\x18\x02 \x01(\t\"-\n\x05Patch\x12$\n\x06values\x18\x01 \x01(\x0b\x32\x14.google.protobuf.Any\"\xce\x01\n\nTraitState\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12\x32\n\nstateTypes\x18\x02 \x03(\x0e\x32\x1e.nestlabs.gateway.v2.StateType\x12)\n\x05patch\x18\x03 \x01(\x0b\x32\x1a.nestlabs.gateway.v2.Patch\x12\x18\n\x10monotonicVersion\x18\x04 \x01(\x04\x12\x18\n\x10publisherVersion\x18\x05 \x01(\x04\"~\n\x16TraitTypeObserveParams\x12\x11\n\ttraitType\x18\x01 \x01(\t\x12\x32\n\x0estateFieldMask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12\x1d\n\x15observerSchemaVersion\x18\x03 \x01(\r\"l\n\x1aTraitInstanceObserveParams\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12\x1f\n\x17monotonicVersionFilters\x18\x02 \x03(\x04\"\xfd\x01\n\x0eObserveRequest\x12\x32\n\nstateTypes\x18\x01 \x03(\x0e\x32\x1e.nestlabs.gateway.v2.StateType\x12\x13\n\x0bresourceIds\x18\x02 \x03(\t\x12\x44\n\x0ftraitTypeParams\x18\x03 \x03(\x0b\x32+.nestlabs.gateway.v2.TraitTypeObserveParams\x12L\n\x13traitInstanceParams\x18\x04 \x03(\x0b\x32/.nestlabs.gateway.v2.TraitInstanceObserveParams\x12\x0e\n\x06userId\x18\x05 \x01(\t\"\x81\x01\n\x12TraitOperationList\x12-\n\x07traitId\x18\x01 \x01(\x0b\x32\x1c.nestlabs.gateway.v2.TraitId\x12<\n\x0ftraitOperations\x18\x02 \x03(\x0b\x32#.nestlabs.gateway.v1.TraitOperation\"\xa5\x03\n\x0fObserveResponse\x12M\n\x0fobserveResponse\x18\x01 \x03(\x0b\x32\x34.nestlabs.gateway.v2.ObserveResponse.ObserveResponse\x12\"\n\x06status\x18\x02 \x01(\x0b\x32\x12.google.rpc.Status\x1a\x9e\x02\n\x0fObserveResponse\x12\x38\n\rresourceMetas\x18\x01 \x03(\x0b\x32!.nestlabs.gateway.v2.ResourceMeta\x12$\n\x1cinitialResourceMetasContinue\x18\x02 \x01(\x08\x12\x34\n\x0btraitStates\x18\x03 \x03(\x0b\x32\x1f.nestlabs.gateway.v2.TraitState\x12\x44\n\x13traitOperationLists\x18\x04 \x03(\x0b\x32\'.nestlabs.gateway.v2.TraitOperationList\x12/\n\x0b\x63urrentTime\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp*4\n\x0eResourceStatus\x12\n\n\x06NORMAL\x10\x00\x12\t\n\x05\x41\x44\x44\x45\x44\x10\x01\x12\x0b\n\x07REMOVED\x10\x02*D\n\tStateType\x12\x1a\n\x16STATE_TYPE_UNSPECIFIED\x10\x00\x12\r\n\tCONFIRMED\x10\x01\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x02\x32h\n\x0eGatewayService\x12V\n\x07Observe\x12#.nestlabs.gateway.v2.ObserveRequest\x1a$.nestlabs.gateway.v2.ObserveResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -29,36 +30,36 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._loaded_options = None
   _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._serialized_options = b'8\001'
-  _globals['_RESOURCESTATUS']._serialized_start=2092
-  _globals['_RESOURCESTATUS']._serialized_end=2144
-  _globals['_STATETYPE']._serialized_start=2146
-  _globals['_STATETYPE']._serialized_end=2214
-  _globals['_TRAITMETA']._serialized_start=192
-  _globals['_TRAITMETA']._serialized_end=290
-  _globals['_IFACEMETA']._serialized_start=293
-  _globals['_IFACEMETA']._serialized_end=531
-  _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._serialized_start=475
-  _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._serialized_end=531
-  _globals['_RESOURCEMETA']._serialized_start=534
-  _globals['_RESOURCEMETA']._serialized_end=769
-  _globals['_TRAITID']._serialized_start=771
-  _globals['_TRAITID']._serialized_end=820
-  _globals['_PATCH']._serialized_start=822
-  _globals['_PATCH']._serialized_end=867
-  _globals['_TRAITSTATE']._serialized_start=870
-  _globals['_TRAITSTATE']._serialized_end=1076
-  _globals['_TRAITTYPEOBSERVEPARAMS']._serialized_start=1078
-  _globals['_TRAITTYPEOBSERVEPARAMS']._serialized_end=1204
-  _globals['_TRAITINSTANCEOBSERVEPARAMS']._serialized_start=1206
-  _globals['_TRAITINSTANCEOBSERVEPARAMS']._serialized_end=1314
-  _globals['_OBSERVEREQUEST']._serialized_start=1317
-  _globals['_OBSERVEREQUEST']._serialized_end=1570
-  _globals['_TRAITOPERATIONLIST']._serialized_start=1573
-  _globals['_TRAITOPERATIONLIST']._serialized_end=1702
-  _globals['_OBSERVERESPONSE']._serialized_start=1705
-  _globals['_OBSERVERESPONSE']._serialized_end=2090
-  _globals['_OBSERVERESPONSE_OBSERVERESPONSE']._serialized_start=1804
-  _globals['_OBSERVERESPONSE_OBSERVERESPONSE']._serialized_end=2090
-  _globals['_GATEWAYSERVICE']._serialized_start=2216
-  _globals['_GATEWAYSERVICE']._serialized_end=2320
+  _globals['_RESOURCESTATUS']._serialized_start=2153
+  _globals['_RESOURCESTATUS']._serialized_end=2205
+  _globals['_STATETYPE']._serialized_start=2207
+  _globals['_STATETYPE']._serialized_end=2275
+  _globals['_TRAITMETA']._serialized_start=217
+  _globals['_TRAITMETA']._serialized_end=315
+  _globals['_IFACEMETA']._serialized_start=318
+  _globals['_IFACEMETA']._serialized_end=556
+  _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._serialized_start=500
+  _globals['_IFACEMETA_TRAITLABELMAPPINGENTRY']._serialized_end=556
+  _globals['_RESOURCEMETA']._serialized_start=559
+  _globals['_RESOURCEMETA']._serialized_end=794
+  _globals['_TRAITID']._serialized_start=796
+  _globals['_TRAITID']._serialized_end=845
+  _globals['_PATCH']._serialized_start=847
+  _globals['_PATCH']._serialized_end=892
+  _globals['_TRAITSTATE']._serialized_start=895
+  _globals['_TRAITSTATE']._serialized_end=1101
+  _globals['_TRAITTYPEOBSERVEPARAMS']._serialized_start=1103
+  _globals['_TRAITTYPEOBSERVEPARAMS']._serialized_end=1229
+  _globals['_TRAITINSTANCEOBSERVEPARAMS']._serialized_start=1231
+  _globals['_TRAITINSTANCEOBSERVEPARAMS']._serialized_end=1339
+  _globals['_OBSERVEREQUEST']._serialized_start=1342
+  _globals['_OBSERVEREQUEST']._serialized_end=1595
+  _globals['_TRAITOPERATIONLIST']._serialized_start=1598
+  _globals['_TRAITOPERATIONLIST']._serialized_end=1727
+  _globals['_OBSERVERESPONSE']._serialized_start=1730
+  _globals['_OBSERVERESPONSE']._serialized_end=2151
+  _globals['_OBSERVERESPONSE_OBSERVERESPONSE']._serialized_start=1865
+  _globals['_OBSERVERESPONSE_OBSERVERESPONSE']._serialized_end=2151
+  _globals['_GATEWAYSERVICE']._serialized_start=2277
+  _globals['_GATEWAYSERVICE']._serialized_end=2381
 # @@protoc_insertion_point(module_scope)
