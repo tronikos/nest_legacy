@@ -32,6 +32,9 @@ repos:
       - id: check-executables-have-shebangs
         stages: [manual]
       - id: check-json
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.38.0
     hooks:
