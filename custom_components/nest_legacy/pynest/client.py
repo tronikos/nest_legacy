@@ -2856,9 +2856,7 @@ class NestClient:
                         yield updates
             elif tag >> 3 == 2:  # Field 2: google.rpc.Status, sent before a close
                 status = status_pb2.Status()
-                status.ParseFromString(
-                    bytes(full_frame_data[tag_size + varint_size :])
-                )
+                status.ParseFromString(bytes(full_frame_data[tag_size + varint_size :]))
                 if status.code:
                     # Nest rejects a stale session in-band: the HTTP response is
                     # still 200, so without this the stream just ends and is
