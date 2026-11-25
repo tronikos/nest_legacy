@@ -1,12 +1,16 @@
 """Tests for the Nest Legacy media source."""
 
+import dataclasses
 from http import HTTPStatus
 from typing import Any
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock, MagicMock, patch
 
 from aiohttp import ClientError
 from custom_components.nest_legacy.const import DOMAIN
-from custom_components.nest_legacy.pynest.exceptions import PynestException
+from custom_components.nest_legacy.pynest.exceptions import (
+    NotAuthenticatedException,
+    PynestException,
+)
 import pytest
 
 from homeassistant.components.media_source import (
@@ -333,3 +337,83 @@ async def test_media_source_handles_client_errors_and_malformed_paths(
         f"/{CAMERA_SERIAL}/event-1/thumbnail"
     )
     assert response.status == HTTPStatus.INTERNAL_SERVER_ERROR
+
+
+async def test_protobuf_camera_events_have_no_thumbnail(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    camera_events: list[dict[str, Any]],
+) -> None:
+    """Protobuf camera events have no snapshot, so no thumbnail URL is given."""
+    data = init_integration.runtime_data.data
+    data[CAMERA_SERIAL] = dataclasses.replace(data[CAMERA_SERIAL], is_protobuf=True)
+
+    browse = await async_browse_media(
+        hass,
+        f"{URI_SCHEME}{DOMAIN}/{init_integration.entry_id}/{CAMERA_SERIAL}/{DAY}/all",
+    )
+
+    playable = [child for child in browse.children if child.can_play]
+    assert playable
+    assert all(child.thumbnail is None for child in playable)
+
+
+def _rejected_stream() -> MagicMock:
+    """Return a context manager that fails as a rejected access token does."""
+    stream = MagicMock()
+    stream.__aenter__ = AsyncMock(side_effect=NotAuthenticatedException("401"))
+    stream.__aexit__ = AsyncMock(return_value=False)
+    return stream
+
+
+@pytest.mark.usefixtures("media_views")
+async def test_clip_view_reauthenticates_once_on_a_rejected_token(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A token rejected before it expires is renewed and the clip retried."""
+    mock_nest_client.async_get_camera_event_media_stream = MagicMock(
+        side_effect=[_rejected_stream(), _media_stream(b"payload")]
+    )
+    client = await hass_client()
+    coordinator = init_integration.runtime_data
+
+    with patch.object(
+        coordinator, "async_reauthenticate", AsyncMock()
+    ) as reauthenticate:
+        response = await client.get(
+            f"/api/nest_legacy/event_media/{init_integration.entry_id}"
+            f"/{CAMERA_SERIAL}/event-1/clip"
+        )
+
+    assert response.status == HTTPStatus.OK
+    assert await response.read() == b"payload"
+    reauthenticate.assert_awaited_once_with(force=True)
+
+
+@pytest.mark.usefixtures("media_views")
+async def test_clip_view_gives_up_after_one_reauthentication(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A token that is still rejected after renewing it is a server error."""
+    mock_nest_client.async_get_camera_event_media_stream = MagicMock(
+        side_effect=[_rejected_stream(), _rejected_stream()]
+    )
+    client = await hass_client()
+    coordinator = init_integration.runtime_data
+
+    with patch.object(
+        coordinator, "async_reauthenticate", AsyncMock()
+    ) as reauthenticate:
+        response = await client.get(
+            f"/api/nest_legacy/event_media/{init_integration.entry_id}"
+            f"/{CAMERA_SERIAL}/event-1/clip"
+        )
+
+    assert response.status == HTTPStatus.INTERNAL_SERVER_ERROR
+    reauthenticate.assert_awaited_once_with(force=True)
