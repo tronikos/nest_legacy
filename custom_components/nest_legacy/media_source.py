@@ -22,8 +22,8 @@ from homeassistant.helpers import entity_registry as er
 from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
-from .coordinator import NestConfigEntry
-from .pynest.exceptions import PynestException
+from .coordinator import NestConfigEntry, NestCoordinator
+from .pynest.exceptions import NotAuthenticatedException, PynestException
 from .pynest.models import NestCamera
 
 _LOGGER = logging.getLogger(__name__)
@@ -100,23 +100,43 @@ class NestEventClipView(NestEventMediaView):
         try:
             if coordinator.client.is_expired():
                 await coordinator.async_reauthenticate()
-            async with coordinator.client.async_get_camera_event_media_stream(
-                device, event_id, format="mp4"
-            ) as response:
-                if not response:
-                    raise web.HTTPNotFound
-
-                stream = web.StreamResponse()
-                stream.content_type = "video/mp4"
-                await stream.prepare(request)
-
-                async for chunk in response.content.iter_chunked(4096):
-                    await stream.write(chunk)
-
-                return stream
+            try:
+                return await self._async_stream_clip(
+                    request, coordinator, device, event_id
+                )
+            except NotAuthenticatedException:
+                # The token can be rejected before the session expires; the
+                # clip is only streamed once fully fetched, so retry once.
+                await coordinator.async_reauthenticate(force=True)
+                return await self._async_stream_clip(
+                    request, coordinator, device, event_id
+                )
         except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             _LOGGER.error("Error fetching event media clip: %r", err)
             raise web.HTTPInternalServerError from err
+
+    async def _async_stream_clip(
+        self,
+        request: web.Request,
+        coordinator: NestCoordinator,
+        device: NestCamera,
+        event_id: str,
+    ) -> web.StreamResponse:
+        """Stream one event clip to the client."""
+        async with coordinator.client.async_get_camera_event_media_stream(
+            device, event_id, format="mp4"
+        ) as response:
+            if not response:
+                raise web.HTTPNotFound
+
+            stream = web.StreamResponse()
+            stream.content_type = "video/mp4"
+            await stream.prepare(request)
+
+            async for chunk in response.content.iter_chunked(4096):
+                await stream.write(chunk)
+
+            return stream
 
 
 class NestEventThumbnailView(NestEventMediaView):
@@ -458,10 +478,16 @@ class NestMediaSource(MediaSource):
             # Resolvable identifier
             media_identifier = f"{entry.entry_id}/{serial_number}/{event_id}"
 
-            thumbnail_url = _MEDIA_THUMBNAIL_URL_FORMAT.format(
-                config_entry_id=entry.entry_id,
-                serial_number=serial_number,
-                event_id=event_id,
+            # Protobuf camera events carry no usable snapshot, so a thumbnail
+            # URL would only give a 404 per event.
+            thumbnail_url = (
+                None
+                if device.is_protobuf
+                else _MEDIA_THUMBNAIL_URL_FORMAT.format(
+                    config_entry_id=entry.entry_id,
+                    serial_number=serial_number,
+                    event_id=event_id,
+                )
             )
 
             children.append(
