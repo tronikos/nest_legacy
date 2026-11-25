@@ -21,7 +21,6 @@ import google.protobuf.any_pb2
 from google.protobuf.duration_pb2 import Duration  # pylint: disable=no-name-in-module
 from google.protobuf.message import Message
 from google.protobuf.timestamp_pb2 import Timestamp  # pylint: disable=no-name-in-module
-from google.rpc import status_pb2
 
 from .enums import (
     BucketType,
@@ -2846,25 +2845,26 @@ class NestClient:
             full_frame_data = buffer[:frame_size]
             del buffer[:frame_size]
 
-            if tag >> 3 == 1:  # Field 1: observeResponse
-                outer_response = v2_pb2.ObserveResponse()
-                outer_response.ParseFromString(bytes(full_frame_data))
+            outer_response = v2_pb2.ObserveResponse()
+            outer_response.ParseFromString(bytes(full_frame_data))
 
-                for inner_response in outer_response.observeResponse:
-                    updates = self._parse_observe_response(inner_response)
-                    if updates:
-                        yield updates
-            elif tag >> 3 == 2:  # Field 2: google.rpc.Status, sent before a close
-                status = status_pb2.Status()
-                status.ParseFromString(bytes(full_frame_data[tag_size + varint_size :]))
-                if status.code:
-                    # Nest rejects a stale session in-band: the HTTP response is
-                    # still 200, so without this the stream just ends and is
-                    # reopened at once with the same session, in a tight loop.
-                    _raise_for_status_code(
-                        status.code, f"Observe stream closed: {status.message}"
-                    )
-            else:
+            for inner_response in outer_response.observeResponse:
+                updates = self._parse_observe_response(inner_response)
+                if updates:
+                    yield updates
+
+            if outer_response.status.code != 0:
+                # Nest rejects a stale session in-band: the HTTP response is
+                # still 200, so without this the stream just ends and is
+                # reopened at once with the same session, in a tight loop.
+                _raise_for_status_code(
+                    outer_response.status.code,
+                    f"Observe stream closed: {outer_response.status.message}",
+                )
+
+            if not outer_response.observeResponse and not outer_response.HasField(
+                "status"
+            ):
                 _LOGGER.debug(
                     "Skipping unknown field tag %s in observe stream",
                     tag >> 3,
