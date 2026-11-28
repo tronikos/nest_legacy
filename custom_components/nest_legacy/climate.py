@@ -6,6 +6,7 @@ from typing import Any, override
 from bidict import bidict
 
 from homeassistant.components.climate import (
+    ATTR_HVAC_MODE,
     FAN_AUTO,
     FAN_ON,
     PRESET_ECO,
@@ -258,6 +259,13 @@ class NestClimate(NestEntity[NestThermostat], ClimateEntity):
         if self.device.is_eco_mode:
             # Signal client layer to exit eco before applying setpoint
             payload["exit_eco"] = True
+
+        # climate.set_temperature may carry an hvac_mode; send it in the same write
+        # so "heat to 72" from an off thermostat turns heating on, not only the setpoint.
+        if (hvac_mode := kwargs.get(ATTR_HVAC_MODE)) is not None and (
+            nest_mode := _HVAC_MODE_BIDICT.inverse.get(hvac_mode)
+        ):
+            payload["hvac_mode"] = nest_mode.value
 
         if ATTR_TEMPERATURE in kwargs:
             payload["target_temperature"] = self._native_to_c(kwargs[ATTR_TEMPERATURE])
