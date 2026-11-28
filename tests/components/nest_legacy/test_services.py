@@ -8,6 +8,13 @@ from custom_components.nest_legacy.const import DOMAIN
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
     guest_pb2 as nest_guest_pb2,
 )
+from custom_components.nest_legacy.pynest.protobuf_gen.nestlabs.gateway import v1_pb2
+from custom_components.nest_legacy.pynest.protobuf_gen.weave import (
+    common_pb2 as weave_common_pb2,
+)
+from custom_components.nest_legacy.pynest.protobuf_gen.weave.trait import (
+    schedule_pb2 as weave_schedule_pb2,
+)
 import pytest
 
 from homeassistant.const import Platform
@@ -76,6 +83,39 @@ async def test_list_guests_without_any(
     )
 
     assert response == {"guests": {}}
+
+
+async def test_get_user_schedule_unpacks_any_from_private_pool(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    device_registry: dr.DeviceRegistry,
+) -> None:
+    """Getting a user schedule unpacks its Any payload via the private descriptor pool."""
+    schedule_resp = weave_schedule_pb2.BasicUserSchedulesSettingsTrait.GetUserScheduleResponse(
+        status=weave_schedule_pb2.BasicUserSchedulesSettingsTrait.SCHEDULE_ERROR_CODES_SUCCESS_STATUS,
+        userSchedule=weave_schedule_pb2.BasicUserSchedulesSettingsTrait.BasicUserSchedule(
+            userId=weave_common_pb2.ResourceId(resourceId="GUEST_1234"),
+        ),
+    )
+    resp = v1_pb2.SendCommandResponse()
+    op = resp.sendCommandResponse.add().traitOperations.add()
+    op.event.event.Pack(schedule_resp, type_url_prefix="type.nestlabs.com/")
+    mock_nest_client.async_get_user_schedule.return_value = resp
+
+    response = await hass.services.async_call(
+        DOMAIN,
+        "get_user_schedule",
+        {
+            "device_id": _lock_device_id(device_registry, init_integration),
+            "user_id": "GUEST_1234",
+        },
+        blocking=True,
+        return_response=True,
+    )
+
+    assert response["status"] == "SCHEDULE_ERROR_CODES_SUCCESS_STATUS"
+    assert response["userSchedule"]["userId"]["resourceId"] == "GUEST_1234"
 
 
 async def test_set_user_schedule(

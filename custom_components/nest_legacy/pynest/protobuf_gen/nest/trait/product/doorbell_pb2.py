@@ -5,7 +5,7 @@
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
+from ..... import proto_pool as _proto_pool
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
@@ -16,7 +16,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!nest/trait/product/doorbell.proto\x12\x1bnest.trait.product.doorbell\x1a\x1egoogle/protobuf/duration.proto\"\xa5\x02\n DoorbellIndoorChimeSettingsTrait\x12Z\n\tchimeType\x18\x01 \x01(\x0e\x32G.nest.trait.product.doorbell.DoorbellIndoorChimeSettingsTrait.ChimeType\x12\x30\n\rchimeDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x14\n\x0c\x63himeEnabled\x18\x03 \x01(\x08\"]\n\tChimeType\x12\x1a\n\x16\x43HIME_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15\x43HIME_TYPE_MECHANICAL\x10\x01\x12\x19\n\x15\x43HIME_TYPE_ELECTRONIC\x10\x02\x62\x06proto3')
+DESCRIPTOR = _proto_pool.add_serialized_file(b'\n!nest/trait/product/doorbell.proto\x12\x1bnest.trait.product.doorbell\x1a\x1egoogle/protobuf/duration.proto\"\xa5\x02\n DoorbellIndoorChimeSettingsTrait\x12Z\n\tchimeType\x18\x01 \x01(\x0e\x32G.nest.trait.product.doorbell.DoorbellIndoorChimeSettingsTrait.ChimeType\x12\x30\n\rchimeDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x14\n\x0c\x63himeEnabled\x18\x03 \x01(\x08\"]\n\tChimeType\x12\x1a\n\x16\x43HIME_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15\x43HIME_TYPE_MECHANICAL\x10\x01\x12\x19\n\x15\x43HIME_TYPE_ELECTRONIC\x10\x02\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)

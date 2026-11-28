@@ -5,7 +5,7 @@
 # Protobuf Python Version: 6.31.1
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
+from .... import proto_pool as _proto_pool
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
 # @@protoc_insertion_point(imports)
@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16nest/trait/audio.proto\x12\x10nest.trait.audio\"3\n\x17MicrophoneSettingsTrait\x12\x18\n\x10\x65nableMicrophone\x18\x01 \x01(\x08\x62\x06proto3')
+DESCRIPTOR = _proto_pool.add_serialized_file(b'\n\x16nest/trait/audio.proto\x12\x10nest.trait.audio\"3\n\x17MicrophoneSettingsTrait\x12\x18\n\x10\x65nableMicrophone\x18\x01 \x01(\x08\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)

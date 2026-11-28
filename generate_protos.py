@@ -30,9 +30,13 @@ def generate_protos() -> None:
     # Ensure output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # List of proto files to generate
-    # Find all .proto files in the protobuf directory
-    proto_files = [str(p.relative_to(proto_dir)) for p in proto_dir.rglob("*.proto")]
+    # List of proto files to generate, skipping google/* which are provided by
+    # protobuf / googleapis-common-protos and copied into the private pool.
+    proto_files = [
+        str(p.relative_to(proto_dir))
+        for p in proto_dir.rglob("*.proto")
+        if not p.is_relative_to(proto_dir / "google")
+    ]
 
     # Construct the protoc command
     cmd = [
@@ -67,6 +71,10 @@ def generate_protos() -> None:
 
     # Remove runtime version validation for compatibility with older protobuf versions
     fix_runtime_version(output_dir)
+
+    # Register generated descriptors in a private pool to avoid colliding with
+    # other integrations in Home Assistant's process-wide default pool.
+    use_private_pool(output_dir)
 
 
 def _get_from_replacement(match: re.Match, dots: str, output_dir: Path) -> str:
@@ -174,6 +182,35 @@ def fix_runtime_version(output_dir: Path) -> None:
         if new_content != content:
             file_path.write_text(new_content, encoding="utf-8")
             _LOGGER.info("Removed runtime version validation from %s", file_path.name)
+
+
+def use_private_pool(output_dir: Path) -> None:
+    """Rewrite generated *_pb2.py modules to register in pynest.proto_pool.POOL."""
+    import_line = "from google.protobuf import descriptor_pool as _descriptor_pool"
+    call_expr = "_descriptor_pool.Default().AddSerializedFile("
+
+    for file_path in sorted(output_dir.rglob("*_pb2.py")):
+        rel_dir = file_path.parent.relative_to(output_dir)
+        depth = len(rel_dir.parts)
+        dots = "." * (depth + 2)
+        pool_import = f"from {dots} import proto_pool as _proto_pool"
+
+        content = file_path.read_text(encoding="utf-8")
+        new_content = content.replace(import_line, pool_import)
+        new_content = new_content.replace(call_expr, "_proto_pool.add_serialized_file(")
+
+        if (
+            "_descriptor_pool" in new_content
+            or "_proto_pool.add_serialized_file(" not in new_content
+            or pool_import not in new_content
+        ):
+            raise RuntimeError(
+                f"Failed to rewrite descriptor pool registration in {file_path}"
+            )
+
+        if new_content != content:
+            new_content = new_content.replace("\r\n", "\n")
+            file_path.write_text(new_content, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

@@ -41,6 +41,7 @@ from .pynest.exceptions import (
 )
 from .pynest.models import NestCamera, NestDevice, NestHeatLink, NestTempSensor
 from .pynest.parser import NestParser
+from .pynest.proto_pool import POOL
 from .pynest.protobuf_gen.nest.trait import guest_pb2 as nest_guest_pb2
 
 _LOGGER = logging.getLogger(__name__)
@@ -311,7 +312,7 @@ class NestCoordinator(DataUpdateCoordinator[dict[str, NestDevice]]):
             guests_trait = traits.get(nest_guest_pb2.GuestsTrait.DESCRIPTOR.full_name)
             if guests_trait is None:
                 continue
-            guests_dict = MessageToDict(guests_trait)
+            guests_dict = MessageToDict(guests_trait, descriptor_pool=POOL)
             if "guests" in guests_dict:
                 result[resource_id] = guests_dict["guests"]
         return result

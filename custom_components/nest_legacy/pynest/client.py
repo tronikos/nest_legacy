@@ -17,10 +17,7 @@ from aiohttp import (
     ContentTypeError,
     FormData,
 )
-import google.protobuf.any_pb2
-from google.protobuf.duration_pb2 import Duration  # pylint: disable=no-name-in-module
 from google.protobuf.message import Message
-from google.protobuf.timestamp_pb2 import Timestamp  # pylint: disable=no-name-in-module
 
 from .enums import (
     BucketType,
@@ -427,6 +424,21 @@ def _get_trait_copy(traits: dict[str, Any] | None, trait_class: type[_T]) -> _T:
         new_trait.CopyFrom(trait)
         return new_trait
     return trait_class()
+
+
+def _build_trait_update_request(
+    resource_id: str, trait_label: str, trait: Message
+) -> v1_pb2.TraitUpdateStateRequest:
+    """Build a TraitUpdateStateRequest with the trait packed into its state."""
+    req = v1_pb2.TraitUpdateStateRequest(
+        traitRequest=v1_pb2.TraitRequest(
+            resourceId=resource_id,
+            traitLabel=trait_label,
+            requestId=str(uuid.uuid4()),
+        )
+    )
+    req.state.Pack(trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX)
+    return req
 
 
 def _raise_for_status_code(status_code: int, msg: str) -> NoReturn:
@@ -1170,10 +1182,7 @@ class NestClient:
 
             # Calculate end time
             end_seconds = int(time.time()) + duration_seconds if is_boost else 0
-            end_ts = Timestamp()
-            end_ts.FromSeconds(end_seconds)
-
-            hot_water_settings_trait.boostTimerEnd.CopyFrom(end_ts)
+            hot_water_settings_trait.boostTimerEnd.FromSeconds(end_seconds)
 
         if "hot_water_temperature" in data:
             update_required = True
@@ -1200,19 +1209,11 @@ class NestClient:
             ]
 
         if update_required:
-            any_proto = google.protobuf.any_pb2.Any()
             # Note: Hot Water traits are usually on the thermostat resource
-            any_proto.Pack(
-                hot_water_settings_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.associated_thermostat_object_key,
-                    traitLabel="hot_water_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
+            req = _build_trait_update_request(
+                device.associated_thermostat_object_key,
+                "hot_water_settings",
+                hot_water_settings_trait,
             )
             await self._async_update_trait_state(req)
 
@@ -1359,29 +1360,17 @@ class NestClient:
                 if value
                 else nest_camera_pb2.CameraState.CAMERA_OFF
             )
-            now = Timestamp()
-            now.GetCurrentTime()
-
             recording_toggle_settings_trait = _get_trait_copy(
                 current_traits, nest_camera_pb2.RecordingToggleSettingsTrait
             )
             recording_toggle_settings_trait.targetCameraState = target_state
             recording_toggle_settings_trait.changeModeReason = 2
-            recording_toggle_settings_trait.settingsUpdated.CopyFrom(now)
+            recording_toggle_settings_trait.settingsUpdated.GetCurrentTime()
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "recording_toggle_settings",
                 recording_toggle_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="recording_toggle_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -1392,19 +1381,10 @@ class NestClient:
             )
             doorbell_indoor_chime_settings_trait.chimeEnabled = value
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "doorbell_indoor_chime_settings",
                 doorbell_indoor_chime_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="doorbell_indoor_chime_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -1415,18 +1395,10 @@ class NestClient:
             )
             microphone_settings_trait.enableMicrophone = value
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
-                microphone_settings_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="microphone_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
+            req = _build_trait_update_request(
+                device.object_key,
+                "microphone_settings",
+                microphone_settings_trait,
             )
             await self._async_update_trait_state(req)
 
@@ -1449,19 +1421,10 @@ class NestClient:
                 "ntp_green_led_enable"
             ]
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "night_time_promise_settings",
                 nighttime_promise_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="night_time_promise_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -1478,18 +1441,10 @@ class NestClient:
                     "steam_detection_enable"
                 ]
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
-                safety_alarm_settings_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="safety_alarm_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
+            req = _build_trait_update_request(
+                device.object_key,
+                "safety_alarm_settings",
+                safety_alarm_settings_trait,
             )
             await self._async_update_trait_state(req)
 
@@ -1525,8 +1480,8 @@ class NestClient:
                             nest_ui_pb2.EnhancedPathlightSettingsTrait.PATHLIGHT_CONDITION_DARKNESS,
                             nest_ui_pb2.EnhancedPathlightSettingsTrait.PATHLIGHT_CONDITION_MOTION,
                         ],
-                        timeout=Duration(seconds=600),
                     )
+                    t1.timeout.seconds = 600
                     # triggers is a map so there is no IndexError
                     enhanced_pathlight_settings_trait.triggers[1].CopyFrom(t1)
 
@@ -1545,19 +1500,10 @@ class NestClient:
                     # To disable, clear triggers
                     enhanced_pathlight_settings_trait.triggers.clear()
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "pathlight_settings",
                 enhanced_pathlight_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="pathlight_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -1791,18 +1737,10 @@ class NestClient:
                         "auto_relock_duration"
                     ]
 
-                any_proto = google.protobuf.any_pb2.Any()
-                any_proto.Pack(
-                    enhanced_state_proto, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-                )
-
-                request = v1_pb2.TraitUpdateStateRequest(
-                    traitRequest=v1_pb2.TraitRequest(
-                        resourceId=device.object_key,
-                        traitLabel="enhanced_bolt_lock_settings",
-                        requestId=str(uuid.uuid4()),
-                    ),
-                    state=any_proto,
+                request = _build_trait_update_request(
+                    device.object_key,
+                    "enhanced_bolt_lock_settings",
+                    enhanced_state_proto,
                 )
                 try:
                     await self._async_update_trait_state(request)
@@ -1822,16 +1760,10 @@ class NestClient:
                         "auto_relock_duration"
                     ]
 
-                any_proto = google.protobuf.any_pb2.Any()
-                any_proto.Pack(state_proto, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX)
-
-                request = v1_pb2.TraitUpdateStateRequest(
-                    traitRequest=v1_pb2.TraitRequest(
-                        resourceId=device.object_key,
-                        traitLabel="bolt_lock_settings",
-                        requestId=str(uuid.uuid4()),
-                    ),
-                    state=any_proto,
+                request = _build_trait_update_request(
+                    device.object_key,
+                    "bolt_lock_settings",
+                    state_proto,
                 )
                 await self._async_update_trait_state(request)
 
@@ -1994,7 +1926,6 @@ class NestClient:
         self,
         device: NestThermostat,
         data: dict[str, Any],
-        now: Timestamp,
         current_traits: dict[str, Any] | None = None,
         is_eco: bool | None = None,
     ) -> None:
@@ -2024,17 +1955,10 @@ class NestClient:
 
         # Execute updates sequentially (but properly combined traits)
         if update_eco:
-            any_proto_eco = google.protobuf.any_pb2.Any()
-            any_proto_eco.Pack(
-                eco_mode_settings_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-            )
-            req_eco = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="eco_mode_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto_eco,
+            req_eco = _build_trait_update_request(
+                device.object_key,
+                "eco_mode_settings",
+                eco_mode_settings_trait,
             )
             await self._async_update_trait_state(req_eco)
 
@@ -2042,24 +1966,16 @@ class NestClient:
             actor_info = nest_hvac_pb2.HvacActor.HvacActorStruct(
                 method=nest_hvac_pb2.HvacActor.HvacActorMethod.HVAC_ACTOR_METHOD_IOS,
                 originator=weave_common_pb2.ResourceId(resourceId=device.object_key),
-                timeOfAction=now,
             )
+            actor_info.timeOfAction.GetCurrentTime()
             target_temperature_settings_trait.targetTemperature.currentActorInfo.CopyFrom(
                 actor_info
             )
 
-            any_proto_target = google.protobuf.any_pb2.Any()
-            any_proto_target.Pack(
+            req_target = _build_trait_update_request(
+                device.object_key,
+                "target_temperature_settings",
                 target_temperature_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-            req_target = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="target_temperature_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto_target,
             )
             await self._async_update_trait_state(req_target)
 
@@ -2067,7 +1983,6 @@ class NestClient:
         self,
         device: NestThermostat,
         data: dict[str, Any],
-        now: Timestamp,
         current_traits: dict[str, Any] | None = None,
     ) -> None:
         """Handle fan updates for protobuf thermostat."""
@@ -2095,30 +2010,16 @@ class NestClient:
                 nest_hvac_pb2.FanControlTrait.FanSpeedSetting.FAN_SPEED_SETTING_STAGE3
             )
 
-        timer_end_ts = Timestamp()
-        if is_on:
-            timer_end_ts.FromSeconds(timeout_end)
-        else:
-            timer_end_ts.FromSeconds(0)
-
         fan_control_settings_trait = _get_trait_copy(
             current_traits, nest_hvac_pb2.FanControlSettingsTrait
         )
-        fan_control_settings_trait.timerEnd.CopyFrom(timer_end_ts)
+        fan_control_settings_trait.timerEnd.FromSeconds(timeout_end if is_on else 0)
         fan_control_settings_trait.timerSpeed = speed_enum
 
-        any_proto = google.protobuf.any_pb2.Any()
-        any_proto.Pack(
-            fan_control_settings_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX
-        )
-
-        req = v1_pb2.TraitUpdateStateRequest(
-            traitRequest=v1_pb2.TraitRequest(
-                resourceId=device.object_key,
-                traitLabel="fan_control_settings",
-                requestId=str(uuid.uuid4()),
-            ),
-            state=any_proto,
+        req = _build_trait_update_request(
+            device.object_key,
+            "fan_control_settings",
+            fan_control_settings_trait,
         )
         await self._async_update_trait_state(req)
 
@@ -2132,9 +2033,6 @@ class NestClient:
         _LOGGER.debug(
             "Setting protobuf thermostat property for %s: %s", device.object_key, data
         )
-
-        now = Timestamp()
-        now.GetCurrentTime()
 
         # Compute the intended eco state from the payload upfront, before any
         # API calls, so that later
@@ -2166,19 +2064,10 @@ class NestClient:
             )
             eco_state_trait.ecoMode = mode_enum
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "eco_mode_state",
                 eco_state_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="eco_mode_state",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -2190,7 +2079,7 @@ class NestClient:
             or "target_temperature_high" in data
         ):
             await self._set_proto_thermostat_target_settings(
-                device, data, now, current_traits, is_eco=intended_is_eco
+                device, data, current_traits, is_eco=intended_is_eco
             )
 
         # Handle Humidifier, Dehumidifier and Target Humidity
@@ -2220,25 +2109,16 @@ class NestClient:
                     humidity_level
                 )
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "humidity_control_settings",
                 humidity_control_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="humidity_control_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
         # Handle Fan Control
         if "fan_timer_timeout" in data or "fan_timer_speed" in data:
-            await self._set_proto_thermostat_fan(device, data, now, current_traits)
+            await self._set_proto_thermostat_fan(device, data, current_traits)
 
         # Handle Temperature Lock
         if "temperature_lock" in data:
@@ -2247,19 +2127,10 @@ class NestClient:
             )
             temperature_lock_settings_trait.enabled = data["temperature_lock"]
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "temperature_lock_settings",
                 temperature_lock_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="temperature_lock_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -2279,19 +2150,10 @@ class NestClient:
                     _DUAL_FUEL_OVERRIDE_MAP[DualFuelBreakpointOverride(override)]
                 )
 
-            any_proto = google.protobuf.any_pb2.Any()
-            any_proto.Pack(
+            req = _build_trait_update_request(
+                device.object_key,
+                "equipment_settings",
                 equipment_settings_trait,
-                type_url_prefix=_NESTLABS_TYPE_URL_PREFIX,
-            )
-
-            req = v1_pb2.TraitUpdateStateRequest(
-                traitRequest=v1_pb2.TraitRequest(
-                    resourceId=device.object_key,
-                    traitLabel="equipment_settings",
-                    requestId=str(uuid.uuid4()),
-                ),
-                state=any_proto,
             )
             await self._async_update_trait_state(req)
 
@@ -2400,16 +2262,10 @@ class NestClient:
         else:
             return  # No change needed
 
-        any_proto = google.protobuf.any_pb2.Any()
-        any_proto.Pack(rcs_trait, type_url_prefix=_NESTLABS_TYPE_URL_PREFIX)
-
-        req = v1_pb2.TraitUpdateStateRequest(
-            traitRequest=v1_pb2.TraitRequest(
-                resourceId=thermostat_key,
-                traitLabel="remote_comfort_sensing_settings",
-                requestId=str(uuid.uuid4()),
-            ),
-            state=any_proto,
+        req = _build_trait_update_request(
+            thermostat_key,
+            "remote_comfort_sensing_settings",
+            rcs_trait,
         )
         await self._async_update_trait_state(req)
 
@@ -2702,15 +2558,9 @@ class NestClient:
             end_time = int(time.time())
 
         # Construct Request
-        start_ts = Timestamp()
-        start_ts.FromSeconds(start_time)
-        end_ts = Timestamp()
-        end_ts.FromSeconds(end_time)
-
-        history_req = nest_history_pb2.CameraObservationHistoryTrait.CameraObservationHistoryRequest(
-            queryStartTime=start_ts,
-            queryEndTime=end_ts,
-        )
+        history_req = nest_history_pb2.CameraObservationHistoryTrait.CameraObservationHistoryRequest()
+        history_req.queryStartTime.FromSeconds(start_time)
+        history_req.queryEndTime.FromSeconds(end_time)
 
         command = v1_pb2.ResourceCommand(traitLabel="camera_observation_history")
         command.command.Pack(

@@ -19,6 +19,7 @@ from .const import CONF_COOKIES, CONF_ISSUE_TOKEN, DOMAIN
 from .coordinator import NestConfigEntry, NestCoordinator
 from .pynest.exceptions import PynestException
 from .pynest.models import NestDevice, NestHeatLink
+from .pynest.proto_pool import POOL
 
 # REST buckets use snake_case keys. Protobuf traits are converted with their
 # .proto field names, which are camelCase, so both spellings are listed.
@@ -189,7 +190,9 @@ _MIN_IDENTIFIER_LENGTH = 6
 def _convert_protobuf_to_dict(data: Any) -> Any:
     """Convert protobuf messages to dicts recursively."""
     if isinstance(data, Message):
-        return MessageToDict(data, preserving_proto_field_name=True)
+        return MessageToDict(
+            data, preserving_proto_field_name=True, descriptor_pool=POOL
+        )
     if isinstance(data, dict):
         return {k: _convert_protobuf_to_dict(v) for k, v in data.items()}
     if isinstance(data, list):

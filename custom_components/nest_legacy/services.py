@@ -25,6 +25,7 @@ from homeassistant.helpers import (
 from .const import DOMAIN
 from .coordinator import NestCoordinator
 from .pynest.models import NestDevice
+from .pynest.proto_pool import POOL
 
 
 def async_setup_services(hass: HomeAssistant) -> None:
@@ -118,7 +119,7 @@ def async_setup_services(hass: HomeAssistant) -> None:
         resp = await coordinator.async_send_client_command(
             "async_get_user_schedule", device, user_id
         )
-        resp_dict = MessageToDict(resp)
+        resp_dict = MessageToDict(resp, descriptor_pool=POOL)
         try:
             return resp_dict["sendCommandResponse"][0]["traitOperations"][0]["event"][
                 "event"
