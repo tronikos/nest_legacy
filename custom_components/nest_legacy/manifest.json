@@ -1,7 +1,7 @@
 {
   "domain": "nest_legacy",
   "name": "Nest Legacy",
-  "after_dependencies": ["media_source"],
+  "after_dependencies": ["ffmpeg", "media_source"],
   "codeowners": ["@tronikos"],
   "config_flow": true,
   "dependencies": ["http"],

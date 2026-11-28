@@ -1,8 +1,11 @@
 """Media source for Nest Legacy camera events."""
 
-from collections import defaultdict
+import asyncio
+from collections import OrderedDict, defaultdict
 import datetime as dt
 import logging
+import os
+import tempfile
 from typing import cast, override
 
 from aiohttp import ClientError, web
@@ -19,6 +22,7 @@ from homeassistant.components.media_source import (
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
+from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
@@ -37,6 +41,13 @@ _CLIP_VIEW_NAME = "api:nest_legacy:event_media:clip"
 # URL format for thumbnails
 _MEDIA_THUMBNAIL_URL_FORMAT = "/api/nest_legacy/event_media/{config_entry_id}/{serial_number}/{event_id}/thumbnail"
 _THUMBNAIL_VIEW_NAME = "api:nest_legacy:event_media:thumbnail"
+
+# Thumbnails of Protobuf camera events are taken from the first frame of the
+# recording with ffmpeg, so they are kept once made, and only a few are made at
+# a time: a page of the media browser asks for all of its thumbnails at once.
+_PREVIEW_CACHE_SIZE = 500
+_PREVIEW_CONCURRENCY = 2
+_PREVIEW_WIDTH = 320
 
 # Number of days back to display in the media browser
 _DAYS_LOOKBACK = 10
@@ -145,6 +156,12 @@ class NestEventThumbnailView(NestEventMediaView):
     url = _MEDIA_THUMBNAIL_URL_FORMAT
     name = _THUMBNAIL_VIEW_NAME
 
+    def __init__(self, hass: HomeAssistant) -> None:
+        """Initialize the thumbnail view."""
+        super().__init__(hass)
+        self._previews: OrderedDict[tuple[str, str], bytes] = OrderedDict()
+        self._preview_slots = asyncio.Semaphore(_PREVIEW_CONCURRENCY)
+
     async def get(
         self,
         request: web.Request,
@@ -157,6 +174,11 @@ class NestEventThumbnailView(NestEventMediaView):
             request, config_entry_id, serial_number
         )
         coordinator = entry.runtime_data
+        if device.is_protobuf:
+            image = await self._async_protobuf_thumbnail(coordinator, device, event_id)
+            if image is None:
+                raise web.HTTPNotFound
+            return web.Response(body=image, content_type="image/jpeg")
         try:
             if coordinator.client.is_expired():
                 await coordinator.async_reauthenticate()
@@ -171,6 +193,83 @@ class NestEventThumbnailView(NestEventMediaView):
         except (ClientError, TimeoutError, PynestException, HomeAssistantError) as err:
             _LOGGER.error("Error fetching event media thumbnail: %r", err)
             raise web.HTTPInternalServerError from err
+
+    async def _async_protobuf_thumbnail(
+        self, coordinator: NestCoordinator, device: NestCamera, event_id: str
+    ) -> bytes | None:
+        """Return a thumbnail from the first frame of an event's recording."""
+        key = (device.object_key, event_id)
+        if (image := self._previews.get(key)) is not None:
+            self._previews.move_to_end(key)
+            return image
+        async with self._preview_slots:
+            if (image := self._previews.get(key)) is not None:
+                return image
+            try:
+                if coordinator.client.is_expired():
+                    await coordinator.async_reauthenticate()
+                try:
+                    segment = await coordinator.client.async_get_camera_event_preview(
+                        device, event_id
+                    )
+                except NotAuthenticatedException:
+                    await coordinator.async_reauthenticate(force=True)
+                    segment = await coordinator.client.async_get_camera_event_preview(
+                        device, event_id
+                    )
+            except (
+                ClientError,
+                TimeoutError,
+                PynestException,
+                HomeAssistantError,
+            ) as err:
+                # A missing thumbnail is not worth an error per event.
+                _LOGGER.debug("Error fetching event preview: %r", err)
+                return None
+            if not segment:
+                return None
+            image = await self._async_first_frame(segment)
+        if image:
+            self._previews[key] = image
+            while len(self._previews) > _PREVIEW_CACHE_SIZE:
+                self._previews.popitem(last=False)
+        return image
+
+    async def _async_first_frame(self, segment: bytes) -> bytes | None:
+        """Decode the first video frame of an MP4 segment to a JPEG."""
+        path = await self.hass.async_add_executor_job(_write_temp_mp4, segment)
+        try:
+            return await _async_ffmpeg_image(
+                self.hass, path, f"-vf scale={_PREVIEW_WIDTH}:-2"
+            )
+        finally:
+            await self.hass.async_add_executor_job(os.unlink, path)
+
+
+async def _async_ffmpeg_image(
+    hass: HomeAssistant, path: str, extra_cmd: str
+) -> bytes | None:
+    """Take one frame with the ffmpeg integration, set up when first needed.
+
+    ffmpeg is only used for these thumbnails, so it is not a hard dependency:
+    without it the integration still loads and the events have no thumbnail.
+    """
+    if "ffmpeg" not in hass.config.components and not await async_setup_component(
+        hass, "ffmpeg", {}
+    ):
+        return None
+    # Imported here: the ffmpeg integration needs ha-ffmpeg, which is only
+    # installed once the integration has been set up.
+    from homeassistant.components.ffmpeg import async_get_image  # noqa: PLC0415
+
+    return await async_get_image(hass, path, extra_cmd=extra_cmd)
+
+
+def _write_temp_mp4(data: bytes) -> str:
+    """Write data to a temporary MP4 file for ffmpeg and return its path."""
+    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as file:
+        file.write(data)
+    return file.name
 
 
 class NestMediaSource(MediaSource):
@@ -478,16 +577,10 @@ class NestMediaSource(MediaSource):
             # Resolvable identifier
             media_identifier = f"{entry.entry_id}/{serial_number}/{event_id}"
 
-            # Protobuf camera events carry no usable snapshot, so a thumbnail
-            # URL would only give a 404 per event.
-            thumbnail_url = (
-                None
-                if device.is_protobuf
-                else _MEDIA_THUMBNAIL_URL_FORMAT.format(
-                    config_entry_id=entry.entry_id,
-                    serial_number=serial_number,
-                    event_id=event_id,
-                )
+            thumbnail_url = _MEDIA_THUMBNAIL_URL_FORMAT.format(
+                config_entry_id=entry.entry_id,
+                serial_number=serial_number,
+                event_id=event_id,
             )
 
             children.append(
