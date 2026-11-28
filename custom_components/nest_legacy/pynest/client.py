@@ -40,10 +40,12 @@ from .exceptions import (
 from .media import (
     DASH_MANIFEST_URL_FORMAT,
     BufferedMediaResponse,
+    EventClipStreams,
     append_mp4_segment,
     is_camera_frontend_url,
     iso_utc,
-    select_event_clip_segments,
+    mux_fragmented_mp4,
+    select_event_clip_streams,
 )
 from .models import (
     Bucket,
@@ -2641,7 +2643,7 @@ class NestClient:
         if times is None or not self._google_access_token or format != "mp4":
             # An event this client has not listed; a legacy Nest token, which
             # the camera frontend does not accept; or a thumbnail, which these
-            # events have no usable snapshot URL for.
+            # events have no snapshot URL for (see async_get_camera_event_preview).
             yield None
             return
 
@@ -2649,10 +2651,54 @@ class NestClient:
             clip = await self._async_get_protobuf_event_clip(device, *times)
         yield BufferedMediaResponse(clip) if clip else None
 
+    async def async_get_camera_event_preview(
+        self, device: NestCamera, event_id: str
+    ) -> bytes | None:
+        """Get the first video segment of a Protobuf camera event's recording.
+
+        These events have no snapshot to serve as a thumbnail, but the first
+        segment of the recording is a short, complete MP4 that a thumbnail can
+        be taken from. Raises NotAuthenticatedException when the camera
+        frontend rejects the Google access token.
+        """
+        times = self._protobuf_camera_events.get(device.object_key, {}).get(event_id)
+        if not device.is_protobuf or times is None or not self._google_access_token:
+            return None
+        async with asyncio.timeout(_EVENT_MEDIA_TIMEOUT):
+            streams = await self._async_get_protobuf_event_streams(device, *times)
+            if streams is None or not streams.video:
+                return None
+            segment = await self._async_fetch_event_stream(streams.video[:1])
+        return bytes(segment) if segment else None
+
     async def _async_get_protobuf_event_clip(
         self, device: NestCamera, event_start: float, event_end: float
     ) -> bytearray | None:
-        """Download the recording that holds an event and join its segments."""
+        """Download the recording that holds an event as one MP4.
+
+        The video and audio are separate streams on the camera frontend. The
+        audio is added when the recording has it; if it cannot be fetched or
+        joined, the clip is served as video only.
+        """
+        streams = await self._async_get_protobuf_event_streams(
+            device, event_start, event_end
+        )
+        if streams is None:
+            return None
+        video = await self._async_fetch_event_stream(streams.video)
+        if not video or not streams.audio:
+            return video
+        audio = await self._async_fetch_event_stream(
+            streams.audio, _MAX_EVENT_CLIP_BYTES - len(video)
+        )
+        if not audio:
+            return video
+        return mux_fragmented_mp4(video, audio) or video
+
+    async def _async_get_protobuf_event_streams(
+        self, device: NestCamera, event_start: float, event_end: float
+    ) -> EventClipStreams | None:
+        """Get the segment URLs of the recording that holds an event."""
         # An event without an end time yet has end_time 0.
         event_end = max(event_start, event_end)
         manifest_url = DASH_MANIFEST_URL_FORMAT.format(device_id=device.object_key)
@@ -2669,11 +2715,17 @@ class NestClient:
             if not self._camera_frontend_response_ok(response.status, "manifest"):
                 return None
             manifest = await response.text()
-        segment_urls = select_event_clip_segments(
+        return select_event_clip_streams(
             manifest, event_start, event_end, base_url=manifest_url
         )
 
-        clip = bytearray()
+    async def _async_fetch_event_stream(
+        self, segment_urls: list[str], max_bytes: int | None = None
+    ) -> bytearray | None:
+        """Download the segments of one stream and join them."""
+        if max_bytes is None:
+            max_bytes = _MAX_EVENT_CLIP_BYTES
+        joined = bytearray()
         for index, url in enumerate(segment_urls):
             if not is_camera_frontend_url(url):
                 return None
@@ -2682,14 +2734,14 @@ class NestClient:
             ) as response:
                 if not self._camera_frontend_response_ok(response.status, "segment"):
                     return None
-                append_mp4_segment(clip, await response.read(), first=index == 0)
-            if len(clip) > _MAX_EVENT_CLIP_BYTES:
+                append_mp4_segment(joined, await response.read(), first=index == 0)
+            if len(joined) > max_bytes:
                 _LOGGER.warning(
                     "Camera event clip is larger than %s MB, not serving it",
                     _MAX_EVENT_CLIP_BYTES // (1024 * 1024),
                 )
                 return None
-        return clip
+        return joined
 
     @staticmethod
     def _camera_frontend_response_ok(status: int, what: str) -> bool:

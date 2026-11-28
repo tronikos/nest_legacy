@@ -2,6 +2,8 @@
 
 import dataclasses
 from http import HTTPStatus
+import os
+from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -339,14 +341,19 @@ async def test_media_source_handles_client_errors_and_malformed_paths(
     assert response.status == HTTPStatus.INTERNAL_SERVER_ERROR
 
 
-async def test_protobuf_camera_events_have_no_thumbnail(
+def _make_protobuf(entry: MockConfigEntry) -> None:
+    """Turn the test camera into a Protobuf-only camera."""
+    data = entry.runtime_data.data
+    data[CAMERA_SERIAL] = dataclasses.replace(data[CAMERA_SERIAL], is_protobuf=True)
+
+
+async def test_protobuf_camera_events_have_thumbnails(
     hass: HomeAssistant,
     init_integration: MockConfigEntry,
     camera_events: list[dict[str, Any]],
 ) -> None:
-    """Protobuf camera events have no snapshot, so no thumbnail URL is given."""
-    data = init_integration.runtime_data.data
-    data[CAMERA_SERIAL] = dataclasses.replace(data[CAMERA_SERIAL], is_protobuf=True)
+    """Protobuf camera events get a thumbnail URL, served from the preview."""
+    _make_protobuf(init_integration)
 
     browse = await async_browse_media(
         hass,
@@ -355,7 +362,106 @@ async def test_protobuf_camera_events_have_no_thumbnail(
 
     playable = [child for child in browse.children if child.can_play]
     assert playable
-    assert all(child.thumbnail is None for child in playable)
+    assert all(child.thumbnail.endswith("/thumbnail") for child in playable)
+
+
+def _thumbnail_url(entry: MockConfigEntry) -> str:
+    """Return the thumbnail URL of event-1."""
+    return (
+        f"/api/nest_legacy/event_media/{entry.entry_id}/{CAMERA_SERIAL}"
+        "/event-1/thumbnail"
+    )
+
+
+@pytest.mark.usefixtures("media_views")
+async def test_protobuf_thumbnail_is_the_first_frame(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """The thumbnail is decoded from the preview once, then kept."""
+    _make_protobuf(init_integration)
+    mock_nest_client.async_get_camera_event_preview = AsyncMock(return_value=b"segment")
+    client = await hass_client()
+    paths: list[str] = []
+
+    async def _get_image(_hass: HomeAssistant, path: str, **kwargs: Any) -> bytes:
+        paths.append(path)
+        assert await hass.async_add_executor_job(Path(path).read_bytes) == b"segment"
+        return b"jpeg"
+
+    with patch(
+        "custom_components.nest_legacy.media_source.async_get_image",
+        side_effect=_get_image,
+    ) as get_image:
+        first = await client.get(_thumbnail_url(init_integration))
+        second = await client.get(_thumbnail_url(init_integration))
+
+    for response in (first, second):
+        assert response.status == HTTPStatus.OK
+        assert response.content_type == "image/jpeg"
+        assert await response.read() == b"jpeg"
+    mock_nest_client.async_get_camera_event_preview.assert_awaited_once()
+    get_image.assert_called_once()
+    assert paths[0].endswith(".mp4")
+    assert not os.path.exists(paths[0])
+
+
+@pytest.mark.usefixtures("media_views")
+@pytest.mark.parametrize(
+    "preview",
+    [AsyncMock(return_value=None), AsyncMock(side_effect=ClientError("boom"))],
+)
+async def test_protobuf_thumbnail_not_found(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+    preview: AsyncMock,
+) -> None:
+    """An event without a usable recording has no thumbnail, and no error."""
+    _make_protobuf(init_integration)
+    mock_nest_client.async_get_camera_event_preview = preview
+    client = await hass_client()
+
+    with patch(
+        "custom_components.nest_legacy.media_source.async_get_image"
+    ) as get_image:
+        response = await client.get(_thumbnail_url(init_integration))
+
+    assert response.status == HTTPStatus.NOT_FOUND
+    get_image.assert_not_called()
+
+
+@pytest.mark.usefixtures("media_views")
+async def test_protobuf_thumbnail_reauthenticates_once(
+    hass: HomeAssistant,
+    hass_client: ClientSessionGenerator,
+    init_integration: MockConfigEntry,
+    mock_nest_client: AsyncMock,
+) -> None:
+    """A token rejected for the preview is renewed and the preview retried."""
+    _make_protobuf(init_integration)
+    mock_nest_client.async_get_camera_event_preview = AsyncMock(
+        side_effect=[NotAuthenticatedException("401"), b"segment"]
+    )
+    client = await hass_client()
+    coordinator = init_integration.runtime_data
+
+    with (
+        patch.object(
+            coordinator, "async_reauthenticate", AsyncMock()
+        ) as reauthenticate,
+        patch(
+            "custom_components.nest_legacy.media_source.async_get_image",
+            AsyncMock(return_value=b"jpeg"),
+        ),
+    ):
+        response = await client.get(_thumbnail_url(init_integration))
+
+    assert response.status == HTTPStatus.OK
+    reauthenticate.assert_awaited_once_with(force=True)
 
 
 def _rejected_stream() -> MagicMock:

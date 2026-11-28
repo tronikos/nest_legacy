@@ -11,8 +11,10 @@ from custom_components.nest_legacy.pynest.exceptions import NotAuthenticatedExce
 from custom_components.nest_legacy.pynest.media import (
     is_camera_frontend_url,
     join_fragmented_mp4,
+    mux_fragmented_mp4,
     parse_dash_duration,
     select_event_clip_segments,
+    select_event_clip_streams,
 )
 from custom_components.nest_legacy.pynest.models import NestCamera
 from custom_components.nest_legacy.pynest.protobuf_gen.nest.trait import (
@@ -112,6 +114,62 @@ def _segment(*fragments: bytes) -> bytes:
     )
 
 
+def _full_box(
+    box_type: bytes, payload: bytes, *, version: int = 0, flags: int = 0
+) -> bytes:
+    """Return one MP4 full box."""
+    return _box(box_type, bytes([version]) + flags.to_bytes(3, "big") + payload)
+
+
+def _track_init(track_id: int, timescale: int, handler: bytes) -> bytes:
+    """Return the ftyp and moov of a single-track fragmented MP4."""
+    mvhd = _full_box(b"mvhd", bytes(92) + (track_id + 1).to_bytes(4, "big"))
+    tkhd = _full_box(
+        b"tkhd", bytes(8) + track_id.to_bytes(4, "big") + bytes(68), flags=3
+    )
+    mdhd = _full_box(b"mdhd", bytes(8) + timescale.to_bytes(4, "big") + bytes(8))
+    hdlr = _full_box(b"hdlr", bytes(4) + handler + bytes(13))
+    trak = _box(b"trak", tkhd + _box(b"mdia", mdhd + hdlr))
+    trex = _full_box(b"trex", track_id.to_bytes(4, "big") + bytes(16))
+    return _box(b"ftyp", b"iso5") + _box(b"moov", mvhd + trak + _box(b"mvex", trex))
+
+
+def _fragment(
+    track_id: int,
+    decode_time: int,
+    data: bytes,
+    *,
+    sequence: int = 1,
+    tfhd_flags: int = 0x020000,
+) -> bytes:
+    """Return one movie fragment: a moof for one track and its mdat."""
+    tfhd = _full_box(b"tfhd", track_id.to_bytes(4, "big"), flags=tfhd_flags)
+    tfdt = _full_box(b"tfdt", decode_time.to_bytes(8, "big"), version=1)
+    traf = _box(b"traf", tfhd + tfdt)
+    moof = _box(b"moof", _full_box(b"mfhd", sequence.to_bytes(4, "big")) + traf)
+    return moof + _box(b"mdat", data)
+
+
+def _video_segment(*fragments: bytes) -> bytes:
+    """Return a video segment as the camera frontend serves it (track 1)."""
+    return _track_init(1, 1000000, b"vide") + b"".join(fragments) + _box(b"mfra")
+
+
+def _audio_segment(*fragments: bytes) -> bytes:
+    """Return an audio segment as the camera frontend serves it (also track 1)."""
+    return _track_init(1, 48000, b"soun") + b"".join(fragments) + _box(b"mfra")
+
+
+def _fields(data: bytes | bytearray, box_type: bytes, offset: int) -> list[int]:
+    """Return a 32-bit field of every box of a type, by offset from its type."""
+    values = []
+    start = data.find(box_type)
+    while start != -1:
+        values.append(int.from_bytes(data[start + offset : start + offset + 4], "big"))
+        start = data.find(box_type, start + 4)
+    return values
+
+
 def _manifest(*periods: str, namespace: bool = True) -> str:
     """Return a DASH manifest holding these periods."""
     xmlns = " xmlns='urn:mpeg:dash:schema:mpd:2011'" if namespace else ""
@@ -187,6 +245,9 @@ def _serve_clip(aioclient_mock: AiohttpClientMocker) -> None:
     fragments = FRAGMENTS_URL.format(period="during", stream=0)
     aioclient_mock.get(fragments + "0.m4v", content=_segment(b"1", b"2"))
     aioclient_mock.get(fragments + "1.m4v", content=_segment(b"3"))
+    # Not a fragmented track, so the clip is served as video only.
+    audio = FRAGMENTS_URL.format(period="during", stream=9)
+    aioclient_mock.get(audio + "0.m4a", content=_segment(b"a"))
 
 
 def _manifest_call(aioclient_mock: AiohttpClientMocker) -> Any:
@@ -228,6 +289,58 @@ def test_clip_uses_the_widest_video_and_no_audio() -> None:
         FRAGMENTS_URL.format(period="during", stream=1) + "0.m4v",
         FRAGMENTS_URL.format(period="during", stream=1) + "1.m4v",
     ]
+
+
+def test_clip_streams_include_the_audio_of_the_same_period() -> None:
+    """The audio of the picked period comes along, as a stream of its own."""
+    manifest = _manifest(
+        _period("before", "2026-09-21T14:13:12.000Z", "PT10S"),
+        _period("during", "2026-09-21T14:13:18Z", "PT12S"),
+    )
+
+    streams = select_event_clip_streams(manifest, EVENT_START, EVENT_END)
+
+    assert streams.video == [
+        FRAGMENTS_URL.format(period="during", stream=0) + "0.m4v",
+        FRAGMENTS_URL.format(period="during", stream=0) + "1.m4v",
+    ]
+    assert streams.audio == [FRAGMENTS_URL.format(period="during", stream=9) + "0.m4a"]
+
+
+def test_clip_streams_without_audio() -> None:
+    """A recording without an audio set has no audio stream."""
+    manifest = _manifest(
+        _video_period(
+            "2026-09-21T14:13:18Z",
+            "<Representation width='1920'><BaseURL>https://nest-camera-frontend"
+            ".googleapis.com/v/</BaseURL><SegmentList><SegmentURL media='0.m4v'/>"
+            "</SegmentList></Representation>",
+        )
+    )
+
+    streams = select_event_clip_streams(manifest, EVENT_START, EVENT_END)
+
+    assert streams.video == ["https://nest-camera-frontend.googleapis.com/v/0.m4v"]
+    assert streams.audio == []
+
+
+def test_clip_audio_outside_the_camera_frontend_is_dropped() -> None:
+    """Audio segments elsewhere are not fetched, but the video still is."""
+    manifest = _manifest(
+        "<Period programDateTime='2026-09-21T14:13:18Z' duration='PT12S'>"
+        "<AdaptationSet contentType='video'><Representation width='1920'>"
+        "<BaseURL>https://nest-camera-frontend.googleapis.com/v/</BaseURL>"
+        "<SegmentList><SegmentURL media='0.m4v'/></SegmentList></Representation>"
+        "</AdaptationSet><AdaptationSet contentType='audio'><Representation>"
+        "<BaseURL>https://example.com/a/</BaseURL>"
+        "<SegmentList><SegmentURL media='0.m4a'/></SegmentList></Representation>"
+        "</AdaptationSet></Period>"
+    )
+
+    streams = select_event_clip_streams(manifest, EVENT_START, EVENT_END)
+
+    assert streams.video == ["https://nest-camera-frontend.googleapis.com/v/0.m4v"]
+    assert streams.audio == []
 
 
 def test_clip_manifest_without_namespace() -> None:
@@ -424,6 +537,84 @@ def test_join_rejects_a_64_bit_size_below_its_header() -> None:
     assert join_fragmented_mp4([broken]) == broken
 
 
+# --- Adding the audio track -----------------------------------------------
+
+
+def test_mux_adds_the_audio_track_and_interleaves_by_time() -> None:
+    """Both tracks end up in one moov, their fragments in decode-time order."""
+    video = join_fragmented_mp4(
+        [
+            _video_segment(
+                _fragment(1, 0, b"VIDEO-1"),
+                _fragment(1, 1000000, b"VIDEO-2", sequence=2),
+            )
+        ]
+    )
+    # 0.5 s and 1.5 s at a 48 kHz timescale.
+    audio = join_fragmented_mp4(
+        [
+            _audio_segment(
+                _fragment(1, 24000, b"AUDIO-1"),
+                _fragment(1, 72000, b"AUDIO-2", sequence=2),
+            )
+        ]
+    )
+
+    muxed = mux_fragmented_mp4(video, audio)
+
+    assert muxed is not None
+    assert muxed.startswith(_box(b"ftyp", b"iso5"))
+    order = [muxed.index(p) for p in (b"VIDEO-1", b"AUDIO-1", b"VIDEO-2", b"AUDIO-2")]
+    assert order == sorted(order)
+    assert _fields(muxed, b"tkhd", 16) == [1, 2]
+    assert _fields(muxed, b"trex", 8) == [1, 2]
+    assert _fields(muxed, b"tfhd", 8) == [1, 2, 1, 2]
+    assert _fields(muxed, b"mfhd", 8) == [1, 2, 3, 4]
+    mvhd = muxed.index(b"mvhd") - 4
+    mvhd_end = mvhd + int.from_bytes(muxed[mvhd : mvhd + 4], "big")
+    assert int.from_bytes(muxed[mvhd_end - 4 : mvhd_end], "big") == 3
+    assert muxed.count(b"moov") == 1
+    assert b"mfra" not in muxed
+
+
+def test_mux_keeps_event_messages_with_their_fragment() -> None:
+    """Boxes before a moof, such as event messages, stay in front of it."""
+    emsg = _box(b"emsg", b"metadata")
+    video = join_fragmented_mp4(
+        [_video_segment(_fragment(1, 0, b"VIDEO-1"), emsg, _fragment(1, 9, b"V2"))]
+    )
+    audio = join_fragmented_mp4([_audio_segment(_fragment(1, 0, b"AUDIO-1"))])
+
+    muxed = mux_fragmented_mp4(video, audio)
+
+    assert muxed is not None
+    # The moof box starts four bytes before its type.
+    moof = muxed.index(b"moof", muxed.index(emsg)) - 4
+    assert muxed.index(emsg) + len(emsg) == moof
+    assert muxed.index(emsg) > muxed.index(b"AUDIO-1")
+
+
+@pytest.mark.parametrize(
+    "audio",
+    [
+        # Not a fragmented track at all.
+        _segment(b"a"),
+        b"not an mp4",
+        # Sample data addressed from the start of the file cannot be moved.
+        _audio_segment(_fragment(1, 0, b"A", tfhd_flags=0x000001)),
+        # A fragment of a track the moov does not describe.
+        _audio_segment(_fragment(7, 0, b"A")),
+        # No fragments.
+        _track_init(1, 48000, b"soun"),
+    ],
+)
+def test_mux_gives_up_on_what_it_cannot_follow(audio: bytes) -> None:
+    """Anything but two single-track fragmented MP4s is left to the caller."""
+    video = join_fragmented_mp4([_video_segment(_fragment(1, 0, b"VIDEO-1"))])
+
+    assert mux_fragmented_mp4(video, join_fragmented_mp4([audio])) is None
+
+
 # --- Client ---------------------------------------------------------------
 
 
@@ -449,6 +640,109 @@ async def test_protobuf_event_clip(
     assert manifest_call[1].query["start_time"] == "2026-09-21T14:13:10.000Z"
     assert manifest_call[1].query["end_time"] == "2026-09-21T14:13:38.000Z"
     assert manifest_call[3]["Authorization"] == "Bearer google-access-token"
+
+
+async def test_protobuf_event_clip_with_audio(
+    google_client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """The recording's audio is added to the clip as a second track."""
+    await _list_events(google_client, aioclient_mock)
+    aioclient_mock.get(
+        MANIFEST_URL,
+        text=_manifest(_period("during", "2026-09-21T14:13:18Z", "PT12S")),
+    )
+    fragments = FRAGMENTS_URL.format(period="during", stream=0)
+    video = [
+        _video_segment(_fragment(1, 0, b"VIDEO-1")),
+        _video_segment(_fragment(1, 1000000, b"VIDEO-2")),
+    ]
+    audio = _audio_segment(_fragment(1, 0, b"AUDIO-1"), _fragment(1, 48000, b"A2"))
+    aioclient_mock.get(fragments + "0.m4v", content=video[0])
+    aioclient_mock.get(fragments + "1.m4v", content=video[1])
+    aioclient_mock.get(
+        FRAGMENTS_URL.format(period="during", stream=9) + "0.m4a", content=audio
+    )
+
+    async with google_client.async_get_camera_event_media_stream(
+        _protobuf_camera(), "event-1", format="mp4"
+    ) as response:
+        assert response is not None
+        clip = await response.read()
+
+    assert clip == mux_fragmented_mp4(
+        join_fragmented_mp4(video), join_fragmented_mp4([audio])
+    )
+    assert b"AUDIO-1" in clip
+
+
+async def test_protobuf_event_clip_without_its_audio_is_video_only(
+    google_client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """Audio that cannot be fetched does not cost the clip its video."""
+    await _list_events(google_client, aioclient_mock)
+    aioclient_mock.get(
+        MANIFEST_URL,
+        text=_manifest(_period("during", "2026-09-21T14:13:18Z", "PT12S")),
+    )
+    fragments = FRAGMENTS_URL.format(period="during", stream=0)
+    aioclient_mock.get(fragments + "0.m4v", content=_segment(b"1", b"2"))
+    aioclient_mock.get(fragments + "1.m4v", content=_segment(b"3"))
+    aioclient_mock.get(
+        FRAGMENTS_URL.format(period="during", stream=9) + "0.m4a",
+        status=HTTPStatus.NOT_FOUND,
+    )
+
+    async with google_client.async_get_camera_event_media_stream(
+        _protobuf_camera(), "event-1", format="mp4"
+    ) as response:
+        assert response is not None
+        clip = await response.read()
+
+    assert clip == join_fragmented_mp4([_segment(b"1", b"2"), _segment(b"3")])
+
+
+async def test_protobuf_event_preview(
+    google_client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """The preview is the first video segment only, for a thumbnail."""
+    await _list_events(google_client, aioclient_mock)
+    _serve_clip(aioclient_mock)
+
+    preview = await google_client.async_get_camera_event_preview(
+        _protobuf_camera(), "event-1"
+    )
+
+    assert preview == join_fragmented_mp4([_segment(b"1", b"2")])
+    fetched = [str(call[1]) for call in aioclient_mock.mock_calls]
+    assert not [url for url in fetched if url.endswith(("1.m4v", ".m4a"))]
+
+
+async def test_protobuf_event_preview_for_an_unknown_event(
+    google_client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """There is no preview of an event the client has not listed."""
+    assert (
+        await google_client.async_get_camera_event_preview(
+            _protobuf_camera(), "event-1"
+        )
+        is None
+    )
+    assert not aioclient_mock.mock_calls
+
+
+async def test_protobuf_event_preview_without_a_recording(
+    google_client: NestClient, aioclient_mock: AiohttpClientMocker
+) -> None:
+    """An event whose recording is not in the manifest has no preview."""
+    await _list_events(google_client, aioclient_mock)
+    aioclient_mock.get(MANIFEST_URL, text=_manifest())
+
+    assert (
+        await google_client.async_get_camera_event_preview(
+            _protobuf_camera(), "event-1"
+        )
+        is None
+    )
 
 
 async def test_protobuf_event_clip_without_end_time(
@@ -638,7 +932,7 @@ async def test_protobuf_event_media_for_an_unknown_event(
 async def test_protobuf_event_has_no_thumbnail(
     google_client: NestClient, aioclient_mock: AiohttpClientMocker
 ) -> None:
-    """The events carry no snapshot URL, so no thumbnail is fetched."""
+    """The events carry no snapshot URL; thumbnails come from the preview."""
     await _list_events(google_client, aioclient_mock)
     aioclient_mock.clear_requests()
 
