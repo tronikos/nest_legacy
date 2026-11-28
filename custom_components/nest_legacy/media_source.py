@@ -10,7 +10,6 @@ from typing import cast, override
 
 from aiohttp import ClientError, web
 
-from homeassistant.components.ffmpeg import async_get_image
 from homeassistant.components.http import HomeAssistantView
 from homeassistant.components.media_player import BrowseError, MediaClass
 from homeassistant.components.media_source import (
@@ -23,6 +22,7 @@ from homeassistant.components.media_source import (
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
+from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
@@ -239,11 +239,30 @@ class NestEventThumbnailView(NestEventMediaView):
         """Decode the first video frame of an MP4 segment to a JPEG."""
         path = await self.hass.async_add_executor_job(_write_temp_mp4, segment)
         try:
-            return await async_get_image(
-                self.hass, path, extra_cmd=f"-vf scale={_PREVIEW_WIDTH}:-2"
+            return await _async_ffmpeg_image(
+                self.hass, path, f"-vf scale={_PREVIEW_WIDTH}:-2"
             )
         finally:
             await self.hass.async_add_executor_job(os.unlink, path)
+
+
+async def _async_ffmpeg_image(
+    hass: HomeAssistant, path: str, extra_cmd: str
+) -> bytes | None:
+    """Take one frame with the ffmpeg integration, set up when first needed.
+
+    ffmpeg is only used for these thumbnails, so it is not a hard dependency:
+    without it the integration still loads and the events have no thumbnail.
+    """
+    if "ffmpeg" not in hass.config.components and not await async_setup_component(
+        hass, "ffmpeg", {}
+    ):
+        return None
+    # Imported here: the ffmpeg integration needs ha-ffmpeg, which is only
+    # installed once the integration has been set up.
+    from homeassistant.components.ffmpeg import async_get_image  # noqa: PLC0415
+
+    return await async_get_image(hass, path, extra_cmd=extra_cmd)
 
 
 def _write_temp_mp4(data: bytes) -> str:

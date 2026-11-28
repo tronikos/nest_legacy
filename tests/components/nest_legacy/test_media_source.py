@@ -8,6 +8,7 @@ from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from aiohttp import ClientError
+from custom_components.nest_legacy import media_source as media_source_module
 from custom_components.nest_legacy.const import DOMAIN
 from custom_components.nest_legacy.pynest.exceptions import (
     NotAuthenticatedException,
@@ -386,13 +387,13 @@ async def test_protobuf_thumbnail_is_the_first_frame(
     client = await hass_client()
     paths: list[str] = []
 
-    async def _get_image(_hass: HomeAssistant, path: str, **kwargs: Any) -> bytes:
+    async def _get_image(_hass: HomeAssistant, path: str, _extra: str) -> bytes:
         paths.append(path)
         assert await hass.async_add_executor_job(Path(path).read_bytes) == b"segment"
         return b"jpeg"
 
     with patch(
-        "custom_components.nest_legacy.media_source.async_get_image",
+        "custom_components.nest_legacy.media_source._async_ffmpeg_image",
         side_effect=_get_image,
     ) as get_image:
         first = await client.get(_thumbnail_url(init_integration))
@@ -426,7 +427,7 @@ async def test_protobuf_thumbnail_not_found(
     client = await hass_client()
 
     with patch(
-        "custom_components.nest_legacy.media_source.async_get_image"
+        "custom_components.nest_legacy.media_source._async_ffmpeg_image"
     ) as get_image:
         response = await client.get(_thumbnail_url(init_integration))
 
@@ -454,7 +455,7 @@ async def test_protobuf_thumbnail_reauthenticates_once(
             coordinator, "async_reauthenticate", AsyncMock()
         ) as reauthenticate,
         patch(
-            "custom_components.nest_legacy.media_source.async_get_image",
+            "custom_components.nest_legacy.media_source._async_ffmpeg_image",
             AsyncMock(return_value=b"jpeg"),
         ),
     ):
@@ -523,3 +524,13 @@ async def test_clip_view_gives_up_after_one_reauthentication(
 
     assert response.status == HTTPStatus.INTERNAL_SERVER_ERROR
     reauthenticate.assert_awaited_once_with(force=True)
+
+
+async def test_thumbnail_without_ffmpeg(hass: HomeAssistant) -> None:
+    """Without the ffmpeg integration there is no thumbnail, and no error."""
+    with patch(
+        "custom_components.nest_legacy.media_source.async_setup_component",
+        AsyncMock(return_value=False),
+    ) as setup:
+        assert await media_source_module._async_ffmpeg_image(hass, "x.mp4", "") is None
+    setup.assert_awaited_once_with(hass, "ffmpeg", {})
